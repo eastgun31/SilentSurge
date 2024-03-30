@@ -149,7 +149,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 25756962}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -212,7 +212,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationAngle: 90
-  correctRotation: 0
+  correctRotation:
+  - 0
   isPlaces: 0
 --- !u!1 &38111361
 GameObject:
@@ -668,6 +669,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334828266}
   m_CullTransparentMesh: 1
+--- !u!1 &389836009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 389836011}
+  - component: {fileID: 389836010}
+  m_Layer: 0
+  m_Name: PipeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &389836010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389836009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aa63b0917d52864d8319fe8139c1f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PipesHoldert: {fileID: 1137146634}
+  Pipes: []
+  totalPipes: 0
+  correctPipes: 0
+--- !u!4 &389836011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389836009}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 856.4324, y: 659.4554, z: -187.12758}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &518127444
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,7 +1031,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationAngle: 90
-  correctRotation: 0
+  correctRotation:
+  - 0
+  - 180
   isPlaces: 0
 --- !u!1 &977038857
 GameObject:
@@ -1392,7 +1443,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationAngle: 90
-  correctRotation: 0
+  correctRotation:
+  - 0
+  - 180
   isPlaces: 0
 --- !u!1 &1121669747
 GameObject:
@@ -1912,7 +1965,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationAngle: 90
-  correctRotation: 0
+  correctRotation:
+  - 0
+  - 180
   isPlaces: 0
 --- !u!1 &1392109140
 GameObject:
@@ -1940,7 +1995,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392109140}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.6, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2003,7 +2058,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationAngle: 90
-  correctRotation: 0
+  correctRotation:
+  - 0
+  - 180
   isPlaces: 0
 --- !u!1 &1410008491
 GameObject:
@@ -2094,7 +2151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationAngle: 90
-  correctRotation: 0
+  correctRotation:
+  - 0
   isPlaces: 0
 --- !u!1 &1478926014
 GameObject:
@@ -2185,7 +2243,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationAngle: 90
-  correctRotation: 0
+  correctRotation:
+  - 0
+  - 180
   isPlaces: 0
 --- !u!1 &1578233306
 GameObject:
@@ -2276,7 +2336,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationAngle: 90
-  correctRotation: 0
+  correctRotation:
+  - 0
+  - 180
   isPlaces: 0
 --- !u!1 &1700081311
 GameObject:
@@ -2517,7 +2579,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationAngle: 90
-  correctRotation: 0
+  correctRotation:
+  - 0
+  - 180
   isPlaces: 0
 --- !u!1 &2105910166
 GameObject:
@@ -2602,3 +2666,4 @@ SceneRoots:
   - {fileID: 1008987018}
   - {fileID: 1302248590}
   - {fileID: 153699912}
+  - {fileID: 389836011}
