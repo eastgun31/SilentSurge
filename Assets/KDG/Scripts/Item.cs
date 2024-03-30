@@ -2,20 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : IItem
+namespace ItemInfo
 {
-    public int value;
-    public int count;
-    public float cooltime;
-
-    public void Use()
+    public class Item
     {
-        
+        public int count { get; set; }
+        public float cooltime { get; set; }
+        public bool canUse { get; set; }
     }
-
-    public void ItemCharge()
-    {
-
-    }
-
 }
+
+
+
+
