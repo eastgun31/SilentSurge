@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     {
         rigid = transform.GetComponent<Rigidbody>();
         cam = Camera.main;
+        Item items = new Item();
     }
 
     void Update()
