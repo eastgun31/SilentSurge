@@ -31,9 +31,13 @@ public class Player : MonoBehaviour
     [SerializeField]
     IItem heartsee;
 
+    public GameObject handGunModel;
+    public GameObject bulletPrefab;
+
     float rotDeg;
     Rigidbody rigid;
     Camera cam;
+    Vector3 mousePos;
     Vector3 velocity;
     bool itemActivate = false;
 
@@ -45,7 +49,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Vector3 mousePos = cam.ScreenToWorldPoint(new Vector3
+        mousePos = cam.ScreenToWorldPoint(new Vector3
             (Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.y));
         transform.LookAt(mousePos + Vector3.up * transform.position.y);
 
@@ -58,6 +62,7 @@ public class Player : MonoBehaviour
             ItemActivate1();
             if(handgunacivate && !coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
             {
+                Fire();
                 handgun.UseItem();
             }
         }
@@ -100,6 +105,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1) && !handgunacivate)
         {
             handgunacivate = true;
+            handGunModel.SetActive(true);
             Debug.Log("권총 활성화");
             coinacivate = false;
             flashbangacivate = false;
@@ -107,6 +113,7 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha1) && handgunacivate)
         {
+            handGunModel.SetActive(false);
             handgunacivate = false;
             Debug.Log("권총 비활성화");
         }
@@ -117,6 +124,7 @@ public class Player : MonoBehaviour
         {
             coinacivate = true;
             Debug.Log("코인 활성화");
+            handGunModel.SetActive(false);
             flashbangacivate = false;
             heartseeacivate = false;
             handgunacivate = false;
@@ -133,6 +141,7 @@ public class Player : MonoBehaviour
         {
             flashbangacivate = true;
             Debug.Log("섬광탄 활성화");
+            handGunModel.SetActive(false);
             heartseeacivate = false;
             handgunacivate = false;
             coinacivate = false;
@@ -149,6 +158,7 @@ public class Player : MonoBehaviour
         {
             heartseeacivate = true;
             Debug.Log("심장박동측정기 활성화");
+            handGunModel.SetActive(false);
             handgunacivate = false;
             coinacivate = false;
             flashbangacivate = false;
@@ -158,6 +168,14 @@ public class Player : MonoBehaviour
             heartseeacivate = false;
             Debug.Log("심장박동측정기 비활성화");
         }
+    }
+
+    void Fire()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, handGunModel.transform.position, handGunModel.transform.rotation);
+        bullet.GetComponent<Rigidbody>().velocity = mousePos* 1f;
+
+        Destroy(bullet, 2.0f);
     }
 
 

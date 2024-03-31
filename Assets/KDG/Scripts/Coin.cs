@@ -6,6 +6,7 @@ using ItemInfo;
 public class Coin : MonoBehaviour, IItem
 {
     public int value { get; set; }
+    public GameObject coin;
 
     void Start()
     {
