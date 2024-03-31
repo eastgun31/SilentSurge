@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PipeManager : MonoBehaviour
 {
+    public GameObject success;
+
     public GameObject PipesHoldert;
     public GameObject[] Pipes;
 
@@ -34,6 +36,7 @@ public class PipeManager : MonoBehaviour
         if (correctPipes == totalPipes)
         {
             Debug.Log("Win");
+            success.SetActive(true);
         }
     }
 
