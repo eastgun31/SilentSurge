@@ -7,7 +7,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    private float playerspeed = 1f;
+    private float playerspeed = 10f;
 
     [SerializeField]
     private bool handgunget = false;
