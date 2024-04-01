@@ -366,6 +366,51 @@ MonoBehaviour:
   bulletSpeed: 1
   bulletPrefab: {fileID: 6370189277096345383, guid: 09e71b3c77b69d94796d4f8f3a90252f, type: 3}
   bulletSpawn: {fileID: 0}
+--- !u!1 &480856901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 480856902}
+  - component: {fileID: 480856903}
+  m_Layer: 0
+  m_Name: EnemyLevel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &480856902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480856901}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &480856903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480856901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b4c662b7082a494eb626f853cceea0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LvStep: 0
 --- !u!4 &599095795 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3493611434569222845, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
@@ -768,7 +813,7 @@ GameObject:
   - component: {fileID: 1208169669}
   - component: {fileID: 1208169668}
   - component: {fileID: 1208169667}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1405,12 +1450,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2958423925111557212, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2958423925111557212, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: e42671d67b324ae43923f2d60e7267b8, type: 2}
+    - target: {fileID: 2958423925111557212, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3035691852981451717, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1646,6 +1695,7 @@ MonoBehaviour:
   coinacivate: 0
   flashbangacivate: 0
   heartseeacivate: 0
+  itemGet: 0000000000
   useItem: {fileID: 0}
   handGunModel: {fileID: 0}
   bulletPrefab: {fileID: 0}
@@ -2022,3 +2072,4 @@ SceneRoots:
   - {fileID: 403664801013656610}
   - {fileID: 1208169670}
   - {fileID: 1360599835}
+  - {fileID: 480856902}

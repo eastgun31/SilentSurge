@@ -12,7 +12,10 @@ public class UseItem : MonoBehaviour
     public Transform throwposition;
 
     [SerializeField]
-    private float throwpower = 10f;
+    private float throwpower = 2f;
+    private string floor = "Floor";
+
+    Vector3 angle;
 
 
     public void GunFire(Vector3 pos)
@@ -27,8 +30,19 @@ public class UseItem : MonoBehaviour
         GameObject coin = Instantiate(coinPrefab, throwposition.transform.position, Quaternion.identity);
         Rigidbody coinRigid = coin.GetComponent<Rigidbody>();
 
-        coinRigid.AddForce(transform.forward * throwpower, ForceMode.Impulse);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        int mask = LayerMask.GetMask(floor);
 
+        if(Physics.Raycast(ray, out hit,100f, mask))
+        {
+            angle = hit.point ;
+        }
+
+        angle.y = 2f;
+        coinRigid.AddForce(angle * throwpower, ForceMode.Impulse);
+
+        Destroy(coin, 5f);
     }
     public void ThrowFlashBang()
     {

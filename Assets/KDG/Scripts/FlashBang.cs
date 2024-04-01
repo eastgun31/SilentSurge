@@ -7,19 +7,20 @@ public class FlashBang : MonoBehaviour, IItem
 {
     public int value { get; set; }
 
+    Player player;
+
     void Start()
     {
         value = 3;
     }
 
-    void Update()
-    {
 
-    }
     public void GetItem()
     {
         Debug.Log("¼¶±¤ÅºÈ¹µæ");
         GameManager.instance.itemcheck[2] = true;
+        //player = gameObject.GetComponent<Player>();
+        //player.itemGet[2] = true;
     }
     public void ItemCharge()
     {
