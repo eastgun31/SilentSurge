@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PipeManager : MonoBehaviour
 {
+    public GameObject Canvas;
     public GameObject success;
 
-    public GameObject PipesHoldert;
+    public GameObject PipesHolder;
     public GameObject[] Pipes;
 
     [SerializeField]
@@ -17,13 +18,13 @@ public class PipeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        totalPipes = PipesHoldert.transform.childCount;
+        totalPipes = PipesHolder.transform.childCount;
 
         Pipes = new GameObject[totalPipes];
 
         for (int i = 0; i < Pipes.Length; i++)
         {
-            Pipes[i] = PipesHoldert.transform.GetChild(i).gameObject;
+            Pipes[i] = PipesHolder.transform.GetChild(i).gameObject;
         }
     }
 
@@ -37,11 +38,17 @@ public class PipeManager : MonoBehaviour
         {
             Debug.Log("Win");
             success.SetActive(true);
+            Invoke("ClosePipe", 2f);
         }
     }
 
     public void WrongMove()
     {
         correctPipes -= 1;
+    }
+
+    public void ClosePipe()
+    {
+        Canvas.SetActive(false);
     }
 }

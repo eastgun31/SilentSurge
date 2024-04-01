@@ -5,9 +5,12 @@ using UnityEngine.UI;
 
 public class Keypad : MonoBehaviour
 {
+    public GameObject keypad;
+
     [SerializeField] private Text answerInput;
     private int maxNum = 6;
 
+    [SerializeField]
     private string pw = "123456";
 
 
@@ -24,10 +27,12 @@ public class Keypad : MonoBehaviour
         if(answerInput.text.Equals(pw, System.StringComparison.OrdinalIgnoreCase))
         {
             answerInput.text = "CORRECT";
+            Invoke("CloseKeypad", 2f);
         }
         else
         {
-            answerInput.text = "INCORRECT"; 
+            answerInput.text = "INCORRECT";
+            Invoke("ResetAns", 1f);
         }
     }
     public void BackSpace()
@@ -36,5 +41,15 @@ public class Keypad : MonoBehaviour
         {
             answerInput.text = answerInput.text.Substring(0, answerInput.text.Length - 1);
         }
+    }
+
+    public void ResetAns()
+    {
+        answerInput.text = "";
+    }
+
+    public void CloseKeypad()
+    {
+        keypad.SetActive(false);
     }
 }
