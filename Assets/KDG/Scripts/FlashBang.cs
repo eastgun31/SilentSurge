@@ -16,9 +16,10 @@ public class FlashBang : MonoBehaviour, IItem
     {
 
     }
-    public void UseItem()
+    public void GetItem()
     {
-        Debug.Log("¼¶±¤Åº»ç¿ë");
+        Debug.Log("¼¶±¤ÅºÈ¹µæ");
+        GameManager.instance.itemcheck[2] = true;
     }
     public void ItemCharge()
     {
