@@ -16,9 +16,10 @@ public class HeartSee : MonoBehaviour, IItem
     {
 
     }
-    public void UseItem()
+    public void GetItem()
     {
-        Debug.Log("심박측정기사용");
+        Debug.Log("심박측정기획득");
+        GameManager.instance.itemcheck[3] = true;
     }
     public void ItemCharge()
     {

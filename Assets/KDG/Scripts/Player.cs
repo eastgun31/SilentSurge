@@ -10,26 +10,17 @@ public class Player : MonoBehaviour
     private float playerspeed = 10f;
 
     [SerializeField]
-    private bool handgunget = false;
     private bool handgunacivate = false;
     [SerializeField]
-    private bool coinget = false;
     private bool coinacivate = false;
     [SerializeField]
-    private bool flashbangget = false;
     private bool flashbangacivate = false;
     [SerializeField]
-    private bool heartseeget = false;
     private bool heartseeacivate = false;
 
     [SerializeField]
-    IItem handgun;    
-    [SerializeField]
-    IItem coin;    
-    [SerializeField]
-    IItem flashbang;    
-    [SerializeField]
-    IItem heartsee;
+    UseItem useItem;
+    IItem item;
 
     public GameObject handGunModel;
     public GameObject bulletPrefab;
@@ -43,6 +34,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        useItem = GetComponent<UseItem>();
         rigid = transform.GetComponent<Rigidbody>();
         cam = Camera.main;
     }
@@ -57,37 +49,34 @@ public class Player : MonoBehaviour
         rigid.MovePosition(rigid.position + velocity * Time.fixedDeltaTime);
 
 
-        if(handgunget)
+        if (GameManager.instance.itemcheck[0])
         {
             ItemActivate1();
             if(handgunacivate && !coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
             {
-                Fire();
-                handgun.UseItem();
+                useItem.GunFire(mousePos);
             }
         }
-        if(coinget)
+        if(GameManager.instance.itemcheck[1])
         {
             ItemActivate2();
             if(!handgunacivate && coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
             {
-                coin.UseItem();
+                useItem.ThrowCoin();
             }
         }
-        if(flashbangget)
+        if(GameManager.instance.itemcheck[2])
         {
             ItemActivate3();
             if(!handgunacivate && !coinacivate && flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
             {
-                flashbang.UseItem();
             }
         }
-        if(heartseeget)
+        if(GameManager.instance.itemcheck[3])
         {
             ItemActivate4();
             if(!handgunacivate && !coinacivate && !flashbangacivate && heartseeacivate && Input.GetMouseButtonDown(0))
             {
-                heartsee.UseItem();
             }
         }
 
@@ -170,40 +159,27 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Fire()
-    {
-        GameObject bullet = Instantiate(bulletPrefab, handGunModel.transform.position, handGunModel.transform.rotation);
-        bullet.GetComponent<Rigidbody>().velocity = mousePos* 1f;
-
-        Destroy(bullet, 2.0f);
-    }
-
 
     private void OnTriggerEnter(Collider other)
     {
-        IItem item = other.GetComponent<IItem>();
+        if (other.CompareTag("Item"))
+        {
+            item = other.GetComponent<IItem>();
+        }
         
         switch(item.value)
         {
             case 1:
-                Debug.Log("±ÇÃÑ È¹µæ");
-                handgunget = true;
-                handgun = item;
+                item.GetItem();
                 break;
             case 2:
-                Debug.Log("µ¿Àü È¹µæ");
-                coinget = true;
-                coin = item;
+                item.GetItem();
                 break;
             case 3:
-                Debug.Log("¼¶±¤Åº È¹µæ");
-                flashbangget = true;
-                flashbang = item;
+                item.GetItem();
                 break;
             case 4:
-                Debug.Log("½ÉÀå¹Úµ¿ÃøÁ¤±â È¹µæ");
-                heartseeget = true;
-                heartsee = item;
+                item.GetItem();
                 break;
         }
         Destroy(other.gameObject);

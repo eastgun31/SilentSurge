@@ -19,15 +19,17 @@ public class HandGun : MonoBehaviour, IItem
     void Start()
     {
         value = 1;
+        
     }
 
     void Update()
     {
         
     }
-    public void UseItem()
+    public void GetItem()
     {
-        Debug.Log("±ÇÃÑ»ç¿ë");
+        Debug.Log("±ÇÃÑÈ¹µæ");
+        GameManager.instance.itemcheck[0] = true;
 
     }
     public void ItemCharge()
