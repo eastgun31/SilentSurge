@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SinWave : MonoBehaviour
 {
@@ -31,8 +32,10 @@ public class SinWave : MonoBehaviour
         for (int i = 0; i < points; i++) 
         {
             float progress = (float)i/(points-1);
-            float x = Mathf.Lerp(xStart, xFinish, progress);
+            float x = Mathf.Lerp(xStart, xFinish, progress); //시작점부터 끝지점까지 포인트 배치
+            //사인그래프 생성 0.0과 1.0사이의 값, 이 값을 곱하면 1진동의 사인 그래프생성, frequency를 곱하여 진동수 결정
             float y = amplitude*Mathf.Sin((pi*frequency * x)+(Time.timeSinceLevelLoad*speed));
+           
             lineRenderer.SetPosition(i, new Vector3(x, y, 0));
         }
         
