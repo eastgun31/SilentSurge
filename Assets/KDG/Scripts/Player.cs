@@ -19,11 +19,19 @@ public class Player : MonoBehaviour
     private bool heartseeacivate = false;
 
     [SerializeField]
+    public bool[] itemGet = new bool[5];
+
+    [SerializeField]
     UseItem useItem;
     IItem item;
 
     public GameObject handGunModel;
     public GameObject bulletPrefab;
+
+    Animator playerAnim;
+    string walk = "Walk";
+    string handgunMode = "HandGun";
+    string throwcoin = "ThrowCoin";
 
     float rotDeg;
     Rigidbody rigid;
@@ -36,6 +44,7 @@ public class Player : MonoBehaviour
     {
         useItem = GetComponent<UseItem>();
         rigid = transform.GetComponent<Rigidbody>();
+        playerAnim = GetComponent<Animator>();
         cam = Camera.main;
     }
 
@@ -48,8 +57,9 @@ public class Player : MonoBehaviour
         velocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized * playerspeed;
         rigid.MovePosition(rigid.position + velocity * Time.fixedDeltaTime);
 
+        playerAnim.SetFloat(walk, velocity.magnitude);
 
-        if (GameManager.instance.itemcheck[0])
+        if (itemGet[0])
         {
             ItemActivate1();
             if(handgunacivate && !coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
@@ -57,22 +67,23 @@ public class Player : MonoBehaviour
                 useItem.GunFire(mousePos);
             }
         }
-        if(GameManager.instance.itemcheck[1])
+        if(itemGet[1])
         {
             ItemActivate2();
             if(!handgunacivate && coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
             {
                 useItem.ThrowCoin();
+                playerAnim.SetTrigger(throwcoin);
             }
         }
-        if(GameManager.instance.itemcheck[2])
+        if(itemGet[2])
         {
             ItemActivate3();
             if(!handgunacivate && !coinacivate && flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
             {
             }
         }
-        if(GameManager.instance.itemcheck[3])
+        if(itemGet[3])
         {
             ItemActivate4();
             if(!handgunacivate && !coinacivate && !flashbangacivate && heartseeacivate && Input.GetMouseButtonDown(0))
@@ -96,6 +107,7 @@ public class Player : MonoBehaviour
             handgunacivate = true;
             handGunModel.SetActive(true);
             Debug.Log("권총 활성화");
+            playerAnim.SetBool(handgunMode, true);
             coinacivate = false;
             flashbangacivate = false;
             heartseeacivate = false;
@@ -111,6 +123,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha2) && !coinacivate)
         {
+            playerAnim.SetBool(handgunMode, false);
             coinacivate = true;
             Debug.Log("코인 활성화");
             handGunModel.SetActive(false);
@@ -128,6 +141,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha3) && !flashbangacivate)
         {
+            playerAnim.SetBool(handgunMode, false);
             flashbangacivate = true;
             Debug.Log("섬광탄 활성화");
             handGunModel.SetActive(false);
@@ -145,6 +159,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha4) && !heartseeacivate)
         {
+            playerAnim.SetBool(handgunMode, false);
             heartseeacivate = true;
             Debug.Log("심장박동측정기 활성화");
             handGunModel.SetActive(false);
@@ -171,15 +186,19 @@ public class Player : MonoBehaviour
         {
             case 1:
                 item.GetItem();
+                itemGet[0] = true;
                 break;
             case 2:
                 item.GetItem();
+                itemGet[1] = true;
                 break;
             case 3:
                 item.GetItem();
+                itemGet[2] = true;
                 break;
             case 4:
                 item.GetItem();
+                itemGet[3] = true;
                 break;
         }
         Destroy(other.gameObject);
