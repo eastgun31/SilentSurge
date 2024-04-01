@@ -17,9 +17,10 @@ public class Coin : MonoBehaviour, IItem
     {
 
     }
-    public void UseItem()
+    public void GetItem()
     {
-        Debug.Log("ÄÚÀÎ»ç¿ë");
+        Debug.Log("ÄÚÀÎÈ¹µæ");
+        GameManager.instance.itemcheck[1] = true;
     }
     public void ItemCharge()
     {
