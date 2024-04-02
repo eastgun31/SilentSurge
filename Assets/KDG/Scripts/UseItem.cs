@@ -66,7 +66,7 @@ public class UseItem : MonoBehaviour
         if(Physics.Raycast(ray, out hit,100f, mask))
         {
             drawLine.SetPosition(0, transform.position + new Vector3(0,0.2f,0));
-            drawLine.SetPosition(1, hit.point);
+            drawLine.SetPosition(1, hit.point + new Vector3(0, 0.2f, 0));
             if(a)
                 drawLine.SetMaterials(mat);
             else if(b)
