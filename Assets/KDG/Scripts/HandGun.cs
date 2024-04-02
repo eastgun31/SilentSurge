@@ -22,15 +22,12 @@ public class HandGun : MonoBehaviour, IItem
         
     }
 
-    void Update()
-    {
-        
-    }
     public void GetItem()
     {
         Debug.Log("±ÇÃÑÈ¹µæ");
         GameManager.instance.itemcheck[0] = true;
-
+        //player = gameObject.GetComponent<Player>();
+        //player.itemGet[0] = true;
     }
     public void ItemCharge()
     {
