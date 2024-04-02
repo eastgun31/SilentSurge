@@ -32,10 +32,12 @@ public class Player : MonoBehaviour
     string walk = "Walk";
     string handgunMode = "HandGun";
     string throwcoin = "ThrowCoin";
+    string throwflashbang = "ThrowFlashBang";
 
     float rotDeg;
     Rigidbody rigid;
     Camera cam;
+    Vector3 pos;
     Vector3 mousePos;
     Vector3 velocity;
     bool itemActivate = false;
@@ -50,54 +52,61 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        mousePos = cam.ScreenToWorldPoint(new Vector3
-            (Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.y));
-        transform.LookAt(mousePos + Vector3.up * transform.position.y);
+        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        float zDeg = mousePos.z - rigid.position.z;
+        float xDeg = mousePos.x - rigid.position.x;
+        rotDeg = -(Mathf.Rad2Deg * Mathf.Atan2(zDeg, xDeg) - 90);
+        rigid.MoveRotation(Quaternion.Euler(0, rotDeg, 0));
+
+        //Debug.Log(mousePos.ToString());
+
+        //mousePos = cam.ScreenToWorldPoint(new Vector3
+        //    (Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.y));
+        //transform.LookAt(mousePos + Vector3.up * transform.position.y);
 
         velocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized * playerspeed;
-        rigid.MovePosition(rigid.position + velocity * Time.fixedDeltaTime);
+        rigid.MovePosition(rigid.position + velocity * Time.deltaTime);
 
         playerAnim.SetFloat(walk, velocity.magnitude);
 
         if (itemGet[0])
         {
             ItemActivate1();
-            if(handgunacivate && !coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
+            if (handgunacivate && !coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
             {
                 useItem.GunFire(mousePos);
             }
         }
-        if(itemGet[1])
+        if (itemGet[1])
         {
             ItemActivate2();
-            if(!handgunacivate && coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
+            useItem.ThrowPosition(coinacivate, flashbangacivate);
+            if (!handgunacivate && coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
             {
-                useItem.ThrowCoin();
                 playerAnim.SetTrigger(throwcoin);
+                useItem.ThrowCoin();
             }
         }
-        if(itemGet[2])
+        if (itemGet[2])
         {
             ItemActivate3();
-            if(!handgunacivate && !coinacivate && flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
+            useItem.ThrowPosition(coinacivate, flashbangacivate);
+            if (!handgunacivate && !coinacivate && flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
             {
+                playerAnim.SetTrigger(throwflashbang);
+                useItem.ThrowFlashBang();
             }
         }
-        if(itemGet[3])
+        if (itemGet[3])
         {
             ItemActivate4();
-            if(!handgunacivate && !coinacivate && !flashbangacivate && heartseeacivate && Input.GetMouseButtonDown(0))
+            if (!handgunacivate && !coinacivate && !flashbangacivate && heartseeacivate && Input.GetMouseButtonDown(0))
             {
             }
         }
 
 
-        //Vector3 mousePos = Input.mousePosition;
-        //mousePos = cam.ScreenToWorldPoint(mousePos);
-        //float zDeg = mousePos.z - rigid.position.z;
-        //float xDeg = mousePos.x - rigid.position.x;
-        //rotDeg = -(Mathf.Rad2Deg * Mathf.Atan2(zDeg, xDeg)- 90);
-        //rigid.MoveRotation(Quaternion.Euler(0, rotDeg, 0));
+
     }
 
     void ItemActivate1()
@@ -117,6 +126,7 @@ public class Player : MonoBehaviour
             handGunModel.SetActive(false);
             handgunacivate = false;
             Debug.Log("권총 비활성화");
+            handGunModel.SetActive(false);
         }
     }
     void ItemActivate2()
