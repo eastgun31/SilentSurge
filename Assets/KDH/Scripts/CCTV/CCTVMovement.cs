@@ -7,13 +7,13 @@ public class CCTVMovement : MonoBehaviour       // CCTV의 탐지 반경을 좌우로 반�
 {
     private Transform target;
 
-    public float rotationSpeed = 20f;      // 카메라의 회전 속도
-    public float rotationAmount = 20f;   // 한 번 회전할 각도
-    public float rotationDuration = 2f;    // 한 번 회전당 걸리는 시간
+    public float rotationSpeed = 20f;       // 카메라의 회전 속도
+    public float rotationAmount = 20f;      // 한 번 회전할 각도
+    public float rotationDuration = 2f;     // 한 번 회전당 걸리는 시간
 
-    private bool rotateClockwise = true; // 회전 방향(시계방향)
+    private bool rotateClockwise = true;    // 회전 방향(시계방향)
 
-    Quaternion startRotation;                   // 카메라의 회전 시작 지점
+    Quaternion startRotation;                  // 카메라의 회전 시작 지점
     Quaternion endRotation;                    // 카메라의 회전이 종료되는 지점
 
     public float angleRange = 30f;
@@ -53,10 +53,10 @@ public class CCTVMovement : MonoBehaviour       // CCTV의 탐지 반경을 좌우로 반�
     }
 
 
-    private void OnDrawGizmos()
-    {
-        Handles.color = isCollision ? red1 : red2;          // isCollision이 True면 red1, False면 red2
-        Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, angleRange / 2, radius);    // DrawSolidArc(시작점, 노멀벡터(법선벡터), 그려줄 방향 벡터, 각도, 반지름)
-        Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, -angleRange / 2, radius);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Handles.color = isCollision ? red1 : red2;          // isCollision이 True면 red1, False면 red2
+    //    Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, angleRange / 2, radius);    // DrawSolidArc(시작점, 노멀벡터(법선벡터), 그려줄 방향 벡터, 각도, 반지름)
+    //    Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, -angleRange / 2, radius);
+    //}
 }
