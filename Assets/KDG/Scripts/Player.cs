@@ -80,21 +80,29 @@ public class Player : MonoBehaviour
         if (itemGet[1])
         {
             ItemActivate2();
-            useItem.ThrowPosition(coinacivate, flashbangacivate);
+            if(coinacivate)
+            {
+                useItem.ThrowPosition(coinacivate, flashbangacivate);
+            }
+            
             if (!handgunacivate && coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
             {
                 playerAnim.SetTrigger(throwcoin);
-                useItem.ThrowCoin();
+                StartCoroutine(useItem.ThrowCoin());
             }
         }
         if (itemGet[2])
         {
             ItemActivate3();
-            useItem.ThrowPosition(coinacivate, flashbangacivate);
+            if(flashbangacivate)
+            {
+                useItem.ThrowPosition(coinacivate, flashbangacivate);
+            }
+            
             if (!handgunacivate && !coinacivate && flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
             {
                 playerAnim.SetTrigger(throwflashbang);
-                useItem.ThrowFlashBang();
+                StartCoroutine(useItem.ThrowFlashBang());
             }
         }
         if (itemGet[3])
@@ -104,9 +112,6 @@ public class Player : MonoBehaviour
             {
             }
         }
-
-
-
     }
 
     void ItemActivate1()
@@ -120,9 +125,11 @@ public class Player : MonoBehaviour
             coinacivate = false;
             flashbangacivate = false;
             heartseeacivate = false;
+            useItem.ErageDraw();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha1) && handgunacivate)
         {
+            playerAnim.SetBool(handgunMode, false);
             handGunModel.SetActive(false);
             handgunacivate = false;
             Debug.Log("±«√— ∫Ò»∞º∫»≠");
@@ -145,6 +152,7 @@ public class Player : MonoBehaviour
         {
             coinacivate = false;
             Debug.Log("ƒ⁄¿Œ ∫Ò»∞º∫»≠");
+            useItem.ErageDraw();
         }
     }
     void ItemActivate3()
@@ -163,6 +171,7 @@ public class Player : MonoBehaviour
         {
             flashbangacivate = false;
             Debug.Log("º∂±§≈∫ ∫Ò»∞º∫»≠");
+            useItem.ErageDraw();
         }
     }
     void ItemActivate4()
@@ -176,6 +185,7 @@ public class Player : MonoBehaviour
             handgunacivate = false;
             coinacivate = false;
             flashbangacivate = false;
+            useItem.ErageDraw();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4) && heartseeacivate)
         {

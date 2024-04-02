@@ -558,6 +558,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &728108730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 728108731}
+  m_Layer: 0
+  m_Name: shotPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &728108731
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728108730}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.04, y: 1.25, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1760186055}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &872153885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,6 +1087,11 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!4 &1760186055 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7248858452175125864, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+  m_PrefabInstance: {fileID: 1536017003569631970}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1795340967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1240,6 +1276,10 @@ PrefabInstance:
       value: samplePlayer
       objectReference: {fileID: 0}
     - target: {fileID: 5994093384746354224, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      propertyPath: bulletPos
+      value: 
+      objectReference: {fileID: 728108731}
+    - target: {fileID: 5994093384746354224, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
       propertyPath: flashbangModel
       value: 
       objectReference: {fileID: 2363392348235363816, guid: 4bdaf0f02c525de4a86946e3ad9b3252, type: 3}
@@ -1301,7 +1341,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7248858452175125864, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 728108731}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5185967491329815994, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
       insertIndex: -1

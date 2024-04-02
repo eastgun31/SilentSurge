@@ -10,6 +10,7 @@ public class UseItem : MonoBehaviour
     public GameObject coinPrefab;
     public GameObject flashbangModel;
     public Transform throwposition;
+    public Transform bulletPos;
     public List<Material> mat = new List<Material>();
     public List<Material> mat2 = new List<Material>();
 
@@ -17,8 +18,7 @@ public class UseItem : MonoBehaviour
     private float throwpower = 3f;
     private string floor = "Floor";
 
-    Color color1 = new Color(1, 0, 0);
-
+    WaitForSeconds wait;
     Vector3 angle;
     Vector3 pos;
     Ray ray;
@@ -29,6 +29,7 @@ public class UseItem : MonoBehaviour
 
     private void Start()
     {
+        wait = new WaitForSeconds(0.5f);
         drawLine = GetComponent<LineRenderer>();
         cam = Camera.main;
     }
@@ -43,13 +44,19 @@ public class UseItem : MonoBehaviour
         float xDeg = pos.x - bulletRigid.position.x;
         float rotDeg = -(Mathf.Rad2Deg * Mathf.Atan2(zDeg, xDeg) - 90);
         bulletRigid.MoveRotation(Quaternion.Euler(0, rotDeg, 0));
-        bulletRigid.AddForce(new Vector3(pos.x,0,pos.z) * 5f, ForceMode.Impulse);
+        bulletRigid.velocity = bulletPos.forward * 20f;
 
         Destroy(bullet, 2.0f);
     }
 
+    public void ErageDraw()
+    {
+        drawLine.positionCount = 0;
+    }
+
     public void ThrowPosition(bool a, bool b)
     {
+        drawLine.positionCount = 2;
         pos = Input.mousePosition;
         pos.z = Camera.main.farClipPlane;
 
@@ -70,25 +77,50 @@ public class UseItem : MonoBehaviour
         }
     }
 
-    public void ThrowCoin()
+    public IEnumerator ThrowCoin()
     {
+        Debug.Log("内风凭角青");
+
+        yield return wait;
         GameObject coin = Instantiate(coinPrefab, throwposition.transform.position, Quaternion.identity);
         Rigidbody coinRigid = coin.GetComponent<Rigidbody>();
-
-        //angle.y = 2f;
         coinRigid.AddForce(angle * throwpower, ForceMode.Impulse);
-
         Destroy(coin, 5f);
+
+        StopAllCoroutines();
     }
 
-    public void ThrowFlashBang()
+    public IEnumerator ThrowFlashBang()
     {
+        Debug.Log("内风凭角青");
+
+        yield return wait;
         GameObject flashbang = Instantiate(flashbangModel, throwposition.transform.position, Quaternion.identity);
         Rigidbody flashbangRigid = flashbang.GetComponent<Rigidbody>();
-
         flashbangRigid.AddForce(angle * throwpower, ForceMode.Impulse);
-
         Destroy(flashbang, 5f);
+
+        StopAllCoroutines();
     }
+
+    //public void ThrowCoin()
+    //{
+    //    GameObject coin = Instantiate(coinPrefab, throwposition.transform.position, Quaternion.identity);
+    //    Rigidbody coinRigid = coin.GetComponent<Rigidbody>();
+
+    //    //angle.y = 2f;
+    //    coinRigid.AddForce(angle * throwpower, ForceMode.Impulse);
+
+    //    Destroy(coin, 5f);
+    //}
+
+    //public void ThrowFlashBang()
+    //{
+        
+    //    GameObject flashbang = Instantiate(flashbangModel, throwposition.transform.position, Quaternion.identity);
+    //    Rigidbody flashbangRigid = flashbang.GetComponent<Rigidbody>();
+    //    flashbangRigid.AddForce(angle * throwpower, ForceMode.Impulse);
+    //    Destroy(flashbang, 5f);
+    //}
 
 }
