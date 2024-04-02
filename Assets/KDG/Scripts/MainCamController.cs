@@ -7,16 +7,35 @@ public class MainCamController : MonoBehaviour
     [SerializeField]
     private Transform playerPos;
     Vector3 yPos;
+    Vector3 yzPos;
+
+    [SerializeField]
+    private int value;
 
     private void Awake()
     {
         yPos = new Vector3 (0, 10, 0);
-        transform.position = playerPos.position + yPos;
+        yzPos = new Vector3 (0, 10, 1);
+
+        if(value == 1)
+            transform.position = playerPos.position + yPos;
+        else
+            transform.position = playerPos.position + yzPos;
     }
 
-    // Update is called once per frame
+    private void OnEnable()
+    {
+        if (value == 1)
+            transform.position = playerPos.position + yPos;
+        else
+            transform.position = playerPos.position + yzPos;
+    }
+
     void LateUpdate()
     {
-        transform.position = playerPos.position + yPos;
+        if (value == 1)
+            transform.position = playerPos.position + yPos;
+        else
+            transform.position = playerPos.position + yzPos;
     }
 }

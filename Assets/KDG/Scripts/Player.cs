@@ -110,6 +110,7 @@ public class Player : MonoBehaviour
             ItemActivate4();
             if (!handgunacivate && !coinacivate && !flashbangacivate && heartseeacivate && Input.GetMouseButtonDown(0))
             {
+                StartCoroutine(useItem.HeartSee());
             }
         }
     }

@@ -9,6 +9,7 @@ public class UseItem : MonoBehaviour
     public GameObject handGunModel;
     public GameObject coinPrefab;
     public GameObject flashbangModel;
+    public GameObject heartseeCam;
     public Transform throwposition;
     public Transform bulletPos;
     public List<Material> mat = new List<Material>();
@@ -103,6 +104,15 @@ public class UseItem : MonoBehaviour
         StopAllCoroutines();
     }
 
+    public IEnumerator HeartSee()
+    {
+        heartseeCam.SetActive(true);
+
+        yield return new WaitForSeconds(5f);
+
+        heartseeCam.SetActive(false);
+    }
+
     //public void ThrowCoin()
     //{
     //    GameObject coin = Instantiate(coinPrefab, throwposition.transform.position, Quaternion.identity);
@@ -116,7 +126,7 @@ public class UseItem : MonoBehaviour
 
     //public void ThrowFlashBang()
     //{
-        
+
     //    GameObject flashbang = Instantiate(flashbangModel, throwposition.transform.position, Quaternion.identity);
     //    Rigidbody flashbangRigid = flashbang.GetComponent<Rigidbody>();
     //    flashbangRigid.AddForce(angle * throwpower, ForceMode.Impulse);
