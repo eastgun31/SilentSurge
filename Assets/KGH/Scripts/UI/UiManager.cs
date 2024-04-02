@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class UiManager : MonoBehaviour
 {
-    public static UiManager Ui_instance;
+    private static UiManager Ui_instance;
+
+    public static UiManager instance {  get { return Ui_instance; } }
+
+    public GameObject pauseScreen;
+    public GameObject sinPuzzle1;
 
 
     public void Awake()
@@ -15,4 +20,5 @@ public class UiManager : MonoBehaviour
         else
             Ui_instance = this;
     }
+
 }
