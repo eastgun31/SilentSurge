@@ -25,6 +25,6 @@ public class PuzzleActiveManager : MonoBehaviour
     }
     public void SinPuzzle()
     {
-        keypad.SetActive(true);
+        sinPuzzle.SetActive(true);
     }
 }

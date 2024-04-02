@@ -7,8 +7,8 @@ public class PipeManager : MonoBehaviour
     public GameObject Canvas;
     public GameObject success;
 
-    public GameObject PipesHolder; //파이프를 포함한 부모 오브젝트
-    public GameObject[] Pipes; 
+    public GameObject pipesHolder; //파이프를 포함한 부모 오브젝트
+    public GameObject[] pipes; 
 
     [SerializeField]
     int totalPipes = 0; // 전체 파이프 수
@@ -20,13 +20,13 @@ public class PipeManager : MonoBehaviour
     {
         //전체 파이프수를 설정하고 Pipes배열에 저장
 
-        totalPipes = PipesHolder.transform.childCount;
+        totalPipes = pipesHolder.transform.childCount;
 
-        Pipes = new GameObject[totalPipes];
+        pipes = new GameObject[totalPipes];
 
-        for (int i = 0; i < Pipes.Length; i++)
+        for (int i = 0; i < pipes.Length; i++)
         {
-            Pipes[i] = PipesHolder.transform.GetChild(i).gameObject;
+            pipes[i] = pipesHolder.transform.GetChild(i).gameObject;
         }
     }
 
@@ -41,6 +41,7 @@ public class PipeManager : MonoBehaviour
             Debug.Log("Win");
             success.SetActive(true);
             Invoke("ClosePipe", 2f);
+            
         }
     }
 
@@ -52,5 +53,6 @@ public class PipeManager : MonoBehaviour
     public void ClosePipe()
     {
         Canvas.SetActive(false);
+        success.SetActive(false);
     }
 }

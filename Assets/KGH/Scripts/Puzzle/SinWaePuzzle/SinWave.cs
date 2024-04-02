@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SinWave : MonoBehaviour
 {
     public LineRenderer lineRenderer;
-    [SerializeField][Range(0, 1000)] private int points = 50;
+    [SerializeField][Range(0, 500)] private int points = 50;
     public float amplitude = 1;
     public float frequency = 1;
     public Vector2 xlimit = new Vector2(-8,8);

@@ -61,7 +61,7 @@ public class Pipes : MonoBehaviour, IPointerClickHandler
             }
             else if (isPlaces == true)
             {
-                isPlaces = false;
+                isPlaces = false;   
                 pipeManager.WrongMove();
             }
         }
