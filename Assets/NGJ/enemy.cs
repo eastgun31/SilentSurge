@@ -4,14 +4,14 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     NavMeshAgent m_enemy;
-    [SerializeField] Transform[] WayPoint;
-    int m_currentWaypoint = 0;
+    [SerializeField] Vector3[] customDestinations;
+    int m_currentDestinationIndex = 0;
     Transform m_player;
     bool m_followingPlayer = false;
 
     // 적 캐릭터의 시야각과 시야 거리
-    public float viewAngle = 90f;
-    public float viewDistance = 10f;
+    public float viewAngle = 1190f;
+    public float viewDistance = 1110f;
 
     void Start()
     {
@@ -39,10 +39,11 @@ public class Enemy : MonoBehaviour
 
     void SetNextDestination()
     {
-        if (!m_followingPlayer)
+        if (!m_followingPlayer && customDestinations.Length > 0)
         {
-            m_enemy.SetDestination(WayPoint[m_currentWaypoint].position);
-            m_currentWaypoint = (m_currentWaypoint + 1) % WayPoint.Length;
+            m_enemy.isStopped = false;
+            m_enemy.SetDestination(customDestinations[m_currentDestinationIndex]);
+            m_currentDestinationIndex = (m_currentDestinationIndex + 1) % customDestinations.Length;
         }
     }
 
@@ -65,4 +66,14 @@ public class Enemy : MonoBehaviour
 
         return false;
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            // 장애물을 감지하면 목적지를 다시 설정
+            SetNextDestination();
+        }
+    }
 }
+
