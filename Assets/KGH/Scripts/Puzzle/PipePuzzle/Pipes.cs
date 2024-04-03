@@ -22,6 +22,10 @@ public class Pipes : MonoBehaviour, IPointerClickHandler
     {
         pipeManager = GameObject.Find("PipeManager").GetComponent<PipeManager>();
     }
+    private void Update()
+    {
+        WinCheck();
+    }
 
     void Start()
     {
@@ -49,34 +53,40 @@ public class Pipes : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         RectTransform rt = GetComponent<RectTransform>();
-
-        rt.Rotate(new Vector3(0, 0, rotationAngle)); //클릭할때마다 회전
-
-        if (PossibleRots > 1) //회전시킨후 올바른 각도인지 확인
+        if (!WinCheck())
         {
-            if (transform.eulerAngles.z == correctRotation[0] || transform.eulerAngles.z == correctRotation[1] && isPlaces == false)
+            rt.Rotate(new Vector3(0, 0, rotationAngle)); //클릭할때마다 회전
+
+            if (PossibleRots > 1) //회전시킨후 올바른 각도인지 확인
             {
-                isPlaces = true;
-                pipeManager.CorrectMove();
+                if (transform.eulerAngles.z == correctRotation[0] || transform.eulerAngles.z == correctRotation[1] && isPlaces == false)
+                {
+                    isPlaces = true;
+                    pipeManager.CorrectMove();
+                }
+                else if (isPlaces == true)
+                {
+                    isPlaces = false;
+                    pipeManager.WrongMove();
+                }
             }
-            else if (isPlaces == true)
+            else
             {
-                isPlaces = false;   
-                pipeManager.WrongMove();
+                if (transform.eulerAngles.z == correctRotation[0] && isPlaces == false)
+                {
+                    isPlaces = true;
+                    pipeManager.CorrectMove();
+                }
+                else if (isPlaces == true)
+                {
+                    isPlaces = false;
+                    pipeManager.WrongMove();
+                }
             }
         }
-        else
-        {
-            if (transform.eulerAngles.z == correctRotation[0] && isPlaces == false)
-            {
-                isPlaces = true;
-                pipeManager.CorrectMove();
-            }
-            else if (isPlaces == true)
-            {
-                isPlaces = false;
-                pipeManager.WrongMove();
-            }
-        }
+    }
+    private bool WinCheck()
+    {
+        return UiManager.instance.isWin;
     }
 }

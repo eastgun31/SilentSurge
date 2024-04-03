@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PipeManager : MonoBehaviour
 {
-    public GameObject Canvas;
-    public GameObject success;
 
     public GameObject pipesHolder; //파이프를 포함한 부모 오브젝트
     public GameObject[] pipes; 
@@ -29,7 +28,10 @@ public class PipeManager : MonoBehaviour
             pipes[i] = pipesHolder.transform.GetChild(i).gameObject;
         }
     }
-
+    private void Update()
+    {
+        UiManager.instance.TimeRemainig();
+    }
     public void CorrectMove()
     {
         correctPipes += 1;
@@ -39,7 +41,7 @@ public class PipeManager : MonoBehaviour
         if (correctPipes == totalPipes) //승리 조건
         {
             Debug.Log("Win");
-            success.SetActive(true);
+            UiManager.instance.isWin = true;
             Invoke("ClosePipe", 2f);
             
         }
@@ -52,7 +54,6 @@ public class PipeManager : MonoBehaviour
 
     public void ClosePipe()
     {
-        Canvas.SetActive(false);
-        success.SetActive(false);
+        UiManager.instance.ClosePipeFst();
     }
 }

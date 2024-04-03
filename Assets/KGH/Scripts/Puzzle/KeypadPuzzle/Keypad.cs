@@ -14,6 +14,10 @@ public class Keypad : MonoBehaviour
     private string pw = "123456";
 
 
+    private void Update()
+    {
+        
+    }
     public void Number(int number)
     {
         if (answerInput.text.Length < maxNum) 

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class SinPuzzle : MonoBehaviour
 {
     public GameObject canvas;
-    public GameObject success;
 
     public LineRenderer lineRenderer;
     [SerializeField] [Range(0, 500)] private int points = 260;
@@ -26,6 +25,8 @@ public class SinPuzzle : MonoBehaviour
         WaveControl();
         Win();
         Wave();
+        IsWining();
+        UiManager.instance.TimeRemainig();
     }
 
 
@@ -49,15 +50,18 @@ public class SinPuzzle : MonoBehaviour
 
     private void WaveControl()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-            amplitude += 10;
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-            amplitude -= 10;
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-            frequency -= 0.001f;
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-            frequency += 0.001f;
-        frequency =  Mathf.Round(frequency*1000)*0.001f;
+        if (!IsWining())
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+                amplitude += 10;
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+                amplitude -= 10;
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+                frequency -= 0.001f;
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+                frequency += 0.001f;
+            frequency = Mathf.Round(frequency * 1000) * 0.001f;
+        }
 
     }
 
@@ -65,17 +69,25 @@ public class SinPuzzle : MonoBehaviour
     {
         if (amplitude == 100 && 0.004f == frequency)
         {
-            Debug.Log("success");
-            success.SetActive(true);
-            Invoke("CloseSin", 2f);
+            StartCoroutine(WinCheck());
         }
+    }
+    private bool IsWining()
+    {
+        return UiManager.instance.isWin;
     }
 
     private void CloseSin()
     {
-        canvas.SetActive(false);
-        success.SetActive(false);
+        UiManager.instance.CloseSinFst();
     }
 
-    
+    private IEnumerator WinCheck()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        Debug.Log("success");
+        UiManager.instance.isWin = true;
+        Invoke("CloseSin", 2f);
+    }
 }
