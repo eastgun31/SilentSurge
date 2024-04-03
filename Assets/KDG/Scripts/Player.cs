@@ -6,9 +6,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public enum PlayerState //경계레벨 상태머신
+    {
+        idle, hide, puzzling
+    }
+
+    public PlayerState state;
+
     [SerializeField]
     private float playerspeed = 10f;
-
     [SerializeField]
     private bool handgunacivate = false;
     [SerializeField]
@@ -17,7 +23,6 @@ public class Player : MonoBehaviour
     private bool flashbangacivate = false;
     [SerializeField]
     private bool heartseeacivate = false;
-
     [SerializeField]
     public bool[] itemGet = new bool[5];
 
@@ -27,12 +32,15 @@ public class Player : MonoBehaviour
 
     public GameObject handGunModel;
     public GameObject bulletPrefab;
+    public GameObject footSound;
 
     Animator playerAnim;
     string walk = "Walk";
     string handgunMode = "HandGun";
     string throwcoin = "ThrowCoin";
     string throwflashbang = "ThrowFlashBang";
+    string run = "Runing";
+    string gunrun = "GunRuning";
 
     float rotDeg;
     Rigidbody rigid;
@@ -44,6 +52,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        state = PlayerState.idle;
         useItem = GetComponent<UseItem>();
         rigid = transform.GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
@@ -52,13 +61,19 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (state == PlayerState.idle)
+            PlayerControll();
+        else
+            return;
+    }
+
+    void PlayerControll()
+    {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         float zDeg = mousePos.z - rigid.position.z;
         float xDeg = mousePos.x - rigid.position.x;
         rotDeg = -(Mathf.Rad2Deg * Mathf.Atan2(zDeg, xDeg) - 90);
         rigid.MoveRotation(Quaternion.Euler(0, rotDeg, 0));
-
-        //Debug.Log(mousePos.ToString());
 
         //mousePos = cam.ScreenToWorldPoint(new Vector3
         //    (Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.y));
@@ -68,6 +83,26 @@ public class Player : MonoBehaviour
         rigid.MovePosition(rigid.position + velocity * Time.deltaTime);
 
         playerAnim.SetFloat(walk, velocity.magnitude);
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            footSound.SetActive(true);
+            playerspeed = 20;
+            if (handgunacivate)
+                playerAnim.SetBool(gunrun, true);
+            else
+                playerAnim.SetBool(run, true);
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            footSound.SetActive(false);
+            playerspeed = 10;
+            if (handgunacivate)
+                playerAnim.SetBool(gunrun, false);
+            else
+                playerAnim.SetBool(run, false);
+        }
+            
 
         if (itemGet[0])
         {
@@ -80,11 +115,11 @@ public class Player : MonoBehaviour
         if (itemGet[1])
         {
             ItemActivate2();
-            if(coinacivate)
+            if (coinacivate)
             {
                 useItem.ThrowPosition(coinacivate, flashbangacivate);
             }
-            
+
             if (!handgunacivate && coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
             {
                 playerAnim.SetTrigger(throwcoin);
@@ -94,11 +129,11 @@ public class Player : MonoBehaviour
         if (itemGet[2])
         {
             ItemActivate3();
-            if(flashbangacivate)
+            if (flashbangacivate)
             {
                 useItem.ThrowPosition(coinacivate, flashbangacivate);
             }
-            
+
             if (!handgunacivate && !coinacivate && flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
             {
                 playerAnim.SetTrigger(throwflashbang);
@@ -195,33 +230,32 @@ public class Player : MonoBehaviour
         }
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Item"))
         {
             item = other.GetComponent<IItem>();
+
+            switch(item.value)
+            {
+                case 1:
+                    item.GetItem();
+                    itemGet[0] = true;
+                    break;
+                case 2:
+                    item.GetItem();
+                    itemGet[1] = true;
+                    break;
+                case 3:
+                    item.GetItem();
+                    itemGet[2] = true;
+                    break;
+                case 4:
+                    item.GetItem();
+                    itemGet[3] = true;
+                    break;
+            }
+            Destroy(other.gameObject);
         }
-        
-        switch(item.value)
-        {
-            case 1:
-                item.GetItem();
-                itemGet[0] = true;
-                break;
-            case 2:
-                item.GetItem();
-                itemGet[1] = true;
-                break;
-            case 3:
-                item.GetItem();
-                itemGet[2] = true;
-                break;
-            case 4:
-                item.GetItem();
-                itemGet[3] = true;
-                break;
-        }
-        Destroy(other.gameObject);
     }
 }
