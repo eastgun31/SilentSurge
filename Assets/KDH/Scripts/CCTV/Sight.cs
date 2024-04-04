@@ -91,17 +91,21 @@ public class Sight : MonoBehaviour
                 float disT = Vector3.Distance(transform.position, detectTarget.position);
                 foreach (Collider col in targets)
                 {
+                    Debug.Log("123");
                     if (!Physics.Raycast(transform.position, dirT, disT, etcM))
                     {
                         detectTarget = visibleT;
-                        if(angle < disT)        // 
-                        {
+                        Debug.Log(detectTarget);
 
-                        }
-                        if(angle > disT)        // 
+                        if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
                         {
-
+                            EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
+                            Debug.Log(EnemyLevel.enemylv.LvStep);
                         }
+                        //if(EnemyLevel.enemylv.LvStep==EnemyLevel.ELevel.level2)
+                        //{
+                        //    EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
+                        //}
                     }
                     if (this.tag == "Enemy")    // 적이 플레이어 감지 후 조건에 부합할 경우 탐지단계 상승
                     {
