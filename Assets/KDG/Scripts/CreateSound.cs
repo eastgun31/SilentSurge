@@ -7,7 +7,7 @@ public class CreateSound : MonoBehaviour
     public GameObject soundprefab;
     public int value;
 
-    SphereCollider collider;
+    //SphereCollider collider;
 
     private void OnEnable()
     {
