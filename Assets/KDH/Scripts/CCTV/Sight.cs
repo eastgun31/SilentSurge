@@ -19,7 +19,7 @@ public class Sight : MonoBehaviour
     public LayerMask playerM, etcM;
 
     public Collider isColP;
-    public EnemyLevel eLv;
+
 
     public Transform visibleT;
 
@@ -81,8 +81,10 @@ public class Sight : MonoBehaviour
     void DetectTargets()
     {
         Collider[] targets = Physics.OverlapSphere(transform.position, radius, playerM);
+       
         for (int i = 0; i < targets.Length; i++)
         {
+        
             Transform detectTarget = targets[i].transform;
             Vector3 dirT = (detectTarget.position - transform.position).normalized;
             if (Vector3.Angle(transform.forward, dirT) < angle / 2)
@@ -93,25 +95,17 @@ public class Sight : MonoBehaviour
                     if (!Physics.Raycast(transform.position, dirT, disT, etcM))
                     {
                         detectTarget = visibleT;
-                        if (enemy.dLevel == (int)eLv.LvStep && this.tag=="Enemy")
-                        {
-                            eLv.LvStep = EnemyLevel.ELevel.level2;
-                        }
-                        if (enemy.dLevel == (int)eLv.LvStep && this.tag == "Enemy")
-                        {
-                            eLv.LvStep = EnemyLevel.ELevel.level3;
-                        }
+                        
+                        
+                            //eLv.LvStep = EnemyLevel.ELevel.level2;
+                        
+                                               
+                            //eLv.LvStep = EnemyLevel.ELevel.level3;
+                        
                     }
                     if (this.tag == "Enemy")    // 적이 플레이어 감지 후 조건에 부합할 경우 탐지단계 상승
                     {
-                        if (enemy.dLevel == (int)eLv.LvStep && detectC == true)
-                        {
-                            eLv.LvStep = EnemyLevel.ELevel.level2;
-                        }
-                        if (enemy.dLevel == (int)eLv.LvStep && detectC == true)
-                        {
-                            eLv.LvStep = EnemyLevel.ELevel.level3;
-                        }
+                     
                     }
                     if (this.name == "CCTV")    // CCTV가 플레이어 감지 후 즉시 탐지단계 상승
                     {
@@ -123,7 +117,7 @@ public class Sight : MonoBehaviour
                         {
                             Debug.Log("etcM");
                         }
-                        cctv.detectP = true;
+                       
                     }
                 }
             }

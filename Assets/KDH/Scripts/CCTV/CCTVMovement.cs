@@ -19,7 +19,7 @@ public class CCTVMovement : MonoBehaviour       // CCTV의 탐지 반경을 좌우로 반�
     public float angleRange = 30f;
     public float radius = 3f;
 
-    public bool detectP;    // CCTV는 단계 구분 없음 (탐지단계 2~3단계 true / 1단계 false)
+
     bool isCollision = false;
 
     Color red1 = new Color(1f, 0f, 0f, 0.2f);
