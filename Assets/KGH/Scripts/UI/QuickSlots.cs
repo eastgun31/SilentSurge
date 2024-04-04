@@ -23,5 +23,11 @@ public class QuickSlots : MonoBehaviour
 
         else if (GameManager.instance.itemcheck[2])
             quickSlots[2].gameObject.SetActive(true);
+
+        else if (GameManager.instance.itemcheck[4])
+            quickSlots[2].gameObject.SetActive(true);
+
+        else if (GameManager.instance.itemcheck[5])
+            quickSlots[2].gameObject.SetActive(true);
     }
 }
