@@ -9,10 +9,6 @@ public class Enemy : MonoBehaviour
     Transform m_player;
     bool m_followingPlayer = false;
 
-    // 적 캐릭터의 시야각과 시야 거리
-    public float viewAngle = 1190f;
-    public float viewDistance = 1110f;
-
     // 체력 관련 변수
     [SerializeField] private int maxHealth = 100;
     private int currentHealth;
@@ -60,14 +56,11 @@ public class Enemy : MonoBehaviour
             return false;
 
         Vector3 directionToPlayer = m_player.position - transform.position;
-        if (Vector3.Angle(transform.forward, directionToPlayer) < viewAngle / 2f)
+        if (Physics.Raycast(transform.position, directionToPlayer, out RaycastHit hit, Mathf.Infinity))
         {
-            if (Physics.Raycast(transform.position, directionToPlayer, out RaycastHit hit, viewDistance))
+            if (hit.collider.CompareTag("Player"))
             {
-                if (hit.collider.CompareTag("Player"))
-                {
-                    return true;
-                }
+                return true;
             }
         }
 
