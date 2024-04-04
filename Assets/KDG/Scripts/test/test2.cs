@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class test2 : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject keypad;
 
-    // Update is called once per frame
-    void Update()
+    public void Keypad()
     {
-        
+        if (GameManager.instance.puzzleLevel == 2)
+        {
+            keypad.SetActive(true);
+        }
+        else
+            return;
     }
 }
