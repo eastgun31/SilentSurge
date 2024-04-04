@@ -48,9 +48,9 @@ public class Sight : MonoBehaviour
 
         public ViewInfo(bool _hit, Vector3 _point, float _dst, float _vangle)
         {
-            hit = _hit;
-            point = _point;
-            dst = _dst;
+            hit = _hit;                         // raycast가 힛 판정인지
+            point = _point;                 // raycast의 마지막 도달 위치
+            dst = _dst;                         // 
             vangle = _vangle;
         }
     }
@@ -79,49 +79,56 @@ public class Sight : MonoBehaviour
 
     void DetectTargets()
     {
-        Collider[] targets = Physics.OverlapSphere(transform.position, radius, playerM);
-       
+        Collider[] targets = Physics.OverlapSphere(transform.position, radius, playerM);  // radius(반지름) 내 원 영역의 playerM 콜라이더를 가져옴 
         for (int i = 0; i < targets.Length; i++)
         {
-        
-            Transform detectTarget = targets[i].transform;
-            Vector3 dirT = (detectTarget.position - transform.position).normalized;
-            if (Vector3.Angle(transform.forward, dirT) < angle / 2)
+            Transform detectTarget = targets[i].transform; 
+            Vector3 dirT = (detectTarget.position - transform.position).normalized;             // 타겟 위치 - cctv 위치 (정규화) = 타겟의 방향
+            if (Vector3.Angle(transform.forward, dirT) < angle / 2)                                        // cctv의 정면과 타겟의 방향이 이루는 각도가 설정한 변수보다 작다면(안이라면)
             {
-                float disT = Vector3.Distance(transform.position, detectTarget.position);
+                float disT = Vector3.Distance(transform.position, detectTarget.position);       // cctv 위치 -> 타겟 위치 = 타겟의 거리
                 foreach (Collider col in targets)
                 {
-                    Debug.Log("123");
-                    if (!Physics.Raycast(transform.position, dirT, disT, etcM))
+                    if (!Physics.Raycast(transform.position, dirT, disT, etcM))                             // 타겟으로 가는 raycast에 장애물이 없다면
                     {
-                        detectTarget = visibleT;
-                        Debug.Log(detectTarget);
-
+                        detectTarget = visibleT;                                                                            //  detectTarget 은 플레이어
                         if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
                         {
                             EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
-                            Debug.Log(EnemyLevel.enemylv.LvStep);
                         }
-                        //if(EnemyLevel.enemylv.LvStep==EnemyLevel.ELevel.level2)
+                        if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
+                        {
+                            EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
+                        }
+                    }
+                    if (this.tag == "Enemy")    // 적이 플레이어 감지 후 탐지단계 상승
+                    {
+                        if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
+                        {
+                            EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
+                        }
+                        if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
+                        {
+                            EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
+                        }
+                    }
+                    if (this.name == "CCTV")    // CCTV가 플레이어 감지 후 탐지단계 상승
+                    {
+                        if(Physics.Raycast(transform.position, transform.forward, out hitR, radius, playerM))
+                        {
+                            if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
+                            {
+                                EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
+                            }
+                            if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
+                            {
+                                EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
+                            }
+                        }
+                        //else if(Physics.Raycast(transform.position, transform.forward, out hitR, radius, etcM))
                         //{
-                        //    EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
+                        //    Debug.Log("etcM");
                         //}
-                    }
-                    if (this.tag == "Enemy")    // 적이 플레이어 감지 후 조건에 부합할 경우 탐지단계 상승
-                    {
-                     
-                    }
-                    if (this.name == "CCTV")    // CCTV가 플레이어 감지 후 즉시 탐지단계 상승
-                    {
-                        if(Physics.Raycast(transform.position, transform.forward, out hitR, radius, playerM) || detectTarget == visibleT)
-                        {
-                            Debug.Log("player");
-                        }
-                        else if(Physics.Raycast(transform.position, transform.forward, out hitR, radius, etcM))
-                        {
-                            Debug.Log("etcM");
-                        }
-                       
                     }
                 }
             }

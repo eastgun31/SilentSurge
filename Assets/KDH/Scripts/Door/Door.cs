@@ -7,6 +7,7 @@ public class Door : MonoBehaviour
     public bool isOpen = false;
     public float openangle = 90f;
     public float smooth = 3f;
+    public int doorhandle;
 
     void Start()
     {
@@ -15,15 +16,15 @@ public class Door : MonoBehaviour
 
     void Update()
     {
-        if(isOpen&&tag=="oh")
-        {
-            Quaternion targetRotation = Quaternion.Euler(0, +openangle, 0);
-            transform.localRotation= Quaternion.Slerp(transform.localRotation, targetRotation, smooth*Time.deltaTime);
-        }
-        if(isOpen&&tag=="ih")
+        if (isOpen == true && doorhandle == 0)
         {
             Quaternion targetRotation = Quaternion.Euler(0, -openangle, 0);
             transform.localRotation= Quaternion.Slerp(transform.localRotation, targetRotation, smooth*Time.deltaTime);
+        }
+        else if(isOpen == true && doorhandle != 0)
+        {
+            Quaternion targetRotation = Quaternion.Euler(0, +openangle, 0);
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, smooth * Time.deltaTime);
         }
     }
 
