@@ -113,7 +113,7 @@ public class Enemy : MonoBehaviour
         {
             Die(); // 체력이 0 이하가 되면 사망 처리
         }
-    }z
+    }
 
     // 사망 처리 메서드
     void Die()
