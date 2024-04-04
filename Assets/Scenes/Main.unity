@@ -536,6 +536,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      propertyPath: playerspeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618481229594973924, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618481229594973924, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618481229594973924, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5185967491329815994, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
       propertyPath: m_Name
       value: samplePlayer
@@ -2006,7 +2022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &357052412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5621,7 +5637,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   isColP: {fileID: 0}
-  eLv: {fileID: 999820118}
   visibleT: {fileID: 210211370}
   cctv: {fileID: 999820120}
   enemy: {fileID: 0}
@@ -5644,7 +5659,6 @@ MonoBehaviour:
   rotationDuration: 2
   angleRange: 30
   radius: 3
-  detectP: 0
 --- !u!23 &999820121
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9104,6 +9118,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemcheck: 0000000000
+  itemcount: 
+  puzzleLevel: 1
+  canUse: 1
 --- !u!4 &1793164137
 Transform:
   m_ObjectHideFlags: 0
@@ -61968,7 +61985,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.000002, y: 3.0000002, z: 0.16291124}
+  m_Size: {x: 5.000002, y: 3.0000002, z: 1}
   m_Center: {x: -2.499999, y: 1.5000001, z: 0.08145371}
 --- !u!33 &8472093465131227417
 MeshFilter:

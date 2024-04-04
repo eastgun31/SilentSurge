@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public PlayerState state;
 
     [SerializeField]
-    private float playerspeed = 10f;
+    private float playerspeed;
     [SerializeField]
     private bool handgunacivate = false;
     [SerializeField]
@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        playerspeed = 2.5f;
         itemGet =new bool[5] { false,false,false,false,false};
         state = PlayerState.idle;
         useItem = GetComponent<UseItem>();
@@ -73,27 +74,33 @@ public class Player : MonoBehaviour
             armor = GameManager.instance.itemcount[4];
     }
 
+    private void FixedUpdate()
+    {
+        rigid.MoveRotation(Quaternion.Euler(0, rotDeg, 0));
+        rigid.MovePosition(rigid.position + velocity * Time.deltaTime);
+    }
+
     void PlayerControll()
     {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         float zDeg = mousePos.z - rigid.position.z;
         float xDeg = mousePos.x - rigid.position.x;
         rotDeg = -(Mathf.Rad2Deg * Mathf.Atan2(zDeg, xDeg) - 90);
-        rigid.MoveRotation(Quaternion.Euler(0, rotDeg, 0));
+        //rigid.MoveRotation(Quaternion.Euler(0, rotDeg, 0));
 
         //mousePos = cam.ScreenToWorldPoint(new Vector3
         //    (Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.y));
         //transform.LookAt(mousePos + Vector3.up * transform.position.y);
 
         velocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized * playerspeed;
-        rigid.MovePosition(rigid.position + velocity * Time.deltaTime);
+        //rigid.MovePosition(rigid.position + velocity * Time.deltaTime);
 
         playerAnim.SetFloat(walk, velocity.magnitude);
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             footSound.SetActive(true);
-            playerspeed = 20;
+            playerspeed = 5f;
             if (handgunacivate)
                 playerAnim.SetBool(gunrun, true);
             else
@@ -102,7 +109,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             footSound.SetActive(false);
-            playerspeed = 10;
+            playerspeed = 2.5f;
             if (handgunacivate)
                 playerAnim.SetBool(gunrun, false);
             else
