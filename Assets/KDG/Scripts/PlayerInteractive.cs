@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class PlayerInteractive : MonoBehaviour
 {
-    string[] interactiveList = { "Door", "Bent", "Puzzle" };
+    string[] interactiveList = { "Door", "Bent", "Puzzle", "Cabinet" };
+
+    void puzzle1()
+    {
+        if (GameManager.instance.puzzleLevel == 1)
+        {
+
+        }
+        else
+            return;
+    }
 
     private void OnCollisionStay(Collision collision)
     {
