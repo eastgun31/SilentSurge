@@ -723,6 +723,113 @@ MonoBehaviour:
   Pipes: []
   totalPipes: 0
   correctPipes: 0
+--- !u!1 &232950800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 232950804}
+  - component: {fileID: 232950803}
+  - component: {fileID: 232950802}
+  - component: {fileID: 232950801}
+  m_Layer: 0
+  m_Name: CCTV
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!64 &232950801
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232950800}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 43609561095044890, guid: 9388bf8f4b8f63f44b7df901e05dc6e2, type: 2}
+--- !u!23 &232950802
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232950800}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &232950803
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232950800}
+  m_Mesh: {fileID: 4300000, guid: 56efaf6d29243d14e8b898641a9d7218, type: 3}
+--- !u!4 &232950804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232950800}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.16, y: 2, z: 34.97}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 999820117}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &244482512
 GameObject:
   m_ObjectHideFlags: 0
@@ -5440,6 +5547,154 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 984684437}
   m_CullTransparentMesh: 1
+--- !u!1 &999820116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 999820117}
+  - component: {fileID: 999820122}
+  - component: {fileID: 999820121}
+  - component: {fileID: 999820120}
+  - component: {fileID: 999820119}
+  - component: {fileID: 999820118}
+  m_Layer: 0
+  m_Name: CCTV
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &999820117
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999820116}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.68, y: -0.5, z: -0.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2144355260}
+  m_Father: {fileID: 232950804}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &999820118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999820116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b4c662b7082a494eb626f853cceea0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LvStep: 0
+--- !u!114 &999820119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999820116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8776fcac29d4b3a4a8eb1cca9573691d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 6
+  angle: 89
+  detectC: 1
+  meshResult: 1
+  meshFilter: {fileID: 2144355262}
+  playerM:
+    serializedVersion: 2
+    m_Bits: 8
+  etcM:
+    serializedVersion: 2
+    m_Bits: 256
+  isColP: {fileID: 0}
+  eLv: {fileID: 999820118}
+  visibleT: {fileID: 210211370}
+  cctv: {fileID: 999820120}
+  enemy: {fileID: 0}
+  edgeResolveIterations: 0
+  edgeDstThreshold: 0
+--- !u!114 &999820120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999820116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6264ef5059de6e24db297cd7a42f8676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 20
+  rotationAmount: 20
+  rotationDuration: 2
+  angleRange: 30
+  radius: 3
+  detectP: 0
+--- !u!23 &999820121
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999820116}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &999820122
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999820116}
+  m_Mesh: {fileID: 4300002, guid: 56efaf6d29243d14e8b898641a9d7218, type: 3}
 --- !u!1 &1027693126
 GameObject:
   m_ObjectHideFlags: 0
@@ -7214,113 +7469,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358489849}
   m_CullTransparentMesh: 1
---- !u!1 &1371665237
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1371665241}
-  - component: {fileID: 1371665240}
-  - component: {fileID: 1371665239}
-  - component: {fileID: 1371665238}
-  m_Layer: 0
-  m_Name: CCTV
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!64 &1371665238
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371665237}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43609561095044890, guid: 9388bf8f4b8f63f44b7df901e05dc6e2, type: 2}
---- !u!23 &1371665239
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371665237}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1371665240
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371665237}
-  m_Mesh: {fileID: 4300000, guid: 56efaf6d29243d14e8b898641a9d7218, type: 3}
---- !u!4 &1371665241
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371665237}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9, y: 2, z: 39}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1376359886}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1374856125
 GameObject:
   m_ObjectHideFlags: 0
@@ -7396,107 +7544,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374856125}
   m_CullTransparentMesh: 1
---- !u!1 &1376359885
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1376359886}
-  - component: {fileID: 1376359889}
-  - component: {fileID: 1376359888}
-  - component: {fileID: 1376359887}
-  m_Layer: 0
-  m_Name: SM_Prop_Camera_Head_01
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1376359886
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1376359885}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0068888757, y: -0.29398572, z: 0.04557035}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1371665241}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1376359887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1376359885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6264ef5059de6e24db297cd7a42f8676, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 20
-  rotationAmount: 20
-  rotationDuration: 2
-  angleRange: 30
-  radius: 3
---- !u!23 &1376359888
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1376359885}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1376359889
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1376359885}
-  m_Mesh: {fileID: 4300002, guid: 56efaf6d29243d14e8b898641a9d7218, type: 3}
 --- !u!1 &1404234163
 GameObject:
   m_ObjectHideFlags: 0
@@ -10320,6 +10367,89 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2140261598}
   m_CullTransparentMesh: 1
+--- !u!1 &2144355259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2144355260}
+  - component: {fileID: 2144355262}
+  - component: {fileID: 2144355261}
+  m_Layer: 0
+  m_Name: DrawArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2144355260
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144355259}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 999820117}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &2144355261
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144355259}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 6363f6410d7057146b3dc869ea991a18, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2144355262
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144355259}
+  m_Mesh: {fileID: 0}
 --- !u!1 &2145233877
 GameObject:
   m_ObjectHideFlags: 0
@@ -10573,7 +10703,7 @@ GameObject:
   - component: {fileID: 1860560669884795102}
   - component: {fileID: 3721592949126004709}
   - component: {fileID: 742534089817523752}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10709,7 +10839,7 @@ GameObject:
   - component: {fileID: 1849963566950781926}
   - component: {fileID: 6062171621780206819}
   - component: {fileID: 6548028568002751923}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10729,7 +10859,7 @@ GameObject:
   - component: {fileID: 3902925119182154724}
   - component: {fileID: 4863966362258430852}
   - component: {fileID: 7801528809490083116}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10844,7 +10974,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6123705479049292048}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10906,7 +11036,7 @@ GameObject:
   - component: {fileID: 7800646108634987335}
   - component: {fileID: 3871633630279552430}
   - component: {fileID: 456483251275350082}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (78)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11622,7 +11752,7 @@ GameObject:
   - component: {fileID: 7641729003868641048}
   - component: {fileID: 7979284928910708900}
   - component: {fileID: 2944665186524378147}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11794,7 +11924,7 @@ GameObject:
   - component: {fileID: 7133249434928127792}
   - component: {fileID: 7957674905863972948}
   - component: {fileID: 270543355061541565}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11994,7 +12124,7 @@ GameObject:
   - component: {fileID: 8333153286276813533}
   - component: {fileID: 2088288948819866017}
   - component: {fileID: 5531049012280245661}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12086,7 +12216,7 @@ GameObject:
   - component: {fileID: 9058294148064222783}
   - component: {fileID: 6583629679191993619}
   - component: {fileID: 6422289838579788860}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12375,7 +12505,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1713288171093720658}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12516,7 +12646,7 @@ GameObject:
   - component: {fileID: 7362152952965075822}
   - component: {fileID: 9187324688893786156}
   - component: {fileID: 4601765228126985531}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12551,7 +12681,7 @@ GameObject:
   - component: {fileID: 4743861172276409684}
   - component: {fileID: 2836410872010997420}
   - component: {fileID: 5970833354378748162}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (110)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12724,7 +12854,7 @@ GameObject:
   - component: {fileID: 941505820888015816}
   - component: {fileID: 3043343569680499372}
   - component: {fileID: 8857959704039827400}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (128)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12751,7 +12881,7 @@ GameObject:
   - component: {fileID: 5706861352205316500}
   - component: {fileID: 8408208865965816897}
   - component: {fileID: 7423152049214920119}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12886,7 +13016,7 @@ GameObject:
   - component: {fileID: 1991582556823976829}
   - component: {fileID: 480913754110701582}
   - component: {fileID: 3337617021908909710}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13059,7 +13189,7 @@ GameObject:
   - component: {fileID: 2397891133255894845}
   - component: {fileID: 2621999914784532803}
   - component: {fileID: 623641708380729223}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (118)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13115,7 +13245,7 @@ GameObject:
   - component: {fileID: 2400895565183618542}
   - component: {fileID: 8137308536332982695}
   - component: {fileID: 8329215845905381786}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (43)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13177,7 +13307,7 @@ GameObject:
   - component: {fileID: 3974047140815020590}
   - component: {fileID: 8943234210068110427}
   - component: {fileID: 4047839090742397848}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13197,7 +13327,7 @@ GameObject:
   - component: {fileID: 7067062787407893725}
   - component: {fileID: 3166505900936211734}
   - component: {fileID: 3752848067258479577}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (74)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13217,7 +13347,7 @@ GameObject:
   - component: {fileID: 5173568917920978883}
   - component: {fileID: 822143465101932909}
   - component: {fileID: 4687330062745389795}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13269,7 +13399,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6623676647660803933}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13381,7 +13511,7 @@ GameObject:
   - component: {fileID: 1487571175548543398}
   - component: {fileID: 3145239069365439499}
   - component: {fileID: 321762294626263862}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13467,7 +13597,7 @@ GameObject:
   - component: {fileID: 2005590558506784917}
   - component: {fileID: 7315385701341684150}
   - component: {fileID: 1936444875659020785}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (38)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13784,7 +13914,7 @@ GameObject:
   - component: {fileID: 689220895685308132}
   - component: {fileID: 2572624361129563965}
   - component: {fileID: 3200628338707349494}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13808,7 +13938,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5443115743418052226}
-  m_Layer: 0
+  - component: {fileID: 5443115743418052227}
+  m_Layer: 8
   m_Name: 8thRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13850,7 +13981,7 @@ GameObject:
   - component: {fileID: 8889220685929445393}
   - component: {fileID: 3694420871410216029}
   - component: {fileID: 8478267356976979598}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13899,7 +14030,7 @@ GameObject:
   - component: {fileID: 915147369942716974}
   - component: {fileID: 6895456327811725430}
   - component: {fileID: 4738491435863480955}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14157,7 +14288,7 @@ GameObject:
   - component: {fileID: 2326870557297831967}
   - component: {fileID: 8797182943734312965}
   - component: {fileID: 1473130843183938558}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WaterCooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14364,7 +14495,7 @@ GameObject:
   - component: {fileID: 6742844012947818949}
   - component: {fileID: 1294883216289276446}
   - component: {fileID: 3638523548738877405}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (55)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14446,7 +14577,7 @@ GameObject:
   - component: {fileID: 6609246839744835169}
   - component: {fileID: 3510606907480455641}
   - component: {fileID: 8959240052418511350}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14474,7 +14605,7 @@ GameObject:
   - component: {fileID: 2070392207263432564}
   - component: {fileID: 3986821294407133607}
   - component: {fileID: 2049853886642184271}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (41)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14559,7 +14690,7 @@ GameObject:
   - component: {fileID: 6825584817015208869}
   - component: {fileID: 6755326625790892578}
   - component: {fileID: 3774036581972760489}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (86)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14683,7 +14814,7 @@ GameObject:
   - component: {fileID: 3509565241199979310}
   - component: {fileID: 4700839720450245607}
   - component: {fileID: 4166237872367434}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14788,7 +14919,7 @@ GameObject:
   - component: {fileID: 6956257304150482991}
   - component: {fileID: 4819144291234568017}
   - component: {fileID: 6699741598190332609}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (59)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14870,7 +15001,7 @@ GameObject:
   - component: {fileID: 6520080723346016619}
   - component: {fileID: 818661582503255801}
   - component: {fileID: 8462486869892568953}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (56)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14984,7 +15115,7 @@ GameObject:
   - component: {fileID: 1456654863078050769}
   - component: {fileID: 7143351733687334147}
   - component: {fileID: 7826124951514646393}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15207,7 +15338,7 @@ GameObject:
   - component: {fileID: 3154447703597301149}
   - component: {fileID: 6058565004520177060}
   - component: {fileID: 79163760707599241}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15226,7 +15357,7 @@ GameObject:
   - component: {fileID: 3589171279032110587}
   - component: {fileID: 4342152126219286051}
   - component: {fileID: 3235711660402037769}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15373,7 +15504,7 @@ GameObject:
   - component: {fileID: 742376333058368048}
   - component: {fileID: 2437881756791658081}
   - component: {fileID: 3768146835521546523}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15414,7 +15545,7 @@ GameObject:
   - component: {fileID: 8588831882203385339}
   - component: {fileID: 8028499265966277242}
   - component: {fileID: 1288314022586041024}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15518,7 +15649,7 @@ GameObject:
   - component: {fileID: 1119116124709327863}
   - component: {fileID: 1763157319454430207}
   - component: {fileID: 9058382895272475264}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15534,7 +15665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6411469219182210134}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Etc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15872,7 +16003,7 @@ GameObject:
   - component: {fileID: 2054681369521341456}
   - component: {fileID: 7329300095182837175}
   - component: {fileID: 8112613209700478632}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15892,7 +16023,7 @@ GameObject:
   - component: {fileID: 1902154815784602539}
   - component: {fileID: 8989858928079235967}
   - component: {fileID: 6998738599976436453}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16287,7 +16418,7 @@ GameObject:
   - component: {fileID: 1232748102317530320}
   - component: {fileID: 8517082794591219707}
   - component: {fileID: 5812842695645321948}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16339,7 +16470,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8700012812155629910}
-  m_Layer: 0
+  - component: {fileID: 8700012812155629911}
+  m_Layer: 8
   m_Name: 7thRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16443,7 +16575,7 @@ GameObject:
   - component: {fileID: 5479769616808533852}
   - component: {fileID: 4577317226266574665}
   - component: {fileID: 5777757193302260367}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16478,7 +16610,7 @@ GameObject:
   - component: {fileID: 1024023163224882857}
   - component: {fileID: 5502808490124716066}
   - component: {fileID: 6202481853286668138}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (93)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16641,7 +16773,7 @@ GameObject:
   - component: {fileID: 4270182088902039037}
   - component: {fileID: 6347096971713503475}
   - component: {fileID: 3442671774146402768}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SupBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16792,7 +16924,7 @@ GameObject:
   - component: {fileID: 5275067758366229119}
   - component: {fileID: 3966377556367040581}
   - component: {fileID: 4862185087060110124}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17093,7 +17225,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2219446210152341772}
-  m_Layer: 0
+  - component: {fileID: 2219446210152341773}
+  m_Layer: 8
   m_Name: 6thRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17281,7 +17414,7 @@ GameObject:
   - component: {fileID: 6902991572043974656}
   - component: {fileID: 2081132175614242955}
   - component: {fileID: 556693832523910397}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17330,7 +17463,7 @@ GameObject:
   - component: {fileID: 7963094277194312670}
   - component: {fileID: 3029455171661984948}
   - component: {fileID: 3737058299721223506}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17496,7 +17629,7 @@ GameObject:
   - component: {fileID: 7401437067401267401}
   - component: {fileID: 3713622157716869530}
   - component: {fileID: 6604707358624191344}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17552,7 +17685,7 @@ GameObject:
   - component: {fileID: 2101836892106266084}
   - component: {fileID: 3879299259414245191}
   - component: {fileID: 4139110596712586160}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17722,7 +17855,7 @@ GameObject:
   - component: {fileID: 7455427624375522912}
   - component: {fileID: 8679025158029377482}
   - component: {fileID: 4996760066119850694}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (57)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17742,7 +17875,7 @@ GameObject:
   - component: {fileID: 3739703394915926431}
   - component: {fileID: 8808461479202502527}
   - component: {fileID: 1022332572212069307}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17945,7 +18078,7 @@ GameObject:
   - component: {fileID: 4164443970028799461}
   - component: {fileID: 3510894362203261889}
   - component: {fileID: 5024635584210502633}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18072,7 +18205,7 @@ GameObject:
   - component: {fileID: 3357962094815939000}
   - component: {fileID: 978429753032423641}
   - component: {fileID: 780218846129957526}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18462,7 +18595,7 @@ GameObject:
   - component: {fileID: 7539543450135327015}
   - component: {fileID: 4828503000134024616}
   - component: {fileID: 4688771778142340366}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (108)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18651,7 +18784,7 @@ GameObject:
   - component: {fileID: 8437805669620222150}
   - component: {fileID: 539837816445883017}
   - component: {fileID: 8893591038336464537}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18895,7 +19028,7 @@ GameObject:
   - component: {fileID: 1257232288571479829}
   - component: {fileID: 4011909413974280726}
   - component: {fileID: 7474277472072116362}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet1_C1_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19146,7 +19279,7 @@ GameObject:
   - component: {fileID: 1234428850466595023}
   - component: {fileID: 3766405014503725807}
   - component: {fileID: 1446964011959489626}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NoNav
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19182,7 +19315,7 @@ GameObject:
   - component: {fileID: 3028845570864823900}
   - component: {fileID: 4347389424060975178}
   - component: {fileID: 9215972505846946945}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (60)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19440,7 +19573,7 @@ GameObject:
   - component: {fileID: 5980048234728034662}
   - component: {fileID: 2958078190030709790}
   - component: {fileID: 1111356852822881364}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19566,7 +19699,7 @@ GameObject:
   - component: {fileID: 6070177162088734966}
   - component: {fileID: 379684965166986697}
   - component: {fileID: 3105937427538435890}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (90)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19729,7 +19862,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6392561410433133479}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19865,7 +19998,7 @@ GameObject:
   - component: {fileID: 620647897263213589}
   - component: {fileID: 5984342608017153358}
   - component: {fileID: 7688023827355469506}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (68)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19893,7 +20026,7 @@ GameObject:
   - component: {fileID: 6061913669449104863}
   - component: {fileID: 3245796620875587569}
   - component: {fileID: 9039053907466024514}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (79)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19911,7 +20044,7 @@ GameObject:
   - component: {fileID: 8504982546775898155}
   - component: {fileID: 7269051117274749414}
   - component: {fileID: 7764152498244467366}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Prop_WaterCooler_Tank_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19946,7 +20079,7 @@ GameObject:
   - component: {fileID: 5545241549441858832}
   - component: {fileID: 1292789740754596626}
   - component: {fileID: 1413342587248290858}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20032,7 +20165,7 @@ GameObject:
   - component: {fileID: 5395199279031158199}
   - component: {fileID: 497372791591225659}
   - component: {fileID: 4978867285777292566}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20060,7 +20193,7 @@ GameObject:
   - component: {fileID: 3522411226716852366}
   - component: {fileID: 1384146333790721522}
   - component: {fileID: 3347431756353660999}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20473,7 +20606,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5169883437389902314}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20879,7 +21012,7 @@ GameObject:
   - component: {fileID: 1819662477630882327}
   - component: {fileID: 1238480008371132563}
   - component: {fileID: 6652005340190372142}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (44)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21027,7 +21160,7 @@ GameObject:
   - component: {fileID: 1368724644394036090}
   - component: {fileID: 8330057617423289436}
   - component: {fileID: 1905006366925852523}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (100)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21202,7 +21335,7 @@ GameObject:
   - component: {fileID: 4738715912237530013}
   - component: {fileID: 4774927480970126666}
   - component: {fileID: 5804224732801970734}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21250,7 +21383,7 @@ GameObject:
   - component: {fileID: 8387327707188950814}
   - component: {fileID: 2249938416501806770}
   - component: {fileID: 2887596932497825106}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21278,7 +21411,7 @@ GameObject:
   - component: {fileID: 3513279833719737383}
   - component: {fileID: 7497268844874347110}
   - component: {fileID: 3586125188660666917}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (54)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21899,7 +22032,7 @@ GameObject:
   - component: {fileID: 2078070083869741406}
   - component: {fileID: 5308354410360598096}
   - component: {fileID: 4113541639995327330}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22296,7 +22429,7 @@ GameObject:
   - component: {fileID: 4450452066710342605}
   - component: {fileID: 3421342888744352351}
   - component: {fileID: 1656366854503738244}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22352,7 +22485,7 @@ GameObject:
   - component: {fileID: 204425488635053912}
   - component: {fileID: 8511974391047296548}
   - component: {fileID: 5468731236478231139}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22463,7 +22596,7 @@ GameObject:
   - component: {fileID: 797428638262462442}
   - component: {fileID: 7082274727567594898}
   - component: {fileID: 1818271071030315944}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22479,7 +22612,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2438333155746553784}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22579,7 +22712,7 @@ GameObject:
   - component: {fileID: 5386394376820576518}
   - component: {fileID: 4313684843843596330}
   - component: {fileID: 4525109824192968835}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (127)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22804,7 +22937,7 @@ GameObject:
   - component: {fileID: 1988963511997459142}
   - component: {fileID: 2244831465224626514}
   - component: {fileID: 4052062713731711853}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SupBox (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22846,7 +22979,7 @@ GameObject:
   - component: {fileID: 5677480157062664467}
   - component: {fileID: 1798872501632374101}
   - component: {fileID: 3847781705112120048}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22881,7 +23014,7 @@ GameObject:
   - component: {fileID: 8602442538149469528}
   - component: {fileID: 4830339439838823119}
   - component: {fileID: 9167308755276124489}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22944,7 +23077,7 @@ GameObject:
   - component: {fileID: 4006644196103487497}
   - component: {fileID: 1298409410095588151}
   - component: {fileID: 5374519633273932373}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23085,7 +23218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 134836698027562161}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PC (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23169,7 +23302,7 @@ GameObject:
   - component: {fileID: 176060762645063879}
   - component: {fileID: 698189869979354236}
   - component: {fileID: 1795526801989815362}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (92)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23452,7 +23585,7 @@ GameObject:
   - component: {fileID: 5950805663175695816}
   - component: {fileID: 8389506868239907427}
   - component: {fileID: 3232603261951770001}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23548,7 +23681,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3637120824745490664}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23582,7 +23715,7 @@ GameObject:
   - component: {fileID: 8680602265375510868}
   - component: {fileID: 4169393796928391263}
   - component: {fileID: 7429762400737476186}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Prop_WaterCooler_Tank_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23638,7 +23771,7 @@ GameObject:
   - component: {fileID: 7089727075808303818}
   - component: {fileID: 2645018351205247794}
   - component: {fileID: 1425860256632604469}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23679,7 +23812,7 @@ GameObject:
   - component: {fileID: 3719766866194548481}
   - component: {fileID: 3293407007180932968}
   - component: {fileID: 753760131843520116}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23826,7 +23959,7 @@ GameObject:
   - component: {fileID: 1908328627349495943}
   - component: {fileID: 6049404517462134974}
   - component: {fileID: 195553222041514498}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23861,7 +23994,7 @@ GameObject:
   - component: {fileID: 8511560814844519474}
   - component: {fileID: 8234376116228480016}
   - component: {fileID: 8452193768608543497}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23881,7 +24014,7 @@ GameObject:
   - component: {fileID: 3255321485677157606}
   - component: {fileID: 9124987334033689473}
   - component: {fileID: 6171415603947491104}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24025,7 +24158,7 @@ GameObject:
   - component: {fileID: 272072761007226010}
   - component: {fileID: 3649549805183253919}
   - component: {fileID: 5168651939545462873}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24041,7 +24174,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8978182111907511645}
-  m_Layer: 0
+  - component: {fileID: 8978182111907511646}
+  m_Layer: 8
   m_Name: 4thRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24091,7 +24225,7 @@ GameObject:
   - component: {fileID: 6165723532502000581}
   - component: {fileID: 139243463877145118}
   - component: {fileID: 5521183349856247625}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (114)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24246,6 +24380,33 @@ Transform:
   - {fileID: 6411469219182210134}
   m_Father: {fileID: 8945785590030942025}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!54 &2219446210152341773
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024196782896205232}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!65 &2220082114869259090
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24355,7 +24516,7 @@ GameObject:
   - component: {fileID: 2760678041800659536}
   - component: {fileID: 6080847682596018855}
   - component: {fileID: 9171451171285441152}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24430,7 +24591,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3626600645879835895}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24574,7 +24735,7 @@ GameObject:
   - component: {fileID: 5679340285117063197}
   - component: {fileID: 2991415936529768940}
   - component: {fileID: 8525663693201615999}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24639,7 +24800,7 @@ GameObject:
   - component: {fileID: 8131370823998815829}
   - component: {fileID: 6650111697402977512}
   - component: {fileID: 1388391286443996410}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24659,7 +24820,7 @@ GameObject:
   - component: {fileID: 2315911754750575918}
   - component: {fileID: 2974019958168350860}
   - component: {fileID: 7473726981270072494}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (39)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24695,7 +24856,7 @@ GameObject:
   - component: {fileID: 2922426425929478370}
   - component: {fileID: 413093882746754136}
   - component: {fileID: 39596805601875731}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (91)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24788,7 +24949,7 @@ GameObject:
   - component: {fileID: 3901909506659781129}
   - component: {fileID: 2515481701461413030}
   - component: {fileID: 7119352985285412502}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24838,7 +24999,7 @@ GameObject:
   - component: {fileID: 9153733987817718533}
   - component: {fileID: 39220206315318503}
   - component: {fileID: 1874370003705991725}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24854,7 +25015,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2320268227591884468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25074,7 +25235,7 @@ GameObject:
   - component: {fileID: 6703243384654579866}
   - component: {fileID: 1893532034930359991}
   - component: {fileID: 1374887472010298200}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25090,7 +25251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4808286073696611359}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25199,7 +25360,7 @@ GameObject:
   - component: {fileID: 6466815502172223683}
   - component: {fileID: 2353838478856364631}
   - component: {fileID: 8828558255224486355}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25371,7 +25532,7 @@ GameObject:
   - component: {fileID: 900477793469331605}
   - component: {fileID: 7531642912111184222}
   - component: {fileID: 5361581317032937744}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25459,7 +25620,7 @@ GameObject:
   - component: {fileID: 8252280260138198012}
   - component: {fileID: 6765918089005557842}
   - component: {fileID: 1127296724798933688}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25520,7 +25681,7 @@ GameObject:
   - component: {fileID: 442979077122605073}
   - component: {fileID: 632066883478624471}
   - component: {fileID: 8138403866445070553}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25710,7 +25871,7 @@ GameObject:
   - component: {fileID: 3571340246336335740}
   - component: {fileID: 3039679934403874037}
   - component: {fileID: 7845183990149791177}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall4 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25962,7 +26123,7 @@ GameObject:
   - component: {fileID: 3757427521047358279}
   - component: {fileID: 3563413434167392583}
   - component: {fileID: 2871570193365855706}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (104)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26026,7 +26187,7 @@ GameObject:
   - component: {fileID: 5578555954083411264}
   - component: {fileID: 3287041663800236878}
   - component: {fileID: 1827326412281168827}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (62)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26062,7 +26223,7 @@ GameObject:
   - component: {fileID: 6678292581497806796}
   - component: {fileID: 7164051161765250819}
   - component: {fileID: 450803527427966199}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26082,7 +26243,7 @@ GameObject:
   - component: {fileID: 179538450903612289}
   - component: {fileID: 346757019788049200}
   - component: {fileID: 3965493315906697263}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (37)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26225,7 +26386,7 @@ GameObject:
   - component: {fileID: 1621442932045031700}
   - component: {fileID: 3421929862440692782}
   - component: {fileID: 4300374244491482538}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26297,7 +26458,7 @@ GameObject:
   - component: {fileID: 1572236429265594563}
   - component: {fileID: 2760873655242029384}
   - component: {fileID: 7640033845853609067}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26448,7 +26609,7 @@ GameObject:
   - component: {fileID: 5437396960053244167}
   - component: {fileID: 4512778121279636910}
   - component: {fileID: 184039761208567098}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26701,7 +26862,7 @@ GameObject:
   - component: {fileID: 3172989620045995872}
   - component: {fileID: 7237029392370771331}
   - component: {fileID: 4071053952477056741}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WaterCooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26795,7 +26956,7 @@ GameObject:
   - component: {fileID: 870872184524862999}
   - component: {fileID: 1185823743742513637}
   - component: {fileID: 6945017932049638531}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (120)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26991,7 +27152,7 @@ GameObject:
   - component: {fileID: 1914569711580114612}
   - component: {fileID: 5063871346633867383}
   - component: {fileID: 5890092404104821453}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27011,7 +27172,7 @@ GameObject:
   - component: {fileID: 865079059228851772}
   - component: {fileID: 8585998480832019721}
   - component: {fileID: 4306997529147520664}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27067,7 +27228,7 @@ GameObject:
   - component: {fileID: 6416278049694076511}
   - component: {fileID: 3120698384015913552}
   - component: {fileID: 7312576145143077091}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27339,7 +27500,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1086550568357661795}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Etc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27430,7 +27591,7 @@ GameObject:
   - component: {fileID: 7330066627414640348}
   - component: {fileID: 7643262877089422303}
   - component: {fileID: 2434934752326298327}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27513,7 +27674,7 @@ GameObject:
   - component: {fileID: 8099213640568328824}
   - component: {fileID: 4959204094685885810}
   - component: {fileID: 7041336555509228867}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27692,7 +27853,7 @@ GameObject:
   - component: {fileID: 8567524324476809075}
   - component: {fileID: 9218976433677148640}
   - component: {fileID: 8867780805510183195}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27712,7 +27873,7 @@ GameObject:
   - component: {fileID: 6433893247669285578}
   - component: {fileID: 1064910524134630013}
   - component: {fileID: 1439858564874497470}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27753,7 +27914,7 @@ GameObject:
   - component: {fileID: 2150568518687158740}
   - component: {fileID: 1834913044428417670}
   - component: {fileID: 3581809879380586621}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27809,7 +27970,7 @@ GameObject:
   - component: {fileID: 5907577017494515420}
   - component: {fileID: 97152960606008888}
   - component: {fileID: 1680688444354448913}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (97)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27858,7 +28019,7 @@ GameObject:
   - component: {fileID: 1120148548855159318}
   - component: {fileID: 2980747702275206772}
   - component: {fileID: 322247775541870210}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27907,7 +28068,7 @@ GameObject:
   - component: {fileID: 1725453151557133933}
   - component: {fileID: 5356674361217706142}
   - component: {fileID: 6481873390035002619}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27927,7 +28088,7 @@ GameObject:
   - component: {fileID: 4856324497249986185}
   - component: {fileID: 6402112966471720914}
   - component: {fileID: 1187131971889098304}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27982,7 +28143,7 @@ GameObject:
   - component: {fileID: 8721279946081319677}
   - component: {fileID: 8599199745839083410}
   - component: {fileID: 4883150787074812102}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28016,7 +28177,7 @@ GameObject:
   - component: {fileID: 6805329790959646069}
   - component: {fileID: 6022765749504993534}
   - component: {fileID: 6817875730906913734}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TV_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28051,7 +28212,7 @@ GameObject:
   - component: {fileID: 5772901771041860260}
   - component: {fileID: 2271534417463886671}
   - component: {fileID: 8907522910351146028}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28216,7 +28377,7 @@ GameObject:
   - component: {fileID: 1339198363771526075}
   - component: {fileID: 1044712891626378625}
   - component: {fileID: 129246986352812455}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28278,7 +28439,7 @@ GameObject:
   - component: {fileID: 8624816677392979958}
   - component: {fileID: 6305984272478853671}
   - component: {fileID: 3677768513634545439}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (96)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28470,7 +28631,7 @@ GameObject:
   - component: {fileID: 5263037155822794697}
   - component: {fileID: 8779242588677500543}
   - component: {fileID: 7966687917376458625}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28569,7 +28730,7 @@ GameObject:
   - component: {fileID: 3141408916087550470}
   - component: {fileID: 1530396943588357472}
   - component: {fileID: 891734186200959776}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28821,7 +28982,7 @@ GameObject:
   - component: {fileID: 4593371861113203187}
   - component: {fileID: 3908023480291114620}
   - component: {fileID: 2283151843793746193}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28931,7 +29092,7 @@ GameObject:
   - component: {fileID: 6702750159514746945}
   - component: {fileID: 8838345399085759739}
   - component: {fileID: 2329314560363023510}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29071,7 +29232,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9041316967969678543}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PC (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29091,7 +29252,7 @@ GameObject:
   - component: {fileID: 6998935226666334275}
   - component: {fileID: 5706301568241489515}
   - component: {fileID: 3220496542435704106}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29231,7 +29392,7 @@ GameObject:
   - component: {fileID: 6199635446010304069}
   - component: {fileID: 2003922048179240598}
   - component: {fileID: 1540512550650340290}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (70)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29423,7 +29584,7 @@ GameObject:
   - component: {fileID: 7419487880679159801}
   - component: {fileID: 9220225090359531627}
   - component: {fileID: 8083847901620032704}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29611,7 +29772,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 241039976670043310}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29689,7 +29850,7 @@ GameObject:
   - component: {fileID: 7688229479885481481}
   - component: {fileID: 7538543499133081780}
   - component: {fileID: 2844666310149681330}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (34)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29788,7 +29949,7 @@ GameObject:
   - component: {fileID: 4900212766624748699}
   - component: {fileID: 6630418456816483952}
   - component: {fileID: 8257803541003377216}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29833,7 +29994,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5081885907080318779}
-  m_Layer: 0
+  - component: {fileID: 5081885907080318780}
+  m_Layer: 8
   m_Name: 9thRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30178,7 +30340,7 @@ GameObject:
   - component: {fileID: 2801958657106153329}
   - component: {fileID: 2732294418900819202}
   - component: {fileID: 5078958898067056345}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (75)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30219,7 +30381,7 @@ GameObject:
   - component: {fileID: 8822208513561115454}
   - component: {fileID: 906118136138468021}
   - component: {fileID: 5967192739185198437}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30323,7 +30485,7 @@ GameObject:
   - component: {fileID: 374847245270984796}
   - component: {fileID: 4406938423382032886}
   - component: {fileID: 3698501259307309525}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TV_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30524,7 +30686,7 @@ GameObject:
   - component: {fileID: 2304569936951652387}
   - component: {fileID: 5241388208515995318}
   - component: {fileID: 4499047950113609429}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30616,7 +30778,7 @@ GameObject:
   - component: {fileID: 9028551529692283712}
   - component: {fileID: 5299415039891448650}
   - component: {fileID: 6423329317249745801}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (61)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30826,7 +30988,7 @@ GameObject:
   - component: {fileID: 1459112061226744299}
   - component: {fileID: 418570168136054419}
   - component: {fileID: 249627144442690657}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30931,7 +31093,7 @@ GameObject:
   - component: {fileID: 2425001773739998657}
   - component: {fileID: 2032355847639401835}
   - component: {fileID: 8662576879505515937}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (83)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30994,7 +31156,7 @@ GameObject:
   - component: {fileID: 4633169282566371163}
   - component: {fileID: 5536949452047582393}
   - component: {fileID: 3344829908364990392}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet2 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31034,7 +31196,7 @@ GameObject:
   - component: {fileID: 2668034525642139895}
   - component: {fileID: 4783601937932045445}
   - component: {fileID: 7081190111856933657}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31054,7 +31216,7 @@ GameObject:
   - component: {fileID: 8750747000717177343}
   - component: {fileID: 8816205133323812443}
   - component: {fileID: 3481031714390522805}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31074,7 +31236,7 @@ GameObject:
   - component: {fileID: 102840442932901445}
   - component: {fileID: 5280744667581712577}
   - component: {fileID: 5177608757850690638}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31644,7 +31806,7 @@ GameObject:
   - component: {fileID: 9004855130996755404}
   - component: {fileID: 3089743349982151350}
   - component: {fileID: 7429910639753898765}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31916,7 +32078,7 @@ GameObject:
   - component: {fileID: 2217776937380496840}
   - component: {fileID: 6360494984138440203}
   - component: {fileID: 8853617255744542527}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (87)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32398,7 +32560,7 @@ GameObject:
   - component: {fileID: 5877403338604076585}
   - component: {fileID: 4435476208700150581}
   - component: {fileID: 134085802819058050}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32418,7 +32580,7 @@ GameObject:
   - component: {fileID: 86173857925822255}
   - component: {fileID: 1946001854367591563}
   - component: {fileID: 2145517972366965623}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (64)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32496,7 +32658,7 @@ GameObject:
   - component: {fileID: 3431599404245439572}
   - component: {fileID: 4645196391191243625}
   - component: {fileID: 4378724197498033816}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32539,7 +32701,7 @@ GameObject:
   - component: {fileID: 6384025904139125448}
   - component: {fileID: 543326212964402847}
   - component: {fileID: 4362351506623710747}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (63)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32580,7 +32742,7 @@ GameObject:
   - component: {fileID: 8808160655239915585}
   - component: {fileID: 8056132762959969051}
   - component: {fileID: 1208776685135212899}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32796,7 +32958,7 @@ GameObject:
   - component: {fileID: 3883472145327443461}
   - component: {fileID: 8458971060290903952}
   - component: {fileID: 5686457307494578336}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33273,7 +33435,7 @@ GameObject:
   - component: {fileID: 6286023998337276677}
   - component: {fileID: 7983326987161182185}
   - component: {fileID: 2236343514026944337}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33293,7 +33455,7 @@ GameObject:
   - component: {fileID: 3656025541280038636}
   - component: {fileID: 5301790315655824832}
   - component: {fileID: 2510399533836433134}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33442,7 +33604,7 @@ GameObject:
   - component: {fileID: 2473462619322687488}
   - component: {fileID: 4903140504075926861}
   - component: {fileID: 227287465411461935}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33576,7 +33738,7 @@ GameObject:
   - component: {fileID: 2626786694071423065}
   - component: {fileID: 95390757529618424}
   - component: {fileID: 8399770883248544034}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33682,7 +33844,7 @@ GameObject:
   - component: {fileID: 1577037484548503771}
   - component: {fileID: 1846977198675065127}
   - component: {fileID: 4087231649920778238}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33766,7 +33928,7 @@ GameObject:
   - component: {fileID: 4457825293697309434}
   - component: {fileID: 7824028200475995086}
   - component: {fileID: 4002121557169938620}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: coffee-machine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33869,7 +34031,7 @@ GameObject:
   - component: {fileID: 6132659727711245451}
   - component: {fileID: 974993838462766337}
   - component: {fileID: 4503445715251653081}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (72)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34009,7 +34171,7 @@ GameObject:
   - component: {fileID: 8505324373052119662}
   - component: {fileID: 5807362258979466554}
   - component: {fileID: 4691711558063976959}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34036,7 +34198,7 @@ GameObject:
   - component: {fileID: 994699858875616577}
   - component: {fileID: 1362493548848150270}
   - component: {fileID: 5900323474835002461}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SupBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34084,7 +34246,7 @@ GameObject:
   - component: {fileID: 6782061991591551960}
   - component: {fileID: 5546082799344696903}
   - component: {fileID: 478263850605498826}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WaterCooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34104,7 +34266,7 @@ GameObject:
   - component: {fileID: 8322762343348707032}
   - component: {fileID: 5338467739264775641}
   - component: {fileID: 7752204981101511802}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34199,7 +34361,7 @@ GameObject:
   - component: {fileID: 7880392794528227649}
   - component: {fileID: 3340291446937633023}
   - component: {fileID: 6852226828353159201}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34268,7 +34430,7 @@ GameObject:
   - component: {fileID: 6519857195648039458}
   - component: {fileID: 3810594306205232811}
   - component: {fileID: 5187130648914530421}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet1_C1_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34444,7 +34606,7 @@ GameObject:
   - component: {fileID: 1788910507131927103}
   - component: {fileID: 8919395834110732479}
   - component: {fileID: 5545160792405109674}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34824,7 +34986,7 @@ GameObject:
   - component: {fileID: 8541823896117886042}
   - component: {fileID: 1200742379805914118}
   - component: {fileID: 4901821431643680380}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35169,7 +35331,7 @@ GameObject:
   - component: {fileID: 187202113456657424}
   - component: {fileID: 5620476649280654854}
   - component: {fileID: 7929747878812147710}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35250,7 +35412,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1055831897718029819}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35745,7 +35907,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4632104808882437634}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35765,7 +35927,7 @@ GameObject:
   - component: {fileID: 6494145591281155372}
   - component: {fileID: 4964534634264849728}
   - component: {fileID: 3673919723700329405}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35835,7 +35997,7 @@ GameObject:
   - component: {fileID: 3311104452333907902}
   - component: {fileID: 1785375348938172534}
   - component: {fileID: 6795100143094219241}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35855,7 +36017,7 @@ GameObject:
   - component: {fileID: 7609830376611326238}
   - component: {fileID: 2828521414164075265}
   - component: {fileID: 4906782671154742260}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36059,7 +36221,7 @@ GameObject:
   - component: {fileID: 3134546983127799821}
   - component: {fileID: 5730948317913845314}
   - component: {fileID: 8169833168127887167}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (125)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36094,7 +36256,7 @@ GameObject:
   - component: {fileID: 55597174973453188}
   - component: {fileID: 84521853491596238}
   - component: {fileID: 7050945802378326208}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (65)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36130,7 +36292,7 @@ GameObject:
   - component: {fileID: 11815091963083304}
   - component: {fileID: 4589151522195352403}
   - component: {fileID: 3695281809894340820}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (116)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36171,7 +36333,7 @@ GameObject:
   - component: {fileID: 2288183853146005556}
   - component: {fileID: 2644789896229818810}
   - component: {fileID: 4887095370421241978}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36361,7 +36523,7 @@ GameObject:
   - component: {fileID: 8120866407442856176}
   - component: {fileID: 693801718621836440}
   - component: {fileID: 2250664616795497457}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (71)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36424,7 +36586,7 @@ GameObject:
   - component: {fileID: 5346695222124042277}
   - component: {fileID: 6334459349238564679}
   - component: {fileID: 7770186651404765421}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (94)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36542,7 +36704,7 @@ GameObject:
   - component: {fileID: 8622336903316291162}
   - component: {fileID: 3466749793833356382}
   - component: {fileID: 1191810136681070449}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SupBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36591,7 +36753,7 @@ GameObject:
   - component: {fileID: 148638779800469090}
   - component: {fileID: 6600900779043777267}
   - component: {fileID: 2220082114869259090}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36735,7 +36897,7 @@ GameObject:
   - component: {fileID: 6722367838620372629}
   - component: {fileID: 8929731573022052966}
   - component: {fileID: 430522818747469473}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (106)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36776,7 +36938,7 @@ GameObject:
   - component: {fileID: 1862223402447628827}
   - component: {fileID: 1471660848720165507}
   - component: {fileID: 14386260507765490}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36927,7 +37089,7 @@ GameObject:
   - component: {fileID: 7299023013464822269}
   - component: {fileID: 7110665993214688753}
   - component: {fileID: 4485808556016077174}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36988,7 +37150,7 @@ GameObject:
   - component: {fileID: 3331813049820801624}
   - component: {fileID: 993218033444132257}
   - component: {fileID: 4798825310292115772}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37004,7 +37166,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4411758178150251222}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Etc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37024,7 +37186,7 @@ GameObject:
   - component: {fileID: 4291753926222947161}
   - component: {fileID: 7513579459512979745}
   - component: {fileID: 3621238292345181861}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37071,13 +37233,41 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3973292058831785179}
-  m_Layer: 0
+  - component: {fileID: 4335733065174936971}
+  m_Layer: 8
   m_Name: 3rdRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!54 &4335733065174936971
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4335733065174936970}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!33 &4337297228622632447
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -37208,7 +37398,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9189047797223163395}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37243,7 +37433,7 @@ GameObject:
   - component: {fileID: 4565855469369180495}
   - component: {fileID: 1815124881309810020}
   - component: {fileID: 8905181837632460258}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (76)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37392,7 +37582,7 @@ GameObject:
   - component: {fileID: 7254854522855639614}
   - component: {fileID: 756418868378963399}
   - component: {fileID: 6956463061127166069}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37514,7 +37704,7 @@ GameObject:
   - component: {fileID: 6648202204782547345}
   - component: {fileID: 24510051367273232}
   - component: {fileID: 894774952596098436}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37559,7 +37749,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2172737518568280790}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PC (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37600,7 +37790,7 @@ GameObject:
   - component: {fileID: 8300026112034521356}
   - component: {fileID: 5014523810879436878}
   - component: {fileID: 5656373608923292131}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37705,7 +37895,7 @@ GameObject:
   - component: {fileID: 6938906760598122634}
   - component: {fileID: 667994398324458984}
   - component: {fileID: 357835679207843700}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall_Door (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37825,7 +38015,7 @@ GameObject:
   - component: {fileID: 3800212521548281099}
   - component: {fileID: 7352740250998695470}
   - component: {fileID: 6778918785627590665}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37938,7 +38128,7 @@ GameObject:
   - component: {fileID: 6196883323916068556}
   - component: {fileID: 870484196546964231}
   - component: {fileID: 7896259009901710564}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38090,7 +38280,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5522498616221125285}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38110,7 +38300,7 @@ GameObject:
   - component: {fileID: 3947728504696337636}
   - component: {fileID: 5645159265671594699}
   - component: {fileID: 2799931608533745018}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall7 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38225,7 +38415,7 @@ GameObject:
   - component: {fileID: 6240838658220591842}
   - component: {fileID: 8442034853083703657}
   - component: {fileID: 2115074861505431509}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38245,7 +38435,7 @@ GameObject:
   - component: {fileID: 7148261716935762527}
   - component: {fileID: 5292526396897053138}
   - component: {fileID: 3851912189950245124}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (69)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38340,7 +38530,7 @@ GameObject:
   - component: {fileID: 640425632219609193}
   - component: {fileID: 4202890803299045651}
   - component: {fileID: 2409236201856992750}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38444,7 +38634,7 @@ GameObject:
   - component: {fileID: 5653989374392402434}
   - component: {fileID: 1662058338957413428}
   - component: {fileID: 8000609256382815775}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38563,7 +38753,7 @@ GameObject:
   - component: {fileID: 6339182060452729776}
   - component: {fileID: 9042415695088281661}
   - component: {fileID: 7467184763979877642}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall2 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38709,7 +38899,7 @@ GameObject:
   - component: {fileID: 2756128530581958320}
   - component: {fileID: 7740653318097165863}
   - component: {fileID: 155341153954499017}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38749,7 +38939,7 @@ GameObject:
   - component: {fileID: 3819481355225161279}
   - component: {fileID: 9215833443162398348}
   - component: {fileID: 1824284097775530078}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SupBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38877,7 +39067,7 @@ GameObject:
   - component: {fileID: 7387882725034524892}
   - component: {fileID: 2666669930959824983}
   - component: {fileID: 7930492771837518592}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38927,7 +39117,7 @@ GameObject:
   - component: {fileID: 4569648646755382645}
   - component: {fileID: 5117247241042713509}
   - component: {fileID: 8362641283902946060}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39010,7 +39200,7 @@ GameObject:
   - component: {fileID: 6450876016240149356}
   - component: {fileID: 1311099540851198357}
   - component: {fileID: 6060697286062881291}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39202,7 +39392,7 @@ GameObject:
   - component: {fileID: 8797681406736986418}
   - component: {fileID: 7162772001798784037}
   - component: {fileID: 118500125251697166}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (40)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39299,7 +39489,7 @@ GameObject:
   - component: {fileID: 4027688466330276715}
   - component: {fileID: 4848720592840738099}
   - component: {fileID: 6471865023971641468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39315,7 +39505,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2224101469503065211}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39356,7 +39546,7 @@ GameObject:
   - component: {fileID: 7128217464399351316}
   - component: {fileID: 2213253847825123634}
   - component: {fileID: 3687747608750958627}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (35)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39401,7 +39591,7 @@ GameObject:
   - component: {fileID: 5912823400200210955}
   - component: {fileID: 8184196795188454772}
   - component: {fileID: 8879031860343527428}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39621,7 +39811,7 @@ GameObject:
   - component: {fileID: 4706060722804616718}
   - component: {fileID: 3184983102061996663}
   - component: {fileID: 1637171461258493669}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39907,7 +40097,7 @@ GameObject:
   - component: {fileID: 1504293714727923794}
   - component: {fileID: 6855822793774479803}
   - component: {fileID: 1125545180911471604}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (47)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39968,7 +40158,7 @@ GameObject:
   - component: {fileID: 217871327548733806}
   - component: {fileID: 990441035224990068}
   - component: {fileID: 5222041980274382910}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40186,7 +40376,7 @@ GameObject:
   - component: {fileID: 983614760045437518}
   - component: {fileID: 7856536961189841712}
   - component: {fileID: 7632204202514002684}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WaterCooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40228,7 +40418,7 @@ GameObject:
   - component: {fileID: 9065263151327796838}
   - component: {fileID: 3886137695496322313}
   - component: {fileID: 3986370815980916757}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (111)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40291,7 +40481,7 @@ GameObject:
   - component: {fileID: 1205011820128588226}
   - component: {fileID: 2591833758221304331}
   - component: {fileID: 3728798601201949235}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40482,7 +40672,7 @@ GameObject:
   - component: {fileID: 3265478084446514327}
   - component: {fileID: 9151175847800488188}
   - component: {fileID: 3658015713574741543}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WaterCooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40518,7 +40708,7 @@ GameObject:
   - component: {fileID: 4316235211000093245}
   - component: {fileID: 5809121053765213601}
   - component: {fileID: 252273183002360972}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40603,7 +40793,7 @@ GameObject:
   - component: {fileID: 6515312038362812526}
   - component: {fileID: 1521548211994053221}
   - component: {fileID: 949910059769514726}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41125,7 +41315,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4838456899704640099}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41145,7 +41335,7 @@ GameObject:
   - component: {fileID: 7617646377138549048}
   - component: {fileID: 6184521762106211897}
   - component: {fileID: 246246154322373923}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41202,7 +41392,7 @@ GameObject:
   - component: {fileID: 7146457996846792984}
   - component: {fileID: 1307665774858646440}
   - component: {fileID: 4814003396972919488}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (122)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41238,7 +41428,7 @@ GameObject:
   - component: {fileID: 7769297213673809489}
   - component: {fileID: 3471843039134361915}
   - component: {fileID: 5484711017818037045}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41275,7 +41465,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4924459067158562697}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Etc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41310,7 +41500,7 @@ GameObject:
   - component: {fileID: 914237946890339693}
   - component: {fileID: 1601808374989630424}
   - component: {fileID: 8197928680202295271}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41420,6 +41610,33 @@ Transform:
   - {fileID: 5180378904819179829}
   m_Father: {fileID: 8945785590030942025}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!54 &5081885907080318780
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3191131533185048642}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!65 &5083215075563935229
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41454,7 +41671,7 @@ GameObject:
   - component: {fileID: 2349623317211714970}
   - component: {fileID: 291559770094073290}
   - component: {fileID: 6011566772583240262}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41472,7 +41689,7 @@ GameObject:
   - component: {fileID: 5960591259947005354}
   - component: {fileID: 1284987358718558918}
   - component: {fileID: 96249104843733757}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Prop_WaterCooler_Tank_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41492,7 +41709,7 @@ GameObject:
   - component: {fileID: 3569046156696443011}
   - component: {fileID: 7117260433046448379}
   - component: {fileID: 7080898094458262162}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41569,7 +41786,7 @@ GameObject:
   - component: {fileID: 8829449300260131493}
   - component: {fileID: 3001032189158081848}
   - component: {fileID: 4935633643229638752}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (88)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41761,7 +41978,7 @@ GameObject:
   - component: {fileID: 2175256314904704764}
   - component: {fileID: 9192238712113356553}
   - component: {fileID: 2933994701579661579}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41781,7 +41998,7 @@ GameObject:
   - component: {fileID: 442898049830480669}
   - component: {fileID: 5288364597552656390}
   - component: {fileID: 8252438734296245077}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (99)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41801,7 +42018,7 @@ GameObject:
   - component: {fileID: 572515911740407012}
   - component: {fileID: 4877090158301233782}
   - component: {fileID: 9152657009054702275}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41828,7 +42045,7 @@ GameObject:
   - component: {fileID: 6124159224348080753}
   - component: {fileID: 8652093669944543723}
   - component: {fileID: 6856393974964598092}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WaterCooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41977,7 +42194,7 @@ GameObject:
   - component: {fileID: 9216476381126207574}
   - component: {fileID: 7670879402877047018}
   - component: {fileID: 4682284726674861474}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42268,7 +42485,7 @@ GameObject:
   - component: {fileID: 5844209635645162951}
   - component: {fileID: 2617160289676993099}
   - component: {fileID: 937140375634222523}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (52)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42288,7 +42505,7 @@ GameObject:
   - component: {fileID: 3254229176794584474}
   - component: {fileID: 6948467004289482196}
   - component: {fileID: 6970948368485727028}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42308,7 +42525,7 @@ GameObject:
   - component: {fileID: 3962759709510938773}
   - component: {fileID: 4348251165725513707}
   - component: {fileID: 7990638037384907075}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42727,7 +42944,7 @@ GameObject:
   - component: {fileID: 6692025382277380297}
   - component: {fileID: 6521775518401632083}
   - component: {fileID: 6743927209782524175}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42747,7 +42964,7 @@ GameObject:
   - component: {fileID: 7764281982928115667}
   - component: {fileID: 6784483468430573820}
   - component: {fileID: 8743264442852096972}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42767,7 +42984,7 @@ GameObject:
   - component: {fileID: 3334074903005287247}
   - component: {fileID: 3962011463493653850}
   - component: {fileID: 8344497078126934057}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42802,7 +43019,7 @@ GameObject:
   - component: {fileID: 8675238953147735618}
   - component: {fileID: 5137610145809096623}
   - component: {fileID: 776326689425689795}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42875,7 +43092,7 @@ GameObject:
   - component: {fileID: 3372547443139271901}
   - component: {fileID: 6736606178970975404}
   - component: {fileID: 3629620782096663337}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (124)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43076,7 +43293,7 @@ GameObject:
   - component: {fileID: 2691602780427051228}
   - component: {fileID: 576507472886796939}
   - component: {fileID: 5556350767223226047}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43449,6 +43666,33 @@ Transform:
   - {fileID: 8059102461199061507}
   m_Father: {fileID: 8945785590030942025}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!54 &5443115743418052227
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502154237337248067}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!23 &5444557995070688835
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -43591,7 +43835,7 @@ GameObject:
   - component: {fileID: 7497390769531756931}
   - component: {fileID: 6623956798582832331}
   - component: {fileID: 4303223760346248749}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (121)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43699,7 +43943,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2659279001914251918}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Etc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43794,7 +44038,7 @@ GameObject:
   - component: {fileID: 4118825042041833535}
   - component: {fileID: 834018690913052835}
   - component: {fileID: 3330704864876342576}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43810,7 +44054,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7808491557660987297}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43912,7 +44156,7 @@ GameObject:
   - component: {fileID: 2381012339767275100}
   - component: {fileID: 2060619966037672682}
   - component: {fileID: 8470765654465073076}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43953,7 +44197,7 @@ GameObject:
   - component: {fileID: 2940555075524182656}
   - component: {fileID: 7482320570949256518}
   - component: {fileID: 1155488661653994822}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44201,7 +44445,7 @@ GameObject:
   - component: {fileID: 7223239898013863899}
   - component: {fileID: 2118520776243761802}
   - component: {fileID: 8841240255008424854}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44237,7 +44481,7 @@ GameObject:
   - component: {fileID: 7544704605725601313}
   - component: {fileID: 4439130344524855323}
   - component: {fileID: 7498880357214085796}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44257,7 +44501,7 @@ GameObject:
   - component: {fileID: 3078793711240645420}
   - component: {fileID: 6447644849892302535}
   - component: {fileID: 5288450187334072019}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44276,7 +44520,7 @@ GameObject:
   - component: {fileID: 3460565993372716815}
   - component: {fileID: 2100984983062619740}
   - component: {fileID: 3085930867391938737}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44576,7 +44820,7 @@ GameObject:
   - component: {fileID: 5453418490155987727}
   - component: {fileID: 8167511433168621476}
   - component: {fileID: 4059473758207857986}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SupBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44882,7 +45126,7 @@ GameObject:
   - component: {fileID: 1079428176674094005}
   - component: {fileID: 6678557481249174164}
   - component: {fileID: 1221894985811710889}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45087,7 +45331,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7157201402137799628}
-  m_Layer: 0
+  - component: {fileID: 7157201402137799629}
+  m_Layer: 8
   m_Name: 10thBigRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45106,7 +45351,7 @@ GameObject:
   - component: {fileID: 5266219288672413656}
   - component: {fileID: 2796847388945547240}
   - component: {fileID: 7355773582945251761}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45208,7 +45453,7 @@ GameObject:
   - component: {fileID: 5274231447594649194}
   - component: {fileID: 178808831050645733}
   - component: {fileID: 4478198943948509787}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (107)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45285,7 +45530,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7870527258177910925}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45305,7 +45550,7 @@ GameObject:
   - component: {fileID: 3040244461631383639}
   - component: {fileID: 8595005354890911926}
   - component: {fileID: 2179051787764850267}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45341,7 +45586,7 @@ GameObject:
   - component: {fileID: 3340421189374299602}
   - component: {fileID: 6004270367713816744}
   - component: {fileID: 1757372644492093748}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45361,7 +45606,7 @@ GameObject:
   - component: {fileID: 3638481339117413533}
   - component: {fileID: 7835044293889083161}
   - component: {fileID: 95669760157614093}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45381,7 +45626,7 @@ GameObject:
   - component: {fileID: 5444557995070688835}
   - component: {fileID: 386124995011132217}
   - component: {fileID: 7069431356750467486}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (103)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45513,7 +45758,7 @@ GameObject:
   - component: {fileID: 3112562531536211437}
   - component: {fileID: 9011982332392466670}
   - component: {fileID: 8614537882672394428}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (81)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45590,7 +45835,7 @@ GameObject:
   - component: {fileID: 7863599319018066582}
   - component: {fileID: 5079295576683966737}
   - component: {fileID: 5213904821968113381}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (126)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45817,7 +46062,7 @@ GameObject:
   - component: {fileID: 6436894919976402292}
   - component: {fileID: 496338449489823422}
   - component: {fileID: 1193556247950261307}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45895,7 +46140,7 @@ GameObject:
   - component: {fileID: 5673803460994082653}
   - component: {fileID: 6694003268267257586}
   - component: {fileID: 8643484516191119206}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45957,7 +46202,7 @@ GameObject:
   - component: {fileID: 2212526947755702598}
   - component: {fileID: 7232799587511249281}
   - component: {fileID: 6914961906179659745}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46033,7 +46278,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8059102461199061507}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Etc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46049,7 +46294,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4853165968740773455}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46069,7 +46314,7 @@ GameObject:
   - component: {fileID: 371552569215534017}
   - component: {fileID: 8886752891075664662}
   - component: {fileID: 6447105673242907697}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46089,7 +46334,7 @@ GameObject:
   - component: {fileID: 5224797152654068555}
   - component: {fileID: 5191713454421533269}
   - component: {fileID: 6601478870934266672}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46130,7 +46375,7 @@ GameObject:
   - component: {fileID: 6326237867460410328}
   - component: {fileID: 5445627731560596478}
   - component: {fileID: 1986666815118263029}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (119)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46593,7 +46838,7 @@ GameObject:
   - component: {fileID: 326634089259001768}
   - component: {fileID: 2933487085905351537}
   - component: {fileID: 6566306990246102100}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46676,7 +46921,7 @@ GameObject:
   - component: {fileID: 7483909250480167576}
   - component: {fileID: 7235471375444702604}
   - component: {fileID: 4414216753598753344}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46710,7 +46955,7 @@ GameObject:
   - component: {fileID: 7527934641588216565}
   - component: {fileID: 1622114249856483103}
   - component: {fileID: 8131975514078029222}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46788,7 +47033,7 @@ GameObject:
   - component: {fileID: 449544959328932868}
   - component: {fileID: 4390168102654728463}
   - component: {fileID: 8933232016938514776}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47068,7 +47313,7 @@ GameObject:
   - component: {fileID: 3920336498348680581}
   - component: {fileID: 4766588409902433574}
   - component: {fileID: 720348317868415338}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47108,7 +47353,7 @@ GameObject:
   - component: {fileID: 2436596583735864211}
   - component: {fileID: 987250852290608629}
   - component: {fileID: 5764590168728742084}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WaterCooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47250,7 +47495,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2929844009169411396}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47291,7 +47536,7 @@ GameObject:
   - component: {fileID: 6264892729476235594}
   - component: {fileID: 3263299741240933660}
   - component: {fileID: 7268469782406314285}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47422,7 +47667,7 @@ GameObject:
   - component: {fileID: 6537841302834494762}
   - component: {fileID: 4756372623420436052}
   - component: {fileID: 6901651623333806285}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall3 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47442,7 +47687,7 @@ GameObject:
   - component: {fileID: 6821083004479553378}
   - component: {fileID: 7364632598255589402}
   - component: {fileID: 8369751429587798792}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (42)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47480,7 +47725,7 @@ GameObject:
   - component: {fileID: 6001719901905314235}
   - component: {fileID: 234897130028518754}
   - component: {fileID: 8268077208995363987}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47498,7 +47743,7 @@ GameObject:
   - component: {fileID: 4044214241357925443}
   - component: {fileID: 1467962046082388323}
   - component: {fileID: 817692333308393137}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Prop_WaterCooler_Tank_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47518,7 +47763,7 @@ GameObject:
   - component: {fileID: 4816670831917855079}
   - component: {fileID: 573730246657085582}
   - component: {fileID: 6646524491016759731}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47600,7 +47845,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5971786841697394716}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Etc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47650,7 +47895,7 @@ GameObject:
   - component: {fileID: 2313699243048255849}
   - component: {fileID: 2770893840000986471}
   - component: {fileID: 8951884477409553714}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47727,7 +47972,7 @@ GameObject:
   - component: {fileID: 2316342441819051182}
   - component: {fileID: 4948457582855063758}
   - component: {fileID: 6226683420745166278}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47840,7 +48085,7 @@ GameObject:
   - component: {fileID: 6702990415215742086}
   - component: {fileID: 5427113766094207669}
   - component: {fileID: 7218166557002311703}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48083,7 +48328,7 @@ GameObject:
   - component: {fileID: 3863702737830141942}
   - component: {fileID: 2851466326123902507}
   - component: {fileID: 1245499412462015736}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (77)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48103,7 +48348,7 @@ GameObject:
   - component: {fileID: 1907852158553944887}
   - component: {fileID: 3260042573301338944}
   - component: {fileID: 7466167409704104795}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48234,7 +48479,7 @@ GameObject:
   - component: {fileID: 7543358563334223059}
   - component: {fileID: 4969089957869967993}
   - component: {fileID: 6004874736334876019}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48355,7 +48600,7 @@ GameObject:
   - component: {fileID: 7479023966083566278}
   - component: {fileID: 320679005455140736}
   - component: {fileID: 5642832843288248498}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (102)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48454,7 +48699,7 @@ GameObject:
   - component: {fileID: 5936247749900372142}
   - component: {fileID: 2763561052008942741}
   - component: {fileID: 6587488724604243403}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48482,7 +48727,7 @@ GameObject:
   - component: {fileID: 1960294927702835811}
   - component: {fileID: 4147725200987756903}
   - component: {fileID: 5127678189357311916}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (105)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48531,7 +48776,7 @@ GameObject:
   - component: {fileID: 3517070447341434011}
   - component: {fileID: 7195199547972613096}
   - component: {fileID: 8201579891460269101}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (48)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48708,7 +48953,7 @@ GameObject:
   - component: {fileID: 5267731903709669806}
   - component: {fileID: 1364192431338924290}
   - component: {fileID: 525251296576679502}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (123)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49369,7 +49614,7 @@ GameObject:
   - component: {fileID: 25181637019130113}
   - component: {fileID: 1345529893812340796}
   - component: {fileID: 3528968223833089532}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49550,7 +49795,7 @@ GameObject:
   - component: {fileID: 3178818678576683547}
   - component: {fileID: 818153797160648034}
   - component: {fileID: 3805454797321614444}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49663,7 +49908,7 @@ GameObject:
   - component: {fileID: 1762609894677436394}
   - component: {fileID: 9190205383443196951}
   - component: {fileID: 1639255493700958578}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cabinet-bathroom-modern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49738,7 +49983,7 @@ GameObject:
   - component: {fileID: 3934669048138537205}
   - component: {fileID: 5353101314314849624}
   - component: {fileID: 7896559343371895538}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50060,7 +50305,7 @@ GameObject:
   - component: {fileID: 4223920492291845229}
   - component: {fileID: 7585110713762154194}
   - component: {fileID: 2456127707924194397}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50152,7 +50397,7 @@ GameObject:
   - component: {fileID: 1848143226883082540}
   - component: {fileID: 218585452689758007}
   - component: {fileID: 5931553149202644851}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50344,7 +50589,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7805923544717375369}
-  m_Layer: 0
+  - component: {fileID: 7805923544717375370}
+  m_Layer: 8
   m_Name: Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50360,7 +50606,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3753412227124466896}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50388,7 +50634,7 @@ GameObject:
   - component: {fileID: 981325611307594725}
   - component: {fileID: 1061675645019182423}
   - component: {fileID: 3791884483739572371}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50423,7 +50669,7 @@ GameObject:
   - component: {fileID: 7055048261695675154}
   - component: {fileID: 3281407082791245051}
   - component: {fileID: 5222210745933935682}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50500,7 +50746,7 @@ GameObject:
   - component: {fileID: 6985893917422780667}
   - component: {fileID: 7777540229256027394}
   - component: {fileID: 2887199191347479082}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50557,7 +50803,7 @@ GameObject:
   - component: {fileID: 6982312453258135177}
   - component: {fileID: 291665543562277642}
   - component: {fileID: 3220977546947282375}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (73)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50773,7 +51019,7 @@ GameObject:
   - component: {fileID: 8032491611396597858}
   - component: {fileID: 1602409397942782776}
   - component: {fileID: 7160335826331029851}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (51)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50941,7 +51187,7 @@ GameObject:
   - component: {fileID: 1693980174039303583}
   - component: {fileID: 4202821174842638864}
   - component: {fileID: 770733938692847822}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51148,13 +51394,41 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 348776558626089552}
-  m_Layer: 0
+  - component: {fileID: 6711508860103936171}
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!54 &6711508860103936171
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6711508860103936170}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &6721538234510240099
 GameObject:
   m_ObjectHideFlags: 0
@@ -51168,7 +51442,7 @@ GameObject:
   - component: {fileID: 9200634274053349679}
   - component: {fileID: 5187655402532151686}
   - component: {fileID: 3133669625630447975}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51512,7 +51786,7 @@ GameObject:
   - component: {fileID: 2568855976429089574}
   - component: {fileID: 497534481118556760}
   - component: {fileID: 3089532442831927183}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (95)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51532,7 +51806,7 @@ GameObject:
   - component: {fileID: 1506498360053133900}
   - component: {fileID: 6429474818914873230}
   - component: {fileID: 7261823708941282851}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (53)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51621,7 +51895,7 @@ GameObject:
   - component: {fileID: 6576371489533961484}
   - component: {fileID: 7435594965742841880}
   - component: {fileID: 6265117688540270869}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Prop_WaterCooler_Tank_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51641,7 +51915,7 @@ GameObject:
   - component: {fileID: 7161478576816719564}
   - component: {fileID: 5433379834689059097}
   - component: {fileID: 1625423637956371201}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51684,7 +51958,7 @@ GameObject:
   - component: {fileID: 1323302566547903221}
   - component: {fileID: 4341134562295814825}
   - component: {fileID: 7779130082658219708}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (67)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51704,7 +51978,7 @@ GameObject:
   - component: {fileID: 7228923008479727919}
   - component: {fileID: 5942647049966860492}
   - component: {fileID: 1203852832378382016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51732,7 +52006,7 @@ GameObject:
   - component: {fileID: 4397698663682782372}
   - component: {fileID: 4716849379691864564}
   - component: {fileID: 6057930440186448196}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51903,7 +52177,7 @@ GameObject:
   - component: {fileID: 1248154221891275038}
   - component: {fileID: 1638751632264345845}
   - component: {fileID: 1714839459050188268}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SupBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51922,7 +52196,7 @@ GameObject:
   - component: {fileID: 6000700237981062647}
   - component: {fileID: 2352726261357753196}
   - component: {fileID: 6951566892744238530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WaterCooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52068,7 +52342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7368149620147872355}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52088,7 +52362,7 @@ GameObject:
   - component: {fileID: 2078066962383656695}
   - component: {fileID: 6057156465440421998}
   - component: {fileID: 7297963668450278574}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52123,7 +52397,7 @@ GameObject:
   - component: {fileID: 7650983030096178602}
   - component: {fileID: 2925494336396662397}
   - component: {fileID: 2125472520795536978}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52225,7 +52499,7 @@ GameObject:
   - component: {fileID: 887521121233168182}
   - component: {fileID: 2100467283063141890}
   - component: {fileID: 4125465133205836594}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Prop_WaterCooler_Tank_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52320,7 +52594,7 @@ GameObject:
   - component: {fileID: 3992363220042704773}
   - component: {fileID: 7779532269713888787}
   - component: {fileID: 2871055755752742697}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52533,7 +52807,7 @@ GameObject:
   - component: {fileID: 9147176210697624273}
   - component: {fileID: 3531945280991031071}
   - component: {fileID: 3131178608049788450}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52732,7 +53006,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1755706452692029111}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52921,7 +53195,7 @@ GameObject:
   - component: {fileID: 2353620873067239546}
   - component: {fileID: 705395576913802075}
   - component: {fileID: 6502618738109543640}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Xerox_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52961,7 +53235,7 @@ GameObject:
   - component: {fileID: 4237509680470992394}
   - component: {fileID: 4470116324793709508}
   - component: {fileID: 5820215935278913549}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WaterCooler_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53056,7 +53330,7 @@ GameObject:
   - component: {fileID: 8001225777396395555}
   - component: {fileID: 8598153993284789364}
   - component: {fileID: 210358440487328254}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (115)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53444,7 +53718,7 @@ GameObject:
   - component: {fileID: 5942781833614000708}
   - component: {fileID: 1886191328366238205}
   - component: {fileID: 6040206930923347834}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53506,7 +53780,7 @@ GameObject:
   - component: {fileID: 4200674506540966497}
   - component: {fileID: 4401269747111397634}
   - component: {fileID: 4164710510377660867}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53727,7 +54001,7 @@ GameObject:
   - component: {fileID: 5733074840192094946}
   - component: {fileID: 5654595276158607579}
   - component: {fileID: 3493370875755094263}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53876,7 +54150,7 @@ GameObject:
   - component: {fileID: 7600343177847752475}
   - component: {fileID: 4359262501904385310}
   - component: {fileID: 5464059879239343785}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53994,6 +54268,33 @@ Transform:
   - {fileID: 6512847094998605813}
   m_Father: {fileID: 8945785590030942025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &7157201402137799629
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5689877580486016483}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!65 &7160335826331029851
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54154,7 +54455,7 @@ GameObject:
   - component: {fileID: 2256909708927357743}
   - component: {fileID: 4289608214821872393}
   - component: {fileID: 6984209136643773944}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54174,7 +54475,7 @@ GameObject:
   - component: {fileID: 8872929815211365838}
   - component: {fileID: 6393179468063603670}
   - component: {fileID: 7267634366640585700}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54389,7 +54690,7 @@ GameObject:
   - component: {fileID: 6767048470933725768}
   - component: {fileID: 846180751539116958}
   - component: {fileID: 5849226625363943482}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54431,7 +54732,7 @@ GameObject:
   - component: {fileID: 1672235481951905056}
   - component: {fileID: 222893388638237417}
   - component: {fileID: 6078509720694050489}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54544,7 +54845,7 @@ GameObject:
   - component: {fileID: 491933915427130084}
   - component: {fileID: 8724543857447929181}
   - component: {fileID: 3591426585591780498}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (82)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54834,7 +55135,7 @@ GameObject:
   - component: {fileID: 6477993268680702962}
   - component: {fileID: 8012314357257274700}
   - component: {fileID: 6861410723792530136}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54854,7 +55155,7 @@ GameObject:
   - component: {fileID: 8664537666843248614}
   - component: {fileID: 4582278737935400820}
   - component: {fileID: 4087453594121489904}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (101)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54874,7 +55175,7 @@ GameObject:
   - component: {fileID: 4695377622661670036}
   - component: {fileID: 2007682360984459330}
   - component: {fileID: 6071162583646350027}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54989,7 +55290,7 @@ GameObject:
   - component: {fileID: 250591119479529941}
   - component: {fileID: 1992508761198899477}
   - component: {fileID: 652151177744630992}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55024,7 +55325,7 @@ GameObject:
   - component: {fileID: 551135087975305281}
   - component: {fileID: 3923438090260111303}
   - component: {fileID: 1375609345953613959}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55227,7 +55528,7 @@ GameObject:
   - component: {fileID: 5135306215929453797}
   - component: {fileID: 4827069731904602354}
   - component: {fileID: 125078747044489542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55246,7 +55547,7 @@ GameObject:
   - component: {fileID: 4897975342583693918}
   - component: {fileID: 5388689760756498349}
   - component: {fileID: 8794038780862088679}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TV_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55316,7 +55617,7 @@ GameObject:
   - component: {fileID: 3177357021764403631}
   - component: {fileID: 7123371437777217242}
   - component: {fileID: 8846423905438980144}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (49)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55463,7 +55764,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6924660061040133437}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55482,7 +55783,7 @@ GameObject:
   - component: {fileID: 6957625350191249293}
   - component: {fileID: 6252058325754132926}
   - component: {fileID: 3828048766790680260}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55660,7 +55961,7 @@ GameObject:
   - component: {fileID: 458763126412701115}
   - component: {fileID: 8853610988744335506}
   - component: {fileID: 287203838565057146}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WaterCooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55703,7 +56004,7 @@ GameObject:
   - component: {fileID: 9013910521477984752}
   - component: {fileID: 5622367182790099482}
   - component: {fileID: 354625237544875663}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55926,7 +56227,7 @@ GameObject:
   - component: {fileID: 7973783213134192036}
   - component: {fileID: 2987830935944073878}
   - component: {fileID: 2005628879254817120}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56025,7 +56326,7 @@ GameObject:
   - component: {fileID: 8134866746388020005}
   - component: {fileID: 3541476249808266106}
   - component: {fileID: 3218744056256373020}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56348,7 +56649,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2557170357320397456}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56375,7 +56676,7 @@ GameObject:
   - component: {fileID: 178431655134092105}
   - component: {fileID: 2389127961675375799}
   - component: {fileID: 6412076022625038217}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56703,7 +57004,7 @@ GameObject:
   - component: {fileID: 1557973753473681727}
   - component: {fileID: 3278903930211380323}
   - component: {fileID: 2436562879687379942}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56743,7 +57044,7 @@ GameObject:
   - component: {fileID: 7626396920885509257}
   - component: {fileID: 1644679300405168245}
   - component: {fileID: 298155840760311876}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56805,7 +57106,7 @@ GameObject:
   - component: {fileID: 5633150609835734463}
   - component: {fileID: 560183052049653158}
   - component: {fileID: 8888121496406226084}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (117)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56825,7 +57126,7 @@ GameObject:
   - component: {fileID: 2752552490739986370}
   - component: {fileID: 4402986655256937656}
   - component: {fileID: 1105542367026700526}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (85)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57009,7 +57310,7 @@ GameObject:
   - component: {fileID: 8537863161414596330}
   - component: {fileID: 493724373083699355}
   - component: {fileID: 4673307860087097343}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SupBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57125,7 +57426,7 @@ GameObject:
   - component: {fileID: 8347777003280473857}
   - component: {fileID: 1902106485609805726}
   - component: {fileID: 3337146056559641378}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57209,7 +57510,7 @@ GameObject:
   - component: {fileID: 1452856199557793438}
   - component: {fileID: 1329080699888457473}
   - component: {fileID: 5364073244613522049}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57282,7 +57583,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8553868022397368323}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Etc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57323,7 +57624,7 @@ GameObject:
   - component: {fileID: 6430029696370068910}
   - component: {fileID: 3998141839903745129}
   - component: {fileID: 8681189527187337640}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (112)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57421,7 +57722,7 @@ GameObject:
   - component: {fileID: 5582136150192884574}
   - component: {fileID: 1810260710121238895}
   - component: {fileID: 7009730157070504104}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57533,7 +57834,7 @@ GameObject:
   - component: {fileID: 612311746501168901}
   - component: {fileID: 6974081951139279353}
   - component: {fileID: 7341339180588283311}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TV_01 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57553,7 +57854,7 @@ GameObject:
   - component: {fileID: 597037945739423566}
   - component: {fileID: 5543882903288675343}
   - component: {fileID: 3907816123221189516}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57588,7 +57889,7 @@ GameObject:
   - component: {fileID: 2845993484552033961}
   - component: {fileID: 4038443630011007405}
   - component: {fileID: 3200551958492329955}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SupBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57608,7 +57909,7 @@ GameObject:
   - component: {fileID: 5785322040650274709}
   - component: {fileID: 996938709227184900}
   - component: {fileID: 450296468035770232}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (36)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57701,7 +58002,7 @@ GameObject:
   - component: {fileID: 3577159732221543348}
   - component: {fileID: 373662669046319302}
   - component: {fileID: 7718667311184478631}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57757,7 +58058,7 @@ GameObject:
   - component: {fileID: 4923252911783907936}
   - component: {fileID: 8957382179196070255}
   - component: {fileID: 3432563343525234559}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57967,7 +58268,7 @@ GameObject:
   - component: {fileID: 4313557330894199900}
   - component: {fileID: 5856968817156090732}
   - component: {fileID: 6539592074793471244}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58161,7 +58462,7 @@ GameObject:
   - component: {fileID: 6115733446735740393}
   - component: {fileID: 8112787966551268714}
   - component: {fileID: 8878432424243677712}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58205,6 +58506,33 @@ Transform:
   - {fileID: 7003540775679135807}
   m_Father: {fileID: 8945785590030942025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &7805923544717375370
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6604975463723162643}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &7806909850268573098
 GameObject:
   m_ObjectHideFlags: 0
@@ -58219,7 +58547,7 @@ GameObject:
   - component: {fileID: 3451243130043146864}
   - component: {fileID: 5927254232750106402}
   - component: {fileID: 6440140654344636897}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58407,7 +58735,7 @@ GameObject:
   - component: {fileID: 8891061688132615643}
   - component: {fileID: 2999732102709024297}
   - component: {fileID: 7161768447104318450}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58448,7 +58776,7 @@ GameObject:
   - component: {fileID: 6909164976164629128}
   - component: {fileID: 856904272425588739}
   - component: {fileID: 4727795967591340838}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BigWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58617,7 +58945,7 @@ GameObject:
   - component: {fileID: 7483100521385450033}
   - component: {fileID: 3606449449628648552}
   - component: {fileID: 536604926641981244}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58637,7 +58965,7 @@ GameObject:
   - component: {fileID: 5405639168262891796}
   - component: {fileID: 3239257180182666030}
   - component: {fileID: 1586784438163744834}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (113)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58806,7 +59134,7 @@ GameObject:
   - component: {fileID: 3973561313196337789}
   - component: {fileID: 796424765287309689}
   - component: {fileID: 7570784262056355236}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet1_C1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58834,7 +59162,7 @@ GameObject:
   - component: {fileID: 486959522805867885}
   - component: {fileID: 9168924976899774721}
   - component: {fileID: 3078384721775397882}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58926,7 +59254,7 @@ GameObject:
   - component: {fileID: 2811972763045072643}
   - component: {fileID: 5083215075563935229}
   - component: {fileID: 711961270065924989}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59012,7 +59340,7 @@ GameObject:
   - component: {fileID: 1947053104881450048}
   - component: {fileID: 7022938007535183093}
   - component: {fileID: 5988540127178089038}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59032,7 +59360,7 @@ GameObject:
   - component: {fileID: 8835163315841334283}
   - component: {fileID: 5962253909995021463}
   - component: {fileID: 2421808236141614347}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59166,7 +59494,7 @@ GameObject:
   - component: {fileID: 2333863551369526332}
   - component: {fileID: 3634943545778192437}
   - component: {fileID: 6272963767928204201}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59207,7 +59535,7 @@ GameObject:
   - component: {fileID: 1144965697677125021}
   - component: {fileID: 7199196764478214548}
   - component: {fileID: 2614406621751112756}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (84)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59564,7 +59892,7 @@ GameObject:
   - component: {fileID: 3215395459816766528}
   - component: {fileID: 1895648212180114838}
   - component: {fileID: 8493097654992724931}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (50)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59666,7 +59994,7 @@ GameObject:
   - component: {fileID: 144477398264158658}
   - component: {fileID: 6448186270483536055}
   - component: {fileID: 720389143165168442}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59737,7 +60065,7 @@ GameObject:
   - component: {fileID: 3691590058703906732}
   - component: {fileID: 9123492375052982870}
   - component: {fileID: 2638247611689649876}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SupBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59757,7 +60085,7 @@ GameObject:
   - component: {fileID: 1631088591446784969}
   - component: {fileID: 795462582268352716}
   - component: {fileID: 5209802512337619886}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59922,7 +60250,7 @@ GameObject:
   - component: {fileID: 6669295028724773685}
   - component: {fileID: 8335574799119289809}
   - component: {fileID: 6399688833713426935}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60105,7 +60433,7 @@ GameObject:
   - component: {fileID: 134096729611323657}
   - component: {fileID: 5942735183115798145}
   - component: {fileID: 2102128378473737831}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60121,7 +60449,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1876764199212174658}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Etc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60141,7 +60469,7 @@ GameObject:
   - component: {fileID: 8245853775290496980}
   - component: {fileID: 6526380516114220992}
   - component: {fileID: 551618826490066756}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60172,13 +60500,41 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 632680850320163483}
-  m_Layer: 0
+  - component: {fileID: 8166772979415437162}
+  m_Layer: 8
   m_Name: 2ndRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!54 &8166772979415437162
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8166772979415437161}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!23 &8167511433168621476
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -60356,7 +60712,7 @@ GameObject:
   - component: {fileID: 6711483356460914355}
   - component: {fileID: 8552794950226284938}
   - component: {fileID: 5642589074065526524}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (98)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60544,7 +60900,7 @@ GameObject:
   - component: {fileID: 4812400042250423725}
   - component: {fileID: 4457376544493587540}
   - component: {fileID: 1645764322749329129}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (109)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60585,7 +60941,7 @@ GameObject:
   - component: {fileID: 5116054595937108326}
   - component: {fileID: 7325061239746239906}
   - component: {fileID: 8884585736391724030}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall5 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60728,7 +61084,7 @@ GameObject:
   - component: {fileID: 5911313201641931373}
   - component: {fileID: 2874148955055792338}
   - component: {fileID: 8223024561665260436}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60822,7 +61178,7 @@ GameObject:
   - component: {fileID: 141171070949272964}
   - component: {fileID: 7514657066359274555}
   - component: {fileID: 8373959373067298548}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60950,7 +61306,7 @@ GameObject:
   - component: {fileID: 6422812131341660318}
   - component: {fileID: 7784893241251525398}
   - component: {fileID: 2991478147902377213}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Prop_WaterCooler_Tank_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61153,7 +61509,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4433747696131033147}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61217,7 +61573,7 @@ GameObject:
   - component: {fileID: 5675088485626777636}
   - component: {fileID: 40014914524064194}
   - component: {fileID: 1142767554428401409}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TV_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61354,7 +61710,7 @@ GameObject:
   - component: {fileID: 2149313178219336575}
   - component: {fileID: 6185224550313467266}
   - component: {fileID: 8324594937511738380}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61389,7 +61745,7 @@ GameObject:
   - component: {fileID: 2673423069974954127}
   - component: {fileID: 3584967784474054470}
   - component: {fileID: 1620491086363073379}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61538,7 +61894,7 @@ GameObject:
   - component: {fileID: 2033410353500683665}
   - component: {fileID: 2811668893662703875}
   - component: {fileID: 1445922357415429363}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61636,7 +61992,7 @@ GameObject:
   - component: {fileID: 5204845656215395729}
   - component: {fileID: 2371033929041116976}
   - component: {fileID: 23797848857534815}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62050,7 +62406,7 @@ GameObject:
   - component: {fileID: 8793045210974377637}
   - component: {fileID: 600765131445015050}
   - component: {fileID: 4510745482560593091}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62218,7 +62574,7 @@ GameObject:
   - component: {fileID: 4194516870183287496}
   - component: {fileID: 8184553071372874989}
   - component: {fileID: 8498473839288717047}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (45)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62238,7 +62594,7 @@ GameObject:
   - component: {fileID: 7732603011459405459}
   - component: {fileID: 6485621599112687806}
   - component: {fileID: 4332882023215585202}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62487,13 +62843,41 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6375432706267161319}
-  m_Layer: 0
+  - component: {fileID: 8604349620290996119}
+  m_Layer: 8
   m_Name: 1stRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!54 &8604349620290996119
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8604349620290996118}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!33 &8607280313455181527
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -62620,7 +63004,7 @@ GameObject:
   - component: {fileID: 4792388951037147718}
   - component: {fileID: 7953929691861612622}
   - component: {fileID: 8500858053312451464}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62636,7 +63020,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5180378904819179829}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Etc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62652,7 +63036,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 151041867700067628}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PC (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62680,7 +63064,7 @@ GameObject:
   - component: {fileID: 5825791508968942028}
   - component: {fileID: 4534713879572727}
   - component: {fileID: 270679775655380730}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62724,7 +63108,7 @@ GameObject:
   - component: {fileID: 5601032653114332946}
   - component: {fileID: 3953644075084735617}
   - component: {fileID: 2056072307356664015}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63035,6 +63419,33 @@ Transform:
   - {fileID: 4411758178150251222}
   m_Father: {fileID: 8945785590030942025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &8700012812155629911
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913140717059869101}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!33 &8702339387529754224
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -63056,7 +63467,7 @@ GameObject:
   - component: {fileID: 6959196245678154815}
   - component: {fileID: 3351499172005203661}
   - component: {fileID: 3420055746372118846}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63076,7 +63487,7 @@ GameObject:
   - component: {fileID: 7402565449742116662}
   - component: {fileID: 2459389613448997825}
   - component: {fileID: 1008060401629939873}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63171,7 +63582,7 @@ GameObject:
   - component: {fileID: 5817533026812999156}
   - component: {fileID: 6676821598993634462}
   - component: {fileID: 295301422856675107}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (66)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63227,7 +63638,7 @@ GameObject:
   - component: {fileID: 3915213311565217414}
   - component: {fileID: 6783150347503030588}
   - component: {fileID: 3727084446874695332}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63579,7 +63990,7 @@ GameObject:
   - component: {fileID: 8174265156642305170}
   - component: {fileID: 7805625265531806099}
   - component: {fileID: 487082267633467974}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (89)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63607,7 +64018,7 @@ GameObject:
   - component: {fileID: 2681213786524582007}
   - component: {fileID: 536513306368297313}
   - component: {fileID: 4237446533903224424}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63762,7 +64173,7 @@ GameObject:
   - component: {fileID: 3644883752015108054}
   - component: {fileID: 8437704057981460546}
   - component: {fileID: 2018537952305534774}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (80)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63902,7 +64313,7 @@ GameObject:
   - component: {fileID: 326745800955744420}
   - component: {fileID: 2523836264841615391}
   - component: {fileID: 558882525951641803}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64074,7 +64485,7 @@ GameObject:
   - component: {fileID: 7935117138993510582}
   - component: {fileID: 1662073702789947015}
   - component: {fileID: 5965767324928674996}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64311,7 +64722,7 @@ GameObject:
   - component: {fileID: 205809859518792058}
   - component: {fileID: 7904840048541836976}
   - component: {fileID: 6948075729897866467}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64347,7 +64758,7 @@ GameObject:
   - component: {fileID: 7316993312325675497}
   - component: {fileID: 1481021471662353906}
   - component: {fileID: 4389690256146458357}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64546,7 +64957,7 @@ GameObject:
   - component: {fileID: 647221969697326486}
   - component: {fileID: 4877215608039516426}
   - component: {fileID: 5847216679591210117}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64597,7 +65008,7 @@ GameObject:
   - component: {fileID: 4041916694070008911}
   - component: {fileID: 8496357190183878725}
   - component: {fileID: 794182445535503399}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64617,7 +65028,7 @@ GameObject:
   - component: {fileID: 8175067609390874105}
   - component: {fileID: 1449090899488302262}
   - component: {fileID: 8916935811314188174}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64760,7 +65171,7 @@ GameObject:
   - component: {fileID: 8992484956163977067}
   - component: {fileID: 2780420394139935310}
   - component: {fileID: 2256965263349322961}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabinet2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64908,7 +65319,7 @@ GameObject:
   - component: {fileID: 4778955723570052476}
   - component: {fileID: 6287530421117916444}
   - component: {fileID: 7035389041326392718}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (46)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64924,7 +65335,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7224127253551288372}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64942,7 +65353,7 @@ GameObject:
   - component: {fileID: 3593583618048804633}
   - component: {fileID: 8773277599168444093}
   - component: {fileID: 1174624868653463339}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Prop_WaterCooler_Tank_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64967,6 +65378,33 @@ Transform:
   - {fileID: 4924459067158562697}
   m_Father: {fileID: 8945785590030942025}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+--- !u!54 &8978182111907511646
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2195996831043369396}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &8982832952700337557
 GameObject:
   m_ObjectHideFlags: 0
@@ -64980,7 +65418,7 @@ GameObject:
   - component: {fileID: 1144490185127564655}
   - component: {fileID: 5357301700643633280}
   - component: {fileID: 7697747016634969133}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (58)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65652,7 +66090,7 @@ GameObject:
   - component: {fileID: 8885288670128473693}
   - component: {fileID: 3957880619584540340}
   - component: {fileID: 7344752577395728981}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Prop_WaterCooler_Tank_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65892,7 +66330,7 @@ GameObject:
   - component: {fileID: 8998295002509451128}
   - component: {fileID: 2144392546234960120}
   - component: {fileID: 3758047241717011146}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65981,7 +66419,7 @@ GameObject:
   - component: {fileID: 8557746124004552}
   - component: {fileID: 3887905363781883215}
   - component: {fileID: 7160558614324146229}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65997,7 +66435,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2950698242959841237}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PC (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66129,13 +66567,41 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6090714729240206167}
-  m_Layer: 0
+  - component: {fileID: 9199457683797239244}
+  m_Layer: 8
   m_Name: 5thRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!54 &9199457683797239244
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9199457683797239243}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &9200552537606355345
 GameObject:
   m_ObjectHideFlags: 0
@@ -66148,7 +66614,7 @@ GameObject:
   - component: {fileID: 8715477973737018145}
   - component: {fileID: 2983484540931782153}
   - component: {fileID: 6575720541290863097}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66383,7 +66849,6 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 210211369}
   - {fileID: 8945785590030942025}
-  - {fileID: 1371665241}
   - {fileID: 261264719}
   - {fileID: 1027693132}
   - {fileID: 581846825}
@@ -66398,3 +66863,4 @@ SceneRoots:
   - {fileID: 1793164137}
   - {fileID: 537628223}
   - {fileID: 776064104}
+  - {fileID: 232950804}
