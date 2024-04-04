@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 public class Enemy : MonoBehaviour
 {
@@ -8,10 +9,9 @@ public class Enemy : MonoBehaviour
     int m_currentDestinationIndex = 0;
     Transform m_player;
     bool m_followingPlayer = false;
+    public int dLevel=0;
 
-    // 적 캐릭터의 시야각과 시야 거리
-    public float viewAngle = 1190f;
-    public float viewDistance = 1110f;
+    public event Action<Player> PlayerSpotted; // 플레이어 발견 시 이벤트
 
     // 체력 관련 변수
     [SerializeField] private int maxHealth = 100;
@@ -31,12 +31,20 @@ public class Enemy : MonoBehaviour
     {
         if (CanSeePlayer())
         {
-            m_followingPlayer = true;
-            m_enemy.SetDestination(m_player.position);
+            if (!m_followingPlayer)
+            {
+                m_followingPlayer = true;
+                m_enemy.SetDestination(m_player.position);
+
+                // 플레이어를 발견했을 때 이벤트 발생
+                PlayerSpotted?.Invoke(m_player.GetComponent<Player>());
+                Debug.Log("11");
+            }
         }
         else
         {
             m_followingPlayer = false;
+            Debug.Log("22");
             if (!m_enemy.pathPending && m_enemy.remainingDistance < 0.5f)
             {
                 SetNextDestination();
@@ -49,8 +57,18 @@ public class Enemy : MonoBehaviour
         if (!m_followingPlayer && customDestinations.Length > 0)
         {
             m_enemy.isStopped = false;
-            m_enemy.SetDestination(customDestinations[m_currentDestinationIndex]);
-            m_currentDestinationIndex = (m_currentDestinationIndex + 1) % customDestinations.Length;
+
+            if (dLevel == 2 || dLevel == 3)
+            {
+                // 레벨 2 또는 레벨 3인 경우 추가 동작 수행
+                // 예를 들어, 특정 좌표로 이동하도록 설정할 수 있습니다.
+            }
+            else
+            {
+                // 기본적인 목적지 설정
+                m_enemy.SetDestination(customDestinations[m_currentDestinationIndex]);
+                m_currentDestinationIndex = (m_currentDestinationIndex + 1) % customDestinations.Length;
+            }
         }
     }
 
@@ -60,14 +78,11 @@ public class Enemy : MonoBehaviour
             return false;
 
         Vector3 directionToPlayer = m_player.position - transform.position;
-        if (Vector3.Angle(transform.forward, directionToPlayer) < viewAngle / 2f)
+        if (Physics.Raycast(transform.position, directionToPlayer, out RaycastHit hit, Mathf.Infinity))
         {
-            if (Physics.Raycast(transform.position, directionToPlayer, out RaycastHit hit, viewDistance))
+            if (hit.collider.CompareTag("Player"))
             {
-                if (hit.collider.CompareTag("Player"))
-                {
-                    return true;
-                }
+                return true;
             }
         }
 
