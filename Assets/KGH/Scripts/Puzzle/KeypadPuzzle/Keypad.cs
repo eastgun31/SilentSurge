@@ -16,34 +16,40 @@ public class Keypad : MonoBehaviour
 
     private void Update()
     {
-        
+        UiManager.instance.TimeRemainig();
     }
-    public void Number(int number)
+    public void Number(int number) 
     {
-        if (answerInput.text.Length < maxNum) 
+        if (UiManager.instance.isWin == false ||  
+            !answerInput.text.Equals(pw, System.StringComparison.OrdinalIgnoreCase)) // 퍼즐 성공 또는 입력 숫자가 정답과 아닐때만 입력 가능
         {
-            answerInput.text += number.ToString();
+            if (answerInput.text.Length < maxNum) // 정답의 길이보다 작을때만 
+            {
+                answerInput.text += number.ToString();
+            }
         }
     }
 
     public void Enter()
     {
-        if(answerInput.text.Equals(pw, System.StringComparison.OrdinalIgnoreCase))
+        if(answerInput.text.Equals(pw, System.StringComparison.OrdinalIgnoreCase)) // 입력값과 정답이 같으면
         {
-            answerInput.text = "CORRECT";
-            Invoke("CloseKeypad", 2f);
+            answerInput.text = "CORRECT";     // 정답
+            UiManager.instance.isWin = true;
+            Invoke("Closed", 2f);
         }
         else
         {
-            answerInput.text = "INCORRECT";
+            answerInput.text = "INCORRECT";  // 오답
             Invoke("ResetAns", 1f);
         }
     }
     public void BackSpace()
     {
-        if (answerInput.text.Length > 0)
+        if (UiManager.instance.isWin == false)
         {
-            answerInput.text = answerInput.text.Substring(0, answerInput.text.Length - 1);
+            if (answerInput.text.Length > 0)
+                answerInput.text = answerInput.text.Substring(0, answerInput.text.Length - 1);
         }
     }
 
@@ -52,8 +58,8 @@ public class Keypad : MonoBehaviour
         answerInput.text = "";
     }
 
-    public void CloseKeypad()
+    public void Closed()
     {
-        keypad.SetActive(false);
+        UiManager.instance.CloseKeypadFst();
     }
 }

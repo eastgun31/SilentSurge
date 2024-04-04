@@ -69,7 +69,10 @@ public class SinPuzzle : MonoBehaviour
     {
         if (amplitude == 100 && 0.004f == frequency)
         {
-            StartCoroutine(WinCheck());
+            //StartCoroutine(WinCheck());
+            Debug.Log("success");
+            UiManager.instance.isWin = true;
+            Invoke("CloseSin", 2f);
         }
     }
     private bool IsWining()
@@ -82,12 +85,12 @@ public class SinPuzzle : MonoBehaviour
         UiManager.instance.CloseSinFst();
     }
 
-    private IEnumerator WinCheck()
-    {
-        yield return new WaitForSeconds(1.5f);
-
-        Debug.Log("success");
-        UiManager.instance.isWin = true;
-        Invoke("CloseSin", 2f);
-    }
+    //private IEnumerator WinCheck() 
+    //{
+    //    yield return new WaitForSeconds(1.5f);
+        
+    //    Debug.Log("success");
+    //    UiManager.instance.isWin = true;
+    //    Invoke("CloseSin", 2f);
+    //}
 }

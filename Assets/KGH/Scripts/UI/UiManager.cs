@@ -6,20 +6,17 @@ using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {
     private static UiManager Ui_instance;
-
-    public static UiManager instance {  get { return Ui_instance; } }
-
-    // public GameObject pauseWin;
+    public static UiManager instance { get { return Ui_instance; } }
 
     public GameObject missionTime;
     public Text success;
-    private float timeRemainig = 15f;
+    public float timeRemainig = 15f;
     public bool isWin = false;
 
     public GameObject pipePuzFst;
     public GameObject pipePuzSec;
 
-    public GameObject keypad;
+    public GameObject keypadFst;
 
     public GameObject sinPuzzleFst;
 
@@ -32,7 +29,7 @@ public class UiManager : MonoBehaviour
             Ui_instance = this;
     }
 
-    public void TimeRemainig()
+    public void TimeRemainig() // 퍼즐 제한시간
     {
         if (!isWin)
         {
@@ -48,7 +45,15 @@ public class UiManager : MonoBehaviour
             }
         }
         else
+        {
             success.text = "SUCCESS";
+            Invoke("ResetTime", 2f);
+        }
+    }
+    private void ResetTime()
+    {
+        timeRemainig = 15f;
+        isWin = false; 
     }
     public void ActivePipeFst()
     {
@@ -60,8 +65,12 @@ public class UiManager : MonoBehaviour
         pipePuzFst.SetActive(false);
         missionTime.SetActive(false);
     }
-
-        public void ActivePipeSec()
+    public void ClosePipeSec()
+    {
+        pipePuzSec.SetActive(false);
+        missionTime.SetActive(false);
+    }
+    public void ActivePipeSec()
     {
         pipePuzSec.SetActive(true);
         missionTime.SetActive(true);
@@ -69,7 +78,8 @@ public class UiManager : MonoBehaviour
    
     public void ActiveKeypad()
     {
-        keypad.SetActive(true);
+        keypadFst.SetActive(true);
+        missionTime.SetActive(true);
     }
     public void ActiveSinFst()
     {
@@ -79,6 +89,11 @@ public class UiManager : MonoBehaviour
     public void CloseSinFst()
     {
         sinPuzzleFst.SetActive(false);
+        missionTime.SetActive(false);
+    }
+    public void CloseKeypadFst() 
+    {
+        keypadFst.SetActive(false);
         missionTime.SetActive(false);
     }
 }

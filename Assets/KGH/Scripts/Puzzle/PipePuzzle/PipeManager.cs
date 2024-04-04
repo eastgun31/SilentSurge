@@ -31,6 +31,7 @@ public class PipeManager : MonoBehaviour
     {
         UiManager.instance.TimeRemainig();
     }
+
     public void CorrectMove()
     {
         correctPipes += 1;
@@ -42,7 +43,6 @@ public class PipeManager : MonoBehaviour
             Debug.Log("Win");
             UiManager.instance.isWin = true;
             Invoke("ClosePipe", 2f);
-            
         }
     }
 
@@ -54,5 +54,6 @@ public class PipeManager : MonoBehaviour
     public void ClosePipe()
     {
         UiManager.instance.ClosePipeFst();
+        UiManager.instance.ClosePipeSec();
     }
 }
