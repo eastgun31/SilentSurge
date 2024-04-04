@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public bool isOpen = false;
+    public float openangle = 90f;
+    public float smooth = 3f;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if(isOpen&&tag=="oh")
+        {
+            Quaternion targetRotation = Quaternion.Euler(0, +openangle, 0);
+            transform.localRotation= Quaternion.Slerp(transform.localRotation, targetRotation, smooth*Time.deltaTime);
+        }
+        if(isOpen&&tag=="ih")
+        {
+            Quaternion targetRotation = Quaternion.Euler(0, -openangle, 0);
+            transform.localRotation= Quaternion.Slerp(transform.localRotation, targetRotation, smooth*Time.deltaTime);
+        }
+    }
+
+    public void DoorState()
+    {
+        isOpen = !isOpen;
     }
 }

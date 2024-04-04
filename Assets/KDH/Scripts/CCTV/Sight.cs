@@ -20,7 +20,6 @@ public class Sight : MonoBehaviour
 
     public Collider isColP;
 
-
     public Transform visibleT;
 
     public RaycastHit hitR;
@@ -95,13 +94,14 @@ public class Sight : MonoBehaviour
                     if (!Physics.Raycast(transform.position, dirT, disT, etcM))
                     {
                         detectTarget = visibleT;
-                        
-                        
-                            //eLv.LvStep = EnemyLevel.ELevel.level2;
-                        
-                                               
-                            //eLv.LvStep = EnemyLevel.ELevel.level3;
-                        
+                        if(angle < disT)        // 
+                        {
+
+                        }
+                        if(angle > disT)        // 
+                        {
+
+                        }
                     }
                     if (this.tag == "Enemy")    // 적이 플레이어 감지 후 조건에 부합할 경우 탐지단계 상승
                     {

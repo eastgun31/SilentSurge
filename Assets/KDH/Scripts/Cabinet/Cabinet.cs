@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Cabinet : MonoBehaviour
 {
-    public Player playerState;
 
     void Update()
     {
@@ -13,9 +12,6 @@ public class Cabinet : MonoBehaviour
 
     void HideOnCabinet()
     {
-        if (playerState.state == Player.PlayerState.idle)
-            playerState.state = Player.PlayerState.hide;
-        else
-            playerState.state = Player.PlayerState.idle;
+
     }
 }
