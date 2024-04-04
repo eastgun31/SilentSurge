@@ -6,9 +6,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public enum PlayerState //경계레벨 상태머신
+    {
+        idle, hide, puzzling
+    }
+
+    public PlayerState state;
+
     [SerializeField]
     private float playerspeed = 10f;
-
     [SerializeField]
     private bool handgunacivate = false;
     [SerializeField]
@@ -17,7 +23,6 @@ public class Player : MonoBehaviour
     private bool flashbangacivate = false;
     [SerializeField]
     private bool heartseeacivate = false;
-
     [SerializeField]
     public bool[] itemGet = new bool[5];
 
@@ -27,21 +32,27 @@ public class Player : MonoBehaviour
 
     public GameObject handGunModel;
     public GameObject bulletPrefab;
+    public GameObject footSound;
 
     Animator playerAnim;
     string walk = "Walk";
     string handgunMode = "HandGun";
     string throwcoin = "ThrowCoin";
+    string throwflashbang = "ThrowFlashBang";
+    string run = "Runing";
+    string gunrun = "GunRuning";
 
     float rotDeg;
     Rigidbody rigid;
     Camera cam;
+    Vector3 pos;
     Vector3 mousePos;
     Vector3 velocity;
     bool itemActivate = false;
 
     void Start()
     {
+        state = PlayerState.idle;
         useItem = GetComponent<UseItem>();
         rigid = transform.GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
@@ -50,54 +61,93 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        mousePos = cam.ScreenToWorldPoint(new Vector3
-            (Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.y));
-        transform.LookAt(mousePos + Vector3.up * transform.position.y);
+        if (state == PlayerState.idle)
+            PlayerControll();
+        else
+            return;
+    }
+
+    void PlayerControll()
+    {
+        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        float zDeg = mousePos.z - rigid.position.z;
+        float xDeg = mousePos.x - rigid.position.x;
+        rotDeg = -(Mathf.Rad2Deg * Mathf.Atan2(zDeg, xDeg) - 90);
+        rigid.MoveRotation(Quaternion.Euler(0, rotDeg, 0));
+
+        //mousePos = cam.ScreenToWorldPoint(new Vector3
+        //    (Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.y));
+        //transform.LookAt(mousePos + Vector3.up * transform.position.y);
 
         velocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized * playerspeed;
-        rigid.MovePosition(rigid.position + velocity * Time.fixedDeltaTime);
+        rigid.MovePosition(rigid.position + velocity * Time.deltaTime);
 
         playerAnim.SetFloat(walk, velocity.magnitude);
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            footSound.SetActive(true);
+            playerspeed = 20;
+            if (handgunacivate)
+                playerAnim.SetBool(gunrun, true);
+            else
+                playerAnim.SetBool(run, true);
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            footSound.SetActive(false);
+            playerspeed = 10;
+            if (handgunacivate)
+                playerAnim.SetBool(gunrun, false);
+            else
+                playerAnim.SetBool(run, false);
+        }
+            
 
         if (itemGet[0])
         {
             ItemActivate1();
-            if(handgunacivate && !coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
+            if (handgunacivate && !coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
             {
                 useItem.GunFire(mousePos);
             }
         }
-        if(itemGet[1])
+        if (itemGet[1])
         {
             ItemActivate2();
-            if(!handgunacivate && coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
+            if (coinacivate)
             {
-                useItem.ThrowCoin();
+                useItem.ThrowPosition(coinacivate, flashbangacivate);
+            }
+
+            if (!handgunacivate && coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
+            {
                 playerAnim.SetTrigger(throwcoin);
+                StartCoroutine(useItem.ThrowCoin());
             }
         }
-        if(itemGet[2])
+        if (itemGet[2])
         {
             ItemActivate3();
-            if(!handgunacivate && !coinacivate && flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
+            if (flashbangacivate)
             {
+                useItem.ThrowPosition(coinacivate, flashbangacivate);
+            }
+
+            if (!handgunacivate && !coinacivate && flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
+            {
+                playerAnim.SetTrigger(throwflashbang);
+                StartCoroutine(useItem.ThrowFlashBang());
             }
         }
-        if(itemGet[3])
+        if (itemGet[3])
         {
             ItemActivate4();
-            if(!handgunacivate && !coinacivate && !flashbangacivate && heartseeacivate && Input.GetMouseButtonDown(0))
+            if (!handgunacivate && !coinacivate && !flashbangacivate && heartseeacivate && Input.GetMouseButtonDown(0))
             {
+                StartCoroutine(useItem.HeartSee());
             }
         }
-
-
-        //Vector3 mousePos = Input.mousePosition;
-        //mousePos = cam.ScreenToWorldPoint(mousePos);
-        //float zDeg = mousePos.z - rigid.position.z;
-        //float xDeg = mousePos.x - rigid.position.x;
-        //rotDeg = -(Mathf.Rad2Deg * Mathf.Atan2(zDeg, xDeg)- 90);
-        //rigid.MoveRotation(Quaternion.Euler(0, rotDeg, 0));
     }
 
     void ItemActivate1()
@@ -111,12 +161,15 @@ public class Player : MonoBehaviour
             coinacivate = false;
             flashbangacivate = false;
             heartseeacivate = false;
+            useItem.ErageDraw();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha1) && handgunacivate)
         {
+            playerAnim.SetBool(handgunMode, false);
             handGunModel.SetActive(false);
             handgunacivate = false;
             Debug.Log("권총 비활성화");
+            handGunModel.SetActive(false);
         }
     }
     void ItemActivate2()
@@ -135,6 +188,7 @@ public class Player : MonoBehaviour
         {
             coinacivate = false;
             Debug.Log("코인 비활성화");
+            useItem.ErageDraw();
         }
     }
     void ItemActivate3()
@@ -153,6 +207,7 @@ public class Player : MonoBehaviour
         {
             flashbangacivate = false;
             Debug.Log("섬광탄 비활성화");
+            useItem.ErageDraw();
         }
     }
     void ItemActivate4()
@@ -166,6 +221,7 @@ public class Player : MonoBehaviour
             handgunacivate = false;
             coinacivate = false;
             flashbangacivate = false;
+            useItem.ErageDraw();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4) && heartseeacivate)
         {
@@ -174,33 +230,32 @@ public class Player : MonoBehaviour
         }
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Item"))
         {
             item = other.GetComponent<IItem>();
+
+            switch(item.value)
+            {
+                case 1:
+                    item.GetItem();
+                    itemGet[0] = true;
+                    break;
+                case 2:
+                    item.GetItem();
+                    itemGet[1] = true;
+                    break;
+                case 3:
+                    item.GetItem();
+                    itemGet[2] = true;
+                    break;
+                case 4:
+                    item.GetItem();
+                    itemGet[3] = true;
+                    break;
+            }
+            Destroy(other.gameObject);
         }
-        
-        switch(item.value)
-        {
-            case 1:
-                item.GetItem();
-                itemGet[0] = true;
-                break;
-            case 2:
-                item.GetItem();
-                itemGet[1] = true;
-                break;
-            case 3:
-                item.GetItem();
-                itemGet[2] = true;
-                break;
-            case 4:
-                item.GetItem();
-                itemGet[3] = true;
-                break;
-        }
-        Destroy(other.gameObject);
     }
 }
