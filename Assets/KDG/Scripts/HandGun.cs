@@ -12,14 +12,14 @@ public class HandGun : MonoBehaviour, IItem
     public int value {  get; set; }
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
+    Item itemvalues = new Item();
 
     Player player;
     
-
     void Start()
     {
         value = 1;
-        
+        itemvalues.count = 6;
     }
 
     public void GetItem()
@@ -31,6 +31,6 @@ public class HandGun : MonoBehaviour, IItem
     }
     public void ItemCharge()
     {
-
+        GameManager.instance.itemcount[0] = itemvalues.count;
     }
 }
