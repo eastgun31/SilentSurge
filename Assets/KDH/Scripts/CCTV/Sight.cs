@@ -11,6 +11,7 @@ public class Sight : MonoBehaviour
     public float angle;
 
     public bool detectC = true;
+    public bool findT;
 
     Mesh viewMesh;
     public float meshResult;
@@ -23,9 +24,13 @@ public class Sight : MonoBehaviour
     public Transform visibleT;
 
     public RaycastHit hitR;
-    
+
+    Enemy enemy;
+
     public CCTVMovement cctv;
-    public Enemy enemy;
+    
+    public Vector3 playerpos;
+    public Vector3 dir_T;
 
     public int edgeResolveIterations;
     public float edgeDstThreshold;
@@ -57,6 +62,7 @@ public class Sight : MonoBehaviour
 
     void Start()
     {
+        GetComponent<Enemy>();
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
         meshFilter.mesh = viewMesh;
@@ -82,15 +88,17 @@ public class Sight : MonoBehaviour
         Collider[] targets = Physics.OverlapSphere(transform.position, radius, playerM);  // radius(반지름) 내 원 영역의 playerM 콜라이더를 가져옴 
         for (int i = 0; i < targets.Length; i++)
         {
-            Transform detectTarget = targets[i].transform; 
-            Vector3 dirT = (detectTarget.position - transform.position).normalized;             // 타겟 위치 - cctv 위치 (정규화) = 타겟의 방향
-            if (Vector3.Angle(transform.forward, dirT) < angle / 2)                                        // cctv의 정면과 타겟의 방향이 이루는 각도가 설정한 변수보다 작다면(안이라면)
+            Transform detectTarget = targets[i].transform;
+            dir_T = (detectTarget.position - transform.position).normalized;             // 타겟 위치 - cctv 위치 (정규화) = 타겟의 방향
+            if (Vector3.Angle(transform.forward, dir_T) < angle / 2)                                        // cctv의 정면과 타겟의 방향이 이루는 각도가 설정한 변수보다 작다면(안이라면)
             {
                 float disT = Vector3.Distance(transform.position, detectTarget.position);       // cctv 위치 -> 타겟 위치 = 타겟의 거리
                 foreach (Collider col in targets)
                 {
-                    if (!Physics.Raycast(transform.position, dirT, disT, etcM))                             // 타겟으로 가는 raycast에 장애물이 없다면
+                    if (!Physics.Raycast(transform.position, dir_T, disT, etcM))                             // 타겟으로 가는 raycast에 장애물이 없다면
                     {
+                        playerpos = dir_T;
+                        findT = true;
                         detectTarget = visibleT;                                                                            //  detectTarget 은 플레이어
                         if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
                         {
@@ -132,6 +140,12 @@ public class Sight : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                findT = false;
+                playerpos = Vector3.zero;
+            }
+
         }
     }
 

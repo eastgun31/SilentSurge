@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class test1 : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject pipePuzzle1;
 
-    // Update is called once per frame
-    void Update()
+    public void PipePuzzle1()
     {
+        if (GameManager.instance.puzzleLevel == 1)
+        {
+            pipePuzzle1.SetActive(true);
+        }
+        else
+            return;
         
     }
 }

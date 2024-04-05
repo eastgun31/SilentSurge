@@ -1267,7 +1267,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1541,7 +1541,7 @@ GameObject:
   - component: {fileID: 2958423925111557212}
   - component: {fileID: 255918103661452812}
   - component: {fileID: 5994093384746354224}
-  - component: {fileID: 2581651013074744238}
+  - component: {fileID: 6435209353130638713}
   - component: {fileID: 1618481229594973924}
   - component: {fileID: 7276063786173007773}
   - component: {fileID: 3358342213177724985}
@@ -1612,6 +1612,7 @@ MonoBehaviour:
   coinacivate: 0
   flashbangacivate: 0
   heartseeacivate: 0
+  armor: 0
   itemGet: 0000000000
   useItem: {fileID: 0}
   handGunModel: {fileID: 7307466661591981286}
@@ -1641,7 +1642,7 @@ MonoBehaviour:
   mat2:
   - {fileID: 2100000, guid: 2ae0ae06f51ca1942866b3804bad4478, type: 2}
   throwpower: 1
---- !u!114 &2581651013074744238
+--- !u!114 &6435209353130638713
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1653,6 +1654,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec34aebf9b4577499c290c6bad4f49a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playpuzzle:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: test1, Assembly-CSharp
+        m_MethodName: PipePuzzle1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: test2, Assembly-CSharp
+        m_MethodName: Keypad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!54 &1618481229594973924
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1676,10 +1704,10 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
+  m_IsKinematic: 0
+  m_Interpolate: 2
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &7276063786173007773
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1700,7 +1728,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.23
-  m_Height: 1.16
+  m_Height: 1.73
   m_Direction: 1
   m_Center: {x: 0, y: 0.93, z: 0}
 --- !u!120 &3358342213177724985
