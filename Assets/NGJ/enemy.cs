@@ -11,31 +11,35 @@ public class Enemy : MonoBehaviour
     bool m_followingPlayer = false; // 이 변수는 적 캐릭터가 플레이어를 추적 중인지 여부를 나타냅니다.
     int dLevel = 1;
 
-    public float stoppingDistance = 2f; // 적이 멈출 거리
+    [SerializeField] private float stoppingDistance = 2f; // 적이 멈출 거리
 
     public event Action<Player> PlayerSpotted; // 플레이어 발견 시 이벤트
 
     // 체력 관련 변수
     [SerializeField] private int maxHealth = 100;
-
-    
-
     private int currentHealth;
+
+    [SerializeField] private float listenRadius = 10f; // 듣는 범위
+
+    AudioSource audioSource; // 사운드를 듣는 역할을 할 오디오 소스
 
     void Start()
     {
         m_enemy = GetComponent<NavMeshAgent>();
         m_enemy.stoppingDistance = stoppingDistance; // 적의 멈출 거리 설정
+        m_enemy.avoidancePriority = 50; // 벽을 피하기 위한 우선순위 설정
         m_player = GameObject.FindGameObjectWithTag("Player").transform;
         SetNextDestination();
 
         // 초기 체력 설정
         currentHealth = maxHealth;
+
+      
     }
 
     void Update()
     {
-        if (CanSeePlayer())
+        if (CanHearPlayerSound())
         {
             if (!m_followingPlayer)
             {
@@ -44,14 +48,13 @@ public class Enemy : MonoBehaviour
 
                 // 플레이어를 발견했을 때 이벤트 발생
                 PlayerSpotted?.Invoke(m_player.GetComponent<Player>());
-            
             }
         }
         else
         {
             m_followingPlayer = false;
 
-            if (!m_enemy.pathPending && m_enemy.remainingDistance < 0.5f)
+            if (!m_enemy.pathPending && m_enemy.remainingDistance < stoppingDistance)
             {
                 SetNextDestination();
             }
@@ -64,12 +67,7 @@ public class Enemy : MonoBehaviour
         {
             m_enemy.isStopped = false;
 
-            //if (dLevel == 2 || dLevel == 3)
-            //{
-            //    // 레벨 2 또는 레벨 3인 경우 추가 동작 수행
-            //    // 예를 들어, 특정 좌표로 이동하도록 설정할 수 있습니다.
-            //}
-           if (dLevel == 1)
+            if (dLevel == 1)
             {
                 // 기본적인 목적지 설정
                 m_enemy.SetDestination(customDestinations[m_currentDestinationIndex]);
@@ -78,18 +76,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    bool CanSeePlayer() // 적 캐릭터가 플레이어를 시야에 볼 수 있는지 여부를 판단하고 반환.
+    bool CanHearPlayerSound() // 적 캐릭터가 플레이어의 소리를 들을 수 있는지 여부를 판단하고 반환.
     {
         if (m_player == null)
             return false;
 
-        Vector3 directionToPlayer = m_player.position - transform.position; // 플레이어와 적 사이의 방향을 계산
-        if (Physics.Raycast(transform.position, directionToPlayer, out RaycastHit hit, Mathf.Infinity)) // 적과 플레이어 사이의 장애물 여부를 확인
+        float distanceToPlayer = Vector3.Distance(transform.position, m_player.position); // 적과 플레이어 사이의 거리 계산
+        if (distanceToPlayer <= listenRadius && audioSource.isPlaying)
         {
-            if (hit.collider.CompareTag("Player"))
-            {
-                return true;
-            }
+            return true;
         }
 
         return false;

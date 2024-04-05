@@ -3,29 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using ItemInfo;
 
-public class FlashBang : MonoBehaviour, IItem
+public class Armor : MonoBehaviour, IItem
 {
     public int value { get; set; }
     Item itemvalues = new Item();
 
-    Player player;
-
     void Start()
     {
+        value = 5;
         itemvalues.count = 3;
-        value = 3;
     }
-
 
     public void GetItem()
     {
-        Debug.Log("º∂±§≈∫»πµÊ");
-        GameManager.instance.itemcheck[2] = true;
+        Debug.Log("πÊ≈∫∫π»πµÊ");
+        GameManager.instance.itemcheck[4] = true;
         //player = gameObject.GetComponent<Player>();
-        //player.itemGet[2] = true;
+        //player.itemGet[0] = true;
     }
     public void ItemCharge()
     {
-        GameManager.instance.itemcount[2] = itemvalues.count;
+        GameManager.instance.itemcount[4] = itemvalues.count;
     }
 }

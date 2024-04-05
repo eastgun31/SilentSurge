@@ -6,8 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public bool[] itemcheck = new bool[5];
-
+    public bool[] itemcheck;
+    public int[] itemcount;
+    public int puzzleLevel = 1;
+    public bool canUse = true;
 
     public void Awake()
     {
@@ -16,6 +18,9 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         else
             instance = this;
+
+        itemcheck = new bool[5] { false, false, false, false, false };
+        itemcount = new int[5] { 0, 0, 0, 0, 0 };   //±ÇÃÑ, ÄÚÀÎ, ¼¶±¤Åº, ½É¹ÚÃøÁ¤±â, ¹æÅºº¹
     }
 
 }
