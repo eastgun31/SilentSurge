@@ -19,28 +19,13 @@ public class PlayerInteractive : MonoBehaviour
             return;
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag(interactiveList[0]) && Input.GetKeyDown(KeyCode.Space))
-        {
-            other.transform.GetComponent<DoorHandle>().Doorsetting();
-        }
-        else if (other.CompareTag(interactiveList[1]) && Input.GetKeyDown(KeyCode.Space))
-        {
-
-        }
-        else if (other.CompareTag(interactiveList[2]) && Input.GetKeyDown(KeyCode.Space))
-        {
-            playpuzzle.Invoke();
-        }
-        else
-            return;
-    }
-
     private void OnCollisionStay(Collision collision)
     {
-
-        if (collision.other.CompareTag(interactiveList[1]) && Input.GetKeyDown(KeyCode.Space))
+        if (collision.other.CompareTag(interactiveList[0]) && Input.GetKeyDown(KeyCode.Space))
+        {
+            gameObject.transform.GetComponent<TestDoor>().DoorOpen();
+        }
+        else if (collision.other.CompareTag(interactiveList[1]) && Input.GetKeyDown(KeyCode.Space))
         {
 
         }
