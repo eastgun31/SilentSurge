@@ -44,6 +44,7 @@ public class PipeManager : MonoBehaviour
             //Debug.Log("Win");
             UiManager.instance.isWin = true;
             GameManager.instance.puzzleLevel += 1;
+            GameManager.instance.nowpuzzle = false;
             
             Invoke("ClosePipe", 2f);
         }

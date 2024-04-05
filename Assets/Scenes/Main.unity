@@ -717,17 +717,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7248858452175125864, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
   m_PrefabInstance: {fileID: 210211369}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &210211371 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
-  m_PrefabInstance: {fileID: 210211369}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62615c2d5cf4f514388bc64853ed2f26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &214616632
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,7 +844,6 @@ MonoBehaviour:
   pipes: []
   totalPipes: 0
   correctPipes: 0
-  player: {fileID: 0}
 --- !u!1 &241996341
 GameObject:
   m_ObjectHideFlags: 0
@@ -3770,8 +3758,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f162a594601733141a34529e05099667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pipePuzzle1: {fileID: 2007391515}
-  uiManager: {fileID: 789543565}
 --- !u!1 &581846819
 GameObject:
   m_ObjectHideFlags: 0
@@ -10344,8 +10330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5affd7589dd4dda4caa12d6802c3f908, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keypad: {fileID: 1165657498}
-  uiManager: {fileID: 789543565}
 --- !u!1 &1467362637
 GameObject:
   m_ObjectHideFlags: 0
@@ -11621,6 +11605,7 @@ MonoBehaviour:
   itemcheck: 0000000000
   itemcount: 
   puzzleLevel: 1
+  nowpuzzle: 0
   canUse: 1
 --- !u!4 &1793164137
 Transform:
@@ -11685,7 +11670,6 @@ MonoBehaviour:
   pipes: []
   totalPipes: 0
   correctPipes: 0
-  player: {fileID: 210211371}
 --- !u!1 &1855671586
 GameObject:
   m_ObjectHideFlags: 0

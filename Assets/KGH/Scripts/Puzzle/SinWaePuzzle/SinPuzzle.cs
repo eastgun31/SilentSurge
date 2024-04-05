@@ -79,6 +79,7 @@ public class SinPuzzle : MonoBehaviour
             if (!lev)
             {
                 GameManager.instance.puzzleLevel += 1;
+                GameManager.instance.nowpuzzle = false;
                 lev = true;
             }
             Invoke("CloseSin", 2f);

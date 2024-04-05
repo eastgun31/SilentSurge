@@ -14,8 +14,6 @@ public class Keypad : MonoBehaviour
     [SerializeField]
     private string pw = "123456";
 
-    Player.PlayerState  player;
-
 
     private void Update()
     {
@@ -66,7 +64,7 @@ public class Keypad : MonoBehaviour
     public void PuzLevUp()
     {
         GameManager.instance.puzzleLevel += 1;
-        player = Player.PlayerState.idle;
+        GameManager.instance.nowpuzzle = false;
     }
 
     public void Closed()
