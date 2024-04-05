@@ -5,31 +5,83 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public bool isOpen = false;
+
+
+    enum OpenDoor
+    {
+        not,
+        up,
+        down
+    }
+
+
     public float openangle = 90f;
     public float smooth = 3f;
-    public int doorhandle;
 
-    void Start()
+    public DoorHandle_0 tDoor1;
+    public DoorHandle_1 tDoor2;
+
+    CapsuleCollider[] CC;
+
+    OpenDoor op = OpenDoor.not;
+
+    public bool PlayerPos_0 = false;
+    public bool PlayerPos_1 = false;
+
+    private void Awake()
     {
-        
+        CC = GetComponentsInChildren<CapsuleCollider>();
     }
 
     void Update()
     {
-        if (isOpen == true && doorhandle == 0)
+        oDoor();
+    }
+
+    public void oDoor()
+    {
+        switch (op)
         {
-            Quaternion targetRotation = Quaternion.Euler(0, -openangle, 0);
-            transform.localRotation= Quaternion.Slerp(transform.localRotation, targetRotation, smooth*Time.deltaTime);
-        }
-        else if(isOpen == true && doorhandle != 0)
-        {
-            Quaternion targetRotation = Quaternion.Euler(0, +openangle, 0);
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, smooth * Time.deltaTime);
+            case OpenDoor.not:
+
+                if (PlayerPos_0 && !PlayerPos_1 && Input.GetKeyDown(KeyCode.Space))
+                {
+                    transform.localRotation = Quaternion.Euler(0, -openangle, 0);
+                    op = OpenDoor.up;
+                }
+                else if (!PlayerPos_0 && PlayerPos_1 && Input.GetKeyDown(KeyCode.Space))
+                {
+                    transform.localRotation = Quaternion.Euler(0, openangle, 0);
+                    op = OpenDoor.down;
+                }
+                break;
+
+            case OpenDoor.up:
+
+                if (PlayerPos_0 && !PlayerPos_1 && Input.GetKeyDown(KeyCode.Space))
+                {
+                    transform.localRotation = Quaternion.Euler(0, 180, 0);
+                    op = OpenDoor.not;
+                }
+                else if (!PlayerPos_0 && PlayerPos_1 && Input.GetKeyDown(KeyCode.Space))
+                {
+                    transform.localRotation = Quaternion.Euler(0, 180, 0);
+                    op = OpenDoor.not;
+                }
+                break;
+            case OpenDoor.down:
+                if (PlayerPos_0 && !PlayerPos_1 && Input.GetKeyDown(KeyCode.Space))
+                {
+                    transform.localRotation = Quaternion.Euler(0, 180, 0);
+                    op = OpenDoor.not;
+                }
+                else if (!PlayerPos_0 && PlayerPos_1 && Input.GetKeyDown(KeyCode.Space))
+                {
+                    transform.localRotation = Quaternion.Euler(0, 180, 0);
+                    op = OpenDoor.not;
+                }
+                break;
         }
     }
 
-    //public void DoorState()
-    //{
-    //    isOpen = !isOpen;
-    //}
 }
