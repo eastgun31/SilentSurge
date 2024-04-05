@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class test1 : MonoBehaviour
 {
-    public GameObject pipePuzzle1;
 
     public void PipePuzzle1()
     {
         if (GameManager.instance.puzzleLevel == 1)
         {
-            pipePuzzle1.SetActive(true);
+            UiManager.instance.ActivePipeFst();
         }
         else
             return;
