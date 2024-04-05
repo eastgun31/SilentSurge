@@ -132,8 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 84410100}
-  - component: {fileID: 84410102}
   - component: {fileID: 84410101}
+  - component: {fileID: 84410102}
   m_Layer: 8
   m_Name: handle
   m_TagString: Door
@@ -188,11 +188,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 84410099}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39b2256d994b9b3418b2859c1defdf33, type: 3}
+  m_Script: {fileID: 11500000, guid: b7782d2a7913cdf459db2e96c37a4a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handleA: 1
-  door: {fileID: 275812770}
+  canOpen: 0
 --- !u!1 &196320562
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,7 +301,7 @@ GameObject:
   - component: {fileID: 275812776}
   m_Layer: 8
   m_Name: Door (2)
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -343,8 +342,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1318431, y: 2.236694, z: 0.08807862}
-  m_Center: {x: -0.56592155, y: 1.118347, z: -0.002265036}
+  m_Size: {x: 1.1318431, y: 2.236694, z: 0.30870974}
+  m_Center: {x: -0.56592155, y: 1.118347, z: 0.108050525}
 --- !u!23 &275812774
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -410,9 +409,8 @@ MonoBehaviour:
   isOpen: 0
   openangle: 90
   smooth: 3
-  canOpen: 0
-  handleA: {fileID: 994965744}
-  handleB: {fileID: 84410099}
+  tDoor1: {fileID: 994965747}
+  tDoor2: {fileID: 84410102}
 --- !u!1 &380018109
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,8 +712,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 994965745}
-  - component: {fileID: 994965747}
   - component: {fileID: 994965746}
+  - component: {fileID: 994965747}
   m_Layer: 8
   m_Name: handle (1)
   m_TagString: Door
@@ -770,11 +768,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 994965744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39b2256d994b9b3418b2859c1defdf33, type: 3}
+  m_Script: {fileID: 11500000, guid: b7782d2a7913cdf459db2e96c37a4a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handleA: 0
-  door: {fileID: 275812770}
+  canOpen: 0
 --- !u!1 &1172558995
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,8 +915,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b2256d994b9b3418b2859c1defdf33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handleA: 1
-  door: {fileID: 396776690}
 --- !u!136 &1317501554
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1011,8 +1006,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b2256d994b9b3418b2859c1defdf33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handleA: 0
-  door: {fileID: 396776690}
 --- !u!1 &1812617054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,7 +1082,7 @@ Transform:
   m_GameObject: {fileID: 1827387302}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10960,7 +10953,7 @@ Transform:
   m_GameObject: {fileID: 6078156170335324457}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 64.21, y: 0, z: 36.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15627,7 +15620,7 @@ Transform:
   m_GameObject: {fileID: 8924898405419420302}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.36, y: -0.5, z: 0.38}
+  m_LocalPosition: {x: -1.36, y: -1, z: -0.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -26146,7 +26139,7 @@ Transform:
   m_GameObject: {fileID: 1459922939836277777}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.2, y: 0, z: 44.8}
+  m_LocalPosition: {x: 37.6, y: 0, z: 44.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -32101,7 +32094,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -40110,9 +40103,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1641707153526509499}
   - component: {fileID: 5654682621118904930}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Character_Male_FBI
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58712,7 +58705,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   isColP: {fileID: 0}
-  visibleT: {fileID: 0}
+  visibleT: {fileID: 3973282638196714691}
   cctv: {fileID: 8924898405419420303}
   dir_T: {x: 0, y: 0, z: 0}
   edgeResolveIterations: 0
