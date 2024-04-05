@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,17 +9,20 @@ public class QuickSlots : MonoBehaviour
     public GameObject[] quickSlots;
     public GameObject[] c_text;
 
-    
+    public Image[] i_color;
 
     public Text[] i_count;
 
+    
     private void Update()
     {
+        
         AddSlots();
     }
 
     public void AddSlots()
     {
+
         if (GameManager.instance.itemcheck[0])       //±ÇÃÑ Ãß°¡
         {
             quickSlots[0].gameObject.SetActive(true);
@@ -31,6 +33,7 @@ public class QuickSlots : MonoBehaviour
             }
             else if (GameManager.instance.itemcount[0] == 0)
             {
+                GameObject.Find("HandGun").GetComponent<Image>().color = new Color(140, 140, 140);
                 c_text[0].gameObject.SetActive(false);
             }
         }
@@ -45,6 +48,7 @@ public class QuickSlots : MonoBehaviour
             }
             else if (GameManager.instance.itemcount[1] == 0)
             {
+                GameObject.Find("Coin").GetComponent<Image>().color = new Color(140, 140, 140);
                 c_text[1].gameObject.SetActive(false);
             }
         }
@@ -59,6 +63,7 @@ public class QuickSlots : MonoBehaviour
             }
             else if (GameManager.instance.itemcount[2] == 0)
             {
+                GameObject.Find("Flashbang").GetComponent<Image>().color = new Color(140, 140, 140);
                 c_text[2].gameObject.SetActive(false);
             }
         }
@@ -70,15 +75,13 @@ public class QuickSlots : MonoBehaviour
         {
             quickSlots[4].gameObject.SetActive(true);
             if (GameManager.instance.itemcount[4] == 3)
-                Debug.Log("White");
+                quickSlots[4].gameObject.SetActive(true);
             else if (GameManager.instance.itemcount[4] == 2)
-                Debug.Log("yellow");
+                GameObject.Find("Armor").GetComponent<Image>().color = Color.yellow;
             else if (GameManager.instance.itemcount[4] == 1)
-                Debug.Log("Red");
+                GameObject.Find("Armor").GetComponent<Image>().color = Color.red;
             else if (GameManager.instance.itemcount[4] == 0)
-            {
                 quickSlots[4].gameObject.SetActive(false);
-            }
         }
     }
 }
