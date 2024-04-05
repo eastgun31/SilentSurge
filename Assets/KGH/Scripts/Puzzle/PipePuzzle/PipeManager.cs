@@ -36,11 +36,11 @@ public class PipeManager : MonoBehaviour
     {
         correctPipes += 1;
 
-        Debug.Log("correct");
+       // Debug.Log("correct");
 
         if (correctPipes == totalPipes) //½Â¸® Á¶°Ç
         {
-            Debug.Log("Win");
+            //Debug.Log("Win");
             UiManager.instance.isWin = true;
             Invoke("ClosePipe", 2f);
         }

@@ -70,7 +70,7 @@ public class SinPuzzle : MonoBehaviour
         if (amplitude == 100 && 0.004f == frequency)
         {
             //StartCoroutine(WinCheck());
-            Debug.Log("success");
+            //Debug.Log("success");
             UiManager.instance.isWin = true;
             Invoke("CloseSin", 2f);
         }
