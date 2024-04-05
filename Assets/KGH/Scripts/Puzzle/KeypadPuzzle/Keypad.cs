@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Keypad : MonoBehaviour
 {
+
     public GameObject keypad;
 
     [SerializeField] private Text answerInput;
@@ -13,11 +14,14 @@ public class Keypad : MonoBehaviour
     [SerializeField]
     private string pw = "123456";
 
+    Player.PlayerState  player;
+
 
     private void Update()
     {
         UiManager.instance.TimeRemainig();
     }
+
     public void Number(int number) 
     {
         if (UiManager.instance.isWin == false ||  
@@ -36,6 +40,7 @@ public class Keypad : MonoBehaviour
         {
             answerInput.text = "CORRECT";     // Á¤´ä
             UiManager.instance.isWin = true;
+            PuzLevUp();
             Invoke("Closed", 2f);
         }
         else
@@ -56,6 +61,12 @@ public class Keypad : MonoBehaviour
     public void ResetAns()
     {
         answerInput.text = "";
+    }
+
+    public void PuzLevUp()
+    {
+        GameManager.instance.puzzleLevel += 1;
+        player = Player.PlayerState.idle;
     }
 
     public void Closed()

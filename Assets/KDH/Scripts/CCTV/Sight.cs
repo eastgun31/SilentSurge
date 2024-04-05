@@ -141,7 +141,11 @@ public class Sight : MonoBehaviour
                 }
             }
             else
+            {
                 findT = false;
+                playerpos = Vector3.zero;
+            }
+
         }
     }
 

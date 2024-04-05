@@ -14,6 +14,8 @@ public class PipeManager : MonoBehaviour
     [SerializeField]
     int correctPipes = 0; // 올바르게 배치된 파이프 수
 
+    Player.PlayerState player;
+
     void Start()
     {
         //전체 파이프수를 설정하고 Pipes배열에 저장
@@ -42,6 +44,8 @@ public class PipeManager : MonoBehaviour
         {
             //Debug.Log("Win");
             UiManager.instance.isWin = true;
+            GameManager.instance.puzzleLevel += 1;
+            player = Player.PlayerState.idle;
             Invoke("ClosePipe", 2f);
         }
     }
