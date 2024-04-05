@@ -10,6 +10,7 @@ public class test1 : MonoBehaviour
     {
         if (GameManager.instance.puzzleLevel == 1)
         {
+            GameManager.instance.nowpuzzle = true;
             UiManager.instance.ActivePipeFst();
         }
         else

@@ -65,6 +65,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.instance.nowpuzzle)
+            state = PlayerState.puzzling;
+        else if (!GameManager.instance.nowpuzzle)
+            state = PlayerState.idle;
+
         if (state == PlayerState.idle)
             PlayerControll();
         else
@@ -73,10 +78,7 @@ public class Player : MonoBehaviour
         if (itemGet[4])
             armor = GameManager.instance.itemcount[4];
 
-        if (GameManager.instance.nowpuzzle)
-            state = PlayerState.puzzling;
-        else if(!GameManager.instance.nowpuzzle)
-            state = PlayerState.idle;
+        
         
     }
 
