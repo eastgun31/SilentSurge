@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public bool[] itemcheck;
     public int[] itemcount;
     public int puzzleLevel = 1;
+    public bool nowpuzzle = false;
     public bool canUse = true;
 
     public void Awake()
