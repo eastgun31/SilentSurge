@@ -5,8 +5,9 @@ using UnityEngine.Events;
 
 public class PlayerInteractive : MonoBehaviour
 {
-    public UnityEvent playpuzzle;
+    //public UnityEvent playpuzzle;
     Player player;
+    EnterPuzzle enterPuzzle;
 
     string[] interactiveList = { "Door", "Bent", "Puzzle", "Cabinet" };
 
@@ -38,8 +39,18 @@ public class PlayerInteractive : MonoBehaviour
         }
         else if (other.CompareTag(interactiveList[2]) && Input.GetKeyDown(KeyCode.Space))
         {
-            playpuzzle.Invoke();
+            //playpuzzle.Invoke();
             player.state = Player.PlayerState.puzzling;
+            player.velocity = Vector3.zero;
+            enterPuzzle = other.GetComponent<EnterPuzzle>();
+            if(enterPuzzle.level == 1)
+            {
+                enterPuzzle.PipePuzzle1();
+            }
+            else if(enterPuzzle.level == 2)
+            {
+                enterPuzzle.Keypad();
+            }
         }
         else
             return;

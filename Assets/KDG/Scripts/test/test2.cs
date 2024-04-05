@@ -8,6 +8,7 @@ public class test2 : MonoBehaviour
     {
         if (GameManager.instance.puzzleLevel == 2)
         {
+            GameManager.instance.nowpuzzle = true;
             UiManager.instance.ActiveSinFst();
         }
         else

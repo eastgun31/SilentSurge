@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
     Camera cam;
     Vector3 pos;
     Vector3 mousePos;
-    Vector3 velocity;
+    public Vector3 velocity;
     bool itemActivate = false;
 
     void Start()
@@ -66,9 +66,16 @@ public class Player : MonoBehaviour
     void Update()
     {
         if (GameManager.instance.nowpuzzle)
+        {
             state = PlayerState.puzzling;
+            //playerspeed = 0;
+        }
         else if (!GameManager.instance.nowpuzzle)
+        {
             state = PlayerState.idle;
+            //playerspeed = 2.5f;
+        }
+           
 
         if (state == PlayerState.idle)
             PlayerControll();
