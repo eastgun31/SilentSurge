@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
 
         if (GameManager.instance.nowpuzzle)
             state = PlayerState.puzzling;
-        else
+        else if(!GameManager.instance.nowpuzzle)
             state = PlayerState.idle;
         
     }

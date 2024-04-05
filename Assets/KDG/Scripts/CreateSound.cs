@@ -22,7 +22,7 @@ public class CreateSound : MonoBehaviour
         GameObject sound = Instantiate(soundprefab);
         sound.transform.position = gameObject.transform.position;
         yield return new WaitForSeconds(1f);
-        Destroy(sound);
+        Destroy(sound,3f);
     }
 
     private void OnCollisionEnter(Collision collision)
