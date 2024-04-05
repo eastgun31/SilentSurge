@@ -572,10 +572,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa63b0917d52864d8319fe8139c1f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Canvas: {fileID: 902374378}
-  success: {fileID: 587011588}
-  PipesHolder: {fileID: 876315185}
-  Pipes: []
+  pipesHolder: {fileID: 0}
+  pipes: []
   totalPipes: 0
   correctPipes: 0
 --- !u!1 &114307238
@@ -7429,10 +7427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a045d61a2118854aa803a089daa26ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keypad: {fileID: 1025941514}
-  pipePuzzle1: {fileID: 597159567}
-  pipePuzzle2: {fileID: 902374378}
-  sinPuzzle: {fileID: 447857101}
 --- !u!4 &1216749638
 Transform:
   m_ObjectHideFlags: 0
@@ -7659,10 +7653,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa63b0917d52864d8319fe8139c1f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Canvas: {fileID: 597159567}
-  success: {fileID: 1727978293}
-  PipesHolder: {fileID: 1737465271}
-  Pipes: []
+  pipesHolder: {fileID: 0}
+  pipes: []
   totalPipes: 0
   correctPipes: 0
 --- !u!1 &1314573458
@@ -7984,7 +7976,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -9919,7 +9911,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
