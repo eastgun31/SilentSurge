@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,21 +15,23 @@ public class SinPuzzle : MonoBehaviour
     public Vector2 xlimit = new Vector2(-600, 600);
     public float speed = 1;
 
+    bool lev = false;
+
+    Player.PlayerState player;
+
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
     }
-
 
     void Update()
     {
         WaveControl();
         Win();
         Wave();
-        IsWining();
         UiManager.instance.TimeRemainig();
+        
     }
-
 
     private void Wave()
     {
@@ -72,6 +75,12 @@ public class SinPuzzle : MonoBehaviour
             //StartCoroutine(WinCheck());
             //Debug.Log("success");
             UiManager.instance.isWin = true;
+            player = Player.PlayerState.idle;
+            if (!lev)
+            {
+                GameManager.instance.puzzleLevel += 1;
+                lev = true;
+            }
             Invoke("CloseSin", 2f);
         }
     }
@@ -85,12 +94,4 @@ public class SinPuzzle : MonoBehaviour
         UiManager.instance.CloseSinFst();
     }
 
-    //private IEnumerator WinCheck() 
-    //{
-    //    yield return new WaitForSeconds(1.5f);
-        
-    //    Debug.Log("success");
-    //    UiManager.instance.isWin = true;
-    //    Invoke("CloseSin", 2f);
-    //}
 }
