@@ -19,9 +19,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int maxHealth = 100;
     private int currentHealth;
 
-    [SerializeField] private float listenRadius = 10f; // 듣는 범위
-
-    AudioSource audioSource; // 사운드를 듣는 역할을 할 오디오 소스
+    public Vector3 playerpos;
+    public bool findtarget;
 
     void Start()
     {
@@ -33,21 +32,20 @@ public class Enemy : MonoBehaviour
 
         // 초기 체력 설정
         currentHealth = maxHealth;
-
-      
     }
 
     void Update()
     {
-        if (CanHearPlayerSound())
+        if (CanSeePlayer())
         {
             if (!m_followingPlayer)
             {
                 m_followingPlayer = true;
-                m_enemy.SetDestination(m_player.position);
+                m_enemy.SetDestination(transform.position); // 플레이어를 발견하면 현재 위치로 이동
 
                 // 플레이어를 발견했을 때 이벤트 발생
                 PlayerSpotted?.Invoke(m_player.GetComponent<Player>());
+
             }
         }
         else
@@ -76,15 +74,21 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    bool CanHearPlayerSound() // 적 캐릭터가 플레이어의 소리를 들을 수 있는지 여부를 판단하고 반환.
+    bool CanSeePlayer() // 적 캐릭터가 플레이어를 시야에 볼 수 있는지 여부를 판단하고 반환.
     {
         if (m_player == null)
             return false;
 
-        float distanceToPlayer = Vector3.Distance(transform.position, m_player.position); // 적과 플레이어 사이의 거리 계산
-        if (distanceToPlayer <= listenRadius && audioSource.isPlaying)
+        Vector3 directionToPlayer = m_player.position - transform.position; // 플레이어와 적 사이의 방향을 계산
+        if (Vector3.Angle(transform.forward, directionToPlayer) < m_enemy.angularSpeed && directionToPlayer.magnitude < stoppingDistance)
         {
-            return true;
+            if (Physics.Raycast(transform.position, directionToPlayer, out RaycastHit hit, Mathf.Infinity, ~LayerMask.GetMask("Wall"))) // 벽을 제외한 레이어에서만 충돌을 검사합니다.
+            {
+                if (hit.collider.CompareTag("Player"))
+                {
+                    return true;
+                }
+            }
         }
 
         return false;
