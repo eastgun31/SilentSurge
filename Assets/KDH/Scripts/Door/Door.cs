@@ -28,8 +28,8 @@ public class Door : MonoBehaviour
         }
     }
 
-    public void DoorState()
-    {
-        isOpen = !isOpen;
-    }
+    //public void DoorState()
+    //{
+    //    isOpen = !isOpen;
+    //}
 }

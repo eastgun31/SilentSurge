@@ -11,6 +11,7 @@ public class Sight : MonoBehaviour
     public float angle;
 
     public bool detectC = true;
+    public bool findT;
 
     Mesh viewMesh;
     public float meshResult;
@@ -23,9 +24,12 @@ public class Sight : MonoBehaviour
     public Transform visibleT;
 
     public RaycastHit hitR;
-    
-    public CCTVMovement cctv;
 
+    Enemy enemy;
+
+    public CCTVMovement cctv;
+    
+    public Vector3 playerpos;
     public Vector3 dir_T;
 
     public int edgeResolveIterations;
@@ -58,6 +62,7 @@ public class Sight : MonoBehaviour
 
     void Start()
     {
+        GetComponent<Enemy>();
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
         meshFilter.mesh = viewMesh;
@@ -92,6 +97,8 @@ public class Sight : MonoBehaviour
                 {
                     if (!Physics.Raycast(transform.position, dir_T, disT, etcM))                             // 타겟으로 가는 raycast에 장애물이 없다면
                     {
+                        playerpos = dir_T;
+                        findT = true;
                         detectTarget = visibleT;                                                                            //  detectTarget 은 플레이어
                         if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
                         {
@@ -133,6 +140,8 @@ public class Sight : MonoBehaviour
                     }
                 }
             }
+            else
+                findT = false;
         }
     }
 
