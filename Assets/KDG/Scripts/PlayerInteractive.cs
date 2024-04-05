@@ -23,7 +23,7 @@ public class PlayerInteractive : MonoBehaviour
     {
         if (collision.other.CompareTag(interactiveList[0]) && Input.GetKeyDown(KeyCode.Space))
         {
-            collision.transform.GetComponent<DoorHandle>().Doorsetting();
+            gameObject.transform.GetComponent<TestDoor>().DoorOpen();
         }
         else if (collision.other.CompareTag(interactiveList[1]) && Input.GetKeyDown(KeyCode.Space))
         {
