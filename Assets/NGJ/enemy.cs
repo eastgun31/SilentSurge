@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Enemy : MonoBehaviour
     Transform m_player;
     bool m_followingPlayer = false; // 적 캐릭터가 플레이어를 추적 중인지 여부를 나타냅니다.
 
+    
 
     public bool m_triggered = false; // 트리거 충돌 여부를 나타냅니다.
     public Vector3 soundpos;
@@ -19,7 +21,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float stoppingDistance = 1f; // 적이 멈출 거리
 
     public event Action<Player> PlayerSpotted; // 플레이어 발견 시 이벤트
-
+    bool noactiving;
 
     // 체력 관련 변수
     [SerializeField] private int maxHealth = 100;
@@ -27,6 +29,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        noactiving = true;
         m_enemy = GetComponent<NavMeshAgent>();
         m_enemy.stoppingDistance = stoppingDistance; // 적의 멈출 거리 설정
         m_enemy.avoidancePriority = 50; // 벽을 피하기 위한 우선순위 설정
@@ -49,7 +52,7 @@ public class Enemy : MonoBehaviour
         }
         else if (m_triggered)
         {
-            m_enemy.SetDestination(soundpos); // 트리거 충돌 시 플레이어를 따라갑니다.
+            ChasePlayer(soundpos); // 트리거 충돌 시 플레이어를 따라갑니다.
         }
         else
         {
@@ -64,8 +67,18 @@ public class Enemy : MonoBehaviour
     public void ChasePlayer(Vector3 position)
     {
         m_enemy.SetDestination(position);
+        if(noactiving)
+            StartCoroutine(ChasePlayerRoutine(position, 5f)); // 대기 시간 5초 
+    }
 
-
+    IEnumerator ChasePlayerRoutine(Vector3 position, float chaseDuration)
+    {
+        noactiving = false;
+        Debug.Log("코루틴 실행");
+        yield return new WaitForSeconds(chaseDuration);
+        m_triggered = false; // 트리거 충돌 상태 종료
+        noactiving = true;
+        SetNextDestination();
     }
 
     void SetNextDestination()
