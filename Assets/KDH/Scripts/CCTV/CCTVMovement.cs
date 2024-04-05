@@ -7,18 +7,17 @@ public class CCTVMovement : MonoBehaviour       // CCTV의 탐지 반경을 좌우로 반�
 {
     private Transform target;
 
-    public float rotationSpeed = 20f;       // 카메라의 회전 속도
-    public float rotationAmount = 20f;      // 한 번 회전할 각도
-    public float rotationDuration = 2f;     // 한 번 회전당 걸리는 시간
+    public float rotationSpeed = 20f;           // 카메라의 회전 속도
+    public float rotationAmount = 20f;        // 한 번 회전할 각도
+    public float rotationDuration = 2f;         // 한 번 회전당 걸리는 시간
 
     private bool rotateClockwise = true;    // 회전 방향(시계방향)
 
-    Quaternion startRotation;                  // 카메라의 회전 시작 지점
+    Quaternion startRotation;                   // 카메라의 회전 시작 지점
     Quaternion endRotation;                    // 카메라의 회전이 종료되는 지점
 
     public float angleRange = 30f;
     public float radius = 3f;
-
 
     bool isCollision = false;
 
