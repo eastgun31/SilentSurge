@@ -30,8 +30,7 @@ public class PlayerInteractive : MonoBehaviour
     {
         if (other.CompareTag(interactiveList[0]) && Input.GetKeyDown(KeyCode.Space))
         {
-            gameObject.transform.GetComponent<Door>();
-            
+            gameObject.transform.GetComponent<Door_Parent>();
         }
         else if (other.CompareTag(interactiveList[1]) && Input.GetKeyDown(KeyCode.Space))
         {
