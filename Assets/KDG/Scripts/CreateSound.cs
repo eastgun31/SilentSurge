@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ItemInfo;
 
 public class CreateSound : MonoBehaviour
 {
     public GameObject soundprefab;
     public int value;
-
-    //SphereCollider collider;
+    Item delaytime = new Item();
+    new SphereCollider collider;
 
     private void OnEnable()
     {
@@ -19,10 +20,25 @@ public class CreateSound : MonoBehaviour
 
     IEnumerator SoundCreateDelete()
     {
+        //yield return delaytime.colsize;
         GameObject sound = Instantiate(soundprefab);
         sound.transform.position = gameObject.transform.position;
-        yield return new WaitForSeconds(1f);
-        Destroy(sound,3f);
+        collider = sound.GetComponent<SphereCollider>();
+        collider.radius = 0.1f;
+        yield return delaytime.colsize;
+        collider.radius = 0.5f;
+        yield return delaytime.animDelay;
+        collider.radius = 1f;
+        yield return delaytime.animDelay;
+        collider.radius = 1.5f;
+        yield return delaytime.animDelay;
+        collider.radius = 2f;
+        yield return delaytime.animDelay;
+        collider.radius = 2.5f;
+        yield return delaytime.animDelay;
+        collider.radius = 3f;
+
+        Destroy(sound,1f);
     }
 
     private void OnCollisionEnter(Collision collision)
