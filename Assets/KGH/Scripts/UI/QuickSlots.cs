@@ -16,7 +16,6 @@ public class QuickSlots : MonoBehaviour
     
     private void Update()
     {
-        
         AddSlots();
     }
 
@@ -75,7 +74,10 @@ public class QuickSlots : MonoBehaviour
         {
             quickSlots[4].gameObject.SetActive(true);
             if (GameManager.instance.itemcount[4] == 3)
+            {
                 quickSlots[4].gameObject.SetActive(true);
+                GameObject.Find("Armor").GetComponent<Image>().color = Color.white;
+            }
             else if (GameManager.instance.itemcount[4] == 2)
                 GameObject.Find("Armor").GetComponent<Image>().color = Color.yellow;
             else if (GameManager.instance.itemcount[4] == 1)
