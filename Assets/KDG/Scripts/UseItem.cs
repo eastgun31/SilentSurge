@@ -19,6 +19,7 @@ public class UseItem : MonoBehaviour
     [SerializeField]
     private float throwpower = 3f;
     private string floor = "Floor";
+    private string inroom = "InRoom";
     private bool canUse = true;
 
     WaitForSeconds wait;
@@ -67,7 +68,7 @@ public class UseItem : MonoBehaviour
         pos.z = Camera.main.farClipPlane;
 
         ray = Camera.main.ScreenPointToRay(pos);
-        mask = LayerMask.GetMask(floor);
+        mask = LayerMask.GetMask(floor) | LayerMask.GetMask(inroom);
 
         if(Physics.Raycast(ray, out hit,100f, mask))
         {

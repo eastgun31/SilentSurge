@@ -13,6 +13,11 @@ namespace ItemInfo
         public WaitForSeconds heartseeDuration = new WaitForSeconds(5f);
         public WaitForSeconds animDelay = new WaitForSeconds(0.5f);
     }
+    public class CoolTime
+    {
+        public WaitForSeconds cool1sec = new WaitForSeconds(1f);
+        public WaitForSeconds coolhalf1sec = new WaitForSeconds(0.5f);
+    }
 }
 
 

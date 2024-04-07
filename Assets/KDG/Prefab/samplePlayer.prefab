@@ -1203,6 +1203,7 @@ GameObject:
   - component: {fileID: 7030603691827503541}
   - component: {fileID: 4172756718097741671}
   - component: {fileID: 1219534227586309194}
+  - component: {fileID: 666301278332965391}
   m_Layer: 0
   m_Name: FootSound
   m_TagString: Sound
@@ -1273,6 +1274,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &666301278332965391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398446891114636988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb72d59857633c49a90937b2f01f5bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canhear: 0
 --- !u!1 &4402467284340533774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1545,7 +1559,7 @@ GameObject:
   - component: {fileID: 1618481229594973924}
   - component: {fileID: 7276063786173007773}
   - component: {fileID: 3358342213177724985}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: samplePlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1618,6 +1632,7 @@ MonoBehaviour:
   handGunModel: {fileID: 7307466661591981286}
   bulletPrefab: {fileID: 6370189277096345383, guid: 09e71b3c77b69d94796d4f8f3a90252f, type: 3}
   footSound: {fileID: 4398446891114636988}
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &5994093384746354224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1654,33 +1669,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec34aebf9b4577499c290c6bad4f49a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playpuzzle:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: test1, Assembly-CSharp
-        m_MethodName: PipePuzzle1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: test2, Assembly-CSharp
-        m_MethodName: Keypad
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!54 &1618481229594973924
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -8,3 +8,8 @@ public interface IItem
     void GetItem();
     void ItemCharge();
 }
+
+public interface ISound
+{
+    bool canhear { get; set; }
+}
