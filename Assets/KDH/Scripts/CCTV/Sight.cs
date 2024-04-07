@@ -31,6 +31,7 @@ public class Sight : MonoBehaviour
     
     public Vector3 playerpos;
     public Vector3 dir_T;
+    public Transform detectTarget;
 
     public int edgeResolveIterations;
     public float edgeDstThreshold;
@@ -88,7 +89,7 @@ public class Sight : MonoBehaviour
         Collider[] targets = Physics.OverlapSphere(transform.position, radius, playerM);  // radius(반지름) 내 원 영역의 playerM 콜라이더를 가져옴 
         for (int i = 0; i < targets.Length; i++)
         {
-            Transform detectTarget = targets[i].transform;
+            detectTarget = targets[i].transform;
             dir_T = (detectTarget.position - transform.position).normalized;             // 타겟 위치 - cctv 위치 (정규화) = 타겟의 방향
             if (Vector3.Angle(transform.forward, dir_T) < angle / 2)                                        // cctv의 정면과 타겟의 방향이 이루는 각도가 설정한 변수보다 작다면(안이라면)
             {
