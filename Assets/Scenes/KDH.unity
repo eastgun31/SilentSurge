@@ -192,7 +192,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canOpen: 1
-  testDoor: {fileID: 0}
+  isOpen: 0
+  PlayerPos_0: 0
+  PlayerPos_1: 0
+  tDoor: {fileID: 0}
   P_Door: {fileID: 275812770}
 --- !u!1 &196320562
 GameObject:
@@ -444,6 +447,7 @@ MonoBehaviour:
   smooth: 3
   tDoor1: {fileID: 994965747}
   tDoor2: {fileID: 84410102}
+  op: 0
   PlayerPos_0: 1
   PlayerPos_1: 1
 --- !u!1 &380018109
@@ -498,7 +502,6 @@ GameObject:
   - component: {fileID: 396776691}
   - component: {fileID: 396776694}
   - component: {fileID: 396776693}
-  - component: {fileID: 396776695}
   - component: {fileID: 396776692}
   m_Layer: 8
   m_Name: Door (1)
@@ -506,7 +509,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &396776691
 Transform:
   m_ObjectHideFlags: 0
@@ -516,7 +519,7 @@ Transform:
   m_GameObject: {fileID: 396776690}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.95, y: 0, z: -10.09}
+  m_LocalPosition: {x: -2.95, y: 0, z: -10.091}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -566,6 +569,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
+  - {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -595,22 +599,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 396776690}
   m_Mesh: {fileID: 4300000, guid: 1e307198a690d134f89943277b7a5e58, type: 3}
---- !u!114 &396776695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396776690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d2f20f110e9fd54aac30f064b603a89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOpen: 0
-  openangle: 90
-  smooth: 3
-  doorhandle: 0
 --- !u!1 &712847031
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,7 +795,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canOpen: 1
-  testDoor: {fileID: 0}
+  isOpen: 0
+  PlayerPos_0: 0
+  PlayerPos_1: 0
+  tDoor: {fileID: 0}
   P_Door: {fileID: 275812770}
 --- !u!1 &1172558995
 GameObject:
@@ -3847,7 +3838,6 @@ GameObject:
   - component: {fileID: 2015464584957932292}
   - component: {fileID: 4947201606103015080}
   - component: {fileID: 7424409634908547731}
-  - component: {fileID: 8896248022799015385}
   - component: {fileID: 8241530685867021980}
   - component: {fileID: 7714036527252972102}
   m_Layer: 8
@@ -3855,7 +3845,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 95
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &395543075689571776
 GameObject:
@@ -10133,7 +10123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1461368478801872673
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32655,6 +32645,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
+  - {fileID: 2100000, guid: 6c775ef945b761647ad0dbca1e908d71, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -38282,6 +38273,7 @@ MonoBehaviour:
   handGunModel: {fileID: 3950685944972987725}
   bulletPrefab: {fileID: 6370189277096345383, guid: 09e71b3c77b69d94796d4f8f3a90252f, type: 3}
   footSound: {fileID: 7976048652194051863}
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!4 &5781659784836926365
 Transform:
   m_ObjectHideFlags: 0
@@ -38659,10 +38651,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2f20f110e9fd54aac30f064b603a89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
-  openangle: 90
-  smooth: 3
-  doorhandle: 0
 --- !u!65 &5841266396957019429
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52762,9 +52750,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec34aebf9b4577499c290c6bad4f49a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playpuzzle:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!65 &8104855756444141995
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -58436,28 +58421,12 @@ Transform:
   m_GameObject: {fileID: 395057572488345728}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -6, y: 0, z: -10}
+  m_LocalPosition: {x: -6.06, y: -0.52, z: -9.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6574318341773625257}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &8896248022799015385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 395057572488345728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d2f20f110e9fd54aac30f064b603a89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOpen: 0
-  openangle: 90
-  smooth: 3
-  doorhandle: 0
 --- !u!65 &8896387296436848912
 BoxCollider:
   m_ObjectHideFlags: 0
