@@ -17,7 +17,7 @@ public class Sound : MonoBehaviour
             if (enemyScript != null && check.canhear)
             {
                 enemyScript.targetpos = other.gameObject.transform.position;
-                enemyScript.m_triggered = true;
+                enemyScript.state = Enemy.EnemyState.hear;
             }
             else
             {

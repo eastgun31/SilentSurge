@@ -6,12 +6,15 @@ using ItemInfo;
 public class CreateSound : MonoBehaviour
 {
     public GameObject soundprefab;
+    public GameObject effect;
     public int value;
     CoolTime delaytime = new CoolTime();
     new SphereCollider collider;
+    AudioSource audioSource;
 
     private void OnEnable()
     {
+        audioSource = GetComponent<AudioSource>();
         if(value == 0)
         {
             StartCoroutine(SoundCreateDelete());
@@ -45,7 +48,13 @@ public class CreateSound : MonoBehaviour
     {
         if(value == 1)
         {
+            audioSource.Play();
             StartCoroutine (SoundCreateDelete());
+        }
+        if(value == 2)
+        {
+            GameObject effectprefab = Instantiate(effect);
+            effectprefab.transform.position = gameObject.transform.position;
         }
     }
 }

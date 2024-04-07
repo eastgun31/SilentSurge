@@ -5,6 +5,13 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
+    public enum EnemyState //wjr 상태머신
+    {
+        patrolling, hear, findtarget
+    }
+
+    public EnemyState state;
+
     NavMeshAgent m_enemy;
     [SerializeField] Vector3[] customDestinations; // 적 캐릭터가 이동할 목적지들의 좌표를 저장합니다.
     int m_currentDestinationIndex = 0;
@@ -34,6 +41,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        state = EnemyState.patrolling;
         sight = GetComponent<Sight>(); 
         noactiving = true;
         m_enemy = GetComponent<NavMeshAgent>();
@@ -51,6 +59,7 @@ public class Enemy : MonoBehaviour
     {
         if (sight.findT)
         {
+            state = EnemyState.findtarget;
             Debug.Log("플레이어발견");
             if(!m_followingPlayer)
                 NeviClear();
@@ -59,7 +68,9 @@ public class Enemy : MonoBehaviour
             //// 플레이어를 발견했을 때 이벤트 발생
             //PlayerSpotted?.Invoke(m_player.GetComponent<Player>());
         }
-        else if (m_triggered && !sight.findT)
+        else if(state == EnemyState.findtarget && !sight.findT)
+            state = EnemyState.patrolling;
+        else if (!sight.findT && state == EnemyState.hear)
         {
             m_enemy.stoppingDistance = 0f;
             ChasePlayer(targetpos); // 트리거 충돌 시 플레이어를 따라갑니다.
@@ -67,7 +78,7 @@ public class Enemy : MonoBehaviour
         else if(!m_triggered && !sight.findT)
         {
             m_followingPlayer = false;
-
+            m_enemy.isStopped = false;
             //if (!m_enemy.pathPending && m_enemy.remainingDistance < stoppingDistance)
             //{
             //    SetNextDestination(); // 평상시에는 기본적인 목적지로 이동합니다.
@@ -75,9 +86,8 @@ public class Enemy : MonoBehaviour
             if(customDestinations.Length > 0 )
                 EnemyPatrol();
         }
-        else
+        else if(state == EnemyState.patrolling)
         {
-            NeviClear();
             EnemyPatrol();
         }
     }
@@ -96,8 +106,7 @@ public class Enemy : MonoBehaviour
         noactiving = true;
         m_enemy.stoppingDistance = stoppingDistance;
         //SetNextDestination();
-        if (customDestinations.Length > 0)
-            EnemyPatrol();
+        state = EnemyState.patrolling;
     }
 
     void NeviClear()    //적 네비 초기화
@@ -107,16 +116,17 @@ public class Enemy : MonoBehaviour
         m_enemy.velocity = Vector3.zero;
         m_enemy.stoppingDistance = stoppingDistance;
         m_enemy.isStopped = false;
+        indexcount = 0;
     }
 
     void EnemyPatrol()  //적순찰
     {
-        if(Vector3.Distance(transform.position, customDestinations[indexcount]) > 0.1f)
+        if(Vector3.Distance(transform.position, customDestinations[indexcount]) > 1f)
         {
             m_enemy.SetDestination(customDestinations[indexcount]);
             //indexcount = (indexcount + 1) % customDestinations.Length;
         }
-        else if (Vector3.Distance(transform.position, customDestinations[indexcount]) <= 0.1f)
+        else if (Vector3.Distance(transform.position, customDestinations[indexcount]) <= 1f)
         {
             indexcount++;
             if(indexcount == customDestinations.Length)
