@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SoundWallCheck : MonoBehaviour
 {
-    string enemy ;
     LayerMask mask;
     RaycastHit hit;
     WaitForSeconds wait;
@@ -13,7 +12,6 @@ public class SoundWallCheck : MonoBehaviour
     
     private void Start()
     {
-        enemy = "RayDir";
         mask = LayerMask.GetMask("Floor") | LayerMask.GetMask("InRoom");
         wait = new WaitForSeconds(0.5f);
     }

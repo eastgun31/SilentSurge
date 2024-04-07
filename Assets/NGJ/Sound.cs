@@ -16,7 +16,7 @@ public class Sound : MonoBehaviour
             //Enemy 스크립트의 ChasePlayer 함수 호출
             if (enemyScript != null && check.canhear)
             {
-                enemyScript.soundpos = other.gameObject.transform.position;
+                enemyScript.targetpos = other.gameObject.transform.position;
                 enemyScript.m_triggered = true;
             }
             else
