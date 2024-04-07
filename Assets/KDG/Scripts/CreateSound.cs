@@ -7,7 +7,7 @@ public class CreateSound : MonoBehaviour
 {
     public GameObject soundprefab;
     public int value;
-    Item delaytime = new Item();
+    CoolTime delaytime = new CoolTime();
     new SphereCollider collider;
 
     private void OnEnable()
@@ -25,17 +25,17 @@ public class CreateSound : MonoBehaviour
         sound.transform.position = gameObject.transform.position;
         collider = sound.GetComponent<SphereCollider>();
         collider.radius = 0.1f;
-        yield return delaytime.colsize;
+        yield return delaytime.cool1sec;
         collider.radius = 0.5f;
-        yield return delaytime.animDelay;
+        yield return delaytime.coolhalf1sec;
         collider.radius = 1f;
-        yield return delaytime.animDelay;
+        yield return delaytime.coolhalf1sec;
         collider.radius = 1.5f;
-        yield return delaytime.animDelay;
+        yield return delaytime.coolhalf1sec;
         collider.radius = 2f;
-        yield return delaytime.animDelay;
+        yield return delaytime.coolhalf1sec;
         collider.radius = 2.5f;
-        yield return delaytime.animDelay;
+        yield return delaytime.coolhalf1sec;
         collider.radius = 3f;
 
         Destroy(sound,1f);
