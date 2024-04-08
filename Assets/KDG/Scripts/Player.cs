@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     public enum PlayerState //경계레벨 상태머신
     {
-        idle, hide, puzzling, die
+        idle, hide, puzzling, die, moving
     }
 
     public PlayerState state;
@@ -78,7 +78,11 @@ public class Player : MonoBehaviour
            
 
         if (state == PlayerState.idle)
+        {
+            if(rigid.velocity != Vector3.zero)
+                rigid.velocity = Vector3.zero;
             PlayerControll();
+        }
         else
             return;
 
@@ -109,7 +113,6 @@ public class Player : MonoBehaviour
 
         velocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized * playerspeed;
         //rigid.MovePosition(rigid.position + velocity * Time.deltaTime);
-
         playerAnim.SetFloat(walk, velocity.magnitude);
 
         if (Input.GetKeyDown(KeyCode.LeftShift))

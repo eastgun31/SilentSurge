@@ -6,9 +6,6 @@ using System.Threading;
 
 public class HandGun : MonoBehaviour, IItem
 {
-    [SerializeField]
-    private float bulletSpeed = 1f;
-
     public int value {  get; set; }
     public GameObject bulletPrefab;
     public Transform bulletSpawn;

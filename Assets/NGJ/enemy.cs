@@ -5,6 +5,13 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
+    public enum EnemyState //wjr 상태머신
+    {
+        patrolling, hear, findtarget
+    }
+
+    public EnemyState state;
+
     NavMeshAgent m_enemy;
     [SerializeField] Vector3[] customDestinations; // 적 캐릭터가 이동할 목적지들의 좌표를 저장합니다.
     int m_currentDestinationIndex = 0;
@@ -14,7 +21,7 @@ public class Enemy : MonoBehaviour
     
 
     public bool m_triggered = false; // 트리거 충돌 여부를 나타냅니다.
-    public Vector3 soundpos;
+    public Vector3 targetpos;
 
     int dLevel = 1;
 
@@ -27,41 +34,61 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int maxHealth = 100;
     private int currentHealth;
 
+    //적 수정_김동건
+    Sight sight;
+    [SerializeField]
+    private int indexcount;
+
     void Start()
     {
+        state = EnemyState.patrolling;
+        sight = GetComponent<Sight>(); 
         noactiving = true;
         m_enemy = GetComponent<NavMeshAgent>();
-        m_enemy.stoppingDistance = stoppingDistance; // 적의 멈출 거리 설정
+        m_enemy.stoppingDistance = 0; // 적의 멈출 거리 설정
         m_enemy.avoidancePriority = 50; // 벽을 피하기 위한 우선순위 설정
-        m_player = GameObject.FindGameObjectWithTag("Player").transform;
-        SetNextDestination();
+        //m_player = GameObject.FindGameObjectWithTag("Player").transform;
+        //SetNextDestination();
 
         // 초기 체력 설정
         currentHealth = maxHealth;
+        indexcount = 0;
     }
 
     void Update()
     {
-        if (CanSeePlayer())
+        if (sight.findT)
         {
-            m_followingPlayer = true;
-            m_enemy.SetDestination(m_player.position); // 플레이어를 발견하면 플레이어를 따라갑니다.
+            state = EnemyState.findtarget;
+            Debug.Log("플레이어발견");
+            if(!m_followingPlayer)
+                NeviClear();
+            m_enemy.SetDestination(sight.detectTarget.position); // 플레이어를 발견하면 플레이어를 따라갑니다.
 
-            // 플레이어를 발견했을 때 이벤트 발생
-            PlayerSpotted?.Invoke(m_player.GetComponent<Player>());
+            //// 플레이어를 발견했을 때 이벤트 발생
+            //PlayerSpotted?.Invoke(m_player.GetComponent<Player>());
         }
-        else if (m_triggered)
+        else if(state == EnemyState.findtarget && !sight.findT)
+            state = EnemyState.patrolling;
+        else if (!sight.findT && state == EnemyState.hear)
         {
-            ChasePlayer(soundpos); // 트리거 충돌 시 플레이어를 따라갑니다.
+            m_enemy.stoppingDistance = 0f;
+            ChasePlayer(targetpos); // 트리거 충돌 시 플레이어를 따라갑니다.
         }
-        else
+        else if(!m_triggered && !sight.findT)
         {
             m_followingPlayer = false;
-
-            if (!m_enemy.pathPending && m_enemy.remainingDistance < stoppingDistance)
-            {
-                SetNextDestination(); // 평상시에는 기본적인 목적지로 이동합니다.
-            }
+            m_enemy.isStopped = false;
+            //if (!m_enemy.pathPending && m_enemy.remainingDistance < stoppingDistance)
+            //{
+            //    SetNextDestination(); // 평상시에는 기본적인 목적지로 이동합니다.
+            //}
+            if(customDestinations.Length > 0 )
+                EnemyPatrol();
+        }
+        else if(state == EnemyState.patrolling)
+        {
+            EnemyPatrol();
         }
     }
     public void ChasePlayer(Vector3 position)
@@ -74,16 +101,43 @@ public class Enemy : MonoBehaviour
     IEnumerator ChasePlayerRoutine(Vector3 position, float chaseDuration)
     {
         noactiving = false;
-        Debug.Log("코루틴 실행");
         yield return new WaitForSeconds(chaseDuration);
         m_triggered = false; // 트리거 충돌 상태 종료
         noactiving = true;
-        SetNextDestination();
+        m_enemy.stoppingDistance = stoppingDistance;
+        //SetNextDestination();
+        state = EnemyState.patrolling;
+    }
+
+    void NeviClear()    //적 네비 초기화
+    {
+        m_followingPlayer = true;
+        m_enemy.isStopped = true;
+        m_enemy.velocity = Vector3.zero;
+        m_enemy.stoppingDistance = stoppingDistance;
+        m_enemy.isStopped = false;
+        indexcount = 0;
+    }
+
+    void EnemyPatrol()  //적순찰
+    {
+        if(Vector3.Distance(transform.position, customDestinations[indexcount]) > 1f)
+        {
+            m_enemy.SetDestination(customDestinations[indexcount]);
+            //indexcount = (indexcount + 1) % customDestinations.Length;
+        }
+        else if (Vector3.Distance(transform.position, customDestinations[indexcount]) <= 1f)
+        {
+            indexcount++;
+            if(indexcount == customDestinations.Length)
+                indexcount = 0;
+            m_enemy.SetDestination(customDestinations[indexcount]);
+        }
     }
 
     void SetNextDestination()
     {
-        if (!m_followingPlayer && customDestinations.Length > 0)
+        if (!sight.findT && !m_followingPlayer && customDestinations.Length > 0)
         {
             m_enemy.isStopped = false;
 
@@ -113,22 +167,16 @@ public class Enemy : MonoBehaviour
         return false;
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Sound"))
-        {
-            m_triggered = true; // 트리거 충돌 시 상태를 변경합니다.
-        }
-    }
+    //void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Sound"))
+    //    {
+    //        m_triggered = true; // 트리거 충돌 시 상태를 변경합니다.
+    //    }
+    //}
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Sound"))
-        {
-            // 장애물을 감지하면 목적지를 다시 설정합니다.
-            SetNextDestination();
-        }
-
         // 총알 등과의 충돌이면서 플레이어 총알인 경우에만 피해를 받습니다.
         if (collision.gameObject.CompareTag("Bullet"))
         {
@@ -141,6 +189,8 @@ public class Enemy : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
+            m_enemy.isStopped = true;
+            m_enemy.velocity = Vector3.zero;
             Die(); // 체력이 0 이하가 되면 사망 처리합니다.
         }
     }

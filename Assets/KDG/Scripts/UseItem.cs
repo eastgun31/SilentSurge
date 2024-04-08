@@ -20,7 +20,7 @@ public class UseItem : MonoBehaviour
     private float throwpower = 3f;
     private string floor = "Floor";
     private string inroom = "InRoom";
-    private bool canUse = true;
+    //private bool canUse = true;
 
     WaitForSeconds wait;
     Vector3 angle;
