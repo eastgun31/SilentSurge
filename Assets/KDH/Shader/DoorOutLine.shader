@@ -38,12 +38,12 @@ Shader "Custom/DoorOutLine"
                 float4 CreateOutline(float4 vertPos, float Outline)
                 {
                     float4x4 scaleMat;
-                    scaleMat[0][0] = 0.895f + Outline;
+                    scaleMat[0][0] = 0.9f + Outline;
 				    scaleMat[0][1] = 0.0f;
 				    scaleMat[0][2] = 0.0f;
 				    scaleMat[0][3] = 0.0f;
 				    scaleMat[1][0] = 0.0f;
-				    scaleMat[1][1] = 1.1f + Outline;
+				    scaleMat[1][1] = 1.24f; + Outline;
 				    scaleMat[1][2] = 0.0f;
 				    scaleMat[1][3] = 0.0f;
 				    scaleMat[2][0] = 0.0f;
