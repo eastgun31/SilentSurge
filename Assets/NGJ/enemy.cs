@@ -175,11 +175,20 @@ public class Enemy : MonoBehaviour
     //    }
     //}
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         // 총알 등과의 충돌이면서 플레이어 총알인 경우에만 피해를 받습니다.
         if (collision.gameObject.CompareTag("Bullet"))
         {
+            gameObject.SetActive(false);
             TakeDamage(10); // 10의 데미지를 입습니다.
         }
     }

@@ -7,7 +7,10 @@ public class PipeManager : MonoBehaviour
 {
 
     public GameObject pipesHolder; //파이프를 포함한 부모 오브젝트
-    public GameObject[] pipes; 
+    public GameObject[] pipes;
+
+    public GameObject armor;
+    public GameObject gun;
 
     [SerializeField]
     int totalPipes = 0; // 전체 파이프 수
@@ -45,6 +48,9 @@ public class PipeManager : MonoBehaviour
             UiManager.instance.isWin = true;
             GameManager.instance.puzzleLevel += 1;
             GameManager.instance.nowpuzzle = false;
+
+            gun.SetActive(true);
+            armor.SetActive(true);
             
             Invoke("ClosePipe", 2f);
         }

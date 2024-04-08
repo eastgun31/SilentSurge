@@ -15,6 +15,9 @@ public class SinPuzzle : MonoBehaviour
     public Vector2 xlimit = new Vector2(-600, 600);
     public float speed = 1;
 
+
+    public GameObject cctv;
+
     bool lev = false;
 
     Player.PlayerState player;
@@ -80,6 +83,7 @@ public class SinPuzzle : MonoBehaviour
             {
                 GameManager.instance.puzzleLevel += 1;
                 GameManager.instance.nowpuzzle = false;
+                cctv.SetActive(false);
                 lev = true;
             }
             Invoke("CloseSin", 2f);
