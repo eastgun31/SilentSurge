@@ -179,6 +179,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
+            Destroy(other.gameObject,1f);
             gameObject.SetActive(false);
         }
     }
