@@ -37,8 +37,6 @@ public class Door_Parent : MonoBehaviour
         CC = GetComponentsInChildren<CapsuleCollider>();
     }
 
-
-
     void Update()
     {
         oDoor();
@@ -56,7 +54,6 @@ public class Door_Parent : MonoBehaviour
                     transform.localRotation = Quaternion.Euler(0, -openangle, 0);
                     op = OpenDoor.up;
                     
-
                 }
                 else if (!PlayerPos_0 && PlayerPos_1 && Input.GetKeyDown(KeyCode.Space))
                 {

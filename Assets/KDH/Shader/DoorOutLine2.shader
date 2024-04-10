@@ -1,5 +1,6 @@
 Shader "Custom/DoorOutLine2"
 {
+	// 오브젝트 자체를 좀 더 크게 그리는 쉐이더
     Properties
     {
         _Color ("Color", Color) = (1,1,1,1)
@@ -10,70 +11,6 @@ Shader "Custom/DoorOutLine2"
     SubShader
     {
         Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" }
-
-    //     Pass
-    //     {
-    //         Blend SrcAlpha OneMinusSrcAlpha
-    //         Cull Front
-    //         ZWrite Off
-
-    //         CGPROGRAM
-
-    //             #pragma vertex vert
-    //             #pragma fragment frag
-
-    //             half _Outline;
-    //             half4 _OutlineColor;
-
-    //             struct vertexInput
-    //             {
-    //                 float4 vertex: POSITION;
-    //             };
-
-    //             struct vertexOutput
-    //             {
-    //                 float4 pos: SV_POSITION;
-    //             };
-
-    //             float4 CreateOutline(float4 vertPos, float Outline)
-    //             {
-    //                 float4x4 scaleMat;
-    //                 scaleMat[0][0] = 0.895f + Outline;
-				//     scaleMat[0][1] = 0.0f;
-				//     scaleMat[0][2] = 0.0f;
-				//     scaleMat[0][3] = 0.0f;
-				//     scaleMat[1][0] = 0.0f;
-				//     scaleMat[1][1] = 1.1f + Outline;
-				//     scaleMat[1][2] = 0.0f;
-				//     scaleMat[1][3] = 0.0f;
-				//     scaleMat[2][0] = 0.0f;
-				//     scaleMat[2][1] = 0.0f;
-				//     scaleMat[2][2] = 1.0f + Outline;
-				//     scaleMat[2][3] = 0.0f;
-				//     scaleMat[3][0] = 0.0f;
-				//     scaleMat[3][1] = 0.0f;
-				//     scaleMat[3][2] = 0.0f;
-				//     scaleMat[3][3] = 1.0f;
-
-    //                 return mul(scaleMat, vertPos);
-    //             }
-
-    //             vertexOutput vert(vertexInput v)
-    //             {
-    //                 vertexOutput o;
-
-    //                 o.pos = UnityObjectToClipPos(CreateOutline(v.vertex, _Outline));
-
-    //                 return o;
-    //             }
-
-    //                 half4 frag(vertexOutput i) : Color
-    //                 {
-    //                     return _OutlineColor;
-    //                 }
-    //                 ENDCG
-    //      }
-    // }
 
     Pass
 		{

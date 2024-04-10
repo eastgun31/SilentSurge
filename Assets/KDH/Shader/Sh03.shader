@@ -18,6 +18,7 @@ Shader "Custom/Sh03"
         sampler2D _SecondTex;
         float _ratio;
         float _a; 
+        float dAlpha;
 
         struct Input
         {
@@ -42,7 +43,7 @@ Shader "Custom/Sh03"
             fixed4 d = tex2D(_SecondTex, IN.uv_SecondTex);
 
             o.Albedo = lerp(c.rgb, d.rgb, _ratio);
-            o.Alpha = c.a;
+            o.Alpha = dAlpha;
         }
         ENDCG
     }
