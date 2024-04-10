@@ -72,7 +72,6 @@ public class Sight : MonoBehaviour
 
     private void LateUpdate()
     {
-        Debug.Log(findT);
         DrawDetectArea();
     }
 

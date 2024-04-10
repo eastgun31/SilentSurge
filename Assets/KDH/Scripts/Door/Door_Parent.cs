@@ -2,20 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door_Parent : MonoBehaviour
+public class Door_Parent : MonoBehaviour      // 문을 열고 닫는 스크립트
 {
     public bool isOpen = false;
 
     private bool _init=false;
 
-    
     enum OpenDoor
     {
         not,
         up,
         down
     }
-
 
     public float openangle = 90f;
     public float smooth = 3f;
