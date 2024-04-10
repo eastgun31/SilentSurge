@@ -38,11 +38,15 @@ public class Enemy : MonoBehaviour
     Sight sight;
     [SerializeField]
     private int indexcount;
+    [SerializeField]
+    private bool chasing;
     public bool hearSound;
     WaitForSeconds wait;
+    WaitForSeconds lvwait;
 
     void Start()
     {
+        chasing = false;
         stoppingDistance = 1f;
         state = EnemyState.patrolling;
         sight = GetComponent<Sight>(); 
@@ -50,6 +54,7 @@ public class Enemy : MonoBehaviour
         hearSound = false;
         m_enemy = GetComponent<NavMeshAgent>();
         wait = new WaitForSeconds(1f);
+        lvwait = new WaitForSeconds(10f);
         StartCoroutine(EnemyStateCheck());
 
         m_enemy.avoidancePriority = 50; // 벽을 피하기 위한 우선순위 설정
@@ -78,7 +83,7 @@ public class Enemy : MonoBehaviour
     }
     public void ChaseSound(Vector3 position)
     {
-        Debug.Log("소리추적");
+        //Debug.Log("소리추적");
         m_enemy.SetDestination(position);
         if(noactiving)
             StartCoroutine(ChaseSoundRoutine(position)); // 대기 시간 5초 
@@ -123,6 +128,8 @@ public class Enemy : MonoBehaviour
     }
     void TargetChase()
     {
+        if(!chasing)
+            StartCoroutine(Levelstep());
         m_enemy.stoppingDistance = stoppingDistance;
         m_enemy.SetDestination(sight.detectTarget.position);
 
@@ -133,6 +140,7 @@ public class Enemy : MonoBehaviour
     {
         if (sight.findT)
         {
+            GameManager.instance.playerchasing = true;
             state = EnemyState.findtarget;
         }
         else if (sight.findT && hearSound)
@@ -141,15 +149,32 @@ public class Enemy : MonoBehaviour
         }
         else if (!sight.findT && hearSound)
         {
+            GameManager.instance.playerchasing = false;
             state = EnemyState.hear;
         }
         else if (!sight.findT && !hearSound)
         {
+            GameManager.instance.playerchasing = false;
             state = EnemyState.patrolling;
         }
 
         yield return wait;
         StartCoroutine(EnemyStateCheck());
+    }
+    IEnumerator Levelstep()
+    {
+        chasing = true;
+        yield return lvwait;
+
+        if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
+        {
+            EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
+        }
+        else if(state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
+        {
+            EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
+        }
+        chasing = false;
     }
 
     void SetNextDestination()

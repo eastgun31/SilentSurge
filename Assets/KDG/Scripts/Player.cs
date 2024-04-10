@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     public enum PlayerState //경계레벨 상태머신
     {
-        idle, hide, puzzling, die, moving
+        idle, hide, puzzling, die, find
     }
 
     public PlayerState state;
@@ -76,7 +76,6 @@ public class Player : MonoBehaviour
             //playerspeed = 2.5f;
         }
            
-
         if (state == PlayerState.idle)
         {
             if(rigid.velocity != Vector3.zero)
@@ -88,9 +87,6 @@ public class Player : MonoBehaviour
 
         if (itemGet[4])
             armor = GameManager.instance.itemcount[4];
-
-        
-        
     }
 
     private void FixedUpdate()
