@@ -10,12 +10,12 @@ public class DoorHandle_0 : MonoBehaviour
     public bool PlayerPos_1 = false;
     public Door_Parent tDoor;
     public GameObject P_Door;
-    public DoorMaterialChange dMatchange;
+    //public DoorMaterialChange dMatchange;
 
     private void Awake()
     {
         tDoor = P_Door.GetComponent<Door_Parent>();
-        dMatchange = gameObject.GetComponent<DoorMaterialChange>();
+        //dMatchange = gameObject.GetComponent<DoorMaterialChange>();
     }
 
     private void OnTriggerStay(Collider other)
@@ -24,7 +24,7 @@ public class DoorHandle_0 : MonoBehaviour
         {
             tDoor.PlayerPos_0 = true;
             tDoor.PlayerPos_1 = false;
-            dMatchange.OutlineMat();
+            //dMatchange.OutlineMat();
         }
     }
 
@@ -34,7 +34,7 @@ public class DoorHandle_0 : MonoBehaviour
         {
             tDoor.PlayerPos_0 = false;
             tDoor.PlayerPos_1 = false;
-            dMatchange.DoorMat();
+            //dMatchange.DoorMat();
         }
     }
 

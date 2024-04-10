@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 
 public class Sight : MonoBehaviour
 {
-    public float radius = 45f;
+    public float radius = 5f;
     [Range(0,360)]
     public float angle;
 
@@ -72,6 +72,7 @@ public class Sight : MonoBehaviour
 
     private void LateUpdate()
     {
+        Debug.Log(findT);
         DrawDetectArea();
     }
 
@@ -86,14 +87,15 @@ public class Sight : MonoBehaviour
 
     void DetectTargets()
     {
+        findT = false;
         Collider[] targets = Physics.OverlapSphere(transform.position, radius, playerM);  // radius(반지름) 내 원 영역의 playerM 콜라이더를 가져옴 
         for (int i = 0; i < targets.Length; i++)
         {
             detectTarget = targets[i].transform;
-            dir_T = (detectTarget.position - transform.position).normalized;             // 타겟 위치 - cctv 위치 (정규화) = 타겟의 방향
-            if (Vector3.Angle(transform.forward, dir_T) < angle / 2)                                        // cctv의 정면과 타겟의 방향이 이루는 각도가 설정한 변수보다 작다면(안이라면)
+            dir_T = (detectTarget.position - transform.position).normalized;             // 타겟 위치 - 시야각 발사 위치 (정규화) = 타겟의 방향
+            if (Vector3.Angle(transform.forward, dir_T) < angle / 2)                                        // 시야각의 정면과 타겟의 방향이 이루는 각도가 설정한 변수보다 작다면(안이라면)
             {
-                float disT = Vector3.Distance(transform.position, detectTarget.position);       // cctv 위치 -> 타겟 위치 = 타겟의 거리
+                float disT = Vector3.Distance(transform.position, detectTarget.position);       // 시야각 발사 위치 ~ 타겟 위치 = 타겟의 거리
                 foreach (Collider col in targets)
                 {
                     if (!Physics.Raycast(transform.position, dir_T, disT, etcM))                             // 타겟으로 가는 raycast에 장애물이 없다면
@@ -134,10 +136,6 @@ public class Sight : MonoBehaviour
                                 EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
                             }
                         }
-                        //else if(Physics.Raycast(transform.position, transform.forward, out hitR, radius, etcM))
-                        //{
-                        //    Debug.Log("etcM");
-                        //}
                     }
                 }
             }
@@ -146,7 +144,6 @@ public class Sight : MonoBehaviour
                 findT = false;
                 playerpos = Vector3.zero;
             }
-
         }
     }
 
