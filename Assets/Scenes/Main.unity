@@ -4626,6 +4626,7 @@ MonoBehaviour:
   stoppingDistance: 2
   maxHealth: 1
   indexcount: 0
+  chasing: 0
   hearSound: 0
 --- !u!1 &528382314
 GameObject:
@@ -4780,6 +4781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LvStep: 0
+  lv3enemy: {fileID: 740792065}
 --- !u!4 &537628223
 Transform:
   m_ObjectHideFlags: 0
@@ -5045,6 +5047,7 @@ MonoBehaviour:
   stoppingDistance: 2
   maxHealth: 1
   indexcount: 0
+  chasing: 0
   hearSound: 0
 --- !u!1 &558754425
 GameObject:
@@ -6707,6 +6710,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 739340488}
   m_CullTransparentMesh: 1
+--- !u!1 &740792065
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 740792066}
+  m_Layer: 0
+  m_Name: AddEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &740792066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740792065}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &745781983
 GameObject:
   m_ObjectHideFlags: 0
@@ -14099,6 +14133,7 @@ MonoBehaviour:
   puzzleLevel: 1
   nowpuzzle: 0
   canUse: 1
+  playerchasing: 0
 --- !u!4 &1793164137
 Transform:
   m_ObjectHideFlags: 0
@@ -15348,6 +15383,7 @@ MonoBehaviour:
   stoppingDistance: 2
   maxHealth: 1
   indexcount: 0
+  chasing: 0
   hearSound: 0
 --- !u!1 &2081339937
 GameObject:
@@ -74980,3 +75016,4 @@ SceneRoots:
   - {fileID: 638741739}
   - {fileID: 2051070516}
   - {fileID: 558754426}
+  - {fileID: 740792066}

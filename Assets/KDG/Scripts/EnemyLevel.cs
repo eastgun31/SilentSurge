@@ -8,13 +8,14 @@ public class EnemyLevel : MonoBehaviour
     {
         level1, level2, level3
     }
-
     public ELevel LvStep;
 
     public static EnemyLevel enemylv;
+    public GameObject lv3enemy;
 
     WaitForSeconds downTime;
     private bool lvDowning;
+    private bool addcomplete;
 
     public void Awake()
     {
@@ -26,6 +27,7 @@ public class EnemyLevel : MonoBehaviour
         LvStep = ELevel.level1;
         downTime = new WaitForSeconds(15f);
         lvDowning = false;
+        addcomplete = false;
     }
 
     private void Update()
@@ -34,6 +36,13 @@ public class EnemyLevel : MonoBehaviour
             StopCoroutine(LvDown());
         else if(!lvDowning && LvStep != ELevel.level1)
             StartCoroutine(LvDown()); 
+
+        if(LvStep == ELevel.level3 && !addcomplete)
+        {
+            Debug.Log("ÀûÃß°¡");
+            addcomplete = true;
+            lv3enemy.SetActive(true);
+        }
     }
 
     IEnumerator LvDown()
@@ -45,7 +54,11 @@ public class EnemyLevel : MonoBehaviour
         if (!GameManager.instance.playerchasing && LvStep == ELevel.level2)
             LvStep = ELevel.level1;
         else if(!GameManager.instance.playerchasing && LvStep == ELevel.level3)
+        {
             LvStep = ELevel.level2;
+            lv3enemy.SetActive(false);
+        }
+            
 
         lvDowning = false;
     }
