@@ -10,7 +10,7 @@ public class Sound : MonoBehaviour
     {
         if (other.CompareTag("Sound"))
         {
-            Debug.Log("발소리");
+            //Debug.Log("발소리");
             check = other.GetComponent<SoundWallCheck>();
 
             //Enemy 스크립트의 ChasePlayer 함수 호출

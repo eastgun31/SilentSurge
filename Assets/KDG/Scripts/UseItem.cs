@@ -86,7 +86,7 @@ public class UseItem : MonoBehaviour
 
     public IEnumerator ThrowCoin()
     {
-       Debug.Log("内风凭角青");
+       //Debug.Log("内风凭角青");
 
        yield return itemClass.animDelay;
        GameObject coin = Instantiate(coinPrefab, throwposition.transform.position, Quaternion.identity);
@@ -103,7 +103,7 @@ public class UseItem : MonoBehaviour
 
     public IEnumerator ThrowFlashBang()
     {
-        Debug.Log("内风凭角青");
+        //Debug.Log("内风凭角青");
 
         yield return itemClass.animDelay;
         GameObject flashbang = Instantiate(flashbangModel, throwposition.transform.position, Quaternion.identity);

@@ -28,12 +28,12 @@ public class SoundWallCheck : MonoBehaviour
             Debug.Log(hit.collider.gameObject.layer);
             if (hit.collider.gameObject.layer == 6)
             {
-                Debug.Log("적이 들음");
+                //Debug.Log("적이 들음");
                 canhear = true;
             }
             else if (hit.collider.gameObject.layer == 9)
             {
-                Debug.Log("벽에 소리 막힘");
+                //Debug.Log("벽에 소리 막힘");
                 canhear = false;
             }
         }
