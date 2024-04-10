@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
 
     int dLevel = 1;
 
-    [SerializeField] private float stoppingDistance = 1f; // 적이 멈출 거리
+    [SerializeField]private float stoppingDistance; // 적이 멈출 거리
 
     public event Action<Player> PlayerSpotted; // 플레이어 발견 시 이벤트
     bool noactiving;
@@ -38,14 +38,20 @@ public class Enemy : MonoBehaviour
     Sight sight;
     [SerializeField]
     private int indexcount;
+    public bool hearSound;
+    WaitForSeconds wait;
 
     void Start()
     {
+        stoppingDistance = 1f;
         state = EnemyState.patrolling;
         sight = GetComponent<Sight>(); 
         noactiving = true;
+        hearSound = false;
         m_enemy = GetComponent<NavMeshAgent>();
-        m_enemy.stoppingDistance = 0; // 적의 멈출 거리 설정
+        wait = new WaitForSeconds(1f);
+        StartCoroutine(EnemyStateCheck());
+
         m_enemy.avoidancePriority = 50; // 벽을 피하기 위한 우선순위 설정
         //m_player = GameObject.FindGameObjectWithTag("Player").transform;
         //SetNextDestination();
@@ -57,55 +63,36 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (sight.findT)
+        if (state == EnemyState.findtarget)
         {
-            state = EnemyState.findtarget;
-            Debug.Log("플레이어발견");
-            if(!m_followingPlayer)
-                NeviClear();
-            m_enemy.SetDestination(sight.detectTarget.position); // 플레이어를 발견하면 플레이어를 따라갑니다.
-
-            //// 플레이어를 발견했을 때 이벤트 발생
-            //PlayerSpotted?.Invoke(m_player.GetComponent<Player>());
+            TargetChase();
         }
-        else if(state == EnemyState.findtarget && !sight.findT)
-            state = EnemyState.patrolling;
-        else if (!sight.findT && state == EnemyState.hear)
+        else if(state == EnemyState.hear)
         {
-            m_enemy.stoppingDistance = 0f;
-            ChasePlayer(targetpos); // 트리거 충돌 시 플레이어를 따라갑니다.
+            ChaseSound(targetpos);
         }
-        else if(!m_triggered && !sight.findT)
-        {
-            m_followingPlayer = false;
-            m_enemy.isStopped = false;
-            //if (!m_enemy.pathPending && m_enemy.remainingDistance < stoppingDistance)
-            //{
-            //    SetNextDestination(); // 평상시에는 기본적인 목적지로 이동합니다.
-            //}
-            if(customDestinations.Length > 0 )
-                EnemyPatrol();
-        }
-        else if(state == EnemyState.patrolling)
+        else if (state == EnemyState.patrolling)
         {
             EnemyPatrol();
         }
     }
-    public void ChasePlayer(Vector3 position)
+    public void ChaseSound(Vector3 position)
     {
+        Debug.Log("소리추적");
         m_enemy.SetDestination(position);
         if(noactiving)
-            StartCoroutine(ChasePlayerRoutine(position, 5f)); // 대기 시간 5초 
+            StartCoroutine(ChaseSoundRoutine(position)); // 대기 시간 5초 
     }
 
-    IEnumerator ChasePlayerRoutine(Vector3 position, float chaseDuration)
+    IEnumerator ChaseSoundRoutine(Vector3 position)
     {
         noactiving = false;
-        yield return new WaitForSeconds(chaseDuration);
-        m_triggered = false; // 트리거 충돌 상태 종료
+        m_enemy.stoppingDistance = 0;
+
+        yield return new WaitForSeconds(3f);
+        hearSound = false;
         noactiving = true;
-        m_enemy.stoppingDistance = stoppingDistance;
-        //SetNextDestination();
+        NeviClear();
         state = EnemyState.patrolling;
     }
 
@@ -133,6 +120,36 @@ public class Enemy : MonoBehaviour
                 indexcount = 0;
             m_enemy.SetDestination(customDestinations[indexcount]);
         }
+    }
+    void TargetChase()
+    {
+        m_enemy.stoppingDistance = stoppingDistance;
+        m_enemy.SetDestination(sight.detectTarget.position);
+
+        //if(Vector3.Distance(transform.position, sight.detectTarget.position) <= 1f)
+        //    m_enemy.stoppingDistance = stoppingDistance;
+    }
+    IEnumerator EnemyStateCheck()
+    {
+        if (sight.findT)
+        {
+            state = EnemyState.findtarget;
+        }
+        else if (sight.findT && hearSound)
+        {
+            state = EnemyState.findtarget;
+        }
+        else if (!sight.findT && hearSound)
+        {
+            state = EnemyState.hear;
+        }
+        else if (!sight.findT && !hearSound)
+        {
+            state = EnemyState.patrolling;
+        }
+
+        yield return wait;
+        StartCoroutine(EnemyStateCheck());
     }
 
     void SetNextDestination()

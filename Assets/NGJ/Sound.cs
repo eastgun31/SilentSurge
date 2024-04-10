@@ -17,12 +17,7 @@ public class Sound : MonoBehaviour
             if (enemyScript != null && check.canhear)
             {
                 enemyScript.targetpos = other.gameObject.transform.position;
-                enemyScript.state = Enemy.EnemyState.hear;
-            }
-            else
-            {
-                Debug.LogWarning("Enemy 스크립트.");
-
+                enemyScript.hearSound = true;
             }
         }
     }
@@ -42,10 +37,5 @@ public class Sound : MonoBehaviour
         //{
         //    Debug.LogWarning("Enemy GameObject를 찾을 수 없습니다.");
         //}
-    }
-
-    void Update()
-    {
-
     }
 }
