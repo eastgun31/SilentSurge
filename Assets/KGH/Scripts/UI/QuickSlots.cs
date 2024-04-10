@@ -32,7 +32,7 @@ public class QuickSlots : MonoBehaviour
             }
             else if (GameManager.instance.itemcount[0] == 0)
             {
-                GameObject.Find("HandGun").GetComponent<Image>().color = new Color(140, 140, 140);
+                GameObject.Find("HandGun").GetComponent<Image>().color = Color.gray;
                 c_text[0].gameObject.SetActive(false);
             }
         }
@@ -47,7 +47,7 @@ public class QuickSlots : MonoBehaviour
             }
             else if (GameManager.instance.itemcount[1] == 0)
             {
-                GameObject.Find("Coin").GetComponent<Image>().color = new Color(140, 140, 140);
+                GameObject.Find("Coin").GetComponent<Image>().color = Color.gray;
                 c_text[1].gameObject.SetActive(false);
             }
         }
@@ -62,7 +62,7 @@ public class QuickSlots : MonoBehaviour
             }
             else if (GameManager.instance.itemcount[2] == 0)
             {
-                GameObject.Find("Flashbang").GetComponent<Image>().color = new Color(140, 140, 140);
+                GameObject.Find("Flashbang").GetComponent<Image>().color = Color.gray;
                 c_text[2].gameObject.SetActive(false);
             }
         }
