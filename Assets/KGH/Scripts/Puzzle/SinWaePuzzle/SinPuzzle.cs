@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class SinPuzzle : MonoBehaviour
 {
-    public GameObject canvas;
 
     public LineRenderer lineRenderer;
     [SerializeField] [Range(0, 500)] private int points = 260;
@@ -33,7 +32,6 @@ public class SinPuzzle : MonoBehaviour
         Win();
         Wave();
         UiManager.instance.TimeRemainig();
-        
     }
 
     private void Wave()
@@ -75,8 +73,6 @@ public class SinPuzzle : MonoBehaviour
     {
         if (amplitude == 100 && 0.004f == frequency)
         {
-            //StartCoroutine(WinCheck());
-            //Debug.Log("success");
             UiManager.instance.isWin = true;
             player = Player.PlayerState.idle;
             if (!lev)
@@ -93,10 +89,8 @@ public class SinPuzzle : MonoBehaviour
     {
         return UiManager.instance.isWin;
     }
-
     private void CloseSin()
     {
         UiManager.instance.CloseSinFst();
     }
-
 }

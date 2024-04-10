@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PipeManager : MonoBehaviour
 {
-
     public GameObject pipesHolder; //파이프를 포함한 부모 오브젝트
     public GameObject[] pipes;
 
@@ -16,7 +15,6 @@ public class PipeManager : MonoBehaviour
     int totalPipes = 0; // 전체 파이프 수
     [SerializeField]
     int correctPipes = 0; // 올바르게 배치된 파이프 수
-
 
     void Start()
     {
@@ -40,17 +38,17 @@ public class PipeManager : MonoBehaviour
     {
         correctPipes += 1;
 
-       // Debug.Log("correct");
-
         if (correctPipes == totalPipes) //승리 조건
         {
-            //Debug.Log("Win");
             UiManager.instance.isWin = true;
             GameManager.instance.puzzleLevel += 1;
             GameManager.instance.nowpuzzle = false;
 
-            gun.SetActive(true);
-            armor.SetActive(true);
+            if (GameManager.instance.puzzleLevel == 1)
+            {
+                gun.SetActive(true);
+                armor.SetActive(true);
+            }
             
             Invoke("ClosePipe", 2f);
         }
