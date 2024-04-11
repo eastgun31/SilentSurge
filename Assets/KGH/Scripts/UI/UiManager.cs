@@ -16,6 +16,16 @@ public class UiManager : MonoBehaviour
     public GameObject pipePuzFst;
     public GameObject pipePuzSec;
 
+    public GameObject pipeKeypadNumTwo;
+    public GameObject pipeKeypadNumThree;
+    public GameObject pipeKeypadNumFour;
+    public GameObject pipeKeypadNumFive;
+    public GameObject pipeKeypadNumSix;
+    public GameObject pipeKeypadNumSeven;
+    public GameObject pipeKeypadNumEight;
+    public GameObject pipeKeypadNumNine;
+    public GameObject pipeKeypadNumZero;
+
     public GameObject keypadFst;
 
     public GameObject sinPuzzleFst;
@@ -60,22 +70,56 @@ public class UiManager : MonoBehaviour
         pipePuzFst.SetActive(true);
         missionTime.SetActive(true);
     }
-    public void ClosePipeFst()
-    {
-        pipePuzFst.SetActive(false);
-        missionTime.SetActive(false);
-    }
-    public void ClosePipeSec()
-    {
-        pipePuzSec.SetActive(false);
-        missionTime.SetActive(false);
-    }
     public void ActivePipeSec()
     {
         pipePuzSec.SetActive(true);
         missionTime.SetActive(true);
     }
-   
+    public void ActivePipeKeypadNumTwo()
+    {
+        pipeKeypadNumTwo.SetActive(true);
+        missionTime.SetActive(true);
+    }
+    public void ActivePipeKeypadNumThree()
+    {
+        pipeKeypadNumThree.SetActive(true);
+        missionTime.SetActive(true);
+    }
+    public void ActivePipeKeypadNumFour()
+    {
+        pipeKeypadNumFour.SetActive(true);
+        missionTime.SetActive(true);
+    }
+    public void ActivePipeKeypadNumFive()
+    {
+        pipeKeypadNumFive.SetActive(true);
+        missionTime.SetActive(true);
+    }
+    public void ActivePipeKeypadNumSix()
+    {
+        pipeKeypadNumSix.SetActive(true);
+        missionTime.SetActive(true);
+    }
+    public void ActivePipeKeypadNumSeven()
+    {
+        pipeKeypadNumSeven.SetActive(true);
+        missionTime.SetActive(true);
+    }
+    public void ActivePipeKeypadNumEight()
+    {
+        pipeKeypadNumEight.SetActive(true);
+        missionTime.SetActive(true);
+    }
+    public void ActivePipeKeypadNumNine()
+    {
+        pipeKeypadNumNine.SetActive(true);
+        missionTime.SetActive(true);
+    }
+    public void ActivePipeKeypadNumZero()
+    {
+        pipeKeypadNumZero.SetActive(true);
+        missionTime.SetActive(true);
+    }
     public void ActiveKeypad()
     {
         keypadFst.SetActive(true);

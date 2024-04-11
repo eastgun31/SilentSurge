@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorHandle_1 : MonoBehaviour
+public class DoorHandle_1 : MonoBehaviour   // 문 손잡이 2
 {
     public bool canOpen = true;
     public bool isOpen = false;
@@ -10,13 +10,15 @@ public class DoorHandle_1 : MonoBehaviour
     public bool PlayerPos_1 = false;
     public Door_Parent tDoor;
     public GameObject P_Door;
-    //public DoorMaterialChange dMatchange;
-    //public GameObject dMatC;
+
+    [SerializeField]
+    private Material mat_Door;
+    [SerializeField]
+    private Material mat_Outline;
 
     private void Awake()
     {
         tDoor = P_Door.GetComponent<Door_Parent>();
-        //dMatchange = dMatC.GetComponent<DoorMaterialChange>();
     }
 
     private void OnTriggerStay(Collider col)
@@ -25,7 +27,7 @@ public class DoorHandle_1 : MonoBehaviour
         {
             tDoor.PlayerPos_0 = false;
             tDoor.PlayerPos_1 = true;
-            //dMatchange.OutlineMat();
+            P_Door.GetComponent<MeshRenderer>().material = mat_Outline;  // 아웃라인 메테리얼로 0번 배열 변경 
         }
     }
 
@@ -35,7 +37,7 @@ public class DoorHandle_1 : MonoBehaviour
         {
             tDoor.PlayerPos_0 = false;
             tDoor.PlayerPos_1 = false;
-            //dMatchange.DoorMat();
+            P_Door.GetComponent<MeshRenderer>().material = mat_Door;  // 문 기본 메테리얼로 0번 배열 변경
         }
     }
 }
