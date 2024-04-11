@@ -31,6 +31,7 @@ public class UseItem : MonoBehaviour
     LineRenderer drawLine;
     Item itemClass;
     Camera cam;
+    CreateSound gunSound;
 
     private void Start()
     {
@@ -45,6 +46,8 @@ public class UseItem : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, handGunModel.transform.position, Quaternion.identity);
         Rigidbody bulletRigid = bullet.GetComponent<Rigidbody>();
+        gunSound = bullet.GetComponent<CreateSound>();
+        StartCoroutine(gunSound.SoundCreateDeleteGun());
 
         float zDeg = pos.z - bulletRigid.position.z;
         float xDeg = pos.x - bulletRigid.position.x;
