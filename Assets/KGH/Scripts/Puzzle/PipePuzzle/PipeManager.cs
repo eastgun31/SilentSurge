@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class PipeManager : MonoBehaviour
 {
+    public GameObject canvas;
+
     public GameObject pipesHolder; //파이프를 포함한 부모 오브젝트
     public GameObject[] pipes;
 
-    public GameObject armor;
-    public GameObject gun;
+    public GameObject[] items;
 
     [SerializeField]
     int totalPipes = 0; // 전체 파이프 수
@@ -46,8 +47,8 @@ public class PipeManager : MonoBehaviour
 
             if (GameManager.instance.puzzleLevel == 1)
             {
-                gun.SetActive(true);
-                armor.SetActive(true);
+                items[0].SetActive(true);
+                items[1].SetActive(true);
             }
             
             Invoke("ClosePipe", 2f);
@@ -61,7 +62,6 @@ public class PipeManager : MonoBehaviour
 
     public void ClosePipe()
     {
-        UiManager.instance.ClosePipeFst();
-        UiManager.instance.ClosePipeSec();
+        canvas.gameObject.SetActive(false);
     }
 }

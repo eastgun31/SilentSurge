@@ -15,6 +15,8 @@ public class UiManager : MonoBehaviour
 
     public GameObject pipePuzFst;
     public GameObject pipePuzSec;
+    public GameObject pipeKeypadNumTwo;
+    public GameObject pipeKeypadNumFive;
 
     public GameObject keypadFst;
 
@@ -60,22 +62,21 @@ public class UiManager : MonoBehaviour
         pipePuzFst.SetActive(true);
         missionTime.SetActive(true);
     }
-    public void ClosePipeFst()
-    {
-        pipePuzFst.SetActive(false);
-        missionTime.SetActive(false);
-    }
-    public void ClosePipeSec()
-    {
-        pipePuzSec.SetActive(false);
-        missionTime.SetActive(false);
-    }
     public void ActivePipeSec()
     {
         pipePuzSec.SetActive(true);
         missionTime.SetActive(true);
     }
-   
+    public void ActivePipeKeypadNumTwo()
+    {
+        pipeKeypadNumTwo.SetActive(true);
+        missionTime.SetActive(true);
+    }
+    public void ActivePipeKeypadNumFive()
+    {
+        pipeKeypadNumFive.SetActive(true);
+        missionTime.SetActive(true);
+    }
     public void ActiveKeypad()
     {
         keypadFst.SetActive(true);
