@@ -10,16 +10,41 @@ public class CreateSound : MonoBehaviour
     public int value;
     CoolTime delaytime = new CoolTime();
     new SphereCollider collider;
-    AudioSource audioSource;
+    public AudioSource audioSource;
 
     private void OnEnable()
     {
         audioSource = GetComponent<AudioSource>();
-        if(value == 0)
-        {
-            StartCoroutine(SoundCreateDelete());
-        }
+        //if(value == 0)
+        //{
+        //    StartCoroutine(SoundCreateDelete());
+        //}
     }
+
+    public IEnumerator SoundCreateDeleteGun()
+    {
+        //yield return delaytime.colsize;
+        audioSource.Play();
+        GameObject sound = Instantiate(soundprefab);
+        sound.transform.position = gameObject.transform.position;
+        collider = sound.GetComponent<SphereCollider>();
+        collider.radius = 0.1f;
+        yield return delaytime.cool1sec;
+        collider.radius = 0.5f;
+        yield return delaytime.coolhalf1sec;
+        collider.radius = 1f;
+        yield return delaytime.coolhalf1sec;
+        collider.radius = 1.5f;
+        yield return delaytime.coolhalf1sec;
+        collider.radius = 2f;
+        yield return delaytime.coolhalf1sec;
+        collider.radius = 2.5f;
+        yield return delaytime.coolhalf1sec;
+        collider.radius = 3f;
+
+        Destroy(sound, 1f);
+    }
+
 
     IEnumerator SoundCreateDelete()
     {

@@ -52,7 +52,9 @@ public class EnemyLevel : MonoBehaviour
         yield return downTime;
 
         if (!GameManager.instance.playerchasing && LvStep == ELevel.level2)
+        {
             LvStep = ELevel.level1;
+        }
         else if(!GameManager.instance.playerchasing && LvStep == ELevel.level3)
         {
             LvStep = ELevel.level2;
