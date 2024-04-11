@@ -11,6 +11,11 @@ public class DoorHandle_0 : MonoBehaviour   // 문 손잡이 1
     public Door_Parent tDoor;
     public GameObject P_Door;
 
+    [SerializeField]
+    private Material mat_Door;
+    [SerializeField]
+    private Material mat_Outline;
+
     private void Awake()
     {
         tDoor = P_Door.GetComponent<Door_Parent>();
@@ -22,6 +27,7 @@ public class DoorHandle_0 : MonoBehaviour   // 문 손잡이 1
         {
             tDoor.PlayerPos_0 = true;
             tDoor.PlayerPos_1 = false;
+            P_Door.GetComponent<MeshRenderer>().material = mat_Outline;  // 아웃라인 메테리얼로 0번 배열 변경 
         }
     }
 
@@ -31,6 +37,7 @@ public class DoorHandle_0 : MonoBehaviour   // 문 손잡이 1
         {
             tDoor.PlayerPos_0 = false;
             tDoor.PlayerPos_1 = false;
+            P_Door.GetComponent<MeshRenderer>().material = mat_Door;  // 문 기본 메테리얼로 0번 배열 변경
         }
     }
 }
