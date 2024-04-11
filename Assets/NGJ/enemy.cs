@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
         patrolling, hear, findtarget
     }
 
+  
+   
     public EnemyState state;
 
     NavMeshAgent m_enemy;
@@ -46,26 +48,27 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        chasing = false;
-        stoppingDistance = 1f;
-        state = EnemyState.patrolling;
-        sight = GetComponent<Sight>(); 
-        noactiving = true;
-        hearSound = false;
-        m_enemy = GetComponent<NavMeshAgent>();
-        wait = new WaitForSeconds(1f);
-        lvwait = new WaitForSeconds(10f);
-        StartCoroutine(EnemyStateCheck());
+        
+            chasing = false;
+            stoppingDistance = 1f;
+            state = EnemyState.patrolling;
+            sight = GetComponent<Sight>();
+            noactiving = true;
+            hearSound = false;
+            m_enemy = GetComponent<NavMeshAgent>();
+            wait = new WaitForSeconds(1f);
+            lvwait = new WaitForSeconds(10f);
+            StartCoroutine(EnemyStateCheck());
 
-        m_enemy.avoidancePriority = 50; // 벽을 피하기 위한 우선순위 설정
-        //m_player = GameObject.FindGameObjectWithTag("Player").transform;
-        //SetNextDestination();
+            m_enemy.avoidancePriority = 50; // 벽을 피하기 위한 우선순위 설정
+                                            //m_player = GameObject.FindGameObjectWithTag("Player").transform;
+                                            //SetNextDestination();
 
-        // 초기 체력 설정
-        currentHealth = maxHealth;
-        indexcount = 0;
-    }
-
+            // 초기 체력 설정
+            currentHealth = maxHealth;
+            indexcount = 0;
+        }
+    
     void Update()
     {
         if (state == EnemyState.findtarget)
@@ -133,8 +136,19 @@ public class Enemy : MonoBehaviour
         m_enemy.stoppingDistance = stoppingDistance;
         m_enemy.SetDestination(sight.detectTarget.position);
 
-        //if(Vector3.Distance(transform.position, sight.detectTarget.position) <= 1f)
+        if(Vector3.Distance(transform.position, sight.detectTarget.position) <= 1f)
+        {
+
+        }
         //    m_enemy.stoppingDistance = stoppingDistance;
+
+        void shoot()
+        {
+            m_enemy.isStopped = false;
+            
+
+       
+        }
     }
     IEnumerator EnemyStateCheck()
     {
@@ -233,6 +247,7 @@ public class Enemy : MonoBehaviour
         {
             gameObject.SetActive(false);
             TakeDamage(10); // 10의 데미지를 입습니다.
+           
         }
     }
 
