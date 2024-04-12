@@ -1967,8 +1967,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7248858452175125864, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1157030222}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5185967491329815994, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 1820361130}
     - targetCorrespondingSourceObject: {fileID: 4398446891114636988, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 210211372}
@@ -2202,10 +2208,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa63b0917d52864d8319fe8139c1f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
   pipesHolder: {fileID: 0}
   pipes: []
-  armor: {fileID: 0}
-  gun: {fileID: 0}
+  items: []
   totalPipes: 0
   correctPipes: 0
 --- !u!1 &244482512
@@ -5514,11 +5520,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa63b0917d52864d8319fe8139c1f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
   pipesHolder: {fileID: 353948727}
   pipes:
   - {fileID: 353948727}
-  armor: {fileID: 1526348823}
-  gun: {fileID: 1214412385}
+  items: []
   totalPipes: 0
   correctPipes: 0
 --- !u!1 &571555155
@@ -6773,7 +6779,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472692c82fd5ef54dbefefcce8cc8b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 1165657498}
   lineRenderer: {fileID: 723158497}
   points: 260
   amplitude: 70
@@ -7612,6 +7617,15 @@ MonoBehaviour:
   isWin: 0
   pipePuzFst: {fileID: 638741738}
   pipePuzSec: {fileID: 1171448353}
+  pipeKeypadNumTwo: {fileID: 0}
+  pipeKeypadNumThree: {fileID: 0}
+  pipeKeypadNumFour: {fileID: 0}
+  pipeKeypadNumFive: {fileID: 0}
+  pipeKeypadNumSix: {fileID: 0}
+  pipeKeypadNumSeven: {fileID: 0}
+  pipeKeypadNumEight: {fileID: 0}
+  pipeKeypadNumNine: {fileID: 0}
+  pipeKeypadNumZero: {fileID: 0}
   keypadFst: {fileID: 1256994626}
   sinPuzzleFst: {fileID: 1165657498}
 --- !u!4 &789543566
@@ -12010,6 +12024,89 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154473995}
   m_Mesh: {fileID: 4300000, guid: 6458d14e3e18f9349aa6064cf0b3bbfb, type: 3}
+--- !u!1 &1157030221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1157030222}
+  - component: {fileID: 1157030224}
+  - component: {fileID: 1157030223}
+  m_Layer: 3
+  m_Name: PlayerView
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1157030222
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157030221}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 210211370}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1157030223
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157030221}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1fd449f5d981e2c40973bb66cf6ac65a, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1157030224
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157030221}
+  m_Mesh: {fileID: 0}
 --- !u!1 &1164184175
 GameObject:
   m_ObjectHideFlags: 0
@@ -16662,6 +16759,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1808933203}
   m_CullTransparentMesh: 1
+--- !u!1 &1820361129 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5185967491329815994, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+  m_PrefabInstance: {fileID: 210211369}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1820361130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820361129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f981825d4299942b739fa4b6aafbcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRadius: 10
+  viewAngle: 100
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 0
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 256
+  visibleTargets: []
+  meshResolution: 1
+  viewMeshFilter: {fileID: 1157030224}
+  edgeResolveIterations: 0
+  edgeDstThreshold: 0
 --- !u!1 &1820583700
 GameObject:
   m_ObjectHideFlags: 0
