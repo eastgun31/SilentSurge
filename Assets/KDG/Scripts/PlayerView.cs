@@ -17,6 +17,7 @@ public class PlayerView : MonoBehaviour
     public MeshFilter viewMeshFilter;
     public int edgeResolveIterations;
     public float edgeDstThreshold;
+    public float maskCutawayDst;
 
     public struct ViewCastInfo
     {
@@ -45,6 +46,7 @@ public class PlayerView : MonoBehaviour
 
     void Start()
     {
+        maskCutawayDst = 0.2f;
         delay = new WaitForSeconds(0.2f);
         // 0.2초 간격으로 코루틴 호출
         //StartCoroutine(FindTargetsWithDelay());
@@ -138,7 +140,7 @@ public class PlayerView : MonoBehaviour
 
         for (int i = 0; i < vertexCount - 1; i++)
         {
-            vertices[i + 1] = transform.InverseTransformPoint(viewPoints[i]);
+            vertices[i + 1] = transform.InverseTransformPoint(viewPoints[i]) + Vector3.forward * maskCutawayDst;
             if (i < vertexCount - 2)
             {
                 triangles[i * 3] = 0;
