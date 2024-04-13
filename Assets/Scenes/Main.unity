@@ -5027,6 +5027,9 @@ MonoBehaviour:
   customDestinations:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
+  bulletPrefab: {fileID: 0}
+  bulletSpawnPoint: {fileID: 0}
+  bulletSpeed: 10
   m_triggered: 0
   targetpos: {x: 0, y: 0, z: 0}
   stoppingDistance: 2
@@ -5448,6 +5451,9 @@ MonoBehaviour:
   - {x: 19, y: 0, z: 38}
   - {x: 19, y: 0, z: 21}
   - {x: 34, y: 0, z: 22}
+  bulletPrefab: {fileID: 0}
+  bulletSpawnPoint: {fileID: 0}
+  bulletSpeed: 10
   m_triggered: 0
   targetpos: {x: 0, y: 0, z: 0}
   stoppingDistance: 2
@@ -5535,7 +5541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa63b0917d52864d8319fe8139c1f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 638741738}
   pipesHolder: {fileID: 353948727}
   pipes:
   - {fileID: 353948727}
@@ -7628,21 +7634,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionTime: {fileID: 164325278}
   success: {fileID: 164325280}
-  timeRemainig: 15
   isWin: 0
   pipePuzFst: {fileID: 638741738}
   pipePuzSec: {fileID: 1171448353}
-  pipeKeypadNumTwo: {fileID: 0}
-  pipeKeypadNumThree: {fileID: 0}
-  pipeKeypadNumFour: {fileID: 0}
-  pipeKeypadNumFive: {fileID: 0}
-  pipeKeypadNumSix: {fileID: 0}
-  pipeKeypadNumSeven: {fileID: 0}
-  pipeKeypadNumEight: {fileID: 0}
-  pipeKeypadNumNine: {fileID: 0}
-  pipeKeypadNumZero: {fileID: 0}
+  pipeKeypadNum: []
   keypadFst: {fileID: 1256994626}
   sinPuzzleFst: {fileID: 1165657498}
+  gameover: {fileID: 0}
 --- !u!4 &789543566
 Transform:
   m_ObjectHideFlags: 0
@@ -18244,6 +18242,9 @@ MonoBehaviour:
   - {x: 33, y: 0, z: 11}
   - {x: 25, y: 0, z: 11}
   - {x: 25, y: 0, z: 21}
+  bulletPrefab: {fileID: 0}
+  bulletSpawnPoint: {fileID: 0}
+  bulletSpeed: 10
   m_triggered: 0
   targetpos: {x: 0, y: 0, z: 0}
   stoppingDistance: 2

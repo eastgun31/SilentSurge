@@ -4904,7 +4904,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 290248632}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 539159015}
+        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
+        m_MethodName: Restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &290248632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9150,6 +9162,7 @@ GameObject:
   - component: {fileID: 539159011}
   - component: {fileID: 539159014}
   - component: {fileID: 539159013}
+  - component: {fileID: 539159015}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -9193,7 +9206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9218,6 +9231,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539159010}
   m_CullTransparentMesh: 1
+--- !u!114 &539159015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539159010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1813f986202e9b40975a159d6f3c736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Image: {fileID: 539159013}
+  button:
+  - {fileID: 1614540756}
+  - {fileID: 290248629}
+  - {fileID: 778706158}
+  text: {fileID: 1632334120}
+  gameover: {fileID: 539159010}
 --- !u!1 &543477858
 GameObject:
   m_ObjectHideFlags: 0
@@ -18011,21 +18043,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionTime: {fileID: 274206752}
   success: {fileID: 274206754}
-  timeRemainig: 15
   isWin: 0
   pipePuzFst: {fileID: 1495848763}
   pipePuzSec: {fileID: 934325804}
-  pipeKeypadNumTwo: {fileID: 1137473109}
-  pipeKeypadNumThree: {fileID: 1183784999}
-  pipeKeypadNumFour: {fileID: 1716171749}
-  pipeKeypadNumFive: {fileID: 1835799769}
-  pipeKeypadNumSix: {fileID: 1278346034}
-  pipeKeypadNumSeven: {fileID: 1599195214}
-  pipeKeypadNumEight: {fileID: 1781706180}
-  pipeKeypadNumNine: {fileID: 52476960}
-  pipeKeypadNumZero: {fileID: 1053538117}
+  pipeKeypadNum:
+  - {fileID: 1137473109}
+  - {fileID: 1183784999}
+  - {fileID: 1716171749}
+  - {fileID: 1835799769}
+  - {fileID: 1278346034}
+  - {fileID: 1599195214}
+  - {fileID: 1781706180}
+  - {fileID: 52476960}
+  - {fileID: 1053538117}
   keypadFst: {fileID: 1568596212}
   sinPuzzleFst: {fileID: 811931104}
+  gameover: {fileID: 539159010}
 --- !u!4 &1255737008
 Transform:
   m_ObjectHideFlags: 0
@@ -22855,13 +22888,14 @@ GameObject:
   - component: {fileID: 1632334121}
   - component: {fileID: 1632334123}
   - component: {fileID: 1632334122}
+  - component: {fileID: 1632334124}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1632334121
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22923,6 +22957,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632334120}
   m_CullTransparentMesh: 1
+--- !u!95 &1632334124
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632334120}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1632835954
 GameObject:
   m_ObjectHideFlags: 0
