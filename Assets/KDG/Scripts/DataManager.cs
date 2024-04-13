@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 
+[System.Serializable]
 public class SaveData
 {
     //public Player player;
@@ -33,7 +35,7 @@ public class DataManager : MonoBehaviour
     //public bool gmcanUse;
     //public bool gmplayerchasing;
 
-    public string name = "/save.txt";
+    public string savename = "/save";
     private SaveData saveData = new SaveData();
     private string SAVEDAT;
 

@@ -49,10 +49,11 @@ public class Player : MonoBehaviour
     Camera cam;
     Vector3 mousePos;
     public Vector3 velocity;
-    bool die = false;
+    bool die;
 
     void Start()
     {
+        die = false;
         playerspeed = 2.5f;
         itemGet =new bool[5] { false,false,false,false,false};
         state = PlayerState.idle;
@@ -182,7 +183,7 @@ public class Player : MonoBehaviour
         }
         if(!die && Input.GetKey(KeyCode.G))
         {
-            PlayerDie();
+            StartCoroutine(PlayerDie());
         }
         if(Input.GetKey(KeyCode.F))
         {
