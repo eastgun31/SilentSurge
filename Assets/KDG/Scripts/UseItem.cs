@@ -32,7 +32,6 @@ public class UseItem : MonoBehaviour
     int mask;
     LineRenderer drawLine;
     Item itemClass;
-    Camera cam;
     CreateSound gunSound;
 
     private void Start()
@@ -40,7 +39,6 @@ public class UseItem : MonoBehaviour
         itemClass = new Item();
         wait = new WaitForSeconds(0.5f);
         drawLine = GetComponent<LineRenderer>();
-        cam = Camera.main;
     }
 
 

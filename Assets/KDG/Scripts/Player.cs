@@ -47,10 +47,9 @@ public class Player : MonoBehaviour
     float rotDeg;
     Rigidbody rigid;
     Camera cam;
-    Vector3 pos;
     Vector3 mousePos;
     public Vector3 velocity;
-    bool itemActivate = false;
+    bool die = false;
 
     void Start()
     {
@@ -181,6 +180,14 @@ public class Player : MonoBehaviour
                 StartCoroutine(useItem.HeartSee());
             }
         }
+        if(!die && Input.GetKey(KeyCode.G))
+        {
+            PlayerDie();
+        }
+        if(Input.GetKey(KeyCode.F))
+        {
+            DataManager.instance.SaveData();
+        }
     }
 
     void ItemActivate1()
@@ -261,6 +268,15 @@ public class Player : MonoBehaviour
             heartseeacivate = false;
             Debug.Log("심장박동측정기 비활성화");
         }
+    }
+
+    IEnumerator PlayerDie()
+    {
+        die = true;
+        yield return new WaitForSeconds(1f);
+        Debug.Log("플레이어 죽음");
+        DataManager.instance.LoadData();
+        die = false;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -12,9 +12,6 @@ public class PlayerView : MonoBehaviour
     [SerializeField]
     private float viewAngle2;
     public LayerMask targetMask, obstacleMask;  //·¹ÀÌ¾î
-    //public List<Transform> visibleTargets = new List<Transform>(); 
-    //public Transform target;
-    WaitForSeconds delay;
 
     public float meshResolution;
     Mesh viewMesh;

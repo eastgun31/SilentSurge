@@ -1,18 +1,114 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+
+public class SaveData
+{
+    //public Player player;
+    //public bool[] playeritemget;
+    public Vector3 playerposition;
+
+    //public bool[] gmitemcheck;
+    //public int[] gmitemcount;
+    //public int gmpuzzleLevel;
+    //public bool gmnowpuzzle;
+    //public bool gmcanUse;
+    //public bool gmplayerchasing;
+}
+
 
 public class DataManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static DataManager instance;
+
+    private Player player;
+    //public bool[] playeritemget;
+    //public Vector3 playerposition;
+
+    //public bool[] gmitemcheck;
+    //public int[] gmitemcount;
+    //public int gmpuzzleLevel;
+    //public bool gmnowpuzzle;
+    //public bool gmcanUse;
+    //public bool gmplayerchasing;
+
+    public string name = "/save.txt";
+    private SaveData saveData = new SaveData();
+    private string SAVEDAT;
+
+    private void Awake()
     {
-        
+        if (instance != null)
+            Destroy(gameObject);
+        else
+            instance = this;
+
+        DontDestroyOnLoad(this.gameObject);
+
+        SAVEDAT = Application.dataPath + "/Save/";
+
+        if (!Directory.Exists(SAVEDAT)) // 해당 경로가 존재하지 않는다면
+            Directory.CreateDirectory(SAVEDAT); // 폴더 생성(경로 생성)
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SaveData()
     {
-        
+        player = FindObjectOfType<Player>();
+        saveData.playerposition = player.transform.position;
+        //for(int i = 0; i < player.itemGet.Length; i++)
+        //{
+        //    saveData.playeritemget[i] = player.itemGet[i];
+        //}
+
+        //for(int i = 0; i < GameManager.instance.itemcheck.Length; i++)
+        //{
+        //    saveData.gmitemcheck[i] = GameManager.instance.itemcheck[i];
+        //}
+        //for (int i = 0; i < GameManager.instance.itemcount.Length; i++)
+        //{
+        //    saveData.gmitemcount[i] = GameManager.instance.itemcount[i];
+        //}
+        //saveData.gmpuzzleLevel = GameManager.instance.puzzleLevel;
+        //saveData.gmnowpuzzle = GameManager.instance.nowpuzzle;
+        //saveData.gmcanUse = GameManager.instance.canUse;
+        //saveData.gmplayerchasing = GameManager.instance.playerchasing;
+
+        string json = JsonUtility.ToJson(saveData);
+        string filePath = SAVEDAT + name;
+        File.WriteAllText(filePath, json);
+        Debug.Log("세이브완료");
+    }
+    
+    public void LoadData()
+    {
+        string filePath = SAVEDAT + name;
+
+        if (File.Exists(filePath))
+        {
+            string loadJson = File.ReadAllText(filePath);
+            saveData = JsonUtility.FromJson<SaveData>(loadJson);
+
+            player = FindObjectOfType<Player>();
+            player.transform.position = saveData.playerposition;
+            //for (int i = 0; i < saveData.playeritemget.Length; i++)
+            //{
+            //    player.itemGet[i] = saveData.playeritemget[i];
+            //}
+
+            //for (int i = 0; i < saveData.gmitemcheck.Length; i++)
+            //{
+            //    GameManager.instance.itemcheck[i] = saveData.gmitemcheck[i];
+            //}
+            //for (int i = 0; i < saveData.gmitemcount.Length; i++)
+            //{
+            //    GameManager.instance.itemcount[i] = saveData.gmitemcount[i];
+            //}
+            //GameManager.instance.puzzleLevel = saveData.gmpuzzleLevel;
+            //GameManager.instance.nowpuzzle = saveData.gmnowpuzzle;
+            //GameManager.instance.canUse = saveData.gmcanUse;
+            //GameManager.instance.playerchasing = saveData.gmplayerchasing;
+            Debug.Log("로드완료");
+        }
     }
 }
