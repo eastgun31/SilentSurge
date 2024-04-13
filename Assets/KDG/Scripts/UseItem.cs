@@ -18,6 +18,8 @@ public class UseItem : MonoBehaviour
 
     [SerializeField]
     private float throwpower = 3f;
+    [SerializeField]
+    private float throwpower2 = 4f;
     private string floor = "Floor";
     private string inroom = "InRoom";
     //private bool canUse = true;
