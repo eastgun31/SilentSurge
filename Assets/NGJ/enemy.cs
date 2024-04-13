@@ -10,8 +10,8 @@ public class Enemy : MonoBehaviour
         patrolling, hear, findtarget
     }
 
-  
-   
+
+
     public EnemyState state;
 
     NavMeshAgent m_enemy;
@@ -20,14 +20,16 @@ public class Enemy : MonoBehaviour
     Transform m_player;
     bool m_followingPlayer = false; // 적 캐릭터가 플레이어를 추적 중인지 여부를 나타냅니다.
 
-    
+    public GameObject bulletPrefab; // 총알의 프리팹
+    public Transform bulletSpawnPoint; // 총알이 발사될 위치
+    public float bulletSpeed = 10f; // 총알의 발사 속도
 
     public bool m_triggered = false; // 트리거 충돌 여부를 나타냅니다.
     public Vector3 targetpos;
 
     int dLevel = 1;
 
-    [SerializeField]private float stoppingDistance; // 적이 멈출 거리
+    [SerializeField] private float stoppingDistance; // 적이 멈출 거리
 
     public event Action<Player> PlayerSpotted; // 플레이어 발견 시 이벤트
     bool noactiving;
@@ -48,34 +50,34 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        
-            chasing = false;
-            stoppingDistance = 1f;
-            state = EnemyState.patrolling;
-            sight = GetComponent<Sight>();
-            noactiving = true;
-            hearSound = false;
-            m_enemy = GetComponent<NavMeshAgent>();
-            wait = new WaitForSeconds(1f);
-            lvwait = new WaitForSeconds(10f);
-            StartCoroutine(EnemyStateCheck());
+      
+        chasing = false;
+        stoppingDistance = 1f;
+        state = EnemyState.patrolling;
+        sight = GetComponent<Sight>();
+        noactiving = true;
+        hearSound = false;
+        m_enemy = GetComponent<NavMeshAgent>();
+        wait = new WaitForSeconds(1f);
+        lvwait = new WaitForSeconds(10f);
+        StartCoroutine(EnemyStateCheck());
 
-            m_enemy.avoidancePriority = 50; // 벽을 피하기 위한 우선순위 설정
-                                            //m_player = GameObject.FindGameObjectWithTag("Player").transform;
-                                            //SetNextDestination();
+        m_enemy.avoidancePriority = 50; // 벽을 피하기 위한 우선순위 설정
+                                        //m_player = GameObject.FindGameObjectWithTag("Player").transform;
+                                        //SetNextDestination();
 
-            // 초기 체력 설정
-            currentHealth = maxHealth;
-            indexcount = 0;
-        }
-    
+        // 초기 체력 설정
+        currentHealth = maxHealth;
+        indexcount = 0;
+    }
+
     void Update()
     {
         if (state == EnemyState.findtarget)
         {
             TargetChase();
         }
-        else if(state == EnemyState.hear)
+        else if (state == EnemyState.hear)
         {
             ChaseSound(targetpos);
         }
@@ -88,7 +90,7 @@ public class Enemy : MonoBehaviour
     {
         //Debug.Log("소리추적");
         m_enemy.SetDestination(position);
-        if(noactiving)
+        if (noactiving)
             StartCoroutine(ChaseSoundRoutine(position)); // 대기 시간 5초 
     }
 
@@ -116,7 +118,7 @@ public class Enemy : MonoBehaviour
 
     void EnemyPatrol()  //적순찰
     {
-        if(Vector3.Distance(transform.position, customDestinations[indexcount]) > 1f)
+        if (Vector3.Distance(transform.position, customDestinations[indexcount]) > 1f)
         {
             m_enemy.SetDestination(customDestinations[indexcount]);
             //indexcount = (indexcount + 1) % customDestinations.Length;
@@ -124,32 +126,63 @@ public class Enemy : MonoBehaviour
         else if (Vector3.Distance(transform.position, customDestinations[indexcount]) <= 1f)
         {
             indexcount++;
-            if(indexcount == customDestinations.Length)
+            if (indexcount == customDestinations.Length)
                 indexcount = 0;
             m_enemy.SetDestination(customDestinations[indexcount]);
         }
     }
     void TargetChase()
     {
-        if(!chasing)
+        if (!chasing)
             StartCoroutine(Levelstep());
         m_enemy.stoppingDistance = stoppingDistance;
         m_enemy.SetDestination(sight.detectTarget.position);
 
-        if(Vector3.Distance(transform.position, sight.detectTarget.position) <= 1f)
+        if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 1f)
         {
 
         }
         //    m_enemy.stoppingDistance = stoppingDistance;
+        shoot(); // 총을 발사합니다.
+       
+        IEnumerator ShootRoutine()
+        {
+            int shotsFired = 0;
+            while (shotsFired < 10)
+            {
+                // 총알 발사
+                shoot();
 
+                // 발사 후 대기 시간
+                yield return new WaitForSeconds(2f);
+
+                shotsFired++;
+            }
+        }
+      
         void shoot()
         {
-            m_enemy.isStopped = false;
-            
+            m_enemy.isStopped = true;
+            // 총알을 발사하는 동작을 수행합니다.
+            Debug.Log("Enemy: Shooting!");
+            GetComponent<Animator>().SetTrigger("Shot");
+            // 총알을 생성하고 발사합니다.
+            GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * bulletSpeed;
 
-       
+            // 총알 발사 후 일정 시간을 기다린 후 다음 동작으로 진행합니다.
+            StartCoroutine(ResumePatrollingAfterDelay());
+            m_enemy.isStopped = false;
+
         }
     }
+    IEnumerator ResumePatrollingAfterDelay()
+    {
+        yield return new WaitForSeconds(1f); // 예를 들어 1초 동안 대기합니다.
+
+        m_enemy.isStopped = false;
+    }
+
     IEnumerator EnemyStateCheck()
     {
         if (sight.findT)
@@ -184,7 +217,7 @@ public class Enemy : MonoBehaviour
         {
             EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
         }
-        else if(state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
+        else if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
         {
             EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
         }
@@ -235,19 +268,29 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            Destroy(other.gameObject,1f);
+            Destroy(other.gameObject, 1f);
             gameObject.SetActive(false);
         }
     }
 
     void OnCollisionEnter(Collision collision)
     {
+        // 총알이 다른 물체에 충돌하면 총알을 제거합니다.
+        if (collision.gameObject.CompareTag("Untagged") )//|| collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(collision.gameObject);
+           // if (collision.gameObject.CompareTag("Player"))
+            {
+                // 플레이어에게 피해를 줄 수 있는 경우 여기에 피해를 주는 코드를 추가할 수 있습니다.
+            }
+        }
+
         // 총알 등과의 충돌이면서 플레이어 총알인 경우에만 피해를 받습니다.
         if (collision.gameObject.CompareTag("Bullet"))
         {
             gameObject.SetActive(false);
             TakeDamage(10); // 10의 데미지를 입습니다.
-           
+
         }
     }
 
