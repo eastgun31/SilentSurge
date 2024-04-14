@@ -34,7 +34,6 @@ public class UiManager : MonoBehaviour
             timeRemainig = 10f;
         else if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level3)
             timeRemainig = 7f;
-
     }
     public void Awake()
     {
