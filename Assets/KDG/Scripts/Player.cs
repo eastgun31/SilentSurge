@@ -47,13 +47,15 @@ public class Player : MonoBehaviour
     float rotDeg;
     Rigidbody rigid;
     Camera cam;
-    Vector3 pos;
     Vector3 mousePos;
     public Vector3 velocity;
-    bool itemActivate = false;
+    bool die;
+    bool saving;
 
     void Start()
     {
+        die = false;
+        saving = false;
         playerspeed = 2.5f;
         itemGet =new bool[5] { false,false,false,false,false};
         state = PlayerState.idle;
@@ -78,8 +80,8 @@ public class Player : MonoBehaviour
            
         if (state == PlayerState.idle)
         {
-            if(rigid.velocity != Vector3.zero)
-                rigid.velocity = Vector3.zero;
+            //if(rigid.velocity != Vector3.zero)
+            //    rigid.velocity = Vector3.zero;
             PlayerControll();
         }
         else
@@ -181,6 +183,16 @@ public class Player : MonoBehaviour
                 StartCoroutine(useItem.HeartSee());
             }
         }
+        //if(!die && Input.GetKey(KeyCode.G))
+        //{
+        //    die = true;
+        //    StartCoroutine(PlayerDie());
+        //}
+        if(!saving && Input.GetKey(KeyCode.F))
+        {
+            saving = true;
+            StartCoroutine(PlayerSave());
+        }
     }
 
     void ItemActivate1()
@@ -263,6 +275,21 @@ public class Player : MonoBehaviour
         }
     }
 
+    IEnumerator PlayerDie()
+    {
+        yield return new WaitForSeconds(1f);
+        Debug.Log("플레이어 죽음");
+        DataManager.instance.LoadData();
+        yield return new WaitForSeconds(2f);
+        die = false;
+    }
+    IEnumerator PlayerSave()
+    {
+        yield return new WaitForSeconds(2f);
+        DataManager.instance.SaveData();
+        saving = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Item"))
@@ -316,7 +343,8 @@ public class Player : MonoBehaviour
                     }
                     break;
             }
-            Destroy(other.gameObject);
+            GameManager.instance.existItem[item.indexNum] = false;
+            other.gameObject.SetActive(false);
         }
     }
 }

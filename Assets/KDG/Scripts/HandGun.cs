@@ -6,7 +6,9 @@ using System.Threading;
 
 public class HandGun : MonoBehaviour, IItem
 {
+    public int indexNum { get; set; }
     public int value {  get; set; }
+    public int sequence;
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
     Item itemvalues = new Item();
@@ -17,6 +19,8 @@ public class HandGun : MonoBehaviour, IItem
     {
         value = 1;
         itemvalues.count = 6;
+        if(sequence == 1)
+            indexNum = 0;
     }
 
     public void GetItem()
