@@ -16,6 +16,8 @@ public class PlayerInteractive : MonoBehaviour
 
     string[] interactiveList = { "Door", "Bent", "Puzzle", "Cabinet" };
 
+    private int index = 0;
+
     private void Start()
     {
         player = GetComponent<Player>();
@@ -33,67 +35,20 @@ public class PlayerInteractive : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag(interactiveList[0]))
+        if (other.CompareTag(interactiveList[0]) && Input.GetKeyDown(KeyCode.Space))
         {
-            doort = other.GetComponent<Door_Parent>();
-            
-           // testHandle = other.GetComponentInParent<Door_Parent>();
-
-            if(other.GetComponent<DoorHandle_1>().Doorindex == 1)
+            doort = other.GetComponentInParent<Door_Parent>();
+            if (other.GetComponent<DoorHandle_1>().Doorindex == 1)
             {
                 doort.PlayerPos_1 = true;
                 doort.PlayerPos_0 = false;
             }
-            else if(other.GetComponent<DoorHandle_1>().Doorindex == 0)
+            else if (other.GetComponent<DoorHandle_1>().Doorindex == 0)
             {
                 doort.PlayerPos_1 = false;
                 doort.PlayerPos_0 = true;
             }
-
-            //if (Input.GetKeyDown(KeyCode.Space))
-            //{
-            //    //switch (op)
-            //    //{
-            //    //    case OpenDoor.not:
-            //    //        if (doort.PlayerPos_0 == true)
-            //    //        {
-            //    //            //other.transform.localRotation = Quaternion.Euler(0, -90, 0);
-            //    //            doort.transform.localRotation = Quaternion.Euler(0, -90, 0);
-            //    //            op = OpenDoor.up;
-            //    //        }
-            //    //        else if (!testHandle.dh1on && testHandle.dh2on)
-            //    //        {
-            //    //            other.transform.localRotation = Quaternion.Euler(0, 90, 0);
-            //    //            op = OpenDoor.down;
-            //    //        }
-            //    //        break;
-            //    //    case OpenDoor.up:
-            //    //        if (testHandle.dh1on && !testHandle.dh2on)
-            //    //        {
-            //    //            other.transform.localRotation = Quaternion.Euler(0, 180, 0);
-            //    //            op = OpenDoor.not;
-            //    //        }
-            //    //        else if (!testHandle.dh1on && testHandle.dh2on)
-            //    //        {
-            //    //            other.transform.localRotation = Quaternion.Euler(0, 180, 0);
-            //    //            op = OpenDoor.not;
-            //    //        }
-            //    //        break;
-            //    //    case OpenDoor.down:
-            //    //        if (testHandle.dh1on && !testHandle.dh2on)
-            //    //        {
-            //    //            other.transform.localRotation = Quaternion.Euler(0, 180, 0);
-            //    //            op = OpenDoor.not;
-            //    //        }
-            //    //        else if (!testHandle.dh1on && testHandle.dh2on)
-            //    //        {
-            //    //            other.transform.localRotation = Quaternion.Euler(0, 180, 0);
-            //    //            op = OpenDoor.not;
-            //    //        }
-            //    //        break;
-            //    //}
-            //}
-           
+            doort.oDoor();
         }
         else if (other.CompareTag(interactiveList[1]) && Input.GetKeyDown(KeyCode.Space))
         {
@@ -105,16 +60,16 @@ public class PlayerInteractive : MonoBehaviour
             player.state = Player.PlayerState.puzzling;
             player.velocity = Vector3.zero;
             enterPuzzle = other.GetComponent<EnterPuzzle>();
-            if(enterPuzzle.level == 1)
+            if (enterPuzzle.level == 1)
             {
                 enterPuzzle.PipePuzzle1();
             }
-            else if(enterPuzzle.level == 2)
+            else if (enterPuzzle.level == 2)
             {
                 enterPuzzle.Keypad();
             }
         }
-        else if (other.CompareTag(interactiveList[3])&&Input.GetKeyDown(KeyCode.Space))
+        else if (other.CompareTag(interactiveList[3]) && Input.GetKeyDown(KeyCode.Space))
         {
             //this.transform.position= other.transform.position;
             //if (!GameManager.instance.isHide)
@@ -129,7 +84,9 @@ public class PlayerInteractive : MonoBehaviour
             //    GameManager.instance.isHide = false;
             //}
         }
+        //else if(세이브 포인트 검사)
         else
             return;
     }
+
 }

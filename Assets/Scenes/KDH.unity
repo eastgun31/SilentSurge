@@ -2663,6 +2663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c81005454ebe954c8699caff36aa4f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sequence: 0
 --- !u!65 &74732424
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5291,7 +5292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb4e79e6536a92541afae57fa3a1336e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tDoor1: {fileID: 1058436183}
+  tDoor1: {fileID: 0}
   tDoor2: {fileID: 1332392166}
   dh1on: 0
   dh2on: 0
@@ -31144,6 +31145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LvStep: 0
   lv3enemy: {fileID: 1070588889}
+  Enemies: []
 --- !u!4 &870770246
 Transform:
   m_ObjectHideFlags: 0
@@ -35121,6 +35123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: {fileID: 0}
+  sequence: 0
 --- !u!65 &952259531
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39454,7 +39457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1058436185}
   - component: {fileID: 1058436184}
-  - component: {fileID: 1058436183}
+  - component: {fileID: 1058436186}
   m_Layer: 11
   m_Name: handle_0
   m_TagString: Door
@@ -39462,26 +39465,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1058436183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1058436182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7782d2a7913cdf459db2e96c37a4a3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canOpen: 1
-  isOpen: 0
-  PlayerPos_0: 0
-  PlayerPos_1: 0
-  tDoor: {fileID: 1599225762}
-  P_Door: {fileID: 1599225758}
-  mat_Door: {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
-  mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!136 &1058436184
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -39520,6 +39503,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1599225763}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1058436186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058436182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e62f194174eb234aa6971e26b016099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canOpen: 1
+  isOpen: 0
+  PlayerPos_0: 0
+  PlayerPos_1: 0
+  tDoor: {fileID: 1599225762}
+  P_Door: {fileID: 1599225758}
+  Doorindex: 0
+  mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
+  mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!1 &1060553828
 GameObject:
   m_ObjectHideFlags: 0
@@ -48651,7 +48655,7 @@ MonoBehaviour:
   PlayerPos_1: 0
   tDoor: {fileID: 1599225762}
   P_Door: {fileID: 1599225758}
-  Doorindex: 0
+  Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!136 &1332392167
@@ -56717,7 +56721,7 @@ MonoBehaviour:
   - {fileID: 1332392164}
   openangle: 90
   smooth: 3
-  tDoor1: {fileID: 1058436183}
+  tDoor1: {fileID: 0}
   tDoor2: {fileID: 1332392166}
   PlayerPos_0: 0
   PlayerPos_1: 0
@@ -62336,6 +62340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4338bd7d333f0da4387cc2dcc72d78e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sequence: 0
 --- !u!65 &1773261171
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -66531,6 +66536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 756fcfd812785a245bca1bf838836d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sequence: 0
   bulletPrefab: {fileID: 0}
   bulletSpawn: {fileID: 0}
 --- !u!65 &1894686096
@@ -66653,6 +66659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e136700aaab5742bdaa2d96133e0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sequence: 0
 --- !u!65 &1897105255
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -70197,7 +70204,9 @@ MonoBehaviour:
   nowpuzzle: 0
   canUse: 1
   playerchasing: 0
-  isHide: 0
+  existItem: 
+  existEnemy: 
+  Items: []
 --- !u!4 &2003980774
 Transform:
   m_ObjectHideFlags: 0
@@ -77208,6 +77217,7 @@ MonoBehaviour:
   mat2:
   - {fileID: 2100000, guid: 2ae0ae06f51ca1942866b3804bad4478, type: 2}
   throwpower: 1
+  throwpower2: 4
 --- !u!1 &6027535550084155599
 GameObject:
   m_ObjectHideFlags: 0
