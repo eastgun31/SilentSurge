@@ -2366,11 +2366,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+  doorHandle: []
   openangle: 90
   smooth: 3
   tDoor1: {fileID: 818161693}
   tDoor2: {fileID: 669568919}
-  op: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
 --- !u!4 &69307300
@@ -4518,11 +4518,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+  doorHandle: []
   openangle: 90
   smooth: 3
   tDoor1: {fileID: 600755207}
   tDoor2: {fileID: 286596086}
-  op: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
 --- !u!4 &106384174
@@ -5247,6 +5247,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 130691813}
   m_CullTransparentMesh: 1
+--- !u!1 &134828869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 134828870}
+  - component: {fileID: 134828871}
+  m_Layer: 8
+  m_Name: DoorH
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &134828870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134828869}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1599225763}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &134828871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134828869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4e79e6536a92541afae57fa3a1336e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tDoor1: {fileID: 1058436183}
+  tDoor2: {fileID: 1332392166}
+  dh1on: 0
+  dh2on: 0
 --- !u!1 &135582640
 GameObject:
   m_ObjectHideFlags: 0
@@ -6658,6 +6706,7 @@ MonoBehaviour:
   PlayerPos_1: 0
   tDoor: {fileID: 453168737}
   P_Door: {fileID: 453168733}
+  Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!136 &187498333
@@ -8598,11 +8647,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+  doorHandle: []
   openangle: 90
   smooth: 3
   tDoor1: {fileID: 2057105450}
   tDoor2: {fileID: 1519477404}
-  op: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
 --- !u!4 &263875905
@@ -9246,6 +9295,7 @@ MonoBehaviour:
   PlayerPos_1: 0
   tDoor: {fileID: 106384173}
   P_Door: {fileID: 106384169}
+  Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!136 &286596087
@@ -15242,11 +15292,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+  doorHandle: []
   openangle: 90
   smooth: 3
   tDoor1: {fileID: 1121404839}
   tDoor2: {fileID: 187498332}
-  op: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
 --- !u!4 &453168738
@@ -22559,6 +22609,7 @@ MonoBehaviour:
   PlayerPos_1: 0
   tDoor: {fileID: 69307299}
   P_Door: {fileID: 69307295}
+  Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!136 &669568920
@@ -25189,11 +25240,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+  doorHandle: []
   openangle: 90
   smooth: 3
   tDoor1: {fileID: 638432541}
   tDoor2: {fileID: 1952617172}
-  op: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
 --- !u!4 &721357606
@@ -32132,9 +32183,7 @@ Transform:
   m_LocalPosition: {x: 1, y: 0, z: 0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1058436185}
-  - {fileID: 1332392165}
+  m_Children: []
   m_Father: {fileID: 783915640}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &886390066
@@ -39373,11 +39422,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+  doorHandle: []
   openangle: 90
   smooth: 3
   tDoor1: {fileID: 1316800573}
   tDoor2: {fileID: 1587104393}
-  op: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
 --- !u!4 &1052760054
@@ -39464,12 +39513,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1058436182}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.411, y: 0.8919983, z: 1.067}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.3964357, y: 0.6607395, z: -0.76466674}
+  m_LocalScale: {x: 0.7788494, y: 0.74074084, z: 0.057202004}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 885973403}
+  m_Father: {fileID: 1599225763}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1060553828
 GameObject:
@@ -41781,6 +41830,7 @@ MonoBehaviour:
   PlayerPos_1: 0
   tDoor: {fileID: 1377084688}
   P_Door: {fileID: 1377084684}
+  Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!136 &1144818492
@@ -48576,12 +48626,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332392164}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3859985, y: 0.8919983, z: -1.188}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.41590816, y: 0.6607395, z: 0.73866737}
+  m_LocalScale: {x: 0.7788494, y: 0.74074084, z: 0.057202004}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 885973403}
+  m_Father: {fileID: 1599225763}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1332392166
 MonoBehaviour:
@@ -48601,6 +48651,7 @@ MonoBehaviour:
   PlayerPos_1: 0
   tDoor: {fileID: 1599225762}
   P_Door: {fileID: 1599225758}
+  Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!136 &1332392167
@@ -49680,11 +49731,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+  doorHandle: []
   openangle: 90
   smooth: 3
   tDoor1: {fileID: 1484407206}
   tDoor2: {fileID: 1144818491}
-  op: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
 --- !u!4 &1377084689
@@ -49753,6 +49804,7 @@ MonoBehaviour:
   PlayerPos_1: 0
   tDoor: {fileID: 1990833063}
   P_Door: {fileID: 1990833059}
+  Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!136 &1380657553
@@ -54084,6 +54136,7 @@ MonoBehaviour:
   PlayerPos_1: 0
   tDoor: {fileID: 263875904}
   P_Door: {fileID: 263875900}
+  Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!136 &1519477405
@@ -55798,11 +55851,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+  doorHandle: []
   openangle: 90
   smooth: 3
   tDoor1: {fileID: 1297510175}
   tDoor2: {fileID: 1761678464}
-  op: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
 --- !u!4 &1565445017
@@ -56242,6 +56295,7 @@ MonoBehaviour:
   PlayerPos_1: 0
   tDoor: {fileID: 1052760053}
   P_Door: {fileID: 1052760049}
+  Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!136 &1587104394
@@ -56658,11 +56712,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+  doorHandle:
+  - {fileID: 1058436182}
+  - {fileID: 1332392164}
   openangle: 90
   smooth: 3
   tDoor1: {fileID: 1058436183}
   tDoor2: {fileID: 1332392166}
-  op: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
 --- !u!4 &1599225763
@@ -56677,7 +56733,10 @@ Transform:
   m_LocalPosition: {x: 0.08, y: 0, z: -0.05}
   m_LocalScale: {x: 1.283945, y: 1.35, z: 1.5}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 134828870}
+  - {fileID: 1058436185}
+  - {fileID: 1332392165}
   m_Father: {fileID: 783915640}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1600706786
@@ -62046,6 +62105,7 @@ MonoBehaviour:
   PlayerPos_1: 0
   tDoor: {fileID: 1565445016}
   P_Door: {fileID: 1565445012}
+  Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!136 &1761678465
@@ -67750,6 +67810,7 @@ MonoBehaviour:
   PlayerPos_1: 0
   tDoor: {fileID: 721357605}
   P_Door: {fileID: 721357601}
+  Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!136 &1952617173
@@ -69526,11 +69587,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+  doorHandle: []
   openangle: 90
   smooth: 3
   tDoor1: {fileID: 1988768584}
   tDoor2: {fileID: 1380657552}
-  op: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
 --- !u!4 &1990833064

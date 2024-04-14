@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using static Door_Parent;
 
 public class PlayerInteractive : MonoBehaviour
 {
     //public UnityEvent playpuzzle;
     Player player;
     EnterPuzzle enterPuzzle;
+
+    TestHandle testHandle;
+
+    Door_Parent doort;
 
     string[] interactiveList = { "Door", "Bent", "Puzzle", "Cabinet" };
 
@@ -28,9 +33,67 @@ public class PlayerInteractive : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag(interactiveList[0]) && Input.GetKeyDown(KeyCode.Space))
+        if (other.CompareTag(interactiveList[0]))
         {
-            gameObject.transform.GetComponent<Door_Parent>();
+            doort = other.GetComponent<Door_Parent>();
+            
+           // testHandle = other.GetComponentInParent<Door_Parent>();
+
+            if(other.GetComponent<DoorHandle_1>().Doorindex == 1)
+            {
+                doort.PlayerPos_1 = true;
+                doort.PlayerPos_0 = false;
+            }
+            else if(other.GetComponent<DoorHandle_1>().Doorindex == 0)
+            {
+                doort.PlayerPos_1 = false;
+                doort.PlayerPos_0 = true;
+            }
+
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //{
+            //    //switch (op)
+            //    //{
+            //    //    case OpenDoor.not:
+            //    //        if (doort.PlayerPos_0 == true)
+            //    //        {
+            //    //            //other.transform.localRotation = Quaternion.Euler(0, -90, 0);
+            //    //            doort.transform.localRotation = Quaternion.Euler(0, -90, 0);
+            //    //            op = OpenDoor.up;
+            //    //        }
+            //    //        else if (!testHandle.dh1on && testHandle.dh2on)
+            //    //        {
+            //    //            other.transform.localRotation = Quaternion.Euler(0, 90, 0);
+            //    //            op = OpenDoor.down;
+            //    //        }
+            //    //        break;
+            //    //    case OpenDoor.up:
+            //    //        if (testHandle.dh1on && !testHandle.dh2on)
+            //    //        {
+            //    //            other.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            //    //            op = OpenDoor.not;
+            //    //        }
+            //    //        else if (!testHandle.dh1on && testHandle.dh2on)
+            //    //        {
+            //    //            other.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            //    //            op = OpenDoor.not;
+            //    //        }
+            //    //        break;
+            //    //    case OpenDoor.down:
+            //    //        if (testHandle.dh1on && !testHandle.dh2on)
+            //    //        {
+            //    //            other.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            //    //            op = OpenDoor.not;
+            //    //        }
+            //    //        else if (!testHandle.dh1on && testHandle.dh2on)
+            //    //        {
+            //    //            other.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            //    //            op = OpenDoor.not;
+            //    //        }
+            //    //        break;
+            //    //}
+            //}
+           
         }
         else if (other.CompareTag(interactiveList[1]) && Input.GetKeyDown(KeyCode.Space))
         {

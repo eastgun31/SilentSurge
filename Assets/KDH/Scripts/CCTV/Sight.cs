@@ -114,10 +114,6 @@ public class Sight : MonoBehaviour
                     //        EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
                     //    }
                     //}
-                    if (this.name == "CCTV")    // CCTV가 플레이어 감지 후 탐지단계 상승
-                    {
-                        Debug.Log("123123131313131312321123");
-                    }
                 }
             }
             else
