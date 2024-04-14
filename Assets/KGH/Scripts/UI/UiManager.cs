@@ -11,7 +11,7 @@ public class UiManager : MonoBehaviour
 
     public GameObject missionTime;
     public Text success;
-    private float timeRemainig;
+    public float timeRemainig;
     public bool isWin = false;
 
     public GameObject pipePuzFst;
@@ -35,7 +35,7 @@ public class UiManager : MonoBehaviour
         else if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level3)
             timeRemainig = 7f;
     }
-    public void Awake()
+    public void Awake() 
     {
         if (Ui_instance != null)
             Destroy(gameObject);
@@ -51,7 +51,7 @@ public class UiManager : MonoBehaviour
             {
                 Debug.Log("fail");
                 success.text = "FAIL";
-                gameover.SetActive(true);
+                //gameover.SetActive(true);
             }
             else
             {
