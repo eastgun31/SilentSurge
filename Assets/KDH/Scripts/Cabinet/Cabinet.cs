@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class Cabinet : MonoBehaviour
 {
+    public GameObject hideCabinet;
 
-    void Update()
-    {
-        HideOnCabinet();
-    }
+    //private void OnTriggerEnter(Collision col)
+    //{
 
-    void HideOnCabinet()
-    {
-
-    }
+    //}
 }

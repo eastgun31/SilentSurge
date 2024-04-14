@@ -102,14 +102,6 @@ public class Sight : MonoBehaviour
                         playerpos = dir_T;
                         findT = true;
                         detectTarget = visibleT;                                                                            //  detectTarget 은 플레이어
-                        //if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
-                        //{
-                        //    EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
-                        //}
-                        //if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
-                        //{
-                        //    EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
-                        //}
                     }
                     //if (this.tag == "Enemy")    // 적이 플레이어 감지 후 탐지단계 상승
                     //{
@@ -124,17 +116,7 @@ public class Sight : MonoBehaviour
                     //}
                     if (this.name == "CCTV")    // CCTV가 플레이어 감지 후 탐지단계 상승
                     {
-                        if(Physics.Raycast(transform.position, transform.forward, out hitR, radius, playerM))
-                        {
-                            if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
-                            {
-                                EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
-                            }
-                            if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
-                            {
-                                EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
-                            }
-                        }
+                        Debug.Log("123123131313131312321123");
                     }
                 }
             }

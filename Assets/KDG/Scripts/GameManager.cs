@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public bool nowpuzzle = false;
     public bool canUse = true;
     public bool playerchasing = false;
+    public bool isHide = false;
 
     public void Awake()
     {

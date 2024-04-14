@@ -51,6 +51,21 @@ public class PlayerInteractive : MonoBehaviour
                 enterPuzzle.Keypad();
             }
         }
+        else if (other.CompareTag(interactiveList[3])&&Input.GetKeyDown(KeyCode.Space))
+        {
+            //this.transform.position= other.transform.position;
+            //if (!GameManager.instance.isHide)
+            //{
+            //    player.state = Player.PlayerState.hide;
+            //    this.transform.position = other.transform.position;
+            //    GameManager.instance.isHide = true;
+            //}
+            //else
+            //{
+            //    player.state = Player.PlayerState.idle;
+            //    GameManager.instance.isHide = false;
+            //}
+        }
         else
             return;
     }
