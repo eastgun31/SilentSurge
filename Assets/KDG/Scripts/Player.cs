@@ -183,11 +183,11 @@ public class Player : MonoBehaviour
                 StartCoroutine(useItem.HeartSee());
             }
         }
-        if(!die && Input.GetKey(KeyCode.G))
-        {
-            die = true;
-            StartCoroutine(PlayerDie());
-        }
+        //if(!die && Input.GetKey(KeyCode.G))
+        //{
+        //    die = true;
+        //    StartCoroutine(PlayerDie());
+        //}
         if(!saving && Input.GetKey(KeyCode.F))
         {
             saving = true;

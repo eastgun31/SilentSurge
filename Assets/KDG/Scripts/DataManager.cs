@@ -28,6 +28,7 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager instance;
     public UnityEvent playerLoad;
+    public GameObject playerobj;
 
     private Player player;
     //public bool[] playeritemget;
@@ -105,9 +106,12 @@ public class DataManager : MonoBehaviour
             string loadJson = File.ReadAllText(filePath);
             saveData = JsonUtility.FromJson<SaveData>(loadJson);
 
+            playerobj = GameObject.FindWithTag("Player");            
             player = FindObjectOfType<Player>();
+            playerobj.SetActive(false);
             player.transform.position = saveData.playerposition;
             player.transform.eulerAngles = saveData.playerrotation;
+
             for (int i = 0; i < saveData.playeritemget.Length; i++)
             {
                 player.itemGet[i] = saveData.playeritemget[i];
@@ -130,6 +134,7 @@ public class DataManager : MonoBehaviour
             GameManager.instance.canUse = saveData.gmcanUse;
             GameManager.instance.playerchasing = saveData.gmplayerchasing;
 
+            playerobj.SetActive(true);
             Debug.Log("로드완료");
             playerLoad.Invoke();
         }
