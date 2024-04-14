@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.VersionControl;
 using UnityEngine;
 
 public class EnemyLevel : MonoBehaviour
@@ -12,10 +13,12 @@ public class EnemyLevel : MonoBehaviour
 
     public static EnemyLevel enemylv;
     public GameObject lv3enemy;
+    public GameObject[] Enemies;
 
     WaitForSeconds downTime;
     private bool lvDowning;
     private bool addcomplete;
+    private bool enemyadd;
 
     public void Awake()
     {
@@ -28,6 +31,7 @@ public class EnemyLevel : MonoBehaviour
         downTime = new WaitForSeconds(15f);
         lvDowning = false;
         addcomplete = false;
+        enemyadd = false;
     }
 
     private void Update()
@@ -41,7 +45,17 @@ public class EnemyLevel : MonoBehaviour
         {
             Debug.Log("ÀûÃß°¡");
             addcomplete = true;
-            lv3enemy.SetActive(true);
+            enemyadd= true;
+            if(enemyadd)
+            {
+                enemyadd = false;
+                lv3enemy.SetActive(true);
+                for(int i = 0; i < lv3enemy.transform.childCount; i++)
+                {
+                    lv3enemy.transform.GetChild(i).gameObject.SetActive(true);
+                }
+            }
+            
         }
     }
 
@@ -58,10 +72,27 @@ public class EnemyLevel : MonoBehaviour
         else if(!GameManager.instance.playerchasing && LvStep == ELevel.level3)
         {
             LvStep = ELevel.level2;
+            addcomplete = false;
             lv3enemy.SetActive(false);
+            enemyadd = false;
         }
             
 
         lvDowning = false;
+    }
+
+    public void SetEnemy()
+    {
+        for (int i = 0; i < GameManager.instance.existEnemy.Length; i++)
+        {
+            if (GameManager.instance.existEnemy[i])
+            {
+                Enemies[i].SetActive(true);
+            }
+            else if (!GameManager.instance.existEnemy[i])
+            {
+                Enemies[i].SetActive(false);
+            }
+        }
     }
 }

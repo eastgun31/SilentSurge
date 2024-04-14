@@ -1837,6 +1837,66 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 738845034}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &774635789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 774635791}
+  - component: {fileID: 774635790}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &774635790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774635789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd28aa38de5de0f47bd53a90569018ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLoad:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1360599834}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SetItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  savename: /save
+--- !u!4 &774635791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774635789}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &785501600
 GameObject:
   m_ObjectHideFlags: 0
@@ -3214,6 +3274,14 @@ MonoBehaviour:
   nowpuzzle: 0
   canUse: 1
   playerchasing: 0
+  existItem: 
+  Items:
+  - {fileID: 191733635}
+  - {fileID: 633789329}
+  - {fileID: 1121704037}
+  - {fileID: 1795340967}
+  - {fileID: 1571260232}
+  Enemies: []
 --- !u!4 &1360599835
 Transform:
   m_ObjectHideFlags: 0
@@ -4106,16 +4174,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewRadius: 10
+  viewRadius2: 0
   viewAngle: 70
+  viewAngle2: 0
   targetMask:
     serializedVersion: 2
     m_Bits: 4096
   obstacleMask:
     serializedVersion: 2
     m_Bits: 256
-  visibleTargets: []
   meshResolution: 1
   viewMeshFilter: {fileID: 455131889}
+  viewMeshFilter2: {fileID: 0}
   edgeResolveIterations: 4
   edgeDstThreshold: 0.5
   maskCutawayDst: 0.5
@@ -4284,7 +4354,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1842339601
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4387,7 +4457,7 @@ Transform:
   m_GameObject: {fileID: 1842339600}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 15, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6178,3 +6248,4 @@ SceneRoots:
   - {fileID: 607656755}
   - {fileID: 1104259261}
   - {fileID: 184798724}
+  - {fileID: 774635791}

@@ -10,8 +10,6 @@ public class Enemy : MonoBehaviour
         patrolling, hear, findtarget
     }
 
-
-
     public EnemyState state;
 
     NavMeshAgent m_enemy;
@@ -39,6 +37,7 @@ public class Enemy : MonoBehaviour
     private int currentHealth;
 
     //적 수정_김동건
+    public int indexnum;
     Sight sight;
     [SerializeField]
     private int indexcount;
@@ -268,7 +267,8 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            Destroy(other.gameObject, 1f);
+            //Destroy(other.gameObject, 1f);
+            GameManager.instance.existEnemy[indexnum] = false;
             gameObject.SetActive(false);
         }
     }
