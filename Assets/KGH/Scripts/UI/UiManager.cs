@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static EnemyLevel;
 
 public class UiManager : MonoBehaviour
 {
@@ -10,27 +11,31 @@ public class UiManager : MonoBehaviour
 
     public GameObject missionTime;
     public Text success;
-    public float timeRemainig = 15f;
+    private float timeRemainig;
     public bool isWin = false;
 
     public GameObject pipePuzFst;
     public GameObject pipePuzSec;
 
-    public GameObject pipeKeypadNumTwo;
-    public GameObject pipeKeypadNumThree;
-    public GameObject pipeKeypadNumFour;
-    public GameObject pipeKeypadNumFive;
-    public GameObject pipeKeypadNumSix;
-    public GameObject pipeKeypadNumSeven;
-    public GameObject pipeKeypadNumEight;
-    public GameObject pipeKeypadNumNine;
-    public GameObject pipeKeypadNumZero;
+    public GameObject[] pipeKeypadNum;
 
     public GameObject keypadFst;
 
     public GameObject sinPuzzleFst;
 
+    public GameObject gameover;
 
+
+    private void Start()
+    {
+        if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
+            timeRemainig = 15f;
+        else if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
+            timeRemainig = 10f;
+        else if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level3)
+            timeRemainig = 7f;
+
+    }
     public void Awake()
     {
         if (Ui_instance != null)
@@ -47,6 +52,7 @@ public class UiManager : MonoBehaviour
             {
                 Debug.Log("fail");
                 success.text = "FAIL";
+                gameover.SetActive(true);
             }
             else
             {
@@ -77,47 +83,47 @@ public class UiManager : MonoBehaviour
     }
     public void ActivePipeKeypadNumTwo()
     {
-        pipeKeypadNumTwo.SetActive(true);
+        pipeKeypadNum[0].SetActive(true);
         missionTime.SetActive(true);
     }
     public void ActivePipeKeypadNumThree()
     {
-        pipeKeypadNumThree.SetActive(true);
+        pipeKeypadNum[1].SetActive(true);
         missionTime.SetActive(true);
     }
     public void ActivePipeKeypadNumFour()
     {
-        pipeKeypadNumFour.SetActive(true);
+        pipeKeypadNum[2].SetActive(true);
         missionTime.SetActive(true);
     }
     public void ActivePipeKeypadNumFive()
     {
-        pipeKeypadNumFive.SetActive(true);
+        pipeKeypadNum[3].SetActive(true);
         missionTime.SetActive(true);
     }
     public void ActivePipeKeypadNumSix()
     {
-        pipeKeypadNumSix.SetActive(true);
+        pipeKeypadNum[4].SetActive(true);
         missionTime.SetActive(true);
     }
     public void ActivePipeKeypadNumSeven()
     {
-        pipeKeypadNumSeven.SetActive(true);
+        pipeKeypadNum[5].SetActive(true);
         missionTime.SetActive(true);
     }
     public void ActivePipeKeypadNumEight()
     {
-        pipeKeypadNumEight.SetActive(true);
+        pipeKeypadNum[6].SetActive(true);
         missionTime.SetActive(true);
     }
     public void ActivePipeKeypadNumNine()
     {
-        pipeKeypadNumNine.SetActive(true);
+        pipeKeypadNum[7].SetActive(true);
         missionTime.SetActive(true);
     }
     public void ActivePipeKeypadNumZero()
     {
-        pipeKeypadNumZero.SetActive(true);
+        pipeKeypadNum[8].SetActive(true);
         missionTime.SetActive(true);
     }
     public void ActiveKeypad()
