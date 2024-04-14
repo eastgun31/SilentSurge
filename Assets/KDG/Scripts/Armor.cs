@@ -5,13 +5,16 @@ using ItemInfo;
 
 public class Armor : MonoBehaviour, IItem
 {
+    public int indexNum { get; set; }
     public int value { get; set; }
     Item itemvalues = new Item();
-
+    public int sequence;
     void Start()
     {
         value = 5;
         itemvalues.count = 3;
+        if (sequence == 1)
+            indexNum = 4;
     }
 
     public void GetItem()

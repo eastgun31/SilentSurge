@@ -3,26 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System;
+using UnityEngine.Events;
+
 
 [System.Serializable]
 public class SaveData
 {
-    //public Player player;
-    //public bool[] playeritemget;
+    public Player player;
+    public bool[] playeritemget = new bool[5]{false,false,false,false,false};
     public Vector3 playerposition;
+    public Vector3 playerrotation;
 
-    //public bool[] gmitemcheck;
-    //public int[] gmitemcount;
-    //public int gmpuzzleLevel;
-    //public bool gmnowpuzzle;
-    //public bool gmcanUse;
-    //public bool gmplayerchasing;
+    public bool[] gmitemcheck = new bool[5] { false, false, false, false, false };
+    public int[] gmitemcount = new int[5]{0,0,0,0,0};
+    public bool[] gmexistitem = new bool[5] {true,true,true,true,true};
+    public int gmpuzzleLevel;
+    public bool gmnowpuzzle;
+    public bool gmcanUse;
+    public bool gmplayerchasing;
 }
 
 
 public class DataManager : MonoBehaviour
 {
     public static DataManager instance;
+    public UnityEvent playerLoad;
 
     private Player player;
     //public bool[] playeritemget;
@@ -58,33 +63,42 @@ public class DataManager : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         saveData.playerposition = player.transform.position;
-        //for(int i = 0; i < player.itemGet.Length; i++)
-        //{
-        //    saveData.playeritemget[i] = player.itemGet[i];
-        //}
+        saveData.playerrotation = player.transform.rotation.eulerAngles;
+        for (int i = 0; i < player.itemGet.Length; i++)
+        {
+            saveData.playeritemget[i] = player.itemGet[i];
+        }
 
-        //for(int i = 0; i < GameManager.instance.itemcheck.Length; i++)
-        //{
-        //    saveData.gmitemcheck[i] = GameManager.instance.itemcheck[i];
-        //}
-        //for (int i = 0; i < GameManager.instance.itemcount.Length; i++)
-        //{
-        //    saveData.gmitemcount[i] = GameManager.instance.itemcount[i];
-        //}
-        //saveData.gmpuzzleLevel = GameManager.instance.puzzleLevel;
-        //saveData.gmnowpuzzle = GameManager.instance.nowpuzzle;
-        //saveData.gmcanUse = GameManager.instance.canUse;
-        //saveData.gmplayerchasing = GameManager.instance.playerchasing;
+        for (int i = 0; i < GameManager.instance.itemcheck.Length; i++)
+        {
+            saveData.gmitemcheck[i] = GameManager.instance.itemcheck[i];
+        }
+        for (int i = 0; i < GameManager.instance.itemcount.Length; i++)
+        {
+            saveData.gmitemcount[i] = GameManager.instance.itemcount[i];
+        }
+        for (int i = 0; i < GameManager.instance.existItem.Length; i++)
+        {
+            saveData.gmexistitem[i] = GameManager.instance.existItem[i];
+        }
+        for (int i = 0; i < GameManager.instance.existEnemy.Length; i++)
+        {
+            saveData.gmexistitem[i] = GameManager.instance.existItem[i];
+        }
+        saveData.gmpuzzleLevel = GameManager.instance.puzzleLevel;
+        saveData.gmnowpuzzle = GameManager.instance.nowpuzzle;
+        saveData.gmcanUse = GameManager.instance.canUse;
+        saveData.gmplayerchasing = GameManager.instance.playerchasing;
 
         string json = JsonUtility.ToJson(saveData);
-        string filePath = SAVEDAT + name;
+        string filePath = SAVEDAT + savename;
         File.WriteAllText(filePath, json);
         Debug.Log("세이브완료");
     }
     
     public void LoadData()
     {
-        string filePath = SAVEDAT + name;
+        string filePath = SAVEDAT + savename;
 
         if (File.Exists(filePath))
         {
@@ -93,24 +107,31 @@ public class DataManager : MonoBehaviour
 
             player = FindObjectOfType<Player>();
             player.transform.position = saveData.playerposition;
-            //for (int i = 0; i < saveData.playeritemget.Length; i++)
-            //{
-            //    player.itemGet[i] = saveData.playeritemget[i];
-            //}
+            player.transform.eulerAngles = saveData.playerrotation;
+            for (int i = 0; i < saveData.playeritemget.Length; i++)
+            {
+                player.itemGet[i] = saveData.playeritemget[i];
+            }
 
-            //for (int i = 0; i < saveData.gmitemcheck.Length; i++)
-            //{
-            //    GameManager.instance.itemcheck[i] = saveData.gmitemcheck[i];
-            //}
-            //for (int i = 0; i < saveData.gmitemcount.Length; i++)
-            //{
-            //    GameManager.instance.itemcount[i] = saveData.gmitemcount[i];
-            //}
-            //GameManager.instance.puzzleLevel = saveData.gmpuzzleLevel;
-            //GameManager.instance.nowpuzzle = saveData.gmnowpuzzle;
-            //GameManager.instance.canUse = saveData.gmcanUse;
-            //GameManager.instance.playerchasing = saveData.gmplayerchasing;
+            for (int i = 0; i < saveData.gmitemcheck.Length; i++)
+            {
+                GameManager.instance.itemcheck[i] = saveData.gmitemcheck[i];
+            }
+            for (int i = 0; i < saveData.gmitemcount.Length; i++)
+            {
+                GameManager.instance.itemcount[i] = saveData.gmitemcount[i];
+            }
+            for (int i = 0; i < saveData.gmexistitem.Length; i++)
+            {
+                GameManager.instance.existItem[i] = saveData.gmexistitem[i];
+            }
+            GameManager.instance.puzzleLevel = saveData.gmpuzzleLevel;
+            GameManager.instance.nowpuzzle = saveData.gmnowpuzzle;
+            GameManager.instance.canUse = saveData.gmcanUse;
+            GameManager.instance.playerchasing = saveData.gmplayerchasing;
+
             Debug.Log("로드완료");
+            playerLoad.Invoke();
         }
     }
 }

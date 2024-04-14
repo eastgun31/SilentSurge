@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface IItem
 {
+    int indexNum { get; set; }
     int value { get; set; }
     void GetItem();
     void ItemCharge();

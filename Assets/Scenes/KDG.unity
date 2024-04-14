@@ -1866,15 +1866,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd28aa38de5de0f47bd53a90569018ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playeritemget: 
-  playerposition: {x: 0, y: 0, z: 0}
-  gmitemcheck: 
-  gmitemcount: 
-  gmpuzzleLevel: 0
-  gmnowpuzzle: 0
-  gmcanUse: 0
-  gmplayerchasing: 0
-  name: 
+  playerLoad:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1360599834}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SetItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  savename: /save
 --- !u!4 &774635791
 Transform:
   m_ObjectHideFlags: 0
@@ -3267,6 +3274,14 @@ MonoBehaviour:
   nowpuzzle: 0
   canUse: 1
   playerchasing: 0
+  existItem: 
+  Items:
+  - {fileID: 191733635}
+  - {fileID: 633789329}
+  - {fileID: 1121704037}
+  - {fileID: 1795340967}
+  - {fileID: 1571260232}
+  Enemies: []
 --- !u!4 &1360599835
 Transform:
   m_ObjectHideFlags: 0
