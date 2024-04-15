@@ -77,6 +77,14 @@ public class Player : MonoBehaviour
             state = PlayerState.idle;
             //playerspeed = 2.5f;
         }
+        else if(GameManager.instance.isHide)
+        {
+            state = PlayerState.hide;
+        }        
+        else if(!GameManager.instance.isHide)
+        {
+            state = PlayerState.idle;
+        }
            
         if (state == PlayerState.idle)
         {
