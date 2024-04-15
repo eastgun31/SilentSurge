@@ -27,6 +27,8 @@ public class UiManager : MonoBehaviour
 
     public GameObject sinPuzzleFst;
 
+    public GameObject hackingpuzFst; 
+
     public GameObject gameover;
 
 
@@ -50,7 +52,7 @@ public class UiManager : MonoBehaviour
             {
                 success.text = "FAIL";
                 isGameOver = true;
-                //gameover.SetActive(true);
+                gameover.SetActive(true);
             }
             else
             {
@@ -176,6 +178,13 @@ public class UiManager : MonoBehaviour
         sinPuzzleFst.SetActive(true);
         missionTime.SetActive(true);
     }
+    public void ActiveHackingFst()
+    {
+        TimeLimit();
+        hackingpuzFst.SetActive(true);
+        missionTime.SetActive(true);
+    }
+
     public void CloseSinFst()
     {
         sinPuzzleFst.SetActive(false);

@@ -54,7 +54,7 @@ public class SinPuzzle : MonoBehaviour
 
     private void WaveControl()
     {
-        if (!IsWining())
+        if (UiManager.instance.isWin ==false)
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
                 amplitude += 10;
@@ -84,10 +84,6 @@ public class SinPuzzle : MonoBehaviour
             }
             Invoke("CloseSin", 2f);
         }
-    }
-    private bool IsWining()
-    {
-        return UiManager.instance.isWin;
     }
     private void CloseSin()
     {
