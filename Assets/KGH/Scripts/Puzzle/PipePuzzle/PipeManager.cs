@@ -23,7 +23,6 @@ public class PipeManager : MonoBehaviour
         //전체 파이프수를 설정하고 Pipes배열에 저장
 
         totalPipes = pipesHolder.transform.childCount;
-
         pipes = new GameObject[totalPipes];
 
         for (int i = 0; i < pipes.Length; i++)
@@ -35,7 +34,6 @@ public class PipeManager : MonoBehaviour
     {
         UiManager.instance.TimeRemainig();
     }
-
     public void CorrectMove()
     {
         correctPipes += 1;

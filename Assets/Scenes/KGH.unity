@@ -6277,7 +6277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1495848763}
-  timeText: {fileID: 0}
+  timeText: {fileID: 274206752}
   pipesHolder: {fileID: 1137146634}
   pipes:
   - {fileID: 1137146634}
@@ -9001,52 +9001,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508038559}
   m_CullTransparentMesh: 1
---- !u!1 &511696174
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 511696176}
-  - component: {fileID: 511696175}
-  m_Layer: 0
-  m_Name: test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &511696175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511696174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b4c662b7082a494eb626f853cceea0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LvStep: 1
-  lv3enemy: {fileID: 0}
---- !u!4 &511696176
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511696174}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 654.0658, y: 641.1421, z: 371.3009}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &518127444
 GameObject:
   m_ObjectHideFlags: 0
@@ -20239,6 +20193,9 @@ MonoBehaviour:
   nowpuzzle: 0
   canUse: 1
   playerchasing: 0
+  existItem: 
+  existEnemy: 
+  Items: []
 --- !u!4 &1409487736
 Transform:
   m_ObjectHideFlags: 0
@@ -30578,4 +30535,3 @@ SceneRoots:
   - {fileID: 811931110}
   - {fileID: 1255737008}
   - {fileID: 1409487736}
-  - {fileID: 511696176}
