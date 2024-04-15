@@ -14,3 +14,8 @@ public interface ISound
 {
     bool canhear { get; set; }
 }
+
+public interface IDoor
+{
+    Door_Parent tDoor { get; set; }
+}
