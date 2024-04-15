@@ -4,14 +4,5 @@ using UnityEngine;
 
 public class Cabinet : MonoBehaviour
 {
-
-    void Update()
-    {
-        HideOnCabinet();
-    }
-
-    void HideOnCabinet()
-    {
-
-    }
+    public GameObject hideCabinet;
 }

@@ -641,8 +641,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 80385663}
-  - component: {fileID: 80385662}
-  - component: {fileID: 80385661}
+  - component: {fileID: 80385665}
+  - component: {fileID: 80385664}
   m_Layer: 11
   m_Name: handle_0
   m_TagString: Door
@@ -650,7 +650,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &80385661
+--- !u!4 &80385663
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80385660}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.37500134, y: 0.6607395, z: -0.76466674}
+  m_LocalScale: {x: 0.83333325, y: 0.7407408, z: 0.057202004}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1760875634}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &80385664
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -659,18 +674,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 80385660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7782d2a7913cdf459db2e96c37a4a3c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e62f194174eb234aa6971e26b016099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canOpen: 1
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
+  tDoor: {fileID: 1760875630}
   P_Door: {fileID: 1760875629}
-  mat_Door: {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
+  Doorindex: 0
+  mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
---- !u!136 &80385662
-CapsuleCollider:
+--- !u!65 &80385665
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -687,26 +704,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: -0.049999952, z: 0}
---- !u!4 &80385663
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 80385660}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.411, y: 0.8919983, z: 1.067}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1313227373}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 15.64936}
+  m_Center: {x: 0, y: 0, z: -2.812974}
 --- !u!1 &83691628
 GameObject:
   m_ObjectHideFlags: 0
@@ -3824,12 +3824,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363205020}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3859985, y: 0.8919983, z: -1.188}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.39583594, y: 0.6607395, z: 0.73866737}
+  m_LocalScale: {x: 0.83333325, y: 0.7407408, z: 0.057202004}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1313227373}
+  m_Father: {fileID: 1760875634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &363205022
 MonoBehaviour:
@@ -3847,11 +3847,13 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
+  tDoor: {fileID: 1760875630}
   P_Door: {fileID: 1760875629}
+  Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
---- !u!136 &363205023
-CapsuleCollider:
+--- !u!65 &363205023
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3868,11 +3870,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 14.043686}
+  m_Center: {x: 0, y: 0, z: 3.7058842}
 --- !u!1 &400252930
 GameObject:
   m_ObjectHideFlags: 0
@@ -5523,7 +5523,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  playerobj: {fileID: 1820361129}
+  playerobj: {fileID: 0}
   savename: /save
 --- !u!4 &558350035
 Transform:
@@ -5621,7 +5621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 638741738}
-  timeText: {fileID: 164325278}
+  timeText: {fileID: 0}
   pipesHolder: {fileID: 353948727}
   pipes:
   - {fileID: 353948727}
@@ -5750,11 +5750,11 @@ Transform:
   m_GameObject: {fileID: 577061861}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.0999975, y: 25.221577, z: -5.3246865}
+  m_LocalPosition: {x: -10.747002, y: 0.7799988, z: -8.813995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1086550568357661795}
+  m_Father: {fileID: 6375432706267161319}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &577061863
 SphereCollider:
@@ -14387,39 +14387,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294103715}
   m_Mesh: {fileID: 4300004, guid: 9db5435eaeaee5f46b722691ff28d042, type: 3}
---- !u!1 &1313227372
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1313227373}
-  m_Layer: 8
-  m_Name: Handle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1313227373
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1313227372}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0.03}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 80385663}
-  - {fileID: 363205021}
-  m_Father: {fileID: 1808367818}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1327578864
 GameObject:
   m_ObjectHideFlags: 0
@@ -15084,11 +15051,11 @@ Transform:
   m_GameObject: {fileID: 1462898124}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -12.379, y: 25.481579, z: -5.07}
+  m_LocalPosition: {x: -10.026009, y: 1.0400009, z: -8.559313}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2659279001914251918}
+  m_Father: {fileID: 3973292058831785179}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1462898126
 SphereCollider:
@@ -16663,7 +16630,7 @@ GameObject:
   - component: {fileID: 1760875630}
   m_Layer: 8
   m_Name: Door
-  m_TagString: Door
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16683,9 +16650,7 @@ MonoBehaviour:
   isOpen: 0
   openangle: 90
   smooth: 3
-  tDoor1: {fileID: 80385661}
   tDoor2: {fileID: 363205022}
-  op: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
 --- !u!65 &1760875631
@@ -16769,10 +16734,12 @@ Transform:
   m_GameObject: {fileID: 1760875629}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.139, y: 0, z: -0.05}
-  m_LocalScale: {x: 1.2, y: 1.35, z: 1.5}
+  m_LocalPosition: {x: 0.1, y: 0, z: -0.05}
+  m_LocalScale: {x: 1.2805037, y: 1.35, z: 1.5}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 80385663}
+  - {fileID: 363205021}
   m_Father: {fileID: 1808367818}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1769654045
@@ -17279,7 +17246,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1760875634}
-  - {fileID: 1313227373}
   m_Father: {fileID: 632680850320163483}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1808933203
@@ -17798,7 +17764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1903834677
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19886,25 +19852,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.000002, y: 3.0000002, z: 0.16291124}
   m_Center: {x: -2.499999, y: 1.5000001, z: 0.08145371}
---- !u!114 &4325102552229862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018451709640742740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7782d2a7913cdf459db2e96c37a4a3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canOpen: 1
-  isOpen: 0
-  PlayerPos_0: 0
-  PlayerPos_1: 0
-  P_Door: {fileID: 8449666954386671197}
-  mat_Door: {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
-  mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!65 &4534713879572727
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20154,7 +20101,7 @@ GameObject:
   - component: {fileID: 1849963566950781926}
   - component: {fileID: 6062171621780206819}
   - component: {fileID: 6548028568002751923}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20174,7 +20121,7 @@ GameObject:
   - component: {fileID: 3902925119182154724}
   - component: {fileID: 4863966362258430852}
   - component: {fileID: 7801528809490083116}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20289,7 +20236,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6123705479049292048}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20618,8 +20565,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1318431, y: 2.236694, z: 0.54000473}
-  m_Center: {x: -0.56592155, y: 1.118347, z: -0.0075969696}
+  m_Size: {x: 1.1318431, y: 2.236694, z: 0.08269501}
+  m_Center: {x: -0.56592155, y: 1.118347, z: 0.0012540817}
 --- !u!33 &113561410445184184
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -20659,7 +20606,7 @@ GameObject:
   - component: {fileID: 7937902443931553016}
   m_Layer: 8
   m_Name: Door
-  m_TagString: Door
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20685,21 +20632,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.000002, y: 3.0000002, z: 0.16291124}
   m_Center: {x: -2.499999, y: 1.5000001, z: 0.08145371}
---- !u!4 &118934119321340162
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6496886009236132652}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8553868022397368323}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!208 &125078747044489542
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -21087,7 +21019,7 @@ GameObject:
   - component: {fileID: 7641729003868641048}
   - component: {fileID: 7979284928910708900}
   - component: {fileID: 2944665186524378147}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21259,7 +21191,7 @@ GameObject:
   - component: {fileID: 7133249434928127792}
   - component: {fileID: 7957674905863972948}
   - component: {fileID: 270543355061541565}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21302,7 +21234,7 @@ GameObject:
   - component: {fileID: 7861584075226835670}
   m_Layer: 8
   m_Name: Door
-  m_TagString: Door
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21468,12 +21400,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368886618427148057}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.411, y: 0.8919983, z: 1.067}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.4416672, y: 0.6607395, z: -1.1470001}
+  m_LocalScale: {x: 0.83333325, y: 0.7407408, z: 0.085803}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4155036798620340608}
+  m_Father: {fileID: 1207875497192728672}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &210358440487328254
 BoxCollider:
@@ -21509,7 +21441,7 @@ GameObject:
   - component: {fileID: 8333153286276813533}
   - component: {fileID: 2088288948819866017}
   - component: {fileID: 5531049012280245661}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21601,7 +21533,7 @@ GameObject:
   - component: {fileID: 9058294148064222783}
   - component: {fileID: 6583629679191993619}
   - component: {fileID: 6422289838579788860}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21638,7 +21570,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1207875497192728672}
-  - {fileID: 4155036798620340608}
   m_Father: {fileID: 8978182111907511645}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &234253525243205497
@@ -21651,7 +21582,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2396111009355881213}
   - component: {fileID: 1612910095702071029}
-  - component: {fileID: 2255629266049148875}
+  - component: {fileID: 2396111009355881214}
   m_Layer: 11
   m_Name: handle_0
   m_TagString: Door
@@ -22062,7 +21993,7 @@ GameObject:
   - component: {fileID: 7362152952965075822}
   - component: {fileID: 9187324688893786156}
   - component: {fileID: 4601765228126985531}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22318,7 +22249,7 @@ GameObject:
   - component: {fileID: 5706861352205316500}
   - component: {fileID: 8408208865965816897}
   - component: {fileID: 7423152049214920119}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Box (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22592,23 +22523,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.000002, y: 0.71390414, z: 0.22838402}
   m_Center: {x: -2.499999, y: 0.35695207, z: 0.1141901}
---- !u!4 &393120498107367885
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5097039561311168125}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0.03}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4468262634187446992}
-  - {fileID: 1572666454645292352}
-  m_Father: {fileID: 4607983257550272881}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &399726548160877410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22624,9 +22538,7 @@ MonoBehaviour:
   isOpen: 0
   openangle: 90
   smooth: 3
-  tDoor1: {fileID: 2255629266049148875}
   tDoor2: {fileID: 6753681344819245529}
-  op: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
 --- !u!1 &408833791953903358
@@ -22810,7 +22722,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6623676647660803933}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22914,7 +22826,7 @@ GameObject:
   - component: {fileID: 1487571175548543398}
   - component: {fileID: 3145239069365439499}
   - component: {fileID: 321762294626263862}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23370,7 +23282,7 @@ GameObject:
   - component: {fileID: 8889220685929445393}
   - component: {fileID: 3694420871410216029}
   - component: {fileID: 8478267356976979598}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Box (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23656,7 +23568,7 @@ GameObject:
   - component: {fileID: 2326870557297831967}
   - component: {fileID: 8797182943734312965}
   - component: {fileID: 1473130843183938558}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WaterCooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23893,7 +23805,7 @@ GameObject:
   - component: {fileID: 7479744417385907819}
   m_Layer: 8
   m_Name: Door
-  m_TagString: Door
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23991,7 +23903,7 @@ GameObject:
   - component: {fileID: 6609246839744835169}
   - component: {fileID: 3510606907480455641}
   - component: {fileID: 8959240052418511350}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24678,7 +24590,7 @@ GameObject:
   - component: {fileID: 3154447703597301149}
   - component: {fileID: 6058565004520177060}
   - component: {fileID: 79163760707599241}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24697,7 +24609,7 @@ GameObject:
   - component: {fileID: 3589171279032110587}
   - component: {fileID: 4342152126219286051}
   - component: {fileID: 3235711660402037769}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24823,7 +24735,7 @@ GameObject:
   - component: {fileID: 742376333058368048}
   - component: {fileID: 2437881756791658081}
   - component: {fileID: 3768146835521546523}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24859,12 +24771,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6617021178205983154}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3859985, y: 0.8919983, z: -1.188}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.46249902, y: 0.6607395, z: 1.1079991}
+  m_LocalScale: {x: 0.83333325, y: 0.7407408, z: 0.085802995}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1888805357664780768}
+  m_Father: {fileID: 3701107727348922368}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &765958023572259163
 GameObject:
@@ -24879,7 +24791,7 @@ GameObject:
   - component: {fileID: 8588831882203385339}
   - component: {fileID: 8028499265966277242}
   - component: {fileID: 1288314022586041024}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24923,7 +24835,9 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
+  tDoor: {fileID: 5947228169425599752}
   P_Door: {fileID: 4396966283054917658}
+  Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!208 &776326689425689795
@@ -25002,7 +24916,7 @@ GameObject:
   - component: {fileID: 1119116124709327863}
   - component: {fileID: 1763157319454430207}
   - component: {fileID: 9058382895272475264}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25018,7 +24932,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6411469219182210134}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Etc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25314,7 +25228,7 @@ GameObject:
   - component: {fileID: 2054681369521341456}
   - component: {fileID: 7329300095182837175}
   - component: {fileID: 8112613209700478632}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25649,7 +25563,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2286993500474307559}
-  - {fileID: 3951789727958878727}
   m_Father: {fileID: 7157201402137799628}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &890673921883839330
@@ -25773,7 +25686,7 @@ GameObject:
   - component: {fileID: 1232748102317530320}
   - component: {fileID: 8517082794591219707}
   - component: {fileID: 5812842695645321948}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25929,7 +25842,7 @@ GameObject:
   - component: {fileID: 5479769616808533852}
   - component: {fileID: 4577317226266574665}
   - component: {fileID: 5777757193302260367}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26145,7 +26058,7 @@ GameObject:
   - component: {fileID: 4270182088902039037}
   - component: {fileID: 6347096971713503475}
   - component: {fileID: 3442671774146402768}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SupBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26283,12 +26196,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3432250829576412318}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.411, y: 0.8919983, z: 1.067}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.44166625, y: 0.6607395, z: -1.1470013}
+  m_LocalScale: {x: 0.83333325, y: 0.7407408, z: 0.085802995}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3951789727958878727}
+  m_Father: {fileID: 2286993500474307559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &983614760045437518
 MeshFilter:
@@ -26835,24 +26748,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1318431, y: 2.236694, z: 0.54000473}
-  m_Center: {x: -0.56592155, y: 1.118347, z: -0.0075969696}
---- !u!1 &1079250530302691386
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5562706234141175690}
-  m_Layer: 8
-  m_Name: Handle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_Size: {x: 1.1318431, y: 2.236694, z: 0.077582344}
+  m_Center: {x: -0.56592155, y: 1.118347, z: 0.0013388508}
 --- !u!23 &1079428176674094005
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26909,7 +26806,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 577061862}
   - {fileID: 2120720417465131405}
   - {fileID: 4007204146424000555}
   - {fileID: 5793656411410175720}
@@ -26998,7 +26894,7 @@ GameObject:
   - component: {fileID: 7401437067401267401}
   - component: {fileID: 3713622157716869530}
   - component: {fileID: 6604707358624191344}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27054,7 +26950,7 @@ GameObject:
   - component: {fileID: 2101836892106266084}
   - component: {fileID: 3879299259414245191}
   - component: {fileID: 4139110596712586160}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27265,7 +27161,7 @@ GameObject:
   - component: {fileID: 3739703394915926431}
   - component: {fileID: 8808461479202502527}
   - component: {fileID: 1022332572212069307}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27468,7 +27364,7 @@ GameObject:
   - component: {fileID: 4164443970028799461}
   - component: {fileID: 3510894362203261889}
   - component: {fileID: 5024635584210502633}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27595,7 +27491,7 @@ GameObject:
   - component: {fileID: 3357962094815939000}
   - component: {fileID: 978429753032423641}
   - component: {fileID: 780218846129957526}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27743,7 +27639,9 @@ Transform:
   m_LocalPosition: {x: 0.059, y: 0, z: -0.05}
   m_LocalScale: {x: 1.2, y: 1.35, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 207015806612572829}
+  - {fileID: 2958364919027887373}
   m_Father: {fileID: 229642544409438524}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!208 &1208776685135212899
@@ -28174,7 +28072,7 @@ GameObject:
   - component: {fileID: 8437805669620222150}
   - component: {fileID: 539837816445883017}
   - component: {fileID: 8893591038336464537}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29228,7 +29126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6392561410433133479}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29428,7 +29326,7 @@ GameObject:
   - component: {fileID: 8504982546775898155}
   - component: {fileID: 7269051117274749414}
   - component: {fileID: 7764152498244467366}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SM_Prop_WaterCooler_Tank_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29463,7 +29361,7 @@ GameObject:
   - component: {fileID: 5545241549441858832}
   - component: {fileID: 1292789740754596626}
   - component: {fileID: 1413342587248290858}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29594,12 +29492,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4942321011709170079}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3859985, y: 0.8919983, z: -1.188}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.4625038, y: 0.6607395, z: 1.108001}
+  m_LocalScale: {x: 0.83333325, y: 0.7407408, z: 0.085802995}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 393120498107367885}
+  m_Father: {fileID: 3179047294737479725}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1575408632297684142
 Transform:
@@ -29999,7 +29897,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5169883437389902314}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30086,28 +29984,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1639255493700958578
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6496886009236132652}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 9168859844564891167, guid: ca9781062422a854e9e4b132ea6869b3, type: 3}
 --- !u!23 &1644679300405168245
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -30721,14 +30597,6 @@ GameObject:
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!33 &1762609894677436394
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6496886009236132652}
-  m_Mesh: {fileID: 9168859844564891167, guid: ca9781062422a854e9e4b132ea6869b3, type: 3}
 --- !u!65 &1763157319454430207
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30762,7 +30630,7 @@ GameObject:
   - component: {fileID: 8387327707188950814}
   - component: {fileID: 2249938416501806770}
   - component: {fileID: 2887596932497825106}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31411,7 +31279,7 @@ GameObject:
   - component: {fileID: 2078070083869741406}
   - component: {fileID: 5308354410360598096}
   - component: {fileID: 4113541639995327330}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31500,23 +31368,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.78125, y: 0.6875, z: 0.234375}
   m_Center: {x: 0.00781256, y: 0.34375, z: 0.0234375}
---- !u!4 &1888805357664780768
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6484784394261964368}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0.03}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2396111009355881213}
-  - {fileID: 761667693461224813}
-  m_Father: {fileID: 2355416889688111452}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1895648212180114838
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31820,9 +31671,7 @@ MonoBehaviour:
   isOpen: 0
   openangle: 90
   smooth: 3
-  tDoor1: {fileID: 4325102552229862}
   tDoor2: {fileID: 4826488891710747124}
-  op: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
 --- !u!65 &1936444875659020785
@@ -31978,7 +31827,7 @@ GameObject:
   - component: {fileID: 797428638262462442}
   - component: {fileID: 7082274727567594898}
   - component: {fileID: 1818271071030315944}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32319,7 +32168,7 @@ GameObject:
   - component: {fileID: 1988963511997459142}
   - component: {fileID: 2244831465224626514}
   - component: {fileID: 4052062713731711853}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SupBox (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32361,7 +32210,7 @@ GameObject:
   - component: {fileID: 5677480157062664467}
   - component: {fileID: 1798872501632374101}
   - component: {fileID: 3847781705112120048}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32436,7 +32285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4468262634187446992}
   - component: {fileID: 657792014193858264}
-  - component: {fileID: 4325102552229862}
+  - component: {fileID: 4468262634187446993}
   m_Layer: 11
   m_Name: handle_0
   m_TagString: Door
@@ -32477,7 +32326,7 @@ GameObject:
   - component: {fileID: 4006644196103487497}
   - component: {fileID: 1298409410095588151}
   - component: {fileID: 5374519633273932373}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Box (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32613,7 +32462,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 134836698027562161}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PC (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32740,7 +32589,7 @@ GameObject:
   - component: {fileID: 8302779862060600438}
   m_Layer: 8
   m_Name: Door
-  m_TagString: Door
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32979,7 +32828,7 @@ GameObject:
   - component: {fileID: 5950805663175695816}
   - component: {fileID: 8389506868239907427}
   - component: {fileID: 3232603261951770001}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33109,7 +32958,7 @@ GameObject:
   - component: {fileID: 8680602265375510868}
   - component: {fileID: 4169393796928391263}
   - component: {fileID: 7429762400737476186}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SM_Prop_WaterCooler_Tank_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33165,7 +33014,7 @@ GameObject:
   - component: {fileID: 7089727075808303818}
   - component: {fileID: 2645018351205247794}
   - component: {fileID: 1425860256632604469}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33206,7 +33055,7 @@ GameObject:
   - component: {fileID: 3719766866194548481}
   - component: {fileID: 3293407007180932968}
   - component: {fileID: 753760131843520116}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33353,7 +33202,7 @@ GameObject:
   - component: {fileID: 1908328627349495943}
   - component: {fileID: 6049404517462134974}
   - component: {fileID: 195553222041514498}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33869,7 +33718,7 @@ GameObject:
   - component: {fileID: 2760678041800659536}
   - component: {fileID: 6080847682596018855}
   - component: {fileID: 9171451171285441152}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34015,25 +33864,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.000002, y: 3.0000002, z: 0.16291124}
   m_Center: {x: -2.499999, y: 1.5000001, z: 0.08145371}
---- !u!114 &2255629266049148875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234253525243205497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7782d2a7913cdf459db2e96c37a4a3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canOpen: 1
-  isOpen: 0
-  PlayerPos_0: 0
-  PlayerPos_1: 0
-  P_Door: {fileID: 7638659285432960624}
-  mat_Door: {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
-  mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!23 &2256909708927357743
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -34206,7 +34036,9 @@ Transform:
   m_LocalPosition: {x: 0.059, y: 0, z: -0.05}
   m_LocalScale: {x: 1.2, y: 1.35, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 982140832901452058}
+  - {fileID: 2769728191367329418}
   m_Father: {fileID: 887752872213656251}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &2287600910338393735
@@ -34365,7 +34197,7 @@ GameObject:
   - component: {fileID: 9153733987817718533}
   - component: {fileID: 39220206315318503}
   - component: {fileID: 1874370003705991725}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34381,7 +34213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2320268227591884468}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34598,7 +34430,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4808286073696611359}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34880,7 +34712,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3701107727348922368}
-  - {fileID: 1888805357664780768}
   m_Father: {fileID: 2219446210152341772}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2356306922451533877
@@ -34896,7 +34727,7 @@ GameObject:
   - component: {fileID: 900477793469331605}
   - component: {fileID: 7531642912111184222}
   - component: {fileID: 5361581317032937744}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34921,7 +34752,7 @@ GameObject:
   m_Component:
   - component: {fileID: 207015806612572829}
   - component: {fileID: 3890530277594842773}
-  - component: {fileID: 4382670248085714859}
+  - component: {fileID: 3890530277594842774}
   m_Layer: 11
   m_Name: handle_0
   m_TagString: Door
@@ -35059,13 +34890,34 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 234253525243205497}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.411, y: 0.8919983, z: 1.067}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.44166443, y: 0.6607395, z: -1.1469982}
+  m_LocalScale: {x: 0.83333325, y: 0.7407408, z: 0.085802995}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1888805357664780768}
+  m_Father: {fileID: 3701107727348922368}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2396111009355881214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234253525243205497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e62f194174eb234aa6971e26b016099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canOpen: 1
+  isOpen: 0
+  PlayerPos_0: 0
+  PlayerPos_1: 0
+  tDoor: {fileID: 399726548160877410}
+  P_Door: {fileID: 7638659285432960624}
+  Doorindex: 0
+  mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
+  mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!23 &2397891133255894845
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -35393,8 +35245,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1318431, y: 2.236694, z: 0.54000473}
-  m_Center: {x: -0.56592155, y: 1.118347, z: -0.0075969696}
+  m_Size: {x: 1.1318431, y: 2.236694, z: 0.07818982}
+  m_Center: {x: -0.5659214, y: 1.118347, z: 0.001555225}
 --- !u!65 &2456127707924194397
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35573,7 +35425,7 @@ GameObject:
   - component: {fileID: 6678292581497806796}
   - component: {fileID: 7164051161765250819}
   - component: {fileID: 450803527427966199}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35736,7 +35588,7 @@ GameObject:
   - component: {fileID: 1621442932045031700}
   - component: {fileID: 3421929862440692782}
   - component: {fileID: 4300374244491482538}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35808,28 +35660,13 @@ GameObject:
   - component: {fileID: 1572236429265594563}
   - component: {fileID: 2760873655242029384}
   - component: {fileID: 7640033845853609067}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!4 &2557170357320397456
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7498912036956437940}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4457825293697309434}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &2564844327919416446
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36219,7 +36056,7 @@ GameObject:
   - component: {fileID: 3172989620045995872}
   - component: {fileID: 7237029392370771331}
   - component: {fileID: 4071053952477056741}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WaterCooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36239,7 +36076,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1462898125}
   - {fileID: 5979877214856236874}
   - {fileID: 1562423776858417500}
   - {fileID: 7048205182139523700}
@@ -36518,7 +36354,7 @@ GameObject:
   - component: {fileID: 1914569711580114612}
   - component: {fileID: 5063871346633867383}
   - component: {fileID: 5890092404104821453}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36538,7 +36374,7 @@ GameObject:
   - component: {fileID: 865079059228851772}
   - component: {fileID: 8585998480832019721}
   - component: {fileID: 4306997529147520664}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36596,9 +36432,7 @@ MonoBehaviour:
   isOpen: 0
   openangle: 90
   smooth: 3
-  tDoor1: {fileID: 4382670248085714859}
   tDoor2: {fileID: 9089989068483584441}
-  op: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
 --- !u!1 &2750850644110227460
@@ -36614,7 +36448,7 @@ GameObject:
   - component: {fileID: 6416278049694076511}
   - component: {fileID: 3120698384015913552}
   - component: {fileID: 7312576145143077091}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36886,7 +36720,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1086550568357661795}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Etc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36922,12 +36756,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8589930284773038677}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3859985, y: 0.8919983, z: -1.188}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.46250105, y: 0.6607395, z: 1.108}
+  m_LocalScale: {x: 0.83333325, y: 0.7407408, z: 0.085802995}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3951789727958878727}
+  m_Father: {fileID: 2286993500474307559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2770893840000986471
 BoxCollider:
@@ -36992,7 +36826,7 @@ GameObject:
   - component: {fileID: 7330066627414640348}
   - component: {fileID: 7643262877089422303}
   - component: {fileID: 2434934752326298327}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37075,7 +36909,7 @@ GameObject:
   - component: {fileID: 8099213640568328824}
   - component: {fileID: 4959204094685885810}
   - component: {fileID: 7041336555509228867}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37433,7 +37267,7 @@ GameObject:
   - component: {fileID: 1725453151557133933}
   - component: {fileID: 5356674361217706142}
   - component: {fileID: 6481873390035002619}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37508,7 +37342,7 @@ GameObject:
   - component: {fileID: 8721279946081319677}
   - component: {fileID: 8599199745839083410}
   - component: {fileID: 4883150787074812102}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37550,7 +37384,7 @@ GameObject:
   - component: {fileID: 6805329790959646069}
   - component: {fileID: 6022765749504993534}
   - component: {fileID: 6817875730906913734}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: TV_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37585,7 +37419,7 @@ GameObject:
   - component: {fileID: 5772901771041860260}
   - component: {fileID: 2271534417463886671}
   - component: {fileID: 8907522910351146028}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37792,7 +37626,7 @@ GameObject:
   - component: {fileID: 1339198363771526075}
   - component: {fileID: 1044712891626378625}
   - component: {fileID: 129246986352812455}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38084,12 +37918,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8668202437849612754}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3859985, y: 0.8919983, z: -1.188}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.4625018, y: 0.6607395, z: 1.1079972}
+  m_LocalScale: {x: 0.83333325, y: 0.7407408, z: 0.085803}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4155036798620340608}
+  m_Father: {fileID: 1207875497192728672}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2961634858525317086
 Transform:
@@ -38139,7 +37973,7 @@ GameObject:
   - component: {fileID: 3141408916087550470}
   - component: {fileID: 1530396943588357472}
   - component: {fileID: 891734186200959776}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38267,9 +38101,7 @@ MonoBehaviour:
   isOpen: 0
   openangle: 90
   smooth: 3
-  tDoor1: {fileID: 3723469167964564524}
   tDoor2: {fileID: 8167300740567677502}
-  op: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
 --- !u!65 &2987830935944073878
@@ -38390,7 +38222,7 @@ GameObject:
   - component: {fileID: 4593371861113203187}
   - component: {fileID: 3908023480291114620}
   - component: {fileID: 2283151843793746193}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38500,7 +38332,7 @@ GameObject:
   - component: {fileID: 6702750159514746945}
   - component: {fileID: 8838345399085759739}
   - component: {fileID: 2329314560363023510}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38690,7 +38522,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9041316967969678543}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PC (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38710,7 +38542,7 @@ GameObject:
   - component: {fileID: 6998935226666334275}
   - component: {fileID: 5706301568241489515}
   - component: {fileID: 3220496542435704106}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38960,7 +38792,9 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
+  tDoor: {fileID: 8302779862060600438}
   P_Door: {fileID: 2068422439980177764}
+  Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!65 &3105937427538435890
@@ -39399,7 +39233,7 @@ GameObject:
   - component: {fileID: 4900212766624748699}
   - component: {fileID: 6630418456816483952}
   - component: {fileID: 8257803541003377216}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39418,7 +39252,9 @@ Transform:
   m_LocalPosition: {x: 0.059, y: 0, z: -0.05}
   m_LocalScale: {x: 1.2, y: 1.35, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4468262634187446992}
+  - {fileID: 1572666454645292352}
   m_Father: {fileID: 4607983257550272881}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!65 &3184983102061996663
@@ -39527,6 +39363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6264ef5059de6e24db297cd7a42f8676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  c_state: 0
   rotationSpeed: 100
   rotationAmount: 45
   rotationDuration: 5
@@ -39935,7 +39772,7 @@ GameObject:
   - component: {fileID: 374847245270984796}
   - component: {fileID: 4406938423382032886}
   - component: {fileID: 3698501259307309525}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: TV_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40712,7 +40549,7 @@ GameObject:
   - component: {fileID: 4633169282566371163}
   - component: {fileID: 5536949452047582393}
   - component: {fileID: 3344829908364990392}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet2 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40752,7 +40589,7 @@ GameObject:
   - component: {fileID: 2668034525642139895}
   - component: {fileID: 4783601937932045445}
   - component: {fileID: 7081190111856933657}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40772,7 +40609,7 @@ GameObject:
   - component: {fileID: 8750747000717177343}
   - component: {fileID: 8816205133323812443}
   - component: {fileID: 3481031714390522805}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40977,22 +40814,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 134836698027562161}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3408079683696507204
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7819120939680489204}
-  m_Layer: 8
-  m_Name: Handle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!208 &3420055746372118846
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -41082,7 +40903,7 @@ GameObject:
   m_Component:
   - component: {fileID: 982140832901452058}
   - component: {fileID: 4216429770575355154}
-  - component: {fileID: 3723469167964564524}
+  - component: {fileID: 4216429770575355155}
   m_Layer: 11
   m_Name: handle_0
   m_TagString: Door
@@ -41386,7 +41207,7 @@ GameObject:
   - component: {fileID: 9004855130996755404}
   - component: {fileID: 3089743349982151350}
   - component: {fileID: 7429910639753898765}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41861,22 +41682,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3342972420705681543}
   m_Mesh: {fileID: 4300000, guid: 365adfac290cc9a46b66b40f7944415c, type: 3}
---- !u!1 &3561077581272080356
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8260598192108320852}
-  m_Layer: 8
-  m_Name: Handle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!65 &3563413434167392583
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42142,6 +41947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6264ef5059de6e24db297cd7a42f8676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  c_state: 0
   rotationSpeed: 80
   rotationAmount: 30
   rotationDuration: 10
@@ -42374,7 +42180,7 @@ GameObject:
   - component: {fileID: 8808160655239915585}
   - component: {fileID: 8056132762959969051}
   - component: {fileID: 1208776685135212899}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42577,22 +42383,6 @@ Transform:
   - {fileID: 302099354082159778}
   m_Father: {fileID: 348776558626089552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3628652350260509130
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8183998666233880186}
-  m_Layer: 8
-  m_Name: Handle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &3629281912181931838
 GameObject:
   m_ObjectHideFlags: 0
@@ -43186,7 +42976,7 @@ GameObject:
   - component: {fileID: 6286023998337276677}
   - component: {fileID: 7983326987161182185}
   - component: {fileID: 2236343514026944337}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43205,7 +42995,9 @@ Transform:
   m_LocalPosition: {x: 0.059, y: 0, z: -0.05}
   m_LocalScale: {x: 1.2, y: 1.35, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2396111009355881213}
+  - {fileID: 761667693461224813}
   m_Father: {fileID: 2355416889688111452}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &3704572302648803606
@@ -43328,32 +43120,13 @@ GameObject:
   - component: {fileID: 2473462619322687488}
   - component: {fileID: 4903140504075926861}
   - component: {fileID: 227287465411461935}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!114 &3723469167964564524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3432250829576412318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7782d2a7913cdf459db2e96c37a4a3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canOpen: 1
-  isOpen: 0
-  PlayerPos_0: 0
-  PlayerPos_1: 0
-  P_Door: {fileID: 5107092426272050583}
-  mat_Door: {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
-  mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!33 &3724057880398065041
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -43680,24 +43453,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7913287071461044331}
   m_Mesh: {fileID: 4300000, guid: 6458d14e3e18f9349aa6064cf0b3bbfb, type: 3}
---- !u!1 &3766936187024596070
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4457825293697309434}
-  - component: {fileID: 7824028200475995086}
-  - component: {fileID: 4002121557169938620}
-  m_Layer: 8
-  m_Name: coffee-machine
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
 --- !u!208 &3768146835521546523
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -43925,7 +43680,7 @@ GameObject:
   - component: {fileID: 994699858875616577}
   - component: {fileID: 1362493548848150270}
   - component: {fileID: 5900323474835002461}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SupBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43977,7 +43732,9 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
+  tDoor: {fileID: 7861584075226835670}
   P_Door: {fileID: 185791193682542532}
+  Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!1 &3834197640711635719
@@ -43992,7 +43749,7 @@ GameObject:
   - component: {fileID: 6782061991591551960}
   - component: {fileID: 5546082799344696903}
   - component: {fileID: 478263850605498826}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WaterCooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44362,6 +44119,27 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: -0.049999952, z: 0}
+--- !u!114 &3890530277594842774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368886618427148057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e62f194174eb234aa6971e26b016099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canOpen: 1
+  isOpen: 0
+  PlayerPos_0: 0
+  PlayerPos_1: 0
+  tDoor: {fileID: 2743774841670451970}
+  P_Door: {fileID: 5304745190093706768}
+  Doorindex: 0
+  mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
+  mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!1 &3895716131690914808
 GameObject:
   m_ObjectHideFlags: 0
@@ -44375,7 +44153,7 @@ GameObject:
   - component: {fileID: 1788910507131927103}
   - component: {fileID: 8919395834110732479}
   - component: {fileID: 5545160792405109674}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44413,7 +44191,9 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
+  tDoor: {fileID: 7937902443931553016}
   P_Door: {fileID: 118497924931541482}
+  Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!23 &3901909506659781129
@@ -44831,23 +44611,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!4 &3951789727958878727
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8439574910766624183}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0.03}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 982140832901452058}
-  - {fileID: 2769728191367329418}
-  m_Father: {fileID: 887752872213656251}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3953644075084735617
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -45113,6 +44876,7 @@ Transform:
   m_Children:
   - {fileID: 5410259339229423302}
   - {fileID: 3753412227124466896}
+  - {fileID: 1462898125}
   - {fileID: 2659279001914251918}
   m_Father: {fileID: 8945785590030942025}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -45361,55 +45125,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.000002, y: 0.71390414, z: 0.22838402}
   m_Center: {x: -2.499999, y: 0.35695207, z: 0.1141901}
---- !u!23 &4002121557169938620
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3766936187024596070}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5fe0aebe85b574b4a94e74712f0aa915, type: 2}
-  - {fileID: 2100000, guid: c48ed0c67054fc24da0ac1cced5a308c, type: 2}
-  - {fileID: 2100000, guid: 31b29cea830e0e24da72018652e5ed31, type: 2}
-  - {fileID: 2100000, guid: 1d41f8c57e738e44f9f12fc053be388c, type: 2}
-  - {fileID: 2100000, guid: 9d9bb6bbb2ed44e89aaf71377e273447, type: 2}
-  - {fileID: 2100000, guid: a0889cd32c1a48f4ca4eae10233778ff, type: 2}
-  - {fileID: 2100000, guid: 11a8c080607cf47c299aff53087e0334, type: 2}
-  - {fileID: 2100000, guid: 0de74cacf6310c64ca1b6862ba4b219c, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!4 &4002519702104000101
 Transform:
   m_ObjectHideFlags: 0
@@ -45777,7 +45492,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4632104808882437634}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46221,30 +45936,13 @@ GameObject:
   - component: {fileID: 2288183853146005556}
   - component: {fileID: 2644789896229818810}
   - component: {fileID: 4887095370421241978}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!4 &4155036798620340608
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8818418122290427440}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0.03}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 207015806612572829}
-  - {fileID: 2958364919027887373}
-  m_Father: {fileID: 229642544409438524}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4162613997047262887
 Transform:
   m_ObjectHideFlags: 0
@@ -46563,6 +46261,27 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: -0.049999952, z: 0}
+--- !u!114 &4216429770575355155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3432250829576412318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e62f194174eb234aa6971e26b016099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canOpen: 1
+  isOpen: 0
+  PlayerPos_0: 0
+  PlayerPos_1: 0
+  tDoor: {fileID: 2985302212531198085}
+  P_Door: {fileID: 5107092426272050583}
+  Doorindex: 0
+  mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
+  mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!4 &4220541291261714600
 Transform:
   m_ObjectHideFlags: 0
@@ -46632,7 +46351,7 @@ GameObject:
   - component: {fileID: 8622336903316291162}
   - component: {fileID: 3466749793833356382}
   - component: {fileID: 1191810136681070449}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SupBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46902,22 +46621,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.000002, y: 3.0000002, z: 0.16291124}
   m_Center: {x: -2.499999, y: 1.5000001, z: 0.08145371}
---- !u!1 &4305419021981365081
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8680438354520921321}
-  m_Layer: 8
-  m_Name: Handle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!208 &4306997529147520664
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -47041,7 +46744,7 @@ GameObject:
   - component: {fileID: 7299023013464822269}
   - component: {fileID: 7110665993214688753}
   - component: {fileID: 4485808556016077174}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47102,7 +46805,7 @@ GameObject:
   - component: {fileID: 3331813049820801624}
   - component: {fileID: 993218033444132257}
   - component: {fileID: 4798825310292115772}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47118,7 +46821,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4411758178150251222}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Etc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47307,7 +47010,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9189047797223163395}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47407,25 +47110,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7933129478983602271}
   m_Mesh: {fileID: 4300000, guid: 7481787203b67de40a4345292a46adc3, type: 2}
---- !u!114 &4382670248085714859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368886618427148057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7782d2a7913cdf459db2e96c37a4a3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canOpen: 1
-  isOpen: 0
-  PlayerPos_0: 0
-  PlayerPos_1: 0
-  P_Door: {fileID: 5304745190093706768}
-  mat_Door: {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
-  mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!33 &4383665885675440051
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -47447,7 +47131,7 @@ GameObject:
   - component: {fileID: 7254854522855639614}
   - component: {fileID: 756418868378963399}
   - component: {fileID: 6956463061127166069}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47514,7 +47198,7 @@ GameObject:
   - component: {fileID: 5947228169425599752}
   m_Layer: 8
   m_Name: Door
-  m_TagString: Door
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47634,7 +47318,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2172737518568280790}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PC (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47781,8 +47465,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1318431, y: 2.236694, z: 0.54000473}
-  m_Center: {x: -0.56592155, y: 1.118347, z: -0.0075969696}
+  m_Size: {x: 1.1318431, y: 2.236694, z: 0.09021374}
+  m_Center: {x: -0.56592155, y: 1.118347, z: 0.00041671455}
 --- !u!1 &4429128860445633871
 GameObject:
   m_ObjectHideFlags: 0
@@ -47952,7 +47636,7 @@ GameObject:
   - component: {fileID: 6196883323916068556}
   - component: {fileID: 870484196546964231}
   - component: {fileID: 7896259009901710564}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47980,22 +47664,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.000002, y: 0.71390414, z: 0.22838402}
   m_Center: {x: -2.499999, y: 0.35695207, z: 0.1141901}
---- !u!4 &4457825293697309434
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3766936187024596070}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0016899093, y: 0.928, z: -0.013999941}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2557170357320397456}
-  m_Father: {fileID: 8553868022397368323}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4468262634187446992
 Transform:
   m_ObjectHideFlags: 0
@@ -48004,13 +47672,34 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018451709640742740}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.411, y: 0.8919983, z: 1.067}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.44166282, y: 0.6607395, z: -1.1469963}
+  m_LocalScale: {x: 0.83333325, y: 0.7407408, z: 0.085802995}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 393120498107367885}
+  m_Father: {fileID: 3179047294737479725}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4468262634187446993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018451709640742740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e62f194174eb234aa6971e26b016099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canOpen: 1
+  isOpen: 0
+  PlayerPos_0: 0
+  PlayerPos_1: 0
+  tDoor: {fileID: 1931721365111935823}
+  P_Door: {fileID: 8449666954386671197}
+  Doorindex: 0
+  mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
+  mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!23 &4470116324793709508
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -48119,7 +47808,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5522498616221125285}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48276,7 +47965,7 @@ GameObject:
   - component: {fileID: 6240838658220591842}
   - component: {fileID: 8442034853083703657}
   - component: {fileID: 2115074861505431509}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48731,7 +48420,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3179047294737479725}
-  - {fileID: 393120498107367885}
   m_Father: {fileID: 5443115743418052226}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4609605333914068176
@@ -48750,7 +48438,9 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
+  tDoor: {fileID: 7479744417385907819}
   P_Door: {fileID: 594623449505928057}
+  Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!4 &4609605521478555297
@@ -48812,7 +48502,7 @@ GameObject:
   - component: {fileID: 2756128530581958320}
   - component: {fileID: 7740653318097165863}
   - component: {fileID: 155341153954499017}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48852,7 +48542,7 @@ GameObject:
   - component: {fileID: 3819481355225161279}
   - component: {fileID: 9215833443162398348}
   - component: {fileID: 1824284097775530078}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SupBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49423,7 +49113,7 @@ GameObject:
   - component: {fileID: 4027688466330276715}
   - component: {fileID: 4848720592840738099}
   - component: {fileID: 6471865023971641468}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50052,7 +49742,7 @@ GameObject:
   - component: {fileID: 217871327548733806}
   - component: {fileID: 990441035224990068}
   - component: {fileID: 5222041980274382910}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50214,7 +49904,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5844976428722318601}
-  - {fileID: 8680438354520921321}
   m_Father: {fileID: 6375432706267161319}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4826488891710747124
@@ -50233,7 +49922,9 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
+  tDoor: {fileID: 1931721365111935823}
   P_Door: {fileID: 8449666954386671197}
+  Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!64 &4827069731904602354
@@ -50266,12 +49957,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6989941288822014576}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.411, y: 0.8919983, z: 1.067}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.6824974, y: 0.6607395, z: -1.1470001}
+  m_LocalScale: {x: 0.83333325, y: 0.7407408, z: 0.085803}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8680438354520921321}
+  m_Father: {fileID: 5844976428722318601}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4828503000134024616
 BoxCollider:
@@ -50321,7 +50012,7 @@ GameObject:
   - component: {fileID: 983614760045437518}
   - component: {fileID: 7856536961189841712}
   - component: {fileID: 7632204202514002684}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WaterCooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50618,7 +50309,7 @@ GameObject:
   - component: {fileID: 3265478084446514327}
   - component: {fileID: 9151175847800488188}
   - component: {fileID: 3658015713574741543}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WaterCooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50739,7 +50430,7 @@ GameObject:
   - component: {fileID: 6515312038362812526}
   - component: {fileID: 1521548211994053221}
   - component: {fileID: 949910059769514726}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51250,7 +50941,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4838456899704640099}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51270,7 +50961,7 @@ GameObject:
   - component: {fileID: 7617646377138549048}
   - component: {fileID: 6184521762106211897}
   - component: {fileID: 246246154322373923}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51363,7 +51054,7 @@ GameObject:
   - component: {fileID: 7769297213673809489}
   - component: {fileID: 3471843039134361915}
   - component: {fileID: 5484711017818037045}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51403,7 +51094,9 @@ Transform:
   m_LocalPosition: {x: 0.031, y: 0, z: -0.05}
   m_LocalScale: {x: 1.2, y: 1.35, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6338193200791995881}
+  - {fileID: 8945424144358056569}
   m_Father: {fileID: 6198470724288456264}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!136 &5038623539844295395
@@ -51438,7 +51131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4924459067158562697}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Etc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51617,7 +51310,7 @@ GameObject:
   - component: {fileID: 2349623317211714970}
   - component: {fileID: 291559770094073290}
   - component: {fileID: 6011566772583240262}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51635,7 +51328,7 @@ GameObject:
   - component: {fileID: 5960591259947005354}
   - component: {fileID: 1284987358718558918}
   - component: {fileID: 96249104843733757}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SM_Prop_WaterCooler_Tank_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51683,22 +51376,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5, y: 0.059775352, z: 5}
   m_Center: {x: -2.5, y: -0.029887676, z: -2.5}
---- !u!1 &5097039561311168125
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 393120498107367885}
-  m_Layer: 8
-  m_Name: Handle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &5097988732924733929
 Transform:
   m_ObjectHideFlags: 0
@@ -51752,7 +51429,7 @@ GameObject:
   - component: {fileID: 2985302212531198085}
   m_Layer: 8
   m_Name: Door
-  m_TagString: Door
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51983,7 +51660,7 @@ GameObject:
   - component: {fileID: 2175256314904704764}
   - component: {fileID: 9192238712113356553}
   - component: {fileID: 2933994701579661579}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52050,7 +51727,7 @@ GameObject:
   - component: {fileID: 6124159224348080753}
   - component: {fileID: 8652093669944543723}
   - component: {fileID: 6856393974964598092}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WaterCooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52283,7 +51960,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6613837195595383220}
-  - {fileID: 8260598192108320852}
   m_Father: {fileID: 5081885907080318779}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5199265792487776838
@@ -52302,25 +51978,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2184685635112685855}
   m_Mesh: {fileID: 4300000, guid: 6458d14e3e18f9349aa6064cf0b3bbfb, type: 3}
---- !u!114 &5208777397053589921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6072239850585733395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7782d2a7913cdf459db2e96c37a4a3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canOpen: 1
-  isOpen: 0
-  PlayerPos_0: 0
-  PlayerPos_1: 0
-  P_Door: {fileID: 4396966283054917658}
-  mat_Door: {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
-  mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!65 &5209802512337619886
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52542,7 +52199,7 @@ GameObject:
   - component: {fileID: 3254229176794584474}
   - component: {fileID: 6948467004289482196}
   - component: {fileID: 6970948368485727028}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52562,7 +52219,7 @@ GameObject:
   - component: {fileID: 3962759709510938773}
   - component: {fileID: 4348251165725513707}
   - component: {fileID: 7990638037384907075}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52980,7 +52637,7 @@ GameObject:
   - component: {fileID: 2743774841670451970}
   m_Layer: 8
   m_Name: Door
-  m_TagString: Door
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53065,8 +52722,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1318431, y: 2.236694, z: 0.54000473}
-  m_Center: {x: -0.56592155, y: 1.118347, z: -0.0075969696}
+  m_Size: {x: 1.1318431, y: 2.236694, z: 0.084213205}
+  m_Center: {x: -0.5659215, y: 1.118347, z: -0.0007258553}
 --- !u!1 &5315767068511602727
 GameObject:
   m_ObjectHideFlags: 0
@@ -53080,7 +52737,7 @@ GameObject:
   - component: {fileID: 3334074903005287247}
   - component: {fileID: 3962011463493653850}
   - component: {fileID: 8344497078126934057}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53110,12 +52767,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7770350284604075725}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.411, y: 0.8919983, z: 1.067}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.4416692, y: 0.6607395, z: -1.1469963}
+  m_LocalScale: {x: 0.83333325, y: 0.7407408, z: 0.085802995}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8260598192108320852}
+  m_Father: {fileID: 6613837195595383220}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5321347376228696681
 GameObject:
@@ -53130,7 +52787,7 @@ GameObject:
   - component: {fileID: 8675238953147735618}
   - component: {fileID: 5137610145809096623}
   - component: {fileID: 776326689425689795}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53439,7 +53096,7 @@ GameObject:
   - component: {fileID: 2691602780427051228}
   - component: {fileID: 576507472886796939}
   - component: {fileID: 5556350767223226047}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53465,8 +53122,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1318431, y: 2.236694, z: 0.54000473}
-  m_Center: {x: -0.56592155, y: 1.118347, z: -0.0075969696}
+  m_Size: {x: 1.1318431, y: 2.236694, z: 0.07632015}
+  m_Center: {x: -0.56592155, y: 1.118347, z: 0.0014658737}
 --- !u!65 &5374519633273932373
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53626,12 +53283,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7558510553456691427}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.411, y: 0.8919983, z: 1.067}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.50333107, y: 0.6607395, z: -1.1469982}
+  m_LocalScale: {x: 0.83333325, y: 0.7407408, z: 0.085802995}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8183998666233880186}
+  m_Father: {fileID: 6411433464662796186}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &5405639168262891796
 MeshRenderer:
@@ -53700,12 +53357,11 @@ Transform:
   m_GameObject: {fileID: 8625737858011982744}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.1200027, y: 0, z: -10.045998}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -4.16, y: 0, z: -10.05}
+  m_LocalScale: {x: 1.0535975, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6411433464662796186}
-  - {fileID: 8183998666233880186}
   m_Father: {fileID: 3973292058831785179}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &5410668881061310265
@@ -54110,7 +53766,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2659279001914251918}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Etc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54228,7 +53884,7 @@ GameObject:
   - component: {fileID: 4118825042041833535}
   - component: {fileID: 834018690913052835}
   - component: {fileID: 3330704864876342576}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54244,7 +53900,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7808491557660987297}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54635,7 +54291,7 @@ GameObject:
   - component: {fileID: 7223239898013863899}
   - component: {fileID: 2118520776243761802}
   - component: {fileID: 8841240255008424854}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54710,30 +54366,13 @@ GameObject:
   - component: {fileID: 3460565993372716815}
   - component: {fileID: 2100984983062619740}
   - component: {fileID: 3085930867391938737}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!4 &5562706234141175690
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1079250530302691386}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0.03}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8522046257096324247}
-  - {fileID: 6743345583312245511}
-  m_Father: {fileID: 8625746242543261494}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5565315089308697924
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -54970,7 +54609,7 @@ GameObject:
   - component: {fileID: 5453418490155987727}
   - component: {fileID: 8167511433168621476}
   - component: {fileID: 4059473758207857986}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SupBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55479,7 +55118,7 @@ GameObject:
   - component: {fileID: 5266219288672413656}
   - component: {fileID: 2796847388945547240}
   - component: {fileID: 7355773582945251761}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55658,7 +55297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7870527258177910925}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55678,7 +55317,7 @@ GameObject:
   - component: {fileID: 3040244461631383639}
   - component: {fileID: 8595005354890911926}
   - component: {fileID: 2179051787764850267}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56248,10 +55887,12 @@ Transform:
   m_GameObject: {fileID: 594623449505928057}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.23, y: 0, z: -0.05}
-  m_LocalScale: {x: 1.2, y: 1.35, z: 1}
+  m_LocalPosition: {x: -0.22, y: 0, z: -0.05}
+  m_LocalScale: {x: 1.2148801, y: 1.35, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4828365138490609652}
+  - {fileID: 7552680049543358564}
   m_Father: {fileID: 4823744325240433749}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!208 &5847216679591210117
@@ -56283,7 +55924,7 @@ GameObject:
   - component: {fileID: 5673803460994082653}
   - component: {fileID: 6694003268267257586}
   - component: {fileID: 8643484516191119206}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56345,7 +55986,7 @@ GameObject:
   - component: {fileID: 2212526947755702598}
   - component: {fileID: 7232799587511249281}
   - component: {fileID: 6914961906179659745}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56413,7 +56054,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8059102461199061507}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Etc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56449,7 +56090,7 @@ GameObject:
   - component: {fileID: 371552569215534017}
   - component: {fileID: 8886752891075664662}
   - component: {fileID: 6447105673242907697}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56469,7 +56110,7 @@ GameObject:
   - component: {fileID: 5224797152654068555}
   - component: {fileID: 5191713454421533269}
   - component: {fileID: 6601478870934266672}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56829,9 +56470,7 @@ MonoBehaviour:
   isOpen: 0
   openangle: 90
   smooth: 3
-  tDoor1: {fileID: 5208777397053589921}
   tDoor2: {fileID: 773832750321967027}
-  op: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
 --- !u!4 &5947731150535855303
@@ -57021,7 +56660,7 @@ GameObject:
   - component: {fileID: 7483909250480167576}
   - component: {fileID: 7235471375444702604}
   - component: {fileID: 4414216753598753344}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57040,7 +56679,7 @@ GameObject:
   - component: {fileID: 7527934641588216565}
   - component: {fileID: 1622114249856483103}
   - component: {fileID: 8131975514078029222}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Box (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57438,7 +57077,7 @@ GameObject:
   - component: {fileID: 2436596583735864211}
   - component: {fileID: 987250852290608629}
   - component: {fileID: 5764590168728742084}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WaterCooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57580,7 +57219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2929844009169411396}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57639,7 +57278,7 @@ GameObject:
   - component: {fileID: 6264892729476235594}
   - component: {fileID: 3263299741240933660}
   - component: {fileID: 7268469782406314285}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57714,7 +57353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8522046257096324247}
   - component: {fileID: 4712705300213643423}
-  - component: {fileID: 5208777397053589921}
+  - component: {fileID: 8522046257096324248}
   m_Layer: 11
   m_Name: handle_0
   m_TagString: Door
@@ -57864,7 +57503,7 @@ GameObject:
   - component: {fileID: 4044214241357925443}
   - component: {fileID: 1467962046082388323}
   - component: {fileID: 817692333308393137}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SM_Prop_WaterCooler_Tank_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57890,8 +57529,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1318431, y: 2.236694, z: 0.54000473}
-  m_Center: {x: -0.56592155, y: 1.118347, z: -0.0075969696}
+  m_Size: {x: 1.1318431, y: 2.236694, z: 0.08241272}
+  m_Center: {x: -0.56592155, y: 1.118347, z: 0.0020751953}
 --- !u!1 &6107311818780661952
 GameObject:
   m_ObjectHideFlags: 0
@@ -57987,7 +57626,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5971786841697394716}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Etc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58114,7 +57753,7 @@ GameObject:
   - component: {fileID: 2316342441819051182}
   - component: {fileID: 4948457582855063758}
   - component: {fileID: 6226683420745166278}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58359,7 +57998,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5037701387058308884}
-  - {fileID: 7819120939680489204}
   m_Father: {fileID: 8700012812155629910}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &6199635446010304069
@@ -58482,7 +58120,7 @@ GameObject:
   - component: {fileID: 1907852158553944887}
   - component: {fileID: 3260042573301338944}
   - component: {fileID: 7466167409704104795}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58613,7 +58251,7 @@ GameObject:
   - component: {fileID: 7543358563334223059}
   - component: {fileID: 4969089957869967993}
   - component: {fileID: 6004874736334876019}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58833,7 +58471,7 @@ GameObject:
   - component: {fileID: 5936247749900372142}
   - component: {fileID: 2763561052008942741}
   - component: {fileID: 6587488724604243403}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58996,12 +58634,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8499778147905865837}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.411, y: 0.8919983, z: 1.067}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.46499735, y: 0.6607395, z: -1.1470001}
+  m_LocalScale: {x: 0.83333325, y: 0.7407408, z: 0.085803}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7819120939680489204}
+  m_Father: {fileID: 5037701387058308884}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &6339182060452729776
 MeshRenderer:
@@ -59145,6 +58783,7 @@ Transform:
   m_Children:
   - {fileID: 4823744325240433749}
   - {fileID: 241039976670043310}
+  - {fileID: 577061862}
   - {fileID: 1086550568357661795}
   m_Father: {fileID: 8945785590030942025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -59340,7 +58979,9 @@ Transform:
   m_LocalPosition: {x: -0.015, y: 0, z: -0.05}
   m_LocalScale: {x: 1.2, y: 1.35, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5396921345602585959}
+  - {fileID: 7004497792097280759}
   m_Father: {fileID: 5410259339229423302}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &6411469219182210134
@@ -59980,22 +59621,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 9163363193587890433}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6484784394261964368
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1888805357664780768}
-  m_Layer: 8
-  m_Name: Handle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!65 &6485621599112687806
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -60059,25 +59684,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &6496886009236132652
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 118934119321340162}
-  - component: {fileID: 1762609894677436394}
-  - component: {fileID: 9190205383443196951}
-  - component: {fileID: 1639255493700958578}
-  m_Layer: 8
-  m_Name: cabinet-bathroom-modern
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
 --- !u!1 &6499534945158439445
 GameObject:
   m_ObjectHideFlags: 0
@@ -60131,7 +59737,7 @@ GameObject:
   - component: {fileID: 3934669048138537205}
   - component: {fileID: 5353101314314849624}
   - component: {fileID: 7896559343371895538}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60745,7 +60351,7 @@ GameObject:
   - component: {fileID: 981325611307594725}
   - component: {fileID: 1061675645019182423}
   - component: {fileID: 3791884483739572371}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60764,7 +60370,9 @@ Transform:
   m_LocalPosition: {x: 0.059, y: 0, z: -0.05}
   m_LocalScale: {x: 1.2, y: 1.35, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5320258013542490953}
+  - {fileID: 7062792683261707481}
   m_Father: {fileID: 5198833007430975720}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &6616468544714927733
@@ -60890,7 +60498,7 @@ GameObject:
   - component: {fileID: 6985893917422780667}
   - component: {fileID: 7777540229256027394}
   - component: {fileID: 2887199191347479082}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61740,12 +61348,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 923431558530432984}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3859985, y: 0.8919983, z: -1.188}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.45333236, y: 0.6607395, z: 1.1080067}
+  m_LocalScale: {x: 0.83333325, y: 0.7407408, z: 0.085802995}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5562706234141175690}
+  m_Father: {fileID: 7230573670739400298}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6743927209782524175
 BoxCollider:
@@ -61784,7 +61392,9 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
+  tDoor: {fileID: 399726548160877410}
   P_Door: {fileID: 7638659285432960624}
+  Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!4 &6754895276483662853
@@ -62016,7 +61626,7 @@ GameObject:
   - component: {fileID: 6576371489533961484}
   - component: {fileID: 7435594965742841880}
   - component: {fileID: 6265117688540270869}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SM_Prop_WaterCooler_Tank_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62340,7 +61950,7 @@ GameObject:
   - component: {fileID: 1248154221891275038}
   - component: {fileID: 1638751632264345845}
   - component: {fileID: 1714839459050188268}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SupBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62359,7 +61969,7 @@ GameObject:
   - component: {fileID: 6000700237981062647}
   - component: {fileID: 2352726261357753196}
   - component: {fileID: 6951566892744238530}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WaterCooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62599,7 +62209,7 @@ GameObject:
   - component: {fileID: 887521121233168182}
   - component: {fileID: 2100467283063141890}
   - component: {fileID: 4125465133205836594}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SM_Prop_WaterCooler_Tank_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62694,7 +62304,7 @@ GameObject:
   - component: {fileID: 3992363220042704773}
   - component: {fileID: 7779532269713888787}
   - component: {fileID: 2871055755752742697}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63086,7 +62696,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1755706452692029111}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63200,7 +62810,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4828365138490609652}
   - component: {fileID: 8368616000213812220}
-  - component: {fileID: 9010827762118046402}
+  - component: {fileID: 8368616000213812221}
   m_Layer: 11
   m_Name: handle_0
   m_TagString: Door
@@ -63312,12 +62922,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3490681866563259944}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3859985, y: 0.8919983, z: -1.188}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.5241657, y: 0.6607395, z: 1.1079991}
+  m_LocalScale: {x: 0.83333325, y: 0.7407408, z: 0.085802995}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8183998666233880186}
+  m_Father: {fileID: 6411433464662796186}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7009469350758674201
 GameObject:
@@ -63331,7 +62941,7 @@ GameObject:
   - component: {fileID: 2353620873067239546}
   - component: {fileID: 705395576913802075}
   - component: {fileID: 6502618738109543640}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Xerox_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63371,7 +62981,7 @@ GameObject:
   - component: {fileID: 4237509680470992394}
   - component: {fileID: 4470116324793709508}
   - component: {fileID: 5820215935278913549}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WaterCooler_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63611,12 +63221,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3693384416150366214}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3859985, y: 0.8919983, z: -1.188}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.46249744, y: 0.6607395, z: 1.108001}
+  m_LocalScale: {x: 0.83333325, y: 0.7407408, z: 0.085802995}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8260598192108320852}
+  m_Father: {fileID: 6613837195595383220}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7065552828479696727
 Transform:
@@ -63889,7 +63499,7 @@ GameObject:
   - component: {fileID: 4200674506540966497}
   - component: {fileID: 4401269747111397634}
   - component: {fileID: 4164710510377660867}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64452,7 +64062,7 @@ GameObject:
   - component: {fileID: 2256909708927357743}
   - component: {fileID: 4289608214821872393}
   - component: {fileID: 6984209136643773944}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64472,7 +64082,7 @@ GameObject:
   - component: {fileID: 8872929815211365838}
   - component: {fileID: 6393179468063603670}
   - component: {fileID: 7267634366640585700}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64686,7 +64296,9 @@ Transform:
   m_LocalPosition: {x: 0.07, y: 0, z: -0.05}
   m_LocalScale: {x: 1.2, y: 1.35, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8522046257096324247}
+  - {fileID: 6743345583312245511}
   m_Father: {fileID: 8625746242543261494}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &7231571824909993100
@@ -64752,7 +64364,7 @@ GameObject:
   - component: {fileID: 1672235481951905056}
   - component: {fileID: 222893388638237417}
   - component: {fileID: 6078509720694050489}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65213,7 +64825,7 @@ GameObject:
   - component: {fileID: 4695377622661670036}
   - component: {fileID: 2007682360984459330}
   - component: {fileID: 6071162583646350027}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65313,7 +64925,7 @@ GameObject:
   - component: {fileID: 250591119479529941}
   - component: {fileID: 1992508761198899477}
   - component: {fileID: 652151177744630992}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65348,7 +64960,7 @@ GameObject:
   - component: {fileID: 551135087975305281}
   - component: {fileID: 3923438090260111303}
   - component: {fileID: 1375609345953613959}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65551,7 +65163,7 @@ GameObject:
   - component: {fileID: 5135306215929453797}
   - component: {fileID: 4827069731904602354}
   - component: {fileID: 125078747044489542}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65570,7 +65182,7 @@ GameObject:
   - component: {fileID: 4897975342583693918}
   - component: {fileID: 5388689760756498349}
   - component: {fileID: 8794038780862088679}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: TV_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65807,7 +65419,7 @@ GameObject:
   - component: {fileID: 6957625350191249293}
   - component: {fileID: 6252058325754132926}
   - component: {fileID: 3828048766790680260}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Box (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65985,7 +65597,7 @@ GameObject:
   - component: {fileID: 458763126412701115}
   - component: {fileID: 8853610988744335506}
   - component: {fileID: 287203838565057146}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WaterCooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66028,7 +65640,7 @@ GameObject:
   - component: {fileID: 9013910521477984752}
   - component: {fileID: 5622367182790099482}
   - component: {fileID: 354625237544875663}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66406,9 +66018,7 @@ MonoBehaviour:
   isOpen: 0
   openangle: 90
   smooth: 3
-  tDoor1: {fileID: 9010827762118046402}
   tDoor2: {fileID: 4609605333914068176}
-  op: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
 --- !u!4 &7481437809861470848
@@ -66676,22 +66286,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.000002, y: 3.0000002, z: 0.16291124}
   m_Center: {x: -2.499999, y: 1.5000001, z: 0.08145371}
---- !u!1 &7498912036956437940
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2557170357320397456}
-  m_Layer: 8
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
 --- !u!33 &7500400009311707102
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -66712,7 +66306,7 @@ GameObject:
   - component: {fileID: 178431655134092105}
   - component: {fileID: 2389127961675375799}
   - component: {fileID: 6412076022625038217}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67014,12 +66608,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4149257221490328763}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3859985, y: 0.8919983, z: -1.188}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.70333195, y: 0.6607395, z: 1.108001}
+  m_LocalScale: {x: 0.83333325, y: 0.7407408, z: 0.085803}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8680438354520921321}
+  m_Father: {fileID: 5844976428722318601}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7558510553456691427
 GameObject:
@@ -67031,7 +66625,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5396921345602585959}
   - component: {fileID: 9063265781623834991}
-  - component: {fileID: 8424158784028899409}
+  - component: {fileID: 9063265781623834992}
   m_Layer: 11
   m_Name: handle_0
   m_TagString: Door
@@ -67113,7 +66707,7 @@ GameObject:
   - component: {fileID: 7626396920885509257}
   - component: {fileID: 1644679300405168245}
   - component: {fileID: 298155840760311876}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Toiletpaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67387,7 +66981,7 @@ GameObject:
   - component: {fileID: 8537863161414596330}
   - component: {fileID: 493724373083699355}
   - component: {fileID: 4673307860087097343}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SupBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67454,25 +67048,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43167882451550462, guid: ec73334efad125c468be4d6d0a75d8c1, type: 2}
---- !u!114 &7636101364767668447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8499778147905865837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7782d2a7913cdf459db2e96c37a4a3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canOpen: 1
-  isOpen: 0
-  PlayerPos_0: 0
-  PlayerPos_1: 0
-  P_Door: {fileID: 2068422439980177764}
-  mat_Door: {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
-  mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!4 &7637424128397335864
 Transform:
   m_ObjectHideFlags: 0
@@ -67503,7 +67078,7 @@ GameObject:
   - component: {fileID: 399726548160877410}
   m_Layer: 8
   m_Name: Door
-  m_TagString: Door
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67626,7 +67201,7 @@ GameObject:
   - component: {fileID: 1452856199557793438}
   - component: {fileID: 1329080699888457473}
   - component: {fileID: 5364073244613522049}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67699,7 +67274,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8553868022397368323}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Etc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67966,7 +67541,7 @@ GameObject:
   - component: {fileID: 612311746501168901}
   - component: {fileID: 6974081951139279353}
   - component: {fileID: 7341339180588283311}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: TV_01 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68149,7 +67724,7 @@ GameObject:
   - component: {fileID: 3577159732221543348}
   - component: {fileID: 373662669046319302}
   - component: {fileID: 7718667311184478631}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68412,7 +67987,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5320258013542490953}
   - component: {fileID: 9149024240045518657}
-  - component: {fileID: 8635778596083523199}
+  - component: {fileID: 9149024240045518658}
   m_Layer: 11
   m_Name: handle_0
   m_TagString: Door
@@ -68433,7 +68008,7 @@ GameObject:
   - component: {fileID: 4313557330894199900}
   - component: {fileID: 5856968817156090732}
   - component: {fileID: 6539592074793471244}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68627,7 +68202,7 @@ GameObject:
   - component: {fileID: 6115733446735740393}
   - component: {fileID: 8112787966551268714}
   - component: {fileID: 8878432424243677712}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68732,31 +68307,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3626600645879835895}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &7819120939680489204
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3408079683696507204}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0.03}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6338193200791995881}
-  - {fileID: 8945424144358056569}
-  m_Father: {fileID: 6198470724288456264}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7824028200475995086
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3766936187024596070}
-  m_Mesh: {fileID: -5490859398079920588, guid: 59188d9d5366a6a46b99502f8e231923, type: 3}
 --- !u!23 &7831433246419812768
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -68976,9 +68526,7 @@ MonoBehaviour:
   isOpen: 0
   openangle: 90
   smooth: 3
-  tDoor1: {fileID: 8635778596083523199}
   tDoor2: {fileID: 3831452070390351981}
-  op: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
 --- !u!23 &7863599319018066582
@@ -69332,7 +68880,7 @@ GameObject:
   - component: {fileID: 2811972763045072643}
   - component: {fileID: 5083215075563935229}
   - component: {fileID: 711961270065924989}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69405,9 +68953,7 @@ MonoBehaviour:
   isOpen: 0
   openangle: 90
   smooth: 3
-  tDoor1: {fileID: 8424158784028899409}
   tDoor2: {fileID: 3899238203704536643}
-  op: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
 --- !u!4 &7938657315736061595
@@ -69438,7 +68984,7 @@ GameObject:
   - component: {fileID: 1947053104881450048}
   - component: {fileID: 7022938007535183093}
   - component: {fileID: 5988540127178089038}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69600,7 +69146,7 @@ GameObject:
   - component: {fileID: 2333863551369526332}
   - component: {fileID: 3634943545778192437}
   - component: {fileID: 6272963767928204201}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70174,7 +69720,7 @@ GameObject:
   - component: {fileID: 3691590058703906732}
   - component: {fileID: 9123492375052982870}
   - component: {fileID: 2638247611689649876}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SupBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70359,7 +69905,7 @@ GameObject:
   - component: {fileID: 6669295028724773685}
   - component: {fileID: 8335574799119289809}
   - component: {fileID: 6399688833713426935}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70537,7 +70083,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1876764199212174658}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Etc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70557,7 +70103,7 @@ GameObject:
   - component: {fileID: 8245853775290496980}
   - component: {fileID: 6526380516114220992}
   - component: {fileID: 551618826490066756}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ComputerDesk_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70611,7 +70157,9 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
+  tDoor: {fileID: 2985302212531198085}
   P_Door: {fileID: 5107092426272050583}
+  Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!23 &8167511433168621476
@@ -70813,23 +70361,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1713288171093720658}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!4 &8183998666233880186
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3628652350260509130}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0.03}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5396921345602585959}
-  - {fileID: 7004497792097280759}
-  m_Father: {fileID: 5410259339229423302}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8184553071372874989
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -71120,23 +70651,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.008, y: 1.016, z: 0}
   m_TimeToStationary: 0.5
---- !u!4 &8260598192108320852
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3561077581272080356}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0.03}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5320258013542490953}
-  - {fileID: 7062792683261707481}
-  m_Father: {fileID: 5198833007430975720}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8268077208995363987
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -71171,7 +70685,7 @@ GameObject:
   - component: {fileID: 5911313201641931373}
   - component: {fileID: 2874148955055792338}
   - component: {fileID: 8223024561665260436}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71251,9 +70765,7 @@ MonoBehaviour:
   isOpen: 0
   openangle: 90
   smooth: 3
-  tDoor1: {fileID: 7636101364767668447}
   tDoor2: {fileID: 3102027968674639565}
-  op: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
 --- !u!33 &8303711597947405868
@@ -71285,7 +70797,7 @@ GameObject:
   - component: {fileID: 141171070949272964}
   - component: {fileID: 7514657066359274555}
   - component: {fileID: 8373959373067298548}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71413,7 +70925,7 @@ GameObject:
   - component: {fileID: 6422812131341660318}
   - component: {fileID: 7784893241251525398}
   - component: {fileID: 2991478147902377213}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SM_Prop_WaterCooler_Tank_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71630,6 +71142,27 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: -0.049999952, z: 0}
+--- !u!114 &8368616000213812221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6989941288822014576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e62f194174eb234aa6971e26b016099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canOpen: 1
+  isOpen: 0
+  PlayerPos_0: 0
+  PlayerPos_1: 0
+  tDoor: {fileID: 7479744417385907819}
+  P_Door: {fileID: 594623449505928057}
+  Doorindex: 0
+  mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
+  mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!1 &8368671180036468868
 GameObject:
   m_ObjectHideFlags: 0
@@ -71695,7 +71228,7 @@ GameObject:
   - component: {fileID: 5675088485626777636}
   - component: {fileID: 40014914524064194}
   - component: {fileID: 1142767554428401409}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: TV_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71856,7 +71389,7 @@ GameObject:
   - component: {fileID: 2149313178219336575}
   - component: {fileID: 6185224550313467266}
   - component: {fileID: 8324594937511738380}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71898,25 +71431,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!114 &8424158784028899409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7558510553456691427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7782d2a7913cdf459db2e96c37a4a3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canOpen: 1
-  isOpen: 0
-  PlayerPos_0: 0
-  PlayerPos_1: 0
-  P_Door: {fileID: 118497924931541482}
-  mat_Door: {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
-  mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!65 &8436522214175771237
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -71936,8 +71450,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1318431, y: 2.236694, z: 0.54000473}
-  m_Center: {x: -0.56592155, y: 1.118347, z: -0.0075969696}
+  m_Size: {x: 1.1318431, y: 2.236694, z: 0.078947045}
+  m_Center: {x: -0.5659214, y: 1.118347, z: 0.004312627}
 --- !u!65 &8437704057981460546
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -72002,22 +71516,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &8439574910766624183
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3951789727958878727}
-  m_Layer: 8
-  m_Name: Handle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!64 &8442034853083703657
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -72055,7 +71553,7 @@ GameObject:
   - component: {fileID: 1931721365111935823}
   m_Layer: 8
   m_Name: Door
-  m_TagString: Door
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72281,7 +71779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6338193200791995881}
   - component: {fileID: 6978132225841236449}
-  - component: {fileID: 7636101364767668447}
+  - component: {fileID: 8499778147905865838}
   m_Layer: 11
   m_Name: handle_0
   m_TagString: Door
@@ -72289,6 +71787,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8499778147905865838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8499778147905865837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e62f194174eb234aa6971e26b016099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canOpen: 1
+  isOpen: 0
+  PlayerPos_0: 0
+  PlayerPos_1: 0
+  tDoor: {fileID: 8302779862060600438}
+  P_Door: {fileID: 2068422439980177764}
+  Doorindex: 0
+  mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
+  mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!65 &8500858053312451464
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -72519,13 +72038,34 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6072239850585733395}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.411, y: 0.8919983, z: 1.067}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.43249777, y: 0.6607395, z: -1.1469982}
+  m_LocalScale: {x: 0.83333325, y: 0.7407408, z: 0.085802995}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5562706234141175690}
+  m_Father: {fileID: 7230573670739400298}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8522046257096324248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6072239850585733395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e62f194174eb234aa6971e26b016099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canOpen: 1
+  isOpen: 0
+  PlayerPos_0: 0
+  PlayerPos_1: 0
+  tDoor: {fileID: 5947228169425599752}
+  P_Door: {fileID: 4396966283054917658}
+  Doorindex: 0
+  mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
+  mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!33 &8529276627947286737
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -72613,7 +72153,7 @@ GameObject:
   - component: {fileID: 8793045210974377637}
   - component: {fileID: 600765131445015050}
   - component: {fileID: 4510745482560593091}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Keyboard_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72661,8 +72201,6 @@ Transform:
   - {fileID: 742499043260116251}
   - {fileID: 8989797236322785197}
   - {fileID: 6534833127276746337}
-  - {fileID: 4457825293697309434}
-  - {fileID: 118934119321340162}
   - {fileID: 843454971358564889}
   - {fileID: 159943543640802664}
   - {fileID: 8799373905307481356}
@@ -72805,7 +72343,7 @@ GameObject:
   - component: {fileID: 7732603011459405459}
   - component: {fileID: 6485621599112687806}
   - component: {fileID: 4332882023215585202}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73207,7 +72745,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7230573670739400298}
-  - {fileID: 5562706234141175690}
   m_Father: {fileID: 6090714729240206167}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &8627333830764979245
@@ -73254,7 +72791,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5180378904819179829}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Etc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73270,32 +72807,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 151041867700067628}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PC (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!114 &8635778596083523199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7770350284604075725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7782d2a7913cdf459db2e96c37a4a3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canOpen: 1
-  isOpen: 0
-  PlayerPos_0: 0
-  PlayerPos_1: 0
-  P_Door: {fileID: 185791193682542532}
-  mat_Door: {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
-  mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!33 &8636860964080540653
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -73317,7 +72835,7 @@ GameObject:
   - component: {fileID: 5825791508968942028}
   - component: {fileID: 4534713879572727}
   - component: {fileID: 270679775655380730}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73633,23 +73151,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.000002, y: 0.71390414, z: 0.22838402}
   m_Center: {x: -2.499999, y: 0.35695207, z: 0.1141901}
---- !u!4 &8680438354520921321
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4305419021981365081}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0.03}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4828365138490609652}
-  - {fileID: 7552680049543358564}
-  m_Father: {fileID: 4823744325240433749}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &8680602265375510868
 Transform:
   m_ObjectHideFlags: 0
@@ -73749,7 +73250,7 @@ GameObject:
   - component: {fileID: 6959196245678154815}
   - component: {fileID: 3351499172005203661}
   - component: {fileID: 3420055746372118846}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Computer_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73769,7 +73270,7 @@ GameObject:
   - component: {fileID: 7402565449742116662}
   - component: {fileID: 2459389613448997825}
   - component: {fileID: 1008060401629939873}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74425,22 +73926,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.73437524, y: 2.03125, z: 1.5000002}
   m_Center: {x: -0.00781256, y: 1.015625, z: -0.000000029802322}
---- !u!1 &8818418122290427440
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4155036798620340608}
-  m_Layer: 8
-  m_Name: Handle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!23 &8822208513561115454
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -74636,7 +74121,7 @@ GameObject:
   - component: {fileID: 326745800955744420}
   - component: {fileID: 2523836264841615391}
   - component: {fileID: 558882525951641803}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Monitor_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74808,7 +74293,7 @@ GameObject:
   - component: {fileID: 7935117138993510582}
   - component: {fileID: 1662073702789947015}
   - component: {fileID: 5965767324928674996}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75045,7 +74530,7 @@ GameObject:
   - component: {fileID: 205809859518792058}
   - component: {fileID: 7904840048541836976}
   - component: {fileID: 6948075729897866467}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75081,7 +74566,7 @@ GameObject:
   - component: {fileID: 7316993312325675497}
   - component: {fileID: 1481021471662353906}
   - component: {fileID: 4389690256146458357}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CoffeeMug_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75259,7 +74744,7 @@ GameObject:
   - component: {fileID: 647221969697326486}
   - component: {fileID: 4877215608039516426}
   - component: {fileID: 5847216679591210117}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75473,7 +74958,7 @@ GameObject:
   - component: {fileID: 8992484956163977067}
   - component: {fileID: 2780420394139935310}
   - component: {fileID: 2256965263349322961}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75530,12 +75015,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3269924310440726182}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3859985, y: 0.8919983, z: -1.188}
-  m_LocalScale: {x: 1, y: 1, z: 0.085803}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.48583195, y: 0.6607395, z: 1.1079972}
+  m_LocalScale: {x: 0.83333325, y: 0.7407408, z: 0.085803}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7819120939680489204}
+  m_Father: {fileID: 5037701387058308884}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &8945785590030942025
 Transform:
@@ -75654,7 +75139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7224127253551288372}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75672,7 +75157,7 @@ GameObject:
   - component: {fileID: 3593583618048804633}
   - component: {fileID: 8773277599168444093}
   - component: {fileID: 1174624868653463339}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SM_Prop_WaterCooler_Tank_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75912,25 +75397,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7847325352472619536}
   m_Mesh: {fileID: 4300000, guid: d70a1e08e4223a6488d0e68b2f90ed8d, type: 2}
---- !u!114 &9010827762118046402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6989941288822014576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7782d2a7913cdf459db2e96c37a4a3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canOpen: 1
-  isOpen: 0
-  PlayerPos_0: 0
-  PlayerPos_1: 0
-  P_Door: {fileID: 594623449505928057}
-  mat_Door: {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
-  mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!4 &9011099558211042472
 Transform:
   m_ObjectHideFlags: 0
@@ -76244,6 +75710,27 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: -0.049999952, z: 0}
+--- !u!114 &9063265781623834992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7558510553456691427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e62f194174eb234aa6971e26b016099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canOpen: 1
+  isOpen: 0
+  PlayerPos_0: 0
+  PlayerPos_1: 0
+  tDoor: {fileID: 7937902443931553016}
+  P_Door: {fileID: 118497924931541482}
+  Doorindex: 0
+  mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
+  mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!23 &9065263151327796838
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -76348,7 +75835,9 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
+  tDoor: {fileID: 2743774841670451970}
   P_Door: {fileID: 5304745190093706768}
+  Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!33 &9092288280675998469
@@ -76466,7 +75955,7 @@ GameObject:
   - component: {fileID: 8885288670128473693}
   - component: {fileID: 3957880619584540340}
   - component: {fileID: 7344752577395728981}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SM_Prop_WaterCooler_Tank_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76553,6 +76042,27 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: -0.049999952, z: 0}
+--- !u!114 &9149024240045518658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7770350284604075725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e62f194174eb234aa6971e26b016099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canOpen: 1
+  isOpen: 0
+  PlayerPos_0: 0
+  PlayerPos_1: 0
+  tDoor: {fileID: 7861584075226835670}
+  P_Door: {fileID: 185791193682542532}
+  Doorindex: 0
+  mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
+  mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
 --- !u!23 &9151175847800488188
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -76729,7 +76239,7 @@ GameObject:
   - component: {fileID: 8998295002509451128}
   - component: {fileID: 2144392546234960120}
   - component: {fileID: 3758047241717011146}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76876,7 +76386,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2950698242959841237}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PC (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76926,50 +76436,6 @@ Transform:
   - {fileID: 3656115747040284267}
   m_Father: {fileID: 4411758178150251222}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!23 &9190205383443196951
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6496886009236132652}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 6e3ac6e47b4d7a44685dfef9bf209413, type: 2}
-  - {fileID: 2100000, guid: 11a8c080607cf47c299aff53087e0334, type: 2}
-  - {fileID: 2100000, guid: 31b29cea830e0e24da72018652e5ed31, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &9191133173395655076
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -77027,7 +76493,7 @@ GameObject:
   - component: {fileID: 8715477973737018145}
   - component: {fileID: 2983484540931782153}
   - component: {fileID: 6575720541290863097}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}

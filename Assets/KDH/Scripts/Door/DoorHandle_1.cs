@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DoorHandle_1 : MonoBehaviour, IDoor   // 문 손잡이 2
@@ -10,6 +11,8 @@ public class DoorHandle_1 : MonoBehaviour, IDoor   // 문 손잡이 2
     public bool PlayerPos_1 = false;
     public Door_Parent tDoor { get; set; }
     public GameObject P_Door;
+
+    public int Doorindex = 0;
 
     [SerializeField]
     private Material mat_Door;
@@ -25,8 +28,6 @@ public class DoorHandle_1 : MonoBehaviour, IDoor   // 문 손잡이 2
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            tDoor.PlayerPos_0 = false;
-            tDoor.PlayerPos_1 = true;
             P_Door.GetComponent<MeshRenderer>().material = mat_Outline;  // 아웃라인 메테리얼로 0번 배열 변경 
         }
     }
@@ -35,9 +36,9 @@ public class DoorHandle_1 : MonoBehaviour, IDoor   // 문 손잡이 2
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            tDoor.PlayerPos_0 = false;
-            tDoor.PlayerPos_1 = false;
             P_Door.GetComponent<MeshRenderer>().material = mat_Door;  // 문 기본 메테리얼로 0번 배열 변경
         }
+        tDoor.PlayerPos_0 = false;
+        tDoor.PlayerPos_1 = false;
     }
 }

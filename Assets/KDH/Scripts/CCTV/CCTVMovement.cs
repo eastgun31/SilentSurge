@@ -5,7 +5,18 @@ using UnityEditor;
 
 public class CCTVMovement : MonoBehaviour       // CCTV의 탐지 반경을 좌우로 반복시켜주는 스크립트
 {
-    private Transform target;
+    public enum cctv_state
+    {
+        detecting,              // 평상시
+        detect,                   // 적 감지 (단계 상승)
+    }
+
+    public cctv_state c_state;
+
+    WaitForSeconds reverse_cctvstate;
+    WaitForSeconds wait;
+
+    Sight sight;
 
     public float rotationSpeed;           // 카메라의 회전 속도
     public float rotationAmount;        // 한 번 회전할 각도
@@ -28,6 +39,15 @@ public class CCTVMovement : MonoBehaviour       // CCTV의 탐지 반경을 좌우로 반�
     {
         startRotation = transform.rotation;     // 현재 rotation 값을 startRotation에 저장함
         StartCoroutine(AngleMove(2f));          // 코루틴 실행 함수 (딜레이 2초)
+        reverse_cctvstate = new WaitForSeconds(1f);
+    }
+
+    void Update()
+    {
+        if(c_state== cctv_state.detect)
+        {
+            DetectPlayerCCTV();
+        }
     }
 
     IEnumerator AngleMove(float delay)
@@ -50,6 +70,28 @@ public class CCTVMovement : MonoBehaviour       // CCTV의 탐지 반경을 좌우로 반�
             rotateClockwise = !rotateClockwise;                         // 회전이 끝났다면 Clockwise의 bool 값을 반대로 변환
             yield return new WaitForSeconds(delay);                  // delay의 초가 지나면 코루틴 재실행
         }
+    }
+
+    IEnumerator DetectPlayerCCTV()
+    {
+        yield return reverse_cctvstate;
+        if(c_state==cctv_state.detecting && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
+        {
+            EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
+        }
+        if (c_state == cctv_state.detecting && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
+        {
+            EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
+        }
+    }
+
+    IEnumerator CCTVStateCheck()
+    {
+        if(sight.findT)
+        {
+            c_state = cctv_state.detecting;
+        }
+        yield return wait;
     }
 
 
