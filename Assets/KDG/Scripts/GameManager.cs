@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public bool playerchasing = false;
     public bool[] existItem;
     public bool[] existEnemy;
-    public bool isHide;
+    public bool isHide=false;
 
     public GameObject[] Items;
 

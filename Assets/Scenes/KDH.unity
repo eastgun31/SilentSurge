@@ -1090,7 +1090,6 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
-  tDoor: {fileID: 978836210}
   P_Door: {fileID: 978836208}
   Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
@@ -9761,7 +9760,6 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
-  tDoor: {fileID: 2033734154}
   P_Door: {fileID: 2033734152}
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
@@ -18338,7 +18336,6 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
-  tDoor: {fileID: 1634795483}
   P_Door: {fileID: 1634795481}
   Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
@@ -18744,7 +18741,6 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
-  tDoor: {fileID: 354245769}
   P_Door: {fileID: 354245767}
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
@@ -22209,7 +22205,7 @@ GameObject:
   - component: {fileID: 651555585}
   - component: {fileID: 651555584}
   - component: {fileID: 651555583}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet1_C1_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24802,7 +24798,6 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
-  tDoor: {fileID: 1791088592}
   P_Door: {fileID: 1791088590}
   Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
@@ -25788,7 +25783,6 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
-  tDoor: {fileID: 1634795483}
   P_Door: {fileID: 1634795481}
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
@@ -26814,7 +26808,6 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
-  tDoor: {fileID: 915897253}
   P_Door: {fileID: 915897251}
   Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
@@ -28726,7 +28719,6 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
-  tDoor: {fileID: 651888424}
   P_Door: {fileID: 651888422}
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
@@ -32091,7 +32083,7 @@ GameObject:
   - component: {fileID: 905067716}
   - component: {fileID: 905067715}
   - component: {fileID: 905067718}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet1_C1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32111,10 +32103,10 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 1172148014}
+  - {fileID: 1587780397}
   - {fileID: 1334200615}
   - {fileID: 651555582}
-  - {fileID: 1587780397}
-  - {fileID: 1172148014}
   m_Father: {fileID: 1962847617}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!65 &905067715
@@ -32200,8 +32192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3db889105313f64f83af6c42c9993fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hidePoints: {fileID: 0}
-  idlePoints: {fileID: 0}
+  hidePoints: {fileID: 1587780396}
+  idlePoints: {fileID: 1172148013}
 --- !u!1 &908301754
 GameObject:
   m_ObjectHideFlags: 0
@@ -41083,9 +41075,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1172148014}
   - component: {fileID: 1172148015}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: IdlePoint
-  m_TagString: Untagged
+  m_TagString: Cabinet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41120,7 +41112,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -41996,7 +41988,6 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
-  tDoor: {fileID: 651888424}
   P_Door: {fileID: 651888422}
   Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
@@ -43953,7 +43944,6 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
-  tDoor: {fileID: 337900146}
   P_Door: {fileID: 337900144}
   Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
@@ -47030,7 +47020,7 @@ GameObject:
   - component: {fileID: 1334200618}
   - component: {fileID: 1334200617}
   - component: {fileID: 1334200616}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet1_C1_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49585,7 +49575,6 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
-  tDoor: {fileID: 789690195}
   P_Door: {fileID: 789690193}
   Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
@@ -50241,7 +50230,6 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
-  tDoor: {fileID: 2033734154}
   P_Door: {fileID: 2033734152}
   Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
@@ -51048,7 +51036,6 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
-  tDoor: {fileID: 1791088592}
   P_Door: {fileID: 1791088590}
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
@@ -54747,9 +54734,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1587780397}
   - component: {fileID: 1587780398}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HidePoint
-  m_TagString: Untagged
+  m_TagString: Cabinet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54763,7 +54750,7 @@ Transform:
   m_GameObject: {fileID: 1587780396}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.045}
+  m_LocalPosition: {x: -0, y: 0, z: -4.11}
   m_LocalScale: {x: 0.56501, y: 1, z: 0.3244201}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -54784,7 +54771,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -57878,7 +57865,6 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
-  tDoor: {fileID: 354245769}
   P_Door: {fileID: 354245767}
   Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
@@ -58449,7 +58435,6 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
-  tDoor: {fileID: 337900146}
   P_Door: {fileID: 337900144}
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
@@ -60569,7 +60554,6 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
-  tDoor: {fileID: 915897253}
   P_Door: {fileID: 915897251}
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
@@ -62489,7 +62473,6 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
-  tDoor: {fileID: 1725680876}
   P_Door: {fileID: 1725680874}
   Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
@@ -65788,7 +65771,6 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
-  tDoor: {fileID: 1725680876}
   P_Door: {fileID: 1725680874}
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
@@ -68018,7 +68000,6 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
-  tDoor: {fileID: 789690195}
   P_Door: {fileID: 789690193}
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
@@ -68182,7 +68163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1962847617}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69052,6 +69033,7 @@ MonoBehaviour:
   playerchasing: 0
   existItem: 
   existEnemy: 
+  isHide: 0
   Items: []
 --- !u!4 &2003980774
 Transform:
@@ -72451,7 +72433,6 @@ MonoBehaviour:
   isOpen: 0
   PlayerPos_0: 0
   PlayerPos_1: 0
-  tDoor: {fileID: 978836210}
   P_Door: {fileID: 978836208}
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}

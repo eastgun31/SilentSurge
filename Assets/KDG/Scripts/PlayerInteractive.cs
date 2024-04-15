@@ -17,6 +17,8 @@ public class PlayerInteractive : MonoBehaviour
 
     private int index = 0;
 
+    private CapsuleCollider _pc;
+
     private Cabinet cabinet;
 
     private void Start()
@@ -76,18 +78,17 @@ public class PlayerInteractive : MonoBehaviour
         }
         else if (other.CompareTag(interactiveList[3]) && Input.GetKeyDown(KeyCode.Space))
         {
-            //if (!GameManager.instance.isHide)
-            //{
-            //    player.state = Player.PlayerState.hide;
-            //    player.transform.position = cabinet.hidePoints.transform.position;
-            //    GameManager.instance.isHide = true;
-            //}
-            //else
-            //{
-            //    player.state = Player.PlayerState.idle;
-            //    player.transform.position = cabinet.idlePoints.transform.position;
-            //    GameManager.instance.isHide = false;
-            //}
+            cabinet = other.GetComponentInParent<Cabinet>();
+            if (!GameManager.instance.isHide)
+            {
+                player.transform.position = cabinet.hidePoints.transform.position;
+                GameManager.instance.isHide = true;
+            }
+            else
+            {
+                player.transform.position = cabinet.idlePoints.transform.position;
+                GameManager.instance.isHide = false;
+            }
         }
         //else if(세이브 포인트 검사)
         else
