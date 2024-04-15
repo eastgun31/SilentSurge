@@ -17,6 +17,8 @@ public class PlayerInteractive : MonoBehaviour
 
     private int index = 0;
 
+    private Cabinet cabinet;
+
     private void Start()
     {
         player = GetComponent<Player>();
@@ -74,16 +76,16 @@ public class PlayerInteractive : MonoBehaviour
         }
         else if (other.CompareTag(interactiveList[3]) && Input.GetKeyDown(KeyCode.Space))
         {
-            //this.transform.position= other.transform.position;
             //if (!GameManager.instance.isHide)
             //{
             //    player.state = Player.PlayerState.hide;
-            //    this.transform.position = other.transform.position;
+            //    player.transform.position = cabinet.hidePoints.transform.position;
             //    GameManager.instance.isHide = true;
             //}
             //else
             //{
             //    player.state = Player.PlayerState.idle;
+            //    player.transform.position = cabinet.idlePoints.transform.position;
             //    GameManager.instance.isHide = false;
             //}
         }

@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class Cabinet : MonoBehaviour
 {
-    public GameObject hideCabinet;
+    public GameObject hidePoints;
+    public GameObject idlePoints;
 }
