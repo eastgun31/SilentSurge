@@ -55,7 +55,5 @@ public class PlayerInteractive : MonoBehaviour
                 enterPuzzle.Keypad();
             }
         }
-        else
-            return;
     }
 }
