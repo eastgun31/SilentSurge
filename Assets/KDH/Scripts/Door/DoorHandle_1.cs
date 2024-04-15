@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorHandle_1 : MonoBehaviour   // 문 손잡이 2
+public class DoorHandle_1 : MonoBehaviour, IDoor   // 문 손잡이 2
 {
     public bool canOpen = true;
     public bool isOpen = false;
     public bool PlayerPos_0 = false;
     public bool PlayerPos_1 = false;
-    public Door_Parent tDoor;
+    public Door_Parent tDoor { get; set; }
     public GameObject P_Door;
 
     [SerializeField]

@@ -8,6 +8,8 @@ public class PlayerInteractive : MonoBehaviour
     //public UnityEvent playpuzzle;
     Player player;
     EnterPuzzle enterPuzzle;
+    IDoor door;
+    Door_Parent handle;
 
     string[] interactiveList = { "Door", "Bent", "Puzzle", "Cabinet" };
 
@@ -30,7 +32,9 @@ public class PlayerInteractive : MonoBehaviour
     {
         if (other.CompareTag(interactiveList[0]) && Input.GetKeyDown(KeyCode.Space))
         {
-            gameObject.transform.GetComponent<Door_Parent>();
+            door = GetComponent<IDoor>();
+            handle = door.tDoor;
+            handle.oDoor();
         }
         else if (other.CompareTag(interactiveList[1]) && Input.GetKeyDown(KeyCode.Space))
         {
