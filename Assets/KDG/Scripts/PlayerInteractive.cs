@@ -78,16 +78,19 @@ public class PlayerInteractive : MonoBehaviour
         }
         else if (other.CompareTag(interactiveList[3]) && Input.GetKeyDown(KeyCode.Space))
         {
+            _pc = player.GetComponent<CapsuleCollider>();
             cabinet = other.GetComponentInParent<Cabinet>();
             if (!GameManager.instance.isHide)
             {
                 player.transform.position = cabinet.hidePoints.transform.position;
                 GameManager.instance.isHide = true;
+                _pc.isTrigger = true;
             }
             else
             {
                 player.transform.position = cabinet.idlePoints.transform.position;
                 GameManager.instance.isHide = false;
+                _pc.isTrigger = false;
             }
         }
         //else if(세이브 포인트 검사)
