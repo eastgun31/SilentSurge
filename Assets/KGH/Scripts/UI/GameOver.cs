@@ -49,6 +49,12 @@ public class GameOver : MonoBehaviour
         button[1].SetActive(true);
         button[2].SetActive(true);
     }
+
+    public void CheckPoint()
+    {
+
+    }
+
     public void Restart()
     {
         //¸ÞÀÎ¾À ¿¬°á

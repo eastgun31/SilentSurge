@@ -61,6 +61,7 @@ public class UiManager : MonoBehaviour
         else
         {
             success.text = "SUCCESS";
+            // 세이브데이터 추가
             Invoke("ResetTime", 2f);
         }
     }

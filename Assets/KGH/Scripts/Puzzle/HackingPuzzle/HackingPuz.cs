@@ -14,13 +14,6 @@ public class HackingPuz : MonoBehaviour
     private string pw = "5VRBZ54K";
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         UiManager.instance.TimeRemainig();

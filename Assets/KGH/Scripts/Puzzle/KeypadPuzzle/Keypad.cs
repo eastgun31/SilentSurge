@@ -14,7 +14,7 @@ public class Keypad : MonoBehaviour
     [SerializeField]
     private string pw = "123456";
 
-
+    
     private void Update()
     {
         UiManager.instance.TimeRemainig();
