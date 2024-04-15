@@ -18,6 +18,10 @@ namespace ItemInfo
         public WaitForSeconds cool1sec = new WaitForSeconds(1f);
         public WaitForSeconds coolhalf1sec = new WaitForSeconds(0.5f);
     }
+    public class E_CoolTime
+    {
+        public WaitForSeconds cool3sec = new WaitForSeconds(3f);
+    }
 }
 
 
