@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PipeManager : MonoBehaviour
 {
     public GameObject canvas;
+    public GameObject timeText;
 
     public GameObject pipesHolder; //파이프를 포함한 부모 오브젝트
     public GameObject[] pipes;
@@ -22,7 +23,6 @@ public class PipeManager : MonoBehaviour
         //전체 파이프수를 설정하고 Pipes배열에 저장
 
         totalPipes = pipesHolder.transform.childCount;
-
         pipes = new GameObject[totalPipes];
 
         for (int i = 0; i < pipes.Length; i++)
@@ -34,7 +34,6 @@ public class PipeManager : MonoBehaviour
     {
         UiManager.instance.TimeRemainig();
     }
-
     public void CorrectMove()
     {
         correctPipes += 1;
@@ -45,7 +44,7 @@ public class PipeManager : MonoBehaviour
             GameManager.instance.puzzleLevel += 1;
             GameManager.instance.nowpuzzle = false;
 
-            if (GameManager.instance.puzzleLevel == 1)
+            if (GameManager.instance.puzzleLevel == 2)
             {
                 items[0].SetActive(true);
                 items[1].SetActive(true);
@@ -63,5 +62,6 @@ public class PipeManager : MonoBehaviour
     public void ClosePipe()
     {
         canvas.gameObject.SetActive(false);
+        timeText.gameObject.SetActive(false);
     }
 }
