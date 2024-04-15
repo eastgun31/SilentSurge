@@ -34,9 +34,9 @@ public class PlayerInteractive : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (other.CompareTag(interactiveList[0]))
         {
-            if(other.CompareTag(interactiveList[0]))
+            if(Input.GetKeyDown(KeyCode.Space))
             {
                 doort = other.GetComponentInParent<Door_Parent>();
                 handle = other.GetComponent<DoorHandle_1>();
