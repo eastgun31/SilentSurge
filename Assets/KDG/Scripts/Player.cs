@@ -77,6 +77,14 @@ public class Player : MonoBehaviour
             state = PlayerState.idle;
             //playerspeed = 2.5f;
         }
+        else if(GameManager.instance.isHide)
+        {
+            state = PlayerState.hide;
+        }        
+        else if(!GameManager.instance.isHide)
+        {
+            state = PlayerState.idle;
+        }
            
         if (state == PlayerState.idle)
         {
@@ -183,12 +191,12 @@ public class Player : MonoBehaviour
                 StartCoroutine(useItem.HeartSee());
             }
         }
-        //if(!die && Input.GetKey(KeyCode.G))
-        //{
-        //    die = true;
-        //    StartCoroutine(PlayerDie());
-        //}
-        if(!saving && Input.GetKey(KeyCode.F))
+        if (!die && Input.GetKey(KeyCode.G))
+        {
+            die = true;
+            StartCoroutine(PlayerDie());
+        }
+        if (!saving && Input.GetKey(KeyCode.F))
         {
             saving = true;
             StartCoroutine(PlayerSave());
@@ -277,10 +285,10 @@ public class Player : MonoBehaviour
 
     IEnumerator PlayerDie()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         Debug.Log("플레이어 죽음");
         DataManager.instance.LoadData();
-        yield return new WaitForSeconds(2f);
+        
         die = false;
     }
     IEnumerator PlayerSave()

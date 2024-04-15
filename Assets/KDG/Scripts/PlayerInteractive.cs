@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using static Door_Parent;
 
 public class PlayerInteractive : MonoBehaviour
 {
@@ -9,7 +10,12 @@ public class PlayerInteractive : MonoBehaviour
     Player player;
     EnterPuzzle enterPuzzle;
 
+    Door_Parent doort;
+    DoorHandle_1 handle;
+
     string[] interactiveList = { "Door", "Bent", "Puzzle", "Cabinet" };
+
+    private int index = 0;
 
     private void Start()
     {
@@ -28,9 +34,24 @@ public class PlayerInteractive : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag(interactiveList[0]) && Input.GetKeyDown(KeyCode.Space))
+        if (other.CompareTag(interactiveList[0]))
         {
-            gameObject.transform.GetComponent<Door_Parent>();
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                doort = other.GetComponentInParent<Door_Parent>();
+                handle = other.GetComponent<DoorHandle_1>();
+                if (handle.Doorindex == 1)
+                {
+                    doort.PlayerPos_1 = true;
+                    doort.PlayerPos_0 = false;
+                }
+                else if (handle.Doorindex == 0)
+                {
+                    doort.PlayerPos_1 = false;
+                    doort.PlayerPos_0 = true;
+                }
+                doort.oDoor();
+            }
         }
         else if (other.CompareTag(interactiveList[1]) && Input.GetKeyDown(KeyCode.Space))
         {
@@ -42,16 +63,33 @@ public class PlayerInteractive : MonoBehaviour
             player.state = Player.PlayerState.puzzling;
             player.velocity = Vector3.zero;
             enterPuzzle = other.GetComponent<EnterPuzzle>();
-            if(enterPuzzle.level == 1)
+            if (enterPuzzle.level == 1)
             {
                 enterPuzzle.PipePuzzle1();
             }
-            else if(enterPuzzle.level == 2)
+            else if (enterPuzzle.level == 2)
             {
                 enterPuzzle.Keypad();
             }
         }
+        else if (other.CompareTag(interactiveList[3]) && Input.GetKeyDown(KeyCode.Space))
+        {
+            //this.transform.position= other.transform.position;
+            //if (!GameManager.instance.isHide)
+            //{
+            //    player.state = Player.PlayerState.hide;
+            //    this.transform.position = other.transform.position;
+            //    GameManager.instance.isHide = true;
+            //}
+            //else
+            //{
+            //    player.state = Player.PlayerState.idle;
+            //    GameManager.instance.isHide = false;
+            //}
+        }
+        //else if(세이브 포인트 검사)
         else
             return;
     }
+
 }
