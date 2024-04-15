@@ -49,10 +49,8 @@ public class GameOver : MonoBehaviour
         button[1].SetActive(true);
         button[2].SetActive(true);
     }
-
-
     public void Restart()
     {
-        SceneManager.LoadScene("Main");
+        //¸ÞÀÎ¾À ¿¬°á
     }
 }

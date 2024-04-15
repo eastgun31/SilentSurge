@@ -13,6 +13,10 @@ public class UiManager : MonoBehaviour
     public Text success;
     public float timeRemainig;
     public bool isWin = false;
+    public bool isPauseWin = false;
+    public bool isGameOver = false;
+
+    public GameObject pauseWin;
 
     public GameObject pipePuzFst;
     public GameObject pipePuzSec;
@@ -26,6 +30,10 @@ public class UiManager : MonoBehaviour
     public GameObject gameover;
 
 
+    private void Update()
+    {
+        ActivePauseWin();
+    }
     public void Awake() 
     {
         if (Ui_instance != null)
@@ -40,8 +48,8 @@ public class UiManager : MonoBehaviour
         {
             if ((int)timeRemainig == 0)
             {
-                Debug.Log("fail");
                 success.text = "FAIL";
+                isGameOver = true;
                 gameover.SetActive(true);
             }
             else
@@ -70,6 +78,25 @@ public class UiManager : MonoBehaviour
     {
         isWin = false; 
     }
+    private void ActivePauseWin()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!isPauseWin&&!isGameOver)
+            {
+                Time.timeScale = 0;
+                pauseWin.gameObject.SetActive(true);
+                isPauseWin = true;
+            }
+            else
+            {
+                Time.timeScale = 1;
+                pauseWin.gameObject.SetActive(false);
+                isPauseWin=false;
+            }
+        }
+    }
+
     public void ActivePipeFst()
     {
         TimeLimit();
