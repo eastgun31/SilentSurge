@@ -14,7 +14,7 @@ public class Keypad : MonoBehaviour
     [SerializeField]
     private string pw = "123456";
 
-
+    
     private void Update()
     {
         UiManager.instance.TimeRemainig();
@@ -65,6 +65,7 @@ public class Keypad : MonoBehaviour
     {
         GameManager.instance.puzzleLevel += 1;
         GameManager.instance.nowpuzzle = false;
+        DataManager.instance.SaveData();
     }
 
     public void Closed()

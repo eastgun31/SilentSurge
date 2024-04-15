@@ -41,15 +41,17 @@ public class PipeManager : MonoBehaviour
         if (correctPipes == totalPipes) //½Â¸® Á¶°Ç
         {
             UiManager.instance.isWin = true;
-            GameManager.instance.puzzleLevel += 1;
+            
             GameManager.instance.nowpuzzle = false;
 
-            if (GameManager.instance.puzzleLevel == 2)
+            if (GameManager.instance.puzzleLevel == 1)
             {
                 items[0].SetActive(true);
                 items[1].SetActive(true);
             }
-            
+
+            GameManager.instance.puzzleLevel += 1;
+
             Invoke("ClosePipe", 2f);
         }
     }

@@ -50,6 +50,10 @@ public class GameOver : MonoBehaviour
         button[2].SetActive(true);
     }
 
+    public void CheckPoint()
+    {
+        DataManager.instance.LoadData();
+    }
 
     public void Restart()
     {
