@@ -10,13 +10,14 @@ using UnityEngine.Events;
 public class SaveData
 {
     public Player player;
-    public bool[] playeritemget = new bool[5]{false,false,false,false,false};
+    public bool[] playeritemget = new bool[5];
     public Vector3 playerposition;
     public Vector3 playerrotation;
 
-    public bool[] gmitemcheck = new bool[5] { false, false, false, false, false };
+    public bool[] gmitemcheck = new bool[5];
     public int[] gmitemcount = new int[5]{0,0,0,0,0};
-    public bool[] gmexistitem = new bool[5] {true,true,true,true,true};
+    public bool[] gmexistitem = new bool[5];
+    public bool[] gmexistenemy = new bool[9];
     public int gmpuzzleLevel;
     public bool gmnowpuzzle;
     public bool gmcanUse;
@@ -84,7 +85,7 @@ public class DataManager : MonoBehaviour
         }
         for (int i = 0; i < GameManager.instance.existEnemy.Length; i++)
         {
-            saveData.gmexistitem[i] = GameManager.instance.existItem[i];
+            saveData.gmexistenemy[i] = GameManager.instance.existEnemy[i];
         }
         saveData.gmpuzzleLevel = GameManager.instance.puzzleLevel;
         saveData.gmnowpuzzle = GameManager.instance.nowpuzzle;
@@ -128,6 +129,10 @@ public class DataManager : MonoBehaviour
             for (int i = 0; i < saveData.gmexistitem.Length; i++)
             {
                 GameManager.instance.existItem[i] = saveData.gmexistitem[i];
+            }
+            for (int i = 0; i < saveData.gmexistenemy.Length; i++)
+            {
+                GameManager.instance.existEnemy[i] = saveData.gmexistenemy[i];
             }
             GameManager.instance.puzzleLevel = saveData.gmpuzzleLevel;
             GameManager.instance.nowpuzzle = saveData.gmnowpuzzle;

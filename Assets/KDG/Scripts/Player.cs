@@ -51,7 +51,6 @@ public class Player : MonoBehaviour
     public Vector3 velocity;
     bool die;
     bool saving;
-
     void Start()
     {
         die = false;
@@ -72,7 +71,7 @@ public class Player : MonoBehaviour
             state = PlayerState.puzzling;
             //playerspeed = 0;
         }
-        else if (!GameManager.instance.nowpuzzle)
+        else if (!GameManager.instance.nowpuzzle || !GameManager.instance.isHide)
         {
             state = PlayerState.idle;
             //playerspeed = 2.5f;
@@ -81,15 +80,11 @@ public class Player : MonoBehaviour
         {
             state = PlayerState.hide;
         }        
-        else if(!GameManager.instance.isHide)
-        {
-            state = PlayerState.idle;
-        }
            
         if (state == PlayerState.idle)
         {
-            //if(rigid.velocity != Vector3.zero)
-            //    rigid.velocity = Vector3.zero;
+            if (rigid.velocity != Vector3.zero)
+                rigid.velocity = Vector3.zero;
             PlayerControll();
         }
         else

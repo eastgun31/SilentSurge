@@ -29,7 +29,11 @@ public class GameManager : MonoBehaviour
         itemcheck = new bool[5] { false, false, false, false, false };
         itemcount = new int[5] { 0, 0, 0, 0, 0 };   //±ÇÃÑ, ÄÚÀÎ, ¼¶±¤Åº, ½É¹ÚÃøÁ¤±â, ¹æÅºº¹
         existItem = new bool[5] { false, true, true, true, false };
-        existEnemy = new bool[3] { true, true, true};
+        existEnemy = new bool[9];
+        for(int i = 0; i < 9; i++)
+        {
+            existEnemy[i] = true;
+        }
     }
 
     public void SetItem()

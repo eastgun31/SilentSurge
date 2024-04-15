@@ -11,9 +11,6 @@ public class Enemy : MonoBehaviour
         patrolling, hear, findtarget
     }
 
-    
-    
-
     public EnemyState state;
 
     NavMeshAgent m_enemy;
@@ -312,6 +309,8 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             Destroy(other.gameObject, 1f);
+            if(indexcount != 99)
+                GameManager.instance.existEnemy[indexcount] = false;
             gameObject.SetActive(false);
         }
     }

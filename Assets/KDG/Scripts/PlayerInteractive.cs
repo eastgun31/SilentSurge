@@ -9,7 +9,7 @@ public class PlayerInteractive : MonoBehaviour
     //public UnityEvent playpuzzle;
     Player player;
     EnterPuzzle enterPuzzle;
-
+    PlayerView playerView;
     Door_Parent doort;
     DoorHandle_1 handle;
 
@@ -24,6 +24,8 @@ public class PlayerInteractive : MonoBehaviour
     private void Start()
     {
         player = GetComponent<Player>();
+        _pc = player.GetComponent<CapsuleCollider>();
+        playerView = GetComponent<PlayerView>();
     }
 
     void puzzle1()
@@ -67,30 +69,33 @@ public class PlayerInteractive : MonoBehaviour
             player.state = Player.PlayerState.puzzling;
             player.velocity = Vector3.zero;
             enterPuzzle = other.GetComponent<EnterPuzzle>();
-            if (enterPuzzle.level == 1)
+
+            switch(enterPuzzle.level)
             {
-                enterPuzzle.PipePuzzle1();
-            }
-            else if (enterPuzzle.level == 2)
-            {
-                enterPuzzle.Keypad();
+                case 1:
+                    enterPuzzle.PipePuzzle1();
+                    break;
+                case 2:
+                    enterPuzzle.PipePuzzle1();
+                    break;
             }
         }
         else if (other.CompareTag(interactiveList[3]) && Input.GetKeyDown(KeyCode.Space))
         {
-            _pc = player.GetComponent<CapsuleCollider>();
             cabinet = other.GetComponentInParent<Cabinet>();
             if (!GameManager.instance.isHide)
             {
                 player.transform.position = cabinet.hidePoints.transform.position;
                 GameManager.instance.isHide = true;
                 _pc.isTrigger = true;
+                playerView.viewAngle = 360;
             }
             else
             {
                 player.transform.position = cabinet.idlePoints.transform.position;
                 GameManager.instance.isHide = false;
                 _pc.isTrigger = false;
+                playerView.viewAngle = 100;
             }
         }
         //else if(세이브 포인트 검사)
