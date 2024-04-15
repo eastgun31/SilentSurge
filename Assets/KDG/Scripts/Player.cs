@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     string throwflashbang = "ThrowFlashBang";
     string run = "Runing";
     string gunrun = "GunRuning";
+    
 
     float rotDeg;
     Rigidbody rigid;
@@ -280,7 +281,8 @@ public class Player : MonoBehaviour
 
     IEnumerator PlayerDie()
     {
-        yield return new WaitForSeconds(2f);
+        playerAnim.SetTrigger("Die");
+        yield return new WaitForSeconds(3f);
         Debug.Log("플레이어 죽음");
         DataManager.instance.LoadData();
         
@@ -348,6 +350,17 @@ public class Player : MonoBehaviour
             }
             GameManager.instance.existItem[item.indexNum] = false;
             other.gameObject.SetActive(false);
+        }
+        if(other.CompareTag("Bullet"))
+        {
+            if (itemGet[4] && GameManager.instance.itemcount[4] >0)
+            {
+                GameManager.instance.itemcount[4]--;
+            }
+            else
+            {
+                StartCoroutine(PlayerDie());
+            }
         }
     }
 }

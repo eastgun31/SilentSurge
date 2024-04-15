@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     bool isPlayerInSight = false;  
     public GameObject bulletPrefab; // 총알의 프리팹
     public Transform bulletPos;
-    public float bulletSpeed = 20f; // 총알의 발사 속도
+    public float bulletSpeed = 5f; // 총알의 발사 속도
     public GameObject gunmodal;
     public bool m_triggered = false; // 트리거 충돌 여부를 나타냅니다.
     public Vector3 targetpos;
@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
     {
 
         chasing = false;
-        stoppingDistance = 1.5f;
+        stoppingDistance = 3f;
         state = EnemyState.patrolling;
         sight = GetComponent<Sight>();
         noactiving = true;
@@ -146,9 +146,13 @@ public class Enemy : MonoBehaviour
         m_enemy.stoppingDistance = stoppingDistance;
         m_enemy.SetDestination(sight.detectTarget.position);
 
-        if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 5f)
+        if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 3f)
         {
             shoot(sight.detectTarget.position); // 총을 발사합니다.
+        }
+        else if(Vector3.Distance(transform.position, sight.detectTarget.position) > 3f)
+        {
+            m_enemy.isStopped = false;
         }
 
     }
@@ -179,7 +183,7 @@ public class Enemy : MonoBehaviour
             m_enemy.isStopped = true;
             // 총알을 발사하는 동작을 수행합니다.
             Debug.Log("Enemy: Shooting! Remaining Bullets: " );
-
+            transform.LookAt(pos);
             GameObject bulletObject = Instantiate(bulletPrefab, gunmodal.transform.position, bulletPos.rotation);
             Rigidbody bulletRigid = bulletObject.GetComponent<Rigidbody>();
             // 총알의 방향을 적 캐릭터가 바라보는 방향으로 설정합니다.
@@ -241,6 +245,7 @@ public class Enemy : MonoBehaviour
         }
         else if (!sight.findT && !hearSound)
         {
+            yield return wait;
             GameManager.instance.playerchasing = false;
             state = EnemyState.patrolling;
         }
@@ -258,6 +263,10 @@ public class Enemy : MonoBehaviour
             EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
         }
         else if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
+        {
+            EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
+        }
+        else if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level3)
         {
             EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
         }
