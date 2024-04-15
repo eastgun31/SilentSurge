@@ -10,9 +10,8 @@ public class PlayerInteractive : MonoBehaviour
     Player player;
     EnterPuzzle enterPuzzle;
 
-    TestHandle testHandle;
-
     Door_Parent doort;
+    DoorHandle_1 handle;
 
     string[] interactiveList = { "Door", "Bent", "Puzzle", "Cabinet" };
 
@@ -37,18 +36,22 @@ public class PlayerInteractive : MonoBehaviour
     {
         if (other.CompareTag(interactiveList[0]))
         {
-            doort = other.GetComponentInParent<Door_Parent>();
-            if (other.GetComponent<DoorHandle_1>().Doorindex == 1)
+            if(Input.GetKeyDown(KeyCode.Space))
             {
-                doort.PlayerPos_1 = true;
-                doort.PlayerPos_0 = false;
+                doort = other.GetComponentInParent<Door_Parent>();
+                handle = other.GetComponent<DoorHandle_1>();
+                if (handle.Doorindex == 1)
+                {
+                    doort.PlayerPos_1 = true;
+                    doort.PlayerPos_0 = false;
+                }
+                else if (handle.Doorindex == 0)
+                {
+                    doort.PlayerPos_1 = false;
+                    doort.PlayerPos_0 = true;
+                }
+                doort.oDoor();
             }
-            else if (other.GetComponent<DoorHandle_1>().Doorindex == 0)
-            {
-                doort.PlayerPos_1 = false;
-                doort.PlayerPos_0 = true;
-            }
-            doort.oDoor();
         }
         else if (other.CompareTag(interactiveList[1]) && Input.GetKeyDown(KeyCode.Space))
         {

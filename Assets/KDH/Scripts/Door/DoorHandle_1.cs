@@ -29,7 +29,6 @@ public class DoorHandle_1 : MonoBehaviour   // 문 손잡이 2
         if (col.gameObject.CompareTag("Player"))
         {
             P_Door.GetComponent<MeshRenderer>().material = mat_Outline;  // 아웃라인 메테리얼로 0번 배열 변경 
-            
         }
     }
 
