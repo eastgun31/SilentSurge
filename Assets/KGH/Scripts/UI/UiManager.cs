@@ -50,7 +50,7 @@ public class UiManager : MonoBehaviour
             {
                 success.text = "FAIL";
                 isGameOver = true;
-                gameover.SetActive(true);
+                //gameover.SetActive(true);
             }
             else
             {
@@ -61,7 +61,7 @@ public class UiManager : MonoBehaviour
         else
         {
             success.text = "SUCCESS";
-            // 세이브데이터 추가
+            DataManager.instance.SaveData();
             Invoke("ResetTime", 2f);
         }
     }

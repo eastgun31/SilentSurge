@@ -52,11 +52,11 @@ public class GameOver : MonoBehaviour
 
     public void CheckPoint()
     {
-
+        DataManager.instance.LoadData();
     }
 
     public void Restart()
     {
-        //¸ÞÀÎ¾À ¿¬°á
+        SceneManager.LoadScene("Main");
     }
 }
