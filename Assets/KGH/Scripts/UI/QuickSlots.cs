@@ -36,6 +36,11 @@ public class QuickSlots : MonoBehaviour
                 c_text[0].gameObject.SetActive(false);
             }
         }
+        else if(!GameManager.instance.itemcheck[0])
+        {
+            quickSlots[0].gameObject.SetActive(false);
+            c_text[0].gameObject.SetActive(false);
+        }
 
         if (GameManager.instance.itemcheck[1])       //ÄÚÀÎ Ãß°¡
         {
@@ -50,6 +55,11 @@ public class QuickSlots : MonoBehaviour
                 GameObject.Find("Coin").GetComponent<Image>().color = Color.gray;
                 c_text[1].gameObject.SetActive(false);
             }
+        }
+        else if (!GameManager.instance.itemcheck[1])
+        {
+            quickSlots[1].gameObject.SetActive(false);
+            c_text[1].gameObject.SetActive(false);
         }
 
         if (GameManager.instance.itemcheck[2])      // ¼¶±¤ÅºÃß°¡
@@ -66,9 +76,18 @@ public class QuickSlots : MonoBehaviour
                 c_text[2].gameObject.SetActive(false);
             }
         }
+        else if (!GameManager.instance.itemcheck[2])
+        {
+            quickSlots[2].gameObject.SetActive(false);
+            c_text[2].gameObject.SetActive(false);
+        }
 
         if (GameManager.instance.itemcheck[3])        // ½É¹Ú±âÃß°¡
             quickSlots[3].gameObject.SetActive(true);
+        else if (!GameManager.instance.itemcheck[3])
+        {
+            quickSlots[3].gameObject.SetActive(false);
+        }
 
         if (GameManager.instance.itemcheck[4])       // ¹æÅºº¹
         {
@@ -85,5 +104,10 @@ public class QuickSlots : MonoBehaviour
             else if (GameManager.instance.itemcount[4] == 0)
                 quickSlots[4].gameObject.SetActive(false);
         }
+        else if (!GameManager.instance.itemcheck[4])
+        {
+            quickSlots[4].gameObject.SetActive(false);
+        }
+
     }
 }
