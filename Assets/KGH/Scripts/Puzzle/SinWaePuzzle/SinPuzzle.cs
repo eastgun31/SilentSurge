@@ -16,6 +16,7 @@ public class SinPuzzle : MonoBehaviour
 
 
     public GameObject cctv;
+    public GameObject fcctv;
 
     bool lev = false;
 
@@ -78,6 +79,7 @@ public class SinPuzzle : MonoBehaviour
             if (!lev)
             {
                 cctv.SetActive(false);
+                fcctv.SetActive(true);
                 lev = true;
                 PuzlvUp();
             }

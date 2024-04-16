@@ -25,7 +25,7 @@ public class SoundWallCheck : MonoBehaviour
     {
         if (Physics.Raycast(transform.position + new Vector3(0, 1f, 0), Vector3.down, out hit, 2f, mask))
         {
-            Debug.Log(hit.collider.gameObject.layer);
+            //Debug.Log(hit.collider.gameObject.layer);
             if (hit.collider.gameObject.layer == 6)
             {
                 //Debug.Log("적이 들음");

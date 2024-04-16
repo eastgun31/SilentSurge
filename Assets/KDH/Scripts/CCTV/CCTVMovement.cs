@@ -7,16 +7,20 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
 {
     public enum cctv_state
     {
-        detecting,              // Æò»ó½Ã
-        detect,                   // Àû °¨Áö
+        cidle,
+        detecting              // Æò»ó½Ã
     }
 
-    public cctv_state c_state = cctv_state.detecting;
+    public cctv_state c_state;
 
-    WaitForSeconds reverse_cctvstate;
+    WaitForSeconds cctv_elevel_reverse;             // enemylv »ó½Â ½Ã°£
+    WaitForSeconds onReverse;                          // ÇÃ·¹ÀÌ¾î°¡ ³ª°¬´Ù µé¾î¿ÔÀ» ¶§ À¯¿¹½Ã°£
     WaitForSeconds wait;
 
-    Sight sight;
+    Sight csight;
+
+    public bool isDetecting;
+    public bool canReverse;
 
     public float rotationSpeed;           // Ä«¸Þ¶óÀÇ È¸Àü ¼Óµµ
     public float rotationAmount;        // ÇÑ ¹ø È¸ÀüÇÒ °¢µµ
@@ -39,17 +43,23 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
     {
         startRotation = transform.rotation;     // ÇöÀç rotation °ªÀ» startRotation¿¡ ÀúÀåÇÔ
         StartCoroutine(AngleMove(2f));          // ÄÚ·çÆ¾ ½ÇÇà ÇÔ¼ö (µô·¹ÀÌ 2ÃÊ)
-        reverse_cctvstate = new WaitForSeconds(1f);
+        cctv_elevel_reverse = new WaitForSeconds(5f);
+        onReverse = new WaitForSeconds(15f);
+        canReverse = true;
+        csight = GetComponent<Sight>();
+        StartCoroutine(CCTVStateCheck());
+        c_state = cctv_state.cidle;
     }
 
     void Update()
     {
-        if(c_state== cctv_state.detecting)
+        if(c_state == cctv_state.detecting)
         {
-            DetectPlayerCCTV();
+            StartCoroutine(DetectCCTVLevel());
         }
     }
 
+    
     IEnumerator AngleMove(float delay)
     {
         while(true)
@@ -72,27 +82,59 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
         }
     }
 
-    IEnumerator DetectPlayerCCTV()
+    IEnumerator DetectCCTVLevel()           // ÇÃ·¹ÀÌ¾î¸¦ Å½ÁöÁßÀÏ¶§ °æ°è·¹º§+1 (Ã³À½ Á¢ÃËÇÏ°Å³ª, À¯¿¹½Ã°£ÀÌ ³¡³µÀ» ¶§)
     {
-        yield return reverse_cctvstate;
-        if(c_state==cctv_state.detecting && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
+        if(canReverse) 
         {
-            EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
-            Debug.Log("2level ing");
-        }
-        if (c_state == cctv_state.detecting && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
-        {
-            EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
+            if (c_state == cctv_state.detecting && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
+            {
+                canReverse = false;
+                GameManager.instance.playerchasing = true;
+                EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
+                Debug.Log("2");
+                StartCoroutine(CCTVReverseCheck());
+            }
+            yield return cctv_elevel_reverse;
+            if (c_state == cctv_state.detecting && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
+            {
+                canReverse = false;
+                GameManager.instance.playerchasing = true;
+                EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
+                Debug.Log("3");
+                StartCoroutine(CCTVReverseCheck());
+            }
+            yield return cctv_elevel_reverse;
+            if (c_state == cctv_state.detecting && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level3 && GameManager.instance.playerchasing == true)
+            {
+                canReverse = false;
+                EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
+                Debug.Log("333");
+                StartCoroutine(CCTVReverseCheck());
+            }
+            isDetecting = false;
         }
     }
 
     IEnumerator CCTVStateCheck()
     {
-        if(sight.findT)
+        if (csight.findT)                                                       // ÀûÀÌ Ã³À½ µé¾î¿ÔÀ» ¶§
         {
             c_state = cctv_state.detecting;
+            isDetecting = true;
+        }
+        else if(!csight.findT)
+        {
+            c_state = cctv_state.cidle;
+            GameManager.instance.playerchasing = false;
         }
         yield return wait;
+        StartCoroutine(CCTVStateCheck());
+    }
+
+    IEnumerator CCTVReverseCheck()              // À¯¿¹½Ã°£ 15ÃÊ ÈÄ ´Ü°è»ó½ÂÀÌ °¡´ÉÇÏ°Ô²û
+    {
+        yield return onReverse;
+        canReverse = true;
     }
 
 
