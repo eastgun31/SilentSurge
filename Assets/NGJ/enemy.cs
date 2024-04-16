@@ -3,6 +3,7 @@ using UnityEngine.AI;
 using System;
 using System.Collections;
 using ItemInfo;
+using static UnityEditor.PlayerSettings;
 
 public class Enemy : MonoBehaviour
 {
@@ -36,6 +37,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private bool chasing;
     public bool hearSound;
+    [SerializeField]
+    private Transform[] bulletPoses;
     E_CoolTime cooltime;
 
     ////안쓰는변수
@@ -139,23 +142,32 @@ public class Enemy : MonoBehaviour
         if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 3f)
         {
             if(enemyType == 1 ||  enemyType == 2)
-                shoot(sight.detectTarget.position); // 총을 발사합니다.
+                Shoot(sight.detectTarget.position); // 총을 발사합니다.
             else if(enemyType == 3)
-            {
-
-            }
-            else if(enemyType == 4)
-            {
-
-            }
+                CloseAttack(sight.detectTarget.position);
+            else if(enemyType == 4 && !isShooting)
+                StartCoroutine(UdoShoot(sight.detectTarget.position));
         }
         else if(Vector3.Distance(transform.position, sight.detectTarget.position) > 3f)
         {
             m_enemy.isStopped = false;
         }
     }
-   
-    void shoot(Vector3 pos)
+
+   void CloseAttack(Vector3 pos)
+    {
+        m_enemy.stoppingDistance = 1;
+
+        if (!isShooting)
+        {
+            isShooting = true; // 발사 중 상태로 변경
+            transform.LookAt(pos);
+            GameObject bulletObject = Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
+            // 총알 발사 후 일정 시간을 기다린 후 다음 동작으로 진행합니다.
+            StartCoroutine(DelayTime(1f, cooltime.cool5sec)); // 1초 뒤에 다시 총 발사
+        }
+    }
+    void Shoot(Vector3 pos)
     {
         if (!isShooting )
         {
@@ -164,25 +176,38 @@ public class Enemy : MonoBehaviour
             m_enemy.isStopped = true;
             // 총알을 발사하는 동작을 수행합니다.
             transform.LookAt(pos);
-            GameObject bulletObject = Instantiate(bulletPrefab, gunmodal.transform.position, bulletPos.rotation);
+            GameObject bulletObject = Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
             Rigidbody bulletRigid = bulletObject.GetComponent<Rigidbody>();
             // 총알을 생성하고 설정한 방향으로 발사합니다.
             if (enemyType == 2)
-                shoot2();
+                Shoot2();
             bulletRigid.velocity = bulletPos.forward * bulletSpeed;
 
             // 총알 발사 후 일정 시간을 기다린 후 다음 동작으로 진행합니다.
             StartCoroutine(DelayTime(1f,cooltime.cool5sec)); // 1초 뒤에 다시 총 발사
         }
     }
-    void shoot2()
+    void Shoot2()
     {
-        GameObject bulletObject1 = Instantiate(bulletPrefab, gunmodal.transform.position, Quaternion.Euler(new Vector3(0, 60, 0)));
-        GameObject bulletObject2 = Instantiate(bulletPrefab, gunmodal.transform.position, Quaternion.Euler(new Vector3(0, 120, 0)));
-        Rigidbody bulletRigid1 = bulletObject1.GetComponent<Rigidbody>();
-        Rigidbody bulletRigid2 = bulletObject2.GetComponent<Rigidbody>();
-        bulletRigid1.velocity = Vector3.forward * bulletSpeed;
-        bulletRigid2.velocity = Vector3.forward * bulletSpeed;
+        for(int i = 0; i < bulletPoses.Length; i++)
+        {
+            GameObject bulletObject = Instantiate(bulletPrefab, bulletPoses[i].transform.position, bulletPoses[i].rotation);
+            Rigidbody bulletRigid = bulletObject.GetComponent<Rigidbody>();
+            bulletRigid.velocity = bulletPoses[i].forward * bulletSpeed;
+        }
+    }
+    IEnumerator UdoShoot(Vector3 pos)
+    {
+        isShooting = true;
+        m_enemy.isStopped = true;
+        transform.LookAt(pos);
+        GameObject bulletObject = Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
+        Rigidbody bulletRigid = bulletObject.GetComponent<Rigidbody>();
+        yield return cooltime.cool2sec;
+        bulletObject.transform.LookAt(pos);
+        bulletRigid.velocity = bulletPos.forward * bulletSpeed;
+        yield return cooltime.cool5sec; 
+        isShooting = false;
     }
 
     IEnumerator DelayTime(float type, WaitForSeconds delay)
