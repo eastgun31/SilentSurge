@@ -8,10 +8,10 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
     public enum cctv_state
     {
         detecting,              // Æò»ó½Ã
-        detect,                   // Àû °¨Áö (´Ü°è »ó½Â)
+        detect,                   // Àû °¨Áö
     }
 
-    public cctv_state c_state;
+    public cctv_state c_state = cctv_state.detecting;
 
     WaitForSeconds reverse_cctvstate;
     WaitForSeconds wait;
@@ -44,7 +44,7 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
 
     void Update()
     {
-        if(c_state== cctv_state.detect)
+        if(c_state== cctv_state.detecting)
         {
             DetectPlayerCCTV();
         }
@@ -78,6 +78,7 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
         if(c_state==cctv_state.detecting && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
         {
             EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
+            Debug.Log("2level ing");
         }
         if (c_state == cctv_state.detecting && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
         {
