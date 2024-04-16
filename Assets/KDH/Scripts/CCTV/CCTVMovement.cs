@@ -31,8 +31,8 @@ public class CCTVMovement : MonoBehaviour       // CCTV의 탐지 반경을 좌우로 반�
     Quaternion startRotation;                   // 카메라의 회전 시작 지점
     Quaternion endRotation;                    // 카메라의 회전이 종료되는 지점
 
-    public float angleRange = 30f;
-    public float radius = 3f;
+    //public float angleRange = 30f;
+    //public float radius = 3f;
 
     bool isCollision = false;
 
