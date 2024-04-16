@@ -72,15 +72,15 @@ public class Player : MonoBehaviour
             state = PlayerState.puzzling;
             //playerspeed = 0;
         }
+        else if (GameManager.instance.isHide)
+        {
+            state = PlayerState.hide;
+        }
         else if (!GameManager.instance.nowpuzzle || !GameManager.instance.isHide)
         {
             state = PlayerState.idle;
             //playerspeed = 2.5f;
         }
-        else if(GameManager.instance.isHide)
-        {
-            state = PlayerState.hide;
-        }        
            
         if (state == PlayerState.idle)
         {
@@ -351,7 +351,7 @@ public class Player : MonoBehaviour
             GameManager.instance.existItem[item.indexNum] = false;
             other.gameObject.SetActive(false);
         }
-        if(other.CompareTag("Bullet"))
+        if(other.CompareTag("E_Bullet"))
         {
             if (itemGet[4] && GameManager.instance.itemcount[4] >0)
             {
