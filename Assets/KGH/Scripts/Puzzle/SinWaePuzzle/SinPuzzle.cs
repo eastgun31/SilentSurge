@@ -77,13 +77,19 @@ public class SinPuzzle : MonoBehaviour
             player = Player.PlayerState.idle;
             if (!lev)
             {
-                GameManager.instance.puzzleLevel += 1;
-                GameManager.instance.nowpuzzle = false;
                 cctv.SetActive(false);
                 lev = true;
+                PuzlvUp();
             }
             Invoke("CloseSin", 2f);
         }
+    }
+
+    private void PuzlvUp()
+    {
+        GameManager.instance.puzzleLevel += 1;
+        GameManager.instance.nowpuzzle = false;
+        DataManager.instance.SaveData();
     }
     private void CloseSin()
     {

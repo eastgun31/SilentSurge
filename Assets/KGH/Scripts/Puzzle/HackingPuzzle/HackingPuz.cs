@@ -26,6 +26,10 @@ public class HackingPuz : MonoBehaviour
         // 첫 번째 텍스트 필드에 초기값 설정
         inputTexts[currentInputIndex].text = "";
     }
+    private void Update()
+    {
+        UiManager.instance.TimeRemainig();
+    }
 
     public void Number(string number)
     {
@@ -63,6 +67,7 @@ public class HackingPuz : MonoBehaviour
         UiManager.instance.isWin = true;
         GameManager.instance.puzzleLevel += 1;
         GameManager.instance.nowpuzzle = false;
+        DataManager.instance.SaveData();
     }
     public void ColseHackingPuz()
     {
