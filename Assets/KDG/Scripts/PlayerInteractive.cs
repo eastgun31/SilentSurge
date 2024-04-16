@@ -15,7 +15,7 @@ public class PlayerInteractive : MonoBehaviour
 
     string[] interactiveList = { "Door", "Bent", "Puzzle", "Cabinet" };
 
-    private int index = 0;
+    //private int index = 0;
 
     private CapsuleCollider _pc;
 
@@ -76,7 +76,7 @@ public class PlayerInteractive : MonoBehaviour
                     enterPuzzle.PipePuzzle1();
                     break;
                 case 2:
-                    enterPuzzle.PipePuzzle1();
+                    enterPuzzle.SinPuzzle();
                     break;
             }
         }
