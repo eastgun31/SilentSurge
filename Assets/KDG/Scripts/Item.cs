@@ -22,6 +22,10 @@ namespace ItemInfo
     {
         public WaitForSeconds cool3sec = new WaitForSeconds(3f);
     }
+    public class CctvCool
+    {
+        public WaitForSeconds cool3sec = new WaitForSeconds(3f);
+    }
 }
 
 
