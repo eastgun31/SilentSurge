@@ -52,7 +52,6 @@ public class Enemy : MonoBehaviour
     public bool hearSound;
     WaitForSeconds wait;
     WaitForSeconds lvwait;
-    private UnityEngine.Object bullet;
     E_CoolTime cooltime;
 
     void Start()
@@ -67,6 +66,7 @@ public class Enemy : MonoBehaviour
         m_enemy = GetComponent<NavMeshAgent>();
         wait = new WaitForSeconds(1f);
         lvwait = new WaitForSeconds(10f);
+        cooltime = new E_CoolTime();
         StartCoroutine(EnemyStateCheck());
 
         m_enemy.avoidancePriority = 50; // 벽을 피하기 위한 우선순위 설정
@@ -108,7 +108,7 @@ public class Enemy : MonoBehaviour
         noactiving = false;
         m_enemy.stoppingDistance = 0;
 
-        yield return new WaitForSeconds(3f);
+        yield return cooltime.cool3sec;
         hearSound = false;
         noactiving = true;
         NeviClear();
@@ -178,7 +178,6 @@ public class Enemy : MonoBehaviour
         if (!isShooting )
         {
             isShooting = true; // 발사 중 상태로 변경
-            //currentBulletCount--; // 총알 개수 감소
 
             m_enemy.isStopped = true;
             // 총알을 발사하는 동작을 수행합니다.
@@ -194,14 +193,8 @@ public class Enemy : MonoBehaviour
 
             // 총알 발사 후 일정 시간을 기다린 후 다음 동작으로 진행합니다.
             
-            StartCoroutine(ShootDelay(0.5f)); // 1초 뒤에 다시 총 발사
+            StartCoroutine(DelayTime(1f,cooltime.cool5sec)); // 1초 뒤에 다시 총 발사
         }
-        //else if (currentBulletCount <= 0)
-        //{
-        //    Debug.Log("Out of bullets! Reloading...");
-        //    StartCoroutine(ReloadDelay(3f)); // 총알을 모두 사용한 경우 3초 후에 재장전
-        //}
-
     }
     //void ResumePatrollingAfterDelay()
     //{
@@ -219,10 +212,13 @@ public class Enemy : MonoBehaviour
     //    currentBulletCount = maxBulletCount; // 최대 총알 개수로 재장전
     //}
 
-    IEnumerator ShootDelay(float delay)
+    IEnumerator DelayTime(float type, WaitForSeconds delay)
     {
-        yield return new WaitForSeconds(5f); // 지정된 시간만큼 대기합니다.
-        isShooting = false; // 발사 종료 상태로 변경
+        yield return delay; // 지정된 시간만큼 대기합니다.
+        if(type == 1)
+            isShooting = false; // 발사 종료 상태로 변경
+        else if(type == 2)
+            m_enemy.isStopped = false;
     }
 
     
@@ -321,6 +317,13 @@ public class Enemy : MonoBehaviour
             if(indexcount != 99)
                 GameManager.instance.existEnemy[indexcount] = false;
             gameObject.SetActive(false);
+        }
+        if(other.CompareTag("Flash"))
+        {
+            m_enemy.isStopped = true;
+            m_enemy.velocity = Vector3.zero;
+            StartCoroutine(DelayTime(2f,cooltime.cool5sec));
+            //m_enemy.isStopped = false;
         }
     }
 

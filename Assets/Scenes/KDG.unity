@@ -586,6 +586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 756fcfd812785a245bca1bf838836d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sequence: 0
   bulletPrefab: {fileID: 6370189277096345383, guid: 09e71b3c77b69d94796d4f8f3a90252f, type: 3}
   bulletSpawn: {fileID: 0}
 --- !u!1 &286294722
@@ -1205,6 +1206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LvStep: 0
   lv3enemy: {fileID: 0}
+  Enemies: []
 --- !u!1 &607656753
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,6 +1314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: {fileID: 0}
+  sequence: 0
 --- !u!54 &633789331
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1881,6 +1884,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  playerobj: {fileID: 0}
   savename: /save
 --- !u!4 &774635791
 Transform:
@@ -2768,6 +2772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c81005454ebe954c8699caff36aa4f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sequence: 0
 --- !u!54 &1121704039
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3109,6 +3114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 756fcfd812785a245bca1bf838836d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sequence: 0
   bulletPrefab: {fileID: 0}
   bulletSpawn: {fileID: 0}
 --- !u!65 &1260875991
@@ -3275,13 +3281,14 @@ MonoBehaviour:
   canUse: 1
   playerchasing: 0
   existItem: 
+  existEnemy: 
+  isHide: 0
   Items:
   - {fileID: 191733635}
   - {fileID: 633789329}
   - {fileID: 1121704037}
   - {fileID: 1795340967}
   - {fileID: 1571260232}
-  Enemies: []
 --- !u!4 &1360599835
 Transform:
   m_ObjectHideFlags: 0
@@ -4028,6 +4035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e136700aaab5742bdaa2d96133e0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sequence: 0
 --- !u!1 &1637788420
 GameObject:
   m_ObjectHideFlags: 0
@@ -4222,6 +4230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4338bd7d333f0da4387cc2dcc72d78e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sequence: 0
 --- !u!54 &1795340969
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4543,6 +4552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6264ef5059de6e24db297cd7a42f8676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  c_state: 0
   rotationSpeed: 20
   rotationAmount: 20
   rotationDuration: 2
@@ -5006,6 +5016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e136700aaab5742bdaa2d96133e0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sequence: 0
 --- !u!65 &547813013398598687
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5484,6 +5495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c81005454ebe954c8699caff36aa4f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sequence: 0
 --- !u!23 &3716700846274696843
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5755,7 +5767,7 @@ Transform:
   m_GameObject: {fileID: 4271598664223670241}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32.869, y: 0, z: 11.73}
+  m_LocalPosition: {x: -32.984, y: 0, z: 11.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5853,6 +5865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: {fileID: 0}
+  sequence: 0
 --- !u!136 &5828680640122229681
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6067,6 +6080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4338bd7d333f0da4387cc2dcc72d78e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sequence: 0
 --- !u!65 &8592418497257607179
 BoxCollider:
   m_ObjectHideFlags: 0

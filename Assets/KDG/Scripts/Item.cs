@@ -21,11 +21,17 @@ namespace ItemInfo
     public class E_CoolTime
     {
         public WaitForSeconds cool3sec = new WaitForSeconds(3f);
+        public WaitForSeconds cool5sec = new WaitForSeconds(5f);
     }
     public class CctvCool
     {
         public WaitForSeconds cool3sec = new WaitForSeconds(3f);
     }
+    public class Enemy
+    {
+
+    }
+
 }
 
 

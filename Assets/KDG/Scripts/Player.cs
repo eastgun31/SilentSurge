@@ -72,15 +72,15 @@ public class Player : MonoBehaviour
             state = PlayerState.puzzling;
             //playerspeed = 0;
         }
+        else if (GameManager.instance.isHide)
+        {
+            state = PlayerState.hide;
+        }
         else if (!GameManager.instance.nowpuzzle || !GameManager.instance.isHide)
         {
             state = PlayerState.idle;
             //playerspeed = 2.5f;
         }
-        else if(GameManager.instance.isHide)
-        {
-            state = PlayerState.hide;
-        }        
            
         if (state == PlayerState.idle)
         {
