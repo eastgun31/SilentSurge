@@ -62,7 +62,6 @@ public class Player : MonoBehaviour
         useItem = GetComponent<UseItem>();
         rigid = transform.GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
-        cam = Camera.main;
     }
 
     void Update()

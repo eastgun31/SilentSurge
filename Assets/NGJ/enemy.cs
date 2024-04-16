@@ -177,16 +177,12 @@ public class Enemy : MonoBehaviour
     }
     void shoot2()
     {
-        GameObject bulletObject1 = Instantiate(bulletPrefab, gunmodal.transform.position, bulletPos.rotation);
-        GameObject bulletObject2 = Instantiate(bulletPrefab, gunmodal.transform.position, bulletPos.rotation);
+        GameObject bulletObject1 = Instantiate(bulletPrefab, gunmodal.transform.position, Quaternion.Euler(new Vector3(0, 60, 0)));
+        GameObject bulletObject2 = Instantiate(bulletPrefab, gunmodal.transform.position, Quaternion.Euler(new Vector3(0, 120, 0)));
         Rigidbody bulletRigid1 = bulletObject1.GetComponent<Rigidbody>();
         Rigidbody bulletRigid2 = bulletObject2.GetComponent<Rigidbody>();
-        //bulletObject1.transform.rotation = Quaternion.Euler(new Vector3(0,60,0));
-        //bulletObject2.transform.rotation = Quaternion.Euler(new Vector3(0, 120, 0));
-        bulletRigid1.MoveRotation(Quaternion.Euler(0, 60, 0));
-        bulletRigid2.MoveRotation(Quaternion.Euler(0, 120, 0));
-        bulletRigid1.velocity = new Vector3(0, 60, 0) * bulletSpeed;
-        bulletRigid2.velocity = new Vector3(0, 120, 0) * bulletSpeed;
+        bulletRigid1.velocity = Vector3.forward * bulletSpeed;
+        bulletRigid2.velocity = Vector3.forward * bulletSpeed;
     }
 
     IEnumerator DelayTime(float type, WaitForSeconds delay)
