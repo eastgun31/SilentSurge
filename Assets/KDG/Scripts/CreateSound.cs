@@ -80,6 +80,10 @@ public class CreateSound : MonoBehaviour
         {
             GameObject effectprefab = Instantiate(effect);
             effectprefab.transform.position = gameObject.transform.position;
+            GameObject flash = Instantiate(soundprefab);
+            flash.transform.position = gameObject.transform.position;
+            Destroy(flash, 1f);
+            Destroy(effectprefab, 1f);
         }
     }
 }

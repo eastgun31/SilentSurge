@@ -18,12 +18,23 @@ public class EnterPuzzle : MonoBehaviour
 
     }
 
-    public void Keypad()
+    public void SinPuzzle()
     {
         if (GameManager.instance.puzzleLevel == 2 && level ==2)
         {
             GameManager.instance.nowpuzzle = true;
             UiManager.instance.ActiveSinFst();
+        }
+        else
+            return;
+    }
+
+    public void HackingPuzzle()
+    {
+        if (GameManager.instance.puzzleLevel == 3 && level == 3)
+        {
+            GameManager.instance.nowpuzzle = true;
+            UiManager.instance.ActiveHackingFst();
         }
         else
             return;

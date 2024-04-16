@@ -15,7 +15,7 @@ public class PlayerInteractive : MonoBehaviour
 
     string[] interactiveList = { "Door", "Bent", "Puzzle", "Cabinet" };
 
-    private int index = 0;
+    //private int index = 0;
 
     private CapsuleCollider _pc;
 
@@ -76,7 +76,10 @@ public class PlayerInteractive : MonoBehaviour
                     enterPuzzle.PipePuzzle1();
                     break;
                 case 2:
-                    enterPuzzle.PipePuzzle1();
+                    enterPuzzle.SinPuzzle();
+                    break;
+                case 3:
+                    enterPuzzle.HackingPuzzle();
                     break;
             }
         }
@@ -85,10 +88,12 @@ public class PlayerInteractive : MonoBehaviour
             cabinet = other.GetComponentInParent<Cabinet>();
             if (!GameManager.instance.isHide)
             {
+                player.velocity = Vector3.zero;
                 player.transform.position = cabinet.hidePoints.transform.position;
                 GameManager.instance.isHide = true;
                 _pc.isTrigger = true;
                 playerView.viewAngle = 360;
+                playerView.viewRadius = 2f;
             }
             else
             {
@@ -96,6 +101,7 @@ public class PlayerInteractive : MonoBehaviour
                 GameManager.instance.isHide = false;
                 _pc.isTrigger = false;
                 playerView.viewAngle = 100;
+                playerView.viewRadius = 5f;
             }
         }
         //else if(세이브 포인트 검사)
