@@ -52,6 +52,7 @@ public class PipeManager : MonoBehaviour
 
             GameManager.instance.puzzleLevel += 1;
 
+            DataManager.instance.SaveData();
             Invoke("ClosePipe", 2f);
         }
     }

@@ -63,7 +63,6 @@ public class UiManager : MonoBehaviour
         else
         {
             success.text = "SUCCESS";
-            DataManager.instance.SaveData();
             Invoke("ResetTime", 2f);
         }
     }
