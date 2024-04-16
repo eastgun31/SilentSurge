@@ -20,8 +20,10 @@ namespace ItemInfo
     }
     public class E_CoolTime
     {
+        public WaitForSeconds cool1sec = new WaitForSeconds(1f);
         public WaitForSeconds cool3sec = new WaitForSeconds(3f);
         public WaitForSeconds cool5sec = new WaitForSeconds(5f);
+        public WaitForSeconds cool10sec = new WaitForSeconds(10f);
     }
     public class CctvCool
     {
@@ -31,7 +33,6 @@ namespace ItemInfo
     {
 
     }
-
 }
 
 

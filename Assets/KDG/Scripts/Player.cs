@@ -351,7 +351,7 @@ public class Player : MonoBehaviour
             GameManager.instance.existItem[item.indexNum] = false;
             other.gameObject.SetActive(false);
         }
-        if(other.CompareTag("Bullet"))
+        if(other.CompareTag("E_Bullet"))
         {
             if (itemGet[4] && GameManager.instance.itemcount[4] >0)
             {
