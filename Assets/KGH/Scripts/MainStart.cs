@@ -10,18 +10,7 @@ public class MainStart : MonoBehaviour
     public GameObject optionWin;
     public GameObject infoWin;
     public GameObject backButton;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject help;
 
     public void StartButton()
     {
@@ -56,6 +45,15 @@ public class MainStart : MonoBehaviour
     }
     public void CloseOption()
     {
-        optionWin?.SetActive(false);
+        optionWin.SetActive(false);
+    }
+
+    public void HelpWin()
+    {
+        help.SetActive(true);
+    }
+    public void CloseHelp()
+    {
+        help.SetActive(false);
     }
 }
