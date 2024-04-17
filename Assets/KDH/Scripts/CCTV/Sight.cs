@@ -10,7 +10,6 @@ public class Sight : MonoBehaviour
     [Range(0,360)]
     public float angle;
 
-    public bool detectC = true;
     public bool findT;
 
     Mesh viewMesh;
@@ -26,8 +25,6 @@ public class Sight : MonoBehaviour
     public RaycastHit hitR;
 
     Enemy enemy;
-
-    public CCTVMovement cctv;
     
     public Vector3 playerpos;
     public Vector3 dir_T;
@@ -87,7 +84,7 @@ public class Sight : MonoBehaviour
     void DetectTargets()
     {
         findT = false;
-        Collider[] targets = Physics.OverlapSphere(transform.position, radius, playerM);  // radius(반지름) 내 원 영역의 playerM 콜라이더를 가져옴 
+        Collider[] targets = Physics.OverlapSphere(transform.position, radius, playerM);  // radius(반지름) 내 원 영역의 playerM 콜라이더를 가져옴
         for (int i = 0; i < targets.Length; i++)
         {
             detectTarget = targets[i].transform;
@@ -103,17 +100,6 @@ public class Sight : MonoBehaviour
                         findT = true;
                         detectTarget = visibleT;                                                                            //  detectTarget 은 플레이어
                     }
-                    //if (this.tag == "Enemy")    // 적이 플레이어 감지 후 탐지단계 상승
-                    //{
-                    //    if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
-                    //    {
-                    //        EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
-                    //    }
-                    //    if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
-                    //    {
-                    //        EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
-                    //    }
-                    //}
                 }
             }
             else
