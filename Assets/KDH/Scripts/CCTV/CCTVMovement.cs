@@ -89,9 +89,7 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
             if (c_state == cctv_state.detecting && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
             {
                 canReverse = false;
-                GameManager.instance.playerchasing = true;
                 EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
-                Debug.Log("2");
                 StartCoroutine(CCTVReverseCheck());
             }
             yield return cctv_elevel_reverse;
@@ -100,15 +98,14 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
                 canReverse = false;
                 GameManager.instance.playerchasing = true;
                 EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
-                Debug.Log("3");
                 StartCoroutine(CCTVReverseCheck());
             }
             yield return cctv_elevel_reverse;
             if (c_state == cctv_state.detecting && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level3 && GameManager.instance.playerchasing == true)
             {
                 canReverse = false;
+                GameManager.instance.playerchasing = true;
                 EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
-                Debug.Log("333");
                 StartCoroutine(CCTVReverseCheck());
             }
             isDetecting = false;
@@ -120,12 +117,12 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
         if (csight.findT)                                                       // ÀûÀÌ Ã³À½ µé¾î¿ÔÀ» ¶§
         {
             c_state = cctv_state.detecting;
+            GameManager.instance.playerchasing = true;
             isDetecting = true;
         }
         else if(!csight.findT)
         {
             c_state = cctv_state.cidle;
-            GameManager.instance.playerchasing = false;
         }
         yield return wait;
         StartCoroutine(CCTVStateCheck());
