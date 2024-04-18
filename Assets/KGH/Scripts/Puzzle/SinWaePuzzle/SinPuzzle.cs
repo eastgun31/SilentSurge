@@ -82,6 +82,8 @@ public class SinPuzzle : MonoBehaviour
                 fcctv.SetActive(true);
                 lev = true;
                 PuzlvUp();
+                GameManager.instance.EnemyActive2();
+                EnemyLevel.enemylv.SetEnemy();
             }
             Invoke("CloseSin", 2f);
         }

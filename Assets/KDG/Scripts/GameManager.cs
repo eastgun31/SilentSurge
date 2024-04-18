@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ItemInfo;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    EnemyInfo enemyInfo = new EnemyInfo();
 
     public bool[] itemcheck;
     public int[] itemcount;
@@ -13,7 +15,7 @@ public class GameManager : MonoBehaviour
     public bool canUse = true;
     public bool playerchasing = false;
     public bool[] existItem;
-    public bool[] existEnemy;
+    public bool[] existEnemy = new bool[12];
     public bool isHide=false;
 
     public GameObject[] Items;
@@ -29,11 +31,8 @@ public class GameManager : MonoBehaviour
         itemcheck = new bool[5] { false, false, false, false, false };
         itemcount = new int[5] { 0, 0, 0, 0, 0 };   //±ÇÃÑ, ÄÚÀÎ, ¼¶±¤Åº, ½É¹ÚÃøÁ¤±â, ¹æÅºº¹
         existItem = new bool[5] { false, true, true, true, false };
-        existEnemy = new bool[14];
-        for(int i = 0; i < 9; i++)
-        {
-            existEnemy[i] = true;
-        }
+        //existEnemy = new bool[12];
+        EnemyActive1();
     }
 
     public void SetItem()
@@ -48,6 +47,21 @@ public class GameManager : MonoBehaviour
             { 
                 Items[i].SetActive(false); 
             }
+        }
+    }
+
+    public void EnemyActive1()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            existEnemy[i] = true;
+        }
+    }
+    public void EnemyActive2()
+    {
+        for (int i = 6; i < existEnemy.Length; i++)
+        {
+            existEnemy[i] = true;
         }
     }
 
