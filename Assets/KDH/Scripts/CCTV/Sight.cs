@@ -33,6 +33,9 @@ public class Sight : MonoBehaviour
     public int edgeResolveIterations;
     public float edgeDstThreshold;
 
+    [SerializeField]
+    private int sightType;
+
     public struct Edge
     {
         public Vector3 pointA,pointB;
@@ -69,7 +72,8 @@ public class Sight : MonoBehaviour
 
     private void LateUpdate()
     {
-        DrawDetectArea();
+        //if(sightType == 1)
+            DrawDetectArea();
     }
 
     IEnumerator DetectDelay(float delay)    // ≈Ω¡ˆ µÙ∑π¿Ã (0.2√ )
