@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class PipeManager : MonoBehaviour
 {
     public GameObject canvas;
-    public GameObject timeText;
 
     public GameObject pipesHolder; //파이프를 포함한 부모 오브젝트
     public GameObject[] pipes;
@@ -17,6 +16,8 @@ public class PipeManager : MonoBehaviour
     int totalPipes = 0; // 전체 파이프 수
     [SerializeField]
     int correctPipes = 0; // 올바르게 배치된 파이프 수
+
+    public Text success;
 
     void Start()
     {
@@ -32,7 +33,30 @@ public class PipeManager : MonoBehaviour
     }
     private void Update()
     {
-        UiManager.instance.TimeRemainig();
+       TimeRemainig();
+    }
+
+    public void TimeRemainig() // 퍼즐 제한시간
+    {
+        if (!UiManager.instance.isWin)
+        {
+            if ((int)UiManager.instance.timeRemainig == 0)
+            {
+                success.text = "FAIL";
+                UiManager.instance.isGameOver = true;
+                UiManager.instance.gameover.SetActive(true);
+            }
+            else
+            {
+                UiManager.instance.timeRemainig -= Time.deltaTime;
+                success.text = "Time:  " + (int)UiManager.instance.timeRemainig;
+            }
+        }
+        else
+        {
+            success.text = "SUCCESS";
+            Invoke("ResetTime", 2f);
+        }
     }
     public void CorrectMove()
     {
@@ -65,6 +89,5 @@ public class PipeManager : MonoBehaviour
     public void ClosePipe()
     {
         canvas.gameObject.SetActive(false);
-        timeText.gameObject.SetActive(false);
     }
 }

@@ -6,13 +6,15 @@ using UnityEngine.UI;
 public class HackingPuz : MonoBehaviour
 {
     public GameObject hacking;
-    public GameObject timeText;
 
+    public Text success;
 
     public Text[] inputTexts; 
     private int currentInputIndex = 0; 
 
     private string[] passwords; 
+
+    
 
     void Start()
     {
@@ -28,8 +30,32 @@ public class HackingPuz : MonoBehaviour
     }
     private void Update()
     {
-        UiManager.instance.TimeRemainig();
+        TimeRemainig();
     }
+
+    public void TimeRemainig() // 퍼즐 제한시간
+    {
+        if (!UiManager.instance.isWin)
+        {
+            if ((int)UiManager.instance.timeRemainig == 0)
+            {
+                success.text = "FAIL";
+                UiManager.instance.isGameOver = true;
+                UiManager.instance.gameover.SetActive(true);
+            }
+            else
+            {
+                UiManager.instance.timeRemainig -= Time.deltaTime;
+                success.text = "Time:  " + (int)UiManager.instance.timeRemainig;
+            }
+        }
+        else
+        {
+            success.text = "SUCCESS";
+            Invoke("ResetTime", 2f);
+        }
+    }
+
 
     public void Number(string number)
     {
@@ -72,6 +98,5 @@ public class HackingPuz : MonoBehaviour
     public void ColseHackingPuz()
     {
         hacking.SetActive(false);
-        timeText.SetActive(false);
     }
 }
