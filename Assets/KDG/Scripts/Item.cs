@@ -30,9 +30,9 @@ namespace ItemInfo
     {
         public WaitForSeconds cool3sec = new WaitForSeconds(3f);
     }
-    public class Enemy
+    public class EnemyInfo
     {
-
+        public int enemycount1 = 12;
     }
 }
 

@@ -14,9 +14,10 @@ public class SinPuzzle : MonoBehaviour
     public Vector2 xlimit = new Vector2(-600, 600);
     public float speed = 1;
 
+    public Text success;
 
-    public GameObject cctv;
-    public GameObject fcctv;
+    //public GameObject cctv;
+    //public GameObject fcctv;
 
     bool lev = false;
 
@@ -32,7 +33,29 @@ public class SinPuzzle : MonoBehaviour
         WaveControl();
         Win();
         Wave();
-        UiManager.instance.TimeRemainig();
+        TimeRemainig();
+    }
+    public void TimeRemainig() // 퍼즐 제한시간
+    {
+        if (!UiManager.instance.isWin)
+        {
+            if ((int)UiManager.instance.timeRemainig == 0)
+            {
+                success.text = "FAIL";
+                UiManager.instance.isGameOver = true;
+                UiManager.instance.gameover.SetActive(true);
+            }
+            else
+            {
+                UiManager.instance.timeRemainig -= Time.deltaTime;
+                success.text = "Time:  " + (int)UiManager.instance.timeRemainig;
+            }  
+        }
+        else
+        {
+            success.text = "SUCCESS";
+            Invoke("ResetTime", 2f);
+        }
     }
 
     private void Wave()
@@ -78,10 +101,12 @@ public class SinPuzzle : MonoBehaviour
             player = Player.PlayerState.idle;
             if (!lev)
             {
-                cctv.SetActive(false);
-                fcctv.SetActive(true);
+                //cctv.SetActive(false);
+                //fcctv.SetActive(true);
                 lev = true;
                 PuzlvUp();
+                GameManager.instance.EnemyActive2();
+                EnemyLevel.enemylv.SetEnemy();
             }
             Invoke("CloseSin", 2f);
         }

@@ -17,7 +17,7 @@ public class Keypad : MonoBehaviour
     
     private void Update()
     {
-        UiManager.instance.TimeRemainig();
+        //UiManager.instance.TimeRemainig();
     }
 
     public void Number(int number) 

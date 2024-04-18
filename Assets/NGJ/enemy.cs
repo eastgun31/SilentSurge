@@ -96,6 +96,10 @@ public class Enemy : MonoBehaviour
         {
             EnemyPatrol();
         }
+
+        if (enemyType == 3)
+            m_enemy.SetDestination(GameManager.instance.lv3PlayerPos);
+
     }
     
     public void ChaseSound(Vector3 position)
@@ -279,6 +283,7 @@ public class Enemy : MonoBehaviour
         else if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level3)
         {
             EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
+            GameManager.instance.lv3PlayerPos = sight.detectTarget.position;
         }
         chasing = false;
     }

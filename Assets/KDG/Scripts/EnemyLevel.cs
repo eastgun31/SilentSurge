@@ -55,7 +55,6 @@ public class EnemyLevel : MonoBehaviour
                     lv3enemy.transform.GetChild(i).gameObject.SetActive(true);
                 }
             }
-            
         }
     }
 
