@@ -131,48 +131,50 @@ public class Enemy : MonoBehaviour
         indexcount = 0;
     }
     void EnemyPatrol()  //적순찰
-    {
+        {
         if (Vector3.Distance(transform.position, customDestinations[indexcount]) > 1f)
-        {
+            {
             enemyAnim.SetBool(Walk, true);
+            enemyAnim.SetBool(GunRuning, false); // 걷는 동안 총을 들지 않도록 설정
             m_enemy.SetDestination(customDestinations[indexcount]);
-            //indexcount = (indexcount + 1) % customDestinations.Length;
-        }
+            }
         else if (Vector3.Distance(transform.position, customDestinations[indexcount]) <= 1f)
-        {
+            {
             indexcount++;
             if (indexcount == customDestinations.Length)
                 indexcount = 0;
             m_enemy.SetDestination(customDestinations[indexcount]);
+            }
         }
-    }
+
     void TargetChase()
-    {
+        {
         enemyAnim.SetBool(Walk, false);
         if (!chasing)
             StartCoroutine(Levelstep());
 
-        enemyAnim.SetBool(GunRuning, true); 
+        enemyAnim.SetBool(GunRuning, true); // 총을 들고 있을 때 설정
         m_enemy.stoppingDistance = stoppingDistance;
         m_enemy.SetDestination(sight.detectTarget.position);
 
         if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 3f)
-        {
-           
-            if (enemyType == 1 || enemyType == 2)
-            Shoot(sight.detectTarget.position); // 총을 발사합니다.
-            else if(enemyType == 3)
-                CloseAttack(sight.detectTarget.position);
-            else if(enemyType == 4 && !isShooting)
-                StartCoroutine(UdoShoot(sight.detectTarget.position));
-        }
-        else if(Vector3.Distance(transform.position, sight.detectTarget.position) > 3f)
-        {
-            m_enemy.isStopped = false;
-        }
-    }
+            {
 
-   void CloseAttack(Vector3 pos)
+            if (enemyType == 1 || enemyType == 2)
+                Shoot(sight.detectTarget.position); // 총을 발사합니다.
+            else if (enemyType == 3)
+                CloseAttack(sight.detectTarget.position);
+            else if (enemyType == 4 && !isShooting)
+                StartCoroutine(UdoShoot(sight.detectTarget.position));
+            }
+        else if (Vector3.Distance(transform.position, sight.detectTarget.position) > 3f)
+            {
+            m_enemy.isStopped = false;
+            }
+        }
+
+
+    void CloseAttack(Vector3 pos)
     {
         m_enemy.stoppingDistance = 1;
 
