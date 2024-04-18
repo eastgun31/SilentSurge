@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ItemInfo;
+using Unity.VisualScripting;
 
 public class Coin : MonoBehaviour, IItem
 {
+    public int indexNum { get; set; }
     public int value { get; set; }
     public GameObject coin;
+    public int sequence;
+    Item itemvalues = new Item();
 
     Player player;
 
     void Start()
     {
+        itemvalues.count = 5;
         value = 2;
+        if (sequence == 1)
+            indexNum = 1;
     }
 
     public void GetItem()
@@ -24,6 +31,6 @@ public class Coin : MonoBehaviour, IItem
     }
     public void ItemCharge()
     {
-
+        GameManager.instance.itemcount[1] = itemvalues.count;
     }
 }

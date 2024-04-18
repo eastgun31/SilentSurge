@@ -6,20 +6,21 @@ using System.Threading;
 
 public class HandGun : MonoBehaviour, IItem
 {
-    [SerializeField]
-    private float bulletSpeed = 1f;
-
+    public int indexNum { get; set; }
     public int value {  get; set; }
+    public int sequence;
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
+    Item itemvalues = new Item();
 
     Player player;
     
-
     void Start()
     {
         value = 1;
-        
+        itemvalues.count = 6;
+        if(sequence == 1)
+            indexNum = 0;
     }
 
     public void GetItem()
@@ -31,6 +32,6 @@ public class HandGun : MonoBehaviour, IItem
     }
     public void ItemCharge()
     {
-
+        GameManager.instance.itemcount[0] = itemvalues.count;
     }
 }

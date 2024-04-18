@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
+using ItemInfo;
 
 public class UseItem : MonoBehaviour
 {
@@ -17,7 +18,11 @@ public class UseItem : MonoBehaviour
 
     [SerializeField]
     private float throwpower = 3f;
+    [SerializeField]
+    private float throwpower2 = 4f;
     private string floor = "Floor";
+    private string inroom = "InRoom";
+    //private bool canUse = true;
 
     WaitForSeconds wait;
     Vector3 angle;
@@ -26,13 +31,14 @@ public class UseItem : MonoBehaviour
     RaycastHit hit;
     int mask;
     LineRenderer drawLine;
-    Camera cam;
+    Item itemClass;
+    CreateSound gunSound;
 
     private void Start()
     {
+        itemClass = new Item();
         wait = new WaitForSeconds(0.5f);
         drawLine = GetComponent<LineRenderer>();
-        cam = Camera.main;
     }
 
 
@@ -40,12 +46,15 @@ public class UseItem : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, handGunModel.transform.position, Quaternion.identity);
         Rigidbody bulletRigid = bullet.GetComponent<Rigidbody>();
+        gunSound = bullet.GetComponent<CreateSound>();
+        StartCoroutine(gunSound.SoundCreateDeleteGun());
 
         float zDeg = pos.z - bulletRigid.position.z;
         float xDeg = pos.x - bulletRigid.position.x;
         float rotDeg = -(Mathf.Rad2Deg * Mathf.Atan2(zDeg, xDeg) - 90);
         bulletRigid.MoveRotation(Quaternion.Euler(0, rotDeg, 0));
         bulletRigid.velocity = bulletPos.forward * 20f;
+        GameManager.instance.itemcount[0]--;
 
         Destroy(bullet, 2.0f);
     }
@@ -62,7 +71,7 @@ public class UseItem : MonoBehaviour
         pos.z = Camera.main.farClipPlane;
 
         ray = Camera.main.ScreenPointToRay(pos);
-        mask = LayerMask.GetMask(floor);
+        mask = LayerMask.GetMask(floor) | LayerMask.GetMask(inroom);
 
         if(Physics.Raycast(ray, out hit,100f, mask))
         {
@@ -80,27 +89,35 @@ public class UseItem : MonoBehaviour
 
     public IEnumerator ThrowCoin()
     {
-        Debug.Log("内风凭角青");
+       //Debug.Log("内风凭角青");
 
-        yield return wait;
-        GameObject coin = Instantiate(coinPrefab, throwposition.transform.position, Quaternion.identity);
-        Rigidbody coinRigid = coin.GetComponent<Rigidbody>();
-        coinRigid.AddForce(angle * throwpower, ForceMode.Impulse);
+       yield return itemClass.animDelay;
+       GameObject coin = Instantiate(coinPrefab, throwposition.transform.position, Quaternion.identity);
+       Rigidbody coinRigid = coin.GetComponent<Rigidbody>();
+       coinRigid.AddForce(angle * throwpower, ForceMode.Impulse);
+        GameManager.instance.itemcount[1]--;
         Destroy(coin, 5f);
 
+        GameManager.instance.canUse = false;
+       yield return itemClass.itemcool;
+        GameManager.instance.canUse = true;
         StopAllCoroutines();
     }
 
     public IEnumerator ThrowFlashBang()
     {
-        Debug.Log("内风凭角青");
+        //Debug.Log("内风凭角青");
 
-        yield return wait;
+        yield return itemClass.animDelay;
         GameObject flashbang = Instantiate(flashbangModel, throwposition.transform.position, Quaternion.identity);
         Rigidbody flashbangRigid = flashbang.GetComponent<Rigidbody>();
         flashbangRigid.AddForce(angle * throwpower, ForceMode.Impulse);
+        GameManager.instance.itemcount[2]--;
         Destroy(flashbang, 5f);
 
+        GameManager.instance.canUse = false;
+        yield return itemClass.itemcool;
+        GameManager.instance.canUse = true;
         StopAllCoroutines();
     }
 
@@ -108,7 +125,7 @@ public class UseItem : MonoBehaviour
     {
         heartseeCam.SetActive(true);
 
-        yield return new WaitForSeconds(5f);
+        yield return itemClass.heartseeDuration;
 
         heartseeCam.SetActive(false);
     }

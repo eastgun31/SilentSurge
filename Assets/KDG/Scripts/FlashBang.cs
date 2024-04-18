@@ -5,13 +5,18 @@ using ItemInfo;
 
 public class FlashBang : MonoBehaviour, IItem
 {
+    public int indexNum { get; set; }
     public int value { get; set; }
-
+    Item itemvalues = new Item();
+    public int sequence;
     Player player;
 
     void Start()
     {
+        itemvalues.count = 3;
         value = 3;
+        if (sequence == 1)
+            indexNum = 2;
     }
 
 
@@ -24,6 +29,6 @@ public class FlashBang : MonoBehaviour, IItem
     }
     public void ItemCharge()
     {
-
+        GameManager.instance.itemcount[2] = itemvalues.count;
     }
 }

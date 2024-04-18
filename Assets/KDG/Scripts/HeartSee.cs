@@ -5,13 +5,15 @@ using ItemInfo;
 
 public class HeartSee : MonoBehaviour, IItem
 {
+    public int indexNum { get; set; }
     public int value { get; set; }
-
+    public int sequence;
     Player player;
 
     void Start()
     {
         value = 4;
+        indexNum = 3;
     }
 
     public void GetItem()

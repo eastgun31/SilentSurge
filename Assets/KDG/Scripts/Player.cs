@@ -8,13 +8,13 @@ public class Player : MonoBehaviour
 {
     public enum PlayerState //경계레벨 상태머신
     {
-        idle, hide, puzzling
+        idle, hide, puzzling, die, find
     }
 
     public PlayerState state;
 
     [SerializeField]
-    private float playerspeed = 10f;
+    private float playerspeed;
     [SerializeField]
     private bool handgunacivate = false;
     [SerializeField]
@@ -22,9 +22,11 @@ public class Player : MonoBehaviour
     [SerializeField]
     private bool flashbangacivate = false;
     [SerializeField]
-    private bool heartseeacivate = false;
+    private bool heartseeacivate = false;    
     [SerializeField]
-    public bool[] itemGet = new bool[5];
+    private int armor;
+    [SerializeField]
+    public bool[] itemGet;
 
     [SerializeField]
     UseItem useItem;
@@ -41,17 +43,21 @@ public class Player : MonoBehaviour
     string throwflashbang = "ThrowFlashBang";
     string run = "Runing";
     string gunrun = "GunRuning";
+    
 
     float rotDeg;
     Rigidbody rigid;
     Camera cam;
-    Vector3 pos;
     Vector3 mousePos;
-    Vector3 velocity;
-    bool itemActivate = false;
-
+    public Vector3 velocity;
+    bool die;
+    bool saving;
     void Start()
     {
+        die = false;
+        saving = false;
+        playerspeed = 2.5f;
+        itemGet =new bool[5] { false,false,false,false,false};
         state = PlayerState.idle;
         useItem = GetComponent<UseItem>();
         rigid = transform.GetComponent<Rigidbody>();
@@ -61,10 +67,38 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.instance.nowpuzzle)
+        {
+            state = PlayerState.puzzling;
+            //playerspeed = 0;
+        }
+        else if (GameManager.instance.isHide)
+        {
+            state = PlayerState.hide;
+        }
+        else if (!GameManager.instance.nowpuzzle || !GameManager.instance.isHide)
+        {
+            state = PlayerState.idle;
+            //playerspeed = 2.5f;
+        }
+           
         if (state == PlayerState.idle)
+        {
+            if (rigid.velocity != Vector3.zero)
+                rigid.velocity = Vector3.zero;
             PlayerControll();
+        }
         else
             return;
+
+        if (itemGet[4])
+            armor = GameManager.instance.itemcount[4];
+    }
+
+    private void FixedUpdate()
+    {
+        rigid.MoveRotation(Quaternion.Euler(0, rotDeg, 0));
+        rigid.MovePosition(rigid.position + velocity * Time.deltaTime);
     }
 
     void PlayerControll()
@@ -73,21 +107,20 @@ public class Player : MonoBehaviour
         float zDeg = mousePos.z - rigid.position.z;
         float xDeg = mousePos.x - rigid.position.x;
         rotDeg = -(Mathf.Rad2Deg * Mathf.Atan2(zDeg, xDeg) - 90);
-        rigid.MoveRotation(Quaternion.Euler(0, rotDeg, 0));
+        //rigid.MoveRotation(Quaternion.Euler(0, rotDeg, 0));
 
         //mousePos = cam.ScreenToWorldPoint(new Vector3
         //    (Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.y));
         //transform.LookAt(mousePos + Vector3.up * transform.position.y);
 
         velocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized * playerspeed;
-        rigid.MovePosition(rigid.position + velocity * Time.deltaTime);
-
+        //rigid.MovePosition(rigid.position + velocity * Time.deltaTime);
         playerAnim.SetFloat(walk, velocity.magnitude);
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             footSound.SetActive(true);
-            playerspeed = 20;
+            playerspeed = 5f;
             if (handgunacivate)
                 playerAnim.SetBool(gunrun, true);
             else
@@ -96,20 +129,20 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             footSound.SetActive(false);
-            playerspeed = 10;
+            playerspeed = 2.5f;
             if (handgunacivate)
                 playerAnim.SetBool(gunrun, false);
             else
                 playerAnim.SetBool(run, false);
         }
-            
 
         if (itemGet[0])
         {
             ItemActivate1();
             if (handgunacivate && !coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
             {
-                useItem.GunFire(mousePos);
+                if(GameManager.instance.itemcount[0]>0)
+                    useItem.GunFire(mousePos);
             }
         }
         if (itemGet[1])
@@ -122,8 +155,11 @@ public class Player : MonoBehaviour
 
             if (!handgunacivate && coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
             {
-                playerAnim.SetTrigger(throwcoin);
-                StartCoroutine(useItem.ThrowCoin());
+                if(GameManager.instance.canUse && GameManager.instance.itemcount[1] > 0)
+                {
+                    playerAnim.SetTrigger(throwcoin);
+                    StartCoroutine(useItem.ThrowCoin());
+                }
             }
         }
         if (itemGet[2])
@@ -136,8 +172,11 @@ public class Player : MonoBehaviour
 
             if (!handgunacivate && !coinacivate && flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
             {
-                playerAnim.SetTrigger(throwflashbang);
-                StartCoroutine(useItem.ThrowFlashBang());
+                if(GameManager.instance.canUse && GameManager.instance.itemcount[2] > 0)
+                {
+                    playerAnim.SetTrigger(throwflashbang);
+                    StartCoroutine(useItem.ThrowFlashBang());
+                }
             }
         }
         if (itemGet[3])
@@ -147,6 +186,16 @@ public class Player : MonoBehaviour
             {
                 StartCoroutine(useItem.HeartSee());
             }
+        }
+        if (!die && Input.GetKey(KeyCode.G))
+        {
+            die = true;
+            StartCoroutine(PlayerDie());
+        }
+        if (!saving && Input.GetKey(KeyCode.F))
+        {
+            saving = true;
+            StartCoroutine(PlayerSave());
         }
     }
 
@@ -230,6 +279,22 @@ public class Player : MonoBehaviour
         }
     }
 
+    IEnumerator PlayerDie()
+    {
+        playerAnim.SetTrigger("Die");
+        yield return new WaitForSeconds(3f);
+        Debug.Log("플레이어 죽음");
+        DataManager.instance.LoadData();
+        
+        die = false;
+    }
+    IEnumerator PlayerSave()
+    {
+        yield return new WaitForSeconds(2f);
+        DataManager.instance.SaveData();
+        saving = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Item"))
@@ -239,23 +304,63 @@ public class Player : MonoBehaviour
             switch(item.value)
             {
                 case 1:
-                    item.GetItem();
-                    itemGet[0] = true;
+                    if (itemGet[0])
+                        item.ItemCharge();
+                    else
+                    {
+                        item.GetItem();
+                        item.ItemCharge();
+                        itemGet[0] = true;
+                    }
                     break;
                 case 2:
-                    item.GetItem();
-                    itemGet[1] = true;
+                    if (itemGet[1])
+                        item.ItemCharge();
+                    else
+                    {
+                        item.GetItem();
+                        item.ItemCharge();
+                        itemGet[1] = true;
+                    }
                     break;
                 case 3:
-                    item.GetItem();
-                    itemGet[2] = true;
+                    if (itemGet[2])
+                        item.ItemCharge();
+                    else
+                    {
+                        item.GetItem();
+                        item.ItemCharge();
+                        itemGet[2] = true;
+                    }
                     break;
                 case 4:
                     item.GetItem();
                     itemGet[3] = true;
                     break;
+                case 5:
+                    if (itemGet[4])
+                        item.ItemCharge();
+                    else
+                    {
+                        item.GetItem();
+                        item.ItemCharge();
+                        itemGet[4] = true;
+                    }
+                    break;
             }
-            Destroy(other.gameObject);
+            GameManager.instance.existItem[item.indexNum] = false;
+            other.gameObject.SetActive(false);
+        }
+        if(other.CompareTag("E_Bullet"))
+        {
+            if (itemGet[4] && GameManager.instance.itemcount[4] >0)
+            {
+                GameManager.instance.itemcount[4]--;
+            }
+            else
+            {
+                StartCoroutine(PlayerDie());
+            }
         }
     }
 }
