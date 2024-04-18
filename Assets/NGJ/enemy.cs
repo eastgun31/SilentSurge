@@ -41,6 +41,15 @@ public class Enemy : MonoBehaviour
     private Transform[] bulletPoses;
     E_CoolTime cooltime;
 
+
+
+    Animator enemyAnim;
+    string Walk = "Walk";
+    string shot = "shot";
+    string GunRuning= "GunRuning";
+    string Running = "Running";
+    string Death = "Death";
+
     ////안쓰는변수
     //public bool m_triggered = false; // 트리거 충돌 여부를 나타냅니다.
     //public event Action<Player> PlayerSpotted; // 플레이어 발견 시 이벤트
@@ -68,7 +77,7 @@ public class Enemy : MonoBehaviour
         cooltime = new E_CoolTime();
         StartCoroutine(EnemyStateCheck());
         indexcount = 0;
-
+        enemyAnim = GetComponent<Animator>();
         m_enemy.avoidancePriority = 50; // 벽을 피하기 위한 우선순위 설정
 
     }
@@ -121,6 +130,7 @@ public class Enemy : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, customDestinations[indexcount]) > 1f)
         {
+            enemyAnim.SetBool(Walk, true);
             m_enemy.SetDestination(customDestinations[indexcount]);
             //indexcount = (indexcount + 1) % customDestinations.Length;
         }
@@ -134,15 +144,19 @@ public class Enemy : MonoBehaviour
     }
     void TargetChase()
     {
+        enemyAnim.SetBool(Walk, false);
         if (!chasing)
             StartCoroutine(Levelstep());
+
+        enemyAnim.SetBool(GunRuning, true); 
         m_enemy.stoppingDistance = stoppingDistance;
         m_enemy.SetDestination(sight.detectTarget.position);
 
         if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 3f)
         {
-            if(enemyType == 1 ||  enemyType == 2)
-                Shoot(sight.detectTarget.position); // 총을 발사합니다.
+           
+            if (enemyType == 1 || enemyType == 2)
+            Shoot(sight.detectTarget.position); // 총을 발사합니다.
             else if(enemyType == 3)
                 CloseAttack(sight.detectTarget.position);
             else if(enemyType == 4 && !isShooting)
@@ -162,6 +176,7 @@ public class Enemy : MonoBehaviour
         {
             isShooting = true; // 발사 중 상태로 변경
             transform.LookAt(pos);
+            enemyAnim.SetBool(shot, true);
             GameObject bulletObject = Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
             // 총알 발사 후 일정 시간을 기다린 후 다음 동작으로 진행합니다.
             StartCoroutine(DelayTime(1f, cooltime.cool5sec)); // 1초 뒤에 다시 총 발사
@@ -172,13 +187,15 @@ public class Enemy : MonoBehaviour
         if (!isShooting )
         {
             isShooting = true; // 발사 중 상태로 변경
-
-            m_enemy.isStopped = true;
+            enemyAnim.SetBool(GunRuning,false);
+            enemyAnim.SetBool(Walk,false); 
+           
             // 총알을 발사하는 동작을 수행합니다.
             transform.LookAt(pos);
             GameObject bulletObject = Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
             Rigidbody bulletRigid = bulletObject.GetComponent<Rigidbody>();
             // 총알을 생성하고 설정한 방향으로 발사합니다.
+            enemyAnim.SetBool(shot, true);
             if (enemyType == 2)
                 Shoot2();
             bulletRigid.velocity = bulletPos.forward * bulletSpeed;
@@ -212,6 +229,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator DelayTime(float type, WaitForSeconds delay)
     {
+        
         yield return delay; // 지정된 시간만큼 대기합니다.
         if (type == 1)
             isShooting = false; // 발사 종료 상태로 변경
