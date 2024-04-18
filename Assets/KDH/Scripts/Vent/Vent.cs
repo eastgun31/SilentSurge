@@ -9,6 +9,7 @@ public class Vent : MonoBehaviour
 
     public bool v1activate = true;
     public bool v2activate = true;
+    public bool ventActivate = false;
 
     WaitForSeconds v1Cooltime;
     WaitForSeconds v2Cooltime;

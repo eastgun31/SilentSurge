@@ -66,8 +66,9 @@ public class PlayerInteractive : MonoBehaviour
             {
                 player.transform.position = vent.vent2.transform.position;
                 vent.v1activate = false;
+                vent.ventActivate = true;
             }
-            else if (other.name == ("Vent2") && vent.v2activate)
+            else if (other.name == ("Vent2") && vent.v2activate && vent.ventActivate)
             {
                 player.transform.position = vent.vent1.transform.position;
                 vent.v2activate = false;
