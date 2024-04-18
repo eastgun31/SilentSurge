@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public bool[] existItem;
     public bool[] existEnemy = new bool[12];
     public bool isHide=false;
+    public Vector3 lv3PlayerPos;
 
     public GameObject[] Items;
 
@@ -28,10 +29,11 @@ public class GameManager : MonoBehaviour
         else
             instance = this;
 
+        lv3PlayerPos = new Vector3();
         itemcheck = new bool[5] { false, false, false, false, false };
         itemcount = new int[5] { 0, 0, 0, 0, 0 };   //±ÇÃÑ, ÄÚÀÎ, ¼¶±¤Åº, ½É¹ÚÃøÁ¤±â, ¹æÅºº¹
         existItem = new bool[5] { false, true, true, true, false };
-        //existEnemy = new bool[12];
+        existEnemy = new bool[12];
         EnemyActive1();
     }
 

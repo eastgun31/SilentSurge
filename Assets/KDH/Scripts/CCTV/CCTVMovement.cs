@@ -109,6 +109,7 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
                 canReverse = false;
                 EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
                 Debug.Log("333");
+                GameManager.instance.lv3PlayerPos = csight.detectTarget.position;
                 StartCoroutine(CCTVReverseCheck());
             }
             isDetecting = false;
