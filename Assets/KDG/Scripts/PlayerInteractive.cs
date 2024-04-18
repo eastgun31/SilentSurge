@@ -18,8 +18,8 @@ public class PlayerInteractive : MonoBehaviour
     //private int index = 0;
 
     private CapsuleCollider _pc;
-
     private Cabinet cabinet;
+    private Vent vent;
 
     private void Start()
     {
@@ -61,7 +61,18 @@ public class PlayerInteractive : MonoBehaviour
         }
         else if (other.CompareTag(interactiveList[1]) && Input.GetKeyDown(KeyCode.Space))
         {
-
+            vent = other.GetComponentInParent<Vent>();
+            if (other.name == ("Vent1") && vent.v1activate)
+            {
+                player.transform.position = vent.vent2.transform.position;
+                vent.v1activate = false;
+                vent.ventActivate = true;
+            }
+            else if (other.name == ("Vent2") && vent.v2activate && vent.ventActivate)
+            {
+                player.transform.position = vent.vent1.transform.position;
+                vent.v2activate = false;
+            }
         }
         else if (other.CompareTag(interactiveList[2]) && Input.GetKeyDown(KeyCode.Space))
         {
