@@ -42,6 +42,8 @@ public class QuickSlots : MonoBehaviour
                     c_text[0].gameObject.SetActive(false);
                 }
             }
+            else
+                selectedQuickSlots[0].gameObject.SetActive(false);
         }
         if (GameManager.instance.itemcheck[1])       //ÄÚÀÎ Ãß°¡
         {
@@ -61,6 +63,8 @@ public class QuickSlots : MonoBehaviour
                     c_text[1].gameObject.SetActive(false);
                 }
             }
+            else 
+                selectedQuickSlots[1].gameObject.SetActive(false);
         }
 
         if (GameManager.instance.itemcheck[2])      // ¼¶±¤ÅºÃß°¡
@@ -81,6 +85,8 @@ public class QuickSlots : MonoBehaviour
                     c_text[2].gameObject.SetActive(false);
                 }
             }
+            else
+                selectedQuickSlots[2].gameObject.SetActive(false);
         }
 
         if (GameManager.instance.itemcheck[3])  // ½É¹Ú±âÃß°¡
