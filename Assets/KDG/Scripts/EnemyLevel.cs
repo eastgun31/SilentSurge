@@ -14,6 +14,7 @@ public class EnemyLevel : MonoBehaviour
 
     public static EnemyLevel enemylv;
     public GameObject lv3enemy;
+    public GameObject lastenemy;
     public GameObject[] Enemies;
 
     WaitForSeconds downTime;
@@ -50,11 +51,7 @@ public class EnemyLevel : MonoBehaviour
             if(enemyadd)
             {
                 enemyadd = false;
-                lv3enemy.SetActive(true);
-                for(int i = 0; i < lv3enemy.transform.childCount; i++)
-                {
-                    lv3enemy.transform.GetChild(i).gameObject.SetActive(true);
-                }
+                ODaeGi();
             }
         }
     }
@@ -99,6 +96,23 @@ public class EnemyLevel : MonoBehaviour
             {
                 Enemies[i].SetActive(false);
             }
+        }
+    }
+
+    public void ODaeGi()
+    {
+        lv3enemy.SetActive(true);
+        for (int i = 0; i < lv3enemy.transform.childCount; i++)
+        {
+            lv3enemy.transform.GetChild(i).gameObject.SetActive(true);
+        }
+    }
+    public void ODaeGi2()
+    {
+        lastenemy.SetActive(true);
+        for (int i = 0; i < lv3enemy.transform.childCount; i++)
+        {
+            lastenemy.transform.GetChild(i).gameObject.SetActive(true);
         }
     }
 }

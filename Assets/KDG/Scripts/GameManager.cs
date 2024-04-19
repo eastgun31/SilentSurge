@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     EnemyInfo enemyInfo = new EnemyInfo();
 
+    public bool enemyDown;
     public bool[] itemcheck;
     public int[] itemcount;
     public int puzzleLevel = 1;
