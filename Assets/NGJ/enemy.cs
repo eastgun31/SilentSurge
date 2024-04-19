@@ -100,7 +100,7 @@ public class Enemy : MonoBehaviour
             EnemyPatrol();
         }
 
-        if (enemyType == 3)
+        if (enemyType == 3 && !GameManager.instance.enemyDown)
             m_enemy.SetDestination(GameManager.instance.lv3PlayerPos);
 
     }
