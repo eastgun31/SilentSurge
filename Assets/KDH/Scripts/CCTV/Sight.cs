@@ -102,6 +102,7 @@ public class Sight : MonoBehaviour
                     {
                         playerpos = dir_T;
                         findT = true;
+                        GameManager.instance.playerchasing = true;
                         detectTarget = visibleT;                                                                            //  detectTarget 은 플레이어
                     }
                 }
@@ -109,6 +110,7 @@ public class Sight : MonoBehaviour
             else
             {
                 findT = false;
+                GameManager.instance.playerchasing = false;
                 playerpos = Vector3.zero;
             }
         }
