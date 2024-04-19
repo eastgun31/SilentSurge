@@ -62,7 +62,7 @@ public class PlayerInteractive : MonoBehaviour
                     doort.oDoor();
 
                 }
-                if (doort.nDoor == 1 && GameManager.instance.puzzleLevel == 3)
+                else if (doort.nDoor == 1 && GameManager.instance.puzzleLevel == 3 || GameManager.instance.puzzleLevel == 4)
                 {
                     if (handle.Doorindex == 1)
                     {
@@ -76,7 +76,7 @@ public class PlayerInteractive : MonoBehaviour
                     }
                     doort.oDoor();
                 }
-                if (doort.nDoor == 2 && GameManager.instance.puzzleLevel == 4)
+                else if (doort.nDoor == 2 && GameManager.instance.puzzleLevel == 4)
                 {
                     if (handle.Doorindex == 1)
                     {
