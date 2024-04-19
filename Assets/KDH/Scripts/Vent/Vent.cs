@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ProBuilder.Shapes;
 
 public class Vent : MonoBehaviour
 {
@@ -38,5 +39,4 @@ public class Vent : MonoBehaviour
         yield return v2Cooltime;
         v2activate= true;
     }
-
 }

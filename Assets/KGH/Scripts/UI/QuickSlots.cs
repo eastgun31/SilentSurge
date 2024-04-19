@@ -7,13 +7,14 @@ using UnityEngine.UI;
 public class QuickSlots : MonoBehaviour
 {
     public GameObject[] quickSlots;
+    public GameObject[] selectedQuickSlots;
     public GameObject[] c_text;
 
     public Image[] i_color;
 
     public Text[] i_count;
+    Player player;
 
-    
     private void Update()
     {
         AddSlots();
@@ -21,72 +22,73 @@ public class QuickSlots : MonoBehaviour
 
     public void AddSlots()
     {
+        
 
         if (GameManager.instance.itemcheck[0])       //±ÇÃÑ Ãß°¡
         {
             quickSlots[0].gameObject.SetActive(true);
-            c_text[0].gameObject.SetActive(true);
-            if (GameManager.instance.itemcount[0] >= 1)
-            {
-                i_count[0].text = GameManager.instance.itemcount[0].ToString();
-            }
-            else if (GameManager.instance.itemcount[0] == 0)
-            {
-                GameObject.Find("HandGun").GetComponent<Image>().color = Color.gray;
-                c_text[0].gameObject.SetActive(false);
-            }
-        }
-        else if(!GameManager.instance.itemcheck[0])
-        {
-            quickSlots[0].gameObject.SetActive(false);
-            c_text[0].gameObject.SetActive(false);
-        }
 
+            if (player.handgunacivate == true)
+            {
+                selectedQuickSlots[0].gameObject.SetActive(true);
+
+                if (GameManager.instance.itemcount[0] >= 1)
+                {
+                    i_count[0].text = GameManager.instance.itemcount[0].ToString();
+                }
+                else if (GameManager.instance.itemcount[0] == 0)
+                {
+                    GameObject.Find("SelectedHandGun").GetComponent<Image>().color = Color.gray;
+                    c_text[0].gameObject.SetActive(false);
+                }
+            }
+        }
         if (GameManager.instance.itemcheck[1])       //ÄÚÀÎ Ãß°¡
         {
             quickSlots[1].gameObject.SetActive(true);
-            c_text[1].gameObject.SetActive(true);
-            if (GameManager.instance.itemcount[1] >= 1)
+
+            if (player.coinacivate == true)
             {
-                i_count[1].text = GameManager.instance.itemcount[1].ToString();
+                selectedQuickSlots[1].gameObject.SetActive(true);
+
+                if (GameManager.instance.itemcount[1] >= 1)
+                {
+                    i_count[1].text = GameManager.instance.itemcount[1].ToString();
+                }
+                else if (GameManager.instance.itemcount[1] == 0)
+                {
+                    GameObject.Find("SelectedCoin").GetComponent<Image>().color = Color.gray;
+                    c_text[1].gameObject.SetActive(false);
+                }
             }
-            else if (GameManager.instance.itemcount[1] == 0)
-            {
-                GameObject.Find("Coin").GetComponent<Image>().color = Color.gray;
-                c_text[1].gameObject.SetActive(false);
-            }
-        }
-        else if (!GameManager.instance.itemcheck[1])
-        {
-            quickSlots[1].gameObject.SetActive(false);
-            c_text[1].gameObject.SetActive(false);
         }
 
         if (GameManager.instance.itemcheck[2])      // ¼¶±¤ÅºÃß°¡
         {
             quickSlots[2].gameObject.SetActive(true);
-            c_text[2].gameObject.SetActive(true);
-            if (GameManager.instance.itemcount[2] >= 1)
+
+            if (player.flashbangacivate == true)
             {
-                i_count[2].text = GameManager.instance.itemcount[2].ToString();
+                selectedQuickSlots[2].gameObject.SetActive(true);
+
+                if (GameManager.instance.itemcount[2] >= 1)
+                {
+                    i_count[2].text = GameManager.instance.itemcount[2].ToString();
+                }
+                else if (GameManager.instance.itemcount[2] == 0)
+                {
+                    GameObject.Find("SelectedFlashbang").GetComponent<Image>().color = Color.gray;
+                    c_text[2].gameObject.SetActive(false);
+                }
             }
-            else if (GameManager.instance.itemcount[2] == 0)
-            {
-                GameObject.Find("Flashbang").GetComponent<Image>().color = Color.gray;
-                c_text[2].gameObject.SetActive(false);
-            }
-        }
-        else if (!GameManager.instance.itemcheck[2])
-        {
-            quickSlots[2].gameObject.SetActive(false);
-            c_text[2].gameObject.SetActive(false);
         }
 
-        if (GameManager.instance.itemcheck[3])        // ½É¹Ú±âÃß°¡
-            quickSlots[3].gameObject.SetActive(true);
-        else if (!GameManager.instance.itemcheck[3])
+        if (GameManager.instance.itemcheck[3])  // ½É¹Ú±âÃß°¡
         {
-            quickSlots[3].gameObject.SetActive(false);
+            quickSlots[3].gameObject.SetActive(true);
+
+            if(player.heartseeacivate == true)
+                selectedQuickSlots[3].SetActive(true);
         }
 
         if (GameManager.instance.itemcheck[4])       // ¹æÅºº¹
@@ -104,10 +106,9 @@ public class QuickSlots : MonoBehaviour
             else if (GameManager.instance.itemcount[4] == 0)
                 quickSlots[4].gameObject.SetActive(false);
         }
-        else if (!GameManager.instance.itemcheck[4])
+        else
         {
             quickSlots[4].gameObject.SetActive(false);
         }
-
     }
 }
