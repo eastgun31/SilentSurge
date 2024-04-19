@@ -9,10 +9,10 @@ public class Keypad : MonoBehaviour
     public GameObject keypad;
 
     [SerializeField] private Text answerInput;
-    private int maxNum = 6;
+    private int maxNum = 4;
 
     [SerializeField]
-    private string pw = "123456";
+    private string pw = "8324";
 
     
     private void Update()

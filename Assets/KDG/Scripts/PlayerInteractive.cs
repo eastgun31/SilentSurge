@@ -92,6 +92,21 @@ public class PlayerInteractive : MonoBehaviour
                 case 3:
                     enterPuzzle.HackingPuzzle();
                     break;
+                case 4:
+                    enterPuzzle.HintPuzzle1();
+                    break;
+                case 5:
+                    enterPuzzle.HintPuzzle2();  
+                    break;
+                case 6: 
+                    enterPuzzle.HintPuzzle3();
+                        break;
+                case 7:
+                        enterPuzzle.HintPuzzle4();
+                    break;
+                case 8:
+                    enterPuzzle.LastPuzzle();
+                    break;
             }
         }
         else if (other.CompareTag(interactiveList[3]) && Input.GetKeyDown(KeyCode.Space) && EnemyLevel.enemylv.LvStep != EnemyLevel.ELevel.level3)

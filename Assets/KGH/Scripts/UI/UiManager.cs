@@ -14,6 +14,8 @@ public class UiManager : MonoBehaviour
     public bool isPauseWin = false;
     public bool isGameOver = false;
 
+    public GameObject quickSlot;
+
     public GameObject pauseWin;
 
     public GameObject pipePuzFst;
@@ -134,6 +136,7 @@ public class UiManager : MonoBehaviour
     {
         TimeLimit();
         sinPuzzleFst.SetActive(true);
+        quickSlot.SetActive(false);
     }
     public void ActiveHackingFst()
     {
@@ -144,6 +147,7 @@ public class UiManager : MonoBehaviour
     public void CloseSinFst()
     {  
         sinPuzzleFst.SetActive(false);
+        quickSlot.SetActive(true);
     }
     public void CloseKeypadFst() 
     {

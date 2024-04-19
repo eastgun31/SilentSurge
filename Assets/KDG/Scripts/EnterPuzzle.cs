@@ -39,5 +39,60 @@ public class EnterPuzzle : MonoBehaviour
         else
             return;
     }
+    
+    public void HintPuzzle1()
+    {
+        if (GameManager.instance.puzzleLevel == 4 && level == 4)
+        {
+            GameManager.instance.nowpuzzle = true;
+            UiManager.instance.ActivePipeKeypadNumEight();
+        }
+        else
+            return;
+    }
+
+    public void HintPuzzle2()
+    {
+        if (GameManager.instance.puzzleLevel == 5 && level == 5)
+        {
+            GameManager.instance.nowpuzzle = true;
+            UiManager.instance.ActivePipeKeypadNumThree();
+        }
+        else
+            return;
+    }
+
+    public void HintPuzzle3()
+    {
+        if (GameManager.instance.puzzleLevel == 6 && level == 6)
+        {
+            GameManager.instance.nowpuzzle = true;
+            UiManager.instance.ActivePipeKeypadNumTwo();
+        }
+        else
+            return;
+    }
+
+    public void HintPuzzle4()
+    {
+        if (GameManager.instance.puzzleLevel == 7 && level == 7)
+        {
+            GameManager.instance.nowpuzzle = true;
+            UiManager.instance.ActivePipeKeypadNumFour();
+        }
+        else
+            return;
+    }
+
+    public void LastPuzzle()
+    {
+        if (GameManager.instance.puzzleLevel == 8 && level == 8)
+        {
+            GameManager.instance.nowpuzzle = true;
+            UiManager.instance.ActiveKeypad();
+        }
+        else
+            return;
+    }
 
 }
