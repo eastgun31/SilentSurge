@@ -27,6 +27,8 @@ public class Door_Parent : MonoBehaviour      // 문을 열고 닫는 스크립트
     public bool PlayerPos_0 = false;
     public bool PlayerPos_1 = false;
 
+    public int nDoor;
+
     public void oDoor()
     {
         switch (op)
