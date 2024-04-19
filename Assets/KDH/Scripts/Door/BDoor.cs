@@ -13,7 +13,7 @@ public class BDoor : MonoBehaviour
 
     private void Start()
     {
-        bD_openT = new WaitForSeconds(1.4f);
+        bD_openT = new WaitForSeconds(1.1f);
     }
 
     private void Update()
