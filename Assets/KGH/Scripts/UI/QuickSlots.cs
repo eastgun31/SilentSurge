@@ -12,9 +12,17 @@ public class QuickSlots : MonoBehaviour
 
 
     public Text[] i_count;
-    Player player;
+
+    Player playerInput;
+    public GameObject player;
+
     UseItem useItem;
 
+    private void Start()
+    {
+        playerInput = player.GetComponent<Player>();
+        useItem = player.GetComponent<UseItem>();
+    }
     private void Update()
     {
         AddSlots();
@@ -26,7 +34,7 @@ public class QuickSlots : MonoBehaviour
         {
             quickSlots[0].gameObject.SetActive(true);
 
-            if (player.handgunacivate == true)
+            if (playerInput.handgunacivate == true)
             {
                 selectedQuickSlots[0].gameObject.SetActive(true);
 
@@ -48,7 +56,7 @@ public class QuickSlots : MonoBehaviour
         {
             quickSlots[1].gameObject.SetActive(true);
 
-            if (player.coinacivate == true)
+            if(playerInput.coinacivate == true)
             {
                 selectedQuickSlots[1].gameObject.SetActive(true);
 
@@ -63,7 +71,7 @@ public class QuickSlots : MonoBehaviour
                     c_text[1].gameObject.SetActive(false);
                 }
             }
-            else 
+            else
                 selectedQuickSlots[1].gameObject.SetActive(false);
         }
 
@@ -71,7 +79,7 @@ public class QuickSlots : MonoBehaviour
         {
             quickSlots[2].gameObject.SetActive(true);
 
-            if (player.flashbangacivate == true)
+            if (playerInput.flashbangacivate == true)
             {
                 selectedQuickSlots[2].gameObject.SetActive(true);
 
@@ -94,7 +102,7 @@ public class QuickSlots : MonoBehaviour
         {
             quickSlots[3].gameObject.SetActive(true);
 
-            if (player.heartseeacivate == true)
+            if (playerInput.heartseeacivate == true)
             {
                 selectedQuickSlots[3].SetActive(true);
                 if(useItem.heartCanUse==true)
