@@ -59,4 +59,9 @@ public class GameOver : MonoBehaviour
     {
         SceneManager.LoadScene("Main");
     }
+    
+    public void GoToMain()
+    {
+        SceneManager.LoadScene("GameStart");
+    }
 }

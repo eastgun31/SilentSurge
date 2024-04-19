@@ -88,6 +88,7 @@ public class PipeManager : MonoBehaviour
 
     public void ClosePipe()
     {
+        UiManager.instance.isWin = false;
         canvas.gameObject.SetActive(false);
     }
 }
