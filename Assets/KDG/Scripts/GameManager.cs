@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         else
             instance = this;
 
+        enemyDown = false;
         lv3PlayerPos = new Vector3(0,0,0);
         itemcheck = new bool[5] { false, false, false, false, false };
         itemcount = new int[5] { 0, 0, 0, 0, 0 };   //±ÇÃÑ, ÄÚÀÎ, ¼¶±¤Åº, ½É¹ÚÃøÁ¤±â, ¹æÅºº¹
