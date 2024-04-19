@@ -16,11 +16,14 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
     WaitForSeconds cctv_elevel_reverse;             // enemylv »ó½Â ½Ã°£
     WaitForSeconds onReverse;                          // ÇÃ·¹ÀÌ¾î°¡ ³ª°¬´Ù µé¾î¿ÔÀ» ¶§ À¯¿¹½Ã°£
     WaitForSeconds wait;
+    WaitForSeconds homingReverse;
 
     Sight csight;
 
     public bool isDetecting;
     public bool canReverse;
+
+    public GameObject CCTV_info;
 
     public float rotationSpeed;           // Ä«¸Þ¶óÀÇ È¸Àü ¼Óµµ
     public float rotationAmount;        // ÇÑ ¹ø È¸ÀüÇÒ °¢µµ
@@ -41,10 +44,12 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
 
     void Start()
     {
+        CCTV_info.transform.rotation = this.transform.rotation;         // CCTV ÃÊ±â°ª
         startRotation = transform.rotation;     // ÇöÀç rotation °ªÀ» startRotation¿¡ ÀúÀåÇÔ
         StartCoroutine(AngleMove(2f));          // ÄÚ·çÆ¾ ½ÇÇà ÇÔ¼ö (µô·¹ÀÌ 2ÃÊ)
         cctv_elevel_reverse = new WaitForSeconds(5f);
         onReverse = new WaitForSeconds(15f);
+        homingReverse = new WaitForSeconds(3f);
         canReverse = true;
         csight = GetComponent<Sight>();
         StartCoroutine(CCTVStateCheck());
@@ -136,6 +141,11 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
     {
         yield return onReverse;
         canReverse = true;
+    }
+
+    IEnumerator CCTVHomingPlayer()
+    {
+        yield return homingReverse;
     }
 
 
