@@ -22,7 +22,7 @@ public class UseItem : MonoBehaviour
     private float throwpower2 = 4f;
     private string floor = "Floor";
     private string inroom = "InRoom";
-    //private bool canUse = true;
+    public bool heartCanUse = true;
 
     WaitForSeconds wait;
     Vector3 angle;
@@ -123,11 +123,12 @@ public class UseItem : MonoBehaviour
 
     public IEnumerator HeartSee()
     {
+        heartCanUse = false;
         heartseeCam.SetActive(true);
-
         yield return itemClass.heartseeDuration;
-
         heartseeCam.SetActive(false);
+        yield return itemClass.heartseeDuration;
+        heartCanUse = true;
     }
 
     //public void ThrowCoin()

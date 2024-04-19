@@ -279,6 +279,7 @@ public class Enemy : MonoBehaviour
         else if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
         {
             EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
+            GameManager.instance.lv3PlayerPos = sight.detectTarget.position;
         }
         else if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level3)
         {
