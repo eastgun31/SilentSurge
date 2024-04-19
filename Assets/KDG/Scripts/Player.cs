@@ -15,14 +15,12 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private float playerspeed;
-    [SerializeField]
-    private bool handgunacivate = false;
-    [SerializeField]
-    private bool coinacivate = false;
-    [SerializeField]
-    private bool flashbangacivate = false;
-    [SerializeField]
-    private bool heartseeacivate = false;    
+
+    public bool handgunacivate = false;
+    public bool coinacivate = false;
+    public bool flashbangacivate = false;
+    public bool heartseeacivate = false;    
+
     [SerializeField]
     private int armor;
     [SerializeField]
