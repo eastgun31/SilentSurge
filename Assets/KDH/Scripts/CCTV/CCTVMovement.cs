@@ -23,8 +23,6 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
     public bool isDetecting;
     public bool canReverse;
 
-    public GameObject CCTV_info;
-
     public float rotationSpeed;           // Ä«¸Þ¶óÀÇ È¸Àü ¼Óµµ
     public float rotationAmount;        // ÇÑ ¹ø È¸ÀüÇÒ °¢µµ
     public float rotationDuration;         // ÇÑ ¹ø È¸Àü´ç °É¸®´Â ½Ã°£
@@ -35,6 +33,7 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
     Quaternion endRotation;                    // Ä«¸Þ¶óÀÇ È¸ÀüÀÌ Á¾·áµÇ´Â ÁöÁ¡
 
     Quaternion formatStartRotation;        // ÃÊ±â È¸Àü°ªÀ¸·Î È¸ÀüÀÌ ½ÃÀÛµÇ´Â ÁöÁ¡
+    Quaternion CCTV_info;                        // ÃÊ±â È¸Àü°ª ÀúÀå
 
     //public float angleRange = 30f;
     //public float radius = 3f;
@@ -46,9 +45,9 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
 
     void Start()
     {
-        CCTV_info.transform.rotation = transform.rotation;         // CCTV ÃÊ±â°ª
+        CCTV_info = transform.rotation;         // CCTV ÃÊ±â°ª
         startRotation = transform.rotation;     // ÇöÀç rotation °ªÀ» startRotation¿¡ ÀúÀåÇÔ
-        StartCoroutine(AngleMove(2f));          // ÄÚ·çÆ¾ ½ÇÇà ÇÔ¼ö (µô·¹ÀÌ 2ÃÊ)
+        StartCoroutine(AngleMove());          // ÄÚ·çÆ¾ ½ÇÇà ÇÔ¼ö (µô·¹ÀÌ 2ÃÊ)
         cctv_elevel_reverse = new WaitForSeconds(5f);
         onReverse = new WaitForSeconds(15f);
         rotateFormat = new WaitForSeconds(1.5f);
@@ -60,7 +59,6 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
 
     void Update()
     {
-        CCTVHomingPlayer();
         if (c_state == cctv_state.detecting)
         {
             StartCoroutine(DetectCCTVLevel());
@@ -74,14 +72,9 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
             Quaternion homingRotation = Quaternion.LookRotation(csight.dir_T, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, homingRotation, 0.01f);
         }
-        else
-        {
-            StartCoroutine(CCTVFormatRotate());
-            StartCoroutine(AngleMove(2f));
-        }
     }
 
-    IEnumerator AngleMove(float delay)
+    IEnumerator AngleMove()
     {
         while(true)
         {
@@ -99,7 +92,7 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
                 yield return null;                                                    // È¸ÀüÀÌ ³¡³¯ ¶§ ±îÁö ¹Ýº¹ÇØÁÖ±â À§ÇØ¼­ return null
             }
             rotateClockwise = !rotateClockwise;                         // È¸ÀüÀÌ ³¡³µ´Ù¸é ClockwiseÀÇ bool °ªÀ» ¹Ý´ë·Î º¯È¯
-            yield return new WaitForSeconds(delay);                  // delayÀÇ ÃÊ°¡ Áö³ª¸é ÄÚ·çÆ¾ Àç½ÇÇà
+            yield return new WaitForSeconds(2f);                  // delayÀÇ ÃÊ°¡ Áö³ª¸é ÄÚ·çÆ¾ Àç½ÇÇà
         }
     }
 
@@ -148,7 +141,6 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
         else if(!csight.findT)
         {
             c_state = cctv_state.cidle;
-            StartCoroutine(CCTVFormatRotate());
         }
         yield return wait;
         StartCoroutine(CCTVStateCheck());
@@ -163,7 +155,7 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
     IEnumerator CCTVFormatRotate()
     {
         formatStartRotation = transform.rotation;
-        transform.rotation = Quaternion.Slerp(formatStartRotation, CCTV_info.transform.rotation, 0.1f);
+        transform.rotation = Quaternion.Slerp(formatStartRotation, CCTV_info, 0.1f);
         yield return rotateFormat;
     }
 
