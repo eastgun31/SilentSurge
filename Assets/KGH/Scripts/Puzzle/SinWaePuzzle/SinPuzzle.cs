@@ -120,6 +120,7 @@ public class SinPuzzle : MonoBehaviour
     }
     private void CloseSin()
     {
+        UiManager.instance.isWin = false;
         UiManager.instance.CloseSinFst();
     }
 }

@@ -16,17 +16,12 @@ public class BDoor : MonoBehaviour
         bD_openT = new WaitForSeconds(1.1f);
     }
 
-    private void Update()
+    public void BDoorOpen()
     {
-        BDoorOpen();
-    }
-
-    void BDoorOpen()
-    {
-        if(bD_Unlock)
-        {
-            StartCoroutine(Bdoor_opening());
-        }
+        Debug.Log("1231");
+        L_Bdoor.transform.Translate(0.02f, 0, 0);
+        R_Bdoor.transform.Translate(-0.02f, 0, 0);
+        //StartCoroutine(Bdoor_opening());
     }
 
     IEnumerator Bdoor_opening()
