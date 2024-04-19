@@ -70,6 +70,7 @@ public class Keypad : MonoBehaviour
 
     public void Closed()
     {
+        UiManager.instance.isWin = false;
         UiManager.instance.CloseKeypadFst();
     }
 }
