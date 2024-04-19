@@ -42,7 +42,7 @@ public class PlayerInteractive : MonoBehaviour
     {
         if (other.CompareTag(interactiveList[0]))
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 doort = other.GetComponentInParent<Door_Parent>();
                 handle = other.GetComponent<DoorHandle_1>();
@@ -81,7 +81,7 @@ public class PlayerInteractive : MonoBehaviour
             player.velocity = Vector3.zero;
             enterPuzzle = other.GetComponent<EnterPuzzle>();
 
-            switch(enterPuzzle.level)
+            switch (enterPuzzle.level)
             {
                 case 1:
                     enterPuzzle.PipePuzzle1();
@@ -94,7 +94,7 @@ public class PlayerInteractive : MonoBehaviour
                     break;
             }
         }
-        else if (other.CompareTag(interactiveList[3]) && Input.GetKeyDown(KeyCode.Space))
+        else if (other.CompareTag(interactiveList[3]) && Input.GetKeyDown(KeyCode.Space) && EnemyLevel.enemylv.LvStep != EnemyLevel.ELevel.level3)
         {
             cabinet = other.GetComponentInParent<Cabinet>();
             if (!GameManager.instance.isHide)
