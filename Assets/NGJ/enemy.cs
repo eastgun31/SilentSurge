@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
     string Shot = "Shot";
     string GunRuning= "GunRuning";
     string Death = "Death";
-
+    string Flash = "Flash";
     ////안쓰는변수
     //public bool m_triggered = false; // 트리거 충돌 여부를 나타냅니다.
     //public event Action<Player> PlayerSpotted; // 플레이어 발견 시 이벤트
@@ -221,7 +221,7 @@ public class Enemy : MonoBehaviour
             bulletRigid.velocity = bulletPos.forward * bulletSpeed;
 
             // 총알 발사 후 일정 시간을 기다린 후 다음 동작으로 진행합니다.
-            StartCoroutine(DelayTime(1f,cooltime.cool5sec)); // 1초 뒤에 다시 총 발사
+           StartCoroutine(DelayTime(1f,cooltime.cool5sec)); // 1초 뒤에 다시 총 발사
             enemyAnim.SetBool(GunRuning,true);
         }
     }
@@ -326,15 +326,39 @@ public class Enemy : MonoBehaviour
             Destroy(other.gameObject, 1f);
             if (indexcount != 99)
                 GameManager.instance.existEnemy[indexcount] = false;
-            gameObject.SetActive(false);
+
+          
+            enemyAnim.SetTrigger(Death);
+
+            StartCoroutine(DeactivateWithDelay());
         }
-        if (other.CompareTag("Flash"))
+        else if (other.CompareTag("Flash"))
         {
             m_enemy.isStopped = true;
             m_enemy.velocity = Vector3.zero;
-            StartCoroutine(DelayTime(2f, cooltime.cool5sec));
-            //m_enemy.isStopped = false;
+            enemyAnim.SetBool("Flash", true);
+            StartCoroutine(ReactivateMovementAfterDelay(2f));
         }
+    }
+
+    
+    private IEnumerator DeactivateWithDelay()
+    {
+        
+        yield return new WaitForSeconds(2f);
+
+       
+        gameObject.SetActive(false);
+    }
+
+   
+    private IEnumerator ReactivateMovementAfterDelay(float delay)
+    {
+     
+        yield return new WaitForSeconds(delay);
+
+        yield return new WaitForSeconds(1f); 
+        m_enemy.isStopped = false;
     }
 
     //IEnumerator ShootRoutine()
