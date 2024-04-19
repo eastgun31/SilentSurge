@@ -89,7 +89,7 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
             if (c_state == cctv_state.detecting && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
             {
                 canReverse = false;
-                GameManager.instance.playerchasing = true;
+                //GameManager.instance.playerchasing = true;
                 EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
                 Debug.Log("2");
                 StartCoroutine(CCTVReverseCheck());
@@ -98,16 +98,17 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
             if (c_state == cctv_state.detecting && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
             {
                 canReverse = false;
-                GameManager.instance.playerchasing = true;
+                //GameManager.instance.playerchasing = true;
                 EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
                 Debug.Log("3");
                 StartCoroutine(CCTVReverseCheck());
             }
             yield return cctv_elevel_reverse;
-            if (c_state == cctv_state.detecting && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level3 && GameManager.instance.playerchasing == true)
+            if (c_state == cctv_state.detecting && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level3)
             {
                 canReverse = false;
                 EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
+               // GameManager.instance.playerchasing = true;
                 Debug.Log("333");
                 GameManager.instance.lv3PlayerPos = csight.detectTarget.position;
                 StartCoroutine(CCTVReverseCheck());
@@ -126,7 +127,6 @@ public class CCTVMovement : MonoBehaviour       // CCTVÀÇ Å½Áö ¹Ý°æÀ» ÁÂ¿ì·Î ¹Ýº
         else if(!csight.findT)
         {
             c_state = cctv_state.cidle;
-            GameManager.instance.playerchasing = false;
         }
         yield return wait;
         StartCoroutine(CCTVStateCheck());
