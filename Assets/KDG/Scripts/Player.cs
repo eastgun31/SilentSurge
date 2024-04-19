@@ -19,7 +19,8 @@ public class Player : MonoBehaviour
     public bool handgunacivate = false;
     public bool coinacivate = false;
     public bool flashbangacivate = false;
-    public bool heartseeacivate = false;    
+    public bool heartseeacivate = false;
+    public bool heartseecool = true;
 
     [SerializeField]
     private int armor;
@@ -180,7 +181,7 @@ public class Player : MonoBehaviour
         if (itemGet[3])
         {
             ItemActivate4();
-            if (!handgunacivate && !coinacivate && !flashbangacivate && heartseeacivate && Input.GetMouseButtonDown(0))
+            if (!handgunacivate && !coinacivate && !flashbangacivate && heartseeacivate && Input.GetMouseButtonDown(0) && useItem.heartCanUse)
             {
                 StartCoroutine(useItem.HeartSee());
             }

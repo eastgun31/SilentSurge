@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditorInternal.VersionControl;
 using UnityEngine;
 
@@ -36,9 +37,9 @@ public class EnemyLevel : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.playerchasing == true)
+        if (GameManager.instance.playerchasing)
             StopCoroutine(LvDown());
-        else if(!lvDowning && LvStep != ELevel.level1)
+        else if(!GameManager.instance.playerchasing && !lvDowning && LvStep != ELevel.level1)
             StartCoroutine(LvDown()); 
 
         if(LvStep == ELevel.level3 && !addcomplete)
@@ -68,13 +69,19 @@ public class EnemyLevel : MonoBehaviour
         {
             LvStep = ELevel.level1;
         }
-        else if(!GameManager.instance.playerchasing && LvStep == ELevel.level3)
+        else if (!GameManager.instance.playerchasing && LvStep == ELevel.level3)
         {
             LvStep = ELevel.level2;
             addcomplete = false;
             lv3enemy.SetActive(false);
+            for (int i = 0; i < lv3enemy.transform.childCount; i++)
+            {
+                lv3enemy.transform.GetChild(i).gameObject.transform.position = lv3enemy.transform.position;
+            }
             enemyadd = false;
         }
+        else
+            yield break;
             
 
         lvDowning = false;
