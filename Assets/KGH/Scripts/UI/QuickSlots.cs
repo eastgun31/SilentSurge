@@ -10,10 +10,10 @@ public class QuickSlots : MonoBehaviour
     public GameObject[] selectedQuickSlots;
     public GameObject[] c_text;
 
-    public Image[] i_color;
 
     public Text[] i_count;
     Player player;
+    UseItem useItem;
 
     private void Update()
     {
@@ -22,8 +22,6 @@ public class QuickSlots : MonoBehaviour
 
     public void AddSlots()
     {
-        
-
         if (GameManager.instance.itemcheck[0])       //±«√— √ﬂ∞°
         {
             quickSlots[0].gameObject.SetActive(true);
@@ -34,6 +32,7 @@ public class QuickSlots : MonoBehaviour
 
                 if (GameManager.instance.itemcount[0] >= 1)
                 {
+                    GameObject.Find("SelectedHandGun").GetComponent<Image>().color = Color.white;
                     i_count[0].text = GameManager.instance.itemcount[0].ToString();
                 }
                 else if (GameManager.instance.itemcount[0] == 0)
@@ -55,6 +54,7 @@ public class QuickSlots : MonoBehaviour
 
                 if (GameManager.instance.itemcount[1] >= 1)
                 {
+                    GameObject.Find("SelectedCoin").GetComponent<Image>().color = Color.white;
                     i_count[1].text = GameManager.instance.itemcount[1].ToString();
                 }
                 else if (GameManager.instance.itemcount[1] == 0)
@@ -77,6 +77,7 @@ public class QuickSlots : MonoBehaviour
 
                 if (GameManager.instance.itemcount[2] >= 1)
                 {
+                    GameObject.Find("SelectedFlashbang").GetComponent<Image>().color = Color.white;
                     i_count[2].text = GameManager.instance.itemcount[2].ToString();
                 }
                 else if (GameManager.instance.itemcount[2] == 0)
@@ -93,8 +94,16 @@ public class QuickSlots : MonoBehaviour
         {
             quickSlots[3].gameObject.SetActive(true);
 
-            if(player.heartseeacivate == true)
+            if (player.heartseeacivate == true)
+            {
                 selectedQuickSlots[3].SetActive(true);
+                if(useItem.heartCanUse==true)
+                    GameObject.Find("SelectedHeart").GetComponent<Image>().color = Color.white;
+                else
+                    GameObject.Find("SelectedHeart").GetComponent<Image>().color = Color.gray;
+            }
+            else
+                selectedQuickSlots[3].SetActive(false);
         }
 
         if (GameManager.instance.itemcheck[4])       // πÊ≈∫∫π
