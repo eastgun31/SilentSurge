@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using static Door_Parent;
@@ -46,18 +47,51 @@ public class PlayerInteractive : MonoBehaviour
             {
                 doort = other.GetComponentInParent<Door_Parent>();
                 handle = other.GetComponent<DoorHandle_1>();
-                if (handle.Doorindex == 1)
+                if (doort.nDoor == 0)
                 {
-                    doort.PlayerPos_1 = true;
-                    doort.PlayerPos_0 = false;
+                    if (handle.Doorindex == 1)
+                    {
+                        doort.PlayerPos_1 = true;
+                        doort.PlayerPos_0 = false;
+                    }
+                    else if (handle.Doorindex == 0)
+                    {
+                        doort.PlayerPos_1 = false;
+                        doort.PlayerPos_0 = true;
+                    }
+                    doort.oDoor();
+
                 }
-                else if (handle.Doorindex == 0)
+                if (doort.nDoor == 1 && GameManager.instance.puzzleLevel == 3)
                 {
-                    doort.PlayerPos_1 = false;
-                    doort.PlayerPos_0 = true;
+                    if (handle.Doorindex == 1)
+                    {
+                        doort.PlayerPos_1 = true;
+                        doort.PlayerPos_0 = false;
+                    }
+                    else if (handle.Doorindex == 0)
+                    {
+                        doort.PlayerPos_1 = false;
+                        doort.PlayerPos_0 = true;
+                    }
+                    doort.oDoor();
                 }
-                doort.oDoor();
+                if (doort.nDoor == 2 && GameManager.instance.puzzleLevel == 4)
+                {
+                    if (handle.Doorindex == 1)
+                    {
+                        doort.PlayerPos_1 = true;
+                        doort.PlayerPos_0 = false;
+                    }
+                    else if (handle.Doorindex == 0)
+                    {
+                        doort.PlayerPos_1 = false;
+                        doort.PlayerPos_0 = true;
+                    }
+                    doort.oDoor();
+                }
             }
+           
         }
         else if (other.CompareTag(interactiveList[1]) && Input.GetKeyDown(KeyCode.Space))
         {
