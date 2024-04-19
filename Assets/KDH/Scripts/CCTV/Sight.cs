@@ -63,6 +63,7 @@ public class Sight : MonoBehaviour
 
     void Start()
     {
+        findT = false;
         GetComponent<Enemy>();
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
@@ -72,7 +73,7 @@ public class Sight : MonoBehaviour
 
     private void LateUpdate()
     {
-        //if(sightType == 1)
+        //if(sightType == 1)                           // enemy 일 Eo
             DrawDetectArea();
     }
 
@@ -87,7 +88,6 @@ public class Sight : MonoBehaviour
 
     void DetectTargets()
     {
-        findT = false;
         Collider[] targets = Physics.OverlapSphere(transform.position, radius, playerM);  // radius(반지름) 내 원 영역의 playerM 콜라이더를 가져옴
         for (int i = 0; i < targets.Length; i++)
         {
