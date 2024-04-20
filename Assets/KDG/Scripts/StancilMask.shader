@@ -13,6 +13,8 @@ Shader "Custom/StancilMask"
         ColorMask 0
         ZWrite off
         LOD 200
+        Cull Off		//! 컬링하지 않는다. 
+		ZTest Always
 
         Stencil
         {
