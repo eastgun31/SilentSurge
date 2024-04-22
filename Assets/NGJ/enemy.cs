@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
     private int enemyType;
     [SerializeField]
     private int indexcount;
+    private int naviindex;
     [SerializeField]
     private bool chasing;
     public bool hearSound;
@@ -75,9 +76,16 @@ public class Enemy : MonoBehaviour
         m_enemy = GetComponent<NavMeshAgent>();
         cooltime = new E_CoolTime();
         StartCoroutine(EnemyStateCheck());
-        indexcount = 0;
+        naviindex = 0;
         enemyAnim = GetComponent<Animator>();
         m_enemy.avoidancePriority = 50; // 벽을 피하기 위한 우선순위 설정
+
+    }
+
+    private void OnEnable()
+    {
+        if(indexcount == 98)
+            customDestinations[0] = GameManager.instance.lv3PlayerPos;
 
     }
 
@@ -100,9 +108,20 @@ public class Enemy : MonoBehaviour
             EnemyPatrol();
         }
 
-        if (enemyType == 3 && !GameManager.instance.enemyDown)
-            m_enemy.SetDestination(GameManager.instance.lv3PlayerPos);
+        if (indexcount == 98)
+            customDestinations[0] = GameManager.instance.lv3PlayerPos;
+    }
 
+    void CloseE_Move()
+    {
+        if (enemyType == 3 && !GameManager.instance.enemyDown && m_enemy.remainingDistance > 1f)
+        {
+            m_enemy.SetDestination(GameManager.instance.lv3PlayerPos);
+        }
+        else if (enemyType == 3 && !GameManager.instance.enemyDown && m_enemy.remainingDistance <= 1f)
+        {
+            state = EnemyState.patrolling;
+        }
     }
     
     public void ChaseSound(Vector3 position)
@@ -139,19 +158,19 @@ public class Enemy : MonoBehaviour
     }
     void EnemyPatrol()  //적순찰
         {
-        if (Vector3.Distance(transform.position, customDestinations[indexcount]) > 1f)
+        if (Vector3.Distance(transform.position, customDestinations[naviindex]) > 1f)
             {
             enemyAnim.SetBool(Walk, true);
             enemyAnim.SetBool(GunRuning, false); // 걷는 동안 총을 들지 않도록 설정
-            m_enemy.SetDestination(customDestinations[indexcount]);
+            m_enemy.SetDestination(customDestinations[naviindex]);
             }
-        else if (Vector3.Distance(transform.position, customDestinations[indexcount]) <= 1f)
+        else if (Vector3.Distance(transform.position, customDestinations[naviindex]) <= 1f)
             {
-            indexcount++;
+            naviindex++;
           
-            if (indexcount == customDestinations.Length)
-                indexcount = 0;
-            m_enemy.SetDestination(customDestinations[indexcount]);
+            if (naviindex == customDestinations.Length)
+                naviindex = 0;
+            m_enemy.SetDestination(customDestinations[naviindex]);
             }
         }
 
@@ -291,7 +310,6 @@ public class Enemy : MonoBehaviour
             state = EnemyState.patrolling;
         }
 
-    ;
         yield return cooltime.cool1sec;
         StartCoroutine(EnemyStateCheck());
     }
