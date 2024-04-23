@@ -90,40 +90,41 @@ public class Enemy : MonoBehaviour
     }
 
     void Update()
-    {
-        if (state == EnemyState.findtarget)
         {
+        if (state == EnemyState.findtarget)
+            {
             enemyAnim.SetBool(Walk, false);
             enemyAnim.SetBool(GunRuning, true);
             TargetChase();
-        }
+            // 적이 사라졌는지 확인
+            if (!sight.findT)
+                {
+                state = EnemyState.patrolling; // 적이 사라졌다면 다시 순찰 모드로 전환
+                }
+            }
         else if (state == EnemyState.hear)
-        {
-          
+            {
             ChaseSound(targetpos);
-        }
+            // 적이 다시 발견되었는지 확인
+            if (sight.findT)
+                {
+                state = EnemyState.findtarget; // 적을 발견했다면 탐지 모드로 전환
+                }
+            }
         else if (state == EnemyState.patrolling)
-        {
-            
+            {
             EnemyPatrol();
-        }
+            // 적이 발견되었는지 확인
+            if (sight.findT)
+                {
+                state = EnemyState.findtarget; // 적을 발견했다면 탐지 모드로 전환
+                }
+            }
 
         if (indexcount == 98)
             customDestinations[0] = GameManager.instance.lv3PlayerPos;
-    }
+        }
 
-    void CloseE_Move()
-    {
-        if (enemyType == 3 && !GameManager.instance.enemyDown && m_enemy.remainingDistance > 1f)
-        {
-            m_enemy.SetDestination(GameManager.instance.lv3PlayerPos);
-        }
-        else if (enemyType == 3 && !GameManager.instance.enemyDown && m_enemy.remainingDistance <= 1f)
-        {
-            state = EnemyState.patrolling;
-        }
-    }
-    
     public void ChaseSound(Vector3 position)
     {
         //Debug.Log("소리추적");
@@ -186,7 +187,7 @@ public class Enemy : MonoBehaviour
 
         if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 3f)
             {
-            enemyAnim.SetBool(Walk, false);
+        
             enemyAnim.SetBool(GunRuning, false);
             if (enemyType == 1 || enemyType == 2)
                 Shoot(sight.detectTarget.position); // 총을 발사합니다.
@@ -197,7 +198,7 @@ public class Enemy : MonoBehaviour
             }
         else if (Vector3.Distance(transform.position, sight.detectTarget.position) > 3f)
             {
-            enemyAnim.SetBool(Walk, false);
+         
             enemyAnim.SetBool(GunRuning,true);
             m_enemy.isStopped = false;
             }
@@ -231,6 +232,7 @@ public class Enemy : MonoBehaviour
            
             // 총알을 발사하는 동작을 수행합니다.
             transform.LookAt(pos);
+            
             GameObject bulletObject = Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
             Rigidbody bulletRigid = bulletObject.GetComponent<Rigidbody>();
             // 총알을 생성하고 설정한 방향으로 발사합니다.
@@ -320,17 +322,24 @@ public class Enemy : MonoBehaviour
 
         if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
         {
-          
+
+            enemyAnim.SetBool(GunRuning,true);
+            enemyAnim.SetBool(Walk,false);
             EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
         }
         else if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
         {
+
+            enemyAnim.SetBool(GunRuning, true);
+            enemyAnim.SetBool(Walk, false);
             EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
             GameManager.instance.lv3PlayerPos = sight.detectTarget.position;
         }
         else if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level3)
         {
-         
+
+            enemyAnim.SetBool(GunRuning, true);
+            enemyAnim.SetBool(Walk, false);
             EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
             GameManager.instance.lv3PlayerPos = sight.detectTarget.position;
         }
@@ -451,4 +460,31 @@ public class Enemy : MonoBehaviour
     //    }
     //}
 
-}
+   
+    // 업데이트 원본 
+    //void Update()
+    //    {
+    //    if (state == EnemyState.findtarget)
+    //        {
+    //        enemyAnim.SetBool(Walk, false);
+    //        enemyAnim.SetBool(GunRuning, true);
+    //        TargetChase();
+    //        }
+    //    else if (state == EnemyState.hear)
+    //        {
+
+    //        ChaseSound(targetpos);
+    //        }
+    //    else if (state == EnemyState.patrolling)
+    //        {
+
+    //        EnemyPatrol();
+    //        }
+
+    //    if (indexcount == 98)
+    //        customDestinations[0] = GameManager.instance.lv3PlayerPos;
+    //    }
+
+
+
+    }
