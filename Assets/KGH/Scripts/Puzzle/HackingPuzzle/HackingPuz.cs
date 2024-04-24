@@ -97,6 +97,7 @@ public class HackingPuz : MonoBehaviour
     }
     public void ColseHackingPuz()
     {
+        GameManager.instance.nowpuzzle = false;
         UiManager.instance.isWin = false;
         hacking.SetActive(false);
     }

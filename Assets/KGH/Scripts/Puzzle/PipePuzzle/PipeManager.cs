@@ -66,7 +66,7 @@ public class PipeManager : MonoBehaviour
         {
             UiManager.instance.isWin = true;
             
-            GameManager.instance.nowpuzzle = false;
+            
 
             if (GameManager.instance.puzzleLevel == 1)
             {
@@ -88,6 +88,7 @@ public class PipeManager : MonoBehaviour
 
     public void ClosePipe()
     {
+        GameManager.instance.nowpuzzle = false;
         UiManager.instance.isWin = false;
         canvas.gameObject.SetActive(false);
     }
