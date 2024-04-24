@@ -346,7 +346,7 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             Destroy(other.gameObject, 1f);
-            if (indexcount != 99)
+            if (indexcount != 99 || indexcount != 98)
                 GameManager.instance.existEnemy[indexcount] = false;
 
 
