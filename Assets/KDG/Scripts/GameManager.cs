@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     EnemyInfo enemyInfo = new EnemyInfo();
+    [SerializeField]
+    private int enemyQuarter;
 
     public int scenenum;
     public bool enemyDown;
@@ -18,8 +20,8 @@ public class GameManager : MonoBehaviour
     public bool canUse = true;
     public bool playerchasing = false;
     public bool[] existItem;
-    public bool[] existEnemy1 = new bool[8];
-    public bool[] existEnemy2 = new bool[12];
+    public bool[] existEnemy;
+    //public bool[] existEnemy2 = new bool[12];
     public bool isHide=false;
     public bool isDie=false;
     public Vector3 lv3PlayerPos;
@@ -34,8 +36,8 @@ public class GameManager : MonoBehaviour
         else
             instance = this;
 
-        //SecenCheck();
-        scenenum = SceneManager.GetActiveScene().buildIndex;
+        SecenCheck();
+        //scenenum = SceneManager.GetActiveScene().buildIndex;
         enemyDown = false;
         lv3PlayerPos = new Vector3(0,0,0);
         itemcheck = new bool[5] { false, false, false, false, false };
@@ -61,37 +63,45 @@ public class GameManager : MonoBehaviour
 
     public void EnemyActive1()
     {
-        if(GameManager.instance.scenenum == 1)
+        for (int i = 0; i < enemyQuarter; i++)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                existEnemy1[i] = true;
-            }
+            existEnemy[i] = true;
         }
-        if(GameManager.instance.scenenum == 2)
-        {
-            for (int i = 0; i < 6; i++)
-            {
-                existEnemy2[i] = true;
-            }
-        }
+        //if (GameManager.instance.scenenum == 1)
+        //{
+        //    for (int i = 0; i < enemyQuarter; i++)
+        //    {
+        //        existEnemy[i] = true;
+        //    }
+        //}
+        //if(GameManager.instance.scenenum == 2)
+        //{
+        //    for (int i = 0; i < enemyQuarter; i++)
+        //    {
+        //        existEnemy[i] = true;
+        //    }
+        //}
     }
     public void EnemyActive2()
     {
-        if(GameManager.instance.scenenum == 1)
+        for (int i = enemyQuarter; i < existEnemy.Length; i++)
         {
-            for (int i = 4; i < existEnemy1.Length; i++)
-            {
-                existEnemy1[i] = true;
-            }
+            existEnemy[i] = true;
         }
-        if (GameManager.instance.scenenum == 2)
-        {
-            for (int i = 6; i < existEnemy2.Length; i++)
-           {
-                existEnemy2[i] = true;
-            }
-        }
+        //if (GameManager.instance.scenenum == 1)
+        //{
+        //    for (int i = enemyQuarter; i < existEnemy.Length; i++)
+        //    {
+        //        existEnemy[i] = true;
+        //    }
+        //}
+        //if (GameManager.instance.scenenum == 2)
+        //{
+        //    for (int i = enemyQuarter; i < existEnemy.Length; i++)
+        //   {
+        //        existEnemy[i] = true;
+        //    }
+        //}
 
     }
 
@@ -103,13 +113,15 @@ public class GameManager : MonoBehaviour
             case 1:
                 Debug.Log("¾À1");
                 scenenum = 1;
-                existEnemy1 = new bool[8];
+                existEnemy = new bool[EnemyLevel.enemylv.Enemies.Length];
+                enemyQuarter = 4;
                 puzzleLevel = 1;
                 break;
             case 2:
                 Debug.Log("¾À2");
                 scenenum = 2;
-                existEnemy2 = new bool[12];
+                existEnemy = new bool[EnemyLevel.enemylv.Enemies.Length];
+                enemyQuarter = 6;
                 puzzleLevel = 2;
                 break;
             case 3:
@@ -119,7 +131,5 @@ public class GameManager : MonoBehaviour
                 scenenum = 4;
                 break;
         }
-
     }
-
 }

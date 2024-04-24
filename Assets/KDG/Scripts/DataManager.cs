@@ -17,8 +17,8 @@ public class SaveData
     public bool[] gmitemcheck = new bool[5];
     public int[] gmitemcount = new int[5]{0,0,0,0,0};
     public bool[] gmexistitem = new bool[5];
-    public bool[] gmexistenemy1 = new bool[8];
-    public bool[] gmexistenemy2 = new bool[12];
+    public bool[] gmexistenemy;
+    //public bool[] gmexistenemy2 = new bool[12];
     public int gmpuzzleLevel;
     public bool gmnowpuzzle;
     public bool gmcanUse;
@@ -61,6 +61,10 @@ public class DataManager : MonoBehaviour
         if (!Directory.Exists(SAVEDAT)) // 해당 경로가 존재하지 않는다면
             Directory.CreateDirectory(SAVEDAT); // 폴더 생성(경로 생성)
     }
+    private void Start()
+    {
+        saveData.gmexistenemy = new bool[GameManager.instance.existEnemy.Length];
+    }
 
     public void SaveData()
     {
@@ -84,20 +88,24 @@ public class DataManager : MonoBehaviour
         {
             saveData.gmexistitem[i] = GameManager.instance.existItem[i];
         }
-        if(GameManager.instance.scenenum ==1)
+        for (int i = 0; i < GameManager.instance.existEnemy.Length; i++)
         {
-            for (int i = 0; i < GameManager.instance.existEnemy1.Length; i++)
-            {
-                saveData.gmexistenemy1[i] = GameManager.instance.existEnemy1[i];
-            }
+            saveData.gmexistenemy[i] = GameManager.instance.existEnemy[i];
         }
-        else if (GameManager.instance.scenenum == 2)
-        {
-            for (int i = 0; i < GameManager.instance.existEnemy2.Length; i++)
-            {
-                saveData.gmexistenemy2[i] = GameManager.instance.existEnemy2[i];
-            }
-        }
+        //if (GameManager.instance.scenenum ==1)
+        //{
+        //    for (int i = 0; i < GameManager.instance.existEnemy.Length; i++)
+        //    {
+        //        saveData.gmexistenemy[i] = GameManager.instance.existEnemy[i];
+        //    }
+        //}
+        //else if (GameManager.instance.scenenum == 2)
+        //{
+        //    for (int i = 0; i < GameManager.instance.existEnemy.Length; i++)
+        //    {
+        //        saveData.gmexistenemy[i] = GameManager.instance.existEnemy[i];
+        //    }
+        //}
 
         saveData.gmpuzzleLevel = GameManager.instance.puzzleLevel;
         saveData.gmnowpuzzle = GameManager.instance.nowpuzzle;
@@ -143,20 +151,24 @@ public class DataManager : MonoBehaviour
             {
                 GameManager.instance.existItem[i] = saveData.gmexistitem[i];
             }
-            if (GameManager.instance.scenenum == 1)
+            for (int i = 0; i < saveData.gmexistenemy.Length; i++)
             {
-                for (int i = 0; i < saveData.gmexistenemy1.Length; i++)
-                {
-                    GameManager.instance.existEnemy1[i] = saveData.gmexistenemy1[i];
-                }
+                GameManager.instance.existEnemy[i] = saveData.gmexistenemy[i];
             }
-            else if (GameManager.instance.scenenum == 2)
-            {
-                for (int i = 0; i < saveData.gmexistenemy2.Length; i++)
-                {
-                     GameManager.instance.existEnemy2[i] = saveData.gmexistenemy2[i];
-                }
-            }
+            //if (GameManager.instance.scenenum == 1)
+            //{
+            //    for (int i = 0; i < saveData.gmexistenemy.Length; i++)
+            //    {
+            //        GameManager.instance.existEnemy[i] = saveData.gmexistenemy[i];
+            //    }
+            //}
+            //else if (GameManager.instance.scenenum == 2)
+            //{
+            //    for (int i = 0; i < saveData.gmexistenemy.Length; i++)
+            //    {
+            //         GameManager.instance.existEnemy[i] = saveData.gmexistenemy[i];
+            //    }
+            //}
 
             GameManager.instance.puzzleLevel = saveData.gmpuzzleLevel;
             GameManager.instance.nowpuzzle = saveData.gmnowpuzzle;

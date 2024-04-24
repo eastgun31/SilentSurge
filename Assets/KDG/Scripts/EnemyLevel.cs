@@ -88,13 +88,13 @@ public class EnemyLevel : MonoBehaviour
     {
         if(GameManager.instance.scenenum ==1)
         {
-            for (int i = 0; i < GameManager.instance.existEnemy1.Length; i++)
+            for (int i = 0; i < GameManager.instance.existEnemy.Length; i++)
             {
-                if (GameManager.instance.existEnemy1[i])
+                if (GameManager.instance.existEnemy[i])
                 {
                     Enemies[i].SetActive(true);
                 }
-                else if (!GameManager.instance.existEnemy1[i])
+                else if (!GameManager.instance.existEnemy[i])
                 {
                     Enemies[i].SetActive(false);
                 }
@@ -102,13 +102,13 @@ public class EnemyLevel : MonoBehaviour
         }
         else if(GameManager.instance.scenenum ==2)
         {
-            for (int i = 0; i < GameManager.instance.existEnemy2.Length; i++)
+            for (int i = 0; i < GameManager.instance.existEnemy.Length; i++)
             {
-                if (GameManager.instance.existEnemy2[i])
+                if (GameManager.instance.existEnemy[i])
                 {
                     Enemies[i].SetActive(true);
                 }
-                else if (!GameManager.instance.existEnemy2[i])
+                else if (!GameManager.instance.existEnemy[i])
                 {
                     Enemies[i].SetActive(false);
                 }
