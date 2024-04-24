@@ -1130,6 +1130,7 @@ Transform:
   m_Children:
   - {fileID: 1367648246}
   - {fileID: 1939702823}
+  - {fileID: 302412533}
   m_Father: {fileID: 6573965289426386349}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &38342438
@@ -1509,18 +1510,6 @@ MonoBehaviour:
       - m_Target: {fileID: 537628222}
         m_TargetAssemblyTypeName: EnemyLevel, Assembly-CSharp
         m_MethodName: ODaeGi2
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2082885655}
-        m_TargetAssemblyTypeName: BDoor, Assembly-CSharp
-        m_MethodName: BDoorOpen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7606,12 +7595,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302412531}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.55, y: 1.41, z: 23.66}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.3769164, y: 1.409996, z: 7.3333297}
+  m_LocalScale: {x: 0.8333334, y: 1, z: 0.8333334}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 38342437}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &302412534
 MonoBehaviour:
@@ -26794,7 +26783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4352343797494699493, guid: d2c16a034e5697c488fa9dbcc411503c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6332222485164643781, guid: d2c16a034e5697c488fa9dbcc411503c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -35596,6 +35585,7 @@ MonoBehaviour:
   existItem: 
   existEnemy: 
   isHide: 0
+  isDie: 0
   lv3PlayerPos: {x: 0, y: 0, z: 0}
   Items:
   - {fileID: 1214412385}
@@ -112048,7 +112038,6 @@ SceneRoots:
   - {fileID: 558754426}
   - {fileID: 1793164137}
   - {fileID: 558350035}
-  - {fileID: 302412533}
   - {fileID: 1995510271}
   - {fileID: 573084187}
   - {fileID: 628151794}

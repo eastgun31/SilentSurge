@@ -105,7 +105,7 @@ public class Sight : MonoBehaviour
                         findT = false;
                         GameManager.instance.playerchasing = false;
                     }
-                    else
+                    else if(!GameManager.instance.isHide && !Physics.Raycast(transform.position, dir_T,disT, etcM))
                     {
                         playerpos = dir_T;
                         findT = true;
