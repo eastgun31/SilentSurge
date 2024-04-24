@@ -13,12 +13,12 @@ public class GameManager : MonoBehaviour
     public bool enemyDown;
     public bool[] itemcheck;
     public int[] itemcount;
-    public int puzzleLevel = 1;
+    public int puzzleLevel;
     public bool nowpuzzle = false;
     public bool canUse = true;
     public bool playerchasing = false;
     public bool[] existItem;
-    public bool[] existEnemy1 = new bool[9];
+    public bool[] existEnemy1 = new bool[8];
     public bool[] existEnemy2 = new bool[12];
     public bool isHide=false;
     public bool isDie=false;
@@ -103,11 +103,13 @@ public class GameManager : MonoBehaviour
                 Debug.Log("¾À1");
                 scenenum = 1;
                 existEnemy1 = new bool[9];
+                puzzleLevel = 1;
                 break;
             case 2:
                 Debug.Log("¾À2");
                 scenenum = 2;
                 existEnemy2 = new bool[12];
+                puzzleLevel = 2;
                 break;
             case 3:
                 scenenum = 3;

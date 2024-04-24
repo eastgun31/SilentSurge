@@ -17,7 +17,7 @@ public class SaveData
     public bool[] gmitemcheck = new bool[5];
     public int[] gmitemcount = new int[5]{0,0,0,0,0};
     public bool[] gmexistitem = new bool[5];
-    public bool[] gmexistenemy1 = new bool[9];
+    public bool[] gmexistenemy1 = new bool[8];
     public bool[] gmexistenemy2 = new bool[12];
     public int gmpuzzleLevel;
     public bool gmnowpuzzle;
