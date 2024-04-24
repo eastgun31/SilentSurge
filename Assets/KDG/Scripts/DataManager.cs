@@ -53,7 +53,7 @@ public class DataManager : MonoBehaviour
         else
             instance = this;
 
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
 
         SAVEDAT = Application.dataPath + "/Save/";
 
@@ -107,6 +107,7 @@ public class DataManager : MonoBehaviour
             string loadJson = File.ReadAllText(filePath);
             saveData = JsonUtility.FromJson<SaveData>(loadJson);
 
+            GameManager.instance.isDie = false;
             playerobj = GameObject.FindWithTag("Player");            
             player = FindObjectOfType<Player>();
             playerobj.SetActive(false);
