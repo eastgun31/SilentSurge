@@ -17,7 +17,8 @@ public class SaveData
     public bool[] gmitemcheck = new bool[5];
     public int[] gmitemcount = new int[5]{0,0,0,0,0};
     public bool[] gmexistitem = new bool[5];
-    public bool[] gmexistenemy = new bool[12];
+    public bool[] gmexistenemy1 = new bool[9];
+    public bool[] gmexistenemy2 = new bool[12];
     public int gmpuzzleLevel;
     public bool gmnowpuzzle;
     public bool gmcanUse;
@@ -83,10 +84,21 @@ public class DataManager : MonoBehaviour
         {
             saveData.gmexistitem[i] = GameManager.instance.existItem[i];
         }
-        for (int i = 0; i < GameManager.instance.existEnemy.Length; i++)
+        if(GameManager.instance.scenenum ==1)
         {
-            saveData.gmexistenemy[i] = GameManager.instance.existEnemy[i];
+            for (int i = 0; i < GameManager.instance.existEnemy1.Length; i++)
+            {
+                saveData.gmexistenemy1[i] = GameManager.instance.existEnemy1[i];
+            }
         }
+        else if (GameManager.instance.scenenum == 2)
+        {
+            for (int i = 0; i < GameManager.instance.existEnemy2.Length; i++)
+            {
+                saveData.gmexistenemy2[i] = GameManager.instance.existEnemy2[i];
+            }
+        }
+
         saveData.gmpuzzleLevel = GameManager.instance.puzzleLevel;
         saveData.gmnowpuzzle = GameManager.instance.nowpuzzle;
         saveData.gmcanUse = GameManager.instance.canUse;
@@ -131,10 +143,21 @@ public class DataManager : MonoBehaviour
             {
                 GameManager.instance.existItem[i] = saveData.gmexistitem[i];
             }
-            for (int i = 0; i < saveData.gmexistenemy.Length; i++)
+            if (GameManager.instance.scenenum == 1)
             {
-                GameManager.instance.existEnemy[i] = saveData.gmexistenemy[i];
+                for (int i = 0; i < saveData.gmexistenemy1.Length; i++)
+                {
+                    GameManager.instance.existEnemy1[i] = saveData.gmexistenemy1[i];
+                }
             }
+            else if (GameManager.instance.scenenum == 2)
+            {
+                for (int i = 0; i < saveData.gmexistenemy2.Length; i++)
+                {
+                     GameManager.instance.existEnemy2[i] = saveData.gmexistenemy2[i];
+                }
+            }
+
             GameManager.instance.puzzleLevel = saveData.gmpuzzleLevel;
             GameManager.instance.nowpuzzle = saveData.gmnowpuzzle;
             GameManager.instance.canUse = saveData.gmcanUse;
