@@ -7802,6 +7802,7 @@ MonoBehaviour:
   - {fileID: 943142360}
   - {fileID: 61492581}
   - {fileID: 15305382}
+  ansCode: []
 --- !u!1 &465221985
 GameObject:
   m_ObjectHideFlags: 0
@@ -22322,7 +22323,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keypad: {fileID: 1568596212}
   answerInput: {fileID: 109029691}
-  pw: 123456
   door: {fileID: 0}
 --- !u!1 &1409487734
 GameObject:
@@ -22353,6 +22353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e87a04ed04c564b90a2dd0e4bfb543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOver: {fileID: 0}
   scenenum: 0
   enemyDown: 0
   itemcheck: 0000000000
@@ -22362,10 +22363,12 @@ MonoBehaviour:
   canUse: 1
   playerchasing: 0
   existItem: 
-  existEnemy1: 000000000000000000
-  existEnemy2: 000000000000000000000000
+  existEnemy: 
   isHide: 0
   isDie: 0
+  playerviewR: 0
+  playerviewA: 0
+  enemyQuater: 0
   lv3PlayerPos: {x: 0, y: 0, z: 0}
   Items: []
 --- !u!4 &1409487736
@@ -31757,6 +31760,10 @@ MonoBehaviour:
   points: 260
   amplitude: 70
   frequency: 0.009
+  correctAmlitude: 0
+  correctFrequance: 0
+  isAmplitude: 0
+  isFrequance: 0
   xlimit: {x: -600, y: 600}
   speed: 1
   success: {fileID: 1957869437}

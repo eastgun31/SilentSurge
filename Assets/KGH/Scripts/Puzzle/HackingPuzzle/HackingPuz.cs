@@ -12,7 +12,8 @@ public class HackingPuz : MonoBehaviour
     public Text[] inputTexts; 
     private int currentInputIndex = 0; 
 
-    private string[] passwords; 
+    private string[] passwords;
+    public Text[] ansCode;
 
     
 
@@ -20,10 +21,29 @@ public class HackingPuz : MonoBehaviour
     {
         // 패스워드 설정
         passwords = new string[inputTexts.Length];
-        passwords[0] = "5V";
-        passwords[1] = "RB";
-        passwords[2] = "Z5";
-        passwords[3] = "4K";
+        if(GameManager.instance.scenenum ==1 )
+        {
+            ansCode[0].text = "5V";
+            ansCode[1].text = "RB";
+            ansCode[2].text = "Z5";
+            ansCode[3].text = "4K";
+            passwords[0] = "5V";
+            passwords[1] = "RB";
+            passwords[2] = "Z5";
+            passwords[3] = "4K";
+        }
+        if(GameManager.instance.scenenum ==2 )
+        {
+            ansCode[0].text = "9H";
+            ansCode[1].text = "S1";
+            ansCode[2].text = "FF";
+            ansCode[3].text = "3D";
+            passwords[0] = "9H";
+            passwords[1] = "S1";
+            passwords[2] = "FF";
+            passwords[3] = "3D";
+        }
+        
 
         // 첫 번째 텍스트 필드에 초기값 설정
         inputTexts[currentInputIndex].text = "";

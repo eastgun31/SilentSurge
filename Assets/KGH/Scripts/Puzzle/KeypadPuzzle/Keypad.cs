@@ -11,8 +11,7 @@ public class Keypad : MonoBehaviour
     [SerializeField] private Text answerInput;
     private int maxNum = 4;
 
-    [SerializeField]
-    private string pw = "8324";
+    private string pw;
 
     public GameObject door;
     BDoor bDoor;
@@ -20,6 +19,11 @@ public class Keypad : MonoBehaviour
     private void Start()
     {
         bDoor = door.GetComponent<BDoor>();
+
+        if (GameManager.instance.scenenum == 1)
+            pw = "8324";
+        if (GameManager.instance.scenenum == 2)
+            pw = "9653";
     }
     public void Number(int number) 
     {
