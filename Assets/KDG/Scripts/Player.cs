@@ -74,8 +74,13 @@ public class Player : MonoBehaviour
         else if (GameManager.instance.isHide)
         {
             state = PlayerState.hide;
+        }        
+        else if (GameManager.instance.isDie)
+        {
+            state = PlayerState.die;
+            rigid.velocity = Vector3.zero;
         }
-        else if (!GameManager.instance.nowpuzzle || !GameManager.instance.isHide)
+        else if (!GameManager.instance.nowpuzzle || !GameManager.instance.isHide || !GameManager.instance.isDie)
         {
             state = PlayerState.idle;
             //playerspeed = 2.5f;
@@ -280,6 +285,7 @@ public class Player : MonoBehaviour
 
     IEnumerator PlayerDie()
     {
+        GameManager.instance.isDie = true;
         playerAnim.SetTrigger("Die");
         yield return new WaitForSeconds(3f);
         Debug.Log("플레이어 죽음");
