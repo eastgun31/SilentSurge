@@ -5008,6 +5008,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1793164136}
+    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GameOver
+      objectReference: {fileID: 0}
+    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3358342213177724985, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -5521,6 +5549,50 @@ MonoBehaviour:
   totalPipes: 0
   correctPipes: 0
   success: {fileID: 1259681089}
+--- !u!1 &240708911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 240708913}
+  - component: {fileID: 240708912}
+  m_Layer: 0
+  m_Name: LoadScene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &240708912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240708911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983c5e53cfe1581459b3bece7f7234f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &240708913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240708911}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &241920352
 GameObject:
   m_ObjectHideFlags: 0
@@ -12612,6 +12684,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   playerobj: {fileID: 1820361129}
+  gameOver: {fileID: 1092403934}
   savename: /save
 --- !u!4 &558350035
 Transform:
@@ -15430,9 +15503,17 @@ MonoBehaviour:
   points: 260
   amplitude: 70
   frequency: 0.009000001
+  correctAmlitude: 0
+  correctFrequance: 0
+  isAmplitude: 0
+  isFrequance: 0
   xlimit: {x: -600, y: 600}
   speed: 1
   success: {fileID: 1968517715}
+  cctv1: {fileID: 0}
+  fcctv1: {fileID: 0}
+  cctv2: {fileID: 0}
+  fcctv2: {fileID: 0}
 --- !u!120 &723158497
 LineRenderer:
   serializedVersion: 2
@@ -20003,6 +20084,7 @@ MonoBehaviour:
   keypad: {fileID: 1857841209}
   answerInput: {fileID: 46316347}
   pw: 8324
+  door: {fileID: 0}
 --- !u!1 &981397088
 GameObject:
   m_ObjectHideFlags: 0
@@ -20344,9 +20426,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1092403936}
-        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
-        m_MethodName: Restart
+      - m_Target: {fileID: 240708912}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: LoadStage1_hard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30621,7 +30703,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1506318954}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 558350034}
+        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
+        m_MethodName: LoadData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1506318954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34780,7 +34874,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e246d416dec43ff42b701324c157a18c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -35982,6 +36076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e87a04ed04c564b90a2dd0e4bfb543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOver: {fileID: 1092403934}
   scenenum: 0
   enemyDown: 0
   itemcheck: 0000000000
@@ -38851,7 +38946,12 @@ MonoBehaviour:
   - {fileID: 790266400}
   - {fileID: 1084910972}
   - {fileID: 2131027190}
-  i_color: []
+  i_color:
+  - {fileID: 1940923002}
+  - {fileID: 2002895745}
+  - {fileID: 955028301}
+  - {fileID: 1135512155}
+  - {fileID: 1891704827}
   boundary: {fileID: 1746136639}
   player: {fileID: 1820361129}
 --- !u!1 &1939170569
@@ -112052,3 +112152,4 @@ SceneRoots:
   - {fileID: 1994020426}
   - {fileID: 54208924}
   - {fileID: 868903278}
+  - {fileID: 240708913}

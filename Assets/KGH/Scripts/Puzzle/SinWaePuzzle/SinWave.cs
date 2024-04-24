@@ -23,6 +23,8 @@ public class SinWave : MonoBehaviour
     {
         if (GameManager.instance.scenenum == 1)
             Normal();
+        if (GameManager.instance.scenenum == 2)
+            Hard();
     }
     private void Wave()
     {
@@ -47,6 +49,12 @@ public class SinWave : MonoBehaviour
         amplitude = 100f;
         frequency = 0.004f;
         Wave();
+    }
+    private void Hard()
+    {
+        amplitude = 90;
+        frequency = 0.005f;
+        Wave(); 
     }
 
 }

@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     EnemyInfo enemyInfo = new EnemyInfo();
 
+    public GameObject gameOver;
+
     public int scenenum;
     public bool enemyDown;
     public bool[] itemcheck;
@@ -22,6 +24,7 @@ public class GameManager : MonoBehaviour
     public bool[] existEnemy2 = new bool[12];
     public bool isHide=false;
     public bool isDie=false;
+    
     public Vector3 lv3PlayerPos;
 
     public GameObject[] Items;
@@ -119,6 +122,11 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
+    }
+
+    public void GameOver()
+    {
+        gameOver.SetActive(true);
     }
 
 }
