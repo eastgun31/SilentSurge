@@ -115,11 +115,12 @@ public class SinPuzzle : MonoBehaviour
     private void PuzlvUp()
     {
         GameManager.instance.puzzleLevel += 1;
-        GameManager.instance.nowpuzzle = false;
+        
         DataManager.instance.SaveData();
     }
     private void CloseSin()
     {
+        GameManager.instance.nowpuzzle = false;
         UiManager.instance.isWin = false;
         UiManager.instance.CloseSinFst();
     }
