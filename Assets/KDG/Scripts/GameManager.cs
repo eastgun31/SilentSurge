@@ -34,7 +34,8 @@ public class GameManager : MonoBehaviour
         else
             instance = this;
 
-        SecenCheck();
+        //SecenCheck();
+        scenenum = SceneManager.GetActiveScene().buildIndex;
         enemyDown = false;
         lv3PlayerPos = new Vector3(0,0,0);
         itemcheck = new bool[5] { false, false, false, false, false };
