@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
             case 1:
                 Debug.Log("¾À1");
                 scenenum = 1;
-                existEnemy1 = new bool[9];
+                existEnemy1 = new bool[8];
                 puzzleLevel = 1;
                 break;
             case 2:
