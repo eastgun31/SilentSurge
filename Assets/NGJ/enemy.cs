@@ -347,7 +347,13 @@ public class Enemy : MonoBehaviour
         {
             Destroy(other.gameObject, 1f);
             if (indexcount != 99 || indexcount != 98)
-                GameManager.instance.existEnemy[indexcount] = false;
+            {
+                if(GameManager.instance.scenenum == 1)
+                    GameManager.instance.existEnemy1[indexcount] = false;
+                else if(GameManager.instance.scenenum == 2)
+                    GameManager.instance.existEnemy2[indexcount] = false;
+            }
+                
 
 
             enemyAnim.SetTrigger(Death);
