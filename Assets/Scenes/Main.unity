@@ -1130,6 +1130,7 @@ Transform:
   m_Children:
   - {fileID: 1367648246}
   - {fileID: 1939702823}
+  - {fileID: 302412533}
   m_Father: {fileID: 6573965289426386349}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &38342438
@@ -1146,7 +1147,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   L_Bdoor: {fileID: 1367648245}
   R_Bdoor: {fileID: 1939702822}
-  bD_Unlock: 0
 --- !u!1 &45459429
 GameObject:
   m_ObjectHideFlags: 0
@@ -1510,18 +1510,6 @@ MonoBehaviour:
       - m_Target: {fileID: 537628222}
         m_TargetAssemblyTypeName: EnemyLevel, Assembly-CSharp
         m_MethodName: ODaeGi2
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2082885655}
-        m_TargetAssemblyTypeName: BDoor, Assembly-CSharp
-        m_MethodName: BDoorOpen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7119,6 +7107,7 @@ GameObject:
   - component: {fileID: 293540114}
   - component: {fileID: 293540113}
   - component: {fileID: 293540112}
+  - component: {fileID: 293540115}
   m_Layer: 0
   m_Name: scifi-door-metal_L
   m_TagString: Untagged
@@ -7136,7 +7125,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.3759558, y: 0, z: 8.033332}
-  m_LocalScale: {x: 1.7, y: 1.2, z: 1}
+  m_LocalScale: {x: 1.8, y: 1.2, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1523232729}
@@ -7214,6 +7203,114 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 293540110}
   m_Mesh: {fileID: 4300002, guid: b958830829601224e860571f8892616f, type: 3}
+--- !u!114 &293540115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293540110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0390bd8b8ffd640b34fe25065ff1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateType: 0
+  isSpeedBased: 0
+  hasOnStart: 0
+  hasOnPlay: 0
+  hasOnUpdate: 0
+  hasOnStepComplete: 0
+  hasOnComplete: 0
+  hasOnTweenCreated: 0
+  hasOnRewind: 0
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  onUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  onStepComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onTweenCreated:
+    m_PersistentCalls:
+      m_Calls: []
+  onRewind:
+    m_PersistentCalls:
+      m_Calls: []
+  targetIsSelf: 1
+  targetGO: {fileID: 0}
+  tweenTargetIsTargetGO: 1
+  delay: 0
+  duration: 1
+  easeType: 3
+  easeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  loopType: 0
+  loops: 1
+  id: 
+  isRelative: 0
+  isFrom: 0
+  isIndependentUpdate: 0
+  autoKill: 0
+  autoGenerate: 1
+  isActive: 1
+  isValid: 1
+  target: {fileID: 293540111}
+  animationType: 2
+  targetType: 11
+  forcedTargetType: 0
+  autoPlay: 0
+  useTargetAsV3: 0
+  endValueFloat: 0
+  endValueV3: {x: 4.875956, y: 0, z: 8.033332}
+  endValueV2: {x: 0, y: 0}
+  endValueColor: {r: 1, g: 1, b: 1, a: 1}
+  endValueString: 
+  endValueRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  endValueTransform: {fileID: 0}
+  optionalBool0: 0
+  optionalBool1: 0
+  optionalFloat0: 0
+  optionalInt0: 0
+  optionalRotationMode: 0
+  optionalScrambleMode: 0
+  optionalShakeRandomnessMode: 0
+  optionalString: 
 --- !u!1 &295302268
 GameObject:
   m_ObjectHideFlags: 0
@@ -7498,12 +7595,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302412531}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.55, y: 1.41, z: 23.66}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.3769164, y: 1.409996, z: 7.3333297}
+  m_LocalScale: {x: 0.8333334, y: 1, z: 0.8333334}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 38342437}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &302412534
 MonoBehaviour:
@@ -8235,6 +8332,7 @@ GameObject:
   - component: {fileID: 356046049}
   - component: {fileID: 356046048}
   - component: {fileID: 356046047}
+  - component: {fileID: 356046050}
   m_Layer: 0
   m_Name: scifi-door-metal_L
   m_TagString: Untagged
@@ -8252,7 +8350,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.3759558, y: 0, z: 8.033332}
-  m_LocalScale: {x: 1.7, y: 1.2, z: 1}
+  m_LocalScale: {x: 1.8, y: 1.2, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2082885654}
@@ -8330,6 +8428,114 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356046045}
   m_Mesh: {fileID: 4300002, guid: b958830829601224e860571f8892616f, type: 3}
+--- !u!114 &356046050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356046045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0390bd8b8ffd640b34fe25065ff1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateType: 0
+  isSpeedBased: 0
+  hasOnStart: 0
+  hasOnPlay: 0
+  hasOnUpdate: 0
+  hasOnStepComplete: 0
+  hasOnComplete: 0
+  hasOnTweenCreated: 0
+  hasOnRewind: 0
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  onUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  onStepComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onTweenCreated:
+    m_PersistentCalls:
+      m_Calls: []
+  onRewind:
+    m_PersistentCalls:
+      m_Calls: []
+  targetIsSelf: 1
+  targetGO: {fileID: 0}
+  tweenTargetIsTargetGO: 1
+  delay: 0
+  duration: 1
+  easeType: 3
+  easeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  loopType: 0
+  loops: 1
+  id: 
+  isRelative: 0
+  isFrom: 0
+  isIndependentUpdate: 0
+  autoKill: 0
+  autoGenerate: 1
+  isActive: 1
+  isValid: 1
+  target: {fileID: 356046046}
+  animationType: 2
+  targetType: 11
+  forcedTargetType: 0
+  autoPlay: 0
+  useTargetAsV3: 0
+  endValueFloat: 0
+  endValueV3: {x: 4.875956, y: 0, z: 8.033332}
+  endValueV2: {x: 0, y: 0}
+  endValueColor: {r: 1, g: 1, b: 1, a: 1}
+  endValueString: 
+  endValueRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  endValueTransform: {fileID: 0}
+  optionalBool0: 0
+  optionalBool1: 0
+  optionalFloat0: 0
+  optionalInt0: 0
+  optionalRotationMode: 0
+  optionalScrambleMode: 0
+  optionalShakeRandomnessMode: 0
+  optionalString: 
 --- !u!1 &361439912
 GameObject:
   m_ObjectHideFlags: 0
@@ -26737,7 +26943,7 @@ Transform:
   m_GameObject: {fileID: 1367648245}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.3759558, y: 0, z: 8.033332}
+  m_LocalPosition: {x: 3.3759563, y: 0, z: 8.033333}
   m_LocalScale: {x: 1.7, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29056,6 +29262,7 @@ GameObject:
   - component: {fileID: 1460577978}
   - component: {fileID: 1460577977}
   - component: {fileID: 1460577976}
+  - component: {fileID: 1460577979}
   m_Layer: 0
   m_Name: scifi-door-metal_R
   m_TagString: Untagged
@@ -29073,7 +29280,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.3759558, y: 0, z: 8.033332}
-  m_LocalScale: {x: 1.7, y: 1.2, z: 1}
+  m_LocalScale: {x: 1.8, y: 1.2, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2082885654}
@@ -29150,6 +29357,114 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460577974}
   m_Mesh: {fileID: 4300004, guid: b958830829601224e860571f8892616f, type: 3}
+--- !u!114 &1460577979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460577974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0390bd8b8ffd640b34fe25065ff1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateType: 0
+  isSpeedBased: 0
+  hasOnStart: 0
+  hasOnPlay: 0
+  hasOnUpdate: 0
+  hasOnStepComplete: 0
+  hasOnComplete: 0
+  hasOnTweenCreated: 0
+  hasOnRewind: 0
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  onUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  onStepComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onTweenCreated:
+    m_PersistentCalls:
+      m_Calls: []
+  onRewind:
+    m_PersistentCalls:
+      m_Calls: []
+  targetIsSelf: 1
+  targetGO: {fileID: 0}
+  tweenTargetIsTargetGO: 1
+  delay: 0
+  duration: 1
+  easeType: 3
+  easeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  loopType: 0
+  loops: 1
+  id: 
+  isRelative: 0
+  isFrom: 0
+  isIndependentUpdate: 0
+  autoKill: 0
+  autoGenerate: 1
+  isActive: 1
+  isValid: 1
+  target: {fileID: 1460577975}
+  animationType: 2
+  targetType: 11
+  forcedTargetType: 0
+  autoPlay: 0
+  useTargetAsV3: 0
+  endValueFloat: 0
+  endValueV3: {x: 1.875956, y: 0, z: 8.033332}
+  endValueV2: {x: 0, y: 0}
+  endValueColor: {r: 1, g: 1, b: 1, a: 1}
+  endValueString: 
+  endValueRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  endValueTransform: {fileID: 0}
+  optionalBool0: 0
+  optionalBool1: 0
+  optionalFloat0: 0
+  optionalInt0: 0
+  optionalRotationMode: 0
+  optionalScrambleMode: 0
+  optionalShakeRandomnessMode: 0
+  optionalString: 
 --- !u!1 &1470217003
 GameObject:
   m_ObjectHideFlags: 0
@@ -30513,7 +30828,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1523232729
 Transform:
   m_ObjectHideFlags: 0
@@ -30523,7 +30838,7 @@ Transform:
   m_GameObject: {fileID: 1523232728}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -47.499996, y: 0, z: -42}
+  m_LocalPosition: {x: -47.499996, y: 0, z: -41.48}
   m_LocalScale: {x: 1.1999999, y: 1, z: 1.1999999}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -30545,7 +30860,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   L_Bdoor: {fileID: 293540110}
   R_Bdoor: {fileID: 1729412102}
-  bD_Unlock: 0
 --- !u!1 &1526348823
 GameObject:
   m_ObjectHideFlags: 0
@@ -32154,6 +32468,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625442525}
   m_CullTransparentMesh: 1
+--- !u!1 &1644369078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1644369079}
+  m_Layer: 0
+  m_Name: ScenManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1644369079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644369078}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1645248215
 GameObject:
   m_ObjectHideFlags: 0
@@ -33493,6 +33838,7 @@ GameObject:
   - component: {fileID: 1729412106}
   - component: {fileID: 1729412105}
   - component: {fileID: 1729412104}
+  - component: {fileID: 1729412107}
   m_Layer: 0
   m_Name: scifi-door-metal_R
   m_TagString: Untagged
@@ -33510,7 +33856,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.3759558, y: 0, z: 8.033332}
-  m_LocalScale: {x: 1.7, y: 1.2, z: 1}
+  m_LocalScale: {x: 1.8, y: 1.2, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1523232729}
@@ -33587,6 +33933,114 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729412102}
   m_Mesh: {fileID: 4300004, guid: b958830829601224e860571f8892616f, type: 3}
+--- !u!114 &1729412107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729412102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0390bd8b8ffd640b34fe25065ff1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateType: 0
+  isSpeedBased: 0
+  hasOnStart: 0
+  hasOnPlay: 0
+  hasOnUpdate: 0
+  hasOnStepComplete: 0
+  hasOnComplete: 0
+  hasOnTweenCreated: 0
+  hasOnRewind: 0
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  onUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  onStepComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onTweenCreated:
+    m_PersistentCalls:
+      m_Calls: []
+  onRewind:
+    m_PersistentCalls:
+      m_Calls: []
+  targetIsSelf: 1
+  targetGO: {fileID: 0}
+  tweenTargetIsTargetGO: 1
+  delay: 0
+  duration: 1
+  easeType: 3
+  easeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  loopType: 0
+  loops: 1
+  id: 
+  isRelative: 0
+  isFrom: 0
+  isIndependentUpdate: 0
+  autoKill: 0
+  autoGenerate: 1
+  isActive: 1
+  isValid: 1
+  target: {fileID: 1729412103}
+  animationType: 2
+  targetType: 11
+  forcedTargetType: 0
+  autoPlay: 0
+  useTargetAsV3: 0
+  endValueFloat: 0
+  endValueV3: {x: 1.875956, y: 0, z: 8.033332}
+  endValueV2: {x: 0, y: 0}
+  endValueColor: {r: 1, g: 1, b: 1, a: 1}
+  endValueString: 
+  endValueRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  endValueTransform: {fileID: 0}
+  optionalBool0: 0
+  optionalBool1: 0
+  optionalFloat0: 0
+  optionalInt0: 0
+  optionalRotationMode: 0
+  optionalScrambleMode: 0
+  optionalShakeRandomnessMode: 0
+  optionalString: 
 --- !u!1 &1734259182
 GameObject:
   m_ObjectHideFlags: 0
@@ -35131,6 +35585,7 @@ MonoBehaviour:
   existItem: 
   existEnemy: 
   isHide: 0
+  isDie: 0
   lv3PlayerPos: {x: 0, y: 0, z: 0}
   Items:
   - {fileID: 1214412385}
@@ -41851,7 +42306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2082885654
 Transform:
   m_ObjectHideFlags: 0
@@ -41861,7 +42316,7 @@ Transform:
   m_GameObject: {fileID: 2082885653}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -6.31, y: 0, z: -8.5}
+  m_LocalPosition: {x: -6.22, y: 0, z: -8.5}
   m_LocalScale: {x: 1.1999999, y: 1, z: 1.1999999}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -41883,7 +42338,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   L_Bdoor: {fileID: 356046045}
   R_Bdoor: {fileID: 1460577974}
-  bD_Unlock: 0
 --- !u!1 &2088126161
 GameObject:
   m_ObjectHideFlags: 0
@@ -44192,7 +44646,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_state: 0
-  isDetecting: 0
   canReverse: 0
   rotationSpeed: 0
   rotationAmount: 0
@@ -58849,7 +59302,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_state: 0
-  isDetecting: 0
   canReverse: 0
   rotationSpeed: 10
   rotationAmount: 60
@@ -61866,7 +62318,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_state: 0
-  isDetecting: 0
   canReverse: 0
   rotationSpeed: 10
   rotationAmount: 50
@@ -70275,7 +70726,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_state: 0
-  isDetecting: 0
   canReverse: 0
   rotationSpeed: 5
   rotationAmount: 80
@@ -85818,7 +86268,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_state: 0
-  isDetecting: 0
   canReverse: 0
   rotationSpeed: 10
   rotationAmount: 50
@@ -101099,7 +101548,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_state: 0
-  isDetecting: 0
   canReverse: 0
   rotationSpeed: 10
   rotationAmount: 50
@@ -106419,7 +106867,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_state: 0
-  isDetecting: 0
   canReverse: 0
   rotationSpeed: 0
   rotationAmount: 0
@@ -111591,7 +112038,6 @@ SceneRoots:
   - {fileID: 558754426}
   - {fileID: 1793164137}
   - {fileID: 558350035}
-  - {fileID: 302412533}
   - {fileID: 1995510271}
   - {fileID: 573084187}
   - {fileID: 628151794}
@@ -111602,3 +112048,4 @@ SceneRoots:
   - {fileID: 201800365}
   - {fileID: 1518284308}
   - {fileID: 54208924}
+  - {fileID: 1644369079}

@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public bool[] existItem;
     public bool[] existEnemy = new bool[12];
     public bool isHide=false;
+    public bool isDie=false;
     public Vector3 lv3PlayerPos;
 
     public GameObject[] Items;

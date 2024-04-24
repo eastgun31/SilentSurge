@@ -5,10 +5,6 @@ using UnityEngine;
 public class Door_Parent : MonoBehaviour      // 문을 열고 닫는 스크립트
 {
     public bool isOpen = false;
-
-    private bool _init=false;
-
-
          
     public enum OpenDoor
     {

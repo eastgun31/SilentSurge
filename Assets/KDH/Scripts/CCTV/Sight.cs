@@ -100,7 +100,12 @@ public class Sight : MonoBehaviour
                 float disT = Vector3.Distance(transform.position, detectTarget.position);       // 시야각 발사 위치 ~ 타겟 위치 = 타겟의 거리
                 foreach (Collider col in targets)
                 {
-                    if (!Physics.Raycast(transform.position, dir_T, disT, etcM))                             // 타겟으로 가는 raycast에 장애물이 없다면
+                    if(GameManager.instance.isHide)
+                    {
+                        findT = false;
+                        GameManager.instance.playerchasing = false;
+                    }
+                    else if(!GameManager.instance.isHide && !Physics.Raycast(transform.position, dir_T,disT, etcM))
                     {
                         playerpos = dir_T;
                         findT = true;
