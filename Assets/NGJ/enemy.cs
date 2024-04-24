@@ -109,7 +109,7 @@ public class Enemy : MonoBehaviour
         }
         if (m_enemy.velocity.magnitude < 0.1f)
         {
-           
+
             enemyAnim.SetBool(Walk, false);
             enemyAnim.SetBool(GunRuning, false);
         }
@@ -120,7 +120,7 @@ public class Enemy : MonoBehaviour
     public void ChaseSound(Vector3 position)
     {
         //Debug.Log("소리추적");
-        
+
         enemyAnim.SetBool(Walk, false);
         enemyAnim.SetBool(GunRuning, true);
         m_enemy.SetDestination(position);
@@ -214,7 +214,7 @@ public class Enemy : MonoBehaviour
             GameObject bulletObject = Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
             // 총알 발사 후 일정 시간을 기다린 후 다음 동작으로 진행합니다.
             StartCoroutine(DelayTime(1f, cooltime.cool5sec)); // 1초 뒤에 다시 총 발사
-           
+
         }
     }
     void Shoot(Vector3 pos)
@@ -238,7 +238,7 @@ public class Enemy : MonoBehaviour
 
             // 총알 발사 후 일정 시간을 기다린 후 다음 동작으로 진행
             StartCoroutine(DelayTime(1, cooltime.cool5sec)); // 1초 뒤에 다시 총 발사
-         
+
         }
     }
     void Shoot2()
@@ -340,7 +340,6 @@ public class Enemy : MonoBehaviour
         }
         chasing = false;
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Bullet"))
@@ -348,12 +347,12 @@ public class Enemy : MonoBehaviour
             Destroy(other.gameObject, 1f);
             if (indexcount != 99 || indexcount != 98)
             {
-                if(GameManager.instance.scenenum == 1)
+                if (GameManager.instance.scenenum == 1)
                     GameManager.instance.existEnemy1[indexcount] = false;
-                else if(GameManager.instance.scenenum == 2)
+                else if (GameManager.instance.scenenum == 2)
                     GameManager.instance.existEnemy2[indexcount] = false;
             }
-                
+
 
 
             enemyAnim.SetTrigger(Death);
@@ -368,6 +367,7 @@ public class Enemy : MonoBehaviour
             StartCoroutine(ReactivateMovementAfterDelay(2f));
         }
     }
+
 
 
     private IEnumerator DeactivateWithDelay()
@@ -489,3 +489,6 @@ public class Enemy : MonoBehaviour
 
 
 }
+
+
+
