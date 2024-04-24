@@ -16,8 +16,10 @@ public class SinPuzzle : MonoBehaviour
 
     public Text success;
 
-    //public GameObject cctv;
-    //public GameObject fcctv;
+    public GameObject cctv1;
+    public GameObject fcctv1;
+    public GameObject cctv2;
+    public GameObject fcctv2;
 
     bool lev = false;
 
@@ -29,11 +31,28 @@ public class SinPuzzle : MonoBehaviour
     }
 
     void Update()
-    {
-        WaveControl();
-        Win();
-        Wave();
+    {   
         TimeRemainig();
+        WaveControl();
+        if(GameManager.instance.scenenum ==1)
+        {
+            NormalWin();
+            NormalWave();
+        }    
+        else if(GameManager.instance.scenenum ==2)
+        {
+            
+        }
+        else if (GameManager.instance.scenenum == 3)
+        {
+
+        }
+        else if (GameManager.instance.scenenum == 4)
+        {
+
+        }
+
+
     }
     public void TimeRemainig() // 퍼즐 제한시간
     {
@@ -54,12 +73,14 @@ public class SinPuzzle : MonoBehaviour
         else
         {
             success.text = "SUCCESS";
-            Invoke("ResetTime", 2f);
         }
     }
 
-    private void Wave()
+    private void NormalWave()
     {
+         amplitude = 70;
+         frequency = 0.009f;
+
         float xStart = xlimit.x; //x의 시작점
         float pi = Mathf.PI;
         float xFinish = xlimit.y; //x의 끝점
@@ -93,7 +114,7 @@ public class SinPuzzle : MonoBehaviour
 
     }
 
-    void Win()
+    void NormalWin()
     {
         if (amplitude == 100 && 0.004f == frequency)
         {
@@ -101,8 +122,10 @@ public class SinPuzzle : MonoBehaviour
             player = Player.PlayerState.idle;
             if (!lev)
             {
-                //cctv.SetActive(false);
-                //fcctv.SetActive(true);
+                cctv1.SetActive(false);
+                fcctv1.SetActive(true);
+                cctv2.SetActive(false);
+                fcctv2.SetActive(true);
                 lev = true;
                 PuzlvUp();
                 GameManager.instance.EnemyActive2();
@@ -114,8 +137,7 @@ public class SinPuzzle : MonoBehaviour
 
     private void PuzlvUp()
     {
-        GameManager.instance.puzzleLevel += 1;
-        
+        GameManager.instance.puzzleLevel += 1; 
         DataManager.instance.SaveData();
     }
     private void CloseSin()

@@ -21,12 +21,6 @@ public class Keypad : MonoBehaviour
     {
         bDoor = door.GetComponent<BDoor>();
     }
-
-    private void Update()
-    {
-        //UiManager.instance.TimeRemainig();
-    }
-
     public void Number(int number) 
     {
         if (UiManager.instance.isWin == false ||  
