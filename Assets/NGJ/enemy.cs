@@ -107,7 +107,12 @@ public class Enemy : MonoBehaviour
 
             EnemyPatrol();
         }
-
+        if (m_enemy.velocity.magnitude < 0.1f)
+        {
+           
+            enemyAnim.SetBool(Walk, false);
+            enemyAnim.SetBool(GunRuning, false);
+        }
         if (indexcount == 98)
             customDestinations[0] = GameManager.instance.lv3PlayerPos;
     }
@@ -115,7 +120,7 @@ public class Enemy : MonoBehaviour
     public void ChaseSound(Vector3 position)
     {
         //Debug.Log("소리추적");
-
+        
         enemyAnim.SetBool(Walk, false);
         enemyAnim.SetBool(GunRuning, true);
         m_enemy.SetDestination(position);
@@ -129,11 +134,13 @@ public class Enemy : MonoBehaviour
         m_enemy.stoppingDistance = 0;
 
 
-        yield return cooltime.cool3sec;
+        yield return cooltime.cool2sec;
         hearSound = false;
         noactiving = true;
         NeviClear();
         state = EnemyState.patrolling;
+        enemyAnim.SetBool(Walk, false);
+        enemyAnim.SetBool(GunRuning, false);
     }
 
     void NeviClear()    //적 네비 초기화
@@ -207,6 +214,7 @@ public class Enemy : MonoBehaviour
             GameObject bulletObject = Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
             // 총알 발사 후 일정 시간을 기다린 후 다음 동작으로 진행합니다.
             StartCoroutine(DelayTime(1f, cooltime.cool5sec)); // 1초 뒤에 다시 총 발사
+           
         }
     }
     void Shoot(Vector3 pos)
@@ -230,7 +238,7 @@ public class Enemy : MonoBehaviour
 
             // 총알 발사 후 일정 시간을 기다린 후 다음 동작으로 진행
             StartCoroutine(DelayTime(1, cooltime.cool5sec)); // 1초 뒤에 다시 총 발사
-
+         
         }
     }
     void Shoot2()
