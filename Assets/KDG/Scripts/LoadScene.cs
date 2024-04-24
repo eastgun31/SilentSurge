@@ -12,10 +12,12 @@ public class LoadScene : MonoBehaviour
     public void LoadStage1_normal()
     {
         SceneManager.LoadScene(1);
+        StartCoroutine(LoadDelay());
     }    
     public void LoadStage1_hard()
     {
         SceneManager.LoadScene(2);
+        StartCoroutine(LoadDelay());
     }    
     public void LoadStage2_normal()
     {
@@ -32,5 +34,11 @@ public class LoadScene : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    IEnumerator LoadDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        DataManager.instance.SaveData();
     }
 }
