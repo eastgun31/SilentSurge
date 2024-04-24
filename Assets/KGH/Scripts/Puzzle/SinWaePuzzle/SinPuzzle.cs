@@ -8,32 +8,50 @@ public class SinPuzzle : MonoBehaviour
 {
 
     public LineRenderer lineRenderer;
-    [SerializeField] [Range(0, 500)] private int points = 260;
-    public float amplitude = 70;   // 높이
-    public float frequency = 0.009f;   // 폭
+    [SerializeField][Range(0, 500)] private int points = 260;
+    public float amplitude;    // 노말 높이
+    public float frequency;   // 노말 폭
+
+    public float correctAmlitude;
+    public float correctFrequance;
+
+    public bool isAmplitude = false;
+    public bool isFrequance = false;
+
     public Vector2 xlimit = new Vector2(-600, 600);
     public float speed = 1;
 
     public Text success;
 
-    //public GameObject cctv;
-    //public GameObject fcctv;
+    public GameObject cctv1;
+    public GameObject fcctv1;
+    public GameObject cctv2;
+    public GameObject fcctv2;
 
     bool lev = false;
 
     Player.PlayerState player;
 
+    private void Start()
+    {
+        
+    }
+    private void OnEnable()
+    {
+        Difficulty();
+    }
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
     }
 
     void Update()
-    {
-        WaveControl();
-        Win();
-        Wave();
+    {   
         TimeRemainig();
+        WaveControl();
+        Wave();
+        Win();
+        
     }
     public void TimeRemainig() // 퍼즐 제한시간
     {
@@ -54,7 +72,6 @@ public class SinPuzzle : MonoBehaviour
         else
         {
             success.text = "SUCCESS";
-            Invoke("ResetTime", 2f);
         }
     }
 
@@ -89,20 +106,25 @@ public class SinPuzzle : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftArrow))
                 frequency += 0.001f;
             frequency = Mathf.Round(frequency * 1000) * 0.001f;
+           
         }
 
     }
 
     void Win()
     {
-        if (amplitude == 100 && 0.004f == frequency)
+        correctFrequance = Mathf.Round(correctFrequance * 1000) * 0.001f;
+
+        if (amplitude == correctAmlitude && frequency == correctFrequance)
         {
             UiManager.instance.isWin = true;
             player = Player.PlayerState.idle;
             if (!lev)
             {
-                //cctv.SetActive(false);
-                //fcctv.SetActive(true);
+                //cctv1.SetActive(false);
+                //fcctv1.SetActive(true);
+                //cctv2.SetActive(false);
+                //fcctv2.SetActive(true);
                 lev = true;
                 PuzlvUp();
                 GameManager.instance.EnemyActive2();
@@ -112,10 +134,38 @@ public class SinPuzzle : MonoBehaviour
         }
     }
 
+    private void DifficultySin()
+    {
+        if (GameManager.instance.scenenum == 1)
+        {
+            amplitude = 70f;   
+            frequency = 0.009f;
+        }
+        if (GameManager.instance.scenenum == 2)
+        {
+            amplitude = 70f;   
+            frequency = 0.009f;
+        }
+
+    }
+
+    void Difficulty()
+    {
+        if(GameManager.instance.scenenum == 1)
+        {
+            correctAmlitude = 100;
+            correctFrequance = 0.004f;
+        }
+        if (GameManager.instance.scenenum == 2)
+        {
+            correctAmlitude = 90;
+            correctFrequance = 0.005f;
+        }
+    }
+
     private void PuzlvUp()
     {
-        GameManager.instance.puzzleLevel += 1;
-        
+        GameManager.instance.puzzleLevel += 1; 
         DataManager.instance.SaveData();
     }
     private void CloseSin()

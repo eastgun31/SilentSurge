@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject footSound;
 
+
     Animator playerAnim;
     string walk = "Walk";
     string handgunMode = "HandGun";
@@ -51,6 +53,7 @@ public class Player : MonoBehaviour
     public Vector3 velocity;
     bool die;
     bool saving;
+    public UnityEvent playerDie;
     void Start()
     {
         die = false;
@@ -289,8 +292,8 @@ public class Player : MonoBehaviour
         playerAnim.SetTrigger("Die");
         yield return new WaitForSeconds(3f);
         Debug.Log("플레이어 죽음");
-        DataManager.instance.LoadData();
-        
+        //DataManager.instance.LoadData();
+        playerDie.Invoke();
         die = false;
     }
     IEnumerator PlayerSave()

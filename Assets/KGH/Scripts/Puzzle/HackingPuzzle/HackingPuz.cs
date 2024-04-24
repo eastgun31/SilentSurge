@@ -52,7 +52,6 @@ public class HackingPuz : MonoBehaviour
         else
         {
             success.text = "SUCCESS";
-            Invoke("ResetTime", 2f);
         }
     }
 

@@ -55,7 +55,6 @@ public class PipeManager : MonoBehaviour
         else
         {
             success.text = "SUCCESS";
-            Invoke("ResetTime", 2f);
         }
     }
     public void CorrectMove()
@@ -65,8 +64,6 @@ public class PipeManager : MonoBehaviour
         if (correctPipes == totalPipes) //½Â¸® Á¶°Ç
         {
             UiManager.instance.isWin = true;
-            
-            
 
             if (GameManager.instance.puzzleLevel == 1)
             {

@@ -14,12 +14,13 @@ public class Keypad : MonoBehaviour
     [SerializeField]
     private string pw = "8324";
 
-    
-    private void Update()
-    {
-        //UiManager.instance.TimeRemainig();
-    }
+    public GameObject door;
+    BDoor bDoor;
 
+    private void Start()
+    {
+        bDoor = door.GetComponent<BDoor>();
+    }
     public void Number(int number) 
     {
         if (UiManager.instance.isWin == false ||  
@@ -64,12 +65,13 @@ public class Keypad : MonoBehaviour
     public void PuzLevUp()
     {
         GameManager.instance.puzzleLevel += 1;
-        GameManager.instance.nowpuzzle = false;
         DataManager.instance.SaveData();
     }
 
     public void Closed()
     {
+        bDoor.BDoorOpen();
+        GameManager.instance.nowpuzzle = false;
         UiManager.instance.isWin = false;
         UiManager.instance.CloseKeypadFst();
     }

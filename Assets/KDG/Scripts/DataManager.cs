@@ -32,6 +32,8 @@ public class DataManager : MonoBehaviour
     public UnityEvent playerLoad;
     public GameObject playerobj;
 
+    public GameObject gameOver;
+
     private Player player;
     //public bool[] playeritemget;
     //public Vector3 playerposition;
@@ -124,6 +126,8 @@ public class DataManager : MonoBehaviour
 
         if (File.Exists(filePath))
         {
+            gameOver.SetActive(false);
+
             string loadJson = File.ReadAllText(filePath);
             saveData = JsonUtility.FromJson<SaveData>(loadJson);
 

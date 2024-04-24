@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ProBuilder;
 using UnityEngine.UI;
 
 public class SinWave : MonoBehaviour
 {
     public LineRenderer lineRenderer;
     [SerializeField][Range(0, 500)] private int points = 50;
-    public float amplitude = 1;
-    public float frequency = 1;
+    public float amplitude;
+    public float frequency;
     public Vector2 xlimit = new Vector2(-8,8);
     public float speed = 1;
 
@@ -20,7 +21,10 @@ public class SinWave : MonoBehaviour
 
     void Update()
     {
-        Wave();
+        if (GameManager.instance.scenenum == 1)
+            Normal();
+        if (GameManager.instance.scenenum == 2)
+            Hard();
     }
     private void Wave()
     {
@@ -38,6 +42,19 @@ public class SinWave : MonoBehaviour
            
             lineRenderer.SetPosition(i, new Vector3(x, y, 0));
         }
-        
     }
+
+    private void Normal()
+    {
+        amplitude = 100f;
+        frequency = 0.004f;
+        Wave();
+    }
+    private void Hard()
+    {
+        amplitude = 90;
+        frequency = 0.005f;
+        Wave(); 
+    }
+
 }
