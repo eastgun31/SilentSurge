@@ -136,7 +136,7 @@ public class QuickSlots : MonoBehaviour
         
         //---------------경계단계 별 색 변경-------
         if(EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
-            boundary.color = Color.white;
+            boundary.color = Color.green;
         if(EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
             boundary.color = Color.yellow;
         if(EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level3)
