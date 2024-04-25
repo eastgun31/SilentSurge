@@ -1,6 +1,7 @@
 using ItemInfo;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
 
     Animator playerAnim;
     string walk = "Walk";
+    string gunwalk = "GunWalk";
     string handgunMode = "HandGun";
     string throwcoin = "ThrowCoin";
     string throwflashbang = "ThrowFlashBang";
@@ -69,6 +71,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(math.round(velocity.magnitude));
         if (GameManager.instance.nowpuzzle)
         {
             state = PlayerState.puzzling;
@@ -80,6 +83,7 @@ public class Player : MonoBehaviour
         else if (GameManager.instance.isHide)
         {
             state = PlayerState.hide;
+            useItem.ErageDraw();
         }        
         else if (GameManager.instance.isDie)
         {
@@ -126,15 +130,24 @@ public class Player : MonoBehaviour
         velocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized * playerspeed;
         //rigid.MovePosition(rigid.position + velocity * Time.deltaTime);
         playerAnim.SetFloat(walk, velocity.magnitude);
+        //PlayerAnimCondition();
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if(Input.GetKeyDown(KeyCode.LeftShift))
         {
-            footSound.SetActive(true);
             playerspeed = 5f;
-            if (handgunacivate)
-                playerAnim.SetBool(gunrun, true);
-            else
-                playerAnim.SetBool(run, true);
+        }
+        if (Input.GetKey(KeyCode.LeftShift) && velocity.magnitude >= 5)
+        {
+            //if(velocity.magnitude >= 5)
+            {
+                Debug.Log("달리기");
+                footSound.SetActive(true);
+            
+                if (handgunacivate)
+                    playerAnim.SetBool(gunrun, true);
+                else
+                    playerAnim.SetBool(run, true);
+            }
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
@@ -291,6 +304,32 @@ public class Player : MonoBehaviour
         {
             heartseeacivate = false;
             Debug.Log("심장박동측정기 비활성화");
+        }
+    }
+    void PlayerAnimCondition()
+    {
+        if (handgunacivate)
+        {
+            if(velocity.magnitude >= 5)
+            {
+                Debug.Log("달리기");
+                playerAnim.SetFloat(gunrun,velocity.magnitude);
+            }
+            else
+                playerAnim.SetFloat(gunwalk, velocity.magnitude);
+        }
+        else
+        {
+            if(velocity.magnitude >= 5)
+            {
+                Debug.Log("달리기");
+                playerAnim.SetBool(run, true);
+            }
+            else
+            {
+                playerAnim.SetFloat(walk, velocity.magnitude);
+            }
+                
         }
     }
 
