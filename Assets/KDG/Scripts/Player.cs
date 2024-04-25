@@ -214,6 +214,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1) && !handgunacivate)
         {
+            transform.position = new Vector3(transform.position.x, 0.01f, transform.position.z);
             handgunacivate = true;
             handGunModel.SetActive(true);
             Debug.Log("±ÇÃÑ È°¼ºÈ­");
