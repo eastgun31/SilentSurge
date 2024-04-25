@@ -59,9 +59,9 @@ public class SinPuzzle : MonoBehaviour
         {
             if ((int)UiManager.instance.timeRemainig == 0)
             {
-                success.text = "FAIL";
                 UiManager.instance.isGameOver = true;
                 UiManager.instance.gameover.SetActive(true);
+                CloseSin();
             }
             else
             {
@@ -126,11 +126,12 @@ public class SinPuzzle : MonoBehaviour
                 cctv2.SetActive(false);
                 fcctv2.SetActive(true);
                 lev = true;
-                PuzlvUp();
+                
                 GameManager.instance.EnemyActive2();
                 EnemyLevel.enemylv.SetEnemy();
             }
-            Invoke("CloseSin", 2f);
+            Invoke("CloseSin", 1f);
+            PuzlvUp();
         }
     }
 
@@ -164,13 +165,14 @@ public class SinPuzzle : MonoBehaviour
     }
 
     private void PuzlvUp()
-    {
+    {   
+        GameManager.instance.nowpuzzle = false;
         GameManager.instance.puzzleLevel += 1; 
         DataManager.instance.SaveData();
     }
     private void CloseSin()
     {
-        GameManager.instance.nowpuzzle = false;
+        
         UiManager.instance.isWin = false;
         UiManager.instance.CloseSinFst();
     }

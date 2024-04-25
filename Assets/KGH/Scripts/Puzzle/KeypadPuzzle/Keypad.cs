@@ -12,11 +12,17 @@ public class Keypad : MonoBehaviour
     [SerializeField] private Text answerInput;
     private int maxNum = 4;
 
-    [SerializeField]
-    private string pw = "8324";
+    private string pw;
 
     public UnityEvent doorOpen;
 
+    private void Start()
+    {
+        if(GameManager.instance.scenenum ==1)
+            pw = "8324";
+        if (GameManager.instance.scenenum == 2)
+            pw = "9635";
+    }
 
     public void Number(int number) 
     {

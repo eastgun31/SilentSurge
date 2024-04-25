@@ -59,9 +59,9 @@ public class HackingPuz : MonoBehaviour
         {
             if ((int)UiManager.instance.timeRemainig == 0)
             {
-                success.text = "FAIL";
                 UiManager.instance.isGameOver = true;
                 UiManager.instance.gameover.SetActive(true);
+                CloseHackingPuz();
             }
             else
             {
@@ -90,9 +90,9 @@ public class HackingPuz : MonoBehaviour
                 if (currentInputIndex < inputTexts.Length)
                     inputTexts[currentInputIndex].text = "";
                 else
-                {
+                {   
+                    Invoke("CloseHackingPuz", 2f);
                     PuzlvUp();
-                    Invoke("ColseHackingPuz", 2f);
                 }
             }
             else if (inputTexts[currentInputIndex].text.Length >= passwords[currentInputIndex].Length)
@@ -108,15 +108,14 @@ public class HackingPuz : MonoBehaviour
     }
 
     public void PuzlvUp()
-    {
+    {   
+        GameManager.instance.nowpuzzle = false;
         UiManager.instance.isWin = true;
         GameManager.instance.puzzleLevel += 1;
-        GameManager.instance.nowpuzzle = false;
         DataManager.instance.SaveData();
     }
-    public void ColseHackingPuz()
+    public void CloseHackingPuz()
     {
-        GameManager.instance.nowpuzzle = false;
         UiManager.instance.isWin = false;
         hacking.SetActive(false);
     }

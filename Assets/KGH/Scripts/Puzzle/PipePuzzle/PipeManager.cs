@@ -42,9 +42,9 @@ public class PipeManager : MonoBehaviour
         {
             if ((int)UiManager.instance.timeRemainig == 0)
             {
-                success.text = "FAIL";
                 UiManager.instance.isGameOver = true;
                 UiManager.instance.gameover.SetActive(true);
+                ClosePipe();
             }
             else
             {
@@ -73,8 +73,9 @@ public class PipeManager : MonoBehaviour
 
             GameManager.instance.puzzleLevel += 1;
 
+            Invoke("ClosePipe", 1f);
+            GameManager.instance.nowpuzzle = false;
             DataManager.instance.SaveData();
-            Invoke("ClosePipe", 2f);
         }
     }
 
@@ -85,7 +86,6 @@ public class PipeManager : MonoBehaviour
 
     public void ClosePipe()
     {
-        GameManager.instance.nowpuzzle = false;
         UiManager.instance.isWin = false;
         canvas.gameObject.SetActive(false);
     }
