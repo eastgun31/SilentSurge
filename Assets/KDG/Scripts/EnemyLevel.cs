@@ -86,34 +86,46 @@ public class EnemyLevel : MonoBehaviour
 
     public void SetEnemy()
     {
-        if(GameManager.instance.scenenum ==1)
+        for (int i = 0; i < GameManager.instance.existEnemy.Length; i++)
         {
-            for (int i = 0; i < GameManager.instance.existEnemy.Length; i++)
+            if (GameManager.instance.existEnemy[i])
             {
-                if (GameManager.instance.existEnemy[i])
-                {
-                    Enemies[i].SetActive(true);
-                }
-                else if (!GameManager.instance.existEnemy[i])
-                {
-                    Enemies[i].SetActive(false);
-                }
+                Enemies[i].SetActive(true);
+            }
+            else if (!GameManager.instance.existEnemy[i])
+            {
+                Enemies[i].SetActive(false);
             }
         }
-        else if(GameManager.instance.scenenum ==2)
-        {
-            for (int i = 0; i < GameManager.instance.existEnemy.Length; i++)
-            {
-                if (GameManager.instance.existEnemy[i])
-                {
-                    Enemies[i].SetActive(true);
-                }
-                else if (!GameManager.instance.existEnemy[i])
-                {
-                    Enemies[i].SetActive(false);
-                }
-            }
-        }
+
+        //if (GameManager.instance.scenenum ==1)
+        //{
+        //    for (int i = 0; i < GameManager.instance.existEnemy.Length; i++)
+        //    {
+        //        if (GameManager.instance.existEnemy[i])
+        //        {
+        //            Enemies[i].SetActive(true);
+        //        }
+        //        else if (!GameManager.instance.existEnemy[i])
+        //        {
+        //            Enemies[i].SetActive(false);
+        //        }
+        //    }
+        //}
+        //else if(GameManager.instance.scenenum ==2)
+        //{
+        //    for (int i = 0; i < GameManager.instance.existEnemy.Length; i++)
+        //    {
+        //        if (GameManager.instance.existEnemy[i])
+        //        {
+        //            Enemies[i].SetActive(true);
+        //        }
+        //        else if (!GameManager.instance.existEnemy[i])
+        //        {
+        //            Enemies[i].SetActive(false);
+        //        }
+        //    }
+        //}
     }
 
     public void ODaeGi()
