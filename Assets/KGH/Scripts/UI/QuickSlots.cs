@@ -54,6 +54,10 @@ public class QuickSlots : MonoBehaviour
             else
                 selectedQuickSlots[0].gameObject.SetActive(false);
         }
+        else
+            quickSlots[0].gameObject.SetActive(false);
+
+
         if (GameManager.instance.itemcheck[1])       //ÄÚÀÎ Ãß°¡
         {
             quickSlots[1].gameObject.SetActive(true);
@@ -76,6 +80,8 @@ public class QuickSlots : MonoBehaviour
             else
                 selectedQuickSlots[1].gameObject.SetActive(false);
         }
+        else
+            quickSlots[1].gameObject.SetActive(false);
 
         if (GameManager.instance.itemcheck[2])      // ¼¶±¤ÅºÃß°¡
         {
@@ -99,6 +105,8 @@ public class QuickSlots : MonoBehaviour
             else
                 selectedQuickSlots[2].gameObject.SetActive(false);
         }
+        else
+            quickSlots[2].gameObject.SetActive(false);
 
         if (GameManager.instance.itemcheck[3])  // ½É¹Ú±âÃß°¡
         {
@@ -115,6 +123,8 @@ public class QuickSlots : MonoBehaviour
             else
                 selectedQuickSlots[3].SetActive(false);
         }
+        else
+            quickSlots[3].gameObject.SetActive(false);
 
         if (GameManager.instance.itemcheck[4])       // ¹æÅºº¹
         {
