@@ -15,7 +15,14 @@ public class HackingPuz : MonoBehaviour
     private string[] passwords;
     public Text[] ansCode;
 
-    
+
+    private void OnDisable()
+    {
+        inputTexts[0].text = "";
+        inputTexts[1].text = "";
+        inputTexts[2].text = "";
+        inputTexts[3].text = "";
+    }
 
     void Start()
     {

@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 public class Pipes : MonoBehaviour, IPointerClickHandler
 {
 
-    //float[] rotation = { 0, 90, 180, 270 };
     public float rotationAngle = 90f;
 
     public float[] correctRotation; // 올바른 각도가 되었는지 확인
@@ -30,8 +29,6 @@ public class Pipes : MonoBehaviour, IPointerClickHandler
     void Start()
     {
         PossibleRots = correctRotation.Length; 
-       // int rand = Random.Range(0,rotation.Length);
-       // transform.eulerAngles = new Vector3(0, 0, rotation[rand]);
 
         if (PossibleRots > 1) //초기회전각도를 확인
         {

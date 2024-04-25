@@ -34,11 +34,11 @@ public class SinPuzzle : MonoBehaviour
 
     private void Start()
     {
-        
-    }
-    private void OnEnable()
-    {
         Difficulty();
+    }
+    private void OnDisable()
+    {
+        DifficultySin();
     }
     private void Awake()
     {
@@ -125,14 +125,15 @@ public class SinPuzzle : MonoBehaviour
                 fcctv1.SetActive(true);
                 cctv2.SetActive(false);
                 fcctv2.SetActive(true);
-                PuzlvUp();
-                lev = true;
-                
+                GameManager.instance.puzzleLevel += 1; 
+                GameManager.instance.nowpuzzle = false;
                 GameManager.instance.EnemyActive2();
                 EnemyLevel.enemylv.SetEnemy();
+                DataManager.instance.SaveData();
+                lev = true;
             }
             Invoke("CloseSin", 1f);
-            GameManager.instance.nowpuzzle = false;
+            
         }
     }
 
@@ -163,16 +164,8 @@ public class SinPuzzle : MonoBehaviour
             correctFrequance = 0.005f;
         }
     }
-
-    private void PuzlvUp()
-    {   
-        
-        GameManager.instance.puzzleLevel += 1; 
-        DataManager.instance.SaveData();
-    }
     private void CloseSin()
     {
-        
         UiManager.instance.isWin = false;
         UiManager.instance.CloseSinFst();
     }
