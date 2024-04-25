@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Keypad : MonoBehaviour
@@ -11,20 +12,12 @@ public class Keypad : MonoBehaviour
     [SerializeField] private Text answerInput;
     private int maxNum = 4;
 
-    private string pw;
+    [SerializeField]
+    private string pw = "8324";
 
-    public GameObject door;
-    BDoor bDoor;
+    public UnityEvent doorOpen;
 
-    private void Start()
-    {
-        bDoor = door.GetComponent<BDoor>();
 
-        if (GameManager.instance.scenenum == 1)
-            pw = "8324";
-        if (GameManager.instance.scenenum == 2)
-            pw = "9653";
-    }
     public void Number(int number) 
     {
         if (UiManager.instance.isWin == false ||  
@@ -74,7 +67,7 @@ public class Keypad : MonoBehaviour
 
     public void Closed()
     {
-        bDoor.BDoorOpen();
+        doorOpen.Invoke();
         GameManager.instance.nowpuzzle = false;
         UiManager.instance.isWin = false;
         UiManager.instance.CloseKeypadFst();
