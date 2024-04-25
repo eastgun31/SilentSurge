@@ -93,8 +93,8 @@ public class Enemy : MonoBehaviour
     {
         if (state == EnemyState.findtarget)
         {
-            enemyAnim.SetBool(Walk, false);
-            enemyAnim.SetBool(GunRuning, true);
+            //enemyAnim.SetBool(Walk, false);
+            //enemyAnim.SetBool(GunRuning, true);
             TargetChase();
         }
         else if (state == EnemyState.hear)
@@ -107,12 +107,12 @@ public class Enemy : MonoBehaviour
 
             EnemyPatrol();
         }
-        if (m_enemy.velocity.magnitude < 0.1f)
-        {
+        //if (m_enemy.velocity.magnitude < 0.1f)
+        //{
 
-            enemyAnim.SetBool(Walk, false);
-            enemyAnim.SetBool(GunRuning, false);
-        }
+        //    enemyAnim.SetBool(Walk, false);
+        //    enemyAnim.SetBool(GunRuning, false);
+        //}
         if (indexcount == 98)
             customDestinations[0] = GameManager.instance.lv3PlayerPos;
     }
@@ -139,8 +139,8 @@ public class Enemy : MonoBehaviour
         noactiving = true;
         NeviClear();
         state = EnemyState.patrolling;
-        enemyAnim.SetBool(Walk, false);
-        enemyAnim.SetBool(GunRuning, false);
+        //enemyAnim.SetBool(Walk, false);
+        //enemyAnim.SetBool(GunRuning, false);
     }
 
     void NeviClear()    //적 네비 초기화
@@ -155,8 +155,8 @@ public class Enemy : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, customDestinations[naviindex]) > 1f)
         {
-            enemyAnim.SetBool(Walk, true);
-            enemyAnim.SetBool(GunRuning, false); // 걷는 동안 총을 들지 않도록 설정
+            //enemyAnim.SetBool(Walk, true);
+            //enemyAnim.SetBool(GunRuning, false); // 걷는 동안 총을 들지 않도록 설정
             m_enemy.SetDestination(customDestinations[naviindex]);
         }
         else if (Vector3.Distance(transform.position, customDestinations[naviindex]) <= 1f)
@@ -171,18 +171,18 @@ public class Enemy : MonoBehaviour
 
     void TargetChase()
     {
-        enemyAnim.SetBool(Walk, false);
+        //enemyAnim.SetBool(Walk, false);
         if (!chasing)
             StartCoroutine(Levelstep());
 
-        enemyAnim.SetBool(GunRuning, true); // 총을 들고 있을 때 설정
+        //enemyAnim.SetBool(GunRuning, true); // 총을 들고 있을 때 설정
         m_enemy.stoppingDistance = stoppingDistance;
         m_enemy.SetDestination(sight.detectTarget.position);
 
         if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 3f)
         {
-            enemyAnim.SetBool(Walk, false);
-            enemyAnim.SetBool(GunRuning, false);
+            //enemyAnim.SetBool(Walk, false);
+            //enemyAnim.SetBool(GunRuning, false);
             if (enemyType == 1 || enemyType == 2)
                 Shoot(sight.detectTarget.position); // 총을 발사합니다.
             else if (enemyType == 3)
@@ -192,8 +192,8 @@ public class Enemy : MonoBehaviour
         }
         else if (Vector3.Distance(transform.position, sight.detectTarget.position) > 3f)
         {
-            enemyAnim.SetBool(Walk, false);
-            enemyAnim.SetBool(GunRuning, true);
+            //enemyAnim.SetBool(Walk, false);
+            //enemyAnim.SetBool(GunRuning, true);
             m_enemy.isStopped = false;
         }
     }
@@ -207,8 +207,8 @@ public class Enemy : MonoBehaviour
         {
 
             isShooting = true; // 발사 중 상태로 변경
-            enemyAnim.SetBool(GunRuning, false);
-            enemyAnim.SetBool(Walk, false);
+            //enemyAnim.SetBool(GunRuning, false);
+            //enemyAnim.SetBool(Walk, false);
             transform.LookAt(pos);
             enemyAnim.SetTrigger(Shot);
             GameObject bulletObject = Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
@@ -222,8 +222,8 @@ public class Enemy : MonoBehaviour
         if (!isShooting)
         {
             isShooting = true; // 발사 중 상태로 변경
-            enemyAnim.SetBool(GunRuning, false);
-            enemyAnim.SetBool(Walk, false);
+            //enemyAnim.SetBool(GunRuning, false);
+            //enemyAnim.SetBool(Walk, false);
 
             // 총알을 발사하는 동작을 수행합니다.
             transform.LookAt(pos);
@@ -231,7 +231,7 @@ public class Enemy : MonoBehaviour
             GameObject bulletObject = Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
             Rigidbody bulletRigid = bulletObject.GetComponent<Rigidbody>();
             // 총알을 생성하고 설정한 방향으로 발사합니다.
-            enemyAnim.SetTrigger(Shot);
+            //enemyAnim.SetTrigger(Shot);
             if (enemyType == 2)
                 Shoot2();
             bulletRigid.velocity = bulletPos.forward * bulletSpeed;
@@ -279,16 +279,16 @@ public class Enemy : MonoBehaviour
     {
         if (sight.findT)
         {
-            enemyAnim.SetBool(GunRuning, true);
-            enemyAnim.SetBool(Walk, false);
+            //enemyAnim.SetBool(GunRuning, true);
+            //enemyAnim.SetBool(Walk, false);
             //GameManager.instance.playerchasing = true;
             state = EnemyState.findtarget;
 
         }
         else if (sight.findT && hearSound)
         {
-            enemyAnim.SetBool(GunRuning, true);
-            enemyAnim.SetBool(Walk, false);
+            //enemyAnim.SetBool(GunRuning, true);
+            //enemyAnim.SetBool(Walk, false);
             state = EnemyState.findtarget;
 
         }
@@ -318,23 +318,23 @@ public class Enemy : MonoBehaviour
         if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
         {
 
-            enemyAnim.SetBool(GunRuning, true);
-            enemyAnim.SetBool(Walk, false);
+            //enemyAnim.SetBool(GunRuning, true);
+            //enemyAnim.SetBool(Walk, false);
             EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
         }
         else if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
         {
 
-            enemyAnim.SetBool(GunRuning, true);
-            enemyAnim.SetBool(Walk, false);
+            //enemyAnim.SetBool(GunRuning, true);
+            //enemyAnim.SetBool(Walk, false);
             EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
             GameManager.instance.lv3PlayerPos = sight.detectTarget.position;
         }
         else if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level3)
         {
 
-            enemyAnim.SetBool(GunRuning, true);
-            enemyAnim.SetBool(Walk, false);
+            //enemyAnim.SetBool(GunRuning, true);
+            //enemyAnim.SetBool(Walk, false);
             EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
             GameManager.instance.lv3PlayerPos = sight.detectTarget.position;
         }
