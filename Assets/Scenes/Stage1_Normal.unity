@@ -671,6 +671,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1203201228}
     m_Modifications:
+    - target: {fileID: 3229537391659107549, guid: ffa8da2cfff9ae143a52a102989fb14a, type: 3}
+      propertyPath: visibleT
+      value: 
+      objectReference: {fileID: 1019942854}
     - target: {fileID: 3522745412559047204, guid: ffa8da2cfff9ae143a52a102989fb14a, type: 3}
       propertyPath: m_Name
       value: 1 Road Enemy (Shot Gun)
@@ -8562,7 +8566,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   playerobj: {fileID: 1019942855}
-  gameOver: {fileID: 0}
+  gameOver: {fileID: 1317225877}
   savename: /save
 --- !u!4 &414177057
 Transform:
@@ -11522,7 +11526,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBA54\uC778\uD558\uBA74\uC73C\uB85C"
+  m_Text: "\uBA54\uC778\uD654\uBA74\uC73C\uB85C"
 --- !u!222 &596125600
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13292,7 +13296,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 675849687}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1317225879}
+        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
+        m_MethodName: CheckPoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &675849687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19202,7 +19218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7248858452175125864, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.6
+      value: 36.9
       objectReference: {fileID: 0}
     - target: {fileID: 7248858452175125864, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -19210,7 +19226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7248858452175125864, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 74.3
+      value: 74.8
       objectReference: {fileID: 0}
     - target: {fileID: 7248858452175125864, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19263,6 +19279,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1203201228}
     m_Modifications:
+    - target: {fileID: 3229537391659107549, guid: ffa8da2cfff9ae143a52a102989fb14a, type: 3}
+      propertyPath: visibleT
+      value: 
+      objectReference: {fileID: 1019942854}
     - target: {fileID: 3522745412559047204, guid: ffa8da2cfff9ae143a52a102989fb14a, type: 3}
       propertyPath: m_Name
       value: 3 door Enemy (Shot Gun)
@@ -32644,7 +32664,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1820397274}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 388867757}
+        m_TargetAssemblyTypeName: PauseWin, Assembly-CSharp
+        m_MethodName: CheckPointStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1820397274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35722,10 +35754,10 @@ MonoBehaviour:
   xlimit: {x: -600, y: 600}
   speed: 1
   success: {fileID: 1704638983}
-  cctv1: {fileID: 0}
-  fcctv1: {fileID: 0}
-  cctv2: {fileID: 0}
-  fcctv2: {fileID: 0}
+  cctv1: {fileID: 6003259091799401978}
+  fcctv1: {fileID: 7066753556216941838}
+  cctv2: {fileID: 1367366451208328986}
+  fcctv2: {fileID: 3349768185790324419}
 --- !u!120 &1972549144
 LineRenderer:
   serializedVersion: 2
@@ -38247,7 +38279,21 @@ MonoBehaviour:
   keypad: {fileID: 822536970}
   answerInput: {fileID: 441170524}
   pw: 8324
-  door: {fileID: 8685866590220735668}
+  doorOpen:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4214864792431213182}
+        m_TargetAssemblyTypeName: BDoor, Assembly-CSharp
+        m_MethodName: BDoorOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2061219735
 GameObject:
   m_ObjectHideFlags: 0
@@ -39761,7 +39807,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Contunue
+  m_Text: Continue
 --- !u!222 &2117171891
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -108606,23 +108652,23 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 567775184}
+  - {fileID: 1019942853}
   - {fileID: 5984251710756767031}
-  - {fileID: 117621586}
-  - {fileID: 1608257908}
-  - {fileID: 1398943012}
-  - {fileID: 1773928526}
   - {fileID: 1865491010}
-  - {fileID: 2118853927}
   - {fileID: 1829834369}
   - {fileID: 1867873224}
-  - {fileID: 639300519}
+  - {fileID: 1773928526}
   - {fileID: 209554552}
+  - {fileID: 1608257908}
+  - {fileID: 117621586}
   - {fileID: 1962876975}
-  - {fileID: 414177057}
-  - {fileID: 841380473}
   - {fileID: 1203201228}
   - {fileID: 1206866375}
-  - {fileID: 1019942853}
   - {fileID: 881408330}
   - {fileID: 2008061153}
+  - {fileID: 1398943012}
+  - {fileID: 414177057}
+  - {fileID: 639300519}
+  - {fileID: 841380473}
   - {fileID: 2030943343}
+  - {fileID: 2118853927}

@@ -121,10 +121,10 @@ public class SinPuzzle : MonoBehaviour
             player = Player.PlayerState.idle;
             if (!lev)
             {
-                //cctv1.SetActive(false);
-                //fcctv1.SetActive(true);
-                //cctv2.SetActive(false);
-                //fcctv2.SetActive(true);
+                cctv1.SetActive(false);
+                fcctv1.SetActive(true);
+                cctv2.SetActive(false);
+                fcctv2.SetActive(true);
                 lev = true;
                 PuzlvUp();
                 GameManager.instance.EnemyActive2();
