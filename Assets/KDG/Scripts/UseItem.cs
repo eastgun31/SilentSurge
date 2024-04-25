@@ -61,7 +61,10 @@ public class UseItem : MonoBehaviour
 
     public void ErageDraw()
     {
-        drawLine.positionCount = 0;
+        //drawLine.positionCount = 0;
+        drawLine.SetPosition(0, new Vector3(0, 0, 0));
+        drawLine.SetPosition(1, new Vector3(0, 0, 0));
+        //Destroy(drawLine);
     }
 
     public void ThrowPosition(bool a, bool b)

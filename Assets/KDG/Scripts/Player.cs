@@ -1,6 +1,7 @@
 using ItemInfo;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
 
     Animator playerAnim;
     string walk = "Walk";
+    string gunwalk = "GunWalk";
     string handgunMode = "HandGun";
     string throwcoin = "ThrowCoin";
     string throwflashbang = "ThrowFlashBang";
@@ -69,6 +71,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(math.round(velocity.magnitude));
         if (GameManager.instance.nowpuzzle)
         {
             state = PlayerState.puzzling;
@@ -80,6 +83,7 @@ public class Player : MonoBehaviour
         else if (GameManager.instance.isHide)
         {
             state = PlayerState.hide;
+            useItem.ErageDraw();
         }        
         else if (GameManager.instance.isDie)
         {
@@ -126,11 +130,20 @@ public class Player : MonoBehaviour
         velocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized * playerspeed;
         //rigid.MovePosition(rigid.position + velocity * Time.deltaTime);
         playerAnim.SetFloat(walk, velocity.magnitude);
+        //PlayerAnimCondition();
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if(Input.GetKeyDown(KeyCode.LeftShift))
         {
-            footSound.SetActive(true);
             playerspeed = 5f;
+        }
+        if (Input.GetKey(KeyCode.LeftShift) && velocity.magnitude >= 5)
+        {
+            //if(velocity.magnitude < 5)
+            //    footSound.SetActive(false);
+
+            //Debug.Log("달리기");
+            footSound.SetActive(true);
+            
             if (handgunacivate)
                 playerAnim.SetBool(gunrun, true);
             else
@@ -221,6 +234,7 @@ public class Player : MonoBehaviour
             handgunacivate = true;
             handGunModel.SetActive(true);
             Debug.Log("권총 활성화");
+            playerAnim.SetBool(run, false);
             playerAnim.SetBool(handgunMode, true);
             coinacivate = false;
             flashbangacivate = false;
@@ -230,6 +244,7 @@ public class Player : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha1) && handgunacivate)
         {
             playerAnim.SetBool(handgunMode, false);
+            playerAnim.SetBool(gunrun, false);
             handGunModel.SetActive(false);
             handgunacivate = false;
             Debug.Log("권총 비활성화");
@@ -241,6 +256,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2) && !coinacivate)
         {
             playerAnim.SetBool(handgunMode, false);
+            playerAnim.SetBool(gunrun, false);
             coinacivate = true;
             Debug.Log("코인 활성화");
             handGunModel.SetActive(false);
@@ -260,6 +276,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3) && !flashbangacivate)
         {
             playerAnim.SetBool(handgunMode, false);
+            playerAnim.SetBool(gunrun, false);
             flashbangacivate = true;
             Debug.Log("섬광탄 활성화");
             handGunModel.SetActive(false);
@@ -279,6 +296,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha4) && !heartseeacivate)
         {
             playerAnim.SetBool(handgunMode, false);
+            playerAnim.SetBool(gunrun, false);
             heartseeacivate = true;
             Debug.Log("심장박동측정기 활성화");
             handGunModel.SetActive(false);
@@ -291,6 +309,32 @@ public class Player : MonoBehaviour
         {
             heartseeacivate = false;
             Debug.Log("심장박동측정기 비활성화");
+        }
+    }
+    void PlayerAnimCondition()
+    {
+        if (handgunacivate)
+        {
+            if(velocity.magnitude >= 5)
+            {
+                Debug.Log("달리기");
+                playerAnim.SetFloat(gunrun,velocity.magnitude);
+            }
+            else
+                playerAnim.SetFloat(gunwalk, velocity.magnitude);
+        }
+        else
+        {
+            if(velocity.magnitude >= 5)
+            {
+                Debug.Log("달리기");
+                playerAnim.SetBool(run, true);
+            }
+            else
+            {
+                playerAnim.SetFloat(walk, velocity.magnitude);
+            }
+                
         }
     }
 
