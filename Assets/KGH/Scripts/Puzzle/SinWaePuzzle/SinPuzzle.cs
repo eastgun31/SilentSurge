@@ -125,13 +125,14 @@ public class SinPuzzle : MonoBehaviour
                 fcctv1.SetActive(true);
                 cctv2.SetActive(false);
                 fcctv2.SetActive(true);
+                PuzlvUp();
                 lev = true;
                 
                 GameManager.instance.EnemyActive2();
                 EnemyLevel.enemylv.SetEnemy();
             }
             Invoke("CloseSin", 1f);
-            PuzlvUp();
+            GameManager.instance.nowpuzzle = false;
         }
     }
 
@@ -147,7 +148,6 @@ public class SinPuzzle : MonoBehaviour
             amplitude = 70f;   
             frequency = 0.009f;
         }
-
     }
 
     void Difficulty()
@@ -166,7 +166,7 @@ public class SinPuzzle : MonoBehaviour
 
     private void PuzlvUp()
     {   
-        GameManager.instance.nowpuzzle = false;
+        
         GameManager.instance.puzzleLevel += 1; 
         DataManager.instance.SaveData();
     }
