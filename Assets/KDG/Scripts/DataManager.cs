@@ -66,6 +66,7 @@ public class DataManager : MonoBehaviour
     private void Start()
     {
         saveData.gmexistenemy = new bool[GameManager.instance.existEnemy.Length];
+        saveData.gmexistitem = new bool[GameManager.instance.existItem.Length];
         Invoke("SaveData", 2f);
     }
 

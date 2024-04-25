@@ -18,8 +18,8 @@ public class Coin : MonoBehaviour, IItem
     {
         itemvalues.count = 5;
         value = 2;
-        if (sequence == 1)
-            indexNum = 1;
+        //if (sequence == 1)
+        indexNum = sequence;
     }
 
     public void GetItem()

@@ -44,8 +44,12 @@ public class GameManager : MonoBehaviour
         lv3PlayerPos = new Vector3(0,0,0);
         itemcheck = new bool[5] { false, false, false, false, false };
         itemcount = new int[5] { 0, 0, 0, 0, 0 };   //±ÇÃÑ, ÄÚÀÎ, ¼¶±¤Åº, ½É¹ÚÃøÁ¤±â, ¹æÅºº¹
-        existItem = new bool[5] { false, true, true, true, false };
+        //existItem = new bool[Items.Length] ;
+    }
+    private void Start()
+    {
         EnemyActive1();
+        ItemActive();
     }
 
     public void SetItem()
@@ -59,6 +63,21 @@ public class GameManager : MonoBehaviour
             else if(!existItem[i])
             { 
                 Items[i].SetActive(false); 
+            }
+        }
+    }
+
+    void ItemActive()
+    {
+        for(int i = 0; i < Items.Length;i++)
+        {
+            if (Items[i].activeSelf)
+            {
+                existItem[i] = true;
+            }
+            else if (!Items[i].activeSelf)
+            {
+                existItem[i] = false;
             }
         }
     }
@@ -114,11 +133,11 @@ public class GameManager : MonoBehaviour
         {
             case 1:
                 Debug.Log("¾À1");
-                SceneVariableReset(1, EnemyLevel.enemylv.Enemies.Length, 1, 4, 7, 360);
+                SceneVariableReset(1, EnemyLevel.enemylv.Enemies.Length, 1, 4, 7, 360,5);
                 break;
             case 2:
                 Debug.Log("¾À2");
-                SceneVariableReset(2, EnemyLevel.enemylv.Enemies.Length, 2, 6, 5, 120);
+                SceneVariableReset(2, EnemyLevel.enemylv.Enemies.Length, 2, 6, 5, 120, 5);
                 break;
             case 3:
                 scenenum = 3;
@@ -129,7 +148,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void SceneVariableReset(int a, int b, int c, int d, int e, int f)
+    void SceneVariableReset(int a, int b, int c, int d, int e, int f, int g)
     {
         scenenum = a;
         existEnemy = new bool[b];
@@ -137,6 +156,7 @@ public class GameManager : MonoBehaviour
         enemyQuater = d;
         playerviewR = e;
         playerviewA = f;
+        existItem = new bool[g];
     }
 
     public void GameOver()
