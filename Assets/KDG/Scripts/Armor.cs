@@ -13,8 +13,8 @@ public class Armor : MonoBehaviour, IItem
     {
         value = 5;
         itemvalues.count = 3;
-        if (sequence == 1)
-            indexNum = 4;
+        //if (sequence == 1)
+        //    indexNum = 4;
     }
 
     public void GetItem()

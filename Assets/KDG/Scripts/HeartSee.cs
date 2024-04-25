@@ -13,7 +13,7 @@ public class HeartSee : MonoBehaviour, IItem
     void Start()
     {
         value = 4;
-        indexNum = 3;
+        //indexNum = 3;
     }
 
     public void GetItem()

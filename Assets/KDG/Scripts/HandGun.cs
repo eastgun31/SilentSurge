@@ -19,8 +19,8 @@ public class HandGun : MonoBehaviour, IItem
     {
         value = 1;
         itemvalues.count = 6;
-        if(sequence == 1)
-            indexNum = 0;
+        //if(sequence == 1)
+        //    indexNum = 0;
     }
 
     public void GetItem()

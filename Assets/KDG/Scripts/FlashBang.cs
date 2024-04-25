@@ -15,8 +15,8 @@ public class FlashBang : MonoBehaviour, IItem
     {
         itemvalues.count = 3;
         value = 3;
-        if (sequence == 1)
-            indexNum = 2;
+        //if (sequence == 1)
+        //    indexNum = 2;
     }
 
 
