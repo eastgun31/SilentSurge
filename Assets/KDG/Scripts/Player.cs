@@ -138,16 +138,16 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.LeftShift) && velocity.magnitude >= 5)
         {
-            //if(velocity.magnitude >= 5)
-            {
-                Debug.Log("달리기");
-                footSound.SetActive(true);
+            //if(velocity.magnitude < 5)
+            //    footSound.SetActive(false);
+
+            //Debug.Log("달리기");
+            footSound.SetActive(true);
             
-                if (handgunacivate)
-                    playerAnim.SetBool(gunrun, true);
-                else
-                    playerAnim.SetBool(run, true);
-            }
+            if (handgunacivate)
+                playerAnim.SetBool(gunrun, true);
+            else
+                playerAnim.SetBool(run, true);
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
@@ -234,6 +234,7 @@ public class Player : MonoBehaviour
             handgunacivate = true;
             handGunModel.SetActive(true);
             Debug.Log("권총 활성화");
+            playerAnim.SetBool(run, false);
             playerAnim.SetBool(handgunMode, true);
             coinacivate = false;
             flashbangacivate = false;
@@ -243,6 +244,7 @@ public class Player : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha1) && handgunacivate)
         {
             playerAnim.SetBool(handgunMode, false);
+            playerAnim.SetBool(gunrun, false);
             handGunModel.SetActive(false);
             handgunacivate = false;
             Debug.Log("권총 비활성화");
@@ -254,6 +256,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2) && !coinacivate)
         {
             playerAnim.SetBool(handgunMode, false);
+            playerAnim.SetBool(gunrun, false);
             coinacivate = true;
             Debug.Log("코인 활성화");
             handGunModel.SetActive(false);
@@ -273,6 +276,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3) && !flashbangacivate)
         {
             playerAnim.SetBool(handgunMode, false);
+            playerAnim.SetBool(gunrun, false);
             flashbangacivate = true;
             Debug.Log("섬광탄 활성화");
             handGunModel.SetActive(false);
@@ -292,6 +296,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha4) && !heartseeacivate)
         {
             playerAnim.SetBool(handgunMode, false);
+            playerAnim.SetBool(gunrun, false);
             heartseeacivate = true;
             Debug.Log("심장박동측정기 활성화");
             handGunModel.SetActive(false);
