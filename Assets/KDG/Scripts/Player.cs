@@ -72,6 +72,9 @@ public class Player : MonoBehaviour
         if (GameManager.instance.nowpuzzle)
         {
             state = PlayerState.puzzling;
+            playerAnim.SetBool(gunrun, false);
+            playerAnim.SetBool(run, false);
+            footSound.SetActive(false);
             //playerspeed = 0;
         }
         else if (GameManager.instance.isHide)

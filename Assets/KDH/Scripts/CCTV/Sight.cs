@@ -94,6 +94,7 @@ public class Sight : MonoBehaviour
         for (int i = 0; i < targets.Length; i++)
         {
             detectTarget = targets[i].transform;
+            GameManager.instance.lv3PlayerPos = detectTarget.position;
             dir_T = (detectTarget.position - transform.position).normalized;             // 타겟 위치 - 시야각 발사 위치 (정규화) = 타겟의 방향
             if (Vector3.Angle(transform.forward, dir_T) < angle / 2)                                        // 시야각의 정면과 타겟의 방향이 이루는 각도가 설정한 변수보다 작다면(안이라면)
             {
