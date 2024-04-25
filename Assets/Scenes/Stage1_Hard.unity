@@ -1209,7 +1209,6 @@ Transform:
   m_Children:
   - {fileID: 1367648246}
   - {fileID: 1939702823}
-  - {fileID: 302412533}
   m_Father: {fileID: 6573965289426386349}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &38342438
@@ -5129,7 +5128,7 @@ PrefabInstance:
       objectReference: {fileID: 776064101}
     - target: {fileID: 7248858452175125864, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 38.5
+      value: 37.4
       objectReference: {fileID: 0}
     - target: {fileID: 7248858452175125864, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5137,7 +5136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7248858452175125864, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 43.5
+      value: 44.5
       objectReference: {fileID: 0}
     - target: {fileID: 7248858452175125864, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7853,11 +7852,11 @@ Transform:
   m_GameObject: {fileID: 302412531}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.3769164, y: 1.409996, z: 7.3333297}
-  m_LocalScale: {x: 0.8333334, y: 1, z: 0.8333334}
+  m_LocalPosition: {x: -45.55, y: 1.4100037, z: 23.659996}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 38342437}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &302412534
 MonoBehaviour:
@@ -15594,10 +15593,10 @@ MonoBehaviour:
   xlimit: {x: -600, y: 600}
   speed: 1
   success: {fileID: 1968517715}
-  cctv1: {fileID: 0}
-  fcctv1: {fileID: 0}
-  cctv2: {fileID: 0}
-  fcctv2: {fileID: 0}
+  cctv1: {fileID: 9190201158065848637}
+  fcctv1: {fileID: 962912950841665952}
+  cctv2: {fileID: 3223502382198483302}
+  fcctv2: {fileID: 8731201210547876954}
 --- !u!120 &723158497
 LineRenderer:
   serializedVersion: 2
@@ -18663,7 +18662,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Contunue
+  m_Text: Continue
 --- !u!222 &889860799
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20169,7 +20168,19 @@ MonoBehaviour:
   answerInput: {fileID: 46316347}
   doorOpen:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2082885655}
+        m_TargetAssemblyTypeName: BDoor, Assembly-CSharp
+        m_MethodName: BDoorOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &981397088
 GameObject:
   m_ObjectHideFlags: 0
@@ -31347,7 +31358,7 @@ Transform:
   m_GameObject: {fileID: 1518284305}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.551757, y: -16.661026, z: 2.6896439}
+  m_LocalPosition: {x: -3.68, y: -16.661026, z: 2.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31592,7 +31603,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBA54\uC778\uD558\uBA74\uC73C\uB85C"
+  m_Text: "\uBA54\uC778\uD654\uBA74\uC73C\uB85C"
 --- !u!222 &1545214802
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -37698,7 +37709,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1857841209}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
@@ -112346,6 +112357,7 @@ SceneRoots:
   - {fileID: 740792066}
   - {fileID: 1402002755}
   - {fileID: 353631964}
+  - {fileID: 302412533}
   - {fileID: 7943190736319737546}
   - {fileID: 950467122}
   - {fileID: 537628223}
