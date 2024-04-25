@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(math.round(velocity.magnitude));
+        //Debug.Log(math.round(velocity.magnitude));
         if (GameManager.instance.nowpuzzle)
         {
             state = PlayerState.puzzling;
