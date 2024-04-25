@@ -12,12 +12,12 @@ public class LoadScene : MonoBehaviour
     public void LoadStage1_normal()
     {
         SceneManager.LoadScene(1);
-        StartCoroutine(LoadDelay());
+        //StartCoroutine(LoadDelay());
     }    
     public void LoadStage1_hard()
     {
         SceneManager.LoadScene(2);
-        StartCoroutine(LoadDelay());
+        //StartCoroutine(LoadDelay());
     }    
     public void LoadStage2_normal()
     {
@@ -38,7 +38,7 @@ public class LoadScene : MonoBehaviour
 
     IEnumerator LoadDelay()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         DataManager.instance.SaveData();
     }
 }
