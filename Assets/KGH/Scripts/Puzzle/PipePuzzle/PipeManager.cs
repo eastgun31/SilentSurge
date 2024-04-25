@@ -17,6 +17,8 @@ public class PipeManager : MonoBehaviour
     [SerializeField]
     int correctPipes = 0; // 올바르게 배치된 파이프 수
 
+    private Quaternion[] pipesRot;
+
     public Text success;
 
     void Start()
@@ -25,10 +27,15 @@ public class PipeManager : MonoBehaviour
 
         totalPipes = pipesHolder.transform.childCount;
         pipes = new GameObject[totalPipes];
+        pipesRot = new Quaternion[totalPipes];
 
         for (int i = 0; i < pipes.Length; i++)
         {
             pipes[i] = pipesHolder.transform.GetChild(i).gameObject;
+        }
+        for (int i = 0; i < pipes.Length; i++)
+        {
+            pipesRot[i] = pipes[i].transform.rotation;
         }
     }
     private void Update()
@@ -88,5 +95,11 @@ public class PipeManager : MonoBehaviour
     {
         UiManager.instance.isWin = false;
         canvas.gameObject.SetActive(false);
+
+        for (int i = 0; i < pipes.Length; i++)
+        {
+            pipes[i].transform.rotation = pipesRot[i];
+        }
+        correctPipes = 0;
     }
 }
