@@ -215,7 +215,7 @@ public class PlayerInteractive : MonoBehaviour
                         }
                         doort.oDoor();
                     }
-                    else if (doort.nDoor == 2 && GameManager.instance.puzzleLevel == 4)
+                    else if (doort.nDoor == 2 && GameManager.instance.puzzleLevel >= 4)
                     {
                         if (handle.Doorindex == 1)
                         {
