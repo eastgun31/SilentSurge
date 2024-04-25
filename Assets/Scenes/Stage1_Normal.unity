@@ -8558,6 +8558,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   playerobj: {fileID: 1019942855}
+  gameOver: {fileID: 0}
   savename: /save
 --- !u!4 &414177057
 Transform:
@@ -19147,6 +19148,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 414177056}
+    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadData
+      objectReference: {fileID: 0}
+    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DataManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+      propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3358342213177724985, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -25946,6 +25975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e87a04ed04c564b90a2dd0e4bfb543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOver: {fileID: 0}
   scenenum: 0
   enemyDown: 0
   itemcheck: 0000000000
@@ -25955,10 +25985,12 @@ MonoBehaviour:
   canUse: 1
   playerchasing: 0
   existItem: 
-  existEnemy1: 0000000000000000
-  existEnemy2: 000000000000000000000000
+  existEnemy: 
   isHide: 0
   isDie: 0
+  playerviewR: 0
+  playerviewA: 0
+  enemyQuater: 0
   lv3PlayerPos: {x: 0, y: 0, z: 0}
   Items:
   - {fileID: 169065056}
