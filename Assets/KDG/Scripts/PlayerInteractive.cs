@@ -29,16 +29,6 @@ public class PlayerInteractive : MonoBehaviour
         playerView = GetComponent<PlayerView>();
     }
 
-    void puzzle1()
-    {
-        if (GameManager.instance.puzzleLevel == 1)
-        {
-
-        }
-        else
-            return;
-    }
-
     IEnumerator PInteractive(Collider other)
     {
         while (true)
