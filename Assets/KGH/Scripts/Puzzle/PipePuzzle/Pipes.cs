@@ -25,10 +25,13 @@ public class Pipes : MonoBehaviour, IPointerClickHandler
     {
         WinCheck();
     }
-
-    void Start()
+    private void OnDisable()
     {
-        PossibleRots = correctRotation.Length; 
+        isPlaces = false;
+    }
+    private void OnEnable()
+    {
+        PossibleRots = correctRotation.Length;
 
         if (PossibleRots > 1) //초기회전각도를 확인
         {
@@ -46,6 +49,10 @@ public class Pipes : MonoBehaviour, IPointerClickHandler
                 pipeManager.CorrectMove();
             }
         }
+    }
+    void Start()
+    {
+       
     }
     public void OnPointerClick(PointerEventData eventData)
     {
