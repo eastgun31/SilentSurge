@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     public Vector3 lv3PlayerPos;
 
     public GameObject[] Items;
-
+    public bool last = false;
     public void Awake()
     {
         if (instance != null)

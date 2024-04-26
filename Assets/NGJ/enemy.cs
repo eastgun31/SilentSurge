@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
 {
     public enum EnemyState //wjr 상태머신
     {
-        patrolling, hear, findtarget
+        patrolling, hear, findtarget, die
     }
 
     public EnemyState state;
@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Transform[] bulletPoses;
     E_CoolTime cooltime;
-
+    AudioSource enemysound;
 
 
     Animator enemyAnim;
@@ -66,7 +66,6 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-
         chasing = false;
         stoppingDistance = 3f;
         state = EnemyState.patrolling;
@@ -113,16 +112,19 @@ public class Enemy : MonoBehaviour
         //    enemyAnim.SetBool(Walk, false);
         //    enemyAnim.SetBool(GunRuning, false);
         //}
-        if (indexcount == 98)
-            customDestinations[0] = GameManager.instance.lv3PlayerPos;
+        //if (indexcount == 98)
+        //    customDestinations[0] = GameManager.instance.lv3PlayerPos;
+
+        enemyAnim.SetFloat(Walk, m_enemy.velocity.magnitude);
+
     }
 
     public void ChaseSound(Vector3 position)
     {
         //Debug.Log("소리추적");
 
-        enemyAnim.SetBool(Walk, false);
-        enemyAnim.SetBool(GunRuning, true);
+        //enemyAnim.SetBool(Walk, false);
+        //enemyAnim.SetBool(GunRuning, true);
         m_enemy.SetDestination(position);
         if (noactiving)
             StartCoroutine(ChaseSoundRoutine(position)); // 대기 시간 5초 
@@ -149,10 +151,10 @@ public class Enemy : MonoBehaviour
         m_enemy.velocity = Vector3.zero;
         m_enemy.stoppingDistance = stoppingDistance;
         m_enemy.isStopped = false;
-        indexcount = 0;
     }
     void EnemyPatrol()  //적순찰
     {
+        enemyAnim.SetBool(GunRuning, false);
         if (Vector3.Distance(transform.position, customDestinations[naviindex]) > 1f)
         {
             //enemyAnim.SetBool(Walk, true);
@@ -175,71 +177,74 @@ public class Enemy : MonoBehaviour
         if (!chasing)
             StartCoroutine(Levelstep());
 
-        //enemyAnim.SetBool(GunRuning, true); // 총을 들고 있을 때 설정
+        enemyAnim.SetBool(GunRuning, true); // 총을 들고 있을 때 설정
         m_enemy.stoppingDistance = stoppingDistance;
         m_enemy.SetDestination(sight.detectTarget.position);
 
-        if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 3f)
+        if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 3f && state != EnemyState.die)
         {
             //enemyAnim.SetBool(Walk, false);
-            //enemyAnim.SetBool(GunRuning, false);
+            enemyAnim.SetBool(GunRuning, false);
             if (enemyType == 1 || enemyType == 2)
-                Shoot(sight.detectTarget.position); // 총을 발사합니다.
+                StartCoroutine(Shoot(sight.detectTarget.position)); // 총을 발사합니다.
             else if (enemyType == 3)
-                CloseAttack(sight.detectTarget.position);
+                StartCoroutine(CloseAttack(sight.detectTarget.position));
             else if (enemyType == 4 && !isShooting)
                 StartCoroutine(UdoShoot(sight.detectTarget.position));
         }
         else if (Vector3.Distance(transform.position, sight.detectTarget.position) > 3f)
         {
             //enemyAnim.SetBool(Walk, false);
-            //enemyAnim.SetBool(GunRuning, true);
+            enemyAnim.SetBool(GunRuning, true);
             m_enemy.isStopped = false;
         }
     }
 
 
-    void CloseAttack(Vector3 pos)
+    IEnumerator CloseAttack(Vector3 pos)
     {
         m_enemy.stoppingDistance = 1;
+        yield return cooltime.cool1sec;
 
         if (!isShooting)
         {
-
             isShooting = true; // 발사 중 상태로 변경
             //enemyAnim.SetBool(GunRuning, false);
             //enemyAnim.SetBool(Walk, false);
+
             transform.LookAt(pos);
             enemyAnim.SetTrigger(Shot);
             GameObject bulletObject = Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
             // 총알 발사 후 일정 시간을 기다린 후 다음 동작으로 진행합니다.
-            StartCoroutine(DelayTime(1f, cooltime.cool5sec)); // 1초 뒤에 다시 총 발사
-
+            yield return cooltime.cool2sec; // 1초 뒤에 다시 총 발사
         }
     }
-    void Shoot(Vector3 pos)
+    IEnumerator Shoot(Vector3 pos)
     {
+        yield return cooltime.cool1sec;
         if (!isShooting)
         {
             isShooting = true; // 발사 중 상태로 변경
             //enemyAnim.SetBool(GunRuning, false);
             //enemyAnim.SetBool(Walk, false);
-
+            m_enemy.isStopped = true;
+            m_enemy.velocity = Vector3.zero;
             // 총알을 발사하는 동작을 수행합니다.
             transform.LookAt(pos);
 
             GameObject bulletObject = Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
             Rigidbody bulletRigid = bulletObject.GetComponent<Rigidbody>();
             // 총알을 생성하고 설정한 방향으로 발사합니다.
-            //enemyAnim.SetTrigger(Shot);
+            enemyAnim.SetTrigger(Shot);
             if (enemyType == 2)
                 Shoot2();
             bulletRigid.velocity = bulletPos.forward * bulletSpeed;
 
             // 총알 발사 후 일정 시간을 기다린 후 다음 동작으로 진행
-            StartCoroutine(DelayTime(1, cooltime.cool5sec)); // 1초 뒤에 다시 총 발사
-
+            yield return cooltime.cool2sec; 
+            isShooting = false;
         }
+        m_enemy.isStopped = false;
     }
     void Shoot2()
     {
@@ -252,16 +257,23 @@ public class Enemy : MonoBehaviour
     }
     IEnumerator UdoShoot(Vector3 pos)
     {
-        isShooting = true;
-        m_enemy.isStopped = true;
-        transform.LookAt(pos);
-        GameObject bulletObject = Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
-        Rigidbody bulletRigid = bulletObject.GetComponent<Rigidbody>();
-        yield return cooltime.cool2sec;
-        bulletObject.transform.LookAt(pos);
-        bulletRigid.velocity = bulletPos.forward * bulletSpeed;
-        yield return cooltime.cool5sec;
-        isShooting = false;
+        yield return cooltime.cool1sec;
+        if(!isShooting)
+        {
+            isShooting = true;
+            m_enemy.isStopped = true;
+            m_enemy.velocity = Vector3.zero;
+            transform.LookAt(pos);
+            enemyAnim.SetTrigger(Shot);
+            GameObject bulletObject = Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
+            Rigidbody bulletRigid = bulletObject.GetComponent<Rigidbody>();
+            yield return cooltime.cool2sec;
+            bulletObject.transform.LookAt(pos);
+            bulletRigid.velocity = bulletPos.forward * bulletSpeed;
+            yield return cooltime.cool3sec;
+            isShooting = false;
+        }
+        m_enemy.isStopped = false;
     }
 
     IEnumerator DelayTime(float type, WaitForSeconds delay)
@@ -344,7 +356,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            Destroy(other.gameObject, 1f);
+            Destroy(other.gameObject);
             if (indexcount != 99 || indexcount != 98)
             {
                 GameManager.instance.existEnemy[indexcount] = false;
@@ -353,18 +365,19 @@ public class Enemy : MonoBehaviour
                 //else if (GameManager.instance.scenenum == 2)
                 //    GameManager.instance.existEnemy2[indexcount] = false;
             }
-
-
-
-            enemyAnim.SetTrigger(Death);
+            StopAllCoroutines();
+            state = EnemyState.die;
+            m_enemy.isStopped = true;
+            m_enemy.velocity = Vector3.zero;
+            enemyAnim.SetBool(Death,true);
 
             StartCoroutine(DeactivateWithDelay());
         }
-        else if (other.CompareTag("Flash"))
+        else if (other.CompareTag(Flash))
         {
             m_enemy.isStopped = true;
             m_enemy.velocity = Vector3.zero;
-            enemyAnim.SetBool("Flash", true);
+            enemyAnim.SetTrigger(Flash);
             StartCoroutine(ReactivateMovementAfterDelay(2f));
         }
     }
@@ -385,9 +398,9 @@ public class Enemy : MonoBehaviour
     {
 
         yield return new WaitForSeconds(delay);
-
-        yield return new WaitForSeconds(1f);
         m_enemy.isStopped = false;
+        //yield return new WaitForSeconds(1f);
+        
     }
 
     //IEnumerator ShootRoutine()

@@ -9,10 +9,12 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource audioPlayer;
     public AudioSource effectPlayer;
+    public AudioSource enemyPlayer;
 
     public AudioClip[] bgmClips;
     public AudioClip[] effectClips;
     public AudioClip[] uiClips;
+    public AudioClip[] enemyClips;
 
     [SerializeField]
     private bool playingSource = false;
