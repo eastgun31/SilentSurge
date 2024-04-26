@@ -32,6 +32,9 @@ public class PipeManager : MonoBehaviour
         for (int i = 0; i < pipes.Length; i++)
         {
             pipes[i] = pipesHolder.transform.GetChild(i).gameObject;
+        }
+        for (int i = 0; i < pipes.Length; i++)
+        {
             pipesRot[i] = pipes[i].transform.rotation;
         }
     }
