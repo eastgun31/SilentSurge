@@ -16,6 +16,7 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField]
     private bool playingSource = false;
+    public bool playingAction = false;
 
     private void Awake()
     {
