@@ -54,6 +54,7 @@ public class EnemyLevel : MonoBehaviour
                 ODaeGi();
             }
         }
+
     }
 
     IEnumerator LvDown()
@@ -82,6 +83,15 @@ public class EnemyLevel : MonoBehaviour
             
 
         lvDowning = false;
+    }
+
+    public void StateClear()
+    {
+        for (int i = 0; i < lv3enemy.transform.childCount; i++)
+        {
+            lv3enemy.transform.GetChild(i).gameObject.transform.position = lv3enemy.transform.position;
+        }
+        LvStep = ELevel.level1;
     }
 
     public void SetEnemy()
