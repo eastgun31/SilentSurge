@@ -333,6 +333,7 @@ public class Enemy : MonoBehaviour
             //enemyAnim.SetBool(GunRuning, true);
             //enemyAnim.SetBool(Walk, false);
             EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
+            m_enemy.speed = 5f;
         }
         else if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
         {
@@ -350,6 +351,8 @@ public class Enemy : MonoBehaviour
             EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
             GameManager.instance.lv3PlayerPos = sight.detectTarget.position;
         }
+        else if (state == EnemyState.patrolling && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
+            m_enemy.speed = 3f;
         chasing = false;
     }
     private void OnTriggerEnter(Collider other)
