@@ -24,7 +24,7 @@ public class CreateSound : MonoBehaviour
     public IEnumerator SoundCreateDeleteGun()
     {
         //yield return delaytime.colsize;
-        audioSource.Play();
+        //audioSource.Play();
         GameObject sound = Instantiate(soundprefab);
         sound.transform.position = gameObject.transform.position;
         collider = sound.GetComponent<SphereCollider>();

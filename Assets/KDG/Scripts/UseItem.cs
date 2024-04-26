@@ -48,6 +48,7 @@ public class UseItem : MonoBehaviour
         Rigidbody bulletRigid = bullet.GetComponent<Rigidbody>();
         gunSound = bullet.GetComponent<CreateSound>();
         StartCoroutine(gunSound.SoundCreateDeleteGun());
+        SoundManager.instance.EffectPlay(1, true);
 
         float zDeg = pos.z - bulletRigid.position.z;
         float xDeg = pos.x - bulletRigid.position.x;

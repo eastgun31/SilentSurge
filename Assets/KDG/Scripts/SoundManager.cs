@@ -7,9 +7,15 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    public AudioSource audioSource;
+    public AudioSource audioPlayer;
+    public AudioSource effectPlayer;
+
     public AudioClip[] bgmClips;
     public AudioClip[] effectClips;
+    public AudioClip[] uiClips;
+
+    [SerializeField]
+    private bool playingSource = false;
 
     private void Awake()
     {
@@ -23,7 +29,8 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioPlayer = GetComponent<AudioSource>();
+        //volume = audioPlayer.volume;   
     }
 
     void OnEnable()
@@ -45,11 +52,34 @@ public class SoundManager : MonoBehaviour
 
     public void bgmPlay(int i)
     {
-        audioSource.Stop();
-        audioSource.clip = bgmClips[i];
-        audioSource.loop = true;
-        audioSource.Play();
+        audioPlayer.Stop();
+        audioPlayer.volume = 0.3f;
+        audioPlayer.clip = bgmClips[i];
+        audioPlayer.loop = true;
+        audioPlayer.Play();
     }
 
+    public void EffectPlay(int i, bool type)
+    {
+        if(type)
+            audioPlayer.PlayOneShot(effectClips[i]);
+        else if(!type && !playingSource)
+        {
+            effectPlayer.clip = effectClips[i];
+            effectPlayer.loop = true;
+            effectPlayer.Play();
+            playingSource = true;
+        }
+    }
+    public void EffectOff()
+    {
+        effectPlayer.Stop();
+        effectPlayer.clip = null;
+        playingSource = false;
+    }
+    public void UiSoundPlay(int i)
+    {
+        audioPlayer.PlayOneShot(uiClips[i]);
+    }
     
 }

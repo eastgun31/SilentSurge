@@ -37,7 +37,9 @@ public class Player : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject footSound;
 
-
+    //캐싱
+    GameManager gmManager;
+    SoundManager soundManager;
     Animator playerAnim;
     string walk = "Walk";
     string gunwalk = "GunWalk";
@@ -67,12 +69,14 @@ public class Player : MonoBehaviour
         rigid = transform.GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
         cam = Camera.main;
+        gmManager = GameManager.instance;
+        soundManager = SoundManager.instance;
     }
 
     void Update()
     {
         //Debug.Log(math.round(velocity.magnitude));
-        if (GameManager.instance.nowpuzzle)
+        if (gmManager.nowpuzzle)
         {
             state = PlayerState.puzzling;
             playerAnim.SetBool(gunrun, false);
@@ -80,17 +84,17 @@ public class Player : MonoBehaviour
             footSound.SetActive(false);
             //playerspeed = 0;
         }
-        else if (GameManager.instance.isHide)
+        else if (gmManager.isHide)
         {
             state = PlayerState.hide;
             useItem.ErageDraw();
         }        
-        else if (GameManager.instance.isDie)
+        else if (gmManager.isDie)
         {
             state = PlayerState.die;
             rigid.velocity = Vector3.zero;
         }
-        else if (!GameManager.instance.nowpuzzle || !GameManager.instance.isHide || !GameManager.instance.isDie)
+        else if (!gmManager.nowpuzzle || !gmManager.isHide || !gmManager.isDie)
         {
             state = PlayerState.idle;
             //playerspeed = 2.5f;
@@ -106,7 +110,7 @@ public class Player : MonoBehaviour
             return;
 
         if (itemGet[4])
-            armor = GameManager.instance.itemcount[4];
+            armor = gmManager.itemcount[4];
     }
 
     private void FixedUpdate()
@@ -143,6 +147,7 @@ public class Player : MonoBehaviour
 
             //Debug.Log("달리기");
             footSound.SetActive(true);
+            soundManager.EffectPlay(0,false);
             
             if (handgunacivate)
                 playerAnim.SetBool(gunrun, true);
@@ -152,6 +157,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             footSound.SetActive(false);
+            soundManager.EffectOff();
             playerspeed = 2.5f;
             if (handgunacivate)
                 playerAnim.SetBool(gunrun, false);
@@ -164,7 +170,7 @@ public class Player : MonoBehaviour
             ItemActivate1();
             if (handgunacivate && !coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
             {
-                if(GameManager.instance.itemcount[0]>0)
+                if(gmManager.itemcount[0]>0)
                     useItem.GunFire(mousePos);
             }
         }
@@ -178,7 +184,7 @@ public class Player : MonoBehaviour
 
             if (!handgunacivate && coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
             {
-                if(GameManager.instance.canUse && GameManager.instance.itemcount[1] > 0)
+                if(gmManager.canUse && gmManager.itemcount[1] > 0)
                 {
                     playerAnim.SetTrigger(throwcoin);
                     StartCoroutine(useItem.ThrowCoin());
@@ -195,7 +201,7 @@ public class Player : MonoBehaviour
 
             if (!handgunacivate && !coinacivate && flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
             {
-                if(GameManager.instance.canUse && GameManager.instance.itemcount[2] > 0)
+                if(gmManager.canUse && gmManager.itemcount[2] > 0)
                 {
                     playerAnim.SetTrigger(throwflashbang);
                     StartCoroutine(useItem.ThrowFlashBang());
@@ -210,6 +216,10 @@ public class Player : MonoBehaviour
                 StartCoroutine(useItem.HeartSee());
             }
         }
+
+        //if(velocity.magnitude >= 5)
+        //    soundManager.EffectPlay(0, false);
+
         //if(Input.GetKeyDown(KeyCode.Escape))
         //{
 
@@ -311,36 +321,36 @@ public class Player : MonoBehaviour
             Debug.Log("심장박동측정기 비활성화");
         }
     }
-    void PlayerAnimCondition()
-    {
-        if (handgunacivate)
-        {
-            if(velocity.magnitude >= 5)
-            {
-                Debug.Log("달리기");
-                playerAnim.SetFloat(gunrun,velocity.magnitude);
-            }
-            else
-                playerAnim.SetFloat(gunwalk, velocity.magnitude);
-        }
-        else
-        {
-            if(velocity.magnitude >= 5)
-            {
-                Debug.Log("달리기");
-                playerAnim.SetBool(run, true);
-            }
-            else
-            {
-                playerAnim.SetFloat(walk, velocity.magnitude);
-            }
+    //void PlayerAnimCondition()
+    //{
+    //    if (handgunacivate)
+    //    {
+    //        if(velocity.magnitude >= 5)
+    //        {
+    //            Debug.Log("달리기");
+    //            playerAnim.SetFloat(gunrun,velocity.magnitude);
+    //        }
+    //        else
+    //            playerAnim.SetFloat(gunwalk, velocity.magnitude);
+    //    }
+    //    else
+    //    {
+    //        if(velocity.magnitude >= 5)
+    //        {
+    //            Debug.Log("달리기");
+    //            playerAnim.SetBool(run, true);
+    //        }
+    //        else
+    //        {
+    //            playerAnim.SetFloat(walk, velocity.magnitude);
+    //        }
                 
-        }
-    }
+    //    }
+    //}
 
     IEnumerator PlayerDie()
     {
-        GameManager.instance.isDie = true;
+        gmManager.isDie = true;
         playerAnim.SetTrigger("Die");
         yield return new WaitForSeconds(3f);
         Debug.Log("플레이어 죽음");
@@ -408,14 +418,14 @@ public class Player : MonoBehaviour
                     }
                     break;
             }
-            GameManager.instance.existItem[item.indexNum] = false;
+            gmManager.existItem[item.indexNum] = false;
             other.gameObject.SetActive(false);
         }
         if(other.CompareTag("E_Bullet"))
         {
-            if (itemGet[4] && GameManager.instance.itemcount[4] >0)
+            if (itemGet[4] && gmManager.itemcount[4] >0)
             {
-                GameManager.instance.itemcount[4]--;
+                gmManager.itemcount[4]--;
             }
             else
             {
