@@ -78,7 +78,6 @@ public class PipeManager : MonoBehaviour
             GameManager.instance.puzzleLevel += 1;
 
             Invoke("ClosePipe", 1f);
-            GameManager.instance.nowpuzzle = false;
             DataManager.instance.SaveData();
         }
     }
@@ -91,6 +90,7 @@ public class PipeManager : MonoBehaviour
     public void ClosePipe()
     {
         UiManager.instance.isWin = false;
+        GameManager.instance.nowpuzzle = false;
         canvas.gameObject.SetActive(false);
 
         for (int i = 0; i < pipes.Length; i++)
