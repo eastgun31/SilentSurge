@@ -16,12 +16,18 @@ public class Keypad : MonoBehaviour
 
     public UnityEvent doorOpen;
 
+    private void OnDisable()
+    {
+        answerInput.text = "";
+    }
+
     private void Start()
     {
-        if(GameManager.instance.scenenum ==1)
-            pw = "8324";
-        if (GameManager.instance.scenenum == 2)
-            pw = "9635";
+        pw = GameManager.instance.paswawrd;
+        //if(GameManager.instance.scenenum ==1)
+        //    paswawrd = "8324";
+        //if (GameManager.instance.scenenum == 2)
+        //    paswawrd = "9635";
     }
 
     public void Number(int number) 

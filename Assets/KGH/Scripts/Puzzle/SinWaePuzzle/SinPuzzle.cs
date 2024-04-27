@@ -10,10 +10,11 @@ public class SinPuzzle : MonoBehaviour
     public LineRenderer lineRenderer;
     [SerializeField][Range(0, 500)] private int points = 260;
     public float amplitude;    // 畴富 臭捞
-    public float frequency;   // 畴富 气
+    public float frequency;    // 畴富 气
 
     public float correctAmlitude;
     public float correctFrequance;
+
 
     public bool isAmplitude = false;
     public bool isFrequance = false;
@@ -34,11 +35,16 @@ public class SinPuzzle : MonoBehaviour
 
     private void Start()
     {
-        Difficulty();
+        amplitude = GameManager.instance.amplitude;
+        frequency = GameManager.instance.frequency;
+        correctAmlitude = GameManager.instance.correctAmlitude;
+        correctFrequance = GameManager.instance.correctFrequance;
+        //Difficulty();
     }
     private void OnDisable()
     {
-        DifficultySin();
+        amplitude = GameManager.instance.amplitude;
+        frequency = GameManager.instance.frequency;
     }
     private void Awake()
     {

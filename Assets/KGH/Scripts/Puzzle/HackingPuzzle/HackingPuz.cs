@@ -12,8 +12,8 @@ public class HackingPuz : MonoBehaviour
     public Text[] inputTexts; 
     private int currentInputIndex = 0; 
 
-    private string[] passwords;
-    public Text[] ansCode;
+    private string[] passwords;  // 입력 코드
+    public Text[] ansCode;       // 정답 코드
 
 
     private void OnDisable()

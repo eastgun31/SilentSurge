@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseWin : MonoBehaviour
 {
@@ -8,17 +9,7 @@ public class PauseWin : MonoBehaviour
     public GameObject optionWin;
     public GameObject helpWin;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void Continue()
     {
         Time.timeScale = 1;
@@ -31,7 +22,7 @@ public class PauseWin : MonoBehaviour
     }
     public void Restart()
     {
-        // 게임시작씬 연결
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void OptionWin()
@@ -44,6 +35,6 @@ public class PauseWin : MonoBehaviour
     }
     public void GoToMain()
     {
-        //게임시작화면 씬 연결
+        SceneManager.LoadScene(0);
     }
 }
