@@ -246,7 +246,7 @@ public class Enemy : MonoBehaviour
         }
         m_enemy.isStopped = false;
     }
-    void Shoot2()
+    void Shoot2()  //샷건 
     {
         for (int i = 0; i < bulletPoses.Length; i++)
         {
@@ -255,7 +255,7 @@ public class Enemy : MonoBehaviour
             bulletRigid.velocity = bulletPoses[i].forward * bulletSpeed;
         }
     }
-    IEnumerator UdoShoot(Vector3 pos)
+    IEnumerator UdoShoot(Vector3 pos) //바주카 (반유도 미사일)
     {
         yield return cooltime.cool1sec;
         if(!isShooting)
