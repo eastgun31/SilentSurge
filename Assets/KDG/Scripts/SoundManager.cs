@@ -22,6 +22,7 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1.0f;
         if(instance != null)
             Destroy(gameObject);
         else

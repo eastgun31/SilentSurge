@@ -268,6 +268,9 @@ public class PlayerInteractive : MonoBehaviour
                     case 8:
                         enterPuzzle.LastPuzzle();
                         break;
+                    case 9:
+                        enterPuzzle.SamplePuzzle();
+                        break;
                 }
             }
             else if (other.CompareTag(interactiveList[3]) && EnemyLevel.enemylv.LvStep != EnemyLevel.ELevel.level3)
