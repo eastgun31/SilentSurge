@@ -29,7 +29,7 @@ public class EnemyLevel : MonoBehaviour
             enemylv = this;
 
         LvStep = ELevel.level1;
-        downTime = new WaitForSeconds(15f);
+        downTime = new WaitForSeconds(10f);
         lvDowning = false;
         addcomplete = false;
         enemyadd = false;
