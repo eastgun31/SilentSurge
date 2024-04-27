@@ -332,6 +332,8 @@ public class Enemy : MonoBehaviour
 
             // GameManager.instance.playerchasing = false;
             state = EnemyState.hear;
+            if(sight.findT)
+                state = EnemyState.findtarget;
 
         }
         else if (!sight.findT && !hearSound)
