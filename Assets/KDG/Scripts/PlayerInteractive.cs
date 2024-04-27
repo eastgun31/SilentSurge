@@ -52,7 +52,6 @@ public class PlayerInteractive : MonoBehaviour
                             doort.PlayerPos_0 = true;
                         }
                         doort.oDoor();
-
                     }
                     else if (doort.nDoor == 1 && GameManager.instance.puzzleLevel >= 3 )
                     {
@@ -176,7 +175,7 @@ public class PlayerInteractive : MonoBehaviour
             {
                     doort = other.GetComponentInParent<Door_Parent>();
                     handle = other.GetComponent<DoorHandle_1>();
-                    if (doort.nDoor == 0)
+                    if (doort.nDoor == 0 && GameManager.instance.puzzleLevel >= 2)
                     {
                         if (handle.Doorindex == 1)
                         {
@@ -189,7 +188,6 @@ public class PlayerInteractive : MonoBehaviour
                             doort.PlayerPos_0 = true;
                         }
                         doort.oDoor();
-
                     }
                     else if (doort.nDoor == 1 && GameManager.instance.puzzleLevel >= 3 )
                     {
