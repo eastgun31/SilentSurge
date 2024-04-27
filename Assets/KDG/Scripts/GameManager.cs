@@ -139,12 +139,12 @@ public class GameManager : MonoBehaviour
         {
             case 1:
                 Debug.Log("¾À1");
-                SceneVariableReset(1, EnemyLevel.enemylv.Enemies.Length, 1, 4, 7, 360,5);
+                SceneVariableReset(1, EnemyLevel.enemylv.Enemies.Length, 1, 4, 7, 360,7);
                 PuzzleDifficulty(70f, 0.009f, 100f, 0.004f, "8324");
                 break;
             case 2:
                 Debug.Log("¾À2");
-                SceneVariableReset(2, EnemyLevel.enemylv.Enemies.Length, 2, 6, 5, 120, 5);
+                SceneVariableReset(2, EnemyLevel.enemylv.Enemies.Length, 2, 6, 5, 120, 10);
                 PuzzleDifficulty(70f, 0.005f, 30f, 0.005f, "9635");
                 break;
             case 3:

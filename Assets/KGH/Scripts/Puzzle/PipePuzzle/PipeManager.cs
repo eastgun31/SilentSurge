@@ -78,6 +78,12 @@ public class PipeManager : MonoBehaviour
                 items[1].SetActive(true);
             }
 
+            if(GameManager.instance.puzzleLevel == 8)
+            {
+                items[2].SetActive(true);
+                items[3].SetActive(true);
+            }
+
             GameManager.instance.puzzleLevel += 1;
 
             Invoke("ClosePipe", 1f);

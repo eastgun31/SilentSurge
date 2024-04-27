@@ -55,6 +55,7 @@ public class SoundManager : MonoBehaviour
 
     public void bgmPlay(int i)
     {
+        effectPlayer.Stop();
         audioPlayer.Stop();
         audioPlayer.volume = 0.3f;
         audioPlayer.clip = bgmClips[i];

@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 {
     public enum EnemyState //wjr 상태머신
     {
-        patrolling, hear, findtarget, die
+        patrolling, hear, findtarget, die, sturn
     }
 
     public EnemyState state;
@@ -196,7 +196,7 @@ public class Enemy : MonoBehaviour
         m_enemy.stoppingDistance = stoppingDistance;
         m_enemy.SetDestination(sight.detectTarget.position);
 
-        if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 3f && state != EnemyState.die)
+        if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 3f && state != EnemyState.die && state != EnemyState.sturn)
         {
             //enemyAnim.SetBool(Walk, false);
             enemyAnim.SetBool(GunRuning, false);
@@ -403,8 +403,9 @@ public class Enemy : MonoBehaviour
         {
             m_enemy.isStopped = true;
             m_enemy.velocity = Vector3.zero;
+            state = EnemyState.sturn;
             enemyAnim.SetTrigger(Flash);
-            StartCoroutine(ReactivateMovementAfterDelay(2f));
+            StartCoroutine(ReactivateMovementAfterDelay(5f));
         }
     }
 
