@@ -18,6 +18,8 @@ public class DoorHandle_1 : MonoBehaviour, IDoor   // 문 손잡이 2
     private Material mat_Door;
     [SerializeField]
     private Material mat_Outline;
+    [SerializeField]
+    private Material mat_NoOutline;
 
     private void Awake()
     {
@@ -28,7 +30,10 @@ public class DoorHandle_1 : MonoBehaviour, IDoor   // 문 손잡이 2
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            P_Door.GetComponent<MeshRenderer>().material = mat_Outline;  // 아웃라인 메테리얼로 0번 배열 변경 
+            if(tDoor.nDoor == 0 || tDoor.nDoor == 1 && GameManager.instance.puzzleLevel >= 3 || tDoor.nDoor == 2 && GameManager.instance.puzzleLevel >= 4)
+                P_Door.GetComponent<MeshRenderer>().material = mat_Outline;  // 아웃라인 메테리얼로 0번 배열 변경 
+            else if(tDoor.nDoor == 1 && GameManager.instance.puzzleLevel < 3 || tDoor.nDoor == 2 && GameManager.instance.puzzleLevel < 4)
+                P_Door.GetComponent<MeshRenderer>().material = mat_NoOutline;
         }
     }
 
