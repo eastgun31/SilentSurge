@@ -8,8 +8,8 @@ public class SinWave : MonoBehaviour
 {
     public LineRenderer lineRenderer;
     [SerializeField][Range(0, 500)] private int points = 50;
-    public float amplitude;
-    public float frequency;
+    public float correctAmlitude; // = GameManager.instance.correctAmlitude;
+    public float correctFrequency; // = GameManager.instance.correctFrequance;
     public Vector2 xlimit = new Vector2(-8,8);
     public float speed = 1;
 
@@ -18,13 +18,19 @@ public class SinWave : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();    
     }
 
+    private void Start()
+    {
+        correctAmlitude = GameManager.instance.correctAmlitude;
+        correctFrequency = GameManager.instance.correctFrequance;
+    }
 
     void Update()
     {
-        if (GameManager.instance.scenenum == 1)
-            Normal();
-        if (GameManager.instance.scenenum == 2)
-            Hard();
+        //if (GameManager.instance.scenenum == 1)
+        //    Normal();
+        //if (GameManager.instance.scenenum == 2)
+        //    Hard();
+        Wave();
     }
     private void Wave()
     {
@@ -38,7 +44,7 @@ public class SinWave : MonoBehaviour
             float progress = (float)i/(points-1);
             float x = Mathf.Lerp(xStart, xFinish, progress); //시작점부터 끝지점까지 포인트 배치
             //사인그래프 생성 0.0과 1.0사이의 값, 이 값을 곱하면 1진동의 사인 그래프생성, frequency를 곱하여 진동수 결정
-            float y = amplitude*Mathf.Sin((pi*frequency * x)+(Time.timeSinceLevelLoad*speed));
+            float y = correctAmlitude * Mathf.Sin((pi* correctFrequency * x)+(Time.timeSinceLevelLoad * speed));
            
             lineRenderer.SetPosition(i, new Vector3(x, y, 0));
         }
@@ -46,15 +52,15 @@ public class SinWave : MonoBehaviour
 
     private void Normal()
     {
-        amplitude = 100f;
-        frequency = 0.004f;
+        correctAmlitude = 100f;
+        correctFrequency = 0.004f;
         Wave();
     }
     private void Hard()
     {
-        amplitude = 90;
-        frequency = 0.005f;
-        Wave(); 
+        correctAmlitude = 90;
+        correctFrequency = 0.005f;
+        Wave();
     }
 
 }
