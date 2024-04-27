@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public GameObject gameOver;
 
     public int scenenum;
-    public bool enemyDown;
     public bool[] itemcheck;
     public int[] itemcount;
     public int puzzleLevel;
@@ -40,7 +39,6 @@ public class GameManager : MonoBehaviour
             instance = this;
 
         SecenCheck();
-        enemyDown = false;
         lv3PlayerPos = new Vector3(0,0,0);
         itemcheck = new bool[5] { false, false, false, false, false };
         itemcount = new int[5] { 0, 0, 0, 0, 0 };   //±ÇÃÑ, ÄÚÀÎ, ¼¶±¤Åº, ½É¹ÚÃøÁ¤±â, ¹æÅºº¹
@@ -109,6 +107,7 @@ public class GameManager : MonoBehaviour
         {
             existEnemy[i] = true;
         }
+        last = true;
         //if (GameManager.instance.scenenum == 1)
         //{
         //    for (int i = enemyQuater; i < existEnemy.Length; i++)
