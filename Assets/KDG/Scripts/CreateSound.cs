@@ -76,8 +76,9 @@ public class CreateSound : MonoBehaviour
             audioSource.Play();
             StartCoroutine (SoundCreateDelete());
         }
-        if(value == 2)
+        if(value == 2 && GameManager.instance.onecollison)
         {
+            GameManager.instance.onecollison = false;
             GameObject effectprefab = Instantiate(effect);
             effectprefab.transform.position = gameObject.transform.position;
             GameObject flash = Instantiate(soundprefab);

@@ -182,6 +182,7 @@ public class DataManager : MonoBehaviour
             GameManager.instance.playerchasing = saveData.gmplayerchasing;
 
             playerobj.SetActive(true);
+            GameManager.instance.isDie = false;
             Debug.Log("로드완료");
             playerLoad.Invoke();
         }

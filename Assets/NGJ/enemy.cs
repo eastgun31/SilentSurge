@@ -103,8 +103,14 @@ public class Enemy : MonoBehaviour
         }
         else if (state == EnemyState.patrolling)
         {
-
+            m_enemy.isStopped = false;
             EnemyPatrol();
+        }
+        else if(state == EnemyState.sturn)
+        {
+            StopCoroutine(Shoot(sight.detectTarget.position));
+            StopCoroutine(CloseAttack(sight.detectTarget.position));
+            StopCoroutine(UdoShoot(sight.detectTarget.position));
         }
         //if (m_enemy.velocity.magnitude < 0.1f)
         //{
@@ -192,11 +198,12 @@ public class Enemy : MonoBehaviour
         if (!chasing)
             StartCoroutine(Levelstep());
 
+        transform.LookAt(sight.detectTarget.position);
         enemyAnim.SetBool(GunRuning, true); // 총을 들고 있을 때 설정
         m_enemy.stoppingDistance = stoppingDistance;
         m_enemy.SetDestination(sight.detectTarget.position);
 
-        if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 3f && state != EnemyState.die && state != EnemyState.sturn)
+        if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 3f && !GameManager.instance.isDie &&state != EnemyState.die && state != EnemyState.sturn)
         {
             //enemyAnim.SetBool(Walk, false);
             enemyAnim.SetBool(GunRuning, false);
@@ -227,9 +234,10 @@ public class Enemy : MonoBehaviour
             //enemyAnim.SetBool(GunRuning, false);
             //enemyAnim.SetBool(Walk, false);
 
-            transform.LookAt(pos);
+            //transform.LookAt(pos);
             enemyAnim.SetTrigger(Shot);
             GameObject bulletObject = Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
+            Destroy(bulletObject,1f);
             // 총알 발사 후 일정 시간을 기다린 후 다음 동작으로 진행합니다.
             yield return cooltime.cool2sec; // 1초 뒤에 다시 총 발사
         }
@@ -245,7 +253,7 @@ public class Enemy : MonoBehaviour
             m_enemy.isStopped = true;
             m_enemy.velocity = Vector3.zero;
             // 총알을 발사하는 동작을 수행합니다.
-            transform.LookAt(pos);
+            //transform.LookAt(pos);
 
             GameObject bulletObject = Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
             Rigidbody bulletRigid = bulletObject.GetComponent<Rigidbody>();
@@ -286,14 +294,14 @@ public class Enemy : MonoBehaviour
             isShooting = true;
             m_enemy.isStopped = true;
             m_enemy.velocity = Vector3.zero;
-            transform.LookAt(pos);
+            //transform.LookAt(pos);
             enemyAnim.SetTrigger(Shot);
             GameObject bulletObject = Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
             Rigidbody bulletRigid = bulletObject.GetComponent<Rigidbody>();
             yield return cooltime.cool2sec;
             bulletObject.transform.LookAt(pos);
             bulletRigid.velocity = bulletPos.forward * bulletSpeed;
-            yield return cooltime.cool3sec;
+            yield return cooltime.cool2sec;
             isShooting = false;
         }
         m_enemy.isStopped = false;
@@ -342,6 +350,7 @@ public class Enemy : MonoBehaviour
             yield return cooltime.cool1sec;
             //GameManager.instance.playerchasing = false;
             state = EnemyState.patrolling;
+            m_enemy.isStopped = false ;
         }
 
         yield return cooltime.cool1sec;
@@ -428,6 +437,10 @@ public class Enemy : MonoBehaviour
 
         yield return new WaitForSeconds(delay);
         m_enemy.isStopped = false;
+        if(sight.findT)
+            state = EnemyState.findtarget;
+        else
+            state = EnemyState.patrolling;
         //yield return new WaitForSeconds(1f);
         
     }
