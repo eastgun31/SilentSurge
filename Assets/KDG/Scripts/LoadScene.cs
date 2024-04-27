@@ -21,7 +21,7 @@ public class LoadScene : MonoBehaviour
     }    
     public void LoadStage2_normal()
     {
-
+        SceneManager.LoadScene(3);
     }    
     public void LoadStage2_hard()
     {

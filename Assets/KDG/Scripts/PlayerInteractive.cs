@@ -103,6 +103,7 @@ public class PlayerInteractive : MonoBehaviour
                     player.state = Player.PlayerState.puzzling;
                     player.velocity = Vector3.zero;
                     enterPuzzle = other.GetComponent<EnterPuzzle>();
+                    SoundManager.instance.EffectOff();
 
                     switch (enterPuzzle.level)
                     {
