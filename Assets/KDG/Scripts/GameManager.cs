@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public GameObject gameOver;
 
     public int scenenum;
-    public bool enemyDown;
     public bool[] itemcheck;
     public int[] itemcount;
     public int puzzleLevel;
@@ -25,6 +24,13 @@ public class GameManager : MonoBehaviour
     public bool isDie=false;
     public int playerviewR;
     public int playerviewA;
+
+    public float amplitude;
+    public float frequency;
+    public float correctAmlitude;
+    public float correctFrequance;
+    public string paswawrd;
+
     [SerializeField]
     private int enemyQuater;
     
@@ -40,7 +46,6 @@ public class GameManager : MonoBehaviour
             instance = this;
 
         SecenCheck();
-        enemyDown = false;
         lv3PlayerPos = new Vector3(0,0,0);
         itemcheck = new bool[5] { false, false, false, false, false };
         itemcount = new int[5] { 0, 0, 0, 0, 0 };   //±ÇÃÑ, ÄÚÀÎ, ¼¶±¤Åº, ½É¹ÚÃøÁ¤±â, ¹æÅºº¹
@@ -109,6 +114,7 @@ public class GameManager : MonoBehaviour
         {
             existEnemy[i] = true;
         }
+        last = true;
         //if (GameManager.instance.scenenum == 1)
         //{
         //    for (int i = enemyQuater; i < existEnemy.Length; i++)
@@ -133,11 +139,13 @@ public class GameManager : MonoBehaviour
         {
             case 1:
                 Debug.Log("¾À1");
-                SceneVariableReset(1, EnemyLevel.enemylv.Enemies.Length, 1, 4, 7, 360,5);
+                SceneVariableReset(1, EnemyLevel.enemylv.Enemies.Length, 1, 4, 7, 360,7);
+                PuzzleDifficulty(70f, 0.009f, 100f, 0.004f, "8324");
                 break;
             case 2:
                 Debug.Log("¾À2");
-                SceneVariableReset(2, EnemyLevel.enemylv.Enemies.Length, 2, 6, 5, 120, 5);
+                SceneVariableReset(2, EnemyLevel.enemylv.Enemies.Length, 2, 6, 7, 130, 10);
+                PuzzleDifficulty(70f, 0.005f, 30f, 0.005f, "9635");
                 break;
             case 3:
                 scenenum = 3;
@@ -158,6 +166,15 @@ public class GameManager : MonoBehaviour
         playerviewR = e;
         playerviewA = f;
         existItem = new bool[g];
+    }
+
+    void PuzzleDifficulty(float a, float b, float c, float d, string e)
+    {
+        amplitude = a;
+        frequency = b;
+        correctAmlitude = c;
+        correctFrequance = d;
+        paswawrd = e;
     }
 
     public void GameOver()

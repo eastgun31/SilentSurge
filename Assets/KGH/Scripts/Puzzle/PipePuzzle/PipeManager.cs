@@ -78,11 +78,16 @@ public class PipeManager : MonoBehaviour
                 items[1].SetActive(true);
             }
 
+            if(GameManager.instance.puzzleLevel == 8)
+            {
+                items[2].SetActive(true);
+                items[3].SetActive(true);
+            }
+
             GameManager.instance.puzzleLevel += 1;
 
             Invoke("ClosePipe", 1f);
-            GameManager.instance.nowpuzzle = false;
-            DataManager.instance.SaveData();
+
         }
     }
 
@@ -94,8 +99,9 @@ public class PipeManager : MonoBehaviour
     public void ClosePipe()
     {
         UiManager.instance.isWin = false;
+        GameManager.instance.nowpuzzle = false;
         canvas.gameObject.SetActive(false);
-
+         DataManager.instance.SaveData();
         for (int i = 0; i < pipes.Length; i++)
         {
             pipes[i].transform.rotation = pipesRot[i];
