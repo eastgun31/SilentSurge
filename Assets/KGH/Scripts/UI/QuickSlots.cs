@@ -42,6 +42,7 @@ public class QuickSlots : MonoBehaviour
 
                 if (GameManager.instance.itemcount[0] >= 1)
                 {
+                    c_text[0].gameObject.SetActive(true);
                     i_color[0].color = Color.white;
                     i_count[0].text = GameManager.instance.itemcount[0].ToString();
                 }
@@ -68,6 +69,7 @@ public class QuickSlots : MonoBehaviour
 
                 if (GameManager.instance.itemcount[1] >= 1)
                 {
+                    c_text[1].gameObject.SetActive(true);
                     i_color[1].color = Color.white;
                     i_count[1].text = GameManager.instance.itemcount[1].ToString();
                 }
@@ -93,6 +95,7 @@ public class QuickSlots : MonoBehaviour
 
                 if (GameManager.instance.itemcount[2] >= 1)
                 {
+                    c_text[2].gameObject.SetActive(true);
                     i_color[2].color = Color.white;
                     i_count[2].text = GameManager.instance.itemcount[2].ToString();
                 }
