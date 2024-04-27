@@ -80,6 +80,10 @@ public class SoundManager : MonoBehaviour
         effectPlayer.clip = null;
         playingSource = false;
     }
+    public void EnemyEffect(int i)
+    {
+        enemyPlayer.PlayOneShot(enemyClips[i]);
+    }
     public void UiSoundPlay(int i)
     {
         audioPlayer.PlayOneShot(uiClips[i]);

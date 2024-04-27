@@ -65,6 +65,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+       // enemysound = GetComponent<AudioSource>();  
         chasing = false;
         stoppingDistance = 3f;
         state = EnemyState.patrolling;
@@ -115,6 +116,21 @@ public class Enemy : MonoBehaviour
         //    customDestinations[0] = GameManager.instance.lv3PlayerPos;
 
         enemyAnim.SetFloat(Walk, m_enemy.velocity.magnitude);
+        //if(m_enemy.velocity.magnitude > 1f)
+        //{
+        //    if(!enemysound.isPlaying)
+        //    {
+        //        //enemysound.PlayOneShot(enemysound.clip);
+        //        enemysound.Play();
+        //    }
+        //}
+        //else if(m_enemy.velocity.magnitude <= 1f)
+        //{
+        //    if(enemysound.isPlaying) 
+        //    {
+        //        enemysound.Stop();
+        //    }
+        //}
 
     }
 
@@ -236,7 +252,15 @@ public class Enemy : MonoBehaviour
             // 총알을 생성하고 설정한 방향으로 발사합니다.
             enemyAnim.SetTrigger(Shot);
             if (enemyType == 2)
+            {
                 Shoot2();
+                SoundManager.instance.EnemyEffect(1);
+            }
+            else if(enemyType == 1) 
+            {
+                SoundManager.instance.EnemyEffect(0);
+            }
+                
             bulletRigid.velocity = bulletPos.forward * bulletSpeed;
 
             // 총알 발사 후 일정 시간을 기다린 후 다음 동작으로 진행

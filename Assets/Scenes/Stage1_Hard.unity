@@ -16300,7 +16300,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -23882,8 +23882,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 1115949316}
   points: 260
-  amplitude: 100
-  frequency: 0.004
+  correctAmlitude: 0
+  correctFrequency: 0
   xlimit: {x: -600, y: 600}
   speed: 1
 --- !u!120 &1115949316
@@ -38135,6 +38135,11 @@ MonoBehaviour:
   isDie: 0
   playerviewR: 0
   playerviewA: 0
+  amplitude: 0
+  frequency: 0
+  correctAmlitude: 0
+  correctFrequance: 0
+  paswawrd: 
   enemyQuater: 0
   lv3PlayerPos: {x: 0, y: 0, z: 0}
   Items:
