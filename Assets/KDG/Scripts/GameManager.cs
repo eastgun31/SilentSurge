@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     public Vector3 lv3PlayerPos;
 
     public GameObject[] Items;
-
+    public bool last = false;
     public void Awake()
     {
         if (instance != null)
@@ -141,6 +141,7 @@ public class GameManager : MonoBehaviour
                 break;
             case 3:
                 scenenum = 3;
+                SceneVariableReset(3, 0, 0, 0, 7, 360, 0);
                 break;
             case 4:
                 scenenum = 4;
