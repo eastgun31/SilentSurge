@@ -6,7 +6,7 @@ public class MainStart : MonoBehaviour
 {
     public GameObject mainButton;
     public GameObject modChoice;
-    public GameObject optionWin;
+    public GameObject Sound;
     public GameObject infoWin;
     public GameObject backButton;
     public GameObject help;
@@ -16,10 +16,6 @@ public class MainStart : MonoBehaviour
         mainButton.SetActive(false);
         modChoice.SetActive(true);
         backButton.SetActive(true);
-    }
-    public void OptionWin()
-    {
-        optionWin.SetActive(true);
     }
 
     public void BackButton()
@@ -42,9 +38,9 @@ public class MainStart : MonoBehaviour
     {
         infoWin.SetActive(false);
     }
-    public void CloseOption()
+    public void CloseSound()
     {
-        optionWin.SetActive(false);
+        Sound.SetActive(false);
     }
 
     public void HelpWin()

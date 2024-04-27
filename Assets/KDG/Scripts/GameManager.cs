@@ -24,6 +24,13 @@ public class GameManager : MonoBehaviour
     public bool isDie=false;
     public int playerviewR;
     public int playerviewA;
+
+    public float amplitude;
+    public float frequency;
+    public float correctAmlitude;
+    public float correctFrequance;
+    public string paswawrd;
+
     [SerializeField]
     private int enemyQuater;
     
@@ -133,10 +140,12 @@ public class GameManager : MonoBehaviour
             case 1:
                 Debug.Log("¾À1");
                 SceneVariableReset(1, EnemyLevel.enemylv.Enemies.Length, 1, 4, 7, 360,5);
+                PuzzleDifficulty(70f, 0.009f, 100f, 0.004f, "8324");
                 break;
             case 2:
                 Debug.Log("¾À2");
                 SceneVariableReset(2, EnemyLevel.enemylv.Enemies.Length, 2, 6, 5, 120, 5);
+                PuzzleDifficulty(70f, 0.005f, 30f, 0.005f, "9635");
                 break;
             case 3:
                 scenenum = 3;
@@ -157,6 +166,15 @@ public class GameManager : MonoBehaviour
         playerviewR = e;
         playerviewA = f;
         existItem = new bool[g];
+    }
+
+    void PuzzleDifficulty(float a, float b, float c, float d, string e)
+    {
+        amplitude = a;
+        frequency = b;
+        correctAmlitude = c;
+        correctFrequance = d;
+        paswawrd = e;
     }
 
     public void GameOver()
