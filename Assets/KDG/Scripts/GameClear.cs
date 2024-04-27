@@ -52,7 +52,7 @@ public class GameClear : MonoBehaviour
         {
             clear.SetActive(true);
         }
-        else if(other.CompareTag("Player") && value == 2)
+        else if(other.CompareTag("Player") && value == 2 && goal.activeSelf)
         {
             goal.SetActive(false);
             lastAction.Invoke();
