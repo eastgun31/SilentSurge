@@ -69,6 +69,7 @@ public class Keypad : MonoBehaviour
 
     public void PuzLevUp()
     {
+        GameManager.instance.nowpuzzle = false;
         GameManager.instance.puzzleLevel += 1;
         DataManager.instance.SaveData();
     }
@@ -76,7 +77,7 @@ public class Keypad : MonoBehaviour
     public void Closed()
     {
         doorOpen.Invoke();
-        GameManager.instance.nowpuzzle = false;
+        
         UiManager.instance.isWin = false;
         UiManager.instance.CloseKeypadFst();
     }
