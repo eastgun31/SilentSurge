@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseWin : MonoBehaviour
 {
     public GameObject pauseWin;
-    public GameObject optionWin;
+
     public GameObject helpWin;
 
 
@@ -18,17 +18,13 @@ public class PauseWin : MonoBehaviour
 
     public void CheckPointStart()
     {
-        // 체크포인트 연결
+        DataManager.instance.LoadData();
     }
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void OptionWin()
-    {
-        optionWin.SetActive(true);
-    }
     public void HelpWin()
     {
         helpWin.SetActive(true);
