@@ -24,10 +24,6 @@ public class Keypad : MonoBehaviour
     private void Start()
     {
         pw = GameManager.instance.paswawrd;
-        //if(GameManager.instance.scenenum ==1)
-        //    paswawrd = "8324";
-        //if (GameManager.instance.scenenum == 2)
-        //    paswawrd = "9635";
     }
 
     public void Number(int number) 
