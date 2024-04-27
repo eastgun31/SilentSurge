@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnterPuzzle : MonoBehaviour
 {
     public int level;
+    public GameObject puzzle;
 
     public void PipePuzzle1()
     {
@@ -90,6 +91,15 @@ public class EnterPuzzle : MonoBehaviour
         {
             GameManager.instance.nowpuzzle = true;
             UiManager.instance.ActiveKeypad();
+        }
+        else
+            return;
+    }
+    public void SamplePuzzle()
+    {
+        if (GameManager.instance.puzzleLevel == 9 && level == 9)
+        {
+            puzzle.SetActive(true);
         }
         else
             return;

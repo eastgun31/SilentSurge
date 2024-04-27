@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
                 break;
             case 3:
                 scenenum = 3;
-                SceneVariableReset(3, 0, 0, 0, 7, 360, 0);
+                SceneVariableReset(3, 0, 9, 0, 7, 360, 0);
                 break;
             case 4:
                 scenenum = 4;
