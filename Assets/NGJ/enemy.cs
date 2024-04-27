@@ -3,7 +3,6 @@ using UnityEngine.AI;
 using System;
 using System.Collections;
 using ItemInfo;
-using static UnityEditor.PlayerSettings;
 
 public class Enemy : MonoBehaviour
 {

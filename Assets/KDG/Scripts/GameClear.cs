@@ -8,8 +8,10 @@ using ItemInfo;
 public class GameClear : MonoBehaviour
 {
     public GameObject clear;
+    public GameObject goal;
     public int value;
     public UnityEvent lastAction;
+    public UnityEvent Ending;
 
     public List<GameObject> enemys;
     CoolTime cool;
@@ -17,6 +19,10 @@ public class GameClear : MonoBehaviour
     private void Start()
     {
         cool = new CoolTime();
+        if(value == 2)
+        {
+            StartCoroutine(EndingCheck());
+        }
     }
 
     IEnumerator EndingCheck()
@@ -25,10 +31,16 @@ public class GameClear : MonoBehaviour
         {
             foreach (GameObject enemy in enemys)
             {
-                if (!enemy.activeSelf)
+                if (GameManager.instance.last && !enemy.activeSelf)
+                {
                     enemys.Remove(enemy);
+                    break;
+                }
+
             }
-            
+
+            if(enemys.FirstOrDefault() == null)
+                goal.SetActive(true);
 
             yield return cool.cool1sec;
         }
@@ -37,11 +49,17 @@ public class GameClear : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player") && value == 1)
+        {
             clear.SetActive(true);
+        }
         else if(other.CompareTag("Player") && value == 2)
         {
-            GameManager.instance.enemyDown = true;
+            goal.SetActive(false);
             lastAction.Invoke();
+        }
+        else if(other.CompareTag("Player") && value == 3)
+        {
+            Ending.Invoke();
         }
     }
 
