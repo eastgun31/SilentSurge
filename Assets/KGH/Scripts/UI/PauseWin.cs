@@ -8,6 +8,7 @@ public class PauseWin : MonoBehaviour
     public GameObject pauseWin;
 
     public GameObject helpWin;
+    public GameObject soundWin;
 
 
     public void Continue()
@@ -29,7 +30,25 @@ public class PauseWin : MonoBehaviour
     }
     public void HelpWin()
     {
+        Debug.Log("2");
         helpWin.SetActive(true);
+        UiManager.instance.isSubWin = true;
+    }
+
+    public void SoundWin()
+    {
+        soundWin.SetActive(true);
+        UiManager.instance.isSubWin = true ;
+    }
+    public void CloseSoundWin()
+    {
+        soundWin.SetActive(false);
+        UiManager.instance.isSubWin = false;
+    }
+    public void CloseHelpWin()
+    {
+        helpWin.SetActive(false);
+        UiManager.instance.isSubWin = false;
     }
     public void GoToMain()
     {
