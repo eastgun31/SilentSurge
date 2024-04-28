@@ -15,9 +15,11 @@ public class GameClear : MonoBehaviour
 
     public List<GameObject> enemys;
     CoolTime cool;
+    bool activeWan;
 
     private void Start()
     {
+        activeWan = true;
         cool = new CoolTime();
         if(value == 2)
         {
@@ -39,7 +41,7 @@ public class GameClear : MonoBehaviour
 
             }
 
-            if(enemys.FirstOrDefault() == null)
+            if(enemys.FirstOrDefault() == null && activeWan)
                 goal.SetActive(true);
 
             yield return cool.cool1sec;
@@ -54,6 +56,7 @@ public class GameClear : MonoBehaviour
         }
         else if(other.CompareTag("Player") && value == 2 && goal.activeSelf)
         {
+            activeWan = false;
             goal.SetActive(false);
             lastAction.Invoke();
         }
