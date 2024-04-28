@@ -86,6 +86,10 @@ public class EnemyLevel : MonoBehaviour
 
     public void StateClear()
     {
+        lv3enemy.SetActive(false);
+        lvDowning = false;
+        addcomplete = false;
+        enemyadd = false;
         for (int i = 0; i < lv3enemy.transform.childCount; i++)
         {
             lv3enemy.transform.GetChild(i).gameObject.transform.position = lv3enemy.transform.position;
