@@ -76,12 +76,14 @@ public class PipeManager : MonoBehaviour
             {
                 items[0].SetActive(true);
                 items[1].SetActive(true);
+                GameManager.instance.ItemActive();
             }
 
             if(GameManager.instance.puzzleLevel == 7)
             {
                 items[2].SetActive(true);
                 items[3].SetActive(true);
+                GameManager.instance.ItemActive();
             }
 
             GameManager.instance.puzzleLevel += 1;

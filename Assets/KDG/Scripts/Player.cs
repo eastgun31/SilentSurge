@@ -304,13 +304,18 @@ public class Player : MonoBehaviour
 
     public void RunOff()
     {
+        playerAnim.SetFloat(walk, 0);
+        velocity = Vector3.zero;
+        rigid.velocity = Vector3.zero;
         footSound.SetActive(false);
         soundManager.EffectOff();
-        playerspeed = 2.5f;
-        if (handgunacivate)
-            playerAnim.SetBool(gunrun, false);
-        else
-            playerAnim.SetBool(run, false);
+        playerAnim.SetBool(run, false);
+        playerAnim.SetBool(gunrun, false);
+        
+        //if (handgunacivate)
+        //    playerAnim.SetBool(gunrun, false);
+        //else
+        //    playerAnim.SetBool(run, false);
     }
     //void PlayerAnimCondition()
     //{

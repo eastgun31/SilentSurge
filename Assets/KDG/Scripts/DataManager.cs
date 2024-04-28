@@ -23,6 +23,12 @@ public class SaveData
     public bool gmnowpuzzle;
     public bool gmcanUse;
     public bool gmplayerchasing;
+
+    public bool _handgunacivate;
+    public bool _coinacivate;
+    public bool _flashbangacivate;
+    public bool _heartseeacivate;
+    public bool heartseecool;
 }
 
 
@@ -48,6 +54,7 @@ public class DataManager : MonoBehaviour
     public string savename = "/save";
     private SaveData saveData = new SaveData();
     private string SAVEDAT;
+    WaitForSeconds wait;
 
     private void Awake()
     {
@@ -65,6 +72,7 @@ public class DataManager : MonoBehaviour
     }
     private void Start()
     {
+        wait = new WaitForSeconds(1f);
         saveData.gmexistenemy = new bool[GameManager.instance.existEnemy.Length];
         saveData.gmexistitem = new bool[GameManager.instance.existItem.Length];
         Invoke("SaveData", 2f);
@@ -110,6 +118,11 @@ public class DataManager : MonoBehaviour
         //        saveData.gmexistenemy[i] = GameManager.instance.existEnemy[i];
         //    }
         //}
+
+        saveData._handgunacivate = player.handgunacivate;
+        saveData._coinacivate = player.coinacivate;
+        saveData._flashbangacivate = player.flashbangacivate;
+        saveData._heartseeacivate = player.heartseeacivate;
 
         saveData.gmpuzzleLevel = GameManager.instance.puzzleLevel;
         saveData.gmnowpuzzle = GameManager.instance.nowpuzzle;
@@ -176,6 +189,11 @@ public class DataManager : MonoBehaviour
             //    }
             //}
 
+            player.handgunacivate = saveData._handgunacivate;
+            player.coinacivate = saveData._coinacivate;
+            player.flashbangacivate = saveData._flashbangacivate;
+            player.heartseeacivate = saveData._heartseeacivate;
+
             GameManager.instance.puzzleLevel = saveData.gmpuzzleLevel;
             GameManager.instance.nowpuzzle = saveData.gmnowpuzzle;
             GameManager.instance.canUse = saveData.gmcanUse;
@@ -186,5 +204,11 @@ public class DataManager : MonoBehaviour
             Debug.Log("로드완료");
             playerLoad.Invoke();
         }
+    }
+
+    IEnumerator SaveDelay()
+    {
+        yield return wait;
+        Debug.Log("세이브중");
     }
 }
