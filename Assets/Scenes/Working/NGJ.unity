@@ -5869,6 +5869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 2
+  puzzle: {fileID: 0}
 --- !u!135 &163100203
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -25347,6 +25348,7 @@ MonoBehaviour:
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!136 &873867036
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -26158,6 +26160,7 @@ MonoBehaviour:
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!136 &896373744
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -28048,6 +28051,7 @@ MonoBehaviour:
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!136 &932386405
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -29601,6 +29605,7 @@ MonoBehaviour:
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!136 &959430543
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -31476,7 +31481,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOver: {fileID: 0}
   scenenum: 0
-  enemyDown: 0
   itemcheck: 0000000000
   itemcount: 
   puzzleLevel: 1
@@ -31489,10 +31493,16 @@ MonoBehaviour:
   isDie: 0
   playerviewR: 0
   playerviewA: 0
+  amplitude: 0
+  frequency: 0
+  correctAmlitude: 0
+  correctFrequance: 0
+  paswawrd: 
   enemyQuater: 0
   lv3PlayerPos: {x: 0, y: 0, z: 0}
   Items: []
   last: 0
+  onecollison: 1
 --- !u!4 &1027130180
 Transform:
   m_ObjectHideFlags: 0
@@ -31561,6 +31571,7 @@ MonoBehaviour:
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!136 &1030165417
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -38329,6 +38340,7 @@ MonoBehaviour:
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!136 &1256567066
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -39713,6 +39725,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1299205132}
   m_Mesh: {fileID: 4300000, guid: c8b29aeccf70e4e74a21bfeaa0af1f2e, type: 3}
+--- !u!1001 &1305706603
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5166431997494073984, guid: 9ba65361bf6d49740b78a71042cc04be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.354382
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166431997494073984, guid: 9ba65361bf6d49740b78a71042cc04be, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.0264654
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166431997494073984, guid: 9ba65361bf6d49740b78a71042cc04be, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.3386302
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166431997494073984, guid: 9ba65361bf6d49740b78a71042cc04be, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166431997494073984, guid: 9ba65361bf6d49740b78a71042cc04be, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166431997494073984, guid: 9ba65361bf6d49740b78a71042cc04be, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166431997494073984, guid: 9ba65361bf6d49740b78a71042cc04be, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166431997494073984, guid: 9ba65361bf6d49740b78a71042cc04be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166431997494073984, guid: 9ba65361bf6d49740b78a71042cc04be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166431997494073984, guid: 9ba65361bf6d49740b78a71042cc04be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546475599178547258, guid: 9ba65361bf6d49740b78a71042cc04be, type: 3}
+      propertyPath: m_Name
+      value: Machn_1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9ba65361bf6d49740b78a71042cc04be, type: 3}
 --- !u!1 &1306798963
 GameObject:
   m_ObjectHideFlags: 0
@@ -58723,6 +58792,63 @@ Transform:
   - {fileID: 2018315859}
   m_Father: {fileID: 2118891055}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1860469557
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7474520805037059293, guid: 6b03a4b90ae5d5942907e925787d3465, type: 3}
+      propertyPath: m_Name
+      value: Machn_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850061941504505447, guid: 6b03a4b90ae5d5942907e925787d3465, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.26803
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850061941504505447, guid: 6b03a4b90ae5d5942907e925787d3465, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.0264654
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850061941504505447, guid: 6b03a4b90ae5d5942907e925787d3465, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.2067204
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850061941504505447, guid: 6b03a4b90ae5d5942907e925787d3465, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.0029174758
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850061941504505447, guid: 6b03a4b90ae5d5942907e925787d3465, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850061941504505447, guid: 6b03a4b90ae5d5942907e925787d3465, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9999958
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850061941504505447, guid: 6b03a4b90ae5d5942907e925787d3465, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850061941504505447, guid: 6b03a4b90ae5d5942907e925787d3465, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850061941504505447, guid: 6b03a4b90ae5d5942907e925787d3465, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -180.334
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850061941504505447, guid: 6b03a4b90ae5d5942907e925787d3465, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6b03a4b90ae5d5942907e925787d3465, type: 3}
 --- !u!4 &1863222347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2684702305103715323, guid: 906c4f1b294c08249afd5a63be792cbe, type: 3}
@@ -59674,6 +59800,7 @@ MonoBehaviour:
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!136 &1885369969
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -62596,6 +62723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
+  puzzle: {fileID: 0}
 --- !u!1 &1982781901
 GameObject:
   m_ObjectHideFlags: 0
@@ -62879,6 +63007,7 @@ MonoBehaviour:
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!136 &1990723506
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -63752,6 +63881,7 @@ MonoBehaviour:
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!136 &2018315861
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -66000,6 +66130,7 @@ MonoBehaviour:
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!136 &2076662648
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -70242,3 +70373,5 @@ SceneRoots:
   - {fileID: 380277861}
   - {fileID: 974451020}
   - {fileID: 228923673198411020}
+  - {fileID: 1305706603}
+  - {fileID: 1860469557}
