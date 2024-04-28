@@ -55,7 +55,7 @@ public class QuickSlots : MonoBehaviour
             else
                 selectedQuickSlots[0].gameObject.SetActive(false);
         }
-        else
+        else 
             quickSlots[0].gameObject.SetActive(false);
 
 
