@@ -3,6 +3,7 @@ using UnityEngine.AI;
 using System;
 using System.Collections;
 using ItemInfo;
+using Unity.VisualScripting;
 
 public class Enemy : MonoBehaviour
 {
@@ -195,8 +196,8 @@ public class Enemy : MonoBehaviour
     void TargetChase()
     {
         //enemyAnim.SetBool(Walk, false);
-        if (!chasing)
-            StartCoroutine(Levelstep());
+        //if (!chasing)
+        //    StartCoroutine(Levelstep());
 
         transform.LookAt(sight.detectTarget.position);
         enemyAnim.SetBool(GunRuning, true); // 총을 들고 있을 때 설정
@@ -240,6 +241,7 @@ public class Enemy : MonoBehaviour
             Destroy(bulletObject,1f);
             // 총알 발사 후 일정 시간을 기다린 후 다음 동작으로 진행합니다.
             yield return cooltime.cool2sec; // 1초 뒤에 다시 총 발사
+            isShooting = true;
         }
     }
     IEnumerator Shoot(Vector3 pos)
@@ -359,35 +361,47 @@ public class Enemy : MonoBehaviour
     IEnumerator Levelstep()
     {
         chasing = true;
-        yield return cooltime.cool10sec;
+       // yield return cooltime.cool10sec;
 
-        if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
+        while(true)
         {
+            if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
+            {
 
-            //enemyAnim.SetBool(GunRuning, true);
-            //enemyAnim.SetBool(Walk, false);
-            EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
-            m_enemy.speed = 5f;
-        }
-        else if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
-        {
+                //enemyAnim.SetBool(GunRuning, true);
+                //enemyAnim.SetBool(Walk, false);
+                EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
+                m_enemy.speed = 5f;
+                chasing = false;
+                break;
+            }
+            else if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
+            {
 
-            //enemyAnim.SetBool(GunRuning, true);
-            //enemyAnim.SetBool(Walk, false);
-            EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
-            GameManager.instance.lv3PlayerPos = sight.detectTarget.position;
-        }
-        else if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level3)
-        {
+                //enemyAnim.SetBool(GunRuning, true);
+                //enemyAnim.SetBool(Walk, false);
+                EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
+                GameManager.instance.lv3PlayerPos = sight.detectTarget.position;
+                chasing = false;
+                break;
+            }
+            else if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level3)
+            {
 
-            //enemyAnim.SetBool(GunRuning, true);
-            //enemyAnim.SetBool(Walk, false);
-            EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
-            GameManager.instance.lv3PlayerPos = sight.detectTarget.position;
+                //enemyAnim.SetBool(GunRuning, true);
+                //enemyAnim.SetBool(Walk, false);
+                EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
+                GameManager.instance.lv3PlayerPos = sight.detectTarget.position;
+                chasing = false;
+                break;
+            }
         }
-        else if (state == EnemyState.patrolling && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
+
+        if (state == EnemyState.patrolling && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
             m_enemy.speed = 3f;
-        chasing = false;
+
+        yield return cooltime.cool10sec;
+        //chasing = false;
     }
     private void OnTriggerEnter(Collider other)
     {
