@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] Items;
     public bool last = false;
+    public bool onecollison = true;
     public void Awake()
     {
         if (instance != null)

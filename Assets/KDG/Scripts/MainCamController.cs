@@ -15,7 +15,7 @@ public class MainCamController : MonoBehaviour
     private void Awake()
     {
         yPos = new Vector3 (0, 10, 0);
-        yzPos = new Vector3 (0, 20, 1);
+        yzPos = new Vector3 (0, 30, 1);
 
         if(value == 1)
             transform.position = playerPos.position + yPos;

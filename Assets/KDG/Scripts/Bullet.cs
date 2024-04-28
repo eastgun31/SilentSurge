@@ -11,13 +11,15 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(type == 0)
+        if(type == 0 && (other.CompareTag("Wall") || other.CompareTag("Enemy")))
             Destroy(gameObject);
-        if(type == 1 && other.CompareTag("Player"))
+        if(type == 1 && (other.CompareTag("Wall") || other.CompareTag("Player")))
         {
             GameObject explosionprefab =  Instantiate(explosion, gameObject.transform);
             Destroy(explosionprefab,0.5f);
             Destroy(gameObject,1f);
         }
+        if(type == 3 && (other.CompareTag("Wall") || other.CompareTag("Player")))
+            Destroy (gameObject);
     }
 }

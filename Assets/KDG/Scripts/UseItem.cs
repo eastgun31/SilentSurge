@@ -111,7 +111,7 @@ public class UseItem : MonoBehaviour
     public IEnumerator ThrowFlashBang()
     {
         //Debug.Log("코루틴실행");
-
+        GameManager.instance.onecollison = true;
         yield return itemClass.animDelay;
         GameObject flashbang = Instantiate(flashbangModel, throwposition.transform.position, Quaternion.identity);
         Rigidbody flashbangRigid = flashbang.GetComponent<Rigidbody>();

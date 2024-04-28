@@ -1237,43 +1237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5de54c084f472845b61ee9a97cb8a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fogRevealers:
-  - {revealerTransform: {fileID: 1760186055}, sightRange: 5, updateOnlyOnMove: 1, currentLevelCoordinates: {x: 0, y: 0}, lastSeenAt: {x: 0, y: 0}}
-  levelMidPoint: {fileID: 1208169670}
-  FogRefreshRate: 10
-  fogPlaneHeight: 1
-  fogPlaneMaterial: {fileID: 2100000, guid: 36b93ac6fcf129c449491654e397fe4a, type: 2}
-  fogColor:
-    r: 0.019607844
-    g: 0.05882353
-    b: 0.09803922
-    a: 1
-  fogPlaneAlpha: 1
-  fogLerpSpeed: 2.5
-  fogPlaneTextureLerpTarget: {fileID: 0}
-  fogPlaneTextureLerpBuffer: {fileID: 0}
-  LevelDataToLoad: {fileID: 0}
-  saveDataOnScan: 1
-  levelNameToSave: Default
-  levelDimensionX: 100
-  levelDimensionY: 100
-  unitScale: 1
-  scanSpacingPerUnit: 0.25
-  rayStartHeight: 5
-  rayMaxDistance: 10
-  obstacleLayers:
-    m_Bits: 4294967295
-  ignoreTriggers: 1
-  drawGizmos: 0
-  LogOutOfRange: 0
-  <levelData>k__BackingField:
-    levelDimensionX: 0
-    levelDimensionY: 0
-    unitScale: 0
-    scanSpacingPerUnit: 0
-    levelRow: []
-  fogPlane: {fileID: 0}
-  FogRefreshRateTimer: 0
 --- !u!4 &607656755
 Transform:
   m_ObjectHideFlags: 0
@@ -3286,7 +3249,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOver: {fileID: 0}
   scenenum: 0
-  enemyDown: 0
   itemcheck: 0000000000
   itemcount: 0000000000000000000000000000000000000000
   puzzleLevel: 1
@@ -3299,6 +3261,11 @@ MonoBehaviour:
   isDie: 0
   playerviewR: 0
   playerviewA: 0
+  amplitude: 0
+  frequency: 0
+  correctAmlitude: 0
+  correctFrequance: 0
+  paswawrd: 
   enemyQuater: 0
   lv3PlayerPos: {x: 0, y: 0, z: 0}
   Items:
@@ -3308,6 +3275,7 @@ MonoBehaviour:
   - {fileID: 1795340967}
   - {fileID: 1571260232}
   last: 0
+  onecollison: 1
 --- !u!4 &1360599835
 Transform:
   m_ObjectHideFlags: 0
@@ -9851,6 +9819,7 @@ MonoBehaviour:
   handGunModel: {fileID: 0}
   bulletPrefab: {fileID: 0}
   footSound: {fileID: 0}
+  playerAnim: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
   playerDie:
     m_PersistentCalls:
