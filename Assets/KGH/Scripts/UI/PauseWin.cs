@@ -18,13 +18,15 @@ public class PauseWin : MonoBehaviour
 
     public void CheckPointStart()
     {
+        pauseWin.SetActive(false);
         DataManager.instance.LoadData();
+        Time.timeScale = 1;
     }
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1;
     }
-
     public void HelpWin()
     {
         helpWin.SetActive(true);

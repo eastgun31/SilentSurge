@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void ItemActive()
+    public void ItemActive()
     {
         for(int i = 0; i < Items.Length;i++)
         {
