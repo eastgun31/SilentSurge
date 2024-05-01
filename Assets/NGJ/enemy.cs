@@ -3,7 +3,7 @@ using UnityEngine.AI;
 using System;
 using System.Collections;
 using ItemInfo;
-using TMPro;
+//using TMPro;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,8 +11,8 @@ public class Enemy : MonoBehaviour
     {
         patrolling, hear, findtarget, die, sturn
     }
-    public TextMeshPro questionMark; // 물음표 UI 를 연결할 변수
-    public TextMeshPro exclamationMark; // 느낌표 UI를 연결할 변수
+   // public TextMeshPro questionMark; // 물음표 UI 를 연결할 변수
+   // public TextMeshPro exclamationMark; // 느낌표 UI를 연결할 변수
     public EnemyState state;
 
     NavMeshAgent m_enemy;
@@ -82,8 +82,8 @@ public class Enemy : MonoBehaviour
         naviindex = 0;
         enemyAnim = GetComponent<Animator>();
         m_enemy.avoidancePriority = 50; // 벽을 피하기 위한 우선순위 설정
-        questionMark.gameObject.SetActive(false); // 시작 시 물음표 UI 비활성화
-        exclamationMark.gameObject.SetActive(false); // 시작 시 느낌표 UI 비활성화
+       // questionMark.gameObject.SetActive(false); // 시작 시 물음표 UI 비활성화
+      //  exclamationMark.gameObject.SetActive(false); // 시작 시 느낌표 UI 비활성화
 
         }
 
@@ -153,7 +153,7 @@ public class Enemy : MonoBehaviour
         m_enemy.SetDestination(position);
         if (noactiving)
             StartCoroutine(ChaseSoundRoutine(position)); // 대기 시간 5초 
-        questionMark.gameObject.SetActive(true); // 소리추적할때  물음표 UI 활성화
+        //questionMark.gameObject.SetActive(true); // 소리추적할때  물음표 UI 활성화
        
         }
 
@@ -187,8 +187,8 @@ public class Enemy : MonoBehaviour
             //enemyAnim.SetBool(Walk, true);
             //enemyAnim.SetBool(GunRuning, false); // 걷는 동안 총을 들지 않도록 설정
             m_enemy.SetDestination(customDestinations[naviindex]);
-            questionMark.gameObject.SetActive(false); // 시작 시 물음표 UI 비활성화
-            exclamationMark.gameObject.SetActive(false); // 시작 시 느낌표 UI 비활성화
+          //  questionMark.gameObject.SetActive(false); // 시작 시 물음표 UI 비활성화
+          //  exclamationMark.gameObject.SetActive(false); // 시작 시 느낌표 UI 비활성화
             }
         else if (Vector3.Distance(transform.position, customDestinations[naviindex]) <= 1f)
         {
@@ -261,7 +261,7 @@ public class Enemy : MonoBehaviour
             //enemyAnim.SetBool(Walk, false);
             m_enemy.isStopped = true;
             m_enemy.velocity = Vector3.zero;
-            e
+            
 
             // 총알을 발사하는 동작을 수행합니다.
             //transform.LookAt(pos);
