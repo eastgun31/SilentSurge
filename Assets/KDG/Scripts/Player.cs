@@ -5,6 +5,7 @@ using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
@@ -58,6 +59,14 @@ public class Player : MonoBehaviour
     bool die;
     bool saving;
     public UnityEvent playerDie;
+
+    Ray ray;
+    RaycastHit hit;
+    int mask;
+    string puzzle = "Puzzle";
+    string door = "Doorhandle";
+    PlayerInteractive playerInteractive;
+    public float maxdist;
     void Start()
     {
         die = false;
@@ -68,9 +77,11 @@ public class Player : MonoBehaviour
         useItem = GetComponent<UseItem>();
         rigid = transform.GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
+        playerInteractive = GetComponent<PlayerInteractive>();
         cam = Camera.main;
         gmManager = GameManager.instance;
         soundManager = SoundManager.instance;
+        maxdist = 1f;
     }
 
     void Update()
@@ -202,6 +213,17 @@ public class Player : MonoBehaviour
             {
                 StartCoroutine(useItem.HeartSee());
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.DrawRay(transform.position, transform.forward * maxdist, Color.blue, 2f);
+            mask = LayerMask.GetMask(puzzle);
+            if (Physics.Raycast(transform.position, transform.forward, out hit, maxdist, mask))
+            {
+                Debug.Log(mask);
+                playerInteractive.InteractiveObj(hit);
+            }
+
         }
 
         if (!die && Input.GetKey(KeyCode.G))
