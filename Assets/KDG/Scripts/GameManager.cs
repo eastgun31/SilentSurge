@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public int puzzleLevel;
     public bool nowpuzzle = false;
     public bool canUse = true;
-    public bool playerchasing = false;
+    public float playerchasing = 0;
     public bool[] existItem;
     public bool[] existEnemy;
     public bool isHide=false;

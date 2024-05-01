@@ -17,6 +17,8 @@ public class EnemyLevel : MonoBehaviour
     public GameObject[] Enemies;
 
     WaitForSeconds downTime;
+    WaitForSeconds upTime;
+    GameManager gm;
     private bool lvDowning;
     private bool addcomplete;
     private bool enemyadd;
@@ -30,78 +32,124 @@ public class EnemyLevel : MonoBehaviour
 
         LvStep = ELevel.level1;
         downTime = new WaitForSeconds(10f);
+        upTime = new WaitForSeconds(5f);
         lvDowning = false;
-        addcomplete = false;
         enemyadd = false;
+    }
+
+    private void Start()
+    {
+        gm = GameManager.instance;
+        StartCoroutine(LvUp());
+        StartCoroutine(LvDown());
     }
 
     private void Update()
     {
-        if (GameManager.instance.playerchasing)
-            StopCoroutine(LvDown());
-        else if(!GameManager.instance.playerchasing && !lvDowning && LvStep != ELevel.level1)
-            StartCoroutine(LvDown()); 
 
-        if(LvStep == ELevel.level3 && !addcomplete)
-        {
-            Debug.Log("적추가");
-            addcomplete = true;
-            enemyadd= true;
-            if(enemyadd)
-            {
-                enemyadd = false;
-                ODaeGi();
-            }
-        }
+        if(gm.playerchasing != 0)
+            gm.playerchasing -= Time.deltaTime;
+
+        //if (gm.playerchasing)
+        //    StopCoroutine(LvDown());
+        //else if(!gm.playerchasing && !lvDowning && LvStep != ELevel.level1)
+        //    StartCoroutine(LvDown()); 
+
+        //if(LvStep == ELevel.level3 && !addcomplete)
+        //{
+        //    Debug.Log("적추가");
+        //    addcomplete = true;
+        //    enemyadd= true;
+        //    if(enemyadd)
+        //    {
+        //        enemyadd = false;
+        //        ODaeGi();
+        //    }
+        //}
 
     }
 
+    IEnumerator LvUp()
+    {
+        while (true)
+        { 
+            if(gm.playerchasing > 10f && !gm.isDie)
+            {
+                if (LvStep == ELevel.level1)
+                    LvStep = ELevel.level2;
+                else if(gm.playerchasing >= 20f && LvStep == ELevel.level2)
+                {
+                    LvStep = ELevel.level3;
+                    if(!enemyadd)
+                    {
+                        enemyadd=true;
+                        ODaeGi();
+                    }
+                }
+                else if(LvStep == ELevel.level3)
+                    LvStep = ELevel.level3;
+                yield return upTime;
+            }
+            yield return null;
+        }
+    }
     IEnumerator LvDown()
     {
-        lvDowning = true;
-
-        yield return downTime;
-
-        if (!GameManager.instance.playerchasing && LvStep == ELevel.level2)
+        while (true)
         {
-            LvStep = ELevel.level1;
-        }
-        else if (!GameManager.instance.playerchasing && LvStep == ELevel.level3)
-        {
-            LvStep = ELevel.level2;
-            addcomplete = false;
-            lv3enemy.SetActive(false);
-            for (int i = 0; i < lv3enemy.transform.childCount; i++)
+            if (gm.playerchasing != 0 && LvStep != ELevel.level1)
             {
-                lv3enemy.transform.GetChild(i).gameObject.transform.position = lv3enemy.transform.position;
+                if (gm.playerchasing <= 0f && LvStep == ELevel.level2)
+                {
+                    LvStep = ELevel.level1;
+                    gm.playerchasing = 0;
+                }
+                else if (gm.playerchasing <= 10f && LvStep == ELevel.level3)
+                {
+                    LvStep = ELevel.level2;
+                    lv3enemy.SetActive(false);
+                    for (int i = 0; i < lv3enemy.transform.childCount; i++)
+                    {
+                        lv3enemy.transform.GetChild(i).gameObject.transform.position = lv3enemy.transform.position;
+                    }
+                    enemyadd = false;
+                }
+                yield return downTime;
             }
-            enemyadd = false;
+            else if (gm.isDie)
+            {
+                LvStep = ELevel.level1;
+            }
+            yield return null;
         }
-        else
-            yield break;
-            
-
-        lvDowning = false;
     }
 
     public void StateClear()
     {
+        gm.playerchasing = 0;
+        StopCoroutine(LvUp());
+        StopCoroutine(LvDown());
+        StartCoroutine(LvUp());
+        StartCoroutine(LvDown());
+        lv3enemy.SetActive(false);
         for (int i = 0; i < lv3enemy.transform.childCount; i++)
         {
             lv3enemy.transform.GetChild(i).gameObject.transform.position = lv3enemy.transform.position;
         }
+        enemyadd = false;
         LvStep = ELevel.level1;
+        gm.playerchasing = 0;
     }
 
     public void SetEnemy()
     {
-        for (int i = 0; i < GameManager.instance.existEnemy.Length; i++)
+        for (int i = 0; i < gm.existEnemy.Length; i++)
         {
-            if (GameManager.instance.existEnemy[i])
+            if (gm.existEnemy[i])
             {
                 Enemies[i].SetActive(true);
             }
-            else if (!GameManager.instance.existEnemy[i])
+            else if (!gm.existEnemy[i])
             {
                 Enemies[i].SetActive(false);
             }
