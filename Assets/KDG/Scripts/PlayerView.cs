@@ -68,7 +68,7 @@ public class PlayerView : MonoBehaviour
     void LateUpdate()
     {
         DrawFieldOfView();
-        DrawFieldOfView2();
+        //DrawFieldOfView2();
     }
 
     void DrawFieldOfView()

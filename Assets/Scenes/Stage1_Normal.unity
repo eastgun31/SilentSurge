@@ -6964,6 +6964,7 @@ MonoBehaviour:
   stoppingDistance: 2
   enemyType: 1
   indexcount: 2
+  naviindex: 0
   chasing: 0
   hearSound: 0
   bulletPoses:
@@ -12610,7 +12611,6 @@ MonoBehaviour:
   timeRemainig: 0
   isWin: 0
   isPauseWin: 0
-  isSubWin: 0
   isGameOver: 0
   quickSlot: {fileID: 1270063633}
   pauseWin: {fileID: 1126182200}
@@ -20344,41 +20344,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
-      propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
-      propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
       propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1398943011}
-    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
-      propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
-      propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GameOver
-      objectReference: {fileID: 0}
-    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
-      propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GameManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
-      propertyPath: playerDie.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1839164908728646060, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3358342213177724985, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 09c61580e8717f04da5ac0ad4bd36964, type: 2}
     - target: {fileID: 5185967491329815994, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
       propertyPath: m_Name
       value: Player
@@ -20387,14 +20355,6 @@ PrefabInstance:
       propertyPath: heartseeCam
       value: 
       objectReference: {fileID: 1829834366}
-    - target: {fileID: 6291401340160914233, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
-      propertyPath: viewAngle
-      value: 360
-      objectReference: {fileID: 0}
-    - target: {fileID: 6291401340160914233, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
-      propertyPath: viewRadius
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 7248858452175125864, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 36.9
@@ -23409,7 +23369,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseWin: {fileID: 1126182200}
   helpWin: {fileID: 529970775}
-  soundWin: {fileID: 893155074}
 --- !u!114 &1126182203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36483,6 +36442,7 @@ MonoBehaviour:
   stoppingDistance: 2
   enemyType: 1
   indexcount: 0
+  naviindex: 0
   chasing: 0
   hearSound: 0
   bulletPoses: []
@@ -39583,6 +39543,7 @@ MonoBehaviour:
   stoppingDistance: 2
   enemyType: 1
   indexcount: 1
+  naviindex: 0
   chasing: 0
   hearSound: 0
   bulletPoses: []
