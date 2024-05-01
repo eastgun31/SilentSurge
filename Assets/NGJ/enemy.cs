@@ -3,7 +3,7 @@ using UnityEngine.AI;
 using System;
 using System.Collections;
 using ItemInfo;
-//using TMPro;
+using TMPro;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,8 +11,8 @@ public class Enemy : MonoBehaviour
     {
         patrolling, hear, findtarget, die, sturn
     }
-    //public TextMeshPro questionMark; // 물음표 UI 를 연결할 변수
-    //public TextMeshPro exclamationMark; // 느낌표 UI를 연결할 변수
+    public TextMeshPro questionMark; // 물음표 UI 를 연결할 변수
+    public TextMeshPro exclamationMark; // 느낌표 UI를 연결할 변수
     public EnemyState state;
 
     NavMeshAgent m_enemy;
@@ -69,8 +69,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
     // enemysound = GetComponent<AudioSource>();  
-    //questionMark.gameObject.SetActive(false); // 시작 시 물음표 UI 비활성화
-    //exclamationMark.gameObject.SetActive(false); // 시작 시 느낌표 UI 비활성화    
+     
          chasing = false;
         stoppingDistance = 3f;
         state = EnemyState.patrolling;
@@ -83,8 +82,10 @@ public class Enemy : MonoBehaviour
         naviindex = 0;
         enemyAnim = GetComponent<Animator>();
         m_enemy.avoidancePriority = 50; // 벽을 피하기 위한 우선순위 설정
+        questionMark.gameObject.SetActive(false); // 시작 시 물음표 UI 비활성화
+        exclamationMark.gameObject.SetActive(false); // 시작 시 느낌표 UI 비활성화
 
-    }
+        }
 
     private void OnEnable()
     {
@@ -152,7 +153,9 @@ public class Enemy : MonoBehaviour
         m_enemy.SetDestination(position);
         if (noactiving)
             StartCoroutine(ChaseSoundRoutine(position)); // 대기 시간 5초 
-    }
+        questionMark.gameObject.SetActive(true); // 소리추적할때  물음표 UI 활성화
+       
+        }
 
     IEnumerator ChaseSoundRoutine(Vector3 position)
     {
@@ -184,7 +187,9 @@ public class Enemy : MonoBehaviour
             //enemyAnim.SetBool(Walk, true);
             //enemyAnim.SetBool(GunRuning, false); // 걷는 동안 총을 들지 않도록 설정
             m_enemy.SetDestination(customDestinations[naviindex]);
-        }
+            questionMark.gameObject.SetActive(false); // 시작 시 물음표 UI 비활성화
+            exclamationMark.gameObject.SetActive(false); // 시작 시 느낌표 UI 비활성화
+            }
         else if (Vector3.Distance(transform.position, customDestinations[naviindex]) <= 1f)
         {
             naviindex++;
@@ -200,11 +205,12 @@ public class Enemy : MonoBehaviour
         //enemyAnim.SetBool(Walk, false);
         //if (!chasing)
         //    StartCoroutine(Levelstep());
-
+        
         transform.LookAt(sight.detectTarget.position);
         enemyAnim.SetBool(GunRuning, true); // 총을 들고 있을 때 설정
-        m_enemy.stoppingDistance = stoppingDistance;
-        m_enemy.SetDestination(sight.detectTarget.position);
+       // m_enemy.stoppingDistance = stoppingDistance;
+       // m_enemy.SetDestination(sight.detectTarget.position);
+      
 
         if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 3f && !GameManager.instance.isDie &&state != EnemyState.die && state != EnemyState.sturn)
         {
@@ -255,6 +261,8 @@ public class Enemy : MonoBehaviour
             //enemyAnim.SetBool(Walk, false);
             m_enemy.isStopped = true;
             m_enemy.velocity = Vector3.zero;
+            e
+
             // 총알을 발사하는 동작을 수행합니다.
             //transform.LookAt(pos);
 
