@@ -370,8 +370,6 @@ public class Player : MonoBehaviour
     {
         gmManager.isDie = true;
         playerAnim.SetTrigger("Die");
-        rigid.velocity = Vector3.zero;
-        velocity = Vector3.zero;
         yield return new WaitForSeconds(3f);
         Debug.Log("플레이어 죽음");
         //DataManager.instance.LoadData();

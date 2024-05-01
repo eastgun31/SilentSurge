@@ -12,7 +12,6 @@ public class UiManager : MonoBehaviour
     public float timeRemainig;
     public bool isWin = false;
     public bool isPauseWin = false;
-    public bool isSubWin = false;
     public bool isGameOver = false;
 
     public GameObject quickSlot;
@@ -71,13 +70,9 @@ public class UiManager : MonoBehaviour
             }
             else
             {
-                if (isSubWin == false)
-                {
-                    Debug.Log("1");
-                    Time.timeScale = 1;
-                    pauseWin.gameObject.SetActive(false);
-                    isPauseWin = false;
-                }
+                Time.timeScale = 1;
+                pauseWin.gameObject.SetActive(false);
+                isPauseWin=false;
             }
         }
     }

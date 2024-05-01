@@ -90,10 +90,7 @@ public class Sight : MonoBehaviour
     {
         Collider[] targets = Physics.OverlapSphere(transform.position, radius, playerM);  // radius(반지름) 내 원 영역의 playerM 콜라이더를 가져옴
         if(targets==null || targets.Length==0)
-        {
             findT = false;
-            GameManager.instance.playerchasing = false;
-        }
         for (int i = 0; i < targets.Length; i++)
         {
             detectTarget = targets[i].transform;
