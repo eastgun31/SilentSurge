@@ -3,7 +3,7 @@
     using System;
     using System.Collections;
     using ItemInfo;
-    using TMPro;
+    //using TMPro;
 
     public class Enemy : MonoBehaviour
     {
@@ -11,8 +11,8 @@
         {
             patrolling, hear, findtarget, die, sturn
         }
-    public TextMeshPro questionMark; // 물음표 UI 를 연결할 변수
-    public TextMeshPro exclamationMark; // 느낌표 UI를 연결할 변수
+    //public TextMeshPro questionMark; // 물음표 UI 를 연결할 변수
+    //public TextMeshPro exclamationMark; // 느낌표 UI를 연결할 변수
     public EnemyState state;
 
         NavMeshAgent m_enemy;
@@ -68,8 +68,8 @@
         void Start()
         {
         // enemysound = GetComponent<AudioSource>();  
-        questionMark.gameObject.SetActive(false); // 시작 시 물음표 UI 비활성화
-        exclamationMark.gameObject.SetActive(false); // 시작 시 느낌표 UI 비활성화    
+        //questionMark.gameObject.SetActive(false); // 시작 시 물음표 UI 비활성화
+        //exclamationMark.gameObject.SetActive(false); // 시작 시 느낌표 UI 비활성화    
              chasing = false;
             stoppingDistance = 3f;
             state = EnemyState.patrolling;
@@ -202,7 +202,7 @@
             if (!chasing)
                 StartCoroutine(Levelstep());
 
-            transform.LookAt(sight.detectTarget.position);
+            //transform.LookAt(sight.detectTarget.position);
             enemyAnim.SetBool(GunRuning, true); // 총을 들고 있을 때 설정
             m_enemy.stoppingDistance = stoppingDistance;
             m_enemy.SetDestination(sight.detectTarget.position);
@@ -305,8 +305,7 @@
                 yield return cooltime.cool2sec;
                 bulletObject.transform.LookAt(pos);
                 bulletRigid.velocity = bulletPos.forward * bulletSpeed;
-                yield return cooltime.cool2sec;
-                isShooting = false;
+                
             }
             m_enemy.isStopped = false;
         }
