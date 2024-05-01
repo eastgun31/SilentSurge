@@ -24,7 +24,7 @@ public class UseItem : MonoBehaviour
     private string inroom = "InRoom";
     public bool heartCanUse = true;
 
-    WaitForSeconds wait;
+
     Vector3 angle;
     Vector3 pos;
     Ray ray;
@@ -37,7 +37,6 @@ public class UseItem : MonoBehaviour
     private void Start()
     {
         itemClass = new Item();
-        wait = new WaitForSeconds(0.5f);
         drawLine = GetComponent<LineRenderer>();
     }
 

@@ -52,10 +52,10 @@ public class CCTVMovement : MonoBehaviour       // CCTV의 속성을 가지고 있으며, 
 
     void Update()
     {
-        if (c_state == cctv_state.detecting)                          // 적 감지중일 경우
-        {
-            StartCoroutine(DetectCCTVLevel());                     // 경계레벨을 올려주는 코루틴 호출
-        }
+        //if (c_state == cctv_state.detecting)                          // 적 감지중일 경우
+        //{
+        //    StartCoroutine(DetectCCTVLevel());                     // 경계레벨을 올려주는 코루틴 호출
+        //}
         //if (csight.findT)
         //{
         //    CCTVHomingPlayer();
