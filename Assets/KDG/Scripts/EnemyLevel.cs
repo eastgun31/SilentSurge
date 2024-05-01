@@ -31,7 +31,7 @@ public class EnemyLevel : MonoBehaviour
             enemylv = this;
 
         LvStep = ELevel.level1;
-        downTime = new WaitForSeconds(10f);
+        downTime = new WaitForSeconds(7f);
         upTime = new WaitForSeconds(5f);
         lvDowning = false;
         enemyadd = false;
@@ -46,8 +46,9 @@ public class EnemyLevel : MonoBehaviour
 
     private void Update()
     {
-
-        if(gm.playerchasing != 0)
+        //if (gm.playerchasing < 0)
+        //    gm.playerchasing = 0;
+        if (gm.playerchasing != 0)
             gm.playerchasing -= Time.deltaTime;
 
         //if (gm.playerchasing)

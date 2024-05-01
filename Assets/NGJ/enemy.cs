@@ -52,6 +52,7 @@ public class Enemy : MonoBehaviour
     string GunRuning = "GunRuning";
     string Death = "Death";
     string Flash = "Flash";
+    string PlayerListen = "PlayerListen";
     ////안쓰는변수
     //public bool m_triggered = false; // 트리거 충돌 여부를 나타냅니다.
     //public event Action<Player> PlayerSpotted; // 플레이어 발견 시 이벤트
@@ -68,7 +69,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-    // enemysound = GetComponent<AudioSource>();  
+        enemysound = GetComponent<AudioSource>();  
      
          chasing = false;
         stoppingDistance = 3f;
@@ -126,21 +127,22 @@ public class Enemy : MonoBehaviour
         //    customDestinations[0] = GameManager.instance.lv3PlayerPos;
 
         enemyAnim.SetFloat(Walk, m_enemy.velocity.magnitude);
-        //if(m_enemy.velocity.magnitude > 1f)
-        //{
-        //    if(!enemysound.isPlaying)
-        //    {
-        //        //enemysound.PlayOneShot(enemysound.clip);
-        //        enemysound.Play();
-        //    }
-        //}
-        //else if(m_enemy.velocity.magnitude <= 1f)
-        //{
-        //    if(enemysound.isPlaying) 
-        //    {
-        //        enemysound.Stop();
-        //    }
-        //}
+        if (m_enemy.velocity.magnitude > 1f && enemysound.enabled)
+        {
+            if (!enemysound.isPlaying)
+            {
+                Debug.Log("발소리재생");
+                //enemysound.PlayOneShot(enemysound.clip);
+                enemysound.Play();
+            }
+        }
+        else if (m_enemy.velocity.magnitude <= 1f && enemysound.enabled)
+        {
+            if (enemysound.isPlaying)
+            {
+                enemysound.Stop();
+            }
+        }
 
     }
 
@@ -366,39 +368,39 @@ public class Enemy : MonoBehaviour
         yield return cooltime.cool1sec;
         StartCoroutine(EnemyStateCheck());
     }
-    IEnumerator Levelstep()
-    {
-        chasing = true;
-        yield return cooltime.cool10sec;
+    //IEnumerator Levelstep()
+    //{
+    //    chasing = true;
+    //    yield return cooltime.cool10sec;
 
-        if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
-        {
+    //    if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
+    //    {
 
-            //enemyAnim.SetBool(GunRuning, true);
-            //enemyAnim.SetBool(Walk, false);
-            EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
-            m_enemy.speed = 5f;
-        }
-        else if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
-        {
+    //        //enemyAnim.SetBool(GunRuning, true);
+    //        //enemyAnim.SetBool(Walk, false);
+    //        EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level2;
+    //        m_enemy.speed = 5f;
+    //    }
+    //    else if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level2)
+    //    {
 
-            //enemyAnim.SetBool(GunRuning, true);
-            //enemyAnim.SetBool(Walk, false);
-            EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
-            GameManager.instance.lv3PlayerPos = sight.detectTarget.position;
-        }
-        else if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level3)
-        {
+    //        //enemyAnim.SetBool(GunRuning, true);
+    //        //enemyAnim.SetBool(Walk, false);
+    //        EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
+    //        GameManager.instance.lv3PlayerPos = sight.detectTarget.position;
+    //    }
+    //    else if (state == EnemyState.findtarget && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level3)
+    //    {
 
-            //enemyAnim.SetBool(GunRuning, true);
-            //enemyAnim.SetBool(Walk, false);
-            EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
-            GameManager.instance.lv3PlayerPos = sight.detectTarget.position;
-        }
-        else if (state == EnemyState.patrolling && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
-            m_enemy.speed = 3f;
-        chasing = false;
-    }
+    //        //enemyAnim.SetBool(GunRuning, true);
+    //        //enemyAnim.SetBool(Walk, false);
+    //        EnemyLevel.enemylv.LvStep = EnemyLevel.ELevel.level3;
+    //        GameManager.instance.lv3PlayerPos = sight.detectTarget.position;
+    //    }
+    //    else if (state == EnemyState.patrolling && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
+    //        m_enemy.speed = 3f;
+    //    chasing = false;
+    //}
 
     void EnenyAttackStop()
     {
@@ -446,6 +448,18 @@ public class Enemy : MonoBehaviour
             state = EnemyState.sturn;
             enemyAnim.SetTrigger(Flash);
             StartCoroutine(ReactivateMovementAfterDelay(5f));
+        }
+
+        if(other.CompareTag(PlayerListen))
+        {
+            enemysound.enabled = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(PlayerListen))
+        {
+            enemysound.enabled = false;
         }
     }
 
