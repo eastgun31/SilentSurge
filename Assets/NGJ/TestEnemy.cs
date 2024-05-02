@@ -215,9 +215,11 @@ public class TestEnemy : MonoBehaviour
         }
         questionMark.SetActive(false);
         exclamationMark.SetActive(false);
+
     }
 
-    void TargetChase()
+
+void TargetChase()
     {
         //enemyAnim.SetBool(Walk, false);
         //if (!chasing)
@@ -227,9 +229,14 @@ public class TestEnemy : MonoBehaviour
         enemyAnim.SetBool(GunRuning, true); // 총을 들고 있을 때 설정
                                             // m_enemy.stoppingDistance = stoppingDistance;
                                             // m_enemy.SetDestination(sight.detectTarget.position);
-                                            exclamationMark.SetActive(true);
-                                            questionMark.SetActive(false);
-      
+        exclamationMark.SetActive(true);
+        questionMark.SetActive(false);
+        StartCoroutine(DisableQuestionMarkAfter3Seconds());
+        IEnumerator DisableQuestionMarkAfter3Seconds()
+        {
+            yield return new WaitForSeconds(3f);
+            exclamationMark.SetActive(false);
+        }
         if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 3f && !GameManager.instance.isDie && state != EnemyState.die && state != EnemyState.sturn)
         {
             //enemyAnim.SetBool(Walk, false);
@@ -247,8 +254,8 @@ public class TestEnemy : MonoBehaviour
             enemyAnim.SetBool(GunRuning, true);
             m_enemy.isStopped = false;
         }
+      
     }
-
 
     IEnumerator CloseAttack()
     {
