@@ -3,7 +3,7 @@ using UnityEngine.AI;
 using System;
 using System.Collections;
 using ItemInfo;
-//using TMPro;
+
 
 public class TestEnemy : MonoBehaviour
 {
@@ -11,8 +11,7 @@ public class TestEnemy : MonoBehaviour
     {
         patrolling, hear, findtarget, die, sturn
     }
-    //public TextMeshPro questionMark; // 물음표 UI 를 연결할 변수
-    // public TextMeshPro exclamationMark; // 느낌표 UI를 연결할 변수
+
     public EnemyState state;
 
     NavMeshAgent m_enemy;
@@ -27,9 +26,8 @@ public class TestEnemy : MonoBehaviour
 
     [SerializeField] private float stoppingDistance; // 적이 멈출 거리
 
-    public GameObject questionMark;
-    public GameObject exclamationMark;
-    
+
+
     bool noactiving;
 
     //적 수정_김동건
@@ -48,6 +46,8 @@ public class TestEnemy : MonoBehaviour
     E_CoolTime cooltime;
     AudioSource enemysound;
 
+    public GameObject questionMark; // 물음표 띄우기  
+    public GameObject exclamationMark; // 느낌표 띄우기
 
     Animator enemyAnim;
     string Walk = "Walk";
@@ -158,9 +158,16 @@ public class TestEnemy : MonoBehaviour
         m_enemy.SetDestination(position);
         if (noactiving)
             StartCoroutine(ChaseSoundRoutine(position)); // 대기 시간 5초 
-                                                       
+
         questionMark.SetActive(true);
         exclamationMark.SetActive(false);
+       
+        StartCoroutine(DisableQuestionMarkAfter3Seconds());
+    }
+    IEnumerator DisableQuestionMarkAfter3Seconds()
+    {
+        yield return new WaitForSeconds(3f);
+        questionMark.SetActive(false);
     }
 
     IEnumerator ChaseSoundRoutine(Vector3 position)
@@ -220,9 +227,9 @@ public class TestEnemy : MonoBehaviour
         enemyAnim.SetBool(GunRuning, true); // 총을 들고 있을 때 설정
                                             // m_enemy.stoppingDistance = stoppingDistance;
                                             // m_enemy.SetDestination(sight.detectTarget.position);
-        exclamationMark.SetActive(true);
-        questionMark.SetActive(false);
-
+                                            exclamationMark.SetActive(true);
+                                            questionMark.SetActive(false);
+      
         if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 3f && !GameManager.instance.isDie && state != EnemyState.die && state != EnemyState.sturn)
         {
             //enemyAnim.SetBool(Walk, false);

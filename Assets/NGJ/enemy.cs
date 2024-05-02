@@ -3,7 +3,7 @@ using UnityEngine.AI;
 using System;
 using System.Collections;
 using ItemInfo;
-//using TMPro;
+
 
 public class Enemy : MonoBehaviour
 {
@@ -11,8 +11,7 @@ public class Enemy : MonoBehaviour
     {
         patrolling, hear, findtarget, die, sturn
     }
-   // public TextMeshPro questionMark; // 물음표 UI 를 연결할 변수
-   // public TextMeshPro exclamationMark; // 느낌표 UI를 연결할 변수
+
     public EnemyState state;
 
     NavMeshAgent m_enemy;
@@ -83,8 +82,7 @@ public class Enemy : MonoBehaviour
         naviindex = 0;
         enemyAnim = GetComponent<Animator>();
         m_enemy.avoidancePriority = 50; // 벽을 피하기 위한 우선순위 설정
-       // questionMark.gameObject.SetActive(false); // 시작 시 물음표 UI 비활성화
-      //  exclamationMark.gameObject.SetActive(false); // 시작 시 느낌표 UI 비활성화
+    
 
         }
 
@@ -155,7 +153,7 @@ public class Enemy : MonoBehaviour
         m_enemy.SetDestination(position);
         if (noactiving)
             StartCoroutine(ChaseSoundRoutine(position)); // 대기 시간 5초 
-        //questionMark.gameObject.SetActive(true); // 소리추적할때  물음표 UI 활성화
+      
        
         }
 
