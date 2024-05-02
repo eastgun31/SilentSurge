@@ -3751,8 +3751,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bfafb35d5b5f794fbcbd2051466ac8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionMark: {fileID: 0}
-  exclamationMark: {fileID: 0}
   state: 0
   customDestinations:
   - {x: 20, y: 0, z: 28}
@@ -3766,6 +3764,7 @@ MonoBehaviour:
   stoppingDistance: 2
   enemyType: 1
   indexcount: 1
+  naviindex: 0
   chasing: 0
   hearSound: 0
   bulletPoses: []
@@ -9347,11 +9346,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274851809}
   m_Mesh: {fileID: 4300000, guid: 365adfac290cc9a46b66b40f7944415c, type: 3}
---- !u!4 &274944249 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4778529991732345797, guid: 8d79bf1087e9c7a4b94b4a08b5e7bfa8, type: 3}
-  m_PrefabInstance: {fileID: 585657727}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &284282082
 GameObject:
   m_ObjectHideFlags: 0
@@ -12584,6 +12578,10 @@ PrefabInstance:
     - target: {fileID: 3522034134698610219, guid: 2487b31bb96770b4e84f84dd59a40f42, type: 3}
       propertyPath: m_Name
       value: man-king_Rig
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522034134698610219, guid: 2487b31bb96770b4e84f84dd59a40f42, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5836516727064262019, guid: 2487b31bb96770b4e84f84dd59a40f42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18225,13 +18223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4778529991732345797, guid: 8d79bf1087e9c7a4b94b4a08b5e7bfa8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1880183522}
-    - targetCorrespondingSourceObject: {fileID: 4778529991732345797, guid: 8d79bf1087e9c7a4b94b4a08b5e7bfa8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2063559053}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d79bf1087e9c7a4b94b4a08b5e7bfa8, type: 3}
 --- !u!1 &592238766
@@ -18700,8 +18692,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bfafb35d5b5f794fbcbd2051466ac8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionMark: {fileID: 0}
-  exclamationMark: {fileID: 0}
   state: 0
   customDestinations:
   - {x: 20, y: 0, z: 70}
@@ -18715,6 +18705,7 @@ MonoBehaviour:
   stoppingDistance: 2
   enemyType: 1
   indexcount: 7
+  naviindex: 0
   chasing: 0
   hearSound: 0
   bulletPoses: []
@@ -21839,8 +21830,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bfafb35d5b5f794fbcbd2051466ac8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionMark: {fileID: 0}
-  exclamationMark: {fileID: 0}
   state: 0
   customDestinations: []
   bulletPrefab: {fileID: 0}
@@ -21851,6 +21840,7 @@ MonoBehaviour:
   stoppingDistance: 0
   enemyType: 0
   indexcount: 0
+  naviindex: 0
   chasing: 0
   hearSound: 0
   bulletPoses: []
@@ -30192,6 +30182,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: man-samurai-black_Rig
       objectReference: {fileID: 0}
+    - target: {fileID: 2204124948245548364, guid: 0ab24b080afc13a4a9abf28b7107b326, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31515,6 +31509,7 @@ MonoBehaviour:
   correctAmlitude: 0
   correctFrequance: 0
   paswawrd: 
+  spacebar: 0
   enemyQuater: 0
   lv3PlayerPos: {x: 0, y: 0, z: 0}
   Items: []
@@ -35474,8 +35469,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bfafb35d5b5f794fbcbd2051466ac8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionMark: {fileID: 0}
-  exclamationMark: {fileID: 0}
   state: 0
   customDestinations:
   - {x: 36, y: 0, z: 14}
@@ -35487,6 +35480,7 @@ MonoBehaviour:
   stoppingDistance: 2
   enemyType: 1
   indexcount: 4
+  naviindex: 0
   chasing: 0
   hearSound: 0
   bulletPoses: []
@@ -39795,6 +39789,10 @@ PrefabInstance:
     - target: {fileID: 5546475599178547258, guid: 9ba65361bf6d49740b78a71042cc04be, type: 3}
       propertyPath: m_Name
       value: Machn_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546475599178547258, guid: 9ba65361bf6d49740b78a71042cc04be, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -44832,7 +44830,39 @@ MonoBehaviour:
   edgeResolveIterations: 0
   edgeDstThreshold: 0
   sightType: 2
---- !u!114 &1448828335
+--- !u!4 &1448828337 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2684702305103715279, guid: 906c4f1b294c08249afd5a63be792cbe, type: 3}
+  m_PrefabInstance: {fileID: 1868387973}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1448828339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448828330}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bfafb35d5b5f794fbcbd2051466ac8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  customDestinations:
+  - {x: 37, y: 0, z: 39}
+  bulletPrefab: {fileID: 2094545218}
+  bulletPos: {fileID: 1273840694}
+  bulletSpeed: 10
+  gunmodal: {fileID: 1273840693}
+  targetpos: {x: 0, y: 0, z: 0}
+  stoppingDistance: 2
+  enemyType: 1
+  indexcount: 0
+  naviindex: 0
+  chasing: 0
+  hearSound: 0
+  bulletPoses: []
+--- !u!114 &1448828340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44841,32 +44871,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1448828330}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bfafb35d5b5f794fbcbd2051466ac8b, type: 3}
+  m_Script: {fileID: 11500000, guid: e830b7009d3276b46b5c68043b47444b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionMark: {fileID: 0}
-  exclamationMark: {fileID: 0}
   state: 0
   customDestinations:
   - {x: 37, y: 0, z: 39}
-  bulletPrefab: {fileID: 2556163433973438380, guid: 68136dce4a7e9eb4690607da0ec82c11, type: 3}
+  bulletPrefab: {fileID: 2094545218}
   bulletPos: {fileID: 1273840694}
   bulletSpeed: 10
   gunmodal: {fileID: 1273840693}
   targetpos: {x: 0, y: 0, z: 0}
   stoppingDistance: 2
+  questionMark: {fileID: 2063559052}
+  exclamationMark: {fileID: 1880183521}
   enemyType: 1
-  indexcount: 3
+  indexcount: 0
+  naviindex: 0
   chasing: 0
   hearSound: 0
-  bulletPoses:
-  - {fileID: 1196943225}
-  - {fileID: 1232368310}
---- !u!4 &1448828337 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2684702305103715279, guid: 906c4f1b294c08249afd5a63be792cbe, type: 3}
-  m_PrefabInstance: {fileID: 1868387973}
-  m_PrefabAsset: {fileID: 0}
+  bulletPoses: []
 --- !u!1 &1448971989
 GameObject:
   m_ObjectHideFlags: 0
@@ -45782,6 +45806,10 @@ PrefabInstance:
     - target: {fileID: 5626162332843619472, guid: 823460d9003f3d841a8eee8141737516, type: 3}
       propertyPath: m_Name
       value: woman-nanny
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626162332843619472, guid: 823460d9003f3d841a8eee8141737516, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -51807,8 +51835,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bfafb35d5b5f794fbcbd2051466ac8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionMark: {fileID: 0}
-  exclamationMark: {fileID: 0}
   state: 0
   customDestinations:
   - {x: 15, y: 0, z: 16}
@@ -51820,6 +51846,7 @@ MonoBehaviour:
   stoppingDistance: 2
   enemyType: 1
   indexcount: 5
+  naviindex: 0
   chasing: 0
   hearSound: 0
   bulletPoses: []
@@ -52463,6 +52490,10 @@ PrefabInstance:
     - target: {fileID: 5020757368682955290, guid: c18279f733b9ff14cb12ed2740fe208f, type: 3}
       propertyPath: m_Name
       value: woman-egypt-worker
+      objectReference: {fileID: 0}
+    - target: {fileID: 5020757368682955290, guid: c18279f733b9ff14cb12ed2740fe208f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -53942,8 +53973,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bfafb35d5b5f794fbcbd2051466ac8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionMark: {fileID: 0}
-  exclamationMark: {fileID: 0}
   state: 0
   customDestinations: []
   bulletPrefab: {fileID: 0}
@@ -53954,6 +53983,7 @@ MonoBehaviour:
   stoppingDistance: 0
   enemyType: 0
   indexcount: 0
+  naviindex: 0
   chasing: 0
   hearSound: 0
   bulletPoses: []
@@ -56076,8 +56106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bfafb35d5b5f794fbcbd2051466ac8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionMark: {fileID: 0}
-  exclamationMark: {fileID: 0}
   state: 0
   customDestinations:
   - {x: 20, y: 0, z: 69}
@@ -56092,6 +56120,7 @@ MonoBehaviour:
   stoppingDistance: 2
   enemyType: 1
   indexcount: 2
+  naviindex: 0
   chasing: 0
   hearSound: 0
   bulletPoses: []
@@ -58831,6 +58860,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Machn_2
       objectReference: {fileID: 0}
+    - target: {fileID: 7474520805037059293, guid: 6b03a4b90ae5d5942907e925787d3465, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7850061941504505447, guid: 6b03a4b90ae5d5942907e925787d3465, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.26803
@@ -59166,13 +59199,22 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2684702305103715279, guid: 906c4f1b294c08249afd5a63be792cbe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 28826168}
+    - targetCorrespondingSourceObject: {fileID: 2684702305103715279, guid: 906c4f1b294c08249afd5a63be792cbe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1880183522}
+    - targetCorrespondingSourceObject: {fileID: 2684702305103715279, guid: 906c4f1b294c08249afd5a63be792cbe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2063559053}
     - targetCorrespondingSourceObject: {fileID: 2684702305103715323, guid: 906c4f1b294c08249afd5a63be792cbe, type: 3}
       insertIndex: 0
       addedObject: {fileID: 1223803102}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2684702305104070639, guid: 906c4f1b294c08249afd5a63be792cbe, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1448828335}
+      addedObject: {fileID: 1448828340}
+    - targetCorrespondingSourceObject: {fileID: 2684702305104070639, guid: 906c4f1b294c08249afd5a63be792cbe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1448828339}
     - targetCorrespondingSourceObject: {fileID: 2684702305104070639, guid: 906c4f1b294c08249afd5a63be792cbe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1448828334}
@@ -59664,7 +59706,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1880183522
 RectTransform:
   m_ObjectHideFlags: 0
@@ -59672,16 +59714,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1880183521}
-  m_LocalRotation: {x: -0, y: -0.9995973, z: -0, w: 0.028376449}
-  m_LocalPosition: {x: 0, y: 0, z: -0.04}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalRotation: {x: -0, y: -0.032456446, z: -0, w: 0.9994732}
+  m_LocalPosition: {x: 0, y: 0, z: 0.15}
+  m_LocalScale: {x: 0.19999999, y: 0.2, z: 0.19999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 274944249}
+  m_Father: {fileID: 1448828337}
   m_LocalEulerAnglesHint: {x: 0, y: -176.748, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.85, y: 2.58}
+  m_AnchoredPosition: {x: 1.8, y: 3.127}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1880183523
@@ -59713,8 +59755,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190104
+  m_fontColor: {r: 0.09433961, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -62384,8 +62426,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bfafb35d5b5f794fbcbd2051466ac8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionMark: {fileID: 0}
-  exclamationMark: {fileID: 0}
   state: 0
   customDestinations: []
   bulletPrefab: {fileID: 0}
@@ -62396,6 +62436,7 @@ MonoBehaviour:
   stoppingDistance: 0
   enemyType: 0
   indexcount: 0
+  naviindex: 0
   chasing: 0
   hearSound: 0
   bulletPoses: []
@@ -65405,8 +65446,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bfafb35d5b5f794fbcbd2051466ac8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionMark: {fileID: 0}
-  exclamationMark: {fileID: 0}
   state: 0
   customDestinations: []
   bulletPrefab: {fileID: 0}
@@ -65417,6 +65456,7 @@ MonoBehaviour:
   stoppingDistance: 0
   enemyType: 0
   indexcount: 0
+  naviindex: 0
   chasing: 0
   hearSound: 0
   bulletPoses: []
@@ -66046,7 +66086,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2063559053
 RectTransform:
   m_ObjectHideFlags: 0
@@ -66054,16 +66094,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063559052}
-  m_LocalRotation: {x: -0, y: -0.9995973, z: -0, w: 0.028376449}
-  m_LocalPosition: {x: 0, y: 0, z: -0.04}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalRotation: {x: -0, y: -0.99657685, z: -0, w: -0.08267249}
+  m_LocalPosition: {x: 0, y: 0, z: -0.274}
+  m_LocalScale: {x: 0.19999999, y: 0.2, z: 0.19999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 274944249}
-  m_LocalEulerAnglesHint: {x: 0, y: -176.748, z: 0}
+  m_Father: {fileID: 1448828337}
+  m_LocalEulerAnglesHint: {x: 0, y: -189.484, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.85, y: 2.58}
+  m_AnchoredPosition: {x: -1.835, y: 2.38}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2063559054
@@ -66935,6 +66975,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2093934585}
   m_Mesh: {fileID: 4300000, guid: 6458d14e3e18f9349aa6064cf0b3bbfb, type: 3}
+--- !u!1 &2094545218 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2556163433973438380, guid: 68136dce4a7e9eb4690607da0ec82c11, type: 3}
+  m_PrefabInstance: {fileID: 9055244187597996357}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2099804617
 GameObject:
   m_ObjectHideFlags: 0
@@ -68332,7 +68377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &626566622180083233
 GameObject:
   m_ObjectHideFlags: 0
