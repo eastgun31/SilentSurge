@@ -572,6 +572,7 @@ MonoBehaviour:
   bulletPoses:
   - {fileID: 14004937823954489}
   - {fileID: 4064135589735658514}
+  enemysound: {fileID: -421231225267994116}
 --- !u!114 &3229537391659107549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,8 +585,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8776fcac29d4b3a4a8eb1cca9573691d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 5
-  angle: 100
+  radius: 6
+  angle: 220
   findT: 0
   meshResult: 1
   meshFilter: {fileID: 1341216878466612974}
@@ -655,23 +656,23 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3522745412559047204}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 8900ae4b297a017448ddb78ea0c2d4da, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.1
   MaxDistance: 6
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
