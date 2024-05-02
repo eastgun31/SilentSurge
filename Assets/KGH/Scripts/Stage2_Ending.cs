@@ -8,6 +8,8 @@ public class Stage2_Ending : MonoBehaviour
     public ParticleSystem explosion2;
     public ParticleSystem explosion3;
 
+    public GameObject car;
+
     public GameObject clear;
 
     // Start is called before the first frame update
@@ -23,10 +25,9 @@ public class Stage2_Ending : MonoBehaviour
     {
 
     }
-
     IEnumerator Explosion()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(7f);
         explosion1.Play();
         yield return new WaitForSeconds(0.2f);
         explosion1.Stop();

@@ -48,7 +48,7 @@ public class EnemyLevel : MonoBehaviour
     {
         //if (gm.playerchasing < 0)
         //    gm.playerchasing = 0;
-        if (gm.playerchasing != 0)
+        if (gm.playerchasing != 0 )
             gm.playerchasing -= Time.deltaTime;
 
         //if (gm.playerchasing)
@@ -121,6 +121,11 @@ public class EnemyLevel : MonoBehaviour
             {
                 LvStep = ELevel.level1;
             }
+            else if (gm.playerchasing <= 0f && LvStep == ELevel.level1)
+             {
+                  LvStep = ELevel.level1;
+                  gm.playerchasing = 0;
+             }
             yield return null;
         }
     }

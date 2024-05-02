@@ -112,8 +112,12 @@ public class Sight : MonoBehaviour
                     {
                         playerpos = dir_T;
                         findT = true;
-                        if(GameManager.instance.playerchasing < 40)
+
+                        if (sightType == 2 && GameManager.instance.playerchasing < 40)
                             GameManager.instance.playerchasing += 1;
+                        else if (sightType == 1 && GameManager.instance.playerchasing < 40)
+                            GameManager.instance.playerchasing += 10;
+
                         detectTarget = visibleT;                                                                            //  detectTarget 은 플레이어
                     }
                 }
