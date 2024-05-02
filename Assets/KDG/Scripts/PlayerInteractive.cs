@@ -164,7 +164,6 @@ public class PlayerInteractive : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log("Ãæµ¹Áß");
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (other.CompareTag(interactiveList[0]))
@@ -319,7 +318,7 @@ public class PlayerInteractive : MonoBehaviour
     //                    }
     //                    doort.oDoor();
     //                }
-    //                else if (doort.nDoor == 1 && GameManager.instance.puzzleLevel >= 3 )
+    //                else if (doort.nDoor == 1 && GameManager.instance.puzzleLevel >= 3)
     //                {
     //                    if (handle.Doorindex == 1)
     //                    {
