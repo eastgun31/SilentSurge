@@ -162,72 +162,72 @@ public class PlayerInteractiveT : MonoBehaviour
             return;
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (other.CompareTag(interactiveList[0]))
-            {
-                doort = other.GetComponentInParent<Door_Parent>();
-                handle = other.GetComponent<DoorHandle_1>();
-                if (doort.nDoor == 0 && gm.puzzleLevel >= 2)
-                {
-                    if (handle.Doorindex == 1)
-                    {
-                        doort.PlayerPos_1 = true;
-                        doort.PlayerPos_0 = false;
-                    }
-                    else if (handle.Doorindex == 0)
-                    {
-                        doort.PlayerPos_1 = false;
-                        doort.PlayerPos_0 = true;
-                    }
-                    doort.oDoor();
-                }
-                else if (doort.nDoor == 1 && gm.puzzleLevel >= 3)
-                {
-                    if (handle.Doorindex == 1)
-                    {
-                        doort.PlayerPos_1 = true;
-                        doort.PlayerPos_0 = false;
-                    }
-                    else if (handle.Doorindex == 0)
-                    {
-                        doort.PlayerPos_1 = false;
-                        doort.PlayerPos_0 = true;
-                    }
-                    doort.oDoor();
-                }
-                else if (doort.nDoor == 2 && gm.puzzleLevel >= 4)
-                {
-                    if (handle.Doorindex == 1)
-                    {
-                        doort.PlayerPos_1 = true;
-                        doort.PlayerPos_0 = false;
-                    }
-                    else if (handle.Doorindex == 0)
-                    {
-                        doort.PlayerPos_1 = false;
-                        doort.PlayerPos_0 = true;
-                    }
-                    doort.oDoor();
-                }
-            }
-            else if (other.CompareTag(interactiveList[1]))
-            {
-                vent = other.GetComponentInParent<Vent>();
-                if (other.name == ("Vent1") && vent.v1activate)
-                {
-                    player.transform.position = vent.vent2.transform.position;
-                    vent.v1activate = false;
-                    vent.ventActivate = true;
-                }
-                else if (other.name == ("Vent2") && vent.v2activate && vent.ventActivate)
-                {
-                    player.transform.position = vent.vent1.transform.position;
-                    vent.v2activate = false;
-                }
-            }
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        if (other.CompareTag(interactiveList[0]))
+    //        {
+    //            doort = other.GetComponentInParent<Door_Parent>();
+    //            handle = other.GetComponent<DoorHandle_1>();
+    //            if (doort.nDoor == 0 && gm.puzzleLevel >= 2)
+    //            {
+    //                if (handle.Doorindex == 1)
+    //                {
+    //                    doort.PlayerPos_1 = true;
+    //                    doort.PlayerPos_0 = false;
+    //                }
+    //                else if (handle.Doorindex == 0)
+    //                {
+    //                    doort.PlayerPos_1 = false;
+    //                    doort.PlayerPos_0 = true;
+    //                }
+    //                doort.oDoor();
+    //            }
+    //            else if (doort.nDoor == 1 && gm.puzzleLevel >= 3)
+    //            {
+    //                if (handle.Doorindex == 1)
+    //                {
+    //                    doort.PlayerPos_1 = true;
+    //                    doort.PlayerPos_0 = false;
+    //                }
+    //                else if (handle.Doorindex == 0)
+    //                {
+    //                    doort.PlayerPos_1 = false;
+    //                    doort.PlayerPos_0 = true;
+    //                }
+    //                doort.oDoor();
+    //            }
+    //            else if (doort.nDoor == 2 && gm.puzzleLevel >= 4)
+    //            {
+    //                if (handle.Doorindex == 1)
+    //                {
+    //                    doort.PlayerPos_1 = true;
+    //                    doort.PlayerPos_0 = false;
+    //                }
+    //                else if (handle.Doorindex == 0)
+    //                {
+    //                    doort.PlayerPos_1 = false;
+    //                    doort.PlayerPos_0 = true;
+    //                }
+    //                doort.oDoor();
+    //            }
+    //        }
+    //        else if (other.CompareTag(interactiveList[1]))
+    //        {
+    //            vent = other.GetComponentInParent<Vent>();
+    //            if (other.name == ("Vent1") && vent.v1activate)
+    //            {
+    //                player.transform.position = vent.vent2.transform.position;
+    //                vent.v1activate = false;
+    //                vent.ventActivate = true;
+    //            }
+    //            else if (other.name == ("Vent2") && vent.v2activate && vent.ventActivate)
+    //            {
+    //                player.transform.position = vent.vent1.transform.position;
+    //                vent.v2activate = false;
+    //            }
+    //        }
             //else if (other.CompareTag(interactiveList[2]))
             //{
             //    //playpuzzle.Invoke();
@@ -267,32 +267,32 @@ public class PlayerInteractiveT : MonoBehaviour
             //            break;
             //    }
             //}
-            else if (other.CompareTag(interactiveList[3]) && EnemyLevel.enemylv.LvStep != EnemyLevel.ELevel.level3)
-            {
-                cabinet = other.GetComponentInParent<Cabinet>();
-                if (!gm.isHide)
-                {
-                    player.velocity = Vector3.zero;
-                    player.transform.position = cabinet.hidePoints.transform.position;
-                    gm.isHide = true;
-                    _pc.isTrigger = true;
-                    playerView.viewAngle = 360;
-                    playerView.viewRadius = 2f;
-                }
-                else
-                {
-                    player.transform.position = cabinet.idlePoints.transform.position;
-                    gm.isHide = false;
-                    _pc.isTrigger = false;
-                    playerView.viewAngle = gm.playerviewA;
-                    playerView.viewRadius = gm.playerviewR;
-                }
-            }
-            //else if(세이브 포인트 검사)
-            else
-                return;
-        }
-    }
+    //        else if (other.CompareTag(interactiveList[3]) && EnemyLevel.enemylv.LvStep != EnemyLevel.ELevel.level3)
+    //        {
+    //            cabinet = other.GetComponentInParent<Cabinet>();
+    //            if (!gm.isHide)
+    //            {
+    //                player.velocity = Vector3.zero;
+    //                player.transform.position = cabinet.hidePoints.transform.position;
+    //                gm.isHide = true;
+    //                _pc.isTrigger = true;
+    //                playerView.viewAngle = 360;
+    //                playerView.viewRadius = 2f;
+    //            }
+    //            else
+    //            {
+    //                player.transform.position = cabinet.idlePoints.transform.position;
+    //                gm.isHide = false;
+    //                _pc.isTrigger = false;
+    //                playerView.viewAngle = gm.playerviewA;
+    //                playerView.viewRadius = gm.playerviewR;
+    //            }
+    //        }
+    //        //else if(세이브 포인트 검사)
+    //        else
+    //            return;
+    //    }
+    //}
 
     //IEnumerator PInteractive(Collider other)
     //{
