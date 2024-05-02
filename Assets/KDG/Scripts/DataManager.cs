@@ -127,7 +127,7 @@ public class DataManager : MonoBehaviour
         saveData.gmpuzzleLevel = GameManager.instance.puzzleLevel;
         saveData.gmnowpuzzle = GameManager.instance.nowpuzzle;
         saveData.gmcanUse = GameManager.instance.canUse;
-        saveData.gmplayerchasing = GameManager.instance.playerchasing;
+        //saveData.gmplayerchasing = GameManager.instance.playerchasing;
 
         string json = JsonUtility.ToJson(saveData);
         string filePath = SAVEDAT + savename;
@@ -197,7 +197,7 @@ public class DataManager : MonoBehaviour
             GameManager.instance.puzzleLevel = saveData.gmpuzzleLevel;
             GameManager.instance.nowpuzzle = saveData.gmnowpuzzle;
             GameManager.instance.canUse = saveData.gmcanUse;
-            GameManager.instance.playerchasing = saveData.gmplayerchasing;
+            //GameManager.instance.playerchasing = saveData.gmplayerchasing;
 
             playerobj.SetActive(true);
             GameManager.instance.isDie = false;

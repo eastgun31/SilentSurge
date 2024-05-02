@@ -90,7 +90,10 @@ public class Sight : MonoBehaviour
     {
         Collider[] targets = Physics.OverlapSphere(transform.position, radius, playerM);  // radius(반지름) 내 원 영역의 playerM 콜라이더를 가져옴
         if(targets==null || targets.Length==0)
+        {
             findT = false;
+        }
+            
         for (int i = 0; i < targets.Length; i++)
         {
             detectTarget = targets[i].transform;
@@ -104,13 +107,13 @@ public class Sight : MonoBehaviour
                     if(GameManager.instance.isHide)
                     {
                         findT = false;
-                        GameManager.instance.playerchasing = false;
                     }
                     else if(!GameManager.instance.isHide && !Physics.Raycast(transform.position, dir_T,disT, etcM))
                     {
                         playerpos = dir_T;
                         findT = true;
-                        GameManager.instance.playerchasing = true;
+                        if(GameManager.instance.playerchasing < 40)
+                            GameManager.instance.playerchasing += 1;
                         detectTarget = visibleT;                                                                            //  detectTarget 은 플레이어
                     }
                 }
@@ -118,7 +121,7 @@ public class Sight : MonoBehaviour
             else
             {
                 findT = false;
-                GameManager.instance.playerchasing = false;
+                //GameManager.instance.playerchasing = false;
                 playerpos = Vector3.zero;
             }
         }
