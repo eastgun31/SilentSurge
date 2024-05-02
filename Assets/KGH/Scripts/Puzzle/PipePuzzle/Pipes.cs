@@ -25,9 +25,11 @@ public class Pipes : MonoBehaviour, IPointerClickHandler
     {
         WinCheck();
     }
+    
 
-    void Start()
+    void OnEnable()
     {
+        isPlaces = false;
         PossibleRots = correctRotation.Length; 
 
         if (PossibleRots > 1) //초기회전각도를 확인

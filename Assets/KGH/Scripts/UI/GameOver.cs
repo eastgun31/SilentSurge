@@ -52,16 +52,19 @@ public class GameOver : MonoBehaviour
 
     public void CheckPoint()
     {
+        UiManager.instance.isGameOver = false;
         DataManager.instance.LoadData();
     }
 
     public void Restart()
     {
+        UiManager.instance.isGameOver = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
     public void GoToMain()
     {
+        UiManager.instance.isGameOver = false;
         SceneManager.LoadScene("GameStart");
     }
 }
