@@ -1,33 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore;
 
 public class TestGuide : MonoBehaviour
 {
-
-    void Start()
+    GuideLineTxt glT;
+    private void Start()
     {
-        
+        glT=GuideLineTxt.instance;
     }
-
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Z))
+        if(Input.GetKeyDown(KeyCode.Z))
         {
-
+            glT.currentDatas_Index = 0;
+            glT.SetDifferentTxt();
         }
-        if (Input.GetKey(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X))
         {
-
+            glT.currentDatas_Index = 1;
+            glT.SetDifferentTxt();
         }
-        if (Input.GetKey(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C))
         {
-
+            glT.currentDatas_Index = 2;
+            glT.SetDifferentTxt();
         }
-        if (Input.GetKey(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.V))
         {
-
+            glT.currentDatas_Index = 3;
+            glT.SetDifferentTxt();
+        }
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            glT.SetOffTxt();
         }
     }
 }

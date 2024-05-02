@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 [System.Serializable]
 public struct GuideData
@@ -11,72 +12,42 @@ public struct GuideData
     public string guideT;
 }
 
-[System.Serializable]
-public struct GuideText
-{
-    public Text guideText;                            // 자막
-}
-
-
 public class GuideLineTxt : MonoBehaviour
 {
-    [SerializeField]
-    private int eventNum;                              //
-    [SerializeField]
-    private GuideLineDB guideLineDB;          //
-
+    public static GuideLineTxt instance;
 
     [SerializeField]
-    private GuideData[] guideDatas;               //
+    private int eventNum;                              // 
     [SerializeField]
-    private GuideText[] guideTexts;                 // 
+    private GuideLineDB guideLineDB;          // 
 
+    public Text guideUI;                                 // 자막 UI
 
-    private int currentDatas_Index = -1;           //
-    private int currentTexts_Index = 0;             //
+    [SerializeField]
+    private GuideData[] guideDatas;               // 
 
+    public int currentDatas_Index;                   // 불러올 자막의 인덱스를 바꿀 변수
 
     void Awake()
     {
-        int index = 0;
+        if (instance != null)
+            Destroy(gameObject);
+        else
+            instance = this;
+
         for (int i = 0; i < guideLineDB.guideLine.Count; ++i)
-        {
-            if (guideLineDB.guideLine[i].eventNum == eventNum)
-            {
-                guideDatas[index].guideT = guideLineDB.guideLine[i].guideTxt;
-                index++;
-            }
-        }
-        GuideTxtSetting();
-    }
-
-    void Update()
-    {
-        
-    }
-
-    public void GuideTxtSetting()
-    {
-        for(int i = 0; i<guideTexts.Length; ++i)
-        {
-            SetActiveTxt(guideTexts[i],false);
-        }
-    }
-
-    public void SetActiveTxt(GuideText guideT, bool visible)
-    {
-        guideT.guideText.gameObject.SetActive(visible);
+            guideDatas[i].guideT = guideLineDB.guideLine[i].guideTxt;
     }
 
     public void SetOffTxt()
     {
-        SetActiveTxt(guideTexts[currentTexts_Index], false);
+        guideUI.gameObject.SetActive(false);
     }
 
     public void SetDifferentTxt()
     {
-        currentTexts_Index = guideDatas[currentDatas_Index].guideText_Index;
-        SetActiveTxt(guideTexts[currentTexts_Index], true);
-        guideTexts[currentTexts_Index].guideText.text = guideDatas[currentDatas_Index].guideT;
+        guideUI.text = guideLineDB.guideLine[currentDatas_Index].guideTxt;
+        guideUI.gameObject.SetActive(true);
     }
+
 }
