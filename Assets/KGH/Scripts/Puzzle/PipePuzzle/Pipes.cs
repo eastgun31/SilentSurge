@@ -25,8 +25,9 @@ public class Pipes : MonoBehaviour, IPointerClickHandler
     {
         WinCheck();
     }
+    
 
-    void Start()
+    void OnEnable()
     {
         PossibleRots = correctRotation.Length; 
 
