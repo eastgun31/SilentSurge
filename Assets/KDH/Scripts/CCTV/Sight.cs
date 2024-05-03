@@ -35,6 +35,7 @@ public class Sight : MonoBehaviour
 
     [SerializeField]
     private int sightType;
+    WaitForSeconds delay;
 
     public struct Edge
     {
@@ -63,17 +64,22 @@ public class Sight : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(DetectDelay(0.2f));
+        findT = false;
+        //if(sightType ==2)
+        //{
+        //    enemy = GetComponent<Enemy>();
+        //}
+        delay = new WaitForSeconds(0.2f);
+        StartCoroutine(DetectDelay());
     }
 
     void Start()
     {
         findT = false;
-        GetComponent<Enemy>();
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
         meshFilter.mesh = viewMesh;
-        StartCoroutine(DetectDelay(0.2f));
+        StartCoroutine(DetectDelay());
     }
 
     private void LateUpdate()
@@ -82,12 +88,22 @@ public class Sight : MonoBehaviour
             DrawDetectArea();
     }
 
-    IEnumerator DetectDelay(float delay)    // ≈Ω¡ˆ µÙ∑π¿Ã (0.2√ )
+    IEnumerator DetectDelay()    // ≈Ω¡ˆ µÙ∑π¿Ã (0.2√ )
     {
         while(true)
         {
-            yield return new WaitForSeconds(delay);
+            yield return delay;
             DetectTargets();
+            //if (sightType==1)
+            //    DetectTargets();
+            //else if(sightType==2)
+            //{
+            //    if (enemy.state != Enemy.EnemyState.die)
+            //        DetectTargets();
+            //    else if(enemy.state == Enemy.EnemyState.die)
+            //        yield break;
+            //}
+                
         }
     }
 
