@@ -2,100 +2,101 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 
 public class EnterPuzzle : MonoBehaviour
 {
     public int level;
     public GameObject puzzle;
-    public delegate void Puzzlechain(float a);
+    //public delegate void Puzzlechain(float a);
+    GameManager gm;
+    UiManager uiManager;
+
+    private void Start()
+    {
+        gm = GameManager.instance;
+        uiManager = UiManager.instance;
+    }
+
+
+    public int PuzzleActive1()
+    {
+        gm.nowpuzzle = true;
+
+        return gm.puzzleLevel switch
+        {
+            1 => PipePuzzle1(),
+            2 => SinPuzzle(),
+            3 => HackingPuzzle(),
+            4 => HintPuzzle1(),
+            5 => HintPuzzle2(),
+            6 => HintPuzzle3(),
+            7 => HintPuzzle4(),
+            8 => LastPuzzle()
+        };
+    }
+
+    public int PipePuzzle1()
+    {
+        GameManager.instance.nowpuzzle = true;
+        UiManager.instance.ActivePipeFst();
+        return 0;
+    }
+
+    public int SinPuzzle()
+    {
+        GameManager.instance.nowpuzzle = true;
+        uiManager.ActiveSinFst();
+        return 0;
+    }
+
+    public int HackingPuzzle()
+    {
+
+        GameManager.instance.nowpuzzle = true;
+        uiManager.ActiveHackingFst();
+        return 0;
+    }
     
-
-    public void PipePuzzle1()
+    public int HintPuzzle1()
     {
-        if (GameManager.instance.puzzleLevel == 1 && level == 1)
-        {
-            GameManager.instance.nowpuzzle = true;
-            UiManager.instance.ActivePipeFst();
-        }
-        else
-            return;
+        GameManager.instance.nowpuzzle = true;
+        uiManager.ActivePipeKeypadNumEight();
+        return 0;
     }
 
-    public void SinPuzzle()
+    public int HintPuzzle2()
     {
-        if (GameManager.instance.puzzleLevel == 2 && level ==2)
-        {
-            GameManager.instance.nowpuzzle = true;
-            UiManager.instance.ActiveSinFst();
-        }
-        else
-            return;
+        GameManager.instance.nowpuzzle = true;
+        uiManager.ActivePipeKeypadNumThree();
+        return 0;
     }
 
-    public void HackingPuzzle()
+    public int HintPuzzle3()
     {
-        if (GameManager.instance.puzzleLevel == 3 && level == 3)
-        {
-            GameManager.instance.nowpuzzle = true;
-            UiManager.instance.ActiveHackingFst();
-        }
-        else
-            return;
-    }
-    
-    public void HintPuzzle1()
-    {
-        if (GameManager.instance.puzzleLevel == 4 && level == 4)
-        {
-            GameManager.instance.nowpuzzle = true;
-            UiManager.instance.ActivePipeKeypadNumEight();
-        }
-        else
-            return;
+        GameManager.instance.nowpuzzle = true;
+        uiManager.ActivePipeKeypadNumTwo();
+        return 0;
     }
 
-    public void HintPuzzle2()
+    public int HintPuzzle4()
     {
-        if (GameManager.instance.puzzleLevel == 5 && level == 5)
-        {
-            GameManager.instance.nowpuzzle = true;
-            UiManager.instance.ActivePipeKeypadNumThree();
-        }
-        else
-            return;
+        GameManager.instance.nowpuzzle = true;
+        uiManager.ActivePipeKeypadNumFour();
+        return 0;
     }
 
-    public void HintPuzzle3()
+    public int LastPuzzle()
     {
-        if (GameManager.instance.puzzleLevel == 6 && level == 6)
-        {
-            GameManager.instance.nowpuzzle = true;
-            UiManager.instance.ActivePipeKeypadNumTwo();
-        }
-        else
-            return;
-    }
-
-    public void HintPuzzle4()
-    {
-        if (GameManager.instance.puzzleLevel == 7 && level == 7)
-        {
-            GameManager.instance.nowpuzzle = true;
-            UiManager.instance.ActivePipeKeypadNumFour();
-        }
-        else
-            return;
-    }
-
-    public void LastPuzzle()
-    {
-        if (GameManager.instance.puzzleLevel == 8 && level == 8 && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
+        if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
         {
             GameManager.instance.nowpuzzle = true;
             UiManager.instance.ActiveKeypad();
+            return 0;
         }
         else
-            return;
+            return 0;
     }
     public void SamplePuzzle()
     {
@@ -108,3 +109,16 @@ public class EnterPuzzle : MonoBehaviour
     }
 
 }
+
+//1 => uiManager.ActivePipeFst(),
+//2 => uiManager.ActiveSinFst(),
+//3 => uiManager.ActiveHackingFst(),
+//4 when gm.scenenum == 1 => uiManager.ActivePipeKeypadNumEight(),
+//4 when gm.scenenum == 2 => uiManager.ActivePipeKeypadNumNine(), 
+//5 when gm.scenenum == 1 => uiManager.ActivePipeKeypadNumThree(),
+//5 when gm.scenenum == 2 => uiManager.ActivePipeKeypadNumSix(),
+//6 when gm.scenenum == 1 => uiManager.ActivePipeKeypadNumTwo(),
+//6 when gm.scenenum == 2 => uiManager.ActivePipeKeypadNumThree(),
+//7 when gm.scenenum == 1 => uiManager.ActivePipeKeypadNumFour(),
+//7 when gm.scenenum == 2 => uiManager.ActivePipeKeypadNumFive(),
+//8 => uiManager.ActiveKeypad()
