@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ public class EnterPuzzle : MonoBehaviour
 {
     public int level;
     public GameObject puzzle;
+    public delegate void Puzzlechain(float a);
+    
 
     public void PipePuzzle1()
     {
@@ -16,7 +19,6 @@ public class EnterPuzzle : MonoBehaviour
         }
         else
             return;
-
     }
 
     public void SinPuzzle()
