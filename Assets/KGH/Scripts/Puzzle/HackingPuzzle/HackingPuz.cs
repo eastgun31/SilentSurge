@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HackingPuz : MonoBehaviour
@@ -124,6 +125,22 @@ public class HackingPuz : MonoBehaviour
     public void CloseHackingPuz()
     {
         UiManager.instance.isWin = false;
+        SubtitleCheck();
         hacking.SetActive(false);
+    }
+
+    public void SubtitleCheck()
+    {
+        switch(SceneManager.GetActiveScene().buildIndex)
+        {
+            case 1:
+                Debug.Log("¾À1");
+                GuideLineTxt.instance.SetDifferentTxt(8);
+                break;
+            case 2:
+                Debug.Log("¾À1");
+                GuideLineTxt.instance.SetDifferentTxt(8);
+                break;
+        }
     }
 }

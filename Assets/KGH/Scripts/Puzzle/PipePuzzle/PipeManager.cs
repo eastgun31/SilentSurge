@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PipeManager : MonoBehaviour
@@ -77,7 +78,7 @@ public class PipeManager : MonoBehaviour
                 items[0].SetActive(true);
                 items[1].SetActive(true);
                 GameManager.instance.ItemActive();
-                GuideLineTxt.instance.SetDifferentTxt(4);
+                GuideLineTxt.instance.SetDifferentTxt(3);
             }
 
             if(GameManager.instance.puzzleLevel == 7)
@@ -85,11 +86,13 @@ public class PipeManager : MonoBehaviour
                 items[2].SetActive(true);
                 items[3].SetActive(true);
                 GameManager.instance.ItemActive();
+                SubtitleCheck();
             }
 
             GameManager.instance.puzzleLevel += 1;
-
+            
             Invoke("ClosePipe", 1f);
+            DataManager.instance.SaveData();
 
         }
     }
@@ -104,11 +107,25 @@ public class PipeManager : MonoBehaviour
         UiManager.instance.isWin = false;
         GameManager.instance.nowpuzzle = false;
         canvas.gameObject.SetActive(false);
-         DataManager.instance.SaveData();
+        
         for (int i = 0; i < pipes.Length; i++)
         {
             pipes[i].transform.rotation = pipesRot[i];
         }
         correctPipes = 0;
+    }
+    public void SubtitleCheck()
+    {
+        switch (SceneManager.GetActiveScene().buildIndex)
+        {
+            case 1:
+                Debug.Log("¾À1");
+                GuideLineTxt.instance.SetDifferentTxt(11);
+                break;
+            case 2:
+                Debug.Log("¾À1");
+                GuideLineTxt.instance.SetDifferentTxt(12);
+                break;
+        }
     }
 }
