@@ -77,6 +77,7 @@ public class PipeManager : MonoBehaviour
                 items[0].SetActive(true);
                 items[1].SetActive(true);
                 GameManager.instance.ItemActive();
+                GuideLineTxt.instance.SetDifferentTxt(4);
             }
 
             if(GameManager.instance.puzzleLevel == 7)

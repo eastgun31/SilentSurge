@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+//using DG.Tweening;
+using UnityEngine.Events;
 
 [System.Serializable]
 public struct GuideData
@@ -23,6 +25,8 @@ public class GuideLineTxt : MonoBehaviour
 
     public Text guideUI;                                 // ÀÚ¸· UI
 
+    //public UnityEvent guideAnim;
+
     [SerializeField]
     private GuideData[] guideDatas;               // 
 
@@ -37,6 +41,7 @@ public class GuideLineTxt : MonoBehaviour
 
         for (int i = 0; i < guideLineDB.guideLine.Count; ++i)
             guideDatas[i].guideT = guideLineDB.guideLine[i].guideTxt;
+
     }
 
     public void SetOffTxt()
@@ -44,10 +49,11 @@ public class GuideLineTxt : MonoBehaviour
         guideUI.gameObject.SetActive(false);
     }
 
-    public void SetDifferentTxt()
+    public void SetDifferentTxt(int dataindex)
     {
-        guideUI.text = guideLineDB.guideLine[currentDatas_Index].guideTxt;
+        //guideAnim.Invoke();
         guideUI.gameObject.SetActive(true);
+        guideUI.text = guideLineDB.guideLine[dataindex].guideTxt;
+        Invoke("SetOffTxt", 2.5f);
     }
-
 }

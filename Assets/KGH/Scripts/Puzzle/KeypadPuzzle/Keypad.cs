@@ -45,7 +45,7 @@ public class Keypad : MonoBehaviour
             answerInput.text = "CORRECT";     // Á¤´ä
             UiManager.instance.isWin = true;
             PuzLevUp();
-            Invoke("Closed", 2f);
+            Invoke("Closed", 1f);
         }
         else
         {

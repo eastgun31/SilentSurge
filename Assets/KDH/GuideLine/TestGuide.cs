@@ -14,23 +14,19 @@ public class TestGuide : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Z))
         {
-            glT.currentDatas_Index = 0;
-            glT.SetDifferentTxt();
+            glT.SetDifferentTxt(0);
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            glT.currentDatas_Index = 1;
-            glT.SetDifferentTxt();
+            glT.SetDifferentTxt(1);
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            glT.currentDatas_Index = 2;
-            glT.SetDifferentTxt();
+            glT.SetDifferentTxt(2);
         }
         if (Input.GetKeyDown(KeyCode.V))
         {
-            glT.currentDatas_Index = 3;
-            glT.SetDifferentTxt();
+            glT.SetDifferentTxt(3);
         }
         if(Input.GetKeyDown(KeyCode.L))
         {

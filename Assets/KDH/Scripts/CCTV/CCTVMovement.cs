@@ -17,6 +17,7 @@ public class CCTVMovement : MonoBehaviour       // CCTV의 속성을 가지고 있으며, 
     WaitForSeconds inReverse;                       // 플레이어가 시야 내에 "계속" 있을 때 경계 단계가 올라가는 제한시간
     WaitForSeconds coolReverse;                   // 플레이어가 나갔다 들어왔을 때 유예시간
     WaitForSeconds wait;
+    WaitForSeconds moveReverse;
 
     Sight csight;
 
@@ -44,6 +45,7 @@ public class CCTVMovement : MonoBehaviour       // CCTV의 속성을 가지고 있으며, 
 
         inReverse = new WaitForSeconds(5f);                   // 시야 내에 "계속" 있을 때 경계 단계가 올라가는 시간 5초
         coolReverse = new WaitForSeconds(15f);             // CCTV 유예 시간 15초
+        moveReverse = new WaitForSeconds(2f);
         canReverse = true;                                                 // 유예 시간이 지나면 단계 전환 가능 체크
         csight = GetComponent<Sight>();
         StartCoroutine(CCTVStateCheck());                        // 시야 내에 적의 유무로 CCTV의 상태를 변경해주는 코루틴 호출
@@ -95,7 +97,7 @@ public class CCTVMovement : MonoBehaviour       // CCTV의 속성을 가지고 있으며, 
                     yield return null;                                                        // 회전이 끝날 때 까지 반복해주기 위해서 return null
                 }
                 rotateClockwise = !rotateClockwise;                             // 회전이 끝났다면 Clockwise의 bool 값을 반대로 변환
-                yield return new WaitForSeconds(2f);                           // delay의 초가 지나면 코루틴 재호출
+                yield return moveReverse;                           // delay의 초가 지나면 코루틴 재호출
              }
     }
 
