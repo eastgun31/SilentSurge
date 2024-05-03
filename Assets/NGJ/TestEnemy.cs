@@ -26,7 +26,13 @@ public class TestEnemy : MonoBehaviour
 
     [SerializeField] private float stoppingDistance; // 적이 멈출 거리
 
+    public GameObject questionMark;
+    public GameObject exclamationMark;
 
+    private bool questionMarkShown = false;
+    private bool exclamationMarkShown = false;
+
+    private Coroutine exclamationMarkCoroutine;
 
     bool noactiving;
 
@@ -44,10 +50,9 @@ public class TestEnemy : MonoBehaviour
     [SerializeField]
     private Transform[] bulletPoses;
     E_CoolTime cooltime;
-    AudioSource enemysound;
+    public AudioSource enemysound;
+    Vector3 firstpos;
 
-    public GameObject questionMark; // 물음표 띄우기  
-    public GameObject exclamationMark; // 느낌표 띄우기
 
     Animator enemyAnim;
     string Walk = "Walk";
@@ -70,40 +75,65 @@ public class TestEnemy : MonoBehaviour
     //int currentBulletCount = 999; // 현재 총알 개수
     //int dLevel = 1;
 
+    private void Awake()
+    {
+        //cooltime = new E_CoolTime();
+        //sight = GetComponent<Sight>();
+    }
     void Start()
     {
-        enemysound = GetComponent<AudioSource>();
+        //enemysound = GetComponent<AudioSource>();
+        //stoppingDistance = 3f;
+        //chasing = false;
+        //stoppingDistance = 3f;
+        //state = EnemyState.patrolling;
+        //sight = GetComponent<Sight>();
+        //noactiving = true;
+        //hearSound = false;
+        //m_enemy = GetComponent<NavMeshAgent>();
+        //cooltime = new E_CoolTime();
+        //StartCoroutine(EnemyStateCheck());
+        //naviindex = 0;
+        //enemyAnim = GetComponent<Animator>();
+        //m_enemy.avoidancePriority = 50; // 벽을 피하기 위한 우선순위 설정
 
-        chasing = false;
-        stoppingDistance = 3f;
-        state = EnemyState.patrolling;
-        sight = GetComponent<Sight>();
-        noactiving = true;
-        hearSound = false;
-        m_enemy = GetComponent<NavMeshAgent>();
-        cooltime = new E_CoolTime();
-        StartCoroutine(EnemyStateCheck());
-        naviindex = 0;
-        enemyAnim = GetComponent<Animator>();
-        m_enemy.avoidancePriority = 50; // 벽을 피하기 위한 우선순위 설정
-        questionMark.SetActive(false);
-        exclamationMark.SetActive(false);
 
     }
 
     private void OnEnable()
     {
+        StopAllCoroutines();
+        cooltime = new E_CoolTime();
+        sight = GetComponent<Sight>();
+        sight.findT = false;
+        m_enemy = GetComponent<NavMeshAgent>();
+        m_enemy.ResetPath();
+        m_enemy.velocity = Vector3.zero;
+        StartCoroutine(EnemyStateCheck());
+        enemysound = GetComponent<AudioSource>();
+        m_enemy = GetComponent<NavMeshAgent>();
+        enemyAnim = GetComponent<Animator>();
+        stoppingDistance = 3f;
+        noactiving = true;
+        hearSound = false;
+        isShooting = false;
+        state = EnemyState.patrolling;
+        EnemyPatrol();
+        chasing = false;
+        naviindex = 0;
+
+        m_enemy.avoidancePriority = 50;
         if (indexcount == 98)
             customDestinations[0] = GameManager.instance.lv3PlayerPos;
-
+        questionMark.SetActive(false);
+        exclamationMark.SetActive(false);
+        exclamationMarkCoroutine = null;
     }
 
     void Update()
     {
-        if (state == EnemyState.findtarget)
+        if (state == EnemyState.findtarget && state != EnemyState.die)
         {
-            //enemyAnim.SetBool(Walk, false);
-            //enemyAnim.SetBool(GunRuning, true);
             TargetChase();
         }
         else if (state == EnemyState.hear)
@@ -113,21 +143,13 @@ public class TestEnemy : MonoBehaviour
         }
         else if (state == EnemyState.patrolling)
         {
-            m_enemy.isStopped = false;
             EnemyPatrol();
         }
         else if (state == EnemyState.sturn)
         {
             EnenyAttackStop();
         }
-        //if (m_enemy.velocity.magnitude < 0.1f)
-        //{
 
-        //    enemyAnim.SetBool(Walk, false);
-        //    enemyAnim.SetBool(GunRuning, false);
-        //}
-        //if (indexcount == 98)
-        //    customDestinations[0] = GameManager.instance.lv3PlayerPos;
 
         enemyAnim.SetFloat(Walk, m_enemy.velocity.magnitude);
         if (m_enemy.velocity.magnitude > 1f && enemysound.enabled)
@@ -135,7 +157,6 @@ public class TestEnemy : MonoBehaviour
             if (!enemysound.isPlaying)
             {
                 Debug.Log("발소리재생");
-                //enemysound.PlayOneShot(enemysound.clip);
                 enemysound.Play();
             }
         }
@@ -149,43 +170,38 @@ public class TestEnemy : MonoBehaviour
 
     }
 
+
     public void ChaseSound(Vector3 position)
     {
         //Debug.Log("소리추적");
 
         //enemyAnim.SetBool(Walk, false);
         //enemyAnim.SetBool(GunRuning, true);
+ 
+        m_enemy.stoppingDistance = 0;
         m_enemy.SetDestination(position);
         if (noactiving)
             StartCoroutine(ChaseSoundRoutine(position)); // 대기 시간 5초 
-
         questionMark.SetActive(true);
         exclamationMark.SetActive(false);
-       
-        StartCoroutine(DisableQuestionMarkAfter3Seconds());
+
     }
-    IEnumerator DisableQuestionMarkAfter3Seconds()
-    {
-        yield return new WaitForSeconds(3f);
-        questionMark.SetActive(false);
-    }
+   
+
 
     IEnumerator ChaseSoundRoutine(Vector3 position)
     {
         noactiving = false;
-        m_enemy.stoppingDistance = 0;
-
-
-        yield return cooltime.cool2sec;
+        NeviClear();
+        
+        yield return cooltime.cool3sec;
         hearSound = false;
         noactiving = true;
-        NeviClear();
         state = EnemyState.patrolling;
-        questionMark.SetActive(false);
-        //enemyAnim.SetBool(Walk, false);
-        //enemyAnim.SetBool(GunRuning, false);
     }
 
+    
+    
     void NeviClear()    //적 네비 초기화
     {
         m_enemy.isStopped = true;
@@ -195,48 +211,43 @@ public class TestEnemy : MonoBehaviour
     }
     void EnemyPatrol()  //적순찰
     {
+        exclamationMark.SetActive(false);
+        m_enemy.stoppingDistance = 1f;
+        Debug.Log("순찰중");
         enemyAnim.SetBool(GunRuning, false);
         if (Vector3.Distance(transform.position, customDestinations[naviindex]) > 1f)
         {
-            //enemyAnim.SetBool(Walk, true);
-            //enemyAnim.SetBool(GunRuning, false); // 걷는 동안 총을 들지 않도록 설정
             m_enemy.SetDestination(customDestinations[naviindex]);
-            //  questionMark.gameObject.SetActive(false); // 시작 시 물음표 UI 비활성화
-            //  exclamationMark.gameObject.SetActive(false); // 시작 시 느낌표 UI 비활성화
         }
-        else if (Vector3.Distance(transform.position, customDestinations[naviindex]) <= 1f)
+        else if (Vector3.Distance(transform.position, customDestinations[naviindex]) <= 1f || m_enemy.velocity.magnitude <= 0.1f)
         {
             naviindex++;
 
             if (naviindex == customDestinations.Length)
                 naviindex = 0;
             m_enemy.SetDestination(customDestinations[naviindex]);
-
         }
-        questionMark.SetActive(false);
-        exclamationMark.SetActive(false);
 
     }
 
 
-void TargetChase()
+    void TargetChase()
     {
-        //enemyAnim.SetBool(Walk, false);
-        //if (!chasing)
-        //    StartCoroutine(Levelstep());
-
+        m_enemy.stoppingDistance = 3f;
         transform.LookAt(sight.detectTarget.position);
         enemyAnim.SetBool(GunRuning, true); // 총을 들고 있을 때 설정
-                                            // m_enemy.stoppingDistance = stoppingDistance;
-                                            // m_enemy.SetDestination(sight.detectTarget.position);
-        exclamationMark.SetActive(true);
-        questionMark.SetActive(false);
-        StartCoroutine(DisableQuestionMarkAfter3Seconds());
+        m_enemy.SetDestination(sight.detectTarget.position);
 
+        Debug.Log("추격시작");
+        if (state == EnemyState.die)
+        return;
+        exclamationMark.SetActive(true);
+        exclamationMark.SetActive(false);
         if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 3f && !GameManager.instance.isDie && state != EnemyState.die && state != EnemyState.sturn)
         {
-            //enemyAnim.SetBool(Walk, false);
-            enemyAnim.SetBool(GunRuning, false);
+            Debug.Log("사격시작");
+          
+            exclamationMark.SetActive(true);
             if (enemyType == 1 || enemyType == 2)
                 StartCoroutine(Shoot()); // 총을 발사합니다.
             else if (enemyType == 3)
@@ -244,29 +255,37 @@ void TargetChase()
             else if (enemyType == 4 && !isShooting)
                 StartCoroutine(UdoShoot());
         }
-        else if (Vector3.Distance(transform.position, sight.detectTarget.position) > 3f)
+
+        if (Vector3.Distance(transform.position, sight.detectTarget.position) > 3f)
         {
-            //enemyAnim.SetBool(Walk, false);
+            
+            Debug.Log("다시추격시작");
             enemyAnim.SetBool(GunRuning, true);
             m_enemy.isStopped = false;
+            m_enemy.SetDestination(sight.detectTarget.position);
         }
-        IEnumerator DisableQuestionMarkAfter3Seconds()
+        else if (!sight.findT)
         {
-            yield return new WaitForSeconds(3f);
-            exclamationMark.SetActive(false);
+            enemyAnim.SetBool(GunRuning, false);
+            NeviClear();
+            EnenyAttackStop();
+            EnemyPatrol();
+            state = EnemyState.patrolling;
         }
+      
     }
-
+  
     IEnumerator CloseAttack()
     {
+        if (state == EnemyState.die || GameManager.instance.isDie)
+            yield break;
+
         m_enemy.stoppingDistance = 1;
         yield return cooltime.cool1sec;
 
         if (!isShooting)
         {
             isShooting = true; // 발사 중 상태로 변경
-            //enemyAnim.SetBool(GunRuning, false);
-            //enemyAnim.SetBool(Walk, false);
 
             //transform.LookAt(pos);
             enemyAnim.SetTrigger(Shot);
@@ -274,16 +293,21 @@ void TargetChase()
             Destroy(bulletObject, 1f);
             // 총알 발사 후 일정 시간을 기다린 후 다음 동작으로 진행합니다.
             yield return cooltime.cool2sec; // 1초 뒤에 다시 총 발사
+            isShooting = false;
         }
     }
     IEnumerator Shoot()
     {
+        if (state == EnemyState.die || GameManager.instance.isDie)
+            yield break;
+
+        m_enemy.stoppingDistance = stoppingDistance;
+
         yield return cooltime.cool1sec;
-        if (!isShooting)
+        if (!isShooting && !GameManager.instance.isDie)
         {
             isShooting = true; // 발사 중 상태로 변경
-            //enemyAnim.SetBool(GunRuning, false);
-            //enemyAnim.SetBool(Walk, false);
+
             m_enemy.isStopped = true;
             m_enemy.velocity = Vector3.zero;
 
@@ -311,6 +335,7 @@ void TargetChase()
             yield return cooltime.cool2sec;
             isShooting = false;
         }
+
         m_enemy.isStopped = false;
     }
     void Shoot2()  //샷건 
@@ -324,8 +349,11 @@ void TargetChase()
     }
     IEnumerator UdoShoot() //바주카 (반유도 미사일)
     {
+        if (state == EnemyState.die || GameManager.instance.isDie)
+            yield break;
+
         yield return cooltime.cool1sec;
-        if (!isShooting)
+        if (!isShooting && !GameManager.instance.isDie)
         {
             isShooting = true;
             m_enemy.isStopped = true;
@@ -337,21 +365,24 @@ void TargetChase()
             yield return cooltime.cool2sec;
             //bulletObject.transform.LookAt(pos);
             bulletRigid.velocity = bulletPos.forward * bulletSpeed;
-
+            bulletRigid.velocity = bulletPos.forward * bulletSpeed;
+            yield return cooltime.cool2sec;
+            isShooting = false;
         }
         m_enemy.isStopped = false;
     }
 
-    IEnumerator DelayTime(float type, WaitForSeconds delay)
-    {
+    //IEnumerator DelayTime(float type, WaitForSeconds delay)
+    //{
 
 
-        yield return delay; // 지정된 시간만큼 대기합니다.
-        if (type == 1)
-            isShooting = false; // 발사 종료 상태로 변경
-        else if (type == 2)
-            m_enemy.isStopped = false;
-    }
+    //    yield return delay; // 지정된 시간만큼 대기합니다.
+    //    if (type == 1)
+    //        isShooting = false; // 발사 종료 상태로 변경
+    //    else if (type == 2)
+    //        m_enemy.isStopped = false;
+    //}
+
 
     IEnumerator EnemyStateCheck()
     {
@@ -490,7 +521,7 @@ void TargetChase()
 
     private IEnumerator DeactivateWithDelay()
     {
-
+        EnenyAttackStop();
         yield return new WaitForSeconds(2f);
 
 
