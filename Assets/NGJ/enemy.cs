@@ -122,7 +122,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (state == EnemyState.findtarget && state != EnemyState.die)
+        if (state != EnemyState.die && state == EnemyState.findtarget )
         {
             TargetChase();
         }
@@ -219,7 +219,7 @@ public class Enemy : MonoBehaviour
             else if (enemyType == 3)
                 StartCoroutine(CloseAttack());
             else if (enemyType == 4 && !isShooting)
-                StartCoroutine(UdoShoot());
+                StartCoroutine(UdoShoot(sight.detectTarget.position));
         }
         if (Vector3.Distance(transform.position, sight.detectTarget.position) > 3f)
         {
@@ -249,7 +249,7 @@ public class Enemy : MonoBehaviour
         if (!isShooting)
         {
             if (state == EnemyState.die || GameManager.instance.isDie)
-                StopCoroutine(CloseAttack());
+                yield break; 
 
             isShooting = true; // 발사 중 상태로 변경
 
@@ -273,7 +273,7 @@ public class Enemy : MonoBehaviour
         if (!isShooting && !GameManager.instance.isDie)
         {
             if (state == EnemyState.die || GameManager.instance.isDie)
-                StopCoroutine(Shoot());
+                yield break;
 
             isShooting = true; // 발사 중 상태로 변경
 
@@ -316,27 +316,26 @@ public class Enemy : MonoBehaviour
             bulletRigid.velocity = bulletPoses[i].forward * bulletSpeed;
         }
     }
-    IEnumerator UdoShoot() //바주카 (반유도 미사일)
+    IEnumerator UdoShoot(Vector3 pos) //바주카 (반유도 미사일)
     {
         if (state == EnemyState.die || GameManager.instance.isDie)
-            StopCoroutine(UdoShoot()); 
+            StopCoroutine(UdoShoot(pos));
+
+        m_enemy.stoppingDistance = stoppingDistance;
 
         yield return cooltime.cool1sec;
         if(!isShooting && !GameManager.instance.isDie)
         {
             if (state == EnemyState.die || GameManager.instance.isDie)
-                StopCoroutine(UdoShoot()); 
+                yield break; ; 
 
             isShooting = true;
             m_enemy.isStopped = true;
             m_enemy.velocity = Vector3.zero;
-            //transform.LookAt(pos);
             enemyAnim.SetTrigger(Shot);
             GameObject bulletObject = Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
             Rigidbody bulletRigid = bulletObject.GetComponent<Rigidbody>();
-            yield return cooltime.cool2sec;
-            //bulletObject.transform.LookAt(pos);
-            bulletRigid.velocity = bulletPos.forward * bulletSpeed;
+            bulletObject.transform.LookAt(pos);
             bulletRigid.velocity = bulletPos.forward * bulletSpeed;
             yield return cooltime.cool2sec;
             isShooting = false;
@@ -437,7 +436,7 @@ public class Enemy : MonoBehaviour
         }
         else if(enemyType == 4)
         {
-            StopCoroutine(UdoShoot());
+            StopCoroutine(UdoShoot(sight.detectTarget.position));
         }
     }
 
