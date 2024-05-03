@@ -212,6 +212,10 @@ public class PlayerInteractive : MonoBehaviour
                     }
                     doort.oDoor();
                 }
+                else if(doort.nDoor == 0 && gm.puzzleLevel == 1 || doort.nDoor == 1 && gm.puzzleLevel < 3 || doort.nDoor == 2 && gm.puzzleLevel < 4)
+                {
+                    GuideLineTxt.instance.SetDifferentTxt2(0);
+                }
             }
             if (other.CompareTag(interactiveList[1]))
             {
@@ -226,6 +230,10 @@ public class PlayerInteractive : MonoBehaviour
                 {
                     player.transform.position = vent.vent1.transform.position;
                     vent.v2activate = false;
+                }
+                else if(other.name == ("Vent1")&& !vent.v1activate || other.name == ("Vent2") && !vent.v2activate || !vent.ventActivate)
+                {
+                    GuideLineTxt.instance.SetDifferentTxt2(2);
                 }
             }
             //else if (other.CompareTag(interactiveList[2]))
@@ -267,26 +275,34 @@ public class PlayerInteractive : MonoBehaviour
             //            break;
             //    }
             //}
-            else if (other.CompareTag(interactiveList[3]) && EnemyLevel.enemylv.LvStep != EnemyLevel.ELevel.level3)
+            else if (other.CompareTag(interactiveList[3]))
             {
-                cabinet = other.GetComponentInParent<Cabinet>();
-                if (!gm.isHide)
+                if(EnemyLevel.enemylv.LvStep != EnemyLevel.ELevel.level3)
                 {
-                    player.velocity = Vector3.zero;
-                    player.transform.position = cabinet.hidePoints.transform.position;
-                    gm.isHide = true;
-                    _pc.isTrigger = true;
-                    playerView.viewAngle = 360;
-                    playerView.viewRadius = 2f;
-                }
+                    cabinet = other.GetComponentInParent<Cabinet>();
+                    if (!gm.isHide)
+                    {
+                        player.velocity = Vector3.zero;
+                        player.transform.position = cabinet.hidePoints.transform.position;
+                        gm.isHide = true;
+                        _pc.isTrigger = true;
+                        playerView.viewAngle = 360;
+                        playerView.viewRadius = 2f;
+                    }
+                    else
+                    {
+                        player.transform.position = cabinet.idlePoints.transform.position;
+                        gm.isHide = false;
+                        _pc.isTrigger = false;
+                        playerView.viewAngle = gm.playerviewA;
+                        playerView.viewRadius = gm.playerviewR;
+                    }
+                }    
                 else
                 {
-                    player.transform.position = cabinet.idlePoints.transform.position;
-                    gm.isHide = false;
-                    _pc.isTrigger = false;
-                    playerView.viewAngle = gm.playerviewA;
-                    playerView.viewRadius = gm.playerviewR;
+                    GuideLineTxt.instance.SetDifferentTxt2(1);
                 }
+                
             }
             //else if(세이브 포인트 검사)
             else

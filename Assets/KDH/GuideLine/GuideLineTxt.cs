@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
-//using DG.Tweening;
-using UnityEngine.Events;
+using DG.Tweening;
 
 [System.Serializable]
 public struct GuideData
@@ -19,13 +18,9 @@ public class GuideLineTxt : MonoBehaviour
     public static GuideLineTxt instance;
 
     [SerializeField]
-    private int eventNum;                              // 
-    [SerializeField]
     private GuideLineDB guideLineDB;          // 
 
     public Text guideUI;                                 // 자막 UI
-
-    //public UnityEvent guideAnim;
 
     [SerializeField]
     private GuideData[] guideDatas;               // 
@@ -44,16 +39,23 @@ public class GuideLineTxt : MonoBehaviour
 
     }
 
-    public void SetOffTxt()
+    public void SetOffTxt()                                             // 자막 꺼주고 텍스트 지워주는 함수
     {
         guideUI.gameObject.SetActive(false);
+        guideUI.text = null;
     }
 
-    public void SetDifferentTxt(int dataindex)
+    public void SetDifferentTxt(int dataindex)              // 진행유도
     {
-        //guideAnim.Invoke();
         guideUI.gameObject.SetActive(true);
-        guideUI.text = guideLineDB.guideLine[dataindex].guideTxt;
+        guideUI.DOText(guideLineDB.guideLine[dataindex].guideTxt, 1.5f);
+        Invoke("SetOffTxt", 3.5f);
+    }
+
+    public void SetDifferentTxt2(int dataindex2)             // 오브젝트 관련
+    {
+        guideUI.gameObject.SetActive(true);
+        guideUI.text = guideLineDB.guideLine[dataindex2].guideTxt;
         Invoke("SetOffTxt", 2.5f);
     }
 }

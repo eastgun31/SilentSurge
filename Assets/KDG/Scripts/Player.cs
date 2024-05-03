@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
     //Ä³½Ì
     GameManager gmManager;
     SoundManager soundManager;
+    UiManager uiManager;
     public Animator playerAnim;
     string walk = "Walk";
     string gunwalk = "GunWalk";
@@ -81,6 +82,7 @@ public class Player : MonoBehaviour
         cam = Camera.main;
         gmManager = GameManager.instance;
         soundManager = SoundManager.instance;
+        uiManager = UiManager.instance;
         maxdist = 1f;
     }
 
@@ -112,7 +114,7 @@ public class Player : MonoBehaviour
             //playerspeed = 2.5f;
         }
            
-        if (state == PlayerState.idle)
+        if (state == PlayerState.idle && !uiManager.isPauseWin)
         {
             if (rigid.velocity != Vector3.zero)
                 rigid.velocity = Vector3.zero;
