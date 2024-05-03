@@ -213,7 +213,7 @@ public class PlayerInteractive : MonoBehaviour
                     doort.oDoor();
                 }
             }
-            else if (other.CompareTag(interactiveList[1]))
+            if (other.CompareTag(interactiveList[1]))
             {
                 vent = other.GetComponentInParent<Vent>();
                 if (other.name == ("Vent1") && vent.v1activate)

@@ -87,7 +87,7 @@ public class EnterPuzzle : MonoBehaviour
 
     public void LastPuzzle()
     {
-        if (GameManager.instance.puzzleLevel == 8 && level == 8)
+        if (GameManager.instance.puzzleLevel == 8 && level == 8 && EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
         {
             GameManager.instance.nowpuzzle = true;
             UiManager.instance.ActiveKeypad();
