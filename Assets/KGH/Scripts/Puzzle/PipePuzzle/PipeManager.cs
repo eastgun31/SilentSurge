@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PipeManager : MonoBehaviour
@@ -85,6 +86,7 @@ public class PipeManager : MonoBehaviour
                 items[2].SetActive(true);
                 items[3].SetActive(true);
                 GameManager.instance.ItemActive();
+                SubtitleCheck();
             }
 
             GameManager.instance.puzzleLevel += 1;
@@ -110,5 +112,19 @@ public class PipeManager : MonoBehaviour
             pipes[i].transform.rotation = pipesRot[i];
         }
         correctPipes = 0;
+    }
+    public void SubtitleCheck()
+    {
+        switch (SceneManager.GetActiveScene().buildIndex)
+        {
+            case 1:
+                Debug.Log("¾À1");
+                GuideLineTxt.instance.SetDifferentTxt(11);
+                break;
+            case 2:
+                Debug.Log("¾À1");
+                GuideLineTxt.instance.SetDifferentTxt(12);
+                break;
+        }
     }
 }

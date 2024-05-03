@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SinPuzzle : MonoBehaviour
@@ -173,6 +174,22 @@ public class SinPuzzle : MonoBehaviour
     private void CloseSin()
     {
         UiManager.instance.isWin = false;
+        SubtitleCheck();
         UiManager.instance.CloseSinFst();
+    }
+
+    public void SubtitleCheck()
+    {
+        switch (SceneManager.GetActiveScene().buildIndex)
+        {
+            case 1:
+                Debug.Log("¾À1");
+                GuideLineTxt.instance.SetDifferentTxt(7);
+                break;
+            case 2:
+                Debug.Log("¾À1");
+                GuideLineTxt.instance.SetDifferentTxt(7);
+                break;
+        }
     }
 }
