@@ -93,7 +93,6 @@ public class PipeManager : MonoBehaviour
             
             Invoke("ClosePipe", 1f);
             DataManager.instance.SaveData();
-
         }
     }
 

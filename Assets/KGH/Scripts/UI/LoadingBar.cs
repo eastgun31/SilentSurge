@@ -17,6 +17,7 @@ public class LoadingBar : MonoBehaviour
 
     void Start()
     {
+        UiManager.instance.isPauseWin = true; 
         target = slider.maxValue;
     }
 
@@ -24,9 +25,9 @@ public class LoadingBar : MonoBehaviour
     {
         currentValue = slider.value;
         if (currentValue <= slider.maxValue * 0.3f)
-            time = 10f;
+            time = 15f;
         else if (currentValue <= slider.maxValue * 0.5f)
-            time = 5f;
+            time = 4f;
         else if (currentValue >= slider.maxValue * 0.9f)
             time = 15f;
 
@@ -37,7 +38,10 @@ public class LoadingBar : MonoBehaviour
         }
 
         if (slider.value >= target)
+        {
             loading.SetActive(false);
+            UiManager.instance.isPauseWin = false;
+        }
 
         int percent = Mathf.RoundToInt((currentValue / target) * 100f);
         loadText.text = $"{percent}%";
