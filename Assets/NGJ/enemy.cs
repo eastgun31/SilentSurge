@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
     private Transform[] bulletPoses;
     E_CoolTime cooltime;
     public AudioSource enemysound;
-
+    Vector3 firstpos;
 
     Animator enemyAnim;
     string Walk = "Walk";
@@ -67,29 +67,54 @@ public class Enemy : MonoBehaviour
     //int currentBulletCount = 999; // 현재 총알 개수
     //int dLevel = 1;
 
+    private void Awake()
+    {
+        //cooltime = new E_CoolTime();
+        //sight = GetComponent<Sight>();
+    }
+
     void Start()
     {
-        enemysound = GetComponent<AudioSource>();  
-     
-         chasing = false;
-        stoppingDistance = 3f;
-        state = EnemyState.patrolling;
-        sight = GetComponent<Sight>();
-        noactiving = true;
-        hearSound = false;
-        m_enemy = GetComponent<NavMeshAgent>();
-        cooltime = new E_CoolTime();
-        StartCoroutine(EnemyStateCheck());
-        naviindex = 0;
-        enemyAnim = GetComponent<Animator>();
-        m_enemy.avoidancePriority = 50; // 벽을 피하기 위한 우선순위 설정
+        //enemysound = GetComponent<AudioSource>();
+        //stoppingDistance = 3f;
+        //chasing = false;
+        //stoppingDistance = 3f;
+        //state = EnemyState.patrolling;
+        //sight = GetComponent<Sight>();
+        //noactiving = true;
+        //hearSound = false;
+        //m_enemy = GetComponent<NavMeshAgent>();
+        //cooltime = new E_CoolTime();
+        //StartCoroutine(EnemyStateCheck());
+        //naviindex = 0;
+        //enemyAnim = GetComponent<Animator>();
+        //m_enemy.avoidancePriority = 50; // 벽을 피하기 위한 우선순위 설정
 
-        }
+    }
 
     private void OnEnable()
     {
+        StopAllCoroutines();
+        cooltime = new E_CoolTime();
+        sight = GetComponent<Sight>();
+        sight.findT = false;
+        m_enemy = GetComponent<NavMeshAgent>();
+        m_enemy.ResetPath();
+        m_enemy.velocity = Vector3.zero;
+        StartCoroutine(EnemyStateCheck());
+        enemysound = GetComponent<AudioSource>();
+        m_enemy = GetComponent<NavMeshAgent>();
+        enemyAnim = GetComponent<Animator>();
+        stoppingDistance = 3f;
+        noactiving = true;
+        hearSound = false;
+        isShooting = false;
         state = EnemyState.patrolling;
-
+        EnemyPatrol();
+        chasing = false;
+        naviindex = 0;
+        
+        m_enemy.avoidancePriority = 50;
         if (indexcount == 98)
             customDestinations[0] = GameManager.instance.lv3PlayerPos;
 
@@ -97,7 +122,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (state == EnemyState.findtarget)
+        if (state == EnemyState.findtarget && state != EnemyState.die)
         {
             TargetChase();
         }
@@ -108,7 +133,6 @@ public class Enemy : MonoBehaviour
         }
         else if (state == EnemyState.patrolling)
         {
-            m_enemy.isStopped = false;
             EnemyPatrol();
         }
         else if(state == EnemyState.sturn)
@@ -138,6 +162,7 @@ public class Enemy : MonoBehaviour
 
     public void ChaseSound(Vector3 position)
     {
+        m_enemy.stoppingDistance = 0;
         m_enemy.SetDestination(position);
         if (noactiving)
             StartCoroutine(ChaseSoundRoutine(position)); // 대기 시간 5초 
@@ -146,13 +171,10 @@ public class Enemy : MonoBehaviour
     IEnumerator ChaseSoundRoutine(Vector3 position)
     {
         noactiving = false;
-        m_enemy.stoppingDistance = 0;
-
-
-        yield return cooltime.cool2sec;
+        NeviClear();
+        yield return cooltime.cool3sec;
         hearSound = false;
         noactiving = true;
-        NeviClear();
         state = EnemyState.patrolling;
     }
 
@@ -165,12 +187,14 @@ public class Enemy : MonoBehaviour
     }
     void EnemyPatrol()  //적순찰
     {
+        m_enemy.stoppingDistance = 1f;
+        Debug.Log("순찰중");
         enemyAnim.SetBool(GunRuning, false);
         if (Vector3.Distance(transform.position, customDestinations[naviindex]) > 1f)
         {
             m_enemy.SetDestination(customDestinations[naviindex]);
         }
-        else if (Vector3.Distance(transform.position, customDestinations[naviindex]) <= 1f)
+        else if (Vector3.Distance(transform.position, customDestinations[naviindex]) <= 1f || m_enemy.velocity.magnitude <= 0.1f)
         {
             naviindex++;
 
@@ -178,16 +202,19 @@ public class Enemy : MonoBehaviour
                 naviindex = 0;
             m_enemy.SetDestination(customDestinations[naviindex]);
         }
+
     }
 
     void TargetChase()
     {
+        m_enemy.stoppingDistance = 3f;
         transform.LookAt(sight.detectTarget.position);
         enemyAnim.SetBool(GunRuning, true); // 총을 들고 있을 때 설정
-       m_enemy.stoppingDistance = stoppingDistance;
        m_enemy.SetDestination(sight.detectTarget.position);
 
         Debug.Log("추격시작");
+        if (state == EnemyState.die)
+            return;
         if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 3f && !GameManager.instance.isDie &&state != EnemyState.die && state != EnemyState.sturn)
         {
             Debug.Log("사격시작");
@@ -205,18 +232,24 @@ public class Enemy : MonoBehaviour
             Debug.Log("다시추격시작");
             enemyAnim.SetBool(GunRuning, true);
             m_enemy.isStopped = false;
+            m_enemy.SetDestination(sight.detectTarget.position);
         }
         else if(!sight.findT)
         {
-            Debug.Log("적순찰시작");
-            state = EnemyState.patrolling;
+            enemyAnim.SetBool(GunRuning, false);
+            NeviClear();
+            EnenyAttackStop();
             EnemyPatrol();
+            state = EnemyState.patrolling;
         }
     }
 
 
     IEnumerator CloseAttack()
     {
+        if (state == EnemyState.die || GameManager.instance.isDie)
+            yield break;
+
         m_enemy.stoppingDistance = 1;
         yield return cooltime.cool1sec;
 
@@ -235,14 +268,19 @@ public class Enemy : MonoBehaviour
     }
     IEnumerator Shoot()
     {
+        if (state == EnemyState.die || GameManager.instance.isDie)
+            yield break;
+
+        m_enemy.stoppingDistance = stoppingDistance;
+
         yield return cooltime.cool1sec;
-        if (!isShooting)
+        if (!isShooting && !GameManager.instance.isDie)
         {
             isShooting = true; // 발사 중 상태로 변경
 
             m_enemy.isStopped = true;
             m_enemy.velocity = Vector3.zero;
-            
+
 
             // 총알을 발사하는 동작을 수행합니다.
             //transform.LookAt(pos);
@@ -256,17 +294,18 @@ public class Enemy : MonoBehaviour
                 Shoot2();
                 SoundManager.instance.EnemyEffect(1);
             }
-            else if(enemyType == 1) 
+            else if (enemyType == 1)
             {
                 SoundManager.instance.EnemyEffect(0);
             }
-            
+
             bulletRigid.velocity = bulletPos.forward * bulletSpeed;
 
             // 총알 발사 후 일정 시간을 기다린 후 다음 동작으로 진행
-            yield return cooltime.cool2sec; 
+            yield return cooltime.cool2sec;
             isShooting = false;
         }
+        
         m_enemy.isStopped = false;
     }
     void Shoot2()  //샷건 
@@ -280,8 +319,11 @@ public class Enemy : MonoBehaviour
     }
     IEnumerator UdoShoot() //바주카 (반유도 미사일)
     {
+        if (state == EnemyState.die || GameManager.instance.isDie)
+            yield break;
+
         yield return cooltime.cool1sec;
-        if(!isShooting)
+        if(!isShooting && !GameManager.instance.isDie)
         {
             isShooting = true;
             m_enemy.isStopped = true;
@@ -300,20 +342,20 @@ public class Enemy : MonoBehaviour
         m_enemy.isStopped = false;
     }
 
-    IEnumerator DelayTime(float type, WaitForSeconds delay)
-    {
+    //IEnumerator DelayTime(float type, WaitForSeconds delay)
+    //{
 
 
-        yield return delay; // 지정된 시간만큼 대기합니다.
-        if (type == 1)
-            isShooting = false; // 발사 종료 상태로 변경
-        else if (type == 2)
-            m_enemy.isStopped = false;
-    }
+    //    yield return delay; // 지정된 시간만큼 대기합니다.
+    //    if (type == 1)
+    //        isShooting = false; // 발사 종료 상태로 변경
+    //    else if (type == 2)
+    //        m_enemy.isStopped = false;
+    //}
 
     IEnumerator EnemyStateCheck()
     {
-        if (sight.findT)
+        if (sight.findT && state != EnemyState.die)
         {
             //enemyAnim.SetBool(GunRuning, true);
             //enemyAnim.SetBool(Walk, false);
@@ -321,29 +363,27 @@ public class Enemy : MonoBehaviour
             state = EnemyState.findtarget;
 
         }
-        else if (sight.findT && hearSound)
+        else if (sight.findT && hearSound && state != EnemyState.die)
         {
             //enemyAnim.SetBool(GunRuning, true);
             //enemyAnim.SetBool(Walk, false);
             state = EnemyState.findtarget;
 
         }
-        else if (!sight.findT && hearSound)
+        else if (!sight.findT && hearSound && state != EnemyState.die)
         {
 
             // GameManager.instance.playerchasing = false;
             state = EnemyState.hear;
-            if(sight.findT)
+            if(sight.findT && state != EnemyState.die)
                 state = EnemyState.findtarget;
 
         }
         else if (!sight.findT && !hearSound)
         {
 
-            yield return cooltime.cool1sec;
             //GameManager.instance.playerchasing = false;
             state = EnemyState.patrolling;
-            m_enemy.isStopped = false ;
         }
 
         yield return cooltime.cool1sec;
@@ -404,6 +444,8 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
+            EnenyAttackStop();
+            state = EnemyState.die;
             Destroy(other.gameObject);
             if (indexcount != 99 || indexcount != 98)
             {
@@ -414,8 +456,8 @@ public class Enemy : MonoBehaviour
                 //    GameManager.instance.existEnemy2[indexcount] = false;
             }
             //StopAllCoroutines();
-            state = EnemyState.die;
-            EnenyAttackStop();
+            
+            m_enemy.ResetPath();
             m_enemy.isStopped = true;
             m_enemy.velocity = Vector3.zero;
             enemyAnim.SetBool(Death,true);
@@ -448,9 +490,8 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator DeactivateWithDelay()
     {
-
+        EnenyAttackStop();
         yield return new WaitForSeconds(2f);
-
 
         gameObject.SetActive(false);
     }

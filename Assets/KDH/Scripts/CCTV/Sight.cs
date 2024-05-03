@@ -61,6 +61,11 @@ public class Sight : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        StartCoroutine(DetectDelay(0.2f));
+    }
+
     void Start()
     {
         findT = false;

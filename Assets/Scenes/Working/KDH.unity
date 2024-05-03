@@ -3988,7 +3988,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keypad: {fileID: 252916265}
   answerInput: {fileID: 1272074452}
-  pw: 123456
+  doorOpen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &626386777
 GameObject:
   m_ObjectHideFlags: 0
@@ -6234,6 +6236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LvStep: 0
   lv3enemy: {fileID: 1070588889}
+  lastenemy: {fileID: 0}
   Enemies: []
 --- !u!4 &870770246
 Transform:
@@ -7206,8 +7209,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 982366863}
   points: 260
-  amplitude: 100
-  frequency: 0.004
+  correctAmlitude: 0
+  correctFrequency: 0
   xlimit: {x: -600, y: 600}
   speed: 1
 --- !u!120 &982366863
@@ -7730,9 +7733,17 @@ MonoBehaviour:
   points: 260
   amplitude: 70
   frequency: 0.009000001
+  correctAmlitude: 0
+  correctFrequance: 0
+  isAmplitude: 0
+  isFrequance: 0
   xlimit: {x: -600, y: 600}
   speed: 1
   success: {fileID: 0}
+  cctv1: {fileID: 0}
+  fcctv1: {fileID: 0}
+  cctv2: {fileID: 0}
+  fcctv2: {fileID: 0}
 --- !u!120 &1030523506
 LineRenderer:
   serializedVersion: 2
@@ -9737,11 +9748,13 @@ MonoBehaviour:
   - {fileID: 316872426}
   - {fileID: 367688141}
   - {fileID: 1524485918}
-  i_color: []
   i_count:
   - {fileID: 316872428}
   - {fileID: 367688143}
   - {fileID: 1524485920}
+  i_color: []
+  boundary: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &1387059374
 GameObject:
   m_ObjectHideFlags: 0
@@ -13358,6 +13371,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e87a04ed04c564b90a2dd0e4bfb543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOver: {fileID: 0}
+  scenenum: 0
   itemcheck: 0000000000
   itemcount: 
   puzzleLevel: 1
@@ -13367,8 +13382,20 @@ MonoBehaviour:
   existItem: 
   existEnemy: 
   isHide: 0
+  isDie: 0
+  playerviewR: 0
+  playerviewA: 0
+  amplitude: 0
+  frequency: 0
+  correctAmlitude: 0
+  correctFrequance: 0
+  paswawrd: 
+  spacebar: 0
+  enemyQuater: 0
   lv3PlayerPos: {x: 0, y: 0, z: 0}
   Items: []
+  last: 0
+  onecollison: 1
 --- !u!4 &2003980774
 Transform:
   m_ObjectHideFlags: 0
@@ -14129,6 +14156,7 @@ MonoBehaviour:
   isWin: 0
   isPauseWin: 0
   isGameOver: 0
+  quickSlot: {fileID: 0}
   pauseWin: {fileID: 0}
   pipePuzFst: {fileID: 1515071931}
   pipePuzSec: {fileID: 1762706235}
@@ -16059,7 +16087,12 @@ MonoBehaviour:
   handGunModel: {fileID: 7307466661782669171}
   bulletPrefab: {fileID: 6370189277096345383, guid: 09e71b3c77b69d94796d4f8f3a90252f, type: 3}
   footSound: {fileID: 4398446890772659497}
+  playerAnim: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
+  playerDie:
+    m_PersistentCalls:
+      m_Calls: []
+  maxdist: 0
 --- !u!33 &259014657157055783
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -16243,6 +16276,7 @@ MonoBehaviour:
   tDoor2: {fileID: 7265221275492699069}
   PlayerPos_0: 0
   PlayerPos_1: 0
+  nDoor: 0
 --- !u!33 &272830593179561300
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -19575,6 +19609,7 @@ MonoBehaviour:
   Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!65 &719349058686942169
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19708,7 +19743,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_state: 0
-  isDetecting: 0
   canReverse: 0
   rotationSpeed: 10
   rotationAmount: 50
@@ -20938,6 +20972,7 @@ MonoBehaviour:
   Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!65 &863241652353180432
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23667,7 +23702,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_state: 0
-  isDetecting: 0
   canReverse: 0
   rotationSpeed: 0
   rotationAmount: 0
@@ -24735,6 +24769,7 @@ MonoBehaviour:
   Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!1 &1319550512837236738
 GameObject:
   m_ObjectHideFlags: 0
@@ -25269,6 +25304,7 @@ MonoBehaviour:
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!1 &1403064635494997429
 GameObject:
   m_ObjectHideFlags: 0
@@ -31210,6 +31246,7 @@ MonoBehaviour:
   tDoor2: {fileID: 862655410165826107}
   PlayerPos_0: 0
   PlayerPos_1: 0
+  nDoor: 0
 --- !u!23 &2142381559727865668
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -33333,7 +33370,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_state: 0
-  isDetecting: 0
   canReverse: 0
   rotationSpeed: 0
   rotationAmount: 0
@@ -37187,6 +37223,7 @@ MonoBehaviour:
   tDoor2: {fileID: 7777221118083631272}
   PlayerPos_0: 0
   PlayerPos_1: 0
+  nDoor: 0
 --- !u!4 &2892475006391439607
 Transform:
   m_ObjectHideFlags: 0
@@ -39401,6 +39438,7 @@ MonoBehaviour:
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!4 &3223253126186494380
 Transform:
   m_ObjectHideFlags: 0
@@ -39947,6 +39985,7 @@ MonoBehaviour:
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!208 &3299245096376372400
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -41247,6 +41286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 3
+  puzzle: {fileID: 0}
 --- !u!65 &3430600326192632473
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -45870,7 +45910,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_state: 0
-  isDetecting: 0
   canReverse: 0
   rotationSpeed: 10
   rotationAmount: 50
@@ -46653,6 +46692,7 @@ MonoBehaviour:
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!23 &4079034860881920489
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -47428,7 +47468,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_state: 0
-  isDetecting: 0
   canReverse: 0
   rotationSpeed: 0
   rotationAmount: 0
@@ -47918,6 +47957,7 @@ MonoBehaviour:
   Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!33 &4226354399438584232
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -48281,6 +48321,7 @@ MonoBehaviour:
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!208 &4281875584009375318
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -48777,6 +48818,7 @@ MonoBehaviour:
   tDoor2: {fileID: 709912966892804325}
   PlayerPos_0: 0
   PlayerPos_1: 0
+  nDoor: 0
 --- !u!4 &4322850319396488340
 Transform:
   m_ObjectHideFlags: 0
@@ -51347,6 +51389,7 @@ MonoBehaviour:
   Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!4 &4614750667952303516
 Transform:
   m_ObjectHideFlags: 0
@@ -51787,6 +51830,7 @@ MonoBehaviour:
   tDoor2: {fileID: 5815525799623131213}
   PlayerPos_0: 0
   PlayerPos_1: 0
+  nDoor: 0
 --- !u!4 &4658790879325192365
 Transform:
   m_ObjectHideFlags: 0
@@ -55405,7 +55449,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_state: 0
-  isDetecting: 0
   canReverse: 0
   rotationSpeed: 10
   rotationAmount: 50
@@ -55875,6 +55918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
+  puzzle: {fileID: 0}
 --- !u!114 &5209314346062688994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55895,6 +55939,7 @@ MonoBehaviour:
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!65 &5210503330357757961
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59921,6 +59966,7 @@ MonoBehaviour:
   tDoor2: {fileID: 4613949163572388905}
   PlayerPos_0: 0
   PlayerPos_1: 0
+  nDoor: 0
 --- !u!1 &5790499824934906171
 GameObject:
   m_ObjectHideFlags: 0
@@ -60225,6 +60271,7 @@ MonoBehaviour:
   Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!23 &5816296298190462102
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -60806,6 +60853,7 @@ MonoBehaviour:
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!23 &5886515248389601275
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -64031,7 +64079,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_state: 0
-  isDetecting: 0
   canReverse: 0
   rotationSpeed: 5
   rotationAmount: 80
@@ -64085,6 +64132,7 @@ MonoBehaviour:
   tDoor2: {fileID: 6707009098267421962}
   PlayerPos_0: 0
   PlayerPos_1: 0
+  nDoor: 0
 --- !u!1 &6347482577417151005
 GameObject:
   m_ObjectHideFlags: 0
@@ -64343,6 +64391,7 @@ MonoBehaviour:
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!4 &6397003695318582697
 Transform:
   m_ObjectHideFlags: 0
@@ -66399,6 +66448,7 @@ MonoBehaviour:
   Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!65 &6709085326601584598
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68486,7 +68536,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   L_Bdoor: {fileID: 963980038500922371}
   R_Bdoor: {fileID: 2701229974435931115}
-  bD_Unlock: 0
 --- !u!4 &6934384283848232005
 Transform:
   m_ObjectHideFlags: 0
@@ -70862,6 +70911,7 @@ MonoBehaviour:
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!65 &7183103123568587717
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -71626,6 +71676,7 @@ MonoBehaviour:
   Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!65 &7265296333729739008
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -73470,7 +73521,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_state: 0
-  isDetecting: 0
   canReverse: 0
   rotationSpeed: 3
   rotationAmount: 3
@@ -73780,6 +73830,7 @@ MonoBehaviour:
   tDoor2: {fileID: 4223454545993844816}
   PlayerPos_0: 0
   PlayerPos_1: 0
+  nDoor: 0
 --- !u!1 &7501271519839142639
 GameObject:
   m_ObjectHideFlags: 0
@@ -75408,6 +75459,7 @@ MonoBehaviour:
   Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!1 &7710077161154755954
 GameObject:
   m_ObjectHideFlags: 0
@@ -75870,6 +75922,7 @@ MonoBehaviour:
   Doorindex: 1
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!33 &7780088704168816820
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -76997,6 +77050,7 @@ MonoBehaviour:
   Doorindex: 0
   mat_Door: {fileID: 2100000, guid: 01b666a7c3b6f0c4f9a6559f6d8f5682, type: 2}
   mat_Outline: {fileID: 2100000, guid: 21e902960db4ee54cb18c508eba872b9, type: 2}
+  mat_NoOutline: {fileID: 0}
 --- !u!4 &7944133331019632249
 Transform:
   m_ObjectHideFlags: 0
@@ -77453,6 +77507,7 @@ MonoBehaviour:
   tDoor2: {fileID: 1316649775763930595}
   PlayerPos_0: 0
   PlayerPos_1: 0
+  nDoor: 0
 --- !u!33 &7999835042856546260
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -79284,6 +79339,7 @@ MonoBehaviour:
   tDoor2: {fileID: 7708529831457809908}
   PlayerPos_0: 0
   PlayerPos_1: 0
+  nDoor: 0
 --- !u!1 &8212878046071402305
 GameObject:
   m_ObjectHideFlags: 0
@@ -83551,6 +83607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 2
+  puzzle: {fileID: 0}
 --- !u!208 &8697142043644006749
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -86295,7 +86352,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_state: 0
-  isDetecting: 0
   canReverse: 0
   rotationSpeed: 10
   rotationAmount: 60
