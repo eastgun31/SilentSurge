@@ -45,7 +45,7 @@ public class LoadingBar : MonoBehaviour
 
     void LoadingTime()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        if (SceneManager.GetActiveScene().buildIndex == 1  || SceneManager.GetActiveScene().buildIndex == 2)
         {
             if (currentValue <= slider.maxValue * 0.3f)
                 time = 15f;
@@ -54,7 +54,7 @@ public class LoadingBar : MonoBehaviour
             else if (currentValue >= slider.maxValue * 0.9f)
                 time = 15f;
         }
-        if(SceneManager.GetActiveScene().buildIndex ==2)
+        if(SceneManager.GetActiveScene().buildIndex ==3 || SceneManager.GetActiveScene().buildIndex == 4)
         {
             if (currentValue <= slider.maxValue * 0.3f)
                 time = 2f;
