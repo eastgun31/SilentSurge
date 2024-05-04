@@ -31,10 +31,20 @@ public class UiManager : MonoBehaviour
 
     public GameObject gameover;
 
+    public GameObject amsal;
+    public GameObject player;
+    Player playerInput;
+
+    private void Start()
+    {
+        playerInput = player.GetComponent<Player>();
+    }
+
 
     private void Update()
     {
         ActivePauseWin();
+        AmsalText();
     }
     public void Awake() 
     {
@@ -44,6 +54,13 @@ public class UiManager : MonoBehaviour
             Ui_instance = this;
     }
 
+    void AmsalText()
+    {
+        if (playerInput.canAmsal == true)
+            amsal.SetActive(true);
+        else
+            amsal.SetActive(false);
+    }
     public void TimeLimit()
     {
         if (EnemyLevel.enemylv.LvStep == EnemyLevel.ELevel.level1)
