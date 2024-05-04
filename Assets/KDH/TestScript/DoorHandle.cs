@@ -10,12 +10,12 @@ public class DoorHandle : MonoBehaviour
 
     public int Doorindex = 0;
 
-    //[SerializeField]
-    //private Material mat_Door;
-    //[SerializeField]
-    //private Material mat_Outline;
-    //[SerializeField]
-    //private Material mat_NoOutline;
+    [SerializeField]
+    private Material mat_Door;
+    [SerializeField]
+    private Material mat_Outline;
+    [SerializeField]
+    private Material mat_NoOutline;
 
     private void Awake()
     {
@@ -26,24 +26,22 @@ public class DoorHandle : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            //if (tDoor.nDoor == 0 && GameManager.instance.puzzleLevel >= 2 || tDoor.nDoor == 1 && GameManager.instance.puzzleLevel >= 3
-            //    || tDoor.nDoor == 2 && GameManager.instance.puzzleLevel >= 4)
-            //    P_Door.GetComponent<MeshRenderer>().material = mat_Outline;  // 아웃라인 메테리얼로 0번 배열 변경 
-            //else if (tDoor.nDoor == 0 && GameManager.instance.puzzleLevel < 2 || tDoor.nDoor == 1 && GameManager.instance.puzzleLevel < 3
-            //    || tDoor.nDoor == 2 && GameManager.instance.puzzleLevel < 4)
-            //    P_Door.GetComponent<MeshRenderer>().material = mat_NoOutline;
+            if (tDoor.nDoor == 0 && GameManager.instance.puzzleLevel >= 2 || tDoor.nDoor == 1 && GameManager.instance.puzzleLevel >= 3
+                || tDoor.nDoor == 2 && GameManager.instance.puzzleLevel >= 4)
+                P_Door.GetComponent<MeshRenderer>().material = mat_Outline;  // 아웃라인 메테리얼로 0번 배열 변경 
+            else if (tDoor.nDoor == 0 && GameManager.instance.puzzleLevel < 2 || tDoor.nDoor == 1 && GameManager.instance.puzzleLevel < 3
+                || tDoor.nDoor == 2 && GameManager.instance.puzzleLevel < 4)
+                P_Door.GetComponent<MeshRenderer>().material = mat_NoOutline;
             tDoor.PlayerPos_0 = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        //if (other.gameObject.CompareTag("Player"))
-        //{
-        //    P_Door.GetComponent<MeshRenderer>().material = mat_Door;  // 문 기본 메테리얼로 0번 배열 변경
-        //}
-        //tDoor.PlayerPos_0 = false;
-        //tDoor.PlayerPos_1 = false;
+        if (other.gameObject.CompareTag("Player"))
+        {
+            P_Door.GetComponent<MeshRenderer>().material = mat_Door;  // 문 기본 메테리얼로 0번 배열 변경
+        }
         tDoor.PlayerPos_0 = false;
     }
 }
