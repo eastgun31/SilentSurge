@@ -63,6 +63,6 @@ public class GuideLineTxt : MonoBehaviour
     {
         guideUI.gameObject.SetActive(true);
         guideUI.DOText(guideLineDB.guideLine[10].guideTxt, 1.5f);
-        Invoke("SetOffTxt", 2.5f);
+        Invoke("SetOffTxt", 3.5f);
     }
 }

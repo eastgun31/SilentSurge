@@ -135,7 +135,8 @@ public class SinPuzzle : MonoBehaviour
                 GameManager.instance.puzzleLevel += 1; 
                 GameManager.instance.nowpuzzle = false;
                 GameManager.instance.EnemyActive2();
-                EnemyLevel.enemylv.SetEnemy();
+                EnemyLevel.enemylv.SetEnemy();     
+                SubtitleCheck();
                 DataManager.instance.SaveData();
                 lev = true;
             }
@@ -146,7 +147,7 @@ public class SinPuzzle : MonoBehaviour
     private void CloseSin()
     {
         UiManager.instance.isWin = false;
-        SubtitleCheck();
+
         UiManager.instance.CloseSinFst();
     }
 
