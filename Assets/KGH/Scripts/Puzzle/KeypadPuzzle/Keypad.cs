@@ -16,6 +16,9 @@ public class Keypad : MonoBehaviour
 
     public UnityEvent doorOpen;
 
+    GameManager gm;
+    UiManager um;
+
     private void OnDisable()
     {
         answerInput.text = "";
@@ -23,12 +26,14 @@ public class Keypad : MonoBehaviour
 
     private void Start()
     {
+        um = UiManager.instance;
+        gm = GameManager.instance;
         pw = GameManager.instance.paswawrd;
     }
 
     public void Number(int number) 
     {
-        if (UiManager.instance.isWin == false ||  
+        if (um.isWin == false ||  
             !answerInput.text.Equals(pw, System.StringComparison.OrdinalIgnoreCase)) // 퍼즐 성공 또는 입력 숫자가 정답과 아닐때만 입력 가능
         {
             if (answerInput.text.Length < maxNum) // 정답의 길이보다 작을때만 
@@ -43,7 +48,7 @@ public class Keypad : MonoBehaviour
         if(answerInput.text.Equals(pw, System.StringComparison.OrdinalIgnoreCase)) // 입력값과 정답이 같으면
         {
             answerInput.text = "CORRECT";     // 정답
-            UiManager.instance.isWin = true;
+            um.isWin = true;
             PuzLevUp();
             Invoke("Closed", 1f);
         }
@@ -55,7 +60,7 @@ public class Keypad : MonoBehaviour
     }
     public void BackSpace()
     {
-        if (UiManager.instance.isWin == false)
+        if (um.isWin == false)
         {
             if (answerInput.text.Length > 0)
                 answerInput.text = answerInput.text.Substring(0, answerInput.text.Length - 1);
@@ -69,8 +74,8 @@ public class Keypad : MonoBehaviour
 
     public void PuzLevUp()
     {
-        GameManager.instance.nowpuzzle = false;
-        GameManager.instance.puzzleLevel += 1;
+        gm.nowpuzzle = false;
+        gm.puzzleLevel += 1;
         DataManager.instance.SaveData();
     }
 
@@ -78,7 +83,7 @@ public class Keypad : MonoBehaviour
     {
         doorOpen.Invoke();
         
-        UiManager.instance.isWin = false;
-        UiManager.instance.CloseKeypadFst();
+        um.isWin = false;
+        um.CloseKeypadFst();
     }
 }

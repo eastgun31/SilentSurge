@@ -12,6 +12,7 @@ public class PauseWin : MonoBehaviour
 
     public void Continue()
     {
+        UiManager.instance.isPauseWin = false;
         Time.timeScale = 1;
         pauseWin.SetActive(false);
     }

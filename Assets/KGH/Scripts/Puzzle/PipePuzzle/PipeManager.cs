@@ -22,8 +22,14 @@ public class PipeManager : MonoBehaviour
 
     public Text success;
 
+    GameManager gm;
+    UiManager um;
+
     void Start()
     {
+        gm = GameManager.instance;
+        um = UiManager.instance;
+
         //전체 파이프수를 설정하고 Pipes배열에 저장
 
         totalPipes = pipesHolder.transform.childCount;
@@ -46,18 +52,18 @@ public class PipeManager : MonoBehaviour
 
     public void TimeRemainig() // 퍼즐 제한시간
     {
-        if (!UiManager.instance.isWin)
+        if (!um.isWin)
         {
-            if ((int)UiManager.instance.timeRemainig == 0)
+            if ((int)um.timeRemainig == 0)
             {
-                UiManager.instance.isGameOver = true;
-                UiManager.instance.gameover.SetActive(true);
+                um.isGameOver = true;
+                um.gameover.SetActive(true);
                 ClosePipe();
             }
             else
             {
-                UiManager.instance.timeRemainig -= Time.deltaTime;
-                success.text = "Time:  " + (int)UiManager.instance.timeRemainig;
+                um.timeRemainig -= Time.deltaTime;
+                success.text = "Time:  " + (int)um.timeRemainig;
             }
         }
         else
@@ -71,27 +77,28 @@ public class PipeManager : MonoBehaviour
 
         if (correctPipes == totalPipes) //승리 조건
         {
-            UiManager.instance.isWin = true;
+            um.isWin = true;
 
-            if (GameManager.instance.puzzleLevel == 1)
+            if (gm.puzzleLevel == 1)
             {
                 items[0].SetActive(true);
                 items[1].SetActive(true);
-                GameManager.instance.ItemActive();
+                gm.ItemActive();
                 GuideLineTxt.instance.SetDifferentTxt(3);
             }
 
-            if(GameManager.instance.puzzleLevel == 7)
+            if(gm.puzzleLevel == 7)
             {
                 items[2].SetActive(true);
                 items[3].SetActive(true);
-                GameManager.instance.ItemActive();
+                gm.ItemActive();
                 SubtitleCheck();
             }
 
-            GameManager.instance.puzzleLevel += 1;
+            gm.puzzleLevel += 1;
             
-            Invoke("ClosePipe", 1f);
+            Invoke("ClosePipe", 0.5f);
+            gm.nowpuzzle = false;
             DataManager.instance.SaveData();
         }
     }
@@ -103,8 +110,8 @@ public class PipeManager : MonoBehaviour
 
     public void ClosePipe()
     {
-        UiManager.instance.isWin = false;
-        GameManager.instance.nowpuzzle = false;
+        um.isWin = false;
+        
         canvas.gameObject.SetActive(false);
         
         for (int i = 0; i < pipes.Length; i++)
