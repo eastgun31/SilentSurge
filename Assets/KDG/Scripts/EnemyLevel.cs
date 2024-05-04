@@ -31,8 +31,8 @@ public class EnemyLevel : MonoBehaviour
             enemylv = this;
 
         LvStep = ELevel.level1;
-        downTime = new WaitForSeconds(4f);
-        upTime = new WaitForSeconds(5f);
+        downTime = new WaitForSeconds(1f);
+        upTime = new WaitForSeconds(1f);
         lvDowning = false;
         enemyadd = false;
     }
