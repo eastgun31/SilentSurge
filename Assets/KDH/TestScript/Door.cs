@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Door : MonoBehaviour      // 문을 열고 닫는 스크립트
 {
-    public bool isOpen = false;
-
     public enum DoorState
     {
         not,
@@ -14,9 +12,10 @@ public class Door : MonoBehaviour      // 문을 열고 닫는 스크립트
     }
 
     public float openangle = 90f;
-    public float smooth = 3f;
+    //public float smooth = 3f;
 
-    public DoorHandle_1 tDoor2;
+    public DoorHandle tDoor0;
+    public DoorHandle1 tDoor1;
 
     public static DoorState op = DoorState.not;
 
@@ -30,12 +29,12 @@ public class Door : MonoBehaviour      // 문을 열고 닫는 스크립트
         switch (op)
         {
             case DoorState.not:
-                if (PlayerPos_0 && !PlayerPos_1)
+                if (PlayerPos_0)
                 {
                     transform.localRotation = Quaternion.Euler(0, -openangle, 0);
                     op = DoorState.up;
                 }
-                else if (!PlayerPos_0 && PlayerPos_1)
+                else if (PlayerPos_1)
                 {
                     transform.localRotation = Quaternion.Euler(0, openangle, 0);
                     op = DoorState.down;

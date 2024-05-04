@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class DoorHandle : MonoBehaviour
+public class DoorHandle1 : MonoBehaviour
 {
     public Door tDoor { get; set; }
     public GameObject P_Door;
 
-    public int Doorindex = 0;
+    public int Doorindex = 1;
 
     //[SerializeField]
     //private Material mat_Door;
@@ -32,7 +32,7 @@ public class DoorHandle : MonoBehaviour
             //else if (tDoor.nDoor == 0 && GameManager.instance.puzzleLevel < 2 || tDoor.nDoor == 1 && GameManager.instance.puzzleLevel < 3
             //    || tDoor.nDoor == 2 && GameManager.instance.puzzleLevel < 4)
             //    P_Door.GetComponent<MeshRenderer>().material = mat_NoOutline;
-            tDoor.PlayerPos_0 = true;
+            tDoor.PlayerPos_1 = true;
         }
     }
 
@@ -44,6 +44,6 @@ public class DoorHandle : MonoBehaviour
         //}
         //tDoor.PlayerPos_0 = false;
         //tDoor.PlayerPos_1 = false;
-        tDoor.PlayerPos_0 = false;
+        tDoor.PlayerPos_1 = false;
     }
 }
