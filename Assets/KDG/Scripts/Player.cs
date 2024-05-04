@@ -233,7 +233,7 @@ public class Player : MonoBehaviour
 
         }
 
-        if (Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), transform.forward, out hit, 2f, LayerMask.GetMask(enemy)))
+        if (Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), transform.forward, out hit, 1f, LayerMask.GetMask(enemy)))
         {
             sight = hit.transform.gameObject.GetComponent<Sight>();
             if (!sight.findT)
