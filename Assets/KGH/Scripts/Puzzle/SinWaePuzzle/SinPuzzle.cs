@@ -53,12 +53,11 @@ public class SinPuzzle : MonoBehaviour
     }
 
     void Update()
-    {   
+    {
         TimeRemainig();
         WaveControl();
         Wave();
-        Win();
-        
+        Win();   
     }
     public void TimeRemainig() // 퍼즐 제한시간
     {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Keypad : MonoBehaviour
@@ -18,6 +19,7 @@ public class Keypad : MonoBehaviour
 
     GameManager gm;
     UiManager um;
+
 
     private void OnDisable()
     {
@@ -50,6 +52,7 @@ public class Keypad : MonoBehaviour
             answerInput.text = "CORRECT";     // Á¤´ä
             um.isWin = true;
             PuzLevUp();
+            SceneCheck();
             Invoke("Closed", 1f);
         }
         else
@@ -79,10 +82,14 @@ public class Keypad : MonoBehaviour
         DataManager.instance.SaveData();
     }
 
-    public void Closed()
+    void SceneCheck()
     {
-        doorOpen.Invoke();
-        
+        if(SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex ==2)
+            doorOpen.Invoke();
+    }
+
+    public void Closed()
+    { 
         um.isWin = false;
         um.CloseKeypadFst();
     }
