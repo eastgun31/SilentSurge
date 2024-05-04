@@ -51,6 +51,7 @@ public class Enemy : MonoBehaviour
     string Shot = "Shot";
     string GunRuning = "GunRuning";
     string Death = "Death";
+    string Death2 = "Death2";
     string Flash = "Flash";
     string PlayerListen = "PlayerListen";
     ////안쓰는변수
@@ -448,7 +449,15 @@ public class Enemy : MonoBehaviour
             EnenyAttackStop();
             state = EnemyState.die;
             if(other.CompareTag("Bullet"))
+            {
                 Destroy(other.gameObject);
+                enemyAnim.SetBool(Death, true);
+            }
+            else if(other.CompareTag("AmSal"))
+            {
+                enemyAnim.SetBool(Death2, true);
+            }
+                
 
             StartCoroutine(DeactivateWithDelay());
             if (indexcount != 99 || indexcount != 98)
@@ -488,7 +497,7 @@ public class Enemy : MonoBehaviour
         m_enemy.ResetPath();
         m_enemy.isStopped = true;
         m_enemy.velocity = Vector3.zero;
-        enemyAnim.SetBool(Death, true);
+        
         yield return new WaitForSeconds(2f);
         EnenyAttackStop();
         gameObject.SetActive(false);
