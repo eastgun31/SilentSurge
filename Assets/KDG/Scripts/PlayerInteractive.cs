@@ -105,36 +105,41 @@ public class PlayerInteractive : MonoBehaviour
             enterPuzzle = hit.GetComponent<EnterPuzzle>();
             player.RunOff();
 
-            switch (enterPuzzle.level)
+            if(gm.scenenum == 1 ||  gm.scenenum == 2)
             {
-                case 1:
-                    enterPuzzle.PipePuzzle1();
-                    break;
-                case 2:
-                    enterPuzzle.SinPuzzle();
-                    break;
-                case 3:
-                    enterPuzzle.HackingPuzzle();
-                    break;
-                case 4:
-                    enterPuzzle.HintPuzzle1();
-                    break;
-                case 5:
-                    enterPuzzle.HintPuzzle2();
-                    break;
-                case 6:
-                    enterPuzzle.HintPuzzle3();
-                    break;
-                case 7:
-                    enterPuzzle.HintPuzzle4();
-                    break;
-                case 8:
-                    enterPuzzle.LastPuzzle();
-                    break;
-                case 9:
-                    enterPuzzle.SamplePuzzle();
-                    break;
+                enterPuzzle.PuzzleActive1();
             }
+
+            //switch (enterPuzzle.level)
+            //{
+            //    case 1:
+            //        enterPuzzle.PipePuzzle1();
+            //        break;
+            //    case 2:
+            //        enterPuzzle.SinPuzzle();
+            //        break;
+            //    case 3:
+            //        enterPuzzle.HackingPuzzle();
+            //        break;
+            //    case 4:
+            //        enterPuzzle.HintPuzzle1();
+            //        break;
+            //    case 5:
+            //        enterPuzzle.HintPuzzle2();
+            //        break;
+            //    case 6:
+            //        enterPuzzle.HintPuzzle3();
+            //        break;
+            //    case 7:
+            //        enterPuzzle.HintPuzzle4();
+            //        break;
+            //    case 8:
+            //        enterPuzzle.LastPuzzle();
+            //        break;
+            //    case 9:
+            //        enterPuzzle.SamplePuzzle();
+            //        break;
+            //}
         }
         //else if (hit.CompareTag(interactiveList[3]) && EnemyLevel.enemylv.LvStep != EnemyLevel.ELevel.level3)
         //{
