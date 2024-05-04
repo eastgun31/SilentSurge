@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public float correctFrequance;
     public string paswawrd;
     public bool spacebar = false;
+    public bool rescueHostage = false;
 
     [SerializeField]
     private int enemyQuater;

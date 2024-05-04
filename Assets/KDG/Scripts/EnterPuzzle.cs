@@ -39,13 +39,25 @@ public class EnterPuzzle : MonoBehaviour
             _ => 0
         };
     }
+
+    public int PuzzleActive2()
+    {
+        return gm.puzzleLevel switch
+        {
+            1 when level == 1 => uiManager.ActiveHackingFst(),
+            2 when level == 2 => uiManager.ActiveKeypad(),
+            3 when level == 3 => uiManager.ActivePipeSec(),
+            _ => 0
+        };
+    }
+
     //public int PuzzleActive2()
     //{
     //    //gm.nowpuzzle = true;
-        
+
     //    //return gm.puzzleLevel switch
     //    //{
- 
+
     //    //};
     //}
 

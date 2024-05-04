@@ -12,6 +12,7 @@ public class SaveData
     public Player player;
     public bool[] playeritemget = new bool[5];
     public Vector3 playerposition;
+    public Vector3 hostageposition;
     public Vector3 playerrotation;
 
     public bool[] gmitemcheck = new bool[5];
@@ -41,6 +42,7 @@ public class DataManager : MonoBehaviour
     public GameObject gameOver;
 
     private Player player;
+    private Hostage hostage;
     //public bool[] playeritemget;
     //public Vector3 playerposition;
 
@@ -83,6 +85,11 @@ public class DataManager : MonoBehaviour
         player = FindObjectOfType<Player>();
         saveData.playerposition = player.transform.position;
         saveData.playerrotation = player.transform.rotation.eulerAngles;
+        if(GameManager.instance.rescueHostage)
+        {
+            hostage = FindObjectOfType<Hostage>();
+            saveData.hostageposition = hostage.transform.position;
+        }
         for (int i = 0; i < player.itemGet.Length; i++)
         {
             saveData.playeritemget[i] = player.itemGet[i];
@@ -152,6 +159,11 @@ public class DataManager : MonoBehaviour
             playerobj.SetActive(false);
             player.transform.position = saveData.playerposition;
             player.transform.eulerAngles = saveData.playerrotation;
+            if (GameManager.instance.rescueHostage)
+            {
+                hostage = FindObjectOfType<Hostage>();
+                hostage.transform.position = saveData.hostageposition;
+            }
 
             for (int i = 0; i < saveData.playeritemget.Length; i++)
             {

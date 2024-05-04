@@ -73,6 +73,10 @@ public class PlayerInteractive : MonoBehaviour
             {
                 enterPuzzle.PuzzleActive1();
             }
+            else if(gm.scenenum == 3 || gm.scenenum == 4)
+            {
+                enterPuzzle.PuzzleActive2();
+            }
 
             //switch (enterPuzzle.level)
             //{
