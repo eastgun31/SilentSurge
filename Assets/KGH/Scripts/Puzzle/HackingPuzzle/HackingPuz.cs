@@ -125,12 +125,13 @@ public class HackingPuz : MonoBehaviour
         gm.nowpuzzle = false;
         um.isWin = true;
         gm.puzzleLevel += 1;
+        SubtitleCheck();
         DataManager.instance.SaveData();
     }
     public void CloseHackingPuz()
     {
         um.isWin = false;
-        SubtitleCheck();
+        
         hacking.SetActive(false);
     }
 
