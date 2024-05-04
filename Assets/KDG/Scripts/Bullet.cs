@@ -20,7 +20,6 @@ public class Bullet : MonoBehaviour
             GameManager.instance.eonecollison = false;
             GameObject explosionprefab =  Instantiate(explosion, gameObject.transform);
             Destroy(explosionprefab,0.5f);
-            GameManager.instance.eonecollison = true;
             Destroy(gameObject,1f);
         }
         if(type == 3 && (other.CompareTag("Wall") || other.CompareTag("Player")))

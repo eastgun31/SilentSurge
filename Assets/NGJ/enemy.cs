@@ -214,7 +214,7 @@ public class Enemy : MonoBehaviour
         if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 3f && !GameManager.instance.isDie &&state != EnemyState.die && state != EnemyState.sturn)
         {
             enemyAnim.SetBool(GunRuning, false);
-
+            GameManager.instance.eonecollison = true;
             if (enemyType == 1 || enemyType == 2)
                 StartCoroutine(Shoot()); // 총을 발사합니다.
             else if (enemyType == 3)
