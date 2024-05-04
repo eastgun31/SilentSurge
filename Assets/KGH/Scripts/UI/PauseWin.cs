@@ -23,7 +23,6 @@ public class PauseWin : MonoBehaviour
         pauseWin.SetActive(false);
         Time.timeScale = 1;
         DataManager.instance.LoadData();
-        
     }
     public void Restart()
     {   

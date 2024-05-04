@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -15,6 +16,8 @@ public class HackingPuz : MonoBehaviour
 
     private string[] passwords;  // 입력 코드
     public Text[] ansCode;       // 정답 코드
+
+    public UnityEvent doorOpen;
 
     GameManager gm;
     UiManager um;
@@ -135,6 +138,10 @@ public class HackingPuz : MonoBehaviour
     {   
         gm.nowpuzzle = false;
         um.isWin = true;
+        if (gm.puzzleLevel == 1)
+        {
+            doorOpen.Invoke();
+        }
         gm.puzzleLevel += 1;
         SubtitleCheck();
         DataManager.instance.SaveData();
@@ -155,6 +162,9 @@ public class HackingPuz : MonoBehaviour
                 break;
             case 2:
                 GuideLineTxt.instance.SetDifferentTxt(8);
+                break;
+            case 3:
+                doorOpen.Invoke();
                 break;
         }
     }
