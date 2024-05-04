@@ -19,6 +19,9 @@ public class UseItem : MonoBehaviour
     public List<Material> mat2 = new List<Material>();
 
     [SerializeField]
+    private GameObject map;
+    private bool mapcheck = false;
+    [SerializeField]
     private float throwpower = 3f;
     [SerializeField]
     private float throwpower2 = 4f;
@@ -94,6 +97,21 @@ public class UseItem : MonoBehaviour
 
             angle.y = 3.7f;
         }
+    }
+
+    public void OnOffMap()
+    {
+        if(!mapcheck)
+        {
+            map.SetActive(true);
+            mapcheck = true;
+        }
+        else if(!mapcheck)
+        {
+            map.SetActive(false);
+            mapcheck = false;
+        }
+        
     }
 
     public IEnumerator ThrowCoin()

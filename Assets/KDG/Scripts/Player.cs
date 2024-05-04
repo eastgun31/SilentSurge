@@ -249,12 +249,6 @@ public class Player : MonoBehaviour
                 }
                     
             }
-            //else if(Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), transform.forward, out hit, 1f, LayerMask.GetMask(enemy)))
-            //{
-            //    Debug.Log("암살불능");
-            //    canAmsal = false;
-            //}
-
         }
         else
         {
@@ -266,6 +260,12 @@ public class Player : MonoBehaviour
             else
                 return;
         }
+
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            useItem.OnOffMap();
+        }
+
 
         if (!die && Input.GetKey(KeyCode.G))
         {
