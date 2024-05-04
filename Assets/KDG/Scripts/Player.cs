@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
     public bool canAmsal = false; //암살가능 체크변수
     PlayerInteractive playerInteractive;
     public Sight sight;
+    Enemy enemyState;
     public float maxdist;
 
     void Start()
@@ -236,7 +237,8 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), transform.forward, out hit, 1f, LayerMask.GetMask(enemy)))
         {
             sight = hit.transform.gameObject.GetComponent<Sight>();
-            if (!sight.findT)
+            enemyState = hit.transform.transform.gameObject.GetComponent<Enemy>();
+            if (!sight.findT && enemyState.state != Enemy.EnemyState.die)
             {
                 canAmsal = true;
                 Debug.Log("암살가능");
