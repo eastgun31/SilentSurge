@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LoadingBar : MonoBehaviour
@@ -24,12 +25,7 @@ public class LoadingBar : MonoBehaviour
     void Update()
     {
         currentValue = slider.value;
-        if (currentValue <= slider.maxValue * 0.3f)
-            time = 15f;
-        else if (currentValue <= slider.maxValue * 0.5f)
-            time = 4f;
-        else if (currentValue >= slider.maxValue * 0.9f)
-            time = 15f;
+        LoadingTime();
 
         if (currentValue < target)
         {
@@ -45,5 +41,27 @@ public class LoadingBar : MonoBehaviour
 
         int percent = Mathf.RoundToInt((currentValue / target) * 100f);
         loadText.text = $"{percent}%";
+    }
+
+    void LoadingTime()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            if (currentValue <= slider.maxValue * 0.3f)
+                time = 15f;
+            else if (currentValue <= slider.maxValue * 0.5f)
+                time = 4f;
+            else if (currentValue >= slider.maxValue * 0.9f)
+                time = 15f;
+        }
+        if(SceneManager.GetActiveScene().buildIndex ==2)
+        {
+            if (currentValue <= slider.maxValue * 0.3f)
+                time = 2f;
+            else if (currentValue <= slider.maxValue * 0.5f)
+                time = 10f;
+            else if (currentValue >= slider.maxValue * 0.9f)
+                time = 25f;
+        }
     }
 }

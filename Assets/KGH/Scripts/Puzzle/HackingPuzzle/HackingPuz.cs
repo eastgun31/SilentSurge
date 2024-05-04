@@ -16,6 +16,8 @@ public class HackingPuz : MonoBehaviour
     private string[] passwords;  // 입력 코드
     public Text[] ansCode;       // 정답 코드
 
+    GameManager gm;
+    UiManager um;
 
     private void OnDisable()
     {
@@ -27,9 +29,12 @@ public class HackingPuz : MonoBehaviour
 
     void Start()
     {
+        gm = GameManager.instance;
+        um = UiManager.instance;
+
         // 패스워드 설정
         passwords = new string[inputTexts.Length];
-        if(GameManager.instance.scenenum ==1 )
+        if(gm.scenenum ==1 )
         {
             ansCode[0].text = "5V";
             ansCode[1].text = "RB";
@@ -40,7 +45,7 @@ public class HackingPuz : MonoBehaviour
             passwords[2] = "Z5";
             passwords[3] = "4K";
         }
-        if(GameManager.instance.scenenum ==2 )
+        if(gm.scenenum ==2 )
         {
             ansCode[0].text = "9H";
             ansCode[1].text = "S1";
@@ -63,18 +68,18 @@ public class HackingPuz : MonoBehaviour
 
     public void TimeRemainig() // 퍼즐 제한시간
     {
-        if (!UiManager.instance.isWin)
+        if (!um.isWin)
         {
-            if ((int)UiManager.instance.timeRemainig == 0)
+            if ((int)um.timeRemainig == 0)
             {
-                UiManager.instance.isGameOver = true;
-                UiManager.instance.gameover.SetActive(true);
+                um.isGameOver = true;
+                um.gameover.SetActive(true);
                 CloseHackingPuz();
             }
             else
             {
-                UiManager.instance.timeRemainig -= Time.deltaTime;
-                success.text = "Time:  " + (int)UiManager.instance.timeRemainig;
+                um.timeRemainig -= Time.deltaTime;
+                success.text = "Time:  " + (int)um.timeRemainig;
             }
         }
         else
@@ -117,14 +122,14 @@ public class HackingPuz : MonoBehaviour
 
     public void PuzlvUp()
     {   
-        GameManager.instance.nowpuzzle = false;
-        UiManager.instance.isWin = true;
-        GameManager.instance.puzzleLevel += 1;
+        gm.nowpuzzle = false;
+        um.isWin = true;
+        gm.puzzleLevel += 1;
         DataManager.instance.SaveData();
     }
     public void CloseHackingPuz()
     {
-        UiManager.instance.isWin = false;
+        um.isWin = false;
         SubtitleCheck();
         hacking.SetActive(false);
     }
