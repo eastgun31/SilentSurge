@@ -49,8 +49,8 @@ public class PlayerView : MonoBehaviour
 
     void Start()
     {
-        viewAngle = GameManager.instance.playerviewA;
-        viewRadius = GameManager.instance.playerviewR;
+        //viewAngle = GameManager.instance.playerviewA;
+        //viewRadius = GameManager.instance.playerviewR;
         viewRadius2 = 1f;
         viewAngle2 = 360f;
         maskCutawayDst = 0.2f;

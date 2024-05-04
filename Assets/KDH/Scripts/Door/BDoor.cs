@@ -15,4 +15,10 @@ public class BDoor : MonoBehaviour
         L_Bdoor.GetComponent<DOTweenAnimation>().DOPlay();
         R_Bdoor.GetComponent<DOTweenAnimation>().DOPlay();
     }
+
+    public void BDoorClose()
+    {
+        L_Bdoor.GetComponent<DOTweenAnimation>().DOPlayBackwards();
+        R_Bdoor.GetComponent<DOTweenAnimation>().DOPlayBackwards();
+    }
 }
