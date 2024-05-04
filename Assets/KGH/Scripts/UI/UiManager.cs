@@ -96,6 +96,7 @@ public class UiManager : MonoBehaviour
 
     public int ActivePipeFst()
     {
+        GameManager.instance.nowpuzzle = true;
         TimeLimit();
         pipePuzFst.SetActive(true);
 
@@ -103,66 +104,77 @@ public class UiManager : MonoBehaviour
     }
     public int ActivePipeSec()
     {
+        GameManager.instance.nowpuzzle = true;
         TimeLimit();
         pipePuzSec.SetActive(true);
         return 0;
     }
     public int ActivePipeKeypadNumTwo()
     {
+        GameManager.instance.nowpuzzle = true;
         TimeLimit();
         pipeKeypadNum[0].SetActive(true);
         return 0;
     }
     public int ActivePipeKeypadNumThree()
     {
+        GameManager.instance.nowpuzzle = true;
         TimeLimit();
         pipeKeypadNum[1].SetActive(true);
         return 0;
     }
     public int ActivePipeKeypadNumFour()
     {
+        GameManager.instance.nowpuzzle = true;
         TimeLimit();
         pipeKeypadNum[2].SetActive(true);
         return 0;
     }
     public int ActivePipeKeypadNumFive()
     {
+        GameManager.instance.nowpuzzle = true;
         TimeLimit();
         pipeKeypadNum[3].SetActive(true);
         return 0;
     }
     public int ActivePipeKeypadNumSix()
     {
+        GameManager.instance.nowpuzzle = true;
         TimeLimit();
         pipeKeypadNum[4].SetActive(true);
         return 0;
     }
     public int ActivePipeKeypadNumEight()
     {
+        GameManager.instance.nowpuzzle = true;
         TimeLimit();
         pipeKeypadNum[6].SetActive(true);
         return 0;
     }
     public int ActivePipeKeypadNumNine()
     {
+        GameManager.instance.nowpuzzle = true;
         TimeLimit();
         pipeKeypadNum[7].SetActive(true);
         return 0;
     }
     public int ActivePipeKeypadNumZero()
     {
+        GameManager.instance.nowpuzzle = true;
         TimeLimit();
         pipeKeypadNum[8].SetActive(true);
         return 0;
     }
     public int ActiveKeypad()
     {
+        GameManager.instance.nowpuzzle = true;
         TimeLimit();
         keypadFst.SetActive(true);
         return 0;
     }
     public int ActiveSinFst()
     {
+        GameManager.instance.nowpuzzle = true;
         TimeLimit();
         sinPuzzleFst.SetActive(true);
         quickSlot.SetActive(false);
@@ -170,6 +182,7 @@ public class UiManager : MonoBehaviour
     }
     public int ActiveHackingFst()
     {
+        GameManager.instance.nowpuzzle = true;
         TimeLimit();
         hackingpuzFst.SetActive(true);
         return 0;

@@ -22,22 +22,21 @@ public class EnterPuzzle : MonoBehaviour
 
     public int PuzzleActive1()
     {
-        gm.nowpuzzle = true;
-
         return gm.puzzleLevel switch
         {
-            1 => uiManager.ActivePipeFst(),
-            2 => uiManager.ActiveSinFst(),
-            3 => uiManager.ActiveHackingFst(),
-            4 when gm.scenenum == 1 => uiManager.ActivePipeKeypadNumEight(),
-            4 when gm.scenenum == 2 => uiManager.ActivePipeKeypadNumNine(),
-            5 when gm.scenenum == 1 => uiManager.ActivePipeKeypadNumThree(),
-            5 when gm.scenenum == 2 => uiManager.ActivePipeKeypadNumSix(),
-            6 when gm.scenenum == 1 => uiManager.ActivePipeKeypadNumTwo(),
-            6 when gm.scenenum == 2 => uiManager.ActivePipeKeypadNumThree(),
-            7 when gm.scenenum == 1 => uiManager.ActivePipeKeypadNumFour(),
-            7 when gm.scenenum == 2 => uiManager.ActivePipeKeypadNumFive(),
-            8 => uiManager.ActiveKeypad()
+            1 when level == 1 => uiManager.ActivePipeFst(), 
+            2 when level == 2 => uiManager.ActiveSinFst(),
+            3 when level == 3 => uiManager.ActiveHackingFst(),
+            4 when level == 4 && gm.scenenum == 1 => uiManager.ActivePipeKeypadNumEight(),
+            4 when level == 4 && gm.scenenum == 2 => uiManager.ActivePipeKeypadNumNine(),
+            5 when level == 5 && gm.scenenum == 1 => uiManager.ActivePipeKeypadNumThree(),
+            5 when level == 5 && gm.scenenum == 2 => uiManager.ActivePipeKeypadNumSix(),
+            6 when level == 6 && gm.scenenum == 1 => uiManager.ActivePipeKeypadNumTwo(),
+            6 when level == 6 && gm.scenenum == 2 => uiManager.ActivePipeKeypadNumThree(),
+            7 when level == 7 && gm.scenenum == 1 => uiManager.ActivePipeKeypadNumFour(),
+            7 when level == 7 && gm.scenenum == 2 => uiManager.ActivePipeKeypadNumFive(),
+            8 when level == 8 => uiManager.ActiveKeypad(),
+            _ => 0
         };
     }
     //public int PuzzleActive2()

@@ -224,7 +224,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.DrawRay(transform.position, transform.forward * maxdist, Color.blue, 2f);
-            mask = LayerMask.GetMask(puzzle);
+            mask = LayerMask.GetMask(puzzle) | LayerMask.GetMask(door);
             if (Physics.Raycast(transform.position, transform.forward, out hit, maxdist, mask))
             {
                 Debug.Log(mask);
@@ -249,12 +249,6 @@ public class Player : MonoBehaviour
                 }
                     
             }
-            //else if(Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), transform.forward, out hit, 1f, LayerMask.GetMask(enemy)))
-            //{
-            //    Debug.Log("암살불능");
-            //    canAmsal = false;
-            //}
-
         }
         else
         {
@@ -266,6 +260,12 @@ public class Player : MonoBehaviour
             else
                 return;
         }
+
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            useItem.OnOffMap();
+        }
+
 
         if (!die && Input.GetKey(KeyCode.G))
         {
