@@ -12,12 +12,14 @@ public class GameClear : MonoBehaviour
     public int value;
     public UnityEvent lastAction;
     public UnityEvent Ending;
+    bool activewan;
 
     public List<GameObject> enemys;
     CoolTime cool;
 
     private void Start()
     {
+        activewan = true;
         cool = new CoolTime();
         if(value == 2)
         {
@@ -39,7 +41,7 @@ public class GameClear : MonoBehaviour
 
             }
 
-            if(enemys.FirstOrDefault() == null)
+            if(enemys.FirstOrDefault() == null && activewan)
                 goal.SetActive(true);
 
             yield return cool.cool1sec;
@@ -54,6 +56,7 @@ public class GameClear : MonoBehaviour
         }
         else if(other.CompareTag("Player") && value == 2 && goal.activeSelf)
         {
+            activewan = false;
             goal.SetActive(false);
             lastAction.Invoke();
         }
