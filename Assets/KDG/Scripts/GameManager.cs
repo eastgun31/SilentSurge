@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         else
             instance = this;
 
-        //SecenCheck();
+        SecenCheck();
         lv3PlayerPos = new Vector3(0,0,0);
         itemcheck = new bool[5] { false, false, false, false, false };
         itemcount = new int[5] { 0, 0, 0, 0, 0 };   //±ÇÃÑ, ÄÚÀÎ, ¼¶±¤Åº, ½É¹ÚÃøÁ¤±â, ¹æÅºº¹
@@ -56,7 +56,6 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        SecenCheck();
         EnemyActive1();
         ItemActive();
     }
@@ -143,17 +142,17 @@ public class GameManager : MonoBehaviour
         {
             case 1:
                 Debug.Log("¾À1");
-                SceneVariableReset(1, EnemyLevel.enemylv.Enemies.Length, 1, 4, 7, 360,Items.Length);
+                SceneVariableReset(1,8, 7, 1, 4, 7, 360);
                 PuzzleDifficulty(70f, 0.009f, 100f, 0.004f, "8324");
                 break;
             case 2:
                 Debug.Log("¾À2");
-                SceneVariableReset(2, EnemyLevel.enemylv.Enemies.Length, 2, 6, 7, 130, Items.Length);
+                SceneVariableReset(2, 12,11, 2, 6, 7, 130);
                 PuzzleDifficulty(90f, 0.007f, 30f, 0.005f, "9635");
                 break;
             case 3:
                 Debug.Log("¾À3");
-                SceneVariableReset(3, EnemyLevel.enemylv.Enemies.Length, 1, 7, 7, 130, Items.Length);
+                SceneVariableReset(3,16,13,1, 7, 7, 130);
                 break;
             case 4:
                 scenenum = 4;
@@ -169,11 +168,11 @@ public class GameManager : MonoBehaviour
     {
         scenenum = a;
         existEnemy = new bool[b];
-        puzzleLevel = c;
-        enemyQuater = d;
-        playerviewR = e;
-        playerviewA = f;
-        existItem = new bool[g];
+        existItem = new bool[c];
+        puzzleLevel = d;
+        enemyQuater = e;
+        playerviewR = f;
+        playerviewA =g;
     }
 
     void PuzzleDifficulty(float a, float b, float c, float d, string e)
