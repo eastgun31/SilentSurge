@@ -143,34 +143,6 @@ public class SinPuzzle : MonoBehaviour
             
         }
     }
-
-    private void DifficultySin()
-    {
-        if (GameManager.instance.scenenum == 1)
-        {
-            amplitude = 70f;   
-            frequency = 0.009f;
-        }
-        if (GameManager.instance.scenenum == 2)
-        {
-            amplitude = 70f;   
-            frequency = 0.009f;
-        }
-    }
-
-    void Difficulty()
-    {
-        if(GameManager.instance.scenenum == 1)
-        {
-            correctAmlitude = 100;
-            correctFrequance = 0.004f;
-        }
-        if (GameManager.instance.scenenum == 2)
-        {
-            correctAmlitude = 90;
-            correctFrequance = 0.005f;
-        }
-    }
     private void CloseSin()
     {
         UiManager.instance.isWin = false;
