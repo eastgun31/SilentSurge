@@ -11,8 +11,7 @@ public class PlayerInteractive : MonoBehaviour
     Player player;
     EnterPuzzle enterPuzzle;
     PlayerView playerView;
-    Door_Parent doort;
-    DoorHandle_1 handle;
+    Door doort;
     GameManager gm;
 
     string[] interactiveList = { "Door", "Bent", "Puzzle", "Cabinet" };
@@ -35,53 +34,18 @@ public class PlayerInteractive : MonoBehaviour
     public void InteractiveObj(RaycastHit phit)
     {
         var hit = phit.transform.gameObject;
-        //if (hit.CompareTag(interactiveList[0]))
-        //{
-        //    doort = hit.GetComponentInParent<Door_Parent>();
-        //    handle = hit.GetComponent<DoorHandle_1>();
-        //    if (doort.nDoor == 0 && gm.puzzleLevel >= 2)
-        //    {
-        //        if (handle.Doorindex == 1)
-        //        {
-        //            doort.PlayerPos_1 = true;
-        //            doort.PlayerPos_0 = false;
-        //        }
-        //        else if (handle.Doorindex == 0)
-        //        {
-        //            doort.PlayerPos_1 = false;
-        //            doort.PlayerPos_0 = true;
-        //        }
-        //        doort.oDoor();
-        //    }
-        //    else if (doort.nDoor == 1 && gm.puzzleLevel >= 3)
-        //    {
-        //        if (handle.Doorindex == 1)
-        //        {
-        //            doort.PlayerPos_1 = true;
-        //            doort.PlayerPos_0 = false;
-        //        }
-        //        else if (handle.Doorindex == 0)
-        //        {
-        //            doort.PlayerPos_1 = false;
-        //            doort.PlayerPos_0 = true;
-        //        }
-        //        doort.oDoor();
-        //    }
-        //    else if (doort.nDoor == 2 && gm.puzzleLevel >= 4)
-        //    {
-        //        if (handle.Doorindex == 1)
-        //        {
-        //            doort.PlayerPos_1 = true;
-        //            doort.PlayerPos_0 = false;
-        //        }
-        //        else if (handle.Doorindex == 0)
-        //        {
-        //            doort.PlayerPos_1 = false;
-        //            doort.PlayerPos_0 = true;
-        //        }
-        //        doort.oDoor();
-        //    }
-        //}
+        if (hit.CompareTag(interactiveList[0]))
+        {
+            doort = hit.GetComponentInParent<Door>();
+
+            if (doort.nDoor == 0 && gm.puzzleLevel >= 2 || doort.nDoor == 1 && gm.puzzleLevel >= 3 || doort.nDoor == 2 && gm.puzzleLevel >= 4)
+                doort.OpenDoor();
+
+            if (doort.nDoor == 0 && gm.puzzleLevel == 1 || doort.nDoor == 1 && gm.puzzleLevel < 3 || doort.nDoor == 2 && gm.puzzleLevel < 4)
+            {
+                GuideLineTxt.instance.SetDifferentTxt2(0);
+            }
+        }
         //else if (other.CompareTag(interactiveList[1]))
         //{
         //    vent = other.GetComponentInParent<Vent>();
@@ -171,57 +135,57 @@ public class PlayerInteractive : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (other.CompareTag(interactiveList[0]))
-            {
-                doort = other.GetComponentInParent<Door_Parent>();
-                handle = other.GetComponent<DoorHandle_1>();
-                if (doort.nDoor == 0 && gm.puzzleLevel >= 2)
-                {
-                    if (handle.Doorindex == 1)
-                    {
-                        doort.PlayerPos_1 = true;
-                        doort.PlayerPos_0 = false;
-                    }
-                    else if (handle.Doorindex == 0)
-                    {
-                        doort.PlayerPos_1 = false;
-                        doort.PlayerPos_0 = true;
-                    }
-                    doort.oDoor();
-                }
-                else if (doort.nDoor == 1 && gm.puzzleLevel >= 3)
-                {
-                    if (handle.Doorindex == 1)
-                    {
-                        doort.PlayerPos_1 = true;
-                        doort.PlayerPos_0 = false;
-                    }
-                    else if (handle.Doorindex == 0)
-                    {
-                        doort.PlayerPos_1 = false;
-                        doort.PlayerPos_0 = true;
-                    }
-                    doort.oDoor();
-                }
-                else if (doort.nDoor == 2 && gm.puzzleLevel >= 4)
-                {
-                    if (handle.Doorindex == 1)
-                    {
-                        doort.PlayerPos_1 = true;
-                        doort.PlayerPos_0 = false;
-                    }
-                    else if (handle.Doorindex == 0)
-                    {
-                        doort.PlayerPos_1 = false;
-                        doort.PlayerPos_0 = true;
-                    }
-                    doort.oDoor();
-                }
-                else if(doort.nDoor == 0 && gm.puzzleLevel == 1 || doort.nDoor == 1 && gm.puzzleLevel < 3 || doort.nDoor == 2 && gm.puzzleLevel < 4)
-                {
-                    GuideLineTxt.instance.SetDifferentTxt2(0);
-                }
-            }
+            //if (other.CompareTag(interactiveList[0]))
+            //{
+            //    doort = other.GetComponentInParent<Door_Parent>();
+            //    handle = other.GetComponent<DoorHandle_1>();
+            //    if (doort.nDoor == 0 && gm.puzzleLevel >= 2)
+            //    {
+            //        if (handle.Doorindex == 1)
+            //        {
+            //            doort.PlayerPos_1 = true;
+            //            doort.PlayerPos_0 = false;
+            //        }
+            //        else if (handle.Doorindex == 0)
+            //        {
+            //            doort.PlayerPos_1 = false;
+            //            doort.PlayerPos_0 = true;
+            //        }
+            //        doort.oDoor();
+            //    }
+            //    else if (doort.nDoor == 1 && gm.puzzleLevel >= 3)
+            //    {
+            //        if (handle.Doorindex == 1)
+            //        {
+            //            doort.PlayerPos_1 = true;
+            //            doort.PlayerPos_0 = false;
+            //        }
+            //        else if (handle.Doorindex == 0)
+            //        {
+            //            doort.PlayerPos_1 = false;
+            //            doort.PlayerPos_0 = true;
+            //        }
+            //        doort.oDoor();
+            //    }
+            //    else if (doort.nDoor == 2 && gm.puzzleLevel >= 4)
+            //    {
+            //        if (handle.Doorindex == 1)
+            //        {
+            //            doort.PlayerPos_1 = true;
+            //            doort.PlayerPos_0 = false;
+            //        }
+            //        else if (handle.Doorindex == 0)
+            //        {
+            //            doort.PlayerPos_1 = false;
+            //            doort.PlayerPos_0 = true;
+            //        }
+            //        doort.oDoor();
+            //    }
+            //    else if(doort.nDoor == 0 && gm.puzzleLevel == 1 || doort.nDoor == 1 && gm.puzzleLevel < 3 || doort.nDoor == 2 && gm.puzzleLevel < 4)
+            //    {
+            //        GuideLineTxt.instance.SetDifferentTxt2(0);
+            //    }
+            //}
             if (other.CompareTag(interactiveList[1]))
             {
                 vent = other.GetComponentInParent<Vent>();
