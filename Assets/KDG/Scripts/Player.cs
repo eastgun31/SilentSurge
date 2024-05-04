@@ -224,7 +224,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.DrawRay(transform.position, transform.forward * maxdist, Color.blue, 2f);
-            mask = LayerMask.GetMask(puzzle);
+            mask = LayerMask.GetMask(puzzle) | LayerMask.GetMask(door);
             if (Physics.Raycast(transform.position, transform.forward, out hit, maxdist, mask))
             {
                 Debug.Log(mask);
