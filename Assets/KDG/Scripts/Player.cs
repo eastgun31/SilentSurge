@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
     string puzzle = "Puzzle";
     string door = "Doorhandle";
     string enemy = "Enemy";
-    bool canAmsal = false;
+    public bool canAmsal = false; //암살가능 체크변수
     PlayerInteractive playerInteractive;
     Sight sight;
     public float maxdist;
