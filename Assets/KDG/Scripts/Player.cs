@@ -412,6 +412,7 @@ public class Player : MonoBehaviour
     IEnumerator PlayerDie()
     {
         gmManager.isDie = true;
+        RunOff();
         playerAnim.SetTrigger("Die");
         yield return new WaitForSeconds(3f);
         Debug.Log("플레이어 죽음");
