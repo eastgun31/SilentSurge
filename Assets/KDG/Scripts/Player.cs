@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
     string puzzle = "Puzzle";
     string door = "Doorhandle";
     string enemy = "Enemy";
-    bool canAmsal = false;
+    public bool canAmsal = false; //암살가능 체크변수
     PlayerInteractive playerInteractive;
     Sight sight;
     public float maxdist;
@@ -233,16 +233,18 @@ public class Player : MonoBehaviour
 
         }
 
-        if (Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), transform.forward, out hit, 2f, LayerMask.GetMask(enemy)))
+        if (Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), transform.forward, out hit, 1f, LayerMask.GetMask(enemy)))
         {
             sight = hit.transform.gameObject.GetComponent<Sight>();
             if (!sight.findT)
             {
                 canAmsal = true;
                 Debug.Log("암살가능");
-                if (canAmsal && Input.GetMouseButtonDown(0))
+                if (canAmsal && !handgunacivate && !coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
                     StartCoroutine(useItem.Assassination());
             }
+            else
+                canAmsal = false;
         }
 
         if (!die && Input.GetKey(KeyCode.G))

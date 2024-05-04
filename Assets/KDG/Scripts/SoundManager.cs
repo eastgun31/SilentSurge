@@ -58,7 +58,7 @@ public class SoundManager : MonoBehaviour
     {
         effectPlayer.Stop();
         audioPlayer.Stop();
-        audioPlayer.volume = 0.3f;
+        audioPlayer.volume = 0.05f;
         audioPlayer.clip = bgmClips[i];
         audioPlayer.loop = true;
         audioPlayer.Play();
@@ -84,6 +84,7 @@ public class SoundManager : MonoBehaviour
     }
     public void EnemyEffect(int i)
     {
+        enemyPlayer.volume = 0.05f;
         enemyPlayer.PlayOneShot(enemyClips[i]);
     }
     public void UiSoundPlay(int i)
