@@ -240,7 +240,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator CloseAttack()
     {
-        if (state == EnemyState.die || GameManager.instance.isDie)
+        if (state == EnemyState.die || state == EnemyState.sturn || GameManager.instance.isDie)
             StopCoroutine(CloseAttack());
 
         m_enemy.stoppingDistance = 1;
@@ -272,7 +272,7 @@ public class Enemy : MonoBehaviour
         yield return cooltime.cool1sec;
         if (!isShooting && !GameManager.instance.isDie)
         {
-            if (state == EnemyState.die || GameManager.instance.isDie)
+            if (state == EnemyState.die || state == EnemyState.sturn || GameManager.instance.isDie)
                 yield break;
 
             isShooting = true; // 발사 중 상태로 변경
@@ -326,7 +326,7 @@ public class Enemy : MonoBehaviour
         yield return cooltime.cool1sec;
         if(!isShooting && !GameManager.instance.isDie)
         {
-            if (state == EnemyState.die || GameManager.instance.isDie)
+            if (state == EnemyState.die || state == EnemyState.sturn || GameManager.instance.isDie)
                 yield break; ; 
 
             isShooting = true;
@@ -443,11 +443,13 @@ public class Enemy : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet"))
+        if (other.CompareTag("Bullet") || other.CompareTag("AmSal"))
         {
             EnenyAttackStop();
             state = EnemyState.die;
-            Destroy(other.gameObject);
+            if(other.CompareTag("Bullet"))
+                Destroy(other.gameObject);
+
             StartCoroutine(DeactivateWithDelay());
             if (indexcount != 99 || indexcount != 98)
             {
@@ -458,6 +460,7 @@ public class Enemy : MonoBehaviour
         }
         else if (other.CompareTag(Flash))
         {
+            EnenyAttackStop();
             m_enemy.isStopped = true;
             m_enemy.velocity = Vector3.zero;
             state = EnemyState.sturn;
