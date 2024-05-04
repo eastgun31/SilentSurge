@@ -58,7 +58,7 @@ public class UiManager : MonoBehaviour
     {
         if (playerInput.canAmsal == true)
             amsal.SetActive(true);
-        else
+        else if(playerInput.canAmsal == false)
             amsal.SetActive(false);
     }
     public void TimeLimit()
