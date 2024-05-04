@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
     string enemy = "Enemy";
     public bool canAmsal = false; //암살가능 체크변수
     PlayerInteractive playerInteractive;
-    Sight sight;
+    public Sight sight;
     public float maxdist;
 
     void Start()
@@ -241,10 +241,30 @@ public class Player : MonoBehaviour
                 canAmsal = true;
                 Debug.Log("암살가능");
                 if (canAmsal && !handgunacivate && !coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
+                {
                     StartCoroutine(useItem.Assassination());
+                    sight = null;
+                    Debug.Log("암살불능");
+                    canAmsal = false;
+                }
+                    
+            }
+            //else if(Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), transform.forward, out hit, 1f, LayerMask.GetMask(enemy)))
+            //{
+            //    Debug.Log("암살불능");
+            //    canAmsal = false;
+            //}
+
+        }
+        else
+        {
+            if (canAmsal)
+            {
+                Debug.Log("암살불능");
+                canAmsal = false;
             }
             else
-                canAmsal = false;
+                return;
         }
 
         if (!die && Input.GetKey(KeyCode.G))
