@@ -30,6 +30,10 @@ public class LoadScene : MonoBehaviour
     public void LoadEnding1()
     {
         SceneManager.LoadScene(4);
+    }    
+    public void LoadEnding2()
+    {
+        SceneManager.LoadScene(5);
     }
     public void QuitGame()
     {

@@ -65,6 +65,12 @@ public class PlayerView : MonoBehaviour
         viewMesh2.name = "View Mesh2";
         viewMeshFilter2.mesh = viewMesh2;
     }
+
+    void VeiwGo()
+    {
+        viewAngle = GameManager.instance.playerviewA;
+        viewRadius = GameManager.instance.playerviewR;
+    }
     void LateUpdate()
     {
         DrawFieldOfView();
