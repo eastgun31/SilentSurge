@@ -26,16 +26,29 @@ public class EnterPuzzle : MonoBehaviour
 
         return gm.puzzleLevel switch
         {
-            1 => PipePuzzle1(),
-            2 => SinPuzzle(),
-            3 => HackingPuzzle(),
-            4 => HintPuzzle1(),
-            5 => HintPuzzle2(),
-            6 => HintPuzzle3(),
-            7 => HintPuzzle4(),
-            8 => LastPuzzle()
+            1 => uiManager.ActivePipeFst(),
+            2 => uiManager.ActiveSinFst(),
+            3 => uiManager.ActiveHackingFst(),
+            4 when gm.scenenum == 1 => uiManager.ActivePipeKeypadNumEight(),
+            4 when gm.scenenum == 2 => uiManager.ActivePipeKeypadNumNine(),
+            5 when gm.scenenum == 1 => uiManager.ActivePipeKeypadNumThree(),
+            5 when gm.scenenum == 2 => uiManager.ActivePipeKeypadNumSix(),
+            6 when gm.scenenum == 1 => uiManager.ActivePipeKeypadNumTwo(),
+            6 when gm.scenenum == 2 => uiManager.ActivePipeKeypadNumThree(),
+            7 when gm.scenenum == 1 => uiManager.ActivePipeKeypadNumFour(),
+            7 when gm.scenenum == 2 => uiManager.ActivePipeKeypadNumFive(),
+            8 => uiManager.ActiveKeypad()
         };
     }
+    //public int PuzzleActive2()
+    //{
+    //    //gm.nowpuzzle = true;
+        
+    //    //return gm.puzzleLevel switch
+    //    //{
+ 
+    //    //};
+    //}
 
     public int PipePuzzle1()
     {
