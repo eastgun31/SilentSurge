@@ -240,9 +240,11 @@ public class Player : MonoBehaviour
             {
                 canAmsal = true;
                 Debug.Log("암살가능");
-                if (canAmsal && Input.GetMouseButtonDown(0))
+                if (canAmsal && !handgunacivate && !coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
                     StartCoroutine(useItem.Assassination());
             }
+            else
+                canAmsal = false;
         }
 
         if (!die && Input.GetKey(KeyCode.G))
