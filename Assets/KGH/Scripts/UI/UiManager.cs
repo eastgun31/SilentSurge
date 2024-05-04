@@ -77,71 +77,85 @@ public class UiManager : MonoBehaviour
         }
     }
 
-    public void ActivePipeFst()
+    public int ActivePipeFst()
     {
         TimeLimit();
         pipePuzFst.SetActive(true);
+
+        return 0;
     }
-    public void ActivePipeSec()
+    public int ActivePipeSec()
     {
         TimeLimit();
         pipePuzSec.SetActive(true);
+        return 0;
     }
-    public void ActivePipeKeypadNumTwo()
+    public int ActivePipeKeypadNumTwo()
     {
         TimeLimit();
         pipeKeypadNum[0].SetActive(true);
+        return 0;
     }
-    public void ActivePipeKeypadNumThree()
+    public int ActivePipeKeypadNumThree()
     {
         TimeLimit();
         pipeKeypadNum[1].SetActive(true);
+        return 0;
     }
-    public void ActivePipeKeypadNumFour()
+    public int ActivePipeKeypadNumFour()
     {
         TimeLimit();
         pipeKeypadNum[2].SetActive(true);
+        return 0;
     }
-    public void ActivePipeKeypadNumFive()
+    public int ActivePipeKeypadNumFive()
     {
         TimeLimit();
         pipeKeypadNum[3].SetActive(true);
+        return 0;
     }
-    public void ActivePipeKeypadNumSix()
+    public int ActivePipeKeypadNumSix()
     {
         TimeLimit();
         pipeKeypadNum[4].SetActive(true);
+        return 0;
     }
-    public void ActivePipeKeypadNumEight()
+    public int ActivePipeKeypadNumEight()
     {
         TimeLimit();
         pipeKeypadNum[6].SetActive(true);
+        return 0;
     }
-    public void ActivePipeKeypadNumNine()
+    public int ActivePipeKeypadNumNine()
     {
         TimeLimit();
         pipeKeypadNum[7].SetActive(true);
+        return 0;
     }
-    public void ActivePipeKeypadNumZero()
+    public int ActivePipeKeypadNumZero()
     {
         TimeLimit();
         pipeKeypadNum[8].SetActive(true);
+        return 0;
     }
-    public void ActiveKeypad()
+    public int ActiveKeypad()
     {
         TimeLimit();
         keypadFst.SetActive(true);
+        return 0;
     }
-    public void ActiveSinFst()
+    public int ActiveSinFst()
     {
         TimeLimit();
         sinPuzzleFst.SetActive(true);
         quickSlot.SetActive(false);
+        return 0;
     }
-    public void ActiveHackingFst()
+    public int ActiveHackingFst()
     {
         TimeLimit();
         hackingpuzFst.SetActive(true);
+        return 0;
     }
 
     public void CloseSinFst()

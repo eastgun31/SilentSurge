@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
             case 2:
                 Debug.Log("¾À2");
                 SceneVariableReset(2, EnemyLevel.enemylv.Enemies.Length, 2, 6, 7, 130, 11);
-                PuzzleDifficulty(70f, 0.005f, 30f, 0.005f, "8324");
+                PuzzleDifficulty(90f, 0.007f, 30f, 0.005f, "9635");
                 break;
             case 3:
                 scenenum = 3;
