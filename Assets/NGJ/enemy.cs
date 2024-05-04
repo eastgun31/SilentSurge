@@ -214,7 +214,7 @@ public class Enemy : MonoBehaviour
         if (Vector3.Distance(transform.position, sight.detectTarget.position) <= 3f && !GameManager.instance.isDie &&state != EnemyState.die && state != EnemyState.sturn)
         {
             enemyAnim.SetBool(GunRuning, false);
-
+            GameManager.instance.eonecollison = true;
             if (enemyType == 1 || enemyType == 2)
                 StartCoroutine(Shoot()); // 총을 발사합니다.
             else if (enemyType == 3)
@@ -357,7 +357,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator EnemyStateCheck()
     {
-        if (sight.findT && state != EnemyState.die && state != EnemyState.die)
+        if (sight.findT && state != EnemyState.die && state != EnemyState.sturn)
         {
             //enemyAnim.SetBool(GunRuning, true);
             //enemyAnim.SetBool(Walk, false);
@@ -365,14 +365,14 @@ public class Enemy : MonoBehaviour
             state = EnemyState.findtarget;
 
         }
-        else if (sight.findT && hearSound && state != EnemyState.die && state != EnemyState.die)
+        else if (sight.findT && hearSound && state != EnemyState.die && state != EnemyState.sturn)
         {
             //enemyAnim.SetBool(GunRuning, true);
             //enemyAnim.SetBool(Walk, false);
             state = EnemyState.findtarget;
 
         }
-        else if (!sight.findT && hearSound && state != EnemyState.die && state != EnemyState.die)
+        else if (!sight.findT && hearSound && state != EnemyState.die && state != EnemyState.sturn)
         {
 
             // GameManager.instance.playerchasing = false;
@@ -381,7 +381,7 @@ public class Enemy : MonoBehaviour
                 state = EnemyState.findtarget;
 
         }
-        else if (!sight.findT && !hearSound)
+        else if (!sight.findT && !hearSound  && state != EnemyState.die && state != EnemyState.sturn)
         {
 
             //GameManager.instance.playerchasing = false;

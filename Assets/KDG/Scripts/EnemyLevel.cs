@@ -74,7 +74,7 @@ public class EnemyLevel : MonoBehaviour
     {
         while (true)
         { 
-            if(gm.playerchasing > 15f && !gm.isDie)
+            if(gm.playerchasing > 20f && !gm.isDie)
             {
                 if (LvStep == ELevel.level1)
                     LvStep = ELevel.level2;
