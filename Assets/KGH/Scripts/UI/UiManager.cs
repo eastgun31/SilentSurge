@@ -79,7 +79,7 @@ public class UiManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!isPauseWin&&!isGameOver)
+            if (!isPauseWin&&!isGameOver&&GameManager.instance.nowpuzzle == false)
             {
                 Time.timeScale = 0;
                 pauseWin.gameObject.SetActive(true);

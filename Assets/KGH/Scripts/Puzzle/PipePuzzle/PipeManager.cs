@@ -58,7 +58,7 @@ public class PipeManager : MonoBehaviour
             {
                 um.isGameOver = true;
                 um.gameover.SetActive(true);
-                ClosePipe();
+                IncorrectPipe();
             }
             else
             {
@@ -79,27 +79,12 @@ public class PipeManager : MonoBehaviour
         {
             um.isWin = true;
 
-            if (gm.puzzleLevel == 1)
-            {
-                items[0].SetActive(true);
-                items[1].SetActive(true);
-                gm.ItemActive();
-                GuideLineTxt.instance.SetDifferentTxt(3);
-            }
-
-            if(gm.puzzleLevel == 7)
-            {
-                items[2].SetActive(true);
-                items[3].SetActive(true);
-                gm.ItemActive();
-                SubtitleCheck();
-            }
-
+            SceneCheck();
             gm.puzzleLevel += 1;
-            
-            Invoke("ClosePipe", 0.5f);
+
+            Invoke("ClosePipe", 1f);
             gm.nowpuzzle = false;
-            DataManager.instance.SaveData();
+           
         }
     }
 
@@ -111,7 +96,7 @@ public class PipeManager : MonoBehaviour
     public void ClosePipe()
     {
         um.isWin = false;
-        
+        DataManager.instance.SaveData();
         canvas.gameObject.SetActive(false);
         
         for (int i = 0; i < pipes.Length; i++)
@@ -119,6 +104,45 @@ public class PipeManager : MonoBehaviour
             pipes[i].transform.rotation = pipesRot[i];
         }
         correctPipes = 0;
+    }
+    void IncorrectPipe()
+    {
+        canvas.gameObject.SetActive(false);
+
+        for (int i = 0; i < pipes.Length; i++)
+        {
+            pipes[i].transform.rotation = pipesRot[i];
+        }
+        correctPipes = 0;
+    }
+
+    void SceneCheck()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            if (gm.puzzleLevel == 1)
+            {
+                items[0].SetActive(true);
+                items[1].SetActive(true);
+                gm.ItemActive();
+                GuideLineTxt.instance.SetDifferentTxt(3);
+            }
+
+            if (gm.puzzleLevel == 7)
+            {
+                items[2].SetActive(true);
+                items[3].SetActive(true);
+                gm.ItemActive();
+                SubtitleCheck();
+            }
+        }
+        else if(SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            if(gm.puzzleLevel == 3)
+            {
+                SubtitleCheck();
+            }
+        }
     }
     public void SubtitleCheck()
     {
@@ -131,6 +155,9 @@ public class PipeManager : MonoBehaviour
             case 2:
                 Debug.Log("¾À1");
                 GuideLineTxt.instance.SetDifferentTxt(12);
+                break;
+            case 3:
+
                 break;
         }
     }
