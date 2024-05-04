@@ -11,6 +11,8 @@ public class UseItem : MonoBehaviour
     public GameObject coinPrefab;
     public GameObject flashbangModel;
     public GameObject heartseeCam;
+    public GameObject amJeon;
+    public GameObject amSal;
     public Transform throwposition;
     public Transform bulletPos;
     public List<Material> mat = new List<Material>();
@@ -33,9 +35,13 @@ public class UseItem : MonoBehaviour
     LineRenderer drawLine;
     Item itemClass;
     CreateSound gunSound;
+    SoundManager soundManager;
+    GameManager gameManager;
 
     private void Start()
     {
+        soundManager = SoundManager.instance;
+        gameManager = GameManager.instance;
         itemClass = new Item();
         drawLine = GetComponent<LineRenderer>();
     }
@@ -47,14 +53,14 @@ public class UseItem : MonoBehaviour
         Rigidbody bulletRigid = bullet.GetComponent<Rigidbody>();
         gunSound = bullet.GetComponent<CreateSound>();
         StartCoroutine(gunSound.SoundCreateDeleteGun());
-        SoundManager.instance.EffectPlay(1, true);
+        soundManager.EffectPlay(1, true);
 
         float zDeg = pos.z - bulletRigid.position.z;
         float xDeg = pos.x - bulletRigid.position.x;
         float rotDeg = -(Mathf.Rad2Deg * Mathf.Atan2(zDeg, xDeg) - 90);
         bulletRigid.MoveRotation(Quaternion.Euler(0, rotDeg, 0));
         bulletRigid.velocity = bulletPos.forward * 20f;
-        GameManager.instance.itemcount[0]--;
+        gameManager.itemcount[0]--;
 
         Destroy(bullet, 2.0f);
     }
@@ -98,29 +104,29 @@ public class UseItem : MonoBehaviour
        GameObject coin = Instantiate(coinPrefab, throwposition.transform.position, Quaternion.identity);
        Rigidbody coinRigid = coin.GetComponent<Rigidbody>();
        coinRigid.AddForce(angle * throwpower, ForceMode.Impulse);
-        GameManager.instance.itemcount[1]--;
+        gameManager.itemcount[1]--;
         Destroy(coin, 5f);
 
-        GameManager.instance.canUse = false;
+        gameManager.canUse = false;
        yield return itemClass.itemcool;
-        GameManager.instance.canUse = true;
+        gameManager.canUse = true;
         StopAllCoroutines();
     }
 
     public IEnumerator ThrowFlashBang()
     {
         //Debug.Log("코루틴실행");
-        GameManager.instance.onecollison = true;
+        gameManager.onecollison = true;
         yield return itemClass.animDelay;
         GameObject flashbang = Instantiate(flashbangModel, throwposition.transform.position, Quaternion.identity);
         Rigidbody flashbangRigid = flashbang.GetComponent<Rigidbody>();
         flashbangRigid.AddForce(angle * throwpower, ForceMode.Impulse);
-        GameManager.instance.itemcount[2]--;
+        gameManager.itemcount[2]--;
         Destroy(flashbang, 5f);
 
-        GameManager.instance.canUse = false;
+        gameManager.canUse = false;
         yield return itemClass.itemcool;
-        GameManager.instance.canUse = true;
+        gameManager.canUse = true;
         StopAllCoroutines();
     }
 
@@ -132,6 +138,16 @@ public class UseItem : MonoBehaviour
         heartseeCam.SetActive(false);
         yield return itemClass.heartseeDuration;
         heartCanUse = true;
+    }
+
+    public IEnumerator Assassination()
+    {
+        amJeon.SetActive(true);
+        amSal.SetActive(true);
+        soundManager.EffectPlay(1, true);
+        yield return itemClass.amJeonDelay;
+        amSal.SetActive(false);
+        amJeon.SetActive(false);
     }
 
     //public void ThrowCoin()

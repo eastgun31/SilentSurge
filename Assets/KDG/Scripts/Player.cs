@@ -61,13 +61,18 @@ public class Player : MonoBehaviour
     bool saving;
     public UnityEvent playerDie;
 
+    //레이캐스트
     Ray ray;
     RaycastHit hit;
     int mask;
     string puzzle = "Puzzle";
     string door = "Doorhandle";
+    string enemy = "Enemy";
+    bool canAmsal = false;
     PlayerInteractive playerInteractive;
+    Sight sight;
     public float maxdist;
+
     void Start()
     {
         die = false;
@@ -226,6 +231,18 @@ public class Player : MonoBehaviour
                 playerInteractive.InteractiveObj(hit);
             }
 
+        }
+
+        if (Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), transform.forward, out hit, 2f, LayerMask.GetMask(enemy)))
+        {
+            sight = hit.transform.gameObject.GetComponent<Sight>();
+            if (!sight.findT)
+            {
+                canAmsal = true;
+                Debug.Log("암살가능");
+                if (canAmsal && Input.GetMouseButtonDown(0))
+                    StartCoroutine(useItem.Assassination());
+            }
         }
 
         if (!die && Input.GetKey(KeyCode.G))

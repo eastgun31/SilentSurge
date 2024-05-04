@@ -13,7 +13,7 @@ namespace ItemInfo
         public WaitForSeconds itemcool = new WaitForSeconds(3f);
         public WaitForSeconds heartseeDuration = new WaitForSeconds(5f);
         public WaitForSeconds animDelay = new WaitForSeconds(0.5f);
-
+        public WaitForSeconds amJeonDelay = new WaitForSeconds(1f);
        
     }
     public class UseRay
