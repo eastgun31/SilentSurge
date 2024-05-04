@@ -138,10 +138,7 @@ public class HackingPuz : MonoBehaviour
     {   
         gm.nowpuzzle = false;
         um.isWin = true;
-        if (gm.puzzleLevel == 1)
-        {
-            doorOpen.Invoke();
-        }
+
         gm.puzzleLevel += 1;
         SubtitleCheck();
         DataManager.instance.SaveData();
