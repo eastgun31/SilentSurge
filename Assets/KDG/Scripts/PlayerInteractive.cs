@@ -89,6 +89,7 @@ public class PlayerInteractive : MonoBehaviour
             }
             else if(gm.scenenum == 3 || gm.scenenum == 4)
             {
+                Debug.Log("∆€¡Ò∑π¿Ã");
                 enterPuzzle.PuzzleActive2();
             }
 
