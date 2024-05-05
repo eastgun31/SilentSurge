@@ -52,7 +52,16 @@ public class GameClear : MonoBehaviour
     {
         if(other.CompareTag("Player") && value == 1)
         {
-            clear.SetActive(true);
+            if (GameManager.instance.scenenum == 1)
+                clear.SetActive(true);
+
+            else if (GameManager.instance.scenenum == 3)
+            {
+                if (GameManager.instance.rescueHostage)
+                    clear.SetActive(true);
+                else
+                    return;
+            }
         }
         else if(other.CompareTag("Player") && value == 2 && goal.activeSelf)
         {
@@ -64,10 +73,13 @@ public class GameClear : MonoBehaviour
         {
             if(GameManager.instance.scenenum == 2)
                 Ending.Invoke();
+
             else if(GameManager.instance.scenenum == 3)
             {
                 if (GameManager.instance.rescueHostage)
                     Ending.Invoke();
+                else
+                    return;
             }
         }
     }
