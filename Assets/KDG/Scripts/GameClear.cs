@@ -42,7 +42,11 @@ public class GameClear : MonoBehaviour
             }
 
             if(enemys.FirstOrDefault() == null && activewan)
+            {
                 goal.SetActive(true);
+                DataManager.instance.SaveData();
+            }
+                
 
             yield return cool.cool1sec;
         }

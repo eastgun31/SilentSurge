@@ -168,6 +168,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        EnemyLevel.enemylv.SetEnemy();
         gameOver.SetActive(true);
     }
 
