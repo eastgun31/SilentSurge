@@ -70,10 +70,10 @@ public class SoundManager : MonoBehaviour
             audioPlayer.PlayOneShot(effectClips[i]);
         else if(!type && !playingSource)
         {
+            playingSource = true;
             effectPlayer.clip = effectClips[i];
             effectPlayer.loop = true;
             effectPlayer.Play();
-            playingSource = true;
         }
     }
     public void EffectOff()

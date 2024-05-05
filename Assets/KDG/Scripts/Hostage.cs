@@ -12,14 +12,18 @@ public class Hostage : MonoBehaviour
     public UnityEvent hostageDie;
     string walk = "Walk";
     string death = "Die";
-    bool die;
+    GameManager gm;
 
-
+    public void Realive()
+    {
+        gm.hostagedie = false;
+        nav.isStopped = false;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        die = false;
+        gm = GameManager.instance;
         target = this.transform;
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
@@ -28,13 +32,13 @@ public class Hostage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!die)
+        if(!gm.hostagedie)
         {
            transform.LookAt(target);
            nav.SetDestination(target.position);
            anim.SetFloat(walk, nav.velocity.magnitude);
         }
-        else if(die)
+        else if(gm.hostagedie)
             return;
 
     }
@@ -43,12 +47,11 @@ public class Hostage : MonoBehaviour
     {
         if(other.CompareTag("E_Bullet"))
         {
-            die = true;
+            gm.hostagedie = true;
             nav.isStopped = true;
             nav.velocity = Vector3.zero;
             anim.SetTrigger(death);
             hostageDie.Invoke();
-            die = false;
         }
     }
 }

@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public string paswawrd;
     public bool spacebar = false;
     public bool rescueHostage = false;
+    public bool hostagedie = false;
 
     [SerializeField]
     private int enemyQuater;
@@ -111,8 +112,7 @@ public class GameManager : MonoBehaviour
 
         if (scenenum == 1 || scenenum == 2)
             last = true;
-        else if (scenenum == 3 || scenenum == 4)
-            EnemyLevel.enemylv.SetEnemy();
+
 
     }
 
@@ -133,7 +133,7 @@ public class GameManager : MonoBehaviour
                 break;
             case 3:
                 Debug.Log("¾À3");
-                SceneVariableReset(3,16,13,1, 7, 7, 130);
+                SceneVariableReset(3,16,13,1, 7, 7, 360);
                 PuzzleDifficulty(90f, 0.007f, 30f, 0.005f, "5728");
                 break;
             case 4:

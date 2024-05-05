@@ -72,6 +72,9 @@ public class GameClear : MonoBehaviour
             activewan = false;
             goal.SetActive(false);
             lastAction.Invoke();
+
+            if (GameManager.instance.scenenum == 3 || GameManager.instance.scenenum == 4)
+                EnemyLevel.enemylv.SetEnemy();
         }
         else if(other.CompareTag("Player") && value == 3)
         {
