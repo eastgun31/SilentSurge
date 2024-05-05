@@ -11,6 +11,12 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     bool oneparticle = true;
 
+    private void Start()
+    {
+        if(type == 4)
+            Destroy(gameObject, 0.5f);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(type == 0 && (other.CompareTag("Wall") || other.CompareTag("Enemy")))
@@ -24,5 +30,6 @@ public class Bullet : MonoBehaviour
         }
         if(type == 3 && (other.CompareTag("Wall") || other.CompareTag("Player")))
             Destroy (gameObject);
+
     }
 }
