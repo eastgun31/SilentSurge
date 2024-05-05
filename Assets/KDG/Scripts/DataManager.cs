@@ -37,6 +37,7 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager instance;
     public UnityEvent playerLoad;
+    public UnityEvent playerSave;
     public GameObject playerobj;
 
     public GameObject gameOver;
@@ -57,6 +58,7 @@ public class DataManager : MonoBehaviour
     private SaveData saveData = new SaveData();
     private string SAVEDAT;
     WaitForSeconds wait;
+    GameManager gm;
 
     private void Awake()
     {
@@ -74,18 +76,20 @@ public class DataManager : MonoBehaviour
     }
     private void Start()
     {
+        gm = GameManager.instance;
         wait = new WaitForSeconds(1f);
-        saveData.gmexistenemy = new bool[GameManager.instance.existEnemy.Length];
-        saveData.gmexistitem = new bool[GameManager.instance.existItem.Length];
+        saveData.gmexistenemy = new bool[gm.existEnemy.Length];
+        saveData.gmexistitem = new bool[gm.existItem.Length];
         Invoke("SaveData", 2f);
     }
 
     public void SaveData()
     {
+        playerSave.Invoke();
         player = FindObjectOfType<Player>();
         saveData.playerposition = player.transform.position;
         saveData.playerrotation = player.transform.rotation.eulerAngles;
-        if(GameManager.instance.rescueHostage)
+        if(gm.scenenum == 3 || gm.scenenum == 4)
         {
             hostage = FindObjectOfType<Hostage>();
             saveData.hostageposition = hostage.transform.position;
@@ -95,21 +99,21 @@ public class DataManager : MonoBehaviour
             saveData.playeritemget[i] = player.itemGet[i];
         }
 
-        for (int i = 0; i < GameManager.instance.itemcheck.Length; i++)
+        for (int i = 0; i < gm.itemcheck.Length; i++)
         {
-            saveData.gmitemcheck[i] = GameManager.instance.itemcheck[i];
+            saveData.gmitemcheck[i] = gm.itemcheck[i];
         }
-        for (int i = 0; i < GameManager.instance.itemcount.Length; i++)
+        for (int i = 0; i < gm.itemcount.Length; i++)
         {
-            saveData.gmitemcount[i] = GameManager.instance.itemcount[i];
+            saveData.gmitemcount[i] = gm.itemcount[i];
         }
-        for (int i = 0; i < GameManager.instance.existItem.Length; i++)
+        for (int i = 0; i < gm.existItem.Length; i++)
         {
-            saveData.gmexistitem[i] = GameManager.instance.existItem[i];
+            saveData.gmexistitem[i] = gm.existItem[i];
         }
-        for (int i = 0; i < GameManager.instance.existEnemy.Length; i++)
+        for (int i = 0; i < gm.existEnemy.Length; i++)
         {
-            saveData.gmexistenemy[i] = GameManager.instance.existEnemy[i];
+            saveData.gmexistenemy[i] = gm.existEnemy[i];
         }
         //if (GameManager.instance.scenenum ==1)
         //{
@@ -131,9 +135,9 @@ public class DataManager : MonoBehaviour
         saveData._flashbangacivate = player.flashbangacivate;
         saveData._heartseeacivate = player.heartseeacivate;
 
-        saveData.gmpuzzleLevel = GameManager.instance.puzzleLevel;
-        saveData.gmnowpuzzle = GameManager.instance.nowpuzzle;
-        saveData.gmcanUse = GameManager.instance.canUse;
+        saveData.gmpuzzleLevel = gm.puzzleLevel;
+        saveData.gmnowpuzzle = gm.nowpuzzle;
+        saveData.gmcanUse = gm.canUse;
         //saveData.gmplayerchasing = GameManager.instance.playerchasing;
 
         string json = JsonUtility.ToJson(saveData);
@@ -153,13 +157,13 @@ public class DataManager : MonoBehaviour
             string loadJson = File.ReadAllText(filePath);
             saveData = JsonUtility.FromJson<SaveData>(loadJson);
 
-            GameManager.instance.isDie = false;
+            gm.isDie = false;
             playerobj = GameObject.FindWithTag("Player");            
             player = FindObjectOfType<Player>();
             playerobj.SetActive(false);
             player.transform.position = saveData.playerposition;
             player.transform.eulerAngles = saveData.playerrotation;
-            if (GameManager.instance.rescueHostage)
+            if (gm.scenenum == 3 || gm.scenenum == 4)
             {
                 hostage = FindObjectOfType<Hostage>();
                 hostage.transform.position = saveData.hostageposition;
@@ -172,19 +176,19 @@ public class DataManager : MonoBehaviour
 
             for (int i = 0; i < saveData.gmitemcheck.Length; i++)
             {
-                GameManager.instance.itemcheck[i] = saveData.gmitemcheck[i];
+                gm.itemcheck[i] = saveData.gmitemcheck[i];
             }
             for (int i = 0; i < saveData.gmitemcount.Length; i++)
             {
-                GameManager.instance.itemcount[i] = saveData.gmitemcount[i];
+                gm.itemcount[i] = saveData.gmitemcount[i];
             }
             for (int i = 0; i < saveData.gmexistitem.Length; i++)
             {
-                GameManager.instance.existItem[i] = saveData.gmexistitem[i];
+                gm.existItem[i] = saveData.gmexistitem[i];
             }
             for (int i = 0; i < saveData.gmexistenemy.Length; i++)
             {
-                GameManager.instance.existEnemy[i] = saveData.gmexistenemy[i];
+                gm.existEnemy[i] = saveData.gmexistenemy[i];
             }
             //if (GameManager.instance.scenenum == 1)
             //{
@@ -206,13 +210,13 @@ public class DataManager : MonoBehaviour
             player.flashbangacivate = saveData._flashbangacivate;
             player.heartseeacivate = saveData._heartseeacivate;
 
-            GameManager.instance.puzzleLevel = saveData.gmpuzzleLevel;
-            GameManager.instance.nowpuzzle = saveData.gmnowpuzzle;
-            GameManager.instance.canUse = saveData.gmcanUse;
+            gm.puzzleLevel = saveData.gmpuzzleLevel;
+            gm.nowpuzzle = saveData.gmnowpuzzle;
+            gm.canUse = saveData.gmcanUse;
             //GameManager.instance.playerchasing = saveData.gmplayerchasing;
 
             playerobj.SetActive(true);
-            GameManager.instance.isDie = false;
+            gm.isDie = false;
             Debug.Log("로드완료");
             playerLoad.Invoke();
         }
