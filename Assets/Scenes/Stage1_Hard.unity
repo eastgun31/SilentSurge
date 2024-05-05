@@ -10819,6 +10819,9 @@ MonoBehaviour:
   - {fileID: 1605905278}
   - {fileID: 30911770}
   - {fileID: 1548689253}
+  doorOpen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &373033316
 GameObject:
   m_ObjectHideFlags: 0
@@ -14877,8 +14880,6 @@ RectTransform:
   - {fileID: 247951180}
   - {fileID: 1997276333}
   - {fileID: 746732453}
-  - {fileID: 1983730095}
-  - {fileID: 924081918}
   - {fileID: 100112015}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15970,7 +15971,7 @@ MonoBehaviour:
   isWin: 0
   isPauseWin: 0
   isGameOver: 0
-  quickSlot: {fileID: 0}
+  quickSlot: {fileID: 1890698962}
   pauseWin: {fileID: 828067780}
   pipePuzFst: {fileID: 662727739}
   pipePuzSec: {fileID: 0}
@@ -20201,6 +20202,7 @@ RectTransform:
   - {fileID: 374631550}
   - {fileID: 1086864108}
   - {fileID: 605136353}
+  - {fileID: 1983730095}
   m_Father: {fileID: 573084187}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -21055,6 +21057,9 @@ MonoBehaviour:
   totalPipes: 0
   correctPipes: 0
   success: {fileID: 2060664938}
+  doorOpen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &868903277
 GameObject:
   m_ObjectHideFlags: 0
@@ -21509,6 +21514,9 @@ MonoBehaviour:
   totalPipes: 0
   correctPipes: 0
   success: {fileID: 1792341361}
+  doorOpen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &898746223
 GameObject:
   m_ObjectHideFlags: 0
@@ -21988,11 +21996,11 @@ RectTransform:
   m_Children:
   - {fileID: 38436387}
   - {fileID: 823719472}
-  m_Father: {fileID: 573084187}
+  m_Father: {fileID: 1983730095}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -666.17004, y: 466.17004}
+  m_AnchoredPosition: {x: 222.40552, y: -11.658569}
   m_SizeDelta: {x: 524.8146, y: 103.3243}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &924081919
@@ -28209,6 +28217,9 @@ MonoBehaviour:
   totalPipes: 0
   correctPipes: 0
   success: {fileID: 227292326}
+  doorOpen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1206300188
 GameObject:
   m_ObjectHideFlags: 0
@@ -29492,6 +29503,9 @@ MonoBehaviour:
   totalPipes: 0
   correctPipes: 0
   success: {fileID: 30157050}
+  doorOpen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1283919548
 GameObject:
   m_ObjectHideFlags: 0
@@ -30430,6 +30444,9 @@ MonoBehaviour:
   totalPipes: 0
   correctPipes: 0
   success: {fileID: 1603096062}
+  doorOpen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1322410289
 GameObject:
   m_ObjectHideFlags: 0
@@ -34758,6 +34775,9 @@ MonoBehaviour:
   totalPipes: 0
   correctPipes: 0
   success: {fileID: 295302269}
+  doorOpen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1474948711
 GameObject:
   m_ObjectHideFlags: 0
@@ -41031,6 +41051,7 @@ MonoBehaviour:
   correctFrequance: 0
   paswawrd: 
   spacebar: 0
+  rescueHostage: 0
   enemyQuater: 0
   lv3PlayerPos: {x: 0, y: 0, z: 0}
   Items:
@@ -41799,6 +41820,9 @@ MonoBehaviour:
   totalPipes: 0
   correctPipes: 0
   success: {fileID: 1210985897}
+  doorOpen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1833923308
 GameObject:
   m_ObjectHideFlags: 0
@@ -42396,6 +42420,9 @@ MonoBehaviour:
   totalPipes: 0
   correctPipes: 0
   success: {fileID: 727637047}
+  doorOpen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1841906172
 GameObject:
   m_ObjectHideFlags: 0
@@ -45330,7 +45357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1983730095
 RectTransform:
   m_ObjectHideFlags: 0
@@ -45344,11 +45371,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 230674027}
-  m_Father: {fileID: 573084187}
+  - {fileID: 924081918}
+  m_Father: {fileID: 828067781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -888.57556, y: 477.8286}
+  m_AnchoredPosition: {x: -888.57556, y: 473.3286}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1983730096
@@ -46580,6 +46608,9 @@ MonoBehaviour:
   totalPipes: 0
   correctPipes: 0
   success: {fileID: 621263191}
+  doorOpen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2026288018
 GameObject:
   m_ObjectHideFlags: 0
