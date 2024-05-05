@@ -62,7 +62,13 @@ public class GameClear : MonoBehaviour
         }
         else if(other.CompareTag("Player") && value == 3)
         {
-            Ending.Invoke();
+            if(GameManager.instance.scenenum == 2)
+                Ending.Invoke();
+            else if(GameManager.instance.scenenum == 3)
+            {
+                if (GameManager.instance.rescueHostage)
+                    Ending.Invoke();
+            }
         }
     }
 
