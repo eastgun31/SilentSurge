@@ -135,7 +135,7 @@ public class Sight : MonoBehaviour
                         findT = true;
 
                         if (sightType == 2 && GameManager.instance.playerchasing < 60)
-                            GameManager.instance.playerchasing += 1;
+                            GameManager.instance.playerchasing += Time.deltaTime;
                         else if (sightType == 1 && GameManager.instance.playerchasing < 60)
                             GameManager.instance.playerchasing += 10;
 

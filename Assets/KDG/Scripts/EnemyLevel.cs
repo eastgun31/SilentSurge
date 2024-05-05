@@ -78,7 +78,7 @@ public class EnemyLevel : MonoBehaviour
             {
                 if (LvStep == ELevel.level1)
                     LvStep = ELevel.level2;
-                else if(gm.playerchasing >= 50f && LvStep == ELevel.level2)
+                else if(gm.playerchasing >= 40f && LvStep == ELevel.level2)
                 {
                     LvStep = ELevel.level3;
                     if(!enemyadd)
@@ -105,7 +105,7 @@ public class EnemyLevel : MonoBehaviour
                     LvStep = ELevel.level1;
                     gm.playerchasing = 0;
                 }
-                else if (gm.playerchasing <= 10f && LvStep == ELevel.level3)
+                else if (gm.playerchasing <= 20f && LvStep == ELevel.level3)
                 {
                     LvStep = ELevel.level2;
                     lv3enemy.SetActive(false);
@@ -141,6 +141,10 @@ public class EnemyLevel : MonoBehaviour
         for (int i = 0; i < lv3enemy.transform.childCount; i++)
         {
             lv3enemy.transform.GetChild(i).gameObject.transform.position = lv3enemy.transform.position;
+        }
+        for (int i = 0; i < lastenemy.transform.childCount; i++)
+        {
+            lastenemy.transform.GetChild(i).gameObject.transform.position = lastenemy.transform.position;
         }
         enemyadd = false;
         LvStep = ELevel.level1;

@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     public float correctFrequance;
     public string paswawrd;
     public bool spacebar = false;
+    public bool rescueHostage = false;
+    public bool hostagedie = false;
 
     [SerializeField]
     private int enemyQuater;
@@ -96,20 +98,10 @@ public class GameManager : MonoBehaviour
         {
             existEnemy[i] = true;
         }
-        //if (GameManager.instance.scenenum == 1)
-        //{
-        //    for (int i = 0; i < enemyQuater; i++)
-        //    {
-        //        existEnemy[i] = true;
-        //    }
-        //}
-        //if(GameManager.instance.scenenum == 2)
-        //{
-        //    for (int i = 0; i < 6; i++)
-        //    {
-        //        existEnemy[i] = true;
-        //    }
-        //}
+
+        if (scenenum == 3 || scenenum == 4)
+            last = true;
+
     }
     public void EnemyActive2()
     {
@@ -117,21 +109,10 @@ public class GameManager : MonoBehaviour
         {
             existEnemy[i] = true;
         }
-        last = true;
-        //if (GameManager.instance.scenenum == 1)
-        //{
-        //    for (int i = enemyQuater; i < existEnemy.Length; i++)
-        //    {
-        //        existEnemy[i] = true;
-        //    }
-        //}
-        //if (GameManager.instance.scenenum == 2)
-        //{
-        //    for (int i = 6; i < existEnemy.Length; i++)
-        //   {
-        //        existEnemy[i] = true;
-        //    }
-        //}
+
+        if (scenenum == 1 || scenenum == 2)
+            last = true;
+
 
     }
 
@@ -152,7 +133,8 @@ public class GameManager : MonoBehaviour
                 break;
             case 3:
                 Debug.Log("¾À3");
-                SceneVariableReset(3,16,13,1, 7, 7, 130);
+                SceneVariableReset(3,16,13,1, 7, 7, 360);
+                PuzzleDifficulty(90f, 0.007f, 30f, 0.005f, "5728");
                 break;
             case 4:
                 scenenum = 4;
@@ -186,6 +168,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        EnemyLevel.enemylv.SetEnemy();
         gameOver.SetActive(true);
     }
 

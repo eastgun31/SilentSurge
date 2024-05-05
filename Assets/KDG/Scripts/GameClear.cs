@@ -42,7 +42,11 @@ public class GameClear : MonoBehaviour
             }
 
             if(enemys.FirstOrDefault() == null && activewan)
+            {
                 goal.SetActive(true);
+                DataManager.instance.SaveData();
+            }
+                
 
             yield return cool.cool1sec;
         }
@@ -52,17 +56,38 @@ public class GameClear : MonoBehaviour
     {
         if(other.CompareTag("Player") && value == 1)
         {
-            clear.SetActive(true);
+            if (GameManager.instance.scenenum == 1)
+                clear.SetActive(true);
+
+            else if (GameManager.instance.scenenum == 3)
+            {
+                if (GameManager.instance.rescueHostage)
+                    clear.SetActive(true);
+                else
+                    return;
+            }
         }
         else if(other.CompareTag("Player") && value == 2 && goal.activeSelf)
         {
             activewan = false;
             goal.SetActive(false);
             lastAction.Invoke();
+
+            if (GameManager.instance.scenenum == 3 || GameManager.instance.scenenum == 4)
+                EnemyLevel.enemylv.SetEnemy();
         }
         else if(other.CompareTag("Player") && value == 3)
         {
-            Ending.Invoke();
+            if(GameManager.instance.scenenum == 2)
+                Ending.Invoke();
+
+            else if(GameManager.instance.scenenum == 3)
+            {
+                if (GameManager.instance.rescueHostage)
+                    Ending.Invoke();
+                else
+                    return;
+            }
         }
     }
 

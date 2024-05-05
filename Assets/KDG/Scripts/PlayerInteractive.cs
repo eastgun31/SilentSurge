@@ -38,12 +38,26 @@ public class PlayerInteractive : MonoBehaviour
         {
             doort = hit.GetComponentInParent<Door>();
 
-            if (doort.nDoor == 0 && gm.puzzleLevel >= 2 || doort.nDoor == 1 && gm.puzzleLevel >= 3 || doort.nDoor == 2 && gm.puzzleLevel >= 4)
-                doort.OpenDoor();
-
-            if (doort.nDoor == 0 && gm.puzzleLevel == 1 || doort.nDoor == 1 && gm.puzzleLevel < 3 || doort.nDoor == 2 && gm.puzzleLevel < 4)
+            if (GameManager.instance.scenenum == 1)
             {
-                GuideLineTxt.instance.SetDifferentTxt2(0);
+                if(doort.nDoor == 0 && gm.puzzleLevel >= 2 || doort.nDoor == 1 && gm.puzzleLevel >= 3 || doort.nDoor == 2 && gm.puzzleLevel >= 4)
+                    doort.OpenDoor();
+                else if(doort.nDoor == 0 && gm.puzzleLevel < 2 || doort.nDoor == 1 && gm.puzzleLevel < 3 || doort.nDoor == 2 && gm.puzzleLevel < 4)
+                    GuideLineTxt.instance.SetDifferentTxt2(0);
+            }
+            else if(GameManager.instance.scenenum == 2)
+            {
+                if (doort.nDoor == 1 && gm.puzzleLevel >= 2 || doort.nDoor == 2 && gm.puzzleLevel >= 4)
+                    doort.OpenDoor();
+                if (doort.nDoor == 1 && gm.puzzleLevel < 2 || doort.nDoor == 2 && gm.puzzleLevel < 4)
+                    GuideLineTxt.instance.SetDifferentTxt2(0);
+            }
+            else if(GameManager.instance.scenenum == 3)
+            {
+                if (doort.nDoor == 0 || doort.nDoor == 1 && gm.puzzleLevel >= 2 || doort.nDoor == 2 && gm.puzzleLevel >= 3)
+                    doort.OpenDoor();
+                else if(doort.nDoor == 1 && gm.puzzleLevel < 2 || doort.nDoor == 2 && gm.puzzleLevel < 3)
+                    GuideLineTxt.instance.SetDifferentTxt2(0);
             }
         }
         //else if (other.CompareTag(interactiveList[1]))
@@ -72,6 +86,11 @@ public class PlayerInteractive : MonoBehaviour
             if(gm.scenenum == 1 ||  gm.scenenum == 2)
             {
                 enterPuzzle.PuzzleActive1();
+            }
+            else if(gm.scenenum == 3 || gm.scenenum == 4)
+            {
+                Debug.Log("ÆÛÁñ·¹ÀÌ");
+                enterPuzzle.PuzzleActive2();
             }
 
             //switch (enterPuzzle.level)

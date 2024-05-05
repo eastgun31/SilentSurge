@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -21,6 +22,8 @@ public class PipeManager : MonoBehaviour
     private Quaternion[] pipesRot;
 
     public Text success;
+
+    public UnityEvent doorOpen;
 
     GameManager gm;
     UiManager um;
@@ -140,7 +143,7 @@ public class PipeManager : MonoBehaviour
         {
             if(gm.puzzleLevel == 3)
             {
-                SubtitleCheck();
+                doorOpen.Invoke();
             }
         }
     }

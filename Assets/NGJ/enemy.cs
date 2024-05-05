@@ -257,7 +257,6 @@ public class Enemy : MonoBehaviour
             //transform.LookAt(pos);
             enemyAnim.SetTrigger(Shot);
             GameObject bulletObject = Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
-            Destroy(bulletObject,1f);
             // 총알 발사 후 일정 시간을 기다린 후 다음 동작으로 진행합니다.
             yield return cooltime.cool2sec; // 1초 뒤에 다시 총 발사
             isShooting=false;

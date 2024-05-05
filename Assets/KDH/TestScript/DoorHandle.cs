@@ -8,6 +8,8 @@ public class DoorHandle : MonoBehaviour
     public Door tDoor { get; set; }
     public GameObject P_Door;
 
+    GameManager gm;
+
     public int Doorindex = 0;
 
     [SerializeField]
@@ -22,17 +24,37 @@ public class DoorHandle : MonoBehaviour
         tDoor = P_Door.GetComponent<Door>();
     }
 
+    private void Start()
+    {
+        gm = GameManager.instance;
+    }
+
     private void OnTriggerStay(Collider col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            if (tDoor.nDoor == 0 && GameManager.instance.puzzleLevel >= 2 || tDoor.nDoor == 1 && GameManager.instance.puzzleLevel >= 3
-                || tDoor.nDoor == 2 && GameManager.instance.puzzleLevel >= 4)
-                P_Door.GetComponent<MeshRenderer>().material = mat_Outline;  // 아웃라인 메테리얼로 0번 배열 변경 
-            else if (tDoor.nDoor == 0 && GameManager.instance.puzzleLevel < 2 || tDoor.nDoor == 1 && GameManager.instance.puzzleLevel < 3
-                || tDoor.nDoor == 2 && GameManager.instance.puzzleLevel < 4)
-                P_Door.GetComponent<MeshRenderer>().material = mat_NoOutline;
             tDoor.PlayerPos_0 = true;
+            if (GameManager.instance.scenenum == 1)
+            {
+                if (tDoor.nDoor == 0 && gm.puzzleLevel >= 2 || tDoor.nDoor == 1 && gm.puzzleLevel >= 3 || tDoor.nDoor == 2 && gm.puzzleLevel >= 4)
+                    P_Door.GetComponent<MeshRenderer>().material = mat_Outline;  // 아웃라인 메테리얼로 0번 배열 변경 
+                if (tDoor.nDoor == 0 && gm.puzzleLevel < 2 || tDoor.nDoor == 1 && gm.puzzleLevel < 3 || tDoor.nDoor == 2 && gm.puzzleLevel < 4)
+                    P_Door.GetComponent<MeshRenderer>().material = mat_NoOutline;
+            }
+            else if (GameManager.instance.scenenum == 2)
+            {
+                if (tDoor.nDoor == 1 && gm.puzzleLevel >= 2 || tDoor.nDoor == 2 && gm.puzzleLevel >= 4)
+                    P_Door.GetComponent<MeshRenderer>().material = mat_Outline;
+                if (tDoor.nDoor == 1 && gm.puzzleLevel < 2 || tDoor.nDoor == 2 && gm.puzzleLevel < 4)
+                    P_Door.GetComponent<MeshRenderer>().material = mat_NoOutline;
+            }
+            else if (GameManager.instance.scenenum == 3)
+            {
+                if (tDoor.nDoor == 0 || tDoor.nDoor == 1 && gm.puzzleLevel >= 2 || tDoor.nDoor == 2 && gm.puzzleLevel >= 3)
+                    P_Door.GetComponent<MeshRenderer>().material = mat_Outline;
+                if (tDoor.nDoor == 1 && gm.puzzleLevel < 2 || tDoor.nDoor == 2 && gm.puzzleLevel < 3)
+                    P_Door.GetComponent<MeshRenderer>().material = mat_NoOutline;
+            }
         }
     }
 
