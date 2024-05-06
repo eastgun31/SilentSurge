@@ -10,20 +10,20 @@ public class Hostage : MonoBehaviour
     public Transform target;
     Animator anim;
     public UnityEvent hostageDie;
+    bool die;
     string walk = "Walk";
+    string _death = "_Death";
     string death = "Death";
+    string alive = "Alive";
     GameManager gm;
 
-    public void Realive()
-    {
-        anim.SetBool(death, false);
-        gm.hostagedie = false;
-        nav.isStopped = false;
-    }
+
+
 
     // Start is called before the first frame update
     void Start()
     {
+        die = false;
         gm = GameManager.instance;
         target = this.transform;
         nav = GetComponent<NavMeshAgent>();
@@ -48,11 +48,27 @@ public class Hostage : MonoBehaviour
     {
         if(other.CompareTag("E_Bullet"))
         {
+            if(!die)
+                StartCoroutine(HostageDie());
+            hostageDie.Invoke();
+        }
+    }
+    IEnumerator HostageDie()
+    {
+        die = true;
+            anim.SetBool(death, true);
             gm.hostagedie = true;
             nav.isStopped = true;
             nav.velocity = Vector3.zero;
-            anim.SetBool(death, true);
-            hostageDie.Invoke();
-        }
+        
+        yield return new WaitForSeconds(1f);
+        die = false;
+    }
+
+    public void Realive()
+    {
+        anim.SetBool(death,false);
+        gm.hostagedie = false;
+        nav.isStopped = false;
     }
 }
