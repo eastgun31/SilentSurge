@@ -322,11 +322,11 @@ public class TestEnemy : MonoBehaviour
             if (enemyType == 2)
             {
                 Shoot2();
-                SoundManager.instance.EnemyEffect(1);
+                //SoundManager.instance.EnemyEffect(1);
             }
             else if (enemyType == 1)
             {
-                SoundManager.instance.EnemyEffect(0);
+                //SoundManager.instance.EnemyEffect(0);
             }
 
             bulletRigid.velocity = bulletPos.forward * bulletSpeed;
