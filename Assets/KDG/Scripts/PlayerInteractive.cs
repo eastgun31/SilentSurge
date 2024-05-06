@@ -47,7 +47,7 @@ public class PlayerInteractive : MonoBehaviour
             }
             else if(GameManager.instance.scenenum == 2)
             {
-                if (doort.nDoor == 1 && gm.puzzleLevel >= 2 || doort.nDoor == 2 && gm.puzzleLevel >= 4)
+                if (doort.nDoor == 0 || doort.nDoor == 1 && gm.puzzleLevel >= 2 || doort.nDoor == 2 && gm.puzzleLevel >= 4)
                     doort.OpenDoor();
                 if (doort.nDoor == 1 && gm.puzzleLevel < 2 || doort.nDoor == 2 && gm.puzzleLevel < 4)
                     GuideLineTxt.instance.SetDifferentTxt2(0);
