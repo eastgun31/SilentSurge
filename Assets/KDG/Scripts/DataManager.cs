@@ -69,7 +69,7 @@ public class DataManager : MonoBehaviour
 
         //DontDestroyOnLoad(this.gameObject);
 
-        SAVEDAT = Application.dataPath + "/Save/";
+        SAVEDAT = Application.persistentDataPath + "/Save/";
 
         if (!Directory.Exists(SAVEDAT)) // 해당 경로가 존재하지 않는다면
             Directory.CreateDirectory(SAVEDAT); // 폴더 생성(경로 생성)
