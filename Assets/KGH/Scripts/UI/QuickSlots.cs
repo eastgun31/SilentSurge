@@ -52,18 +52,21 @@ public class QuickSlots : MonoBehaviour
                     c_text[0].gameObject.SetActive(false);
                 }
             }
-            else
+            else if (playerInput.handgunacivate == false)
                 selectedQuickSlots[0].gameObject.SetActive(false);
         }
-        else 
+        else
+        {
+            selectedQuickSlots[0].gameObject.SetActive(false);
             quickSlots[0].gameObject.SetActive(false);
+        }
 
 
         if (GameManager.instance.itemcheck[1])       //ÄÚÀÎ Ãß°¡
         {
             quickSlots[1].gameObject.SetActive(true);
 
-            if(playerInput.coinacivate == true)
+            if (playerInput.coinacivate == true)
             {
                 selectedQuickSlots[1].gameObject.SetActive(true);
 
@@ -83,7 +86,10 @@ public class QuickSlots : MonoBehaviour
                 selectedQuickSlots[1].gameObject.SetActive(false);
         }
         else
+        {
             quickSlots[1].gameObject.SetActive(false);
+            selectedQuickSlots[1].gameObject.SetActive(false);
+        }
 
         if (GameManager.instance.itemcheck[2])      // ¼¶±¤ÅºÃß°¡
         {
@@ -109,7 +115,10 @@ public class QuickSlots : MonoBehaviour
                 selectedQuickSlots[2].gameObject.SetActive(false);
         }
         else
+        {
+            selectedQuickSlots[2].gameObject.SetActive(false);
             quickSlots[2].gameObject.SetActive(false);
+        }
 
         if (GameManager.instance.itemcheck[3])  // ½É¹Ú±âÃß°¡
         {
@@ -118,7 +127,7 @@ public class QuickSlots : MonoBehaviour
             if (playerInput.heartseeacivate == true)
             {
                 selectedQuickSlots[3].SetActive(true);
-                if(useItem.heartCanUse==true)
+                if (useItem.heartCanUse == true)
                     i_color[3].color = Color.white;
                 else
                     i_color[3].color = Color.gray;
@@ -127,7 +136,10 @@ public class QuickSlots : MonoBehaviour
                 selectedQuickSlots[3].SetActive(false);
         }
         else
+        {
+            selectedQuickSlots[3].gameObject.SetActive(false);
             quickSlots[3].gameObject.SetActive(false);
+        }
 
         if (GameManager.instance.itemcheck[4])       // ¹æÅºº¹
         {
