@@ -205,6 +205,7 @@ public class EnemyLevel : MonoBehaviour
     }
     public void ODaeGi2()
     {
+        Debug.Log("111");
         lastenemy.SetActive(true);
         for (int i = 0; i < lv3enemy.transform.childCount; i++)
         {
