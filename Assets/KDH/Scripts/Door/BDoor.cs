@@ -12,8 +12,8 @@ public class BDoor : MonoBehaviour
 
     public void BDoorOpen()
     {
-        L_Bdoor.GetComponent<DOTweenAnimation>().DOPlay();
-        R_Bdoor.GetComponent<DOTweenAnimation>().DOPlay();
+        L_Bdoor.GetComponent<DOTweenAnimation>().DORestart();
+        R_Bdoor.GetComponent<DOTweenAnimation>().DORestart();
     }
 
     public void BDoorClose()

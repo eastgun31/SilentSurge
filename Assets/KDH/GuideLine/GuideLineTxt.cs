@@ -27,6 +27,8 @@ public class GuideLineTxt : MonoBehaviour
 
     public int currentDatas_Index;                   // 불러올 자막의 인덱스를 바꿀 변수
 
+    public bool isBossOn = true;
+
     void Awake()
     {
         if (instance != null)
@@ -63,6 +65,25 @@ public class GuideLineTxt : MonoBehaviour
     {
         guideUI.gameObject.SetActive(true);
         guideUI.DOText(guideLineDB.guideLine[10].guideTxt, 1.5f);
+        Invoke("SetOffTxt", 3.5f);
+    }
+    public void SetDifferentTxt4()             // 오브젝트 관련
+    {
+        guideUI.gameObject.SetActive(true);
+        guideUI.DOText(guideLineDB.guideLine[13].guideTxt, 1.5f);
+        Invoke("SetOffTxt", 2f);
+        isBossOn =false;
+    }
+    public void SetDifferentTxt5()             // 오브젝트 관련
+    {
+        guideUI.gameObject.SetActive(true);
+        guideUI.DOText(guideLineDB.guideLine[15].guideTxt, 1.5f);
+        Invoke("SetOffTxt", 3.5f);
+    }   
+    public void SetDifferentTxt6()             // 오브젝트 관련
+    {
+        guideUI.gameObject.SetActive(true);
+        guideUI.DOText(guideLineDB.guideLine[5].guideTxt, 1.5f);
         Invoke("SetOffTxt", 3.5f);
     }
 }

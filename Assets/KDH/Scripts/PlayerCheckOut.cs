@@ -7,7 +7,7 @@ public class PlayerCheckOut : MonoBehaviour
 {
     public UnityEvent p_outcheck;
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
