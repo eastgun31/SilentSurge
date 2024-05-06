@@ -58,18 +58,27 @@ public class SoundManager : MonoBehaviour
     {
         effectPlayer.Stop();
         audioPlayer.Stop();
-        audioPlayer.volume = 0.05f;
+
+        if (i == 5 || i == 6)
+            audioPlayer.volume = 0.03f;
+        else
+            audioPlayer.volume = 0.07f;
+
         audioPlayer.clip = bgmClips[i];
         audioPlayer.loop = true;
         audioPlayer.Play();
     }
 
-    public void EffectPlay(int i, bool type)
+    public void EffectPlay(int i, bool type, float vol)
     {
         if(type)
-            audioPlayer.PlayOneShot(effectClips[i]);
+        {
+            effectPlayer.volume = vol;
+            effectPlayer.PlayOneShot(effectClips[i]);
+        }
         else if(!type && !playingSource)
         {
+            effectPlayer.volume = vol;
             playingSource = true;
             effectPlayer.clip = effectClips[i];
             effectPlayer.loop = true;
@@ -82,9 +91,9 @@ public class SoundManager : MonoBehaviour
         effectPlayer.clip = null;
         playingSource = false;
     }
-    public void EnemyEffect(int i)
+    public void EnemyEffect(int i,float vol)
     {
-        enemyPlayer.volume = 0.05f;
+        enemyPlayer.volume = vol;
         enemyPlayer.PlayOneShot(enemyClips[i]);
     }
     public void UiSoundPlay(int i)
