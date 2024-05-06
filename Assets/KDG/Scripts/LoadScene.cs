@@ -25,15 +25,15 @@ public class LoadScene : MonoBehaviour
     }    
     public void LoadStage2_hard()
     {
-
+        SceneManager.LoadScene(4);
     }
     public void LoadEnding1()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(5);
     }    
     public void LoadEnding2()
     {
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(6);
     }
     public void QuitGame()
     {
