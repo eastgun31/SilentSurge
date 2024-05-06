@@ -43,12 +43,19 @@ public class DoorHandle : MonoBehaviour
             }
             else if (GameManager.instance.scenenum == 2)
             {
-                if (tDoor.nDoor == 1 && gm.puzzleLevel >= 2 || tDoor.nDoor == 2 && gm.puzzleLevel >= 4)
+                if (tDoor.nDoor == 0 || tDoor.nDoor == 1 && gm.puzzleLevel >= 2 || tDoor.nDoor == 2 && gm.puzzleLevel >= 4)
                     P_Door.GetComponent<MeshRenderer>().material = mat_Outline;
                 if (tDoor.nDoor == 1 && gm.puzzleLevel < 2 || tDoor.nDoor == 2 && gm.puzzleLevel < 4)
                     P_Door.GetComponent<MeshRenderer>().material = mat_NoOutline;
             }
             else if (GameManager.instance.scenenum == 3)
+            {
+                if (tDoor.nDoor == 0 || tDoor.nDoor == 1 && gm.puzzleLevel >= 2 || tDoor.nDoor == 2 && gm.puzzleLevel >= 3)
+                    P_Door.GetComponent<MeshRenderer>().material = mat_Outline;
+                if (tDoor.nDoor == 1 && gm.puzzleLevel < 2 || tDoor.nDoor == 2 && gm.puzzleLevel < 3)
+                    P_Door.GetComponent<MeshRenderer>().material = mat_NoOutline;
+            }
+            else if (GameManager.instance.scenenum == 4)
             {
                 if (tDoor.nDoor == 0 || tDoor.nDoor == 1 && gm.puzzleLevel >= 2 || tDoor.nDoor == 2 && gm.puzzleLevel >= 3)
                     P_Door.GetComponent<MeshRenderer>().material = mat_Outline;

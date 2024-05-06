@@ -86,7 +86,7 @@ public class Keypad : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2)
             doorOpen.Invoke();
-        else if (SceneManager.GetActiveScene().buildIndex == 3)
+        else if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex ==4)
             gm.rescueHostage = true;
     }
 

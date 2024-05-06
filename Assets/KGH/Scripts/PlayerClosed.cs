@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 public class PlayerClosed : MonoBehaviour
 {
@@ -8,8 +10,11 @@ public class PlayerClosed : MonoBehaviour
 
     public GameObject clear;
 
+    public PlayableDirector ending;
+
     private void Start()
     {
+        ending.Play();
         SoundManager.instance.EffectPlay(2, true);
         Time.timeScale = 1;
         player.SetActive(true);
@@ -23,7 +28,7 @@ public class PlayerClosed : MonoBehaviour
 
     public void Clear()
     {
-        Time.timeScale = 0;
         clear.SetActive(true);
+        ending.Stop();
     }
 }

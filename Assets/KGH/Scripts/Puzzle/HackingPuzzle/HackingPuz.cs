@@ -59,7 +59,7 @@ public class HackingPuz : MonoBehaviour
             passwords[2] = "FF";
             passwords[3] = "3D";
         }
-        if(gm.scenenum ==3)
+        if(gm.scenenum ==3 || gm.scenenum ==4)
         {
             ansCode[0].text = "S1";
             ansCode[1].text = "5V";
@@ -70,6 +70,7 @@ public class HackingPuz : MonoBehaviour
             passwords[2] = "Z5";
             passwords[3] = "6C";
         }
+
         
 
         // 첫 번째 텍스트 필드에 초기값 설정
@@ -161,6 +162,10 @@ public class HackingPuz : MonoBehaviour
                 GuideLineTxt.instance.SetDifferentTxt(8);
                 break;
             case 3:
+                doorOpen.Invoke();
+                GuideLineTxt.instance.SetDifferentTxt(16);
+                break;
+            case 4:
                 doorOpen.Invoke();
                 GuideLineTxt.instance.SetDifferentTxt(16);
                 break;
