@@ -27,6 +27,7 @@ public class PipeManager : MonoBehaviour
 
     GameManager gm;
     UiManager um;
+    EnemyLevel enemyLevel;
 
     void Start()
     {
@@ -84,6 +85,8 @@ public class PipeManager : MonoBehaviour
 
             SceneCheck();
             gm.puzzleLevel += 1;
+            //if (gm.scenenum == 3 || gm.scenenum == 4)
+                
 
             Invoke("ClosePipe", 1f);
             gm.nowpuzzle = false;
@@ -143,7 +146,7 @@ public class PipeManager : MonoBehaviour
         {
             if(gm.puzzleLevel == 3)
             {
-                doorOpen.Invoke();
+                SubtitleCheck();
             }
         }
     }
@@ -160,7 +163,9 @@ public class PipeManager : MonoBehaviour
                 GuideLineTxt.instance.SetDifferentTxt(12);
                 break;
             case 3:
-
+                EnemyLevel.enemylv.ODaeGi2();
+                doorOpen.Invoke();
+                GuideLineTxt.instance.SetDifferentTxt(9);
                 break;
         }
     }

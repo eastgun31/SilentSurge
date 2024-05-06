@@ -162,6 +162,7 @@ public class HackingPuz : MonoBehaviour
                 break;
             case 3:
                 doorOpen.Invoke();
+                GuideLineTxt.instance.SetDifferentTxt(16);
                 break;
         }
     }
