@@ -84,7 +84,7 @@ public class GameClear : MonoBehaviour
             if(GameManager.instance.scenenum == 2)
                 Ending.Invoke();
 
-            else if(GameManager.instance.scenenum == 3)
+            else if(GameManager.instance.scenenum == 4)
             {
                 if (GameManager.instance.rescueHostage)
                     Ending.Invoke();

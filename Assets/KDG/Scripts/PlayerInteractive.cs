@@ -59,6 +59,13 @@ public class PlayerInteractive : MonoBehaviour
                 else if(doort.nDoor == 1 && gm.puzzleLevel < 2 || doort.nDoor == 2 && gm.puzzleLevel < 3)
                     GuideLineTxt.instance.SetDifferentTxt2(0);
             }
+            else if (GameManager.instance.scenenum == 4)
+            {
+                if (doort.nDoor == 0 || doort.nDoor == 1 && gm.puzzleLevel >= 2 || doort.nDoor == 2 && gm.puzzleLevel >= 3)
+                    doort.OpenDoor();
+                else if (doort.nDoor == 1 && gm.puzzleLevel < 2 || doort.nDoor == 2 && gm.puzzleLevel < 3)
+                    GuideLineTxt.instance.SetDifferentTxt2(0);
+            }
         }
         //else if (other.CompareTag(interactiveList[1]))
         //{
@@ -154,72 +161,21 @@ public class PlayerInteractive : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //if (other.CompareTag(interactiveList[0]))
-            //{
-            //    doort = other.GetComponentInParent<Door_Parent>();
-            //    handle = other.GetComponent<DoorHandle_1>();
-            //    if (doort.nDoor == 0 && gm.puzzleLevel >= 2)
-            //    {
-            //        if (handle.Doorindex == 1)
-            //        {
-            //            doort.PlayerPos_1 = true;
-            //            doort.PlayerPos_0 = false;
-            //        }
-            //        else if (handle.Doorindex == 0)
-            //        {
-            //            doort.PlayerPos_1 = false;
-            //            doort.PlayerPos_0 = true;
-            //        }
-            //        doort.oDoor();
-            //    }
-            //    else if (doort.nDoor == 1 && gm.puzzleLevel >= 3)
-            //    {
-            //        if (handle.Doorindex == 1)
-            //        {
-            //            doort.PlayerPos_1 = true;
-            //            doort.PlayerPos_0 = false;
-            //        }
-            //        else if (handle.Doorindex == 0)
-            //        {
-            //            doort.PlayerPos_1 = false;
-            //            doort.PlayerPos_0 = true;
-            //        }
-            //        doort.oDoor();
-            //    }
-            //    else if (doort.nDoor == 2 && gm.puzzleLevel >= 4)
-            //    {
-            //        if (handle.Doorindex == 1)
-            //        {
-            //            doort.PlayerPos_1 = true;
-            //            doort.PlayerPos_0 = false;
-            //        }
-            //        else if (handle.Doorindex == 0)
-            //        {
-            //            doort.PlayerPos_1 = false;
-            //            doort.PlayerPos_0 = true;
-            //        }
-            //        doort.oDoor();
-            //    }
-            //    else if(doort.nDoor == 0 && gm.puzzleLevel == 1 || doort.nDoor == 1 && gm.puzzleLevel < 3 || doort.nDoor == 2 && gm.puzzleLevel < 4)
-            //    {
-            //        GuideLineTxt.instance.SetDifferentTxt2(0);
-            //    }
-            //}
             if (other.CompareTag(interactiveList[1]))
             {
                 vent = other.GetComponentInParent<Vent>();
-                if (other.name == ("Vent1") && vent.v1activate)
+                if (other.name == ("Vent1") && vent.v1activate && !GameManager.instance.rescueHostage)
                 {
                     player.transform.position = vent.vent2.transform.position;
                     vent.v1activate = false;
                     vent.ventActivate = true;
                 }
-                else if (other.name == ("Vent2") && vent.v2activate && vent.ventActivate)
+                else if (other.name == ("Vent2") && vent.v2activate && vent.ventActivate && !GameManager.instance.rescueHostage)
                 {
                     player.transform.position = vent.vent1.transform.position;
                     vent.v2activate = false;
                 }
-                else if(other.name == ("Vent1")&& !vent.v1activate || other.name == ("Vent2") && !vent.v2activate || !vent.ventActivate)
+                else if(other.name == ("Vent1") && !vent.v1activate || other.name == ("Vent2") && !vent.v2activate || GameManager.instance.rescueHostage || !vent.ventActivate)
                 {
                     GuideLineTxt.instance.SetDifferentTxt2(2);
                 }
@@ -265,7 +221,7 @@ public class PlayerInteractive : MonoBehaviour
             //}
             else if (other.CompareTag(interactiveList[3]))
             {
-                if(EnemyLevel.enemylv.LvStep != EnemyLevel.ELevel.level3)
+                if(EnemyLevel.enemylv.LvStep != EnemyLevel.ELevel.level3 && !GameManager.instance.rescueHostage)
                 {
                     cabinet = other.GetComponentInParent<Cabinet>();
                     if (!gm.isHide)

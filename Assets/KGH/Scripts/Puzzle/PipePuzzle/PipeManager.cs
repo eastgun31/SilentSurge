@@ -142,10 +142,12 @@ public class PipeManager : MonoBehaviour
                 SubtitleCheck();
             }
         }
-        else if(SceneManager.GetActiveScene().buildIndex == 3)
+        else if(SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 4)
         {
             if(gm.puzzleLevel == 3)
             {
+                EnemyLevel.enemylv.ODaeGi2();
+                doorOpen.Invoke();
                 SubtitleCheck();
             }
         }
@@ -163,8 +165,9 @@ public class PipeManager : MonoBehaviour
                 GuideLineTxt.instance.SetDifferentTxt(12);
                 break;
             case 3:
-                EnemyLevel.enemylv.ODaeGi2();
-                doorOpen.Invoke();
+                GuideLineTxt.instance.SetDifferentTxt(9);
+                break;
+                    case 4:
                 GuideLineTxt.instance.SetDifferentTxt(9);
                 break;
         }
