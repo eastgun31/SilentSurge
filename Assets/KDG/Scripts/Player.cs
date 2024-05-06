@@ -238,11 +238,11 @@ public class Player : MonoBehaviour
         {
             sight = hit.transform.gameObject.GetComponent<Sight>();
             enemyState = hit.transform.transform.gameObject.GetComponent<Enemy>();
-            if (!sight.findT && enemyState.state != Enemy.EnemyState.die)
+            if (!sight.findT && enemyState.state != Enemy.EnemyState.die && !handgunacivate && !coinacivate && !flashbangacivate && !heartseeacivate)
             {
                 canAmsal = true;
                 Debug.Log("암살가능");
-                if (canAmsal && !handgunacivate && !coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
+                if (canAmsal  && Input.GetMouseButtonDown(0))
                 {
                     StartCoroutine(useItem.Assassination());
                     sight = null;

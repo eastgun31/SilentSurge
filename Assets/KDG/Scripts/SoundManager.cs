@@ -67,7 +67,9 @@ public class SoundManager : MonoBehaviour
     public void EffectPlay(int i, bool type)
     {
         if(type)
+        {
             audioPlayer.PlayOneShot(effectClips[i]);
+        }
         else if(!type && !playingSource)
         {
             playingSource = true;
