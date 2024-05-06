@@ -133,7 +133,7 @@ public class GameManager : MonoBehaviour
                 break;
             case 3:
                 Debug.Log("¾À3");
-                SceneVariableReset(3,16,13,1, 7, 7, 360);
+                SceneVariableReset(3,16,13,1, 7, 7, 130);
                 PuzzleDifficulty(90f, 0.007f, 30f, 0.005f, "5728");
                 break;
             case 4:

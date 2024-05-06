@@ -11,11 +11,12 @@ public class Hostage : MonoBehaviour
     Animator anim;
     public UnityEvent hostageDie;
     string walk = "Walk";
-    string death = "Die";
+    string death = "Death";
     GameManager gm;
 
     public void Realive()
     {
+        anim.SetBool(death, false);
         gm.hostagedie = false;
         nav.isStopped = false;
     }
@@ -50,7 +51,7 @@ public class Hostage : MonoBehaviour
             gm.hostagedie = true;
             nav.isStopped = true;
             nav.velocity = Vector3.zero;
-            anim.SetTrigger(death);
+            anim.SetBool(death, true);
             hostageDie.Invoke();
         }
     }

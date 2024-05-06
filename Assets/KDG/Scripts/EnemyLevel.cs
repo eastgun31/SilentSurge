@@ -74,11 +74,11 @@ public class EnemyLevel : MonoBehaviour
     {
         while (true)
         { 
-            if(gm.playerchasing > 20f && !gm.isDie)
+            if(gm.playerchasing > 15f && !gm.isDie)
             {
                 if (LvStep == ELevel.level1)
                     LvStep = ELevel.level2;
-                else if(gm.playerchasing >= 40f && LvStep == ELevel.level2)
+                else if(gm.playerchasing >= 30f && LvStep == ELevel.level2)
                 {
                     LvStep = ELevel.level3;
                     if(!enemyadd)
@@ -105,7 +105,7 @@ public class EnemyLevel : MonoBehaviour
                     LvStep = ELevel.level1;
                     gm.playerchasing = 0;
                 }
-                else if (gm.playerchasing <= 20f && LvStep == ELevel.level3)
+                else if (gm.playerchasing <= 30f && LvStep == ELevel.level3)
                 {
                     LvStep = ELevel.level2;
                     lv3enemy.SetActive(false);
@@ -205,10 +205,23 @@ public class EnemyLevel : MonoBehaviour
     }
     public void ODaeGi2()
     {
+        Debug.Log("111");
         lastenemy.SetActive(true);
         for (int i = 0; i < lv3enemy.transform.childCount; i++)
         {
             lastenemy.transform.GetChild(i).gameObject.SetActive(true);
         }
     }
+
+    public void LastEvent()
+    {
+        if(gm.scenenum == 3 ||  gm.scenenum == 4)
+        {
+            if (gm.puzzleLevel == 4)
+                ODaeGi2();
+            else
+                return;
+        }
+    }
+
 }
