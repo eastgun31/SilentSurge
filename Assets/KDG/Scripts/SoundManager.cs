@@ -62,7 +62,7 @@ public class SoundManager : MonoBehaviour
         if (i == 5 || i == 6)
             audioPlayer.volume = 0.07f;
         else
-            audioPlayer.volume = 0.07f;
+            audioPlayer.volume = 0.1f;
 
         audioPlayer.clip = bgmClips[i];
         audioPlayer.loop = true;
