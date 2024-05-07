@@ -21,13 +21,6 @@ public class Vent : MonoBehaviour
         v2Cooltime = new WaitForSeconds(15f);
     }
 
-    private void Update()
-    {
-        if (!v1activate)
-            StartCoroutine(V1CoolT());
-        if (!v2activate)
-            StartCoroutine(V2CoolT());
-    }
     IEnumerator V1CoolT()
     {
         yield return v1Cooltime;
@@ -38,5 +31,14 @@ public class Vent : MonoBehaviour
     {
         yield return v2Cooltime;
         v2activate= true;
+    }
+
+    public void V1Cool()
+    {
+        StartCoroutine(V1CoolT());
+    }   
+    public void V2Cool()
+    {
+        StartCoroutine(V2CoolT());
     }
 }
