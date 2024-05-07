@@ -82,11 +82,11 @@ public class PipeManager : MonoBehaviour
         if (correctPipes == totalPipes) //½Â¸® Á¶°Ç
         {
             um.isWin = true;
+            //if (gm.scenenum == 3 || gm.scenenum == 4)
+            //    EnemyLevel.enemylv.ODaeGi2();
 
             SceneCheck();
             gm.puzzleLevel += 1;
-            //if (gm.scenenum == 3 || gm.scenenum == 4)
-                
 
             Invoke("ClosePipe", 1f);
             gm.nowpuzzle = false;
@@ -146,7 +146,6 @@ public class PipeManager : MonoBehaviour
         {
             if(gm.puzzleLevel == 3)
             {
-                EnemyLevel.enemylv.ODaeGi2();
                 doorOpen.Invoke();
                 SubtitleCheck();
             }
