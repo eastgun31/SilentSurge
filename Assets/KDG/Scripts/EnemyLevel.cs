@@ -217,7 +217,7 @@ public class EnemyLevel : MonoBehaviour
     {
         if(gm.scenenum == 3 ||  gm.scenenum == 4)
         {
-            if (gm.puzzleLevel == 4)
+            if (gm.puzzleLevel == 2)
                 ODaeGi2();
             else
                 return;
