@@ -215,12 +215,12 @@ public class Enemy : MonoBehaviour
         {
             enemyAnim.SetBool(GunRuning, false);
             GameManager.instance.eonecollison = true;
-            if (enemyType == 1 || enemyType == 2)
+            if (enemyType == 1 || enemyType == 2 || enemyType == 4)
                 StartCoroutine(Shoot()); // 총을 발사합니다.
             else if (enemyType == 3)
                 StartCoroutine(CloseAttack());
-            else if (enemyType == 4 && !isShooting)
-                StartCoroutine(UdoShoot(sight.detectTarget.position));
+            //else if (enemyType == 4 && !isShooting)
+            //    StartCoroutine(UdoShoot(sight.detectTarget.position));
         }
         if (Vector3.Distance(transform.position, sight.detectTarget.position) > 3f)
         {
@@ -291,11 +291,15 @@ public class Enemy : MonoBehaviour
             if (enemyType == 2)
             {
                 Shoot2();
-                SoundManager.instance.EnemyEffect(1);
+                SoundManager.instance.EnemyEffect(1, 0.1f);
             }
             else if (enemyType == 1)
             {
-                SoundManager.instance.EnemyEffect(0);
+                SoundManager.instance.EnemyEffect(0, 0.1f);
+            }
+            else if (enemyType == 4)
+            {
+                SoundManager.instance.EnemyEffect(2, 0.5f);
             }
 
             bulletRigid.velocity = bulletPos.forward * bulletSpeed;

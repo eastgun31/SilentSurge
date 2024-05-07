@@ -15,7 +15,7 @@ public class PlayerClosed : MonoBehaviour
     private void Start()
     {
         ending.Play();
-        SoundManager.instance.EffectPlay(2, true);
+        SoundManager.instance.EffectPlay(2, true, 1f);
         Time.timeScale = 1;
         player.SetActive(true);
         clear.SetActive(false);

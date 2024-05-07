@@ -164,21 +164,29 @@ public class PlayerInteractive : MonoBehaviour
             if (other.CompareTag(interactiveList[1]))
             {
                 vent = other.GetComponentInParent<Vent>();
-                if (other.name == ("Vent1") && vent.v1activate && !GameManager.instance.rescueHostage)
-                {
-                    player.transform.position = vent.vent2.transform.position;
-                    vent.v1activate = false;
-                    vent.ventActivate = true;
-                }
-                else if (other.name == ("Vent2") && vent.v2activate && vent.ventActivate && !GameManager.instance.rescueHostage)
-                {
-                    player.transform.position = vent.vent1.transform.position;
-                    vent.v2activate = false;
-                }
-                else if(other.name == ("Vent1") && !vent.v1activate || other.name == ("Vent2") && !vent.v2activate || GameManager.instance.rescueHostage || !vent.ventActivate)
-                {
-                    GuideLineTxt.instance.SetDifferentTxt2(2);
-                }
+                    if (other.name == ("Vent1") && vent.v1activate)
+                    {
+                        player.transform.position = vent.vent2.transform.position;
+                        vent.v1activate = false;
+                        vent.ventActivate = true;
+                        vent.V1Cool();
+                    }
+                    else if (other.name == ("Vent2") && vent.v2activate && vent.ventActivate)
+                    {
+                        player.transform.position = vent.vent1.transform.position;
+                        vent.v2activate = false;
+                        vent.V2Cool();
+                    }
+                    else if (other.name == ("Vent1") && !vent.v1activate)
+                    {
+                        Debug.Log("12345");
+                        GuideLineTxt.instance.SetDifferentTxt2(2);
+                    }
+                    else if (other.name == ("Vent2") && !vent.v2activate || !vent.ventActivate)
+                    {
+                        Debug.Log("67890");
+                        GuideLineTxt.instance.SetDifferentTxt2(2);
+                    }     
             }
             //else if (other.CompareTag(interactiveList[2]))
             //{

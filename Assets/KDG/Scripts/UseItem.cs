@@ -56,7 +56,7 @@ public class UseItem : MonoBehaviour
         Rigidbody bulletRigid = bullet.GetComponent<Rigidbody>();
         gunSound = bullet.GetComponent<CreateSound>();
         StartCoroutine(gunSound.SoundCreateDeleteGun());
-        soundManager.EffectPlay(1, true);
+        soundManager.EffectPlay(1, true, 0.4f);
 
         float zDeg = pos.z - bulletRigid.position.z;
         float xDeg = pos.x - bulletRigid.position.x;
@@ -101,13 +101,16 @@ public class UseItem : MonoBehaviour
 
     public void OnOffMap()
     {
+        Debug.Log("111");
         if(!mapcheck)
         {
+            Debug.Log("112");
             map.SetActive(true);
             mapcheck = true;
         }
-        else if(!mapcheck)
+        else if(mapcheck)
         {
+            Debug.Log("113");
             map.SetActive(false);
             mapcheck = false;
         }
@@ -162,7 +165,7 @@ public class UseItem : MonoBehaviour
     {
         amJeon.SetActive(true);
         amSal.SetActive(true);
-        soundManager.EffectPlay(1, true);
+        soundManager.EffectPlay(3, true, 1f);
         yield return itemClass.amJeonDelay;
         amSal.SetActive(false);
         amJeon.SetActive(false);
