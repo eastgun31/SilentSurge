@@ -49,10 +49,18 @@ public class GameOver : MonoBehaviour
         button[1].SetActive(true);
         button[2].SetActive(true);
     }
+    void  ClosedButton()
+    {
+        button[0].SetActive(false);
+        button[1].SetActive(false);
+        button[2].SetActive(false);
+        text.SetActive(false);
+    }
 
     public void CheckPoint()
     {
         UiManager.instance.isGameOver = false;
+        ClosedButton();
         DataManager.instance.LoadData();
     }
 
@@ -65,6 +73,7 @@ public class GameOver : MonoBehaviour
     public void GoToMain()
     {
         UiManager.instance.isGameOver = false;
+        ClosedButton();
         SceneManager.LoadScene("GameStart");
     }
 }
