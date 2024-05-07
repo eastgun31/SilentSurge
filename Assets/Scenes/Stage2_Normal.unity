@@ -7949,7 +7949,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &220421256
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7963,11 +7963,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 671105789}
-  m_Father: {fileID: 1277125376}
+  - {fileID: 1013012643}
+  m_Father: {fileID: 1582105688}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -888.57556, y: 477.8286}
+  m_AnchoredPosition: {x: -888.57556, y: 473.3286}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &220421257
@@ -13682,7 +13683,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9ba58e175cb73784fa5660a33b8ddbcd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5f96b5758c0df5c4b9e7c4947e2f9880, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -37322,11 +37323,11 @@ RectTransform:
   m_Children:
   - {fileID: 1000224635}
   - {fileID: 1812749181}
-  m_Father: {fileID: 1277125376}
+  m_Father: {fileID: 220421256}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -666.17004, y: 466.17004}
+  m_AnchoredPosition: {x: 222.40552, y: -11.658569}
   m_SizeDelta: {x: 524.8146, y: 103.3243}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1013012644
@@ -47495,10 +47496,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1751743899}
-  - {fileID: 220421256}
   - {fileID: 1076912453}
   - {fileID: 1306757557}
-  - {fileID: 1013012643}
   - {fileID: 1582105688}
   - {fileID: 209040736}
   m_Father: {fileID: 0}
@@ -59210,6 +59209,7 @@ RectTransform:
   - {fileID: 738888772}
   - {fileID: 533514758}
   - {fileID: 292172686}
+  - {fileID: 220421256}
   m_Father: {fileID: 1277125376}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -70417,6 +70417,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1970284750}
         m_TargetAssemblyTypeName: GuideLineTxt, Assembly-CSharp
         m_MethodName: SetDifferentTxt4
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1237251689}
+        m_TargetAssemblyTypeName: EnemyLevel, Assembly-CSharp
+        m_MethodName: LastEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
