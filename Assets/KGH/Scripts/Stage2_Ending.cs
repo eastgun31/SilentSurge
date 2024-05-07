@@ -29,18 +29,18 @@ public class Stage2_Ending : MonoBehaviour
     {
         yield return new WaitForSeconds(7f);
         explosion1.Play();
-        SoundManager.instance.EffectPlay(4, true, 0.1f);
+        SoundManager.instance.EffectPlay(4, true, 0.3f);
         yield return new WaitForSeconds(0.2f);
         explosion1.Stop();
         explosion2.Play();
-        SoundManager.instance.EffectPlay(4, true, 0.1f);
+        SoundManager.instance.EffectPlay(4, true, 0.3f);
         yield return new WaitForSeconds(0.4f);
         explosion2.Stop();
         explosion3.Play();
        
         yield return new WaitForSeconds(5f);
         explosion3.Stop(); 
-        SoundManager.instance.EffectPlay(4, true, 0.1f);
+        SoundManager.instance.EffectPlay(4, true, 0.3f);
         clear.SetActive(true);
     }
 }

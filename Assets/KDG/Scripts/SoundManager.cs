@@ -60,7 +60,7 @@ public class SoundManager : MonoBehaviour
         audioPlayer.Stop();
 
         if (i == 5 || i == 6)
-            audioPlayer.volume = 0.03f;
+            audioPlayer.volume = 0.07f;
         else
             audioPlayer.volume = 0.07f;
 
