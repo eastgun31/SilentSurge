@@ -71,8 +71,6 @@ public class HackingPuz : MonoBehaviour
             passwords[3] = "6C";
         }
 
-        
-
         // 첫 번째 텍스트 필드에 초기값 설정
         inputTexts[currentInputIndex].text = "";
     }
@@ -119,7 +117,7 @@ public class HackingPuz : MonoBehaviour
                     inputTexts[currentInputIndex].text = "";
                 else
                 {   
-                    Invoke("CloseHackingPuz", 2f);
+                    Invoke("CloseHackingPuz", 1f);
                     PuzlvUp();
                 }
             }
@@ -142,12 +140,11 @@ public class HackingPuz : MonoBehaviour
 
         gm.puzzleLevel += 1;
         SubtitleCheck();
+        um.isWin = false;
         DataManager.instance.SaveData();
     }
     public void CloseHackingPuz()
     {
-        um.isWin = false;
-        
         hacking.SetActive(false);
     }
 

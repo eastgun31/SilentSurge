@@ -34,18 +34,23 @@ public class SinPuzzle : MonoBehaviour
 
     Player.PlayerState player;
 
+    GameManager gm;
+    UiManager um;
+
     private void Start()
     {
-        amplitude = GameManager.instance.amplitude;
-        frequency = GameManager.instance.frequency;
-        correctAmlitude = GameManager.instance.correctAmlitude;
-        correctFrequance = GameManager.instance.correctFrequance;
+        gm = GameManager.instance;
+        um = UiManager.instance;
+        amplitude = gm.amplitude;
+        frequency = gm.frequency;
+        correctAmlitude = gm.correctAmlitude;
+        correctFrequance = gm.correctFrequance;
         //Difficulty();
     }
     private void OnDisable()
     {
-        amplitude = GameManager.instance.amplitude;
-        frequency = GameManager.instance.frequency;
+        amplitude = gm.amplitude;
+        frequency = gm.frequency;
     }
     private void Awake()
     {
@@ -65,14 +70,14 @@ public class SinPuzzle : MonoBehaviour
         {
             if ((int)UiManager.instance.timeRemainig == 0)
             {
-                UiManager.instance.isGameOver = true;
-                UiManager.instance.gameover.SetActive(true);
+                um.isGameOver = true;
+                um.gameover.SetActive(true);
                 CloseSin();
             }
             else
             {
-                UiManager.instance.timeRemainig -= Time.deltaTime;
-                success.text = "Time:  " + (int)UiManager.instance.timeRemainig;
+                um.timeRemainig -= Time.deltaTime;
+                success.text = "Time:  " + (int)um.timeRemainig;
             }  
         }
         else
@@ -101,7 +106,7 @@ public class SinPuzzle : MonoBehaviour
 
     private void WaveControl()
     {
-        if (UiManager.instance.isWin ==false)
+        if (um.isWin ==false)
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
                 amplitude += 10;
@@ -123,7 +128,7 @@ public class SinPuzzle : MonoBehaviour
 
         if (amplitude == correctAmlitude && frequency == correctFrequance)
         {
-            UiManager.instance.isWin = true;
+            um.isWin = true;
             player = Player.PlayerState.idle;
             if (!lev)
             {
@@ -131,9 +136,9 @@ public class SinPuzzle : MonoBehaviour
                 fcctv1.SetActive(true);
                 cctv2.SetActive(false);
                 fcctv2.SetActive(true);
-                GameManager.instance.puzzleLevel += 1; 
-                GameManager.instance.nowpuzzle = false;
-                GameManager.instance.EnemyActive2();
+                gm.puzzleLevel += 1; 
+                gm.nowpuzzle = false;
+                gm.EnemyActive2();
                 EnemyLevel.enemylv.SetEnemy();     
                 SubtitleCheck();
                 DataManager.instance.SaveData();
@@ -145,9 +150,9 @@ public class SinPuzzle : MonoBehaviour
     }
     private void CloseSin()
     {
-        UiManager.instance.isWin = false;
+        um.isWin = false;
 
-        UiManager.instance.CloseSinFst();
+        um.CloseSinFst();
     }
 
     public void SubtitleCheck()
