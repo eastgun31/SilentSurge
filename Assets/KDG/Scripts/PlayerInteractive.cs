@@ -164,27 +164,31 @@ public class PlayerInteractive : MonoBehaviour
             if (other.CompareTag(interactiveList[1]))
             {
                 vent = other.GetComponentInParent<Vent>();
-                    if (other.name == ("Vent1") && vent.v1activate)
+                if(other.name == ("Vent1"))
+                {
+                    if(vent.v1activate)
                     {
                         player.transform.position = vent.vent2.transform.position;
                         vent.v1activate = false;
                         vent.ventActivate = true;
                         vent.V1Cool();
                     }
-                    else if (other.name == ("Vent2") && vent.v2activate && vent.ventActivate)
+                    else
+                    {
+                        GuideLineTxt.instance.SetDifferentTxt2(2);
+                    }
+                }
+                if(other.name == ("Vent2"))
+                {
+                    if(vent.v2activate && vent.ventActivate)
                     {
                         player.transform.position = vent.vent1.transform.position;
                         vent.v2activate = false;
                         vent.V2Cool();
                     }
-                    //else if (other.name == ("Vent1") && !vent.v1activate)
-                    //{
-                    //    GuideLineTxt.instance.SetDifferentTxt2(2);
-                    //}
-                    //else if (other.name == ("Vent2") && !vent.v2activate || !vent.ventActivate)
-                    //{
-                    //    GuideLineTxt.instance.SetDifferentTxt2(2);
-                    //}     
+                    else if(!vent.v2activate && vent.ventActivate | vent.v2activate && !vent.ventActivate)
+                        GuideLineTxt.instance.SetDifferentTxt2(2);
+                }
             }
             //else if (other.CompareTag(interactiveList[2]))
             //{
