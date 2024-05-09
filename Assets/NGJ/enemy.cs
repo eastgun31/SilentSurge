@@ -116,7 +116,7 @@ public class Enemy : MonoBehaviour
         naviindex = 0;
         
         m_enemy.avoidancePriority = 50;
-        if (indexcount == 98)
+        if (enemyType == 5)
             customDestinations[0] = GameManager.instance.lv3PlayerPos;
 
     }
@@ -217,7 +217,7 @@ public class Enemy : MonoBehaviour
             GameManager.instance.eonecollison = true;
             if (enemyType == 1 || enemyType == 2 || enemyType == 4)
                 StartCoroutine(Shoot()); // 총을 발사합니다.
-            else if (enemyType == 3)
+            else if (enemyType == 3 || enemyType == 5)
                 StartCoroutine(CloseAttack());
             //else if (enemyType == 4 && !isShooting)
             //    StartCoroutine(UdoShoot(sight.detectTarget.position));
@@ -434,7 +434,7 @@ public class Enemy : MonoBehaviour
         {
             StopCoroutine(Shoot());
         }
-        else if(enemyType == 3)
+        else if(enemyType == 3 || enemyType == 5)
         {
             StopCoroutine(CloseAttack());
         }
