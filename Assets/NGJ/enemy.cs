@@ -123,7 +123,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (state != EnemyState.die && state == EnemyState.findtarget )
+        if (state != EnemyState.die && state != EnemyState.sturn && state == EnemyState.findtarget )
         {
             TargetChase();
         }
@@ -380,7 +380,7 @@ public class Enemy : MonoBehaviour
 
             // GameManager.instance.playerchasing = false;
             state = EnemyState.hear;
-            if(sight.findT && state != EnemyState.die)
+            if(sight.findT && state != EnemyState.die && state != EnemyState.sturn)
                 state = EnemyState.findtarget;
 
         }
@@ -447,10 +447,10 @@ public class Enemy : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet") || other.CompareTag("AmSal"))
+        if (state != EnemyState.die && (other.CompareTag("Bullet") || other.CompareTag("AmSal")))
         {
-            EnenyAttackStop();
             state = EnemyState.die;
+            EnenyAttackStop();
             if(other.CompareTag("Bullet"))
             {
                 Destroy(other.gameObject);
