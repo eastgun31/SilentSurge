@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(type == 0 && (other.CompareTag("Wall") || other.CompareTag("Enemy")))
+        if(type == 0 && (other.CompareTag("Wall")))
             Destroy(gameObject);
         if(type == 1 && (other.CompareTag("Wall") || other.CompareTag("Player"))&& GameManager.instance.eonecollison)
         {

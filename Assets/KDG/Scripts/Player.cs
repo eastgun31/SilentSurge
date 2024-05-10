@@ -174,6 +174,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
+            playerspeed = 2.5f;
             RunOff();
         }
 
@@ -380,10 +381,14 @@ public class Player : MonoBehaviour
         
     }
 
+
     IEnumerator PlayerDie()
     {
         gmManager.isDie = true;
+        ItemActivateControll(false, false, false, false);
+        handGunModel.SetActive(false);
         RunOff();
+        useItem.ItemOff();
         playerAnim.SetTrigger("Die");
         yield return new WaitForSeconds(3f);
         Debug.Log("플레이어 죽음");

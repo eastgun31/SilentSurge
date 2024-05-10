@@ -23,22 +23,30 @@ public class Vent : MonoBehaviour
 
     IEnumerator V1CoolT()
     {
+        Debug.Log("000000");
         yield return v1Cooltime;
-        v1activate= true;
+        Debug.Log("11111111");
+        v1activate = true;
     }
 
     IEnumerator V2CoolT()
     {
+        Debug.Log("222222");
         yield return v2Cooltime;
+        Debug.Log("333333");
         v2activate= true;
     }
 
     public void V1Cool()
     {
+        vent1.SetActive(false);
+        vent1.SetActive(true);
         StartCoroutine(V1CoolT());
     }   
     public void V2Cool()
     {
+        vent2.SetActive(false);
+        vent2.SetActive(true);
         StartCoroutine(V2CoolT());
     }
 }

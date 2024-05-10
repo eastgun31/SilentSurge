@@ -107,12 +107,14 @@ public class UseItem : MonoBehaviour
             Debug.Log("112");
             map.SetActive(true);
             mapcheck = true;
+            Time.timeScale = 0;
         }
         else if(mapcheck)
         {
             Debug.Log("113");
             map.SetActive(false);
             mapcheck = false;
+            Time.timeScale = 1;
         }
         
     }
@@ -171,6 +173,20 @@ public class UseItem : MonoBehaviour
         amJeon.SetActive(false);
     }
 
+    public void ItemOff()
+    {
+        heartseeCam.SetActive(false);
+        heartCanUse = true;
+        StopCoroutine(HeartSee());
+        ErageDraw();
+
+        if(mapcheck)
+        {
+            map.SetActive(false);
+            mapcheck = false;
+        }
+
+    }
     //public void ThrowCoin()
     //{
     //    GameObject coin = Instantiate(coinPrefab, throwposition.transform.position, Quaternion.identity);
