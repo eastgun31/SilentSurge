@@ -69,21 +69,31 @@ public class GuideLineTxt : MonoBehaviour
         guideUI.DOText(guideLineDB.guideLine[10].guideTxt, 1.5f);
         Invoke("SetOffTxt", 3.5f);
     }
-    public void SetDifferentTxt4()             // 오브젝트 관련
+    public void SetDifferentTxt4()             // 2스테이지 노말 / 하드 비밀번호
     {
         mapPW.gameObject.SetActive(true);
         guideUI.gameObject.SetActive(true);
-        guideUI.DOText(guideLineDB.guideLine[13].guideTxt, 1.5f);
-        Invoke("SetOffTxt", 2f);
-        isBossOn =false;
+        if(GameManager.instance.scenenum == 3)
+        {
+            guideUI.DOText(guideLineDB.guideLine[13].guideTxt, 1.5f);
+            Invoke("SetOffTxt", 2f);
+            isBossOn = false;
+        }
+        if(GameManager.instance.scenenum == 4)
+        {
+            guideUI.DOText(guideLineDB.guideLine[14].guideTxt, 1.5f);
+            Invoke("SetOffTxt", 2f);
+            isBossOn = false;
+        }
     }
-    public void SetDifferentTxt5()             // 오브젝트 관련
+
+    public void SetDifferentTxt5()
     {
         guideUI.gameObject.SetActive(true);
         guideUI.DOText(guideLineDB.guideLine[15].guideTxt, 1.5f);
         Invoke("SetOffTxt", 3.5f);
     }   
-    public void SetDifferentTxt6()             // 오브젝트 관련
+    public void SetDifferentTxt6()
     {
         guideUI.gameObject.SetActive(true);
         guideUI.DOText(guideLineDB.guideLine[5].guideTxt, 1.5f);
