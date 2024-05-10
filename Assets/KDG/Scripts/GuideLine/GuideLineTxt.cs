@@ -21,6 +21,7 @@ public class GuideLineTxt : MonoBehaviour
     private GuideLineDB guideLineDB;          // 
 
     public Text guideUI;                                 // 자막 UI
+    public GameObject mapPW;
 
     [SerializeField]
     private GuideData[] guideDatas;               // 
@@ -28,6 +29,7 @@ public class GuideLineTxt : MonoBehaviour
     public int currentDatas_Index;                   // 불러올 자막의 인덱스를 바꿀 변수
 
     public bool isBossOn = true;
+
 
     void Awake()
     {
@@ -69,6 +71,7 @@ public class GuideLineTxt : MonoBehaviour
     }
     public void SetDifferentTxt4()             // 오브젝트 관련
     {
+        mapPW.gameObject.SetActive(true);
         guideUI.gameObject.SetActive(true);
         guideUI.DOText(guideLineDB.guideLine[13].guideTxt, 1.5f);
         Invoke("SetOffTxt", 2f);

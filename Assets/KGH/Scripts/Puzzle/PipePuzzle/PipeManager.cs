@@ -9,6 +9,8 @@ public class PipeManager : MonoBehaviour
 {
     public GameObject canvas;
 
+    public GameObject mapPW;
+
     public GameObject pipesHolder; //파이프를 포함한 부모 오브젝트
     public GameObject[] pipes;
 
@@ -138,6 +140,7 @@ public class PipeManager : MonoBehaviour
             {
                 items[2].SetActive(true);
                 items[3].SetActive(true);
+                mapPW.SetActive(true);
                 gm.ItemActive();
                 SubtitleCheck();
             }

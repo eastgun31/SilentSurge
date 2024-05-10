@@ -2264,6 +2264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1349880380}
+  mapPW: {fileID: 0}
   pipesHolder: {fileID: 1943845882}
   pipes: []
   items: []
@@ -8491,6 +8492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 695707512}
+  mapPW: {fileID: 0}
   pipesHolder: {fileID: 61367565}
   pipes: []
   items:
@@ -11639,6 +11641,85 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.56600004, y: 1.118, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1 &502997214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 502997215}
+  - component: {fileID: 502997217}
+  - component: {fileID: 502997216}
+  m_Layer: 5
+  m_Name: PW
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &502997215
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502997214}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1138364788}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -227, y: 264.55945}
+  m_SizeDelta: {x: 334.0763, y: 105.2568}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &502997216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502997214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: deeeea6cfd41c5b4aa2217b74b4f67d8, type: 3}
+    m_FontSize: 51
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 63
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'PW : 8324'
+--- !u!222 &502997217
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502997214}
+  m_CullTransparentMesh: 1
 --- !u!1 &506814262
 GameObject:
   m_ObjectHideFlags: 0
@@ -15406,6 +15487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 581937918}
+  mapPW: {fileID: 0}
   pipesHolder: {fileID: 1516358029}
   pipes: []
   items: []
@@ -24683,7 +24765,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 502997215}
   m_Father: {fileID: 117621586}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -29920,6 +30003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1437594523}
+  mapPW: {fileID: 0}
   pipesHolder: {fileID: 672743571}
   pipes: []
   items: []
@@ -35391,6 +35475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1919408034}
+  mapPW: {fileID: 0}
   pipesHolder: {fileID: 72681569}
   pipes:
   - {fileID: 72681569}
@@ -36745,6 +36830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 53406475}
+  mapPW: {fileID: 0}
   pipesHolder: {fileID: 2033278532}
   pipes: []
   items: []
@@ -40163,6 +40249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 607917726}
+  mapPW: {fileID: 0}
   pipesHolder: {fileID: 1199799760}
   pipes: []
   items: []
@@ -42208,6 +42295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 620190490}
+  mapPW: {fileID: 0}
   pipesHolder: {fileID: 1696090683}
   pipes: []
   items: []
@@ -42672,6 +42760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 347729482}
+  mapPW: {fileID: 502997214}
   pipesHolder: {fileID: 821759216}
   pipes: []
   items:
@@ -43220,6 +43309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1268665977}
+  mapPW: {fileID: 0}
   pipesHolder: {fileID: 81289779}
   pipes: []
   items: []

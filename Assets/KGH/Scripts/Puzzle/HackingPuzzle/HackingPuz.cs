@@ -59,7 +59,7 @@ public class HackingPuz : MonoBehaviour
             passwords[2] = "FF";
             passwords[3] = "3D";
         }
-        if(gm.scenenum ==3 || gm.scenenum ==4)
+        if(gm.scenenum ==3)
         {
             ansCode[0].text = "S1";
             ansCode[1].text = "5V";
@@ -69,6 +69,17 @@ public class HackingPuz : MonoBehaviour
             passwords[1] = "5V";
             passwords[2] = "Z5";
             passwords[3] = "6C";
+        }
+        if( gm.scenenum ==4 ) 
+        {
+            ansCode[0].text = "4K";
+            ansCode[1].text = "9H";
+            ansCode[2].text = "S1";
+            ansCode[3].text = "4K";
+            passwords[0] = "4K";
+            passwords[1] = "9H";
+            passwords[2] = "S1";
+            passwords[3] = "4K";
         }
 
         // 첫 번째 텍스트 필드에 초기값 설정
