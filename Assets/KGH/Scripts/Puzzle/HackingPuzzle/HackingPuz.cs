@@ -167,7 +167,7 @@ public class HackingPuz : MonoBehaviour
                 GuideLineTxt.instance.SetDifferentTxt(4);
                 break;
             case 2:
-                GuideLineTxt.instance.SetDifferentTxt(6);
+                GuideLineTxt.instance.SetDifferentTxt(4);
                 break;
             case 3:
                 doorOpen.Invoke();

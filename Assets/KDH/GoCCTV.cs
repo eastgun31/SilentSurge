@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GetHint : MonoBehaviour
+public class GoCCTV : MonoBehaviour
 {
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && GameManager.instance.puzzleLevel < 5)
+        if (other.gameObject.CompareTag("Player"))
         {
-            GuideLineTxt.instance.SetDifferentTxt9();
+            GuideLineTxt.instance.SetDifferentTxt(3);
             this.gameObject.SetActive(false);
         }
     }
