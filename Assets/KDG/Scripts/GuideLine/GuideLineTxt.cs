@@ -113,4 +113,11 @@ public class GuideLineTxt : MonoBehaviour
         guideUI.DOText(guideLineDB.guideLine[17].guideTxt, 1.5f);
         Invoke("SetOffTxt", 3.5f);
     }
+
+    public void SetDifferentTxt9()
+    {
+        guideUI.gameObject.SetActive(true);
+        guideUI.DOText(guideLineDB.guideLine[18].guideTxt, 1.5f);
+        Invoke("SetOffTxt", 3.5f);
+    }
 }
