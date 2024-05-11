@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
             Destroy(explosionprefab,0.5f);
             Destroy(gameObject,1f);
         }
-        if(type == 3 && (other.CompareTag("Wall") || other.CompareTag("Player")))
+        if(type == 3 && (other.CompareTag("Wall") || other.CompareTag("Player") || other.CompareTag("CabinetObj")))
             Destroy (gameObject);
 
     }
