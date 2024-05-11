@@ -15,7 +15,7 @@ public class GameClear : MonoBehaviour
     bool activewan;
 
     public List<GameObject> enemys;
-    public GameObject items;
+    public List<GameObject> items;
     CoolTime cool;
 
     private void Start()
@@ -45,7 +45,8 @@ public class GameClear : MonoBehaviour
             if(enemys.FirstOrDefault() == null && activewan)
             {
                 goal.SetActive(true);
-                items.SetActive(true);
+                items[0].SetActive(true);
+                items[1].SetActive(true);
                 DataManager.instance.SaveData();
             }
                 
