@@ -33,6 +33,22 @@ public class Keypad : MonoBehaviour
         gm = GameManager.instance;
         pw = GameManager.instance.paswawrd;
     }
+    private void Update()
+    {
+        EscapeKeypad();
+    }
+
+    void EscapeKeypad()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(gm.nowpuzzle == true)
+            {
+                keypad.SetActive(false);
+                gm.nowpuzzle = false;
+            }
+        }
+    }
 
     public void Number(int number) 
     {
@@ -46,7 +62,7 @@ public class Keypad : MonoBehaviour
         }
     }
 
-    public void Enter()
+    void Enter()
     {
         if(answerInput.text.Equals(pw, System.StringComparison.OrdinalIgnoreCase)) // 입력값과 정답이 같으면
         {
@@ -62,7 +78,7 @@ public class Keypad : MonoBehaviour
             Invoke("ResetAns", 1f);
         }
     }
-    public void BackSpace()
+    void BackSpace()
     {
         if (um.isWin == false)
         {
@@ -71,12 +87,12 @@ public class Keypad : MonoBehaviour
         }
     }
 
-    public void ResetAns()
+    void ResetAns()
     {
         answerInput.text = "";
     }
 
-    public void PuzLevUp()
+    void PuzLevUp()
     {
         gm.nowpuzzle = false;
         gm.puzzleLevel += 1;
@@ -93,7 +109,7 @@ public class Keypad : MonoBehaviour
             gm.rescueHostage = true;
     }
 
-    public void Closed()
+    void Closed()
     { 
         um.isWin = false;
         um.CloseKeypadFst();
