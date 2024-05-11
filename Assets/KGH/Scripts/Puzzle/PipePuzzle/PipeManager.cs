@@ -136,6 +136,11 @@ public class PipeManager : MonoBehaviour
                 GuideLineTxt.instance.SetDifferentTxt(3);
             }
 
+            if (gm.puzzleLevel == 4)
+            {
+                GuideLineTxt.instance.SetDifferentTxt8();
+            }
+
             if (gm.puzzleLevel == 7)
             {
                 items[2].SetActive(true);
