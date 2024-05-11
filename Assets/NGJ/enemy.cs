@@ -34,8 +34,6 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private int enemyType;
     [SerializeField]
-    private bool lastEnemy;
-    [SerializeField]
     private int indexcount;
     [SerializeField]
     private int naviindex;
@@ -301,7 +299,7 @@ public class Enemy : MonoBehaviour
             }
             else if (enemyType == 4)
             {
-                SoundManager.instance.EnemyEffect(2, 0.7f);
+                SoundManager.instance.EnemyEffect(2, 0.5f);
             }
 
             bulletRigid.velocity = bulletPos.forward * bulletSpeed;
@@ -432,13 +430,17 @@ public class Enemy : MonoBehaviour
 
     void EnenyAttackStop()
     {
-        if(enemyType == 1 || enemyType ==2 || enemyType == 4)
+        if(enemyType == 1 || enemyType ==2)
         {
             StopCoroutine(Shoot());
         }
         else if(enemyType == 3 || enemyType == 5)
         {
             StopCoroutine(CloseAttack());
+        }
+        else if(enemyType == 4)
+        {
+            StopCoroutine(UdoShoot(sight.detectTarget.position));
         }
     }
 
@@ -461,15 +463,12 @@ public class Enemy : MonoBehaviour
                 
 
             StartCoroutine(DeactivateWithDelay());
-            if (enemyType == 5)
-                return;
-            else if (lastEnemy)
-                return;
-            else
+            if (indexcount != 99 || indexcount != 98)
+            {
                 GameManager.instance.existEnemy[indexcount] = false;
-
+            }
             //StopAllCoroutines();
-
+           
         }
         else if (other.CompareTag(Flash))
         {

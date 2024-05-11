@@ -207,7 +207,7 @@ public class EnemyLevel : MonoBehaviour
     {
         Debug.Log("111");
         lastenemy.SetActive(true);
-        for (int i = 0; i < lastenemy.transform.childCount; i++)
+        for (int i = 0; i < lv3enemy.transform.childCount; i++)
         {
             lastenemy.transform.GetChild(i).gameObject.SetActive(true);
         }
