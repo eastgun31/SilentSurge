@@ -107,14 +107,12 @@ public class UseItem : MonoBehaviour
             Debug.Log("112");
             map.SetActive(true);
             mapcheck = true;
-            Time.timeScale = 0;
         }
         else if(mapcheck)
         {
             Debug.Log("113");
             map.SetActive(false);
             mapcheck = false;
-            Time.timeScale = 1;
         }
         
     }

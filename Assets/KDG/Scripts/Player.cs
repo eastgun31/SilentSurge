@@ -165,8 +165,12 @@ public class Player : MonoBehaviour
 
             //Debug.Log("´Þ¸®±â");
             footSound.SetActive(true);
-            soundManager.EffectPlay(0,false, 1f);
             
+            if (soundManager.effectPlayer.isPlaying)
+                return;
+            else if(!soundManager.effectPlayer.isPlaying)
+                soundManager.EffectPlay(0, true, 1f);
+
             if (handgunacivate)
                 playerAnim.SetBool(gunrun, true);
             else

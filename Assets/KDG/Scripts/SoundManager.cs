@@ -73,6 +73,11 @@ public class SoundManager : MonoBehaviour
     {
         if(type)
         {
+            if(i == 0)
+                effectPlayer.loop = true;
+            else
+                effectPlayer.loop = false;
+
             effectPlayer.volume = vol;
             effectPlayer.PlayOneShot(effectClips[i]);
         }
