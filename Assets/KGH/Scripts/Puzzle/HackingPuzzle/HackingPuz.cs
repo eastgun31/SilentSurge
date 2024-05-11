@@ -164,10 +164,10 @@ public class HackingPuz : MonoBehaviour
         switch(SceneManager.GetActiveScene().buildIndex)
         {
             case 1:
-                GuideLineTxt.instance.SetDifferentTxt(8);
+                GuideLineTxt.instance.SetDifferentTxt(4);
                 break;
             case 2:
-                GuideLineTxt.instance.SetDifferentTxt(8);
+                GuideLineTxt.instance.SetDifferentTxt(6);
                 break;
             case 3:
                 doorOpen.Invoke();
