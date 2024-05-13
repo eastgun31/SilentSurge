@@ -56,10 +56,10 @@ public class Hostage : MonoBehaviour
     IEnumerator HostageDie()
     {
         die = true;
-            anim.SetBool(death, true);
-            gm.hostagedie = true;
-            nav.isStopped = true;
-            nav.velocity = Vector3.zero;
+        anim.SetBool(death, true);
+        gm.hostagedie = true;
+        nav.isStopped = true;
+        nav.velocity = Vector3.zero;
         
         yield return new WaitForSeconds(1f);
         die = false;

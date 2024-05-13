@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
     private string wall = "Wall";
     private string player = "Player";
     private string cabinet = "CabinetObj";
+    private string people = "People";
 
     private void Start()
     {
@@ -23,7 +24,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(type == 0 && (other.CompareTag(wall)))
+        if(type == 0 && (other.CompareTag(wall) || other.CompareTag(people)))
             Destroy(gameObject);
         if(type == 1 && (other.CompareTag(wall) || other.CompareTag(player))&& GameManager.instance.eonecollison)
         {
@@ -32,7 +33,7 @@ public class Bullet : MonoBehaviour
             Destroy(explosionprefab,0.5f);
             Destroy(gameObject,1f);
         }
-        if(type == 3 && (other.CompareTag(wall) || other.CompareTag(player) || other.CompareTag(cabinet)))
+        if(type == 3 && (other.CompareTag(wall) || other.CompareTag(player) || other.CompareTag(cabinet) ))
             Destroy (gameObject);
 
     }

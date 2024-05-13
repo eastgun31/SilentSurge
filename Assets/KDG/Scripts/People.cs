@@ -19,19 +19,23 @@ public class People : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("E_Bullet"))
+        if(other.CompareTag("Bullet"))
         {
-            gm.peopledie = true;
 
-            if(gm.peopledie)
-            {
+            if(!gm.peopledie)
+                StartCoroutine(PeopleDie());
 
-            }
+            peopleDieEvent.Invoke();
+            
         }
     }
 
     IEnumerator PeopleDie()
     {
+        gm.peopledie = true;
+        anim.SetBool("Die", true);
         yield return new WaitForSeconds(2f);
+        //anim.SetBool("Die", false);
+        gm.peopledie = false;
     }
 }
