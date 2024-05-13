@@ -389,6 +389,7 @@ public class Player : MonoBehaviour
     IEnumerator PlayerDie()
     {
         gmManager.isDie = true;
+        gmManager.isGameOver = true;
         ItemActivateControll(false, false, false, false);
         handGunModel.SetActive(false);
         RunOff();
@@ -398,6 +399,7 @@ public class Player : MonoBehaviour
         Debug.Log("플레이어 죽음");
         //DataManager.instance.LoadData();
         playerDie.Invoke();
+        gmManager.isGameOver = false;
         die = false;
     }
     IEnumerator PlayerSave()
