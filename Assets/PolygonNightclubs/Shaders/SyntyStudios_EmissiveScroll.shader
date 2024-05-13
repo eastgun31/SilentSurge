@@ -49,7 +49,7 @@ Shader "SyntyStudios/EmissiveScroll"
 		ENDCG
 	}
 	Fallback "Diffuse"
-	CustomEditor "ASEMaterialInspector"
+	//CustomEditor "ASEMaterialInspector"
 }
 /*ASEBEGIN
 Version=18909
