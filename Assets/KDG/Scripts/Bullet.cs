@@ -11,6 +11,10 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     bool oneparticle = true;
 
+    private string wall = "Wall";
+    private string player = "Player";
+    private string cabinet = "CabinetObj";
+
     private void Start()
     {
         if(type == 4)
@@ -19,16 +23,16 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(type == 0 && (other.CompareTag("Wall")))
+        if(type == 0 && (other.CompareTag(wall)))
             Destroy(gameObject);
-        if(type == 1 && (other.CompareTag("Wall") || other.CompareTag("Player"))&& GameManager.instance.eonecollison)
+        if(type == 1 && (other.CompareTag(wall) || other.CompareTag(player))&& GameManager.instance.eonecollison)
         {
             GameManager.instance.eonecollison = false;
             GameObject explosionprefab =  Instantiate(explosion, gameObject.transform);
             Destroy(explosionprefab,0.5f);
             Destroy(gameObject,1f);
         }
-        if(type == 3 && (other.CompareTag("Wall") || other.CompareTag("Player") || other.CompareTag("CabinetObj")))
+        if(type == 3 && (other.CompareTag(wall) || other.CompareTag(player) || other.CompareTag(cabinet)))
             Destroy (gameObject);
 
     }

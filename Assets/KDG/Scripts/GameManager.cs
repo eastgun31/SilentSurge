@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     public bool spacebar = false;
     public bool rescueHostage = false;
     public bool hostagedie = false;
+    public bool peopledie = false;
 
     [SerializeField]
     private int enemyQuater;
