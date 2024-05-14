@@ -52,16 +52,16 @@ public class PlayerInteractive : MonoBehaviour
                 if (doort.nDoor == 1 && gm.puzzleLevel < 2 || doort.nDoor == 2 && gm.puzzleLevel < 4)
                     GuideLineTxt.instance.SetDifferentTxt2(0);
             }
-            else if(GameManager.instance.scenenum == 3)
+            else if(GameManager.instance.scenenum == 3 || GameManager.instance.scenenum == 4)
             {
                 if (doort.nDoor == 0 || doort.nDoor == 1 && gm.puzzleLevel >= 2 || doort.nDoor == 2 && gm.puzzleLevel >= 3)
                     doort.OpenDoor();
                 else if(doort.nDoor == 1 && gm.puzzleLevel < 2 || doort.nDoor == 2 && gm.puzzleLevel < 3)
                     GuideLineTxt.instance.SetDifferentTxt2(0);
             }
-            else if (GameManager.instance.scenenum == 4)
+            else if (GameManager.instance.scenenum == 5)
             {
-                if (doort.nDoor == 0 || doort.nDoor == 1 && gm.puzzleLevel >= 2 || doort.nDoor == 2 && gm.puzzleLevel >= 3)
+                if (doort.nDoor == 0 || doort.nDoor == 1 && gm.puzzleLevel >= 2)
                     doort.OpenDoor();
                 else if (doort.nDoor == 1 && gm.puzzleLevel < 2 || doort.nDoor == 2 && gm.puzzleLevel < 3)
                     GuideLineTxt.instance.SetDifferentTxt2(0);
