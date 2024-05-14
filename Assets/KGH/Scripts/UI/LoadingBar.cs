@@ -63,5 +63,14 @@ public class LoadingBar : MonoBehaviour
             else if (currentValue >= slider.maxValue * 0.9f)
                 time = 25f;
         }
+        if (SceneManager.GetActiveScene().buildIndex == 5)
+        {
+            if (currentValue <= slider.maxValue * 0.3f)
+                time = 5f;
+            else if (currentValue <= slider.maxValue * 0.5f)
+                time = 15f;
+            else if (currentValue >= slider.maxValue * 0.9f)
+                time = 30f;
+        }
     }
 }
