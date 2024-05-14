@@ -4005,10 +4005,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 720650693980904244, guid: dce96586f5c183c4582dd95f332b40a5, type: 3}
       propertyPath: hostageDie.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 720650693980904244, guid: dce96586f5c183c4582dd95f332b40a5, type: 3}
       propertyPath: hostageDie.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 720650693980904244, guid: dce96586f5c183c4582dd95f332b40a5, type: 3}
+      propertyPath: hostageDie.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 720650693980904244, guid: dce96586f5c183c4582dd95f332b40a5, type: 3}
@@ -4016,7 +4020,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1205572119}
     - target: {fileID: 720650693980904244, guid: dce96586f5c183c4582dd95f332b40a5, type: 3}
+      propertyPath: hostageDie.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1800540054}
+    - target: {fileID: 720650693980904244, guid: dce96586f5c183c4582dd95f332b40a5, type: 3}
       propertyPath: hostageDie.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 720650693980904244, guid: dce96586f5c183c4582dd95f332b40a5, type: 3}
+      propertyPath: hostageDie.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 720650693980904244, guid: dce96586f5c183c4582dd95f332b40a5, type: 3}
@@ -4024,11 +4036,23 @@ PrefabInstance:
       value: GameOver
       objectReference: {fileID: 0}
     - target: {fileID: 720650693980904244, guid: dce96586f5c183c4582dd95f332b40a5, type: 3}
+      propertyPath: hostageDie.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: RunOff
+      objectReference: {fileID: 0}
+    - target: {fileID: 720650693980904244, guid: dce96586f5c183c4582dd95f332b40a5, type: 3}
       propertyPath: hostageDie.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 720650693980904244, guid: dce96586f5c183c4582dd95f332b40a5, type: 3}
+      propertyPath: hostageDie.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Player, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 720650693980904244, guid: dce96586f5c183c4582dd95f332b40a5, type: 3}
       propertyPath: hostageDie.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 720650693980904244, guid: dce96586f5c183c4582dd95f332b40a5, type: 3}
+      propertyPath: hostageDie.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2368790964743595662, guid: dce96586f5c183c4582dd95f332b40a5, type: 3}
@@ -27972,6 +27996,7 @@ MonoBehaviour:
   rescueHostage: 0
   hostagedie: 0
   peopledie: 0
+  isGameOver: 0
   enemyQuater: 0
   lv3PlayerPos: {x: 0, y: 0, z: 0}
   Items:
@@ -41706,6 +41731,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7248858452175125864, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
   m_PrefabInstance: {fileID: 1800540051}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1800540054 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 255918103661452812, guid: d63ca27b01e6b17419ad3870ee295f7d, type: 3}
+  m_PrefabInstance: {fileID: 1800540051}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800540052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62615c2d5cf4f514388bc64853ed2f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1805984988
 GameObject:
   m_ObjectHideFlags: 0

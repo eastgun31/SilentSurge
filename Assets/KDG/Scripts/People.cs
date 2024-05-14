@@ -19,11 +19,18 @@ public class People : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Bullet"))
+        if(other.CompareTag("E_Bullet"))
         {
-
-            if(!gm.peopledie)
+            if (!gm.peopledie)
+            {
+                gm.peopledie = true;
+                gm.isGameOver = true;
+                anim.SetTrigger("Die");
                 StartCoroutine(PeopleDie());
+            }
+            else
+                return;
+                
 
             peopleDieEvent.Invoke();
             
@@ -32,10 +39,13 @@ public class People : MonoBehaviour
 
     IEnumerator PeopleDie()
     {
-        gm.peopledie = true;
-        anim.SetBool("Die", true);
+        Debug.Log("½Ã¹Î»ç¸Á");
         yield return new WaitForSeconds(2f);
-        //anim.SetBool("Die", false);
         gm.peopledie = false;
+        gm.isGameOver = false;
+    }
+
+    public void Realive()
+    {
     }
 }
