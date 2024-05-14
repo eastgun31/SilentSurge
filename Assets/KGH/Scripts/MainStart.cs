@@ -22,7 +22,8 @@ public class MainStart : MonoBehaviour
 
         if(SoundManager.instance.stage1Clear)
             stage2Ban.SetActive(false);
-        else if(SoundManager.instance.stage2Clear)
+
+        if(SoundManager.instance.stage2Clear)
             stage3Ban.SetActive(false);
     }
 

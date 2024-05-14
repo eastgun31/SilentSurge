@@ -89,15 +89,15 @@ public class GameClear : MonoBehaviour
         {
             if(GameManager.instance.scenenum == 2)
             {
-                Ending.Invoke();
                 SoundManager.instance.stage1Clear = true;
+                Ending.Invoke();
             }
             else if(GameManager.instance.scenenum == 4)
             {
                 if (GameManager.instance.rescueHostage)
                 {
-                    Ending.Invoke();
                     SoundManager.instance.stage2Clear = true;
+                    Ending.Invoke();
                 }
                 else
                     return;
