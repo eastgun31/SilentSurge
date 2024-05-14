@@ -39,6 +39,10 @@ public class LoadScene : MonoBehaviour
     {
         SceneManager.LoadScene(7);
     }
+    public void LoadEnding3()
+    {
+        SceneManager.LoadScene(8);
+    }
     public void QuitGame()
     {
         Application.Quit();

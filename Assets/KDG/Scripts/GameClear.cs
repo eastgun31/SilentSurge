@@ -17,6 +17,7 @@ public class GameClear : MonoBehaviour
     public List<GameObject> enemys;
     public GameObject items;
     CoolTime cool;
+    GameManager gm;
 
     private void Start()
     {
@@ -26,6 +27,7 @@ public class GameClear : MonoBehaviour
         {
             StartCoroutine(EndingCheck());
         }
+        gm = GameManager.instance;
     }
 
     IEnumerator EndingCheck()
@@ -84,6 +86,9 @@ public class GameClear : MonoBehaviour
 
             if (GameManager.instance.scenenum == 3 || GameManager.instance.scenenum == 4)
                 EnemyLevel.enemylv.SetEnemy();
+
+            if (GameManager.instance.scenenum == 5)
+                GameManager.instance.last = true;
         }
         else if(other.CompareTag("Player") && value == 3)
         {
@@ -101,6 +106,11 @@ public class GameClear : MonoBehaviour
                 }
                 else
                     return;
+            }
+            else if(GameManager.instance.scenenum == 5)
+            {
+                if(GameManager.instance.last)
+                    Ending.Invoke();
             }
         }
     }

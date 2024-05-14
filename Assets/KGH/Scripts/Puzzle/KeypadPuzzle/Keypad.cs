@@ -20,6 +20,7 @@ public class Keypad : MonoBehaviour
 
     GameManager gm;
     UiManager um;
+    
 
 
     private void OnDisable()
@@ -101,12 +102,14 @@ public class Keypad : MonoBehaviour
 
     void SceneCheck()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1 || 
+        if (SceneManager.GetActiveScene().buildIndex == 1 ||
             SceneManager.GetActiveScene().buildIndex == 2)
             doorOpen.Invoke();
-        else if (SceneManager.GetActiveScene().buildIndex == 3 || 
-            SceneManager.GetActiveScene().buildIndex ==4)
+        else if (SceneManager.GetActiveScene().buildIndex == 3 ||
+            SceneManager.GetActiveScene().buildIndex == 4)
             gm.rescueHostage = true;
+        else if (SceneManager.GetActiveScene().buildIndex == 5)
+            gm.EnemyActive2();
     }
 
     void Closed()
