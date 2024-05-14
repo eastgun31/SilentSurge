@@ -52,19 +52,21 @@ public class Vent : MonoBehaviour
 
     public void V1Cool()
     {
-        if(GameManager.instance.scenenum != 5)
-        {
+
             vent1.SetActive(false);
             vent1.SetActive(true);
+        if (GameManager.instance.scenenum != 5)
+        {
             StartCoroutine(V1CoolT());
         }
     }   
     public void V2Cool()
     {
-        if(GameManager.instance.scenenum != 5)
-        {
+
             vent2.SetActive(false);
             vent2.SetActive(true);
+        if (GameManager.instance.scenenum != 5)
+        {
             StartCoroutine(V2CoolT());
         }
     }
