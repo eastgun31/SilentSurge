@@ -125,6 +125,9 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if(GameManager.instance.isGameOver)
+            return;
+
         if (state != EnemyState.die && state != EnemyState.sturn && state == EnemyState.findtarget )
         {
             TargetChase();

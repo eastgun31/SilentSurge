@@ -49,7 +49,10 @@ public class Hostage : MonoBehaviour
         if(other.CompareTag("E_Bullet"))
         {
             if(!die)
+            {
                 StartCoroutine(HostageDie());
+            }
+                
             hostageDie.Invoke();
         }
     }
@@ -57,6 +60,7 @@ public class Hostage : MonoBehaviour
     {
         die = true;
         anim.SetBool(death, true);
+        gm.isGameOver = true;
         gm.hostagedie = true;
         nav.isStopped = true;
         nav.velocity = Vector3.zero;
@@ -67,6 +71,7 @@ public class Hostage : MonoBehaviour
 
     public void Realive()
     {
+        gm.isGameOver = false;
         anim.SetBool(death,false);
         gm.hostagedie = false;
         nav.isStopped = false;

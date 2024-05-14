@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public bool rescueHostage = false;
     public bool hostagedie = false;
     public bool peopledie = false;
+    public bool isGameOver = false;
 
     [SerializeField]
     private int enemyQuater;
@@ -44,6 +45,8 @@ public class GameManager : MonoBehaviour
     public bool last = false;
     public bool onecollison = true;
     public bool eonecollison = true;
+    public GameObject people;
+
     public void Awake()
     {
         if (instance != null)
@@ -167,6 +170,11 @@ public class GameManager : MonoBehaviour
         correctAmlitude = c;
         correctFrequance = d;
         paswawrd = e;
+    }
+
+    public void PeopleOff()
+    {
+
     }
 
     public void GameOver()
