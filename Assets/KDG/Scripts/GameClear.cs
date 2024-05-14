@@ -59,12 +59,19 @@ public class GameClear : MonoBehaviour
         if(other.CompareTag("Player") && value == 1)
         {
             if (GameManager.instance.scenenum == 1)
+            {
                 clear.SetActive(true);
+                SoundManager.instance.stage1Clear = true;
+            }
+                
 
             else if (GameManager.instance.scenenum == 3)
             {
                 if (GameManager.instance.rescueHostage)
+                {
                     clear.SetActive(true);
+                    SoundManager.instance.stage2Clear = true;
+                }
                 else
                     return;
             }
@@ -81,12 +88,17 @@ public class GameClear : MonoBehaviour
         else if(other.CompareTag("Player") && value == 3)
         {
             if(GameManager.instance.scenenum == 2)
+            {
                 Ending.Invoke();
-
+                SoundManager.instance.stage1Clear = true;
+            }
             else if(GameManager.instance.scenenum == 4)
             {
                 if (GameManager.instance.rescueHostage)
+                {
                     Ending.Invoke();
+                    SoundManager.instance.stage2Clear = true;
+                }
                 else
                     return;
             }

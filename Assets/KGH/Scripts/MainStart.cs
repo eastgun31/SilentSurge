@@ -11,11 +11,19 @@ public class MainStart : MonoBehaviour
     public GameObject backButton;
     public GameObject help;
 
+    public GameObject stage2Ban;
+    public GameObject stage3Ban;
+
     public void StartButton()
     {
         mainButton.SetActive(false);
         modChoice.SetActive(true);
         backButton.SetActive(true);
+
+        if(SoundManager.instance.stage1Clear)
+            stage2Ban.SetActive(false);
+        else if(SoundManager.instance.stage2Clear)
+            stage3Ban.SetActive(false);
     }
 
     public void BackButton()
