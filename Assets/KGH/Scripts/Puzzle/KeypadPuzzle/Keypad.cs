@@ -109,7 +109,11 @@ public class Keypad : MonoBehaviour
             SceneManager.GetActiveScene().buildIndex == 4)
             gm.rescueHostage = true;
         else if (SceneManager.GetActiveScene().buildIndex == 5)
+        {
             gm.EnemyActive2();
+            EnemyLevel.enemylv.SetEnemy();
+        }
+            
     }
 
     void Closed()

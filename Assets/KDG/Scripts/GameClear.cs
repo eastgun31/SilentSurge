@@ -34,9 +34,11 @@ public class GameClear : MonoBehaviour
     {
         while (true)
         {
+            yield return cool.cool1sec;
+
             foreach (GameObject enemy in enemys)
             {
-                if (GameManager.instance.last && !enemy.activeSelf)
+                if (gm.last && !enemy.activeSelf)
                 {
                     enemys.Remove(enemy);
                     break;
@@ -48,11 +50,14 @@ public class GameClear : MonoBehaviour
             {
                 goal.SetActive(true);
                 items.SetActive(true);
+
+                gm.clublast = true;
+
                 DataManager.instance.SaveData();
             }
                 
 
-            yield return cool.cool1sec;
+            //yield return cool.cool1sec;
         }
     }
 
@@ -60,16 +65,16 @@ public class GameClear : MonoBehaviour
     {
         if(other.CompareTag("Player") && value == 1)
         {
-            if (GameManager.instance.scenenum == 1)
+            if (gm.scenenum == 1)
             {
                 clear.SetActive(true);
                 SoundManager.instance.stage1Clear = true;
             }
                 
 
-            else if (GameManager.instance.scenenum == 3)
+            else if (gm.scenenum == 3)
             {
-                if (GameManager.instance.rescueHostage)
+                if (gm.rescueHostage)
                 {
                     clear.SetActive(true);
                     SoundManager.instance.stage2Clear = true;
@@ -84,22 +89,22 @@ public class GameClear : MonoBehaviour
             goal.SetActive(false);
             lastAction.Invoke();
 
-            if (GameManager.instance.scenenum == 3 || GameManager.instance.scenenum == 4)
+            if (gm.scenenum == 3 || gm.scenenum == 4)
                 EnemyLevel.enemylv.SetEnemy();
 
-            if (GameManager.instance.scenenum == 5)
-                GameManager.instance.last = true;
+            if (gm.scenenum == 5)
+                gm.people.SetActive(false);
         }
         else if(other.CompareTag("Player") && value == 3)
         {
-            if(GameManager.instance.scenenum == 2)
+            if(gm.scenenum == 2)
             {
                 SoundManager.instance.stage1Clear = true;
                 Ending.Invoke();
             }
-            else if(GameManager.instance.scenenum == 4)
+            else if(gm.scenenum == 4)
             {
-                if (GameManager.instance.rescueHostage)
+                if (gm.rescueHostage)
                 {
                     SoundManager.instance.stage2Clear = true;
                     Ending.Invoke();
@@ -107,9 +112,9 @@ public class GameClear : MonoBehaviour
                 else
                     return;
             }
-            else if(GameManager.instance.scenenum == 5)
+            else if(gm.scenenum == 5)
             {
-                if(GameManager.instance.last)
+                if(gm.clublast)
                     Ending.Invoke();
             }
         }

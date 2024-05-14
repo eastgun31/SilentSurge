@@ -68,7 +68,8 @@ public class Vent : MonoBehaviour
         {
             if (GameManager.instance.puzzleLevel == 2)
                 v1activate = true;
-            else if (GameManager.instance.last == true)
+            
+            if (GameManager.instance.clublast == true)
                 v2activate = true;
         }
     }

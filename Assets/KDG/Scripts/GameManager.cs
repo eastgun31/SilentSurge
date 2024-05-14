@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] Items;
     public bool last = false;
+    public bool clublast = false;
     public bool onecollison = true;
     public bool eonecollison = true;
     public GameObject people;
@@ -114,7 +115,7 @@ public class GameManager : MonoBehaviour
             existEnemy[i] = true;
         }
 
-        if (scenenum == 1 || scenenum == 2)
+        if (scenenum == 1 || scenenum == 2 || scenenum == 5)
             last = true;
 
 
@@ -145,7 +146,7 @@ public class GameManager : MonoBehaviour
                 PuzzleDifficulty(90f, 0.007f, 30f, 0.005f, "8015");
                 break;
             case 5:
-                SceneVariableReset(5, 3, 5, 1, 1, 7, 130);
+                SceneVariableReset(5, 3, 8, 1, 1, 7, 130);
                 PuzzleDifficulty(90f, 0.007f, 30f, 0.005f, "8015");
                 break;
 

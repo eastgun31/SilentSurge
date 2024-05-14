@@ -40,7 +40,7 @@ public class People : MonoBehaviour
     IEnumerator PeopleDie()
     {
         Debug.Log("½Ã¹Î»ç¸Á");
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         gm.peopledie = false;
         gm.isGameOver = false;
     }

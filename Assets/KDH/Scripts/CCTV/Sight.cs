@@ -84,7 +84,7 @@ public class Sight : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(sightType == 1)                           // enemy ¿œ Eo
+        if(sightType == 1 )                           // enemy ¿œ Eo
             DrawDetectArea();
     }
 
