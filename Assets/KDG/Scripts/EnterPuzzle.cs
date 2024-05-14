@@ -51,6 +51,15 @@ public class EnterPuzzle : MonoBehaviour
         };
     }
 
+    public int PuzzleActive3()
+    {
+        return gm.puzzleLevel switch
+        {
+            1 when level == 1 => uiManager.ActiveKeypad(),
+            _ => 0
+        };
+    }
+
     //public int PuzzleActive2()
     //{
     //    //gm.nowpuzzle = true;

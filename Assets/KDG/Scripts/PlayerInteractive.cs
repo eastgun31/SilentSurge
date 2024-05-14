@@ -99,6 +99,11 @@ public class PlayerInteractive : MonoBehaviour
                 Debug.Log("∆€¡Ò∑π¿Ã");
                 enterPuzzle.PuzzleActive2();
             }
+            else if (gm.scenenum == 5)
+            {
+                Debug.Log("∆€¡Ò∑π¿Ã");
+                enterPuzzle.PuzzleActive3();
+            }
 
             //switch (enterPuzzle.level)
             //{
