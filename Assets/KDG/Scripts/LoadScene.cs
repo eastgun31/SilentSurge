@@ -27,13 +27,17 @@ public class LoadScene : MonoBehaviour
     {
         SceneManager.LoadScene(4);
     }
-    public void LoadEnding1()
+    public void LoadStage3()
     {
         SceneManager.LoadScene(5);
+    }
+    public void LoadEnding1()
+    {
+        SceneManager.LoadScene(6);
     }    
     public void LoadEnding2()
     {
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(7);
     }
     public void QuitGame()
     {
