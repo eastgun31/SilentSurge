@@ -16,6 +16,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] uiClips;
     public AudioClip[] enemyClips;
 
+    public GameObject image;
+
     [SerializeField]
     private bool playingSource = false;
     public bool playingAction = false;
