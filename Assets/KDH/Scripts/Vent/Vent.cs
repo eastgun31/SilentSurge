@@ -29,13 +29,7 @@ public class Vent : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.instance.scenenum == 5)
-        {
-            if (GameManager.instance.puzzleLevel == 2)
-                v1activate = true;
-            else if (GameManager.instance.last == true)
-                v2activate = true;
-        }
+        Stage3Elv();
     }
 
     IEnumerator V1CoolT()
@@ -52,7 +46,6 @@ public class Vent : MonoBehaviour
 
     public void V1Cool()
     {
-
             vent1.SetActive(false);
             vent1.SetActive(true);
         if (GameManager.instance.scenenum != 5)
@@ -62,12 +55,21 @@ public class Vent : MonoBehaviour
     }   
     public void V2Cool()
     {
-
             vent2.SetActive(false);
             vent2.SetActive(true);
         if (GameManager.instance.scenenum != 5)
         {
             StartCoroutine(V2CoolT());
+        }
+    }
+    public void Stage3Elv()
+    {
+        if (GameManager.instance.scenenum == 5)
+        {
+            if (GameManager.instance.puzzleLevel == 2)
+                v1activate = true;
+            else if (GameManager.instance.last == true)
+                v2activate = true;
         }
     }
 }
