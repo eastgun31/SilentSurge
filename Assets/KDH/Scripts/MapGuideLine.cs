@@ -47,6 +47,11 @@ public class MapGuideLine : MonoBehaviour
                 }   // 2스테이지 큰 문 열리고 나서 나올 문구 (GoTarget)
                 if (guideN == 2 && !GuideLineTxt.instance.isBossOn)
                 {
+                    GuideLineTxt.instance.SetDifferentTxt(15);
+                    this.gameObject.SetActive(false);
+                }   // 2스테이지 인질 구출 
+                if (guideN == 3 && !GuideLineTxt.instance.isBossOn)
+                {
                     GuideLineTxt.instance.SetDifferentTxt(5);
                     this.gameObject.SetActive(false);
                 }   // 2스테이지 인질 구출하고 폭탄 설치 안내 문구

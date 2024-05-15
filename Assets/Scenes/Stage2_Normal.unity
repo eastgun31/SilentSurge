@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 3
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 0.35
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.11666667
     manualTileSize: 0
     tileSize: 256
     buildHeightMesh: 0
@@ -44435,7 +44435,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1196864037}
   - component: {fileID: 1196864039}
-  - component: {fileID: 1196864038}
+  - component: {fileID: 1196864040}
   m_Layer: 0
   m_Name: GoInjil
   m_TagString: Untagged
@@ -44458,18 +44458,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 443247767}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &1196864038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1196864036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d700dd1982b4b24b9b16356e9d566a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1196864039
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44491,6 +44479,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.6088138, z: 0.3449305}
   m_Center: {x: 8.296868e-17, y: 0.4470137, z: 0.037088394}
+--- !u!114 &1196864040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196864036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddb7b262406c1d438c32a9f38e43397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guideN: 2
 --- !u!1 &1206430258
 GameObject:
   m_ObjectHideFlags: 0
@@ -57927,7 +57928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1565891039}
   - component: {fileID: 1565891041}
-  - component: {fileID: 1565891040}
+  - component: {fileID: 1565891042}
   m_Layer: 0
   m_Name: GoBomb
   m_TagString: Untagged
@@ -57950,18 +57951,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 443247767}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &1565891040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1565891038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b3bbf43c7b40d84ab234839f927435e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1565891041
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57983,6 +57972,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.6088138, z: 0.3449305}
   m_Center: {x: 8.296868e-17, y: 0.4470137, z: 0.037088394}
+--- !u!114 &1565891042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565891038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddb7b262406c1d438c32a9f38e43397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guideN: 3
 --- !u!1 &1567203583
 GameObject:
   m_ObjectHideFlags: 0
@@ -59794,6 +59796,10 @@ PrefabInstance:
     - target: {fileID: 2976330501851279619, guid: aec1c7fc5f756804ebbfba4bc125a1a4, type: 3}
       propertyPath: m_Name
       value: Door3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3818624947419468151, guid: aec1c7fc5f756804ebbfba4bc125a1a4, type: 3}
+      propertyPath: nDoor
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5863124210094744607, guid: aec1c7fc5f756804ebbfba4bc125a1a4, type: 3}
       propertyPath: m_LocalScale.x
@@ -64051,7 +64057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ddb7b262406c1d438c32a9f38e43397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guideN: 0
+  guideN: 1
 --- !u!1 &1728866753
 GameObject:
   m_ObjectHideFlags: 0
