@@ -8,8 +8,6 @@ public class Bullet : MonoBehaviour
     private int type;
     [SerializeField]
     private GameObject explosion;
-    [SerializeField]
-    bool oneparticle = true;
 
     private string wall = "Wall";
     private string player = "Player";

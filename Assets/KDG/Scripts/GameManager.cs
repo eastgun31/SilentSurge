@@ -123,21 +123,17 @@ public class GameManager : MonoBehaviour
 
     void SecenCheck()
     {
-        
         switch (SceneManager.GetActiveScene().buildIndex)
         {
             case 1:
-                Debug.Log("¾À1");
                 SceneVariableReset(1,8, 7, 1, 4, 7, 360);
                 PuzzleDifficulty(70f, 0.009f, 100f, 0.004f, "8324");
                 break;
             case 2:
-                Debug.Log("¾À2");
                 SceneVariableReset(2, 12,11, 2, 6, 7, 130);
                 PuzzleDifficulty(90f, 0.007f, 30f, 0.005f, "9635");
                 break;
             case 3:
-                Debug.Log("¾À3");
                 SceneVariableReset(3,10,13,1, 5, 7, 360);
                 PuzzleDifficulty(90f, 0.007f, 30f, 0.005f, "5728");
                 break;
@@ -171,11 +167,6 @@ public class GameManager : MonoBehaviour
         correctAmlitude = c;
         correctFrequance = d;
         paswawrd = e;
-    }
-
-    public void PeopleOff()
-    {
-
     }
 
     public void GameOver()

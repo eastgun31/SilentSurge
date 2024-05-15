@@ -7,7 +7,6 @@ public class HostageRange : MonoBehaviour
     Hostage hostage;
     Player player;
 
-    // Start is called before the first frame update
     void Start()
     {
         hostage = transform.parent.GetComponent<Hostage>();

@@ -12,13 +12,8 @@ public class Hostage : MonoBehaviour
     public UnityEvent hostageDie;
     bool die;
     string walk = "Walk";
-    string _death = "_Death";
     string death = "Death";
-    string alive = "Alive";
     GameManager gm;
-
-
-
 
     // Start is called before the first frame update
     void Start()
