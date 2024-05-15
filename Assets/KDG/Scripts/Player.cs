@@ -49,7 +49,9 @@ public class Player : MonoBehaviour
     string throwcoin = "ThrowCoin";
     string throwflashbang = "ThrowFlashBang";
     string run = "Runing";
+    string _run = "_Runing";
     string gunrun = "GunRuning";
+    string _gunrun = "_GunRuning";
     
 
     float rotDeg;
@@ -97,8 +99,8 @@ public class Player : MonoBehaviour
         //Debug.Log(math.round(velocity.magnitude));
         if (gmManager.nowpuzzle)
         {            
-            playerAnim.SetBool(gunrun, false);
-            playerAnim.SetBool(run, false);
+            //playerAnim.SetBool(gunrun, false);
+            //playerAnim.SetBool(run, false);
             footSound.SetActive(false);
             state = PlayerState.puzzling;
 
@@ -145,6 +147,19 @@ public class Player : MonoBehaviour
         rigid.MovePosition(rigid.position + velocity * Time.deltaTime);
     }
 
+    void PlayerMoveAnim()
+    {
+        
+        //playerAnim.SetFloat(walk,velocity.magnitude);
+
+        if(velocity.magnitude >= 5f && handgunacivate)
+            playerAnim.SetFloat(_gunrun, velocity.magnitude);
+        else if(velocity.magnitude >= 5f)
+            playerAnim.SetFloat(_run, velocity.magnitude);
+        else
+            playerAnim.SetFloat(walk, velocity.magnitude);
+    }
+
     void PlayerControll()
     {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -153,6 +168,8 @@ public class Player : MonoBehaviour
         rotDeg = -(Mathf.Rad2Deg * Mathf.Atan2(zDeg, xDeg) - 90);
         velocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized * playerspeed;
         playerAnim.SetFloat(walk, velocity.magnitude);
+
+        //PlayerMoveAnim();
 
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -171,10 +188,10 @@ public class Player : MonoBehaviour
             else if(!soundManager.effectPlayer.isPlaying)
                 soundManager.EffectPlay(0, true, 1f);
 
-            if (handgunacivate)
-                playerAnim.SetBool(gunrun, true);
-            else
-                playerAnim.SetBool(run, true);
+            //if (handgunacivate)
+            //    playerAnim.SetBool(gunrun, true);
+            //else
+            //    playerAnim.SetBool(run, true);
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
@@ -295,7 +312,7 @@ public class Player : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, 0.01f, transform.position.z);
             handGunModel.SetActive(true);
             Debug.Log("권총 활성화");
-            playerAnim.SetBool(run, false);
+            //playerAnim.SetBool(run, false);
             playerAnim.SetBool(handgunMode, true);
 
             ItemActivateControll(true, false, false, false);
@@ -304,7 +321,7 @@ public class Player : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha1) && handgunacivate)
         {
             playerAnim.SetBool(handgunMode, false);
-            playerAnim.SetBool(gunrun, false);
+            //playerAnim.SetBool(gunrun, false);
             handGunModel.SetActive(false);
             handgunacivate = false;
             Debug.Log("권총 비활성화");
@@ -316,7 +333,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2) && !coinacivate)
         {
             playerAnim.SetBool(handgunMode, false);
-            playerAnim.SetBool(gunrun, false);
+            //playerAnim.SetBool(gunrun, false);
             Debug.Log("코인 활성화");
             handGunModel.SetActive(false);
 
@@ -334,7 +351,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3) && !flashbangacivate)
         {
             playerAnim.SetBool(handgunMode, false);
-            playerAnim.SetBool(gunrun, false);
+            //playerAnim.SetBool(gunrun, false);
             Debug.Log("섬광탄 활성화");
             handGunModel.SetActive(false);
 
@@ -352,7 +369,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha4) && !heartseeacivate)
         {
             playerAnim.SetBool(handgunMode, false);
-            playerAnim.SetBool(gunrun, false);
+            //playerAnim.SetBool(gunrun, false);
             Debug.Log("심장박동측정기 활성화");
             handGunModel.SetActive(false);
 
@@ -381,8 +398,8 @@ public class Player : MonoBehaviour
         rigid.velocity = Vector3.zero;
         footSound.SetActive(false);
         soundManager.EffectOff();
-        playerAnim.SetBool(run, false);
-        playerAnim.SetBool(gunrun, false);
+        //playerAnim.SetBool(run, false);
+        //playerAnim.SetBool(gunrun, false);
         
     }
 
