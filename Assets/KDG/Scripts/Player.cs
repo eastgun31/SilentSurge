@@ -171,38 +171,10 @@ public class Player : MonoBehaviour
 
         //PlayerMoveAnim();
 
-        if(Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            playerspeed = 5f;
-        }
-        if (Input.GetKey(KeyCode.LeftShift) && velocity.magnitude >= 5)
-        {
-            //if(velocity.magnitude < 5)
-            //    footSound.SetActive(false);
-
-            //Debug.Log("달리기");
-            footSound.SetActive(true);
-            
-            if (soundManager.effectPlayer.isPlaying)
-                return;
-            else if(!soundManager.effectPlayer.isPlaying)
-                soundManager.EffectPlay(0, true, 1f);
-
-            //if (handgunacivate)
-            //    playerAnim.SetBool(gunrun, true);
-            //else
-            //    playerAnim.SetBool(run, true);
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            playerspeed = 2.5f;
-            RunOff();
-        }
-
         if (itemGet[0])
         {
             ItemActivate1();
-            if (handgunacivate && !coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
+            if (handgunacivate && Input.GetMouseButtonDown(0))
             {
                 if(gmManager.itemcount[0]>0)
                     useItem.GunFire(mousePos);
@@ -216,7 +188,7 @@ public class Player : MonoBehaviour
                 useItem.ThrowPosition(coinacivate, flashbangacivate);
             }
 
-            if (!handgunacivate && coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
+            if ( coinacivate && Input.GetMouseButtonDown(0))
             {
                 if(gmManager.canUse && gmManager.itemcount[1] > 0)
                 {
@@ -233,7 +205,7 @@ public class Player : MonoBehaviour
                 useItem.ThrowPosition(coinacivate, flashbangacivate);
             }
 
-            if (!handgunacivate && !coinacivate && flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
+            if (flashbangacivate && Input.GetMouseButtonDown(0))
             {
                 if(gmManager.canUse && gmManager.itemcount[2] > 0)
                 {
@@ -245,7 +217,7 @@ public class Player : MonoBehaviour
         if (itemGet[3])
         {
             ItemActivate4();
-            if (!handgunacivate && !coinacivate && !flashbangacivate && heartseeacivate && Input.GetMouseButtonDown(0) && useItem.heartCanUse)
+            if ( heartseeacivate && Input.GetMouseButtonDown(0) && useItem.heartCanUse)
             {
                 StartCoroutine(useItem.HeartSee());
             }
@@ -260,6 +232,40 @@ public class Player : MonoBehaviour
                 playerInteractive.InteractiveObj(hit);
             }
 
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            playerspeed = 5f;
+            playerAnim.SetFloat(walk, 0);
+
+            if(handgunacivate)
+                playerAnim.SetFloat(_gunrun,velocity.magnitude);
+            else
+                playerAnim.SetFloat(_run, velocity.magnitude);
+        }
+        if (Input.GetKey(KeyCode.LeftShift) && velocity.magnitude >= 5)
+        {
+            //if(velocity.magnitude < 5)
+            //    footSound.SetActive(false);
+
+            //Debug.Log("달리기");
+            footSound.SetActive(true);
+
+            if (soundManager.effectPlayer.isPlaying)
+                return;
+            else if (!soundManager.effectPlayer.isPlaying)
+                soundManager.EffectPlay(0, true, 1f);
+
+            //if (handgunacivate)
+            //    playerAnim.SetBool(gunrun, true);
+            //else
+            //    playerAnim.SetBool(run, true);
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            playerspeed = 2.5f;
+            RunOff();
         }
 
         if (Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), transform.forward, out hit, 1f, LayerMask.GetMask(enemy)))
@@ -291,17 +297,16 @@ public class Player : MonoBehaviour
                 return;
         }
 
-
-        if (!die && Input.GetKey(KeyCode.G))
-        {
-            die = true;
-            StartCoroutine(PlayerDie());
-        }
-        if (!saving && Input.GetKey(KeyCode.F))
-        {
-            saving = true;
-            StartCoroutine(PlayerSave());
-        }
+        //if (!die && Input.GetKey(KeyCode.G))
+        //{
+        //    die = true;
+        //    StartCoroutine(PlayerDie());
+        //}
+        //if (!saving && Input.GetKey(KeyCode.F))
+        //{
+        //    saving = true;
+        //    StartCoroutine(PlayerSave());
+        //}
     }
 
     void ItemActivate1()
@@ -394,6 +399,8 @@ public class Player : MonoBehaviour
     public void RunOff()
     {
         playerAnim.SetFloat(walk, 0);
+        playerAnim.SetFloat(_run, 0);
+        playerAnim.SetFloat(_gunrun, 0);
         velocity = Vector3.zero;
         rigid.velocity = Vector3.zero;
         footSound.SetActive(false);
