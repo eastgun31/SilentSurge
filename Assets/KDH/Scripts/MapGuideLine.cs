@@ -17,17 +17,12 @@ public class MapGuideLine : MonoBehaviour
                     GuideLineTxt.instance.SetDifferentTxt(20);
                     this.gameObject.SetActive(false);
                 }   // 1스테이지 입장 하고 움직일 때
-                if (guideN == 1)
-                {
-                    GuideLineTxt.instance.SetDifferentTxt(3);
-                    this.gameObject.SetActive(false);
-                }   // 1스테이지 cctv 관리실 유도 문구
-                if (guideN == 2 && GameManager.instance.puzzleLevel >= 3)
+                if (guideN == 21 && GameManager.instance.puzzleLevel >= 3)
                 {
                     GuideLineTxt.instance.SetDifferentTxt(6);
                     this.gameObject.SetActive(false);
                 }   // 1스테이지 서버실 유도 문구
-                if (guideN == 3 && GameManager.instance.puzzleLevel < 5)
+                if (guideN == 2 && GameManager.instance.puzzleLevel < 5)
                 {
                     GuideLineTxt.instance.SetDifferentTxt(18);
                     this.gameObject.SetActive(false);
