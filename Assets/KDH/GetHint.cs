@@ -8,8 +8,8 @@ public class GetHint : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && GameManager.instance.puzzleLevel < 5)
         {
-            GuideLineTxt.instance.SetDifferentTxt9();
+            GuideLineTxt.instance.SetDifferentTxt(18);
             this.gameObject.SetActive(false);
-        }
+        }   // 1스테이지 큰방 입장 시 나올 문구
     }
 }

@@ -8,7 +8,7 @@ public class GoServer : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player")&& GameManager.instance.puzzleLevel >= 3)
         {
-            GuideLineTxt.instance.SetDifferentTxt7();
+            GuideLineTxt.instance.SetDifferentTxt(6);
             this.gameObject.SetActive(false);
         }
     }

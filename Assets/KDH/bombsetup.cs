@@ -8,7 +8,7 @@ public class Bombsetup : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GuideLineTxt.instance.SetDifferentTxt6();
+            GuideLineTxt.instance.SetDifferentTxt(5);
             this.gameObject.SetActive(false);
         }
     }

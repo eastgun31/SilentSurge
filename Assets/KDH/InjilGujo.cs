@@ -8,7 +8,7 @@ public class InjilGujo : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player")&& !GuideLineTxt.instance.isBossOn)
         {
-            GuideLineTxt.instance.SetDifferentTxt5();
+            GuideLineTxt.instance.SetDifferentTxt(5);
             this.gameObject.SetActive(false);
         }
 
