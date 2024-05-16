@@ -2674,6 +2674,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canhear: 0
+  floor: Floor
+  room: InRoom
 --- !u!135 &482756071
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4001,12 +4003,12 @@ RectTransform:
   m_Children:
   - {fileID: 1975923425}
   - {fileID: 1050742948}
-  m_Father: {fileID: 1177130345}
+  m_Father: {fileID: 1387750052}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -656.19995, y: 185.6253}
-  m_SizeDelta: {x: 1168.6, y: 1040}
+  m_AnchoredPosition: {x: 0.000061035156, y: -6.4190063}
+  m_SizeDelta: {x: 1350, y: 1040}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &744673263
 GameObject:
@@ -6317,8 +6319,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 740175950}
+  m_Children: []
   m_Father: {fileID: 1783986281}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -7477,6 +7478,7 @@ RectTransform:
   - {fileID: 1613822005}
   - {fileID: 1099169998}
   - {fileID: 1479934733}
+  - {fileID: 740175950}
   m_Father: {fileID: 305970121}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
@@ -11599,7 +11601,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -39, y: 1}
-  m_SizeDelta: {x: 1035.25, y: 1128.4}
+  m_SizeDelta: {x: 1220, y: 1128.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1975923426
 MonoBehaviour:
@@ -11624,7 +11626,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 30
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 3
     m_MaxSize: 101
@@ -11636,7 +11638,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "\uC18C\uC2A4 \uCD9C\uCC98\n\n\uC0AC\uC6B4\uB4DC\nhttps://alkakrab.itch.io/free-shooter-synthwave-music-pack\nhttps://timbeek.itch.io/dystopian\nhttps://assetstore.unity.com/packages/audio/sound-fx/blades-bludgeoning-free-sample-pack-179306\nhttps://assetstore.unity.com/packages/audio/sound-fx/weapons/post-apocalypse-guns-demo-33515\nhttps://casper-gaming.itch.io/coin-sound-pack
     \nhttps://nightshadegamestudios.itch.io/gunshot-sounds-1 \nhttps://assetstore.unity.com/packages/2d/gui/icons/fps-icons-pack-45240\n\uD3F0\uD2B8\nhttps://www.1001fonts.com/impossible-font.html\nhttps://www.dafont.com/digital-display-tfb.font\nhttps://noonnu.cc/font_page/671\n\uC774\uBBF8\uC9C0\nhttps://www.freepik.com/free-photo/3d-low-poly-illustration-with-connected-lines-dots_7507645.htm#fromView=search&page=1&position=39&uuid=30e26bf3-4cdb-4941-994a-cdba1c4dcd49\nhttps://assetstore.unity.com/packages/2d/gui/icons/fps-icons-pack-45240\nhttps://www.flaticon.com/kr/free-icon/bullet-proof-vest_2614494 
-    \n\uBAA8\uB378\nhttps://assetstore.unity.com/packages/3d/environments/urban/polygon-heist-low-poly-3d-art-by-synty-97949\nhttps://assetstore.unity.com/packages/3d/props/low-poly-ultimate-pack-54733\nhttps://assetstore.unity.com/packages/3d/props/interior/low-poly-office-interiors-232021\nhttps://assetstore.unity.com/packages/3d/animations/mega-animations-pack-162341"
+    \n\uBAA8\uB378\nhttps://assetstore.unity.com/packages/3d/environments/urban/polygon-heist-low-poly-3d-art-by-synty-97949\nhttps://assetstore.unity.com/packages/3d/props/low-poly-ultimate-pack-54733\nhttps://assetstore.unity.com/packages/3d/props/interior/low-poly-office-interiors-232021\nhttps://assetstore.unity.com/packages/3d/animations/mega-animations-pack-162341\t\nhttps://syntystore.com/products/polygon-nightclubs?variant=42741429305596"
 --- !u!222 &1975923427
 CanvasRenderer:
   m_ObjectHideFlags: 0

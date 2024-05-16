@@ -63,6 +63,18 @@ public class MapGuideLine : MonoBehaviour
                     GuideLineTxt.instance.SetDifferentTxt(25);
                     this.gameObject.SetActive(false);
                 }
+                if(guideN == 1)
+                {
+                    GuideLineTxt.instance.SetDifferentTxt(22);
+                    this.gameObject.SetActive(false);
+                    GuideLineTxt.instance.isHintRead++;
+                }
+                if (guideN == 2)
+                {
+                    GuideLineTxt.instance.SetDifferentTxt(23);
+                    this.gameObject.SetActive(false);
+                    GuideLineTxt.instance.isHintRead++;
+                }
             }
         }
     }
