@@ -91,7 +91,7 @@ public class PipeManager : MonoBehaviour
             gm.puzzleLevel += 1;
 
             Invoke("ClosePipe", 1f);
-            gm.nowpuzzle = false;
+            
            
         }
     }
@@ -104,6 +104,7 @@ public class PipeManager : MonoBehaviour
     public void ClosePipe()
     {
         um.isWin = false;
+        gm.nowpuzzle = false;
         DataManager.instance.SaveData();
         canvas.gameObject.SetActive(false);
         
