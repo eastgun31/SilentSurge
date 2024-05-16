@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
             Destroy(explosionprefab,0.5f);
             Destroy(gameObject,1f);
         }
-        if(type == 3 && (other.CompareTag(wall) || other.CompareTag(player) || other.CompareTag(cabinet) ))
+        if(type == 3 && (other.CompareTag(wall) || other.CompareTag(player) || other.CompareTag(cabinet) || other.CompareTag(people)))
             Destroy (gameObject);
 
     }
