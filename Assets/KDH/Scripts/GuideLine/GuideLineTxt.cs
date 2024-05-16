@@ -30,6 +30,8 @@ public class GuideLineTxt : MonoBehaviour
 
     public bool isBossOn = true;
 
+    public int isHintRead = 0;
+
     //문이 잠겨있다.주변을 더 둘러보자.               - 0
     //지금은 숨을 수 없다.                                      - 1
     //아직 사용할 수 없다.                                      - 2
@@ -124,19 +126,4 @@ public class GuideLineTxt : MonoBehaviour
         guideUI.DOText(guideLineDB.guideLine[24].guideTxt, 1.5f);
         Invoke("SetOffTxt", 3.5f);
     }
-
-
-    public void SetDifferentTxt7()
-    {
-        guideUI.gameObject.SetActive(true);
-        guideUI.DOText(guideLineDB.guideLine[6].guideTxt, 1.5f);
-        Invoke("SetOffTxt", 3.5f);
-    } // 서버실 열쇠
-
-    public void SetDifferentTxt8()
-    {
-        guideUI.gameObject.SetActive(true);
-        guideUI.DOText(guideLineDB.guideLine[17].guideTxt, 1.5f);
-        Invoke("SetOffTxt", 3.5f);
-    } // 1스테이지 힌트 퍼즐 첫 번째 깼을 때
 }
