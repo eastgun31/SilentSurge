@@ -58,7 +58,11 @@ public class MapGuideLine : MonoBehaviour
             }
             if(GameManager.instance.scenenum == 5)
             {
-                // 3스테이지 진행 유도 자막 추가 예정
+                if(guideN == 0) 
+                {
+                    GuideLineTxt.instance.SetDifferentTxt(25);
+                    this.gameObject.SetActive(false);
+                }
             }
         }
     }
