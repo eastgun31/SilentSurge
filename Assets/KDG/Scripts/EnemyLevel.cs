@@ -51,23 +51,6 @@ public class EnemyLevel : MonoBehaviour
         if (gm.playerchasing != 0 )
             gm.playerchasing -= Time.deltaTime;
 
-        //if (gm.playerchasing)
-        //    StopCoroutine(LvDown());
-        //else if(!gm.playerchasing && !lvDowning && LvStep != ELevel.level1)
-        //    StartCoroutine(LvDown()); 
-
-        //if(LvStep == ELevel.level3 && !addcomplete)
-        //{
-        //    Debug.Log("ÀûÃß°¡");
-        //    addcomplete = true;
-        //    enemyadd= true;
-        //    if(enemyadd)
-        //    {
-        //        enemyadd = false;
-        //        ODaeGi();
-        //    }
-        //}
-
     }
 
     IEnumerator LvUp()
@@ -164,35 +147,6 @@ public class EnemyLevel : MonoBehaviour
                 Enemies[i].SetActive(false);
             }
         }
-
-        //if (GameManager.instance.scenenum ==1)
-        //{
-        //    for (int i = 0; i < GameManager.instance.existEnemy.Length; i++)
-        //    {
-        //        if (GameManager.instance.existEnemy[i])
-        //        {
-        //            Enemies[i].SetActive(true);
-        //        }
-        //        else if (!GameManager.instance.existEnemy[i])
-        //        {
-        //            Enemies[i].SetActive(false);
-        //        }
-        //    }
-        //}
-        //else if(GameManager.instance.scenenum ==2)
-        //{
-        //    for (int i = 0; i < GameManager.instance.existEnemy.Length; i++)
-        //    {
-        //        if (GameManager.instance.existEnemy[i])
-        //        {
-        //            Enemies[i].SetActive(true);
-        //        }
-        //        else if (!GameManager.instance.existEnemy[i])
-        //        {
-        //            Enemies[i].SetActive(false);
-        //        }
-        //    }
-        //}
     }
 
     public void ODaeGi()

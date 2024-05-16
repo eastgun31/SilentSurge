@@ -6,15 +6,24 @@ using ItemInfo;
 
 public class UseItem : MonoBehaviour
 {
-    public GameObject bulletPrefab;
-    public GameObject handGunModel;
-    public GameObject coinPrefab;
-    public GameObject flashbangModel;
-    public GameObject heartseeCam;
-    public GameObject amJeon;
-    public GameObject amSal;
-    public Transform throwposition;
-    public Transform bulletPos;
+    [SerializeField]
+    private GameObject bulletPrefab;
+    [SerializeField]
+    private GameObject handGunModel;
+    [SerializeField]
+    private GameObject coinPrefab;
+    [SerializeField]
+    private GameObject flashbangModel;
+    [SerializeField]
+    private GameObject heartseeCam;
+    [SerializeField]
+    private GameObject amJeon;
+    [SerializeField]
+    private GameObject amSal;
+    [SerializeField]
+    private Transform throwposition;
+    [SerializeField]
+    private Transform bulletPos;
     public List<Material> mat = new List<Material>();
     public List<Material> mat2 = new List<Material>();
 
@@ -23,12 +32,9 @@ public class UseItem : MonoBehaviour
     private bool mapcheck = false;
     [SerializeField]
     private float throwpower = 3f;
-    [SerializeField]
-    private float throwpower2 = 4f;
     private string floor = "Floor";
     private string inroom = "InRoom";
     public bool heartCanUse = true;
-
 
     Vector3 angle;
     Vector3 pos;
@@ -38,17 +44,18 @@ public class UseItem : MonoBehaviour
     LineRenderer drawLine;
     Item itemClass;
     CreateSound gunSound;
-    SoundManager soundManager;
-    GameManager gameManager;
+    Casing cas;
+    //SoundManager soundManager;
+    //GameManager gameManager;
 
     private void Start()
     {
-        soundManager = SoundManager.instance;
-        gameManager = GameManager.instance;
+        cas = new Casing();
+        //soundManager = SoundManager.instance;
+        //gameManager = GameManager.instance;
         itemClass = new Item();
         drawLine = GetComponent<LineRenderer>();
     }
-
 
     public void GunFire(Vector3 pos)
     {
@@ -56,14 +63,14 @@ public class UseItem : MonoBehaviour
         Rigidbody bulletRigid = bullet.GetComponent<Rigidbody>();
         gunSound = bullet.GetComponent<CreateSound>();
         StartCoroutine(gunSound.SoundCreateDeleteGun());
-        soundManager.EffectPlay(1, true, 0.4f);
+        cas.sm.EffectPlay(1, true, 0.4f);
 
         float zDeg = pos.z - bulletRigid.position.z;
         float xDeg = pos.x - bulletRigid.position.x;
         float rotDeg = -(Mathf.Rad2Deg * Mathf.Atan2(zDeg, xDeg) - 90);
         bulletRigid.MoveRotation(Quaternion.Euler(0, rotDeg, 0));
         bulletRigid.velocity = bulletPos.forward * 20f;
-        gameManager.itemcount[0]--;
+        cas.gm.itemcount[0]--;
 
         Destroy(bullet, 2.0f);
     }
@@ -125,29 +132,29 @@ public class UseItem : MonoBehaviour
        GameObject coin = Instantiate(coinPrefab, throwposition.transform.position, Quaternion.identity);
        Rigidbody coinRigid = coin.GetComponent<Rigidbody>();
        coinRigid.AddForce(angle * throwpower, ForceMode.Impulse);
-        gameManager.itemcount[1]--;
+        cas.gm.itemcount[1]--;
         Destroy(coin, 5f);
 
-        gameManager.canUse = false;
+        cas.gm.canUse = false;
        yield return itemClass.itemcool;
-        gameManager.canUse = true;
+        cas.gm.canUse = true;
         StopAllCoroutines();
     }
 
     public IEnumerator ThrowFlashBang()
     {
         //Debug.Log("코루틴실행");
-        gameManager.onecollison = true;
+        cas.gm.onecollison = true;
         yield return itemClass.animDelay;
         GameObject flashbang = Instantiate(flashbangModel, throwposition.transform.position, Quaternion.identity);
         Rigidbody flashbangRigid = flashbang.GetComponent<Rigidbody>();
         flashbangRigid.AddForce(angle * throwpower, ForceMode.Impulse);
-        gameManager.itemcount[2]--;
+        cas.gm.itemcount[2]--;
         Destroy(flashbang, 5f);
 
-        gameManager.canUse = false;
+        cas.gm.canUse = false;
         yield return itemClass.itemcool;
-        gameManager.canUse = true;
+        cas.gm.canUse = true;
         StopAllCoroutines();
     }
 
@@ -165,7 +172,7 @@ public class UseItem : MonoBehaviour
     {
         amJeon.SetActive(true);
         amSal.SetActive(true);
-        soundManager.EffectPlay(3, true, 1f);
+        cas.sm.EffectPlay(3, true, 1f);
         yield return itemClass.amJeonDelay;
         amSal.SetActive(false);
         amJeon.SetActive(false);
@@ -183,26 +190,6 @@ public class UseItem : MonoBehaviour
             map.SetActive(false);
             mapcheck = false;
         }
-
     }
-    //public void ThrowCoin()
-    //{
-    //    GameObject coin = Instantiate(coinPrefab, throwposition.transform.position, Quaternion.identity);
-    //    Rigidbody coinRigid = coin.GetComponent<Rigidbody>();
-
-    //    //angle.y = 2f;
-    //    coinRigid.AddForce(angle * throwpower, ForceMode.Impulse);
-
-    //    Destroy(coin, 5f);
-    //}
-
-    //public void ThrowFlashBang()
-    //{
-
-    //    GameObject flashbang = Instantiate(flashbangModel, throwposition.transform.position, Quaternion.identity);
-    //    Rigidbody flashbangRigid = flashbang.GetComponent<Rigidbody>();
-    //    flashbangRigid.AddForce(angle * throwpower, ForceMode.Impulse);
-    //    Destroy(flashbang, 5f);
-    //}
 
 }

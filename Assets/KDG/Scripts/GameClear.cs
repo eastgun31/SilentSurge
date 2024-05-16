@@ -7,8 +7,10 @@ using ItemInfo;
 
 public class GameClear : MonoBehaviour
 {
-    public GameObject clear;
-    public GameObject goal;
+    [SerializeField]
+    private GameObject clear;
+    [SerializeField]
+    private GameObject goal;
     public int value;
     public UnityEvent lastAction;
     public UnityEvent Ending;
@@ -17,7 +19,8 @@ public class GameClear : MonoBehaviour
     public List<GameObject> enemys;
     public GameObject items;
     CoolTime cool;
-    GameManager gm;
+    Casing cas;
+    //GameManager gm;
 
     private void Start()
     {
@@ -27,7 +30,8 @@ public class GameClear : MonoBehaviour
         {
             StartCoroutine(EndingCheck());
         }
-        gm = GameManager.instance;
+        //gm = GameManager.instance;
+        cas = new Casing();
     }
 
     IEnumerator EndingCheck()
@@ -38,7 +42,7 @@ public class GameClear : MonoBehaviour
 
             foreach (GameObject enemy in enemys)
             {
-                if (gm.last && !enemy.activeSelf)
+                if (cas.gm.last && !enemy.activeSelf)
                 {
                     enemys.Remove(enemy);
                     break;
@@ -51,13 +55,8 @@ public class GameClear : MonoBehaviour
                 goal.SetActive(true);
                 items.SetActive(true);
 
-                gm.clublast = true;
-
                 DataManager.instance.SaveData();
             }
-                
-
-            //yield return cool.cool1sec;
         }
     }
 
@@ -65,19 +64,19 @@ public class GameClear : MonoBehaviour
     {
         if(other.CompareTag("Player") && value == 1)
         {
-            if (gm.scenenum == 1)
+            if (cas.gm.scenenum == 1)
             {
                 clear.SetActive(true);
-                SoundManager.instance.stage1Clear = true;
+                cas.sm.stage1Clear = true;
             }
                 
 
-            else if (gm.scenenum == 3)
+            else if (cas.gm.scenenum == 3)
             {
-                if (gm.rescueHostage)
+                if (cas.gm.rescueHostage)
                 {
                     clear.SetActive(true);
-                    SoundManager.instance.stage2Clear = true;
+                    cas.sm.stage2Clear = true;
                 }
                 else
                     return;
@@ -89,32 +88,35 @@ public class GameClear : MonoBehaviour
             goal.SetActive(false);
             lastAction.Invoke();
 
-            if (gm.scenenum == 3 || gm.scenenum == 4)
+            if (cas.gm.scenenum == 3 || cas.gm.scenenum == 4)
                 EnemyLevel.enemylv.SetEnemy();
 
-            if (gm.scenenum == 5)
-                gm.people.SetActive(false);
+            if (cas.gm.scenenum == 5)
+            {
+                cas.gm.clublast = true;
+                cas.gm.people.SetActive(false);
+            }
         }
         else if(other.CompareTag("Player") && value == 3)
         {
-            if(gm.scenenum == 2)
+            if(cas.gm.scenenum == 2)
             {
-                SoundManager.instance.stage1Clear = true;
+                cas.sm.stage1Clear = true;
                 Ending.Invoke();
             }
-            else if(gm.scenenum == 4)
+            else if(cas.gm.scenenum == 4)
             {
-                if (gm.rescueHostage)
+                if (cas.gm.rescueHostage)
                 {
-                    SoundManager.instance.stage2Clear = true;
+                    cas.sm.stage2Clear = true;
                     Ending.Invoke();
                 }
                 else
                     return;
             }
-            else if(gm.scenenum == 5)
+            else if(cas.gm.scenenum == 5)
             {
-                if(gm.clublast)
+                if(cas.gm.clublast)
                     Ending.Invoke();
             }
         }
