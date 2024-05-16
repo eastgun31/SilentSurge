@@ -191,6 +191,9 @@ public class Player : MonoBehaviour
 
     void PlayerControll()
     {
+        if (cas.gm.isGameOver)
+            return;
+
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         float zDeg = mousePos.z - rigid.position.z;
         float xDeg = mousePos.x - rigid.position.x;

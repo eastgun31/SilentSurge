@@ -217,6 +217,8 @@ public class DataManager : MonoBehaviour
 
             playerobj.SetActive(true);
             gm.isDie = false;
+            gm.peopledie = false;
+            gm.isGameOver = false;
             Debug.Log("로드완료");
             playerLoad.Invoke();
         }
