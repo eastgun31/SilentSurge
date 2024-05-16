@@ -32,8 +32,6 @@ public class SinPuzzle : MonoBehaviour
 
     bool lev = false;
 
-    Player.PlayerState player;
-
     GameManager gm;
     UiManager um;
 
@@ -129,7 +127,6 @@ public class SinPuzzle : MonoBehaviour
         if (amplitude == correctAmlitude && frequency == correctFrequance)
         {
             um.isWin = true;
-            player = Player.PlayerState.idle;
             if (!lev)
             {
                 cctv1.SetActive(false);
@@ -137,11 +134,11 @@ public class SinPuzzle : MonoBehaviour
                 cctv2.SetActive(false);
                 fcctv2.SetActive(true);
                 gm.puzzleLevel += 1; 
-                gm.nowpuzzle = false;
+                
                 gm.EnemyActive2();
                 EnemyLevel.enemylv.SetEnemy();     
                 SubtitleCheck();
-                DataManager.instance.SaveData();
+                
                 lev = true;
             }
             Invoke("CloseSin", 1f);
@@ -151,7 +148,8 @@ public class SinPuzzle : MonoBehaviour
     private void CloseSin()
     {
         um.isWin = false;
-
+        gm.nowpuzzle = false;
+        DataManager.instance.SaveData();
         um.CloseSinFst();
     }
 
