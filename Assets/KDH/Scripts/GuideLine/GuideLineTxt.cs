@@ -118,15 +118,11 @@ public class GuideLineTxt : MonoBehaviour
         }
     }
 
-    public void SetDifferentTxt5()              // 3스테이지 보스 죽이고 나올 자막 추가 예정 (이벤트)
+    public void SetDifferentTxt5()              // 3스테이지 보스 죽이고 나올 자막 (이벤트)
     {
         guideUI.gameObject.SetActive(true);
-        guideUI.DOText(guideLineDB.guideLine[15].guideTxt, 1.5f);
-        Invoke("SetOffTxt", 3.5f);   // 인질 구조
-
-        //guideUI.gameObject.SetActive(true);
-        //guideUI.DOText(guideLineDB.guideLine[22].guideTxt, 1.5f);
-        //Invoke("SetOffTxt", 3.5f);
+        guideUI.DOText(guideLineDB.guideLine[24].guideTxt, 1.5f);
+        Invoke("SetOffTxt", 3.5f);
     }
 
 
