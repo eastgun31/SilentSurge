@@ -19,14 +19,14 @@ public class People : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("E_Bullet"))
+        if(other.CompareTag("E_Bullet") || other.CompareTag("Bullet") )
         {
             if (!gm.peopledie)
             {
                 gm.peopledie = true;
                 gm.isGameOver = true;
                 anim.SetTrigger("Die");
-                StartCoroutine(PeopleDie());
+                //StartCoroutine(PeopleDie());
             }
             else
                 return;

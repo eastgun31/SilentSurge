@@ -19,7 +19,6 @@ public class EnemyLevel : MonoBehaviour
     WaitForSeconds downTime;
     WaitForSeconds upTime;
     GameManager gm;
-    private bool lvDowning;
     private bool addcomplete;
     private bool enemyadd;
 
@@ -33,7 +32,6 @@ public class EnemyLevel : MonoBehaviour
         LvStep = ELevel.level1;
         downTime = new WaitForSeconds(1f);
         upTime = new WaitForSeconds(1f);
-        lvDowning = false;
         enemyadd = false;
     }
 
