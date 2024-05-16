@@ -6,6 +6,8 @@ public class MapGuideLine : MonoBehaviour
 {
     public int guideN;
 
+    public GameObject MapPass3;
+
     private void OnTriggerExit(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
@@ -66,14 +68,23 @@ public class MapGuideLine : MonoBehaviour
                 if(guideN == 1)
                 {
                     GuideLineTxt.instance.SetDifferentTxt(22);
+                    GuideLineTxt.instance.isHintRead+=1;
+                    if(GuideLineTxt.instance.isHintRead == 2)
+                    {
+                       MapPass3.SetActive(true);
+                    }
                     this.gameObject.SetActive(false);
-                    GuideLineTxt.instance.isHintRead++;
                 }
                 if (guideN == 2)
                 {
                     GuideLineTxt.instance.SetDifferentTxt(23);
+
+                    GuideLineTxt.instance.isHintRead+=1;
+                    if (GuideLineTxt.instance.isHintRead == 2)
+                    {
+                        MapPass3.SetActive(true);
+                    }                   
                     this.gameObject.SetActive(false);
-                    GuideLineTxt.instance.isHintRead++;
                 }
             }
         }

@@ -453,12 +453,12 @@ GameObject:
   - component: {fileID: 22647140}
   - component: {fileID: 22647139}
   m_Layer: 0
-  m_Name: GoTarget
+  m_Name: Jeunger1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &22647138
 Transform:
   m_ObjectHideFlags: 0
@@ -468,8 +468,8 @@ Transform:
   m_GameObject: {fileID: 22647137}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 37.735394, y: -5.038905, z: 8.860603}
-  m_LocalScale: {x: 7.468556, y: 1.2592599, z: 6.1046906}
+  m_LocalPosition: {x: 29.87, y: -5.038905, z: -40.03}
+  m_LocalScale: {x: 2.4223514, y: 1.2592599, z: 6.1046906}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 738331899}
@@ -487,6 +487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guideN: 1
+  MapPass3: {fileID: 0}
 --- !u!65 &22647140
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -799,6 +800,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 29858415}
   m_CullTransparentMesh: 1
+--- !u!1 &32220499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 32220500}
+  - component: {fileID: 32220502}
+  - component: {fileID: 32220501}
+  m_Layer: 0
+  m_Name: Jeunger2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &32220500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32220499}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 29.87, y: -5.038905, z: -40.03}
+  m_LocalScale: {x: 2.4223514, y: 1.2592599, z: 6.1046906}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 738331899}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &32220501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32220499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddb7b262406c1d438c32a9f38e43397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guideN: 2
+  MapPass3: {fileID: 0}
+--- !u!65 &32220502
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32220499}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.6088138, z: 0.3449305}
+  m_Center: {x: 8.296868e-17, y: 0.4470137, z: 0.037088394}
 --- !u!1 &32443191
 GameObject:
   m_ObjectHideFlags: 0
@@ -5909,73 +5978,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190989179}
   m_CullTransparentMesh: 1
---- !u!1 &197817203
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 197817204}
-  - component: {fileID: 197817206}
-  - component: {fileID: 197817205}
-  m_Layer: 0
-  m_Name: GoInjil
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &197817204
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197817203}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 61.75237, y: -5.014695, z: 53.081856}
-  m_LocalScale: {x: 4.149333, y: 1.2592593, z: 1.6666665}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 738331899}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &197817205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197817203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ddb7b262406c1d438c32a9f38e43397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  guideN: 2
---- !u!65 &197817206
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197817203}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 0.6088138, z: 0.3449305}
-  m_Center: {x: 8.296868e-17, y: 0.4470137, z: 0.037088394}
 --- !u!1 &200185184
 GameObject:
   m_ObjectHideFlags: 0
@@ -20073,7 +20075,7 @@ Transform:
   m_Children:
   - {fileID: 1031813229}
   - {fileID: 22647138}
-  - {fileID: 197817204}
+  - {fileID: 32220500}
   - {fileID: 936184222}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25921,7 +25923,7 @@ Transform:
   m_GameObject: {fileID: 936184221}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 25.067015, y: -5.0389013, z: 45.09137}
+  m_LocalPosition: {x: 22.831621, y: -5.0389013, z: -37.169235}
   m_LocalScale: {x: 3.7583468, y: 1.2592593, z: 7.829127}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25940,6 +25942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guideN: 3
+  MapPass3: {fileID: 0}
 --- !u!65 &936184224
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28618,6 +28621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guideN: 0
+  MapPass3: {fileID: 0}
 --- !u!65 &1031813231
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33552,6 +33556,7 @@ MonoBehaviour:
     guideT: 
   currentDatas_Index: 1
   isBossOn: 1
+  isHintRead: 0
 --- !u!4 &1197337672
 Transform:
   m_ObjectHideFlags: 0
@@ -40016,7 +40021,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bar: {fileID: 1506553971}
-  audioMixer: {fileID: 0}
 --- !u!114 &1506553971
 MonoBehaviour:
   m_ObjectHideFlags: 0
