@@ -139,7 +139,7 @@ public class PipeManager : MonoBehaviour
 
             if (gm.puzzleLevel == 4)
             {
-                GuideLineTxt.instance.SetDifferentTxt8();
+                GuideLineTxt.instance.SetDifferentTxt(17);
             }
 
             if (gm.puzzleLevel == 7)
