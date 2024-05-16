@@ -13343,6 +13343,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clear: {fileID: 1751743898}
   goal: {fileID: 0}
+  enemyFootSound: {fileID: 0}
+  eFootSounds:
+  - {fileID: 1102829162}
+  - {fileID: 1537239989}
   value: 1
   lastAction:
     m_PersistentCalls:
@@ -40980,6 +40984,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4412773861444173125, guid: 201f772c42ca98a488df8d50b331d051, type: 3}
   m_PrefabInstance: {fileID: 1102829160}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1102829162 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5060606414491528270, guid: 201f772c42ca98a488df8d50b331d051, type: 3}
+  m_PrefabInstance: {fileID: 1102829160}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1105656266
 GameObject:
   m_ObjectHideFlags: 0
@@ -57441,6 +57450,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4526168247493952313, guid: cdbdfe84c91f5684f911f4b4609cbb6e, type: 3}
   m_PrefabInstance: {fileID: 1537239987}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1537239989 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: -9115485627266040943, guid: cdbdfe84c91f5684f911f4b4609cbb6e, type: 3}
+  m_PrefabInstance: {fileID: 1537239987}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1541990253
 GameObject:
   m_ObjectHideFlags: 0
@@ -70326,6 +70340,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clear: {fileID: 0}
   goal: {fileID: 7460356789337621285}
+  enemyFootSound: {fileID: 0}
+  eFootSounds: []
   value: 2
   lastAction:
     m_PersistentCalls:
@@ -71092,10 +71108,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

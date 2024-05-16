@@ -11,6 +11,10 @@ public class GameClear : MonoBehaviour
     private GameObject clear;
     [SerializeField]
     private GameObject goal;
+    [SerializeField]
+    private GameObject enemyFootSound;
+    [SerializeField]
+    private List<AudioSource> eFootSounds;
     public int value;
     public UnityEvent lastAction;
     public UnityEvent Ending;
@@ -60,13 +64,25 @@ public class GameClear : MonoBehaviour
         }
     }
 
+    void EnemySoundOff()
+    {
+        cas.sm.enemyPlayer.Stop();
+        enemyFootSound.SetActive(false);
+
+        foreach (AudioSource enemy in eFootSounds)
+            enemy.enabled = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player") && value == 1)
         {
             if (cas.gm.scenenum == 1)
             {
+                cas.sm.EffectOff();
+                EnemySoundOff();
                 clear.SetActive(true);
+                cas.gm.isGameOver = true;
                 cas.sm.stage1Clear = true;
             }
                 
@@ -75,7 +91,10 @@ public class GameClear : MonoBehaviour
             {
                 if (cas.gm.rescueHostage)
                 {
+                    cas.sm.EffectOff();
+                    EnemySoundOff();
                     clear.SetActive(true);
+                    cas.gm.isGameOver = true;
                     cas.sm.stage2Clear = true;
                 }
                 else

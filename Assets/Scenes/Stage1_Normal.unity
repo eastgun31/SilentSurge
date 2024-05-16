@@ -12053,10 +12053,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -14947,6 +14947,11 @@ Transform:
 --- !u!4 &676611050 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2212676519907486117, guid: 75de27ffa66ea3740bb5d3c96cbe018c, type: 3}
+  m_PrefabInstance: {fileID: 676611048}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &676611051 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2854353505130002946, guid: 75de27ffa66ea3740bb5d3c96cbe018c, type: 3}
   m_PrefabInstance: {fileID: 676611048}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &682636875
@@ -19438,6 +19443,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clear: {fileID: 0}
   goal: {fileID: 258091884942077525}
+  enemyFootSound: {fileID: 0}
+  eFootSounds: []
   value: 2
   lastAction:
     m_PersistentCalls:
@@ -26626,6 +26633,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clear: {fileID: 1157459305}
   goal: {fileID: 0}
+  enemyFootSound: {fileID: 1220925663}
+  eFootSounds:
+  - {fileID: 1840554861}
+  - {fileID: 1626907274}
+  - {fileID: 676611051}
   value: 1
   lastAction:
     m_PersistentCalls:
@@ -35093,6 +35105,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2212676519907486117, guid: 75de27ffa66ea3740bb5d3c96cbe018c, type: 3}
   m_PrefabInstance: {fileID: 1626907271}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1626907274 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2854353505130002946, guid: 75de27ffa66ea3740bb5d3c96cbe018c, type: 3}
+  m_PrefabInstance: {fileID: 1626907271}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1632244684
 GameObject:
   m_ObjectHideFlags: 0
@@ -39005,6 +39022,11 @@ Transform:
 --- !u!4 &1840554860 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2212676519907486117, guid: 75de27ffa66ea3740bb5d3c96cbe018c, type: 3}
+  m_PrefabInstance: {fileID: 1840554858}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1840554861 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2854353505130002946, guid: 75de27ffa66ea3740bb5d3c96cbe018c, type: 3}
   m_PrefabInstance: {fileID: 1840554858}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1841785904
