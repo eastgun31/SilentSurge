@@ -37,6 +37,18 @@ namespace ItemInfo
         public string door = "Doorhandle";
         public string enemy = "Enemy";
     }
+    public class EnemyString
+    {
+        public string Walk = "Walk";
+        public string Shot = "Shot";
+        public string GunRuning = "GunRuning";
+        public string Death = "Death";
+        public string Death2 = "Death2";
+        public string Flash = "Flash";
+        public string PlayerListen = "PlayerListen";
+        public string bullet = "Bullet";
+        public string amsal = "AmSal";
+    }
     public class CoolTime
     {
         public WaitForSeconds cool1sec = new WaitForSeconds(1f);

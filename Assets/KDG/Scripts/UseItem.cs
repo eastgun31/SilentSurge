@@ -69,7 +69,7 @@ public class UseItem : MonoBehaviour
         float xDeg = pos.x - bulletRigid.position.x;
         float rotDeg = -(Mathf.Rad2Deg * Mathf.Atan2(zDeg, xDeg) - 90);
         bulletRigid.MoveRotation(Quaternion.Euler(0, rotDeg, 0));
-        bulletRigid.velocity = bulletPos.forward * 20f;
+        bulletRigid.velocity = bulletPos.forward * 15f;
         cas.gm.itemcount[0]--;
 
         Destroy(bullet, 2.0f);
