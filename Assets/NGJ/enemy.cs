@@ -56,6 +56,9 @@ public class Enemy : MonoBehaviour
     string Death2 = "Death2";
     string Flash = "Flash";
     string PlayerListen = "PlayerListen";
+    string bullet = "Bullet";
+    string amsal = "AmSal";
+
     ////안쓰는변수
     //public bool m_triggered = false; // 트리거 충돌 여부를 나타냅니다.
     //public event Action<Player> PlayerSpotted; // 플레이어 발견 시 이벤트
@@ -452,16 +455,16 @@ public class Enemy : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (state != EnemyState.die && (other.CompareTag("Bullet") || other.CompareTag("AmSal")))
+        if (state != EnemyState.die && (other.CompareTag(bullet) || other.CompareTag(amsal)))
         {
             state = EnemyState.die;
             EnenyAttackStop();
-            if(other.CompareTag("Bullet"))
+            if(other.CompareTag(bullet))
             {
                 Destroy(other.gameObject);
                 enemyAnim.SetBool(Death, true);
             }
-            else if(other.CompareTag("AmSal"))
+            else if(other.CompareTag(amsal))
             {
                 enemyAnim.SetBool(Death2, true);
             }
