@@ -12,7 +12,7 @@ public class GameOver : MonoBehaviour
     public GameObject text;
     public GameObject gameover;
 
-
+    ChangeCursor changeCursor;
 
     // Update is called once per frame
     void Update()
@@ -21,6 +21,8 @@ public class GameOver : MonoBehaviour
     }
     IEnumerator PlayGameOver()
     {
+        UiManager.instance.isGameOver = true;
+
         float targetAlpha = 1.0f;
         float duration = 2.0f;
         float elapsedTime = 0.0f;
