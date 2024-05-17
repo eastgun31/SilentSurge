@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
                 PuzzleDifficulty(70f, 0.009f, 100f, 0.004f, "8324");
                 break;
             case 2:
-                SceneVariableReset(2, 12,11, 2, 6, 7, 130);
+                SceneVariableReset(2, 13,11, 2, 6, 7, 130);
                 PuzzleDifficulty(90f, 0.007f, 30f, 0.005f, "9635");
                 break;
             case 3:

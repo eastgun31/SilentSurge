@@ -168,6 +168,7 @@ public class PlayerInteractive : MonoBehaviour
         {
             if (other.CompareTag(interactiveList[1]))
             {
+                player.RunOff();
                 vent = other.GetComponentInParent<Vent>();
                 if(other.name == ("Vent1"))
                 {
@@ -236,7 +237,7 @@ public class PlayerInteractive : MonoBehaviour
             //}
             else if (other.CompareTag(interactiveList[3]))
             {
-                if(EnemyLevel.enemylv.LvStep != EnemyLevel.ELevel.level3 && !GameManager.instance.rescueHostage)
+                if(EnemyLevel.enemylv.LvStep != EnemyLevel.ELevel.level3 && !gm.rescueHostage)
                 {
                     cabinet = other.GetComponentInParent<Cabinet>();
                     if (!gm.isHide)
