@@ -69,8 +69,8 @@ public class Keypad : MonoBehaviour
         {
             answerInput.text = "CORRECT";     // Á¤´ä
             um.isWin = true;
-            PuzLevUp();
             SceneCheck();
+            PuzLevUp();
             Invoke("Closed", 1f);
         }
         else
@@ -108,9 +108,11 @@ public class Keypad : MonoBehaviour
         else if (SceneManager.GetActiveScene().buildIndex == 3 ||
             SceneManager.GetActiveScene().buildIndex == 4)
             gm.rescueHostage = true;
-        else if (SceneManager.GetActiveScene().buildIndex == 5)
+        else if (gm.scenenum == 5)
         {
             gm.EnemyActive2();
+            //gm.EnemyActive3();
+            gm.ItemActive();
             EnemyLevel.enemylv.SetEnemy();
         }
             

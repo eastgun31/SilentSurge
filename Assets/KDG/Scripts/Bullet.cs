@@ -23,8 +23,11 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(type == 0 && (other.CompareTag(enemy) || other.CompareTag(wall) || other.CompareTag(people)))
+        if(type == 0 && ((other.CompareTag("Enemy") || other.CompareTag(wall))))
+        {
             Destroy(gameObject);
+        }
+
         if(type == 1 && (other.CompareTag(wall) || other.CompareTag(player))&& GameManager.instance.eonecollison)
         {
             GameManager.instance.eonecollison = false;
@@ -32,7 +35,7 @@ public class Bullet : MonoBehaviour
             Destroy(explosionprefab,0.5f);
             Destroy(gameObject,1f);
         }
-        if(type == 3 && (other.CompareTag(wall) || other.CompareTag(player) || other.CompareTag(cabinet) || other.CompareTag(people)))
+        else if(type == 3 && (other.CompareTag(wall) || other.CompareTag(player) || other.CompareTag(cabinet)))
             Destroy (gameObject);
 
     }

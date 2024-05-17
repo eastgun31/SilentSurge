@@ -23,6 +23,7 @@ public class People : MonoBehaviour
         {
             if (!gm.peopledie)
             {
+                Destroy(other.gameObject);
                 gm.peopledie = true;
                 gm.isGameOver = true;
                 anim.SetTrigger("Die");

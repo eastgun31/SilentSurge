@@ -115,15 +115,8 @@ public class GameManager : MonoBehaviour
             existEnemy[i] = true;
         }
 
-        if (scenenum == 1 || scenenum == 2)
+        if (scenenum == 1 || scenenum == 2 || scenenum == 5)
             last = true;
-        else if(scenenum == 5)
-        {
-            last = true;
-            EnemyActive3();
-        }
-
-
     }
     public void EnemyActive3()
     {

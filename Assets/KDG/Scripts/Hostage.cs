@@ -45,6 +45,7 @@ public class Hostage : MonoBehaviour
         {
             if(!die)
             {
+                Destroy(other.gameObject);
                 StartCoroutine(HostageDie());
             }
                 

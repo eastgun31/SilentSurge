@@ -180,7 +180,11 @@ public class EnemyLevel : MonoBehaviour
         else if(gm.scenenum == 5)
         {
             if(gm.clublast)
+            {
                 ODaeGi2();
+                SetEnemy();
+            }
+                
         }
     }
 
