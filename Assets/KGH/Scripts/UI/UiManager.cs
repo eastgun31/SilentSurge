@@ -33,6 +33,7 @@ public class UiManager : MonoBehaviour
 
     public GameObject amsal;
     public GameObject player;
+
     Player playerInput;
 
     private void Start()
