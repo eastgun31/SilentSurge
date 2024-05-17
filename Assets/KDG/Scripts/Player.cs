@@ -228,10 +228,10 @@ public class Player : MonoBehaviour
         {
             footSound.SetActive(true);
 
-            if (cas.sm.effectPlayer.isPlaying)
+            if (!cas.sm.effectPlayer.isPlaying)
+                cas.sm.EffectPlay(0, true, 1f); 
+            else if (cas.sm.effectPlayer.isPlaying)
                 return;
-            else if (!cas.sm.effectPlayer.isPlaying)
-                cas.sm.EffectPlay(0, true, 1f);
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {

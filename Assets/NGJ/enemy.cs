@@ -204,7 +204,11 @@ public class Enemy : MonoBehaviour
 
             if (naviindex == customDestinations.Length)
                 naviindex = 0;
-            m_enemy.SetDestination(customDestinations[naviindex]);
+
+            if (enemyType == 5)
+                customDestinations[0] = GameManager.instance.lv3PlayerPos;
+            else
+                m_enemy.SetDestination(customDestinations[naviindex]);
         }
 
     }
