@@ -123,9 +123,12 @@ public class EnemyLevel : MonoBehaviour
         {
             lv3enemy.transform.GetChild(i).gameObject.transform.position = lv3enemy.transform.position;
         }
-        for (int i = 0; i < lastenemy.transform.childCount; i++)
+        if(gm.scenenum == 1 || gm.scenenum == 2)
         {
-            lastenemy.transform.GetChild(i).gameObject.transform.position = lastenemy.transform.position;
+            for (int i = 0; i < lastenemy.transform.childCount; i++)
+            {
+                lastenemy.transform.GetChild(i).gameObject.transform.position = lastenemy.transform.position;
+            }
         }
         enemyadd = false;
         LvStep = ELevel.level1;
@@ -173,6 +176,11 @@ public class EnemyLevel : MonoBehaviour
                 ODaeGi2();
             else
                 return;
+        }
+        else if(gm.scenenum == 5)
+        {
+            if(gm.clublast)
+                ODaeGi2();
         }
     }
 

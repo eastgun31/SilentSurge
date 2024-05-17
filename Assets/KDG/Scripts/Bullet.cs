@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private GameObject explosion;
 
+    private string enemy = "Enemy";
     private string wall = "Wall";
     private string player = "Player";
     private string cabinet = "CabinetObj";
@@ -22,7 +23,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(type == 0 && (other.CompareTag(wall) || other.CompareTag(people)))
+        if(type == 0 && (other.CompareTag(enemy) || other.CompareTag(wall) || other.CompareTag(people)))
             Destroy(gameObject);
         if(type == 1 && (other.CompareTag(wall) || other.CompareTag(player))&& GameManager.instance.eonecollison)
         {

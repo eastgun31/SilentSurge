@@ -461,7 +461,6 @@ public class Enemy : MonoBehaviour
             EnenyAttackStop();
             if(other.CompareTag(bullet))
             {
-                Destroy(other.gameObject);
                 enemyAnim.SetBool(Death, true);
             }
             else if(other.CompareTag(amsal))
