@@ -328,7 +328,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6226442448443347445}
   - component: {fileID: 3859454325679057540}
-  - component: {fileID: 6677198755919159357}
   m_Layer: 0
   m_Name: man-metalhead_Rig
   m_TagString: Untagged
@@ -426,29 +425,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0021148324, y: -0.07878721, z: -0.02164793}
     m_Extent: {x: 0.9261081, y: 0.9832902, z: 0.20757116}
   m_DirtyAABB: 0
---- !u!136 &6677198755919159357
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4327700476093221525}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.9261081
-  m_Height: 1.9691043
-  m_Direction: 1
-  m_Center: {x: 0.00022398902, y: 0.8574712, z: -0.012555756}
 --- !u!1 &4806504141832477246
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,7 +1543,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2743393737673984889}
   - component: {fileID: 1798488564499871874}
-  - component: {fileID: 2759279500730344613}
+  - component: {fileID: 5942544090686801058}
   m_Layer: 0
   m_Name: SoundInsikArea
   m_TagString: Untagged
@@ -1583,13 +1559,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8433581360198558661}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0007513757, y: -0.05143866, z: -0.010542013, w: 0.99862033}
-  m_LocalPosition: {x: 0.111, y: 0.401, z: 0.093}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6472539943438841567}
-  m_LocalEulerAnglesHint: {x: 0.024, y: -5.898, z: -1.211}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1798488564499871874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1603,8 +1579,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyScript: {fileID: 0}
---- !u!135 &2759279500730344613
-SphereCollider:
+--- !u!65 &5942544090686801058
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1622,8 +1598,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3, y: 0.5, z: 3}
+  m_Center: {x: 0, y: 0.36, z: 0}
 --- !u!1 &8903728301024428407
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,6 @@ public class Bullet : MonoBehaviour
     private string wall = "Wall";
     private string player = "Player";
     private string cabinet = "CabinetObj";
-    private string people = "People";
 
     private void Start()
     {
@@ -23,7 +22,9 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(type == 0 && ((other.CompareTag("Enemy") || other.CompareTag(wall))))
+        Debug.Log(other.gameObject.name);
+
+        if(type == 0 && ((other.CompareTag(enemy) || other.CompareTag(wall))))
         {
             Destroy(gameObject);
         }

@@ -3081,7 +3081,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4933967515423695741}
   - component: {fileID: 5922435010390628362}
-  - component: {fileID: 8402131231703955123}
+  - component: {fileID: 7358527117266885713}
   m_Layer: 0
   m_Name: SoundInsikArea
   m_TagString: Untagged
@@ -3097,13 +3097,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6524947333986528004}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00075137557, y: -0.05143866, z: -0.010542012, w: 0.99862033}
-  m_LocalPosition: {x: 0, y: 0.24, z: -0.38}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4415031035305698290}
-  m_LocalEulerAnglesHint: {x: 0.024, y: -5.898, z: -1.211}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5922435010390628362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3117,8 +3117,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyScript: {fileID: 0}
---- !u!135 &8402131231703955123
-SphereCollider:
+--- !u!65 &7358527117266885713
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3136,8 +3136,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3, y: 0.5, z: 3}
+  m_Center: {x: 0, y: 0.36, z: 0}
 --- !u!1 &6687641049551094036
 GameObject:
   m_ObjectHideFlags: 0
