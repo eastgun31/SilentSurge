@@ -129,6 +129,9 @@ public class EnemyLevel : MonoBehaviour
             {
                 lastenemy.transform.GetChild(i).gameObject.transform.position = lastenemy.transform.position;
             }
+
+            if (gm.clublast)
+                ODaeGi2();
         }
         enemyadd = false;
         LvStep = ELevel.level1;
@@ -170,6 +173,7 @@ public class EnemyLevel : MonoBehaviour
 
     public void LastEvent()
     {
+
         if(gm.scenenum == 3 ||  gm.scenenum == 4)
         {
             if (gm.puzzleLevel == 2)

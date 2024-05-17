@@ -8,6 +8,7 @@ public class Hostage : MonoBehaviour
 {
     NavMeshAgent nav;
     public Transform target;
+
     Animator anim;
     public UnityEvent hostageDie;
     bool die;

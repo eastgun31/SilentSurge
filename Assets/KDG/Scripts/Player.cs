@@ -199,6 +199,8 @@ public class Player : MonoBehaviour
         float xDeg = mousePos.x - rigid.position.x;
         rotDeg = -(Mathf.Rad2Deg * Mathf.Atan2(zDeg, xDeg) - 90);
         velocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized * playerspeed;
+
+
         playerAnim.SetFloat(s.walk, velocity.magnitude);
 
         PlayerUseItem();
@@ -214,15 +216,18 @@ public class Player : MonoBehaviour
             }
         }
 
+
+        
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             playerspeed = 5f;
             playerAnim.SetFloat(s.walk, 0);
 
-            if(handgunacivate)
-                playerAnim.SetFloat(s._gunrun,velocity.magnitude);
+            if (handgunacivate)
+                playerAnim.SetFloat(s._gunrun, velocity.magnitude);
             else
                 playerAnim.SetFloat(s._run, velocity.magnitude);
+
         }
         if (Input.GetKey(KeyCode.LeftShift) && velocity.magnitude >= 5)
         {
@@ -238,6 +243,7 @@ public class Player : MonoBehaviour
             playerspeed = 2.5f;
             RunOff();
         }
+
 
         if (Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), transform.forward, out hit, 1f, LayerMask.GetMask(s.enemy)))
         {
@@ -263,6 +269,14 @@ public class Player : MonoBehaviour
             else
                 return;
         }
+    }
+
+    void PlayerRuning()
+    {
+        if (handgunacivate)
+            playerAnim.SetFloat(s._gunrun, velocity.magnitude);
+        else
+            playerAnim.SetFloat(s._run, velocity.magnitude);
     }
 
     void ItemActivate1()
@@ -358,6 +372,9 @@ public class Player : MonoBehaviour
         rigid.velocity = Vector3.zero;
         footSound.SetActive(false);
         cas.sm.EffectOff();
+
+        if (cas.gm.isGameOver)
+            ItemActivateControll(false, false, false, false);
     }
 
     IEnumerator PlayerDie()

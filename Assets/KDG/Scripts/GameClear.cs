@@ -106,13 +106,13 @@ public class GameClear : MonoBehaviour
             activewan = false;
             goal.SetActive(false);
             lastAction.Invoke();
+            cas.gm.clublast = true;
 
             if (cas.gm.scenenum == 3 || cas.gm.scenenum == 4)
                 EnemyLevel.enemylv.SetEnemy();
 
             if (cas.gm.scenenum == 5)
             {
-                cas.gm.clublast = true;
                 cas.gm.people.SetActive(false);
             }
         }
