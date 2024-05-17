@@ -54,8 +54,8 @@ public class GuideLineTxt : MonoBehaviour
     //서재에서 책장에 숨겨진 버튼을 찾아보자     - 19
     //우선 컴퓨터에 접근해보자                             - 20
     //타겟을 제거하라                                             - 21
-    //VIP 구역 입장 번호가 00XX라 적혀 있다.       - 22
-    //VIP 구역 입장 번호가 XX00라 적혀 있다.       - 23
+    //VIP 구역 입장 번호가 05XX라 적혀 있다.       - 22
+    //VIP 구역 입장 번호가 XX23라 적혀 있다.       - 23
     //밀수 장부를 획득했다.서둘러 탈출하자.        - 24
     //VIP 구역을 들어갈 방법을 찾아보자.             - 25
 
@@ -125,5 +125,23 @@ public class GuideLineTxt : MonoBehaviour
         guideUI.gameObject.SetActive(true);
         guideUI.DOText(guideLineDB.guideLine[24].guideTxt, 1.5f);
         Invoke("SetOffTxt", 3.5f);
+    }
+    public void SetDifferentTxt6()
+    {
+        guideUI.gameObject.SetActive(true);
+        guideUI.DOText(guideLineDB.guideLine[22].guideTxt, 1.5f);
+        isHintRead += 1;
+        Invoke("SetOffTxt", 3.5f);
+        if(isHintRead == 2)
+        mapPW.SetActive(true);
+    }
+    public void SetDifferentTxt7()
+    {
+        guideUI.gameObject.SetActive(true);
+        guideUI.DOText(guideLineDB.guideLine[23].guideTxt, 1.5f);
+        isHintRead += 1;
+        Invoke("SetOffTxt", 3.5f);
+        if (isHintRead == 2)
+            mapPW.SetActive(true);
     }
 }
