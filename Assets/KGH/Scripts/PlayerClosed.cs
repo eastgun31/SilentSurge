@@ -14,6 +14,7 @@ public class PlayerClosed : MonoBehaviour
 
     private void Start()
     {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         ending.Play();
         SoundManager.instance.EffectPlay(2, true, 1f);
         Time.timeScale = 1;

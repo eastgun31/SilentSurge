@@ -11,6 +11,10 @@ public class Stage3TimeLine : MonoBehaviour
     public GameObject walk_p;
     public GameObject idle_p;
     public GameObject clear;
+    private void Start()
+    {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+    }
 
     public void SetIdle()
     {

@@ -236,7 +236,7 @@ public class Player : MonoBehaviour
             //    playerAnim.SetFloat(s._run, velocity.magnitude);
 
         }
-        if (Input.GetKey(KeyCode.LeftShift) )
+        if (Input.GetKey(KeyCode.LeftShift) && velocity.magnitude >=5)
         {
             footSound.SetActive(true);
 
