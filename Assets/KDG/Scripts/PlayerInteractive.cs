@@ -43,28 +43,40 @@ public class PlayerInteractive : MonoBehaviour
                 if(doort.nDoor == 0 && gm.puzzleLevel >= 2 || doort.nDoor == 1 && gm.puzzleLevel >= 3 || doort.nDoor == 2 && gm.puzzleLevel >= 4)
                     doort.OpenDoor();
                 else if(doort.nDoor == 0 && gm.puzzleLevel < 2 || doort.nDoor == 1 && gm.puzzleLevel < 3 || doort.nDoor == 2 && gm.puzzleLevel < 4)
+                {
+                    SoundManager.instance.EffectPlay(7, true, 0.6f);
                     GuideLineTxt.instance.SetDifferentTxt2(0);
+                }
             }
             else if(GameManager.instance.scenenum == 2)
             {
                 if (doort.nDoor == 0 || doort.nDoor == 1 && gm.puzzleLevel >= 2 || doort.nDoor == 2 && gm.puzzleLevel >= 4)
                     doort.OpenDoor();
                 if (doort.nDoor == 1 && gm.puzzleLevel < 2 || doort.nDoor == 2 && gm.puzzleLevel < 4)
+                {
+                    SoundManager.instance.EffectPlay(7, true, 0.6f);
                     GuideLineTxt.instance.SetDifferentTxt2(0);
+                }
             }
             else if(GameManager.instance.scenenum == 3 || GameManager.instance.scenenum == 4)
             {
                 if (doort.nDoor == 0 || doort.nDoor == 1 && gm.puzzleLevel >= 2 || doort.nDoor == 2 && gm.puzzleLevel >= 3)
                     doort.OpenDoor();
                 else if(doort.nDoor == 1 && gm.puzzleLevel < 2 || doort.nDoor == 2 && gm.puzzleLevel < 3)
+                {
+                    SoundManager.instance.EffectPlay(7, true, 0.6f);
                     GuideLineTxt.instance.SetDifferentTxt2(0);
+                }
             }
             else if (GameManager.instance.scenenum == 5)
             {
                 if (doort.nDoor == 0 || doort.nDoor == 1 && gm.puzzleLevel >= 2)
                     doort.OpenDoor();
                 else if (doort.nDoor == 1 && gm.puzzleLevel < 2 || doort.nDoor == 2 && gm.puzzleLevel < 3)
+                {
+                    SoundManager.instance.EffectPlay(7, true, 0.6f);
                     GuideLineTxt.instance.SetDifferentTxt2(0);
+                }
             }
         }
         //else if (other.CompareTag(interactiveList[1]))
