@@ -35,6 +35,15 @@ public class TitleActive : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            SoundManager.instance.stage1Clear = true;
+            SoundManager.instance.stage2Clear = true;
+        }
+    }
+
     void StartAction()
     {
         door.GetComponent<DOTweenAnimation>().DOPlay();
