@@ -201,7 +201,14 @@ public class Player : MonoBehaviour
         velocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized * playerspeed;
 
 
-        playerAnim.SetFloat(s.walk, velocity.magnitude);
+        
+
+        if (handgunacivate && playerspeed >=5)
+            playerAnim.SetFloat(s._gunrun, velocity.magnitude);
+        else if(!handgunacivate && playerspeed >=5)
+            playerAnim.SetFloat(s._run, velocity.magnitude);
+        else
+            playerAnim.SetFloat(s.walk, velocity.magnitude);
 
         PlayerUseItem();
 
@@ -217,21 +224,33 @@ public class Player : MonoBehaviour
         }
 
 
-        
+
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             playerspeed = 5f;
             playerAnim.SetFloat(s.walk, 0);
 
-            if (handgunacivate)
-                playerAnim.SetFloat(s._gunrun, velocity.magnitude);
-            else
-                playerAnim.SetFloat(s._run, velocity.magnitude);
+            //if (handgunacivate)
+            //    playerAnim.SetFloat(s._gunrun, velocity.magnitude);
+            //else
+            //    playerAnim.SetFloat(s._run, velocity.magnitude);
 
         }
-        if (Input.GetKey(KeyCode.LeftShift) && velocity.magnitude >= 5)
+        if (Input.GetKey(KeyCode.LeftShift) )
         {
             footSound.SetActive(true);
+
+            //playerspeed = 5f;
+            //playerAnim.SetFloat(s.walk, 0);
+
+            //if (playerAnim.GetCurrentAnimatorStateInfo(0).normalizedTime ==0)
+            //{
+            //    Debug.Log("애니실행");
+            //    if (handgunacivate)
+            //        playerAnim.SetFloat(s._gunrun, velocity.magnitude);
+            //    else
+            //        playerAnim.SetFloat(s._run, velocity.magnitude);
+            //}
 
             if (!cas.sm.effectPlayer.isPlaying)
                 cas.sm.EffectPlay(0, true, 1f); 

@@ -22,7 +22,6 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
 
         if(type == 0 && ((other.CompareTag(enemy) || other.CompareTag(wall))))
         {
