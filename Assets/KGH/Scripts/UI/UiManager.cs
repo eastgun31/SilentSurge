@@ -13,6 +13,7 @@ public class UiManager : MonoBehaviour
     public bool isWin = false;
     public bool isPauseWin = false;
     public bool isGameOver = false;
+    public bool isStageClear = false;
 
     public GameObject quickSlot;
 

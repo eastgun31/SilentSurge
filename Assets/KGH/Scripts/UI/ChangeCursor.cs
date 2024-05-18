@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChangeCursor : MonoBehaviour
 {
-    [SerializeField] private Texture2D cursor;
+    public Texture2D cursor;
 
     private Vector2 hotspot;
 
@@ -23,20 +23,20 @@ public class ChangeCursor : MonoBehaviour
     }
     private void Update()
     {
-        if (ui.isPauseWin || gm.nowpuzzle || ui.isGameOver)
+        if (ui.isPauseWin || gm.nowpuzzle || ui.isGameOver || ui.isStageClear)
         {
             ResetCursor();
         }
-        else if (!ui.isPauseWin || !gm.nowpuzzle || !ui.isGameOver)
+        else if (!ui.isPauseWin || !gm.nowpuzzle || !ui.isGameOver || !ui.isStageClear)
         {
             CursorChange();
         }
     }
-    public void CursorChange()
+    void CursorChange()
     {
         Cursor.SetCursor(cursor, hotspot, CursorMode.Auto);
     }
-     void ResetCursor()
+     public void ResetCursor()
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
