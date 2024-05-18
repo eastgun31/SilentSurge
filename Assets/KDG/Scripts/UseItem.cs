@@ -34,6 +34,7 @@ public class UseItem : MonoBehaviour
     private float throwpower = 3f;
     private string floor = "Floor";
     private string inroom = "InRoom";
+    private string obj = "Etc";
     public bool heartCanUse = true;
 
     Vector3 angle;
@@ -41,6 +42,7 @@ public class UseItem : MonoBehaviour
     Ray ray;
     RaycastHit hit;
     int mask;
+    int mask2;
     LineRenderer drawLine;
     Item itemClass;
     CreateSound gunSound;
@@ -91,19 +93,22 @@ public class UseItem : MonoBehaviour
 
         ray = Camera.main.ScreenPointToRay(pos);
         mask = LayerMask.GetMask(floor) | LayerMask.GetMask(inroom);
+        mask2 = LayerMask.GetMask(obj) ;
 
-        if(Physics.Raycast(ray, out hit,100f, mask))
+        if (Physics.Raycast(ray, out hit, 100f, mask))
         {
-            drawLine.SetPosition(0, transform.position + new Vector3(0,0.2f,0));
+            drawLine.SetPosition(0, transform.position + new Vector3(0, 0.2f, 0));
             drawLine.SetPosition(1, hit.point + new Vector3(0, 0.2f, 0));
-            if(a)
+            if (a)
                 drawLine.SetMaterials(mat);
-            else if(b)
+            else if (b)
                 drawLine.SetMaterials(mat2);
             angle = hit.point - transform.position;
 
             angle.y = 3.7f;
         }
+        else if (Physics.Raycast(ray, out hit, 100f, mask2))
+            ErageDraw();
     }
 
     public void OnOffMap()
