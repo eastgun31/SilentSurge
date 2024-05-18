@@ -4364,7 +4364,7 @@ Transform:
   m_GameObject: {fileID: 135027911}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 40.19, y: 22.12, z: -2.35}
+  m_LocalPosition: {x: 41.53, y: 22.12, z: -0.86000013}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4382,7 +4382,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.78751564, g: 0, b: 1, a: 1}
-  m_Intensity: 4
+  m_Intensity: 2
   m_Range: 12
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -19659,6 +19659,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 713040097}
+  - component: {fileID: 713040098}
   m_Layer: 0
   m_Name: LightOnOff
   m_TagString: Untagged
@@ -19684,6 +19685,20 @@ Transform:
   - {fileID: 135027912}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &713040098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713040096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f2c49b15002c084c95d7ce19981cb43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light1: {fileID: 135027913}
+  light2: {fileID: 918443218}
 --- !u!1 &714741650
 GameObject:
   m_ObjectHideFlags: 0
@@ -25623,7 +25638,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0, g: 0.8745098, b: 1, a: 1}
-  m_Intensity: 4
+  m_Intensity: 2
   m_Range: 12
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -25682,7 +25697,7 @@ Transform:
   m_GameObject: {fileID: 918443217}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 40.17, y: 22.12, z: -2.36}
+  m_LocalPosition: {x: 41.51, y: 22.12, z: -0.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

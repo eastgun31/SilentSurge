@@ -1,23 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LightOnOff : MonoBehaviour
 {
-    public GameObject _1Flight_1;
-    public GameObject _1Flight_2;
-    public GameObject _2Flight;
+    public Light light1;
+    public Light light2;
 
-    void LightSwitch()
+    float lightAngle;
+
+    WaitForSeconds lightChange;
+
+    private void Start()
     {
-        if(GameManager.instance.puzzleLevel == 2)
+        lightChange = new WaitForSeconds(0.5f);
+        StartCoroutine(ClubLight());
+    }
+
+    IEnumerator ClubLight()
+    {
+        while (true) 
         {
-            _2Flight.SetActive(true);
-        }
-        if(GameManager.instance.clublast)
-        {
-            _1Flight_1.SetActive(false);
-            _1Flight_2.SetActive(false);
+            light1.range = UnityEngine.Random.Range(6, 16);
+            light2.range = UnityEngine.Random.Range(6, 16);
+            yield return lightChange;
         }
     }
 }
