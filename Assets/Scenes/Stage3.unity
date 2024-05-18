@@ -16439,6 +16439,7 @@ MonoBehaviour:
   isWin: 0
   isPauseWin: 0
   isGameOver: 0
+  isStageClear: 0
   quickSlot: {fileID: 1388823664}
   pauseWin: {fileID: 1377935550}
   pipePuzFst: {fileID: 1725031897}
@@ -21895,6 +21896,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1600592731}
         m_TargetAssemblyTypeName: EnemyLevel, Assembly-CSharp
         m_MethodName: LastEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 800182863}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: ItemActivateFalse
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

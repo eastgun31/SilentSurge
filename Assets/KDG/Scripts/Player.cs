@@ -381,6 +381,13 @@ public class Player : MonoBehaviour
         flashbangacivate = c;
         heartseeacivate = d;
     }
+    public void ItemActivateFalse()
+    {
+        handgunacivate = false;
+        coinacivate = false;
+        flashbangacivate = false;
+        heartseeacivate = false;
+    }
 
     public void RunOff()
     {
@@ -392,8 +399,6 @@ public class Player : MonoBehaviour
         footSound.SetActive(false);
         cas.sm.EffectOff();
 
-        if (cas.gm.isGameOver)
-            ItemActivateControll(false, false, false, false);
     }
 
     IEnumerator PlayerDie()
