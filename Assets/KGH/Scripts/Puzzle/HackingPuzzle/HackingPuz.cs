@@ -98,7 +98,7 @@ public class HackingPuz : MonoBehaviour
             {
                 um.isGameOver = true;
                 um.gameover.SetActive(true);
-                CloseHackingPuz();
+                IncorrectClose();
             }
             else
             {
@@ -156,6 +156,12 @@ public class HackingPuz : MonoBehaviour
         gm.nowpuzzle = false;
         
         DataManager.instance.SaveData();
+        hacking.SetActive(false);
+    }
+    void IncorrectClose()
+    {
+        um.isWin = false;
+        gm.nowpuzzle = false;
         hacking.SetActive(false);
     }
 

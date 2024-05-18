@@ -70,7 +70,7 @@ public class SinPuzzle : MonoBehaviour
             {
                 um.isGameOver = true;
                 um.gameover.SetActive(true);
-                CloseSin();
+                IncorrectClose();
             }
             else
             {
@@ -152,6 +152,12 @@ public class SinPuzzle : MonoBehaviour
         DataManager.instance.SaveData();
         um.CloseSinFst();
     }
+    private void IncorrectClose()
+    {
+        um.isWin = false;
+        gm.nowpuzzle = false;
+        um.CloseSinFst() ;
+    }    
 
     public void SubtitleCheck()
     {
