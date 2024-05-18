@@ -15,14 +15,9 @@ public class Stage2_Ending : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         explosion1.Stop(); explosion2.Stop(); explosion3.Stop();
         StartCoroutine(Explosion());
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
     IEnumerator Explosion()
