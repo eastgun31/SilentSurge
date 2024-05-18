@@ -127,7 +127,7 @@ public class PipeManager : MonoBehaviour
 
     void SceneCheck()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2)
+        if (gm.scenenum == 1 || gm.scenenum == 2)
         {
             if (gm.puzzleLevel == 1)
             {
@@ -151,7 +151,7 @@ public class PipeManager : MonoBehaviour
                 SubtitleCheck();
             }
         }
-        else if(SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 4)
+        else if(gm.scenenum == 3 || gm.scenenum == 4)
         {
             if(gm.puzzleLevel == 3)
             {
@@ -162,7 +162,7 @@ public class PipeManager : MonoBehaviour
     }
     public void SubtitleCheck()
     {
-        switch (SceneManager.GetActiveScene().buildIndex)
+        switch (gm.scenenum)
         {
             case 1:
                 Debug.Log("¾À1");

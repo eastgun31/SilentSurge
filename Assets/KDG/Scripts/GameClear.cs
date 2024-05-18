@@ -77,7 +77,7 @@ public class GameClear : MonoBehaviour
     {
         if(other.CompareTag("Player") && value == 1)
         {
-            if (cas.gm.scenenum == 1)
+            if (cas.gm.scenenum == 1 && cas.gm.clublast)
             {
                 cas.sm.EffectOff();
                 EnemySoundOff();
@@ -118,7 +118,7 @@ public class GameClear : MonoBehaviour
         }
         else if(other.CompareTag("Player") && value == 3)
         {
-            if(cas.gm.scenenum == 2)
+            if(cas.gm.scenenum == 2 && cas.gm.clublast)
             {
                 cas.sm.stage1Clear = true;
                 Ending.Invoke();
