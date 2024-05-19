@@ -16,8 +16,9 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        if(type == 4)
-            Destroy(gameObject, 0.5f);
+        Destroy(gameObject, 5f);
+        if (type == 4)
+            Destroy(gameObject, 1f);
     }
 
     private void OnTriggerEnter(Collider other)
