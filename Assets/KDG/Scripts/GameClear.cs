@@ -59,7 +59,6 @@ public class GameClear : MonoBehaviour
                 goal.SetActive(true);
                 items.SetActive(true);
 
-                DataManager.instance.SaveData();
             }
         }
     }
