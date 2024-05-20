@@ -13,6 +13,9 @@ public class MainStart : MonoBehaviour
     public GameObject page1;
     public GameObject page2;
 
+    public GameObject c_Page1;
+    public GameObject c_Page2;
+
     public GameObject stage2Ban;
     public GameObject stage3Ban;
 
@@ -72,5 +75,15 @@ public class MainStart : MonoBehaviour
     {
         page1.SetActive(false);
         page2.SetActive(true);
+    }
+    public void GoToC_Page1()
+    {
+        c_Page1.SetActive(true);
+        c_Page2.SetActive(false);
+    }
+    public void GoToC_Page2()
+    {
+        c_Page1.SetActive(false);
+        c_Page2.SetActive(true);
     }
 }
