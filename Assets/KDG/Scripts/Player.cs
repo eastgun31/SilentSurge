@@ -32,42 +32,35 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     UseItem useItem;
+    //[SerializeField]
+    //private GameObject playerModel;
+    //Material mat;
     IItem item;
 
     public GameObject handGunModel;
     public GameObject bulletPrefab;
     public GameObject footSound;
+    public Animator playerAnim;
 
     //캐싱
-    GameManager gmManager;
-    SoundManager soundManager;
-    UiManager uiManager;
-    public Animator playerAnim;
-    string walk = "Walk";
-    string gunwalk = "GunWalk";
-    string handgunMode = "HandGun";
-    string throwcoin = "ThrowCoin";
-    string throwflashbang = "ThrowFlashBang";
-    string run = "Runing";
-    string gunrun = "GunRuning";
-    
+    Casing cas;
+    //GameManager gmManager;
+    //SoundManager soundManager;
+    //UiManager uiManager;
+    StringMoum s;
+    WaitForSeconds delay;
 
     float rotDeg;
     Rigidbody rigid;
     Camera cam;
     Vector3 mousePos;
     public Vector3 velocity;
-    bool die;
-    bool saving;
     public UnityEvent playerDie;
 
     //레이캐스트
     Ray ray;
     RaycastHit hit;
     int mask;
-    string puzzle = "Puzzle";
-    string door = "Doorhandle";
-    string enemy = "Enemy";
     public bool canAmsal = false; //암살가능 체크변수
     PlayerInteractive playerInteractive;
     public Sight sight;
@@ -76,8 +69,6 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        die = false;
-        saving = false;
         playerspeed = 2.5f;
         itemGet =new bool[5] { false,false,false,false,false};
         state = PlayerState.idle;
@@ -85,42 +76,41 @@ public class Player : MonoBehaviour
         rigid = transform.GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
         playerInteractive = GetComponent<PlayerInteractive>();
+        //mat = playerModel.GetComponent<Material>();
         cam = Camera.main;
-        gmManager = GameManager.instance;
-        soundManager = SoundManager.instance;
-        uiManager = UiManager.instance;
+        cas = new Casing();
+        //gmManager = GameManager.instance;
+        //soundManager = SoundManager.instance;
+        //uiManager = UiManager.instance;
         maxdist = 1f;
+        s = new StringMoum();
+        delay = new WaitForSeconds(0.5f);
     }
 
     void Update()
     {
-        //Debug.Log(math.round(velocity.magnitude));
-        if (gmManager.nowpuzzle)
+        if (cas.gm.nowpuzzle)
         {            
-            playerAnim.SetBool(gunrun, false);
-            playerAnim.SetBool(run, false);
             footSound.SetActive(false);
             state = PlayerState.puzzling;
 
-            //playerspeed = 0;
         }
-        else if (gmManager.isHide)
+        else if (cas.gm.isHide)
         {
             state = PlayerState.hide;
             useItem.ErageDraw();
         }        
-        else if (gmManager.isDie)
+        else if (cas.gm.isDie)
         {
             state = PlayerState.die;
             rigid.velocity = Vector3.zero;
         }
-        else if (!gmManager.nowpuzzle || !gmManager.isHide || !gmManager.isDie)
+        else if (!cas.gm.nowpuzzle || !cas.gm.isHide || !cas.gm.isDie)
         {
             state = PlayerState.idle;
-            //playerspeed = 2.5f;
         }
            
-        if (state == PlayerState.idle && !uiManager.isPauseWin)
+        if (state == PlayerState.idle && !cas.ui.isPauseWin)
         {
             if (rigid.velocity != Vector3.zero)
                 rigid.velocity = Vector3.zero;
@@ -130,11 +120,10 @@ public class Player : MonoBehaviour
             return;
 
         if (itemGet[4])
-            armor = gmManager.itemcount[4];
+            armor = cas.gm.itemcount[4];
 
         if (Input.GetKeyDown(KeyCode.T))
         {
-            Debug.Log("11");
             useItem.OnOffMap();
         }
     }
@@ -145,44 +134,14 @@ public class Player : MonoBehaviour
         rigid.MovePosition(rigid.position + velocity * Time.deltaTime);
     }
 
-    void PlayerControll()
+    void PlayerUseItem()
     {
-        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        float zDeg = mousePos.z - rigid.position.z;
-        float xDeg = mousePos.x - rigid.position.x;
-        rotDeg = -(Mathf.Rad2Deg * Mathf.Atan2(zDeg, xDeg) - 90);
-        velocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized * playerspeed;
-        playerAnim.SetFloat(walk, velocity.magnitude);
-
-        if(Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            playerspeed = 5f;
-        }
-        if (Input.GetKey(KeyCode.LeftShift) && velocity.magnitude >= 5)
-        {
-            //if(velocity.magnitude < 5)
-            //    footSound.SetActive(false);
-
-            //Debug.Log("달리기");
-            footSound.SetActive(true);
-            soundManager.EffectPlay(0,false, 1f);
-            
-            if (handgunacivate)
-                playerAnim.SetBool(gunrun, true);
-            else
-                playerAnim.SetBool(run, true);
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            RunOff();
-        }
-
         if (itemGet[0])
         {
             ItemActivate1();
-            if (handgunacivate && !coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
+            if (handgunacivate && Input.GetMouseButtonDown(0))
             {
-                if(gmManager.itemcount[0]>0)
+                if (cas.gm.itemcount[0] > 0)
                     useItem.GunFire(mousePos);
             }
         }
@@ -194,11 +153,11 @@ public class Player : MonoBehaviour
                 useItem.ThrowPosition(coinacivate, flashbangacivate);
             }
 
-            if (!handgunacivate && coinacivate && !flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
+            if (coinacivate && Input.GetMouseButtonDown(0))
             {
-                if(gmManager.canUse && gmManager.itemcount[1] > 0)
+                if (cas.gm.canUse && cas.gm.itemcount[1] > 0)
                 {
-                    playerAnim.SetTrigger(throwcoin);
+                    playerAnim.SetTrigger(s.throwcoin);
                     StartCoroutine(useItem.ThrowCoin());
                 }
             }
@@ -211,11 +170,11 @@ public class Player : MonoBehaviour
                 useItem.ThrowPosition(coinacivate, flashbangacivate);
             }
 
-            if (!handgunacivate && !coinacivate && flashbangacivate && !heartseeacivate && Input.GetMouseButtonDown(0))
+            if (flashbangacivate && Input.GetMouseButtonDown(0))
             {
-                if(gmManager.canUse && gmManager.itemcount[2] > 0)
+                if (cas.gm.canUse && cas.gm.itemcount[2] > 0)
                 {
-                    playerAnim.SetTrigger(throwflashbang);
+                    playerAnim.SetTrigger(s.throwflashbang);
                     StartCoroutine(useItem.ThrowFlashBang());
                 }
             }
@@ -223,82 +182,138 @@ public class Player : MonoBehaviour
         if (itemGet[3])
         {
             ItemActivate4();
-            if (!handgunacivate && !coinacivate && !flashbangacivate && heartseeacivate && Input.GetMouseButtonDown(0) && useItem.heartCanUse)
+            if (heartseeacivate && Input.GetMouseButtonDown(0) && useItem.heartCanUse)
             {
                 StartCoroutine(useItem.HeartSee());
             }
         }
+    }
+
+    void PlayerControll()
+    {
+        if (cas.gm.isGameOver)
+            return;
+
+        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        float zDeg = mousePos.z - rigid.position.z;
+        float xDeg = mousePos.x - rigid.position.x;
+        rotDeg = -(Mathf.Rad2Deg * Mathf.Atan2(zDeg, xDeg) - 90);
+        velocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized * playerspeed;
+
+
+        
+
+        if (handgunacivate && playerspeed >=5)
+            playerAnim.SetFloat(s._gunrun, velocity.magnitude);
+        else if(!handgunacivate && playerspeed >=5)
+            playerAnim.SetFloat(s._run, velocity.magnitude);
+        else
+            playerAnim.SetFloat(s.walk, velocity.magnitude);
+
+        PlayerUseItem();
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.DrawRay(transform.position, transform.forward * maxdist, Color.blue, 2f);
-            mask = LayerMask.GetMask(puzzle) | LayerMask.GetMask(door);
+            mask = LayerMask.GetMask(s.puzzle) | LayerMask.GetMask(s.door);
             if (Physics.Raycast(transform.position, transform.forward, out hit, maxdist, mask))
             {
                 Debug.Log(mask);
                 playerInteractive.InteractiveObj(hit);
             }
-
         }
 
-        if (Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), transform.forward, out hit, 1f, LayerMask.GetMask(enemy)))
+
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            playerspeed = 5f;
+            playerAnim.SetFloat(s.walk, 0);
+
+            //if (handgunacivate)
+            //    playerAnim.SetFloat(s._gunrun, velocity.magnitude);
+            //else
+            //    playerAnim.SetFloat(s._run, velocity.magnitude);
+
+        }
+        if (Input.GetKey(KeyCode.LeftShift) && velocity.magnitude >=5)
+        {
+            footSound.SetActive(true);
+
+            //playerspeed = 5f;
+            //playerAnim.SetFloat(s.walk, 0);
+
+            //if (playerAnim.GetCurrentAnimatorStateInfo(0).normalizedTime ==0)
+            //{
+            //    Debug.Log("애니실행");
+            //    if (handgunacivate)
+            //        playerAnim.SetFloat(s._gunrun, velocity.magnitude);
+            //    else
+            //        playerAnim.SetFloat(s._run, velocity.magnitude);
+            //}
+
+            if (!cas.sm.effectPlayer.isPlaying)
+                cas.sm.EffectPlay(0, true, 1f); 
+            else if (cas.sm.effectPlayer.isPlaying)
+                return;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            playerspeed = 2.5f;
+            RunOff();
+        }
+
+
+        if (Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), transform.forward, out hit, 1f, LayerMask.GetMask(s.enemy)))
         {
             sight = hit.transform.gameObject.GetComponent<Sight>();
             enemyState = hit.transform.transform.gameObject.GetComponent<Enemy>();
             if (!sight.findT && enemyState.state != Enemy.EnemyState.die && !handgunacivate && !coinacivate && !flashbangacivate && !heartseeacivate)
             {
                 canAmsal = true;
-                Debug.Log("암살가능");
                 if (canAmsal  && Input.GetMouseButtonDown(0))
                 {
                     StartCoroutine(useItem.Assassination());
                     sight = null;
-                    Debug.Log("암살불능");
                     canAmsal = false;
                 }
-                    
             }
         }
         else
         {
             if (canAmsal)
             {
-                Debug.Log("암살불능");
                 canAmsal = false;
             }
             else
                 return;
         }
+    }
 
-
-        if (!die && Input.GetKey(KeyCode.G))
-        {
-            die = true;
-            StartCoroutine(PlayerDie());
-        }
-        if (!saving && Input.GetKey(KeyCode.F))
-        {
-            saving = true;
-            StartCoroutine(PlayerSave());
-        }
+    void PlayerRuning()
+    {
+        if (handgunacivate)
+            playerAnim.SetFloat(s._gunrun, velocity.magnitude);
+        else
+            playerAnim.SetFloat(s._run, velocity.magnitude);
     }
 
     void ItemActivate1()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1) && !handgunacivate)
         {
-            transform.position = new Vector3(transform.position.x, 0.01f, transform.position.z);
+            if(cas.gm.scenenum != 5)
+                transform.position = new Vector3(transform.position.x, 0.01f, transform.position.z);
             handGunModel.SetActive(true);
             Debug.Log("권총 활성화");
-            playerAnim.SetBool(run, false);
-            playerAnim.SetBool(handgunMode, true);
+            playerAnim.SetBool(s.handgunMode, true);
 
             ItemActivateControll(true, false, false, false);
             useItem.ErageDraw();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha1) && handgunacivate)
         {
-            playerAnim.SetBool(handgunMode, false);
-            playerAnim.SetBool(gunrun, false);
+            playerAnim.SetBool(s.handgunMode, false);
             handGunModel.SetActive(false);
             handgunacivate = false;
             Debug.Log("권총 비활성화");
@@ -309,8 +324,8 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha2) && !coinacivate)
         {
-            playerAnim.SetBool(handgunMode, false);
-            playerAnim.SetBool(gunrun, false);
+            playerAnim.SetBool(s.handgunMode, false);
+            //playerAnim.SetBool(gunrun, false);
             Debug.Log("코인 활성화");
             handGunModel.SetActive(false);
 
@@ -327,8 +342,8 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha3) && !flashbangacivate)
         {
-            playerAnim.SetBool(handgunMode, false);
-            playerAnim.SetBool(gunrun, false);
+            playerAnim.SetBool(s.handgunMode, false);
+            //playerAnim.SetBool(gunrun, false);
             Debug.Log("섬광탄 활성화");
             handGunModel.SetActive(false);
 
@@ -345,8 +360,8 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha4) && !heartseeacivate)
         {
-            playerAnim.SetBool(handgunMode, false);
-            playerAnim.SetBool(gunrun, false);
+            playerAnim.SetBool(s.handgunMode, false);
+            //playerAnim.SetBool(gunrun, false);
             Debug.Log("심장박동측정기 활성화");
             handGunModel.SetActive(false);
 
@@ -365,42 +380,53 @@ public class Player : MonoBehaviour
         coinacivate = b;
         flashbangacivate = c;
         heartseeacivate = d;
-        
+    }
+    public void ItemActivateFalse()
+    {
+        handgunacivate = false;
+        coinacivate = false;
+        flashbangacivate = false;
+        heartseeacivate = false;
     }
 
     public void RunOff()
     {
-        playerAnim.SetFloat(walk, 0);
+        playerAnim.SetFloat(s.walk, 0);
+        playerAnim.SetFloat(s._run, 0);
+        playerAnim.SetFloat(s._gunrun, 0);
         velocity = Vector3.zero;
         rigid.velocity = Vector3.zero;
         footSound.SetActive(false);
-        soundManager.EffectOff();
-        playerAnim.SetBool(run, false);
-        playerAnim.SetBool(gunrun, false);
-        
+        cas.sm.EffectOff();
+
     }
 
     IEnumerator PlayerDie()
     {
-        gmManager.isDie = true;
+        cas.gm.isDie = true;
+        cas.gm.isGameOver = true;
+        ItemActivateControll(false, false, false, false);
+        handGunModel.SetActive(false);
         RunOff();
-        playerAnim.SetTrigger("Die");
+        useItem.ItemOff();
+        playerAnim.SetTrigger(s.die);
         yield return new WaitForSeconds(3f);
         Debug.Log("플레이어 죽음");
         //DataManager.instance.LoadData();
         playerDie.Invoke();
-        die = false;
+        cas.gm.isGameOver = false;
     }
-    IEnumerator PlayerSave()
-    {
-        yield return new WaitForSeconds(2f);
-        DataManager.instance.SaveData();
-        saving = false;
-    }
+
+    //IEnumerator PlayerDamage()
+    //{
+    //    mat.color = Color.red;
+    //    yield return delay;
+    //    mat.color = Color.white;
+    //}
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Item"))
+        if (other.CompareTag(s.itemTag))
         {
             item = other.GetComponent<IItem>();
 
@@ -451,19 +477,24 @@ public class Player : MonoBehaviour
                     }
                     break;
             }
-            gmManager.existItem[item.indexNum] = false;
+            cas.gm.existItem[item.indexNum] = false;
             other.gameObject.SetActive(false);
         }
-        if(other.CompareTag("E_Bullet"))
+        if(other.CompareTag(s.eBullet))
         {
-            if (itemGet[4] && gmManager.itemcount[4] >0)
+            if (itemGet[4] && cas.gm.itemcount[4] >0)
             {
-                gmManager.itemcount[4]--;
+                cas.gm.itemcount[4]--;
+                //StartCoroutine(PlayerDamage());
             }
             else
             {
                 if(state != PlayerState.die)
+                {
+                    //StartCoroutine(PlayerDamage());
                     StartCoroutine(PlayerDie());
+                }
+                    
             }
         }
     }

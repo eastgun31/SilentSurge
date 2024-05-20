@@ -30,17 +30,17 @@ public class CreateSound : MonoBehaviour
         collider = sound.GetComponent<SphereCollider>();
         collider.radius = 0.1f;
         yield return delaytime.cool1sec;
-        collider.radius = 0.5f;
-        yield return delaytime.coolhalf1sec;
-        collider.radius = 1f;
-        yield return delaytime.coolhalf1sec;
-        collider.radius = 1.5f;
-        yield return delaytime.coolhalf1sec;
-        collider.radius = 2f;
-        yield return delaytime.coolhalf1sec;
+        //collider.radius = 0.5f;
+        //yield return delaytime.coolhalf1sec;
+        //collider.radius = 1f;
+        //yield return delaytime.coolhalf1sec;
+        //collider.radius = 1.5f;
+        //yield return delaytime.coolhalf1sec;
+        //collider.radius = 2f;
+        //yield return delaytime.coolhalf1sec;
         collider.radius = 2.5f;
         yield return delaytime.coolhalf1sec;
-        collider.radius = 3f;
+        collider.radius = 5f;
 
         Destroy(sound, 1f);
     }
@@ -54,15 +54,15 @@ public class CreateSound : MonoBehaviour
         collider = sound.GetComponent<SphereCollider>();
         collider.radius = 0.1f;
         yield return delaytime.cool1sec;
-        collider.radius = 0.5f;
-        yield return delaytime.coolhalf1sec;
+        //collider.radius = 0.5f;
+        //yield return delaytime.coolhalf1sec;
         collider.radius = 1f;
-        yield return delaytime.coolhalf1sec;
-        collider.radius = 1.5f;
-        yield return delaytime.coolhalf1sec;
-        collider.radius = 2f;
-        yield return delaytime.coolhalf1sec;
-        collider.radius = 2.5f;
+        //yield return delaytime.coolhalf1sec;
+        //collider.radius = 1.5f;
+        //yield return delaytime.coolhalf1sec;
+        //collider.radius = 2f;
+        //yield return delaytime.coolhalf1sec;
+        //collider.radius = 2.5f;
         yield return delaytime.coolhalf1sec;
         collider.radius = 3f;
 

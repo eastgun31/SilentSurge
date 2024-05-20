@@ -10,12 +10,13 @@ public class SoundSlider : MonoBehaviour
 
     private float vol = 1f;
 
-    public AudioMixer audioMixer;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         vol = PlayerPrefs.GetFloat("vol", 1f);
+        
         bar.value = SoundManager.instance.audioPlayer.volume;
     }
 
@@ -30,6 +31,7 @@ public class SoundSlider : MonoBehaviour
         SoundManager.instance.audioPlayer.volume = bar.value;
 
         vol = bar.value;
-        PlayerPrefs.GetFloat("vol", vol);
+        var _vol = AudioListener.volume;
+        PlayerPrefs.GetFloat("vol", _vol);
     }
 }

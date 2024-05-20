@@ -9,6 +9,8 @@ public class PipeManager : MonoBehaviour
 {
     public GameObject canvas;
 
+    public GameObject mapPW;
+
     public GameObject pipesHolder; //파이프를 포함한 부모 오브젝트
     public GameObject[] pipes;
 
@@ -89,7 +91,7 @@ public class PipeManager : MonoBehaviour
             gm.puzzleLevel += 1;
 
             Invoke("ClosePipe", 1f);
-            gm.nowpuzzle = false;
+            
            
         }
     }
@@ -102,6 +104,7 @@ public class PipeManager : MonoBehaviour
     public void ClosePipe()
     {
         um.isWin = false;
+        gm.nowpuzzle = false;
         DataManager.instance.SaveData();
         canvas.gameObject.SetActive(false);
         
@@ -124,7 +127,7 @@ public class PipeManager : MonoBehaviour
 
     void SceneCheck()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2)
+        if (gm.scenenum == 1 || gm.scenenum == 2)
         {
             if (gm.puzzleLevel == 1)
             {
@@ -134,15 +137,21 @@ public class PipeManager : MonoBehaviour
                 GuideLineTxt.instance.SetDifferentTxt(3);
             }
 
+            if (gm.puzzleLevel == 4)
+            {
+                GuideLineTxt.instance.SetDifferentTxt(17);
+            }
+
             if (gm.puzzleLevel == 7)
             {
                 items[2].SetActive(true);
                 items[3].SetActive(true);
+                mapPW.SetActive(true);
                 gm.ItemActive();
                 SubtitleCheck();
             }
         }
-        else if(SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 4)
+        else if(gm.scenenum == 3 || gm.scenenum == 4)
         {
             if(gm.puzzleLevel == 3)
             {
@@ -153,7 +162,7 @@ public class PipeManager : MonoBehaviour
     }
     public void SubtitleCheck()
     {
-        switch (SceneManager.GetActiveScene().buildIndex)
+        switch (gm.scenenum)
         {
             case 1:
                 Debug.Log("씬1");

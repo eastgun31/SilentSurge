@@ -12,31 +12,9 @@ public class TitleActive : MonoBehaviour
     public GameObject menu;
     Animator anim;
 
-    //private void Awake()
-    //{
-    //    if(!SoundManager.instance.playingAction)
-    //    {
-    //        menu.SetActive(false);
-    //        cam.transform.position = new Vector3(0,transform.position.y,transform.position.z);
-    //        door.transform.rotation = Quaternion.Euler(0, 0, 0);
-    //        backlight.SetActive(false);
-    //        anim = character.GetComponent<Animator>();
-    //    }
-    //    else
-    //    {
-    //        menu.SetActive(true);
-    //        backlight.SetActive(true);
-    //    }
-    //}
-
     private void Start()
     {
-        //if(!SoundManager.instance.playingAction)
-        //{
-        //    StartAction();
-        //    anim.SetTrigger("Play");
-        //    Invoke("TurnOnLightMoveCam", 1f);
-        //}
+
         if (!SoundManager.instance.playingAction)
         {
             menu.SetActive(false);
@@ -54,6 +32,15 @@ public class TitleActive : MonoBehaviour
         {
             menu.SetActive(true);
             backlight.SetActive(true);
+        }
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            SoundManager.instance.stage1Clear = true;
+            SoundManager.instance.stage2Clear = true;
         }
     }
 

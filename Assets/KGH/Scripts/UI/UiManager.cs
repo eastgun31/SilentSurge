@@ -13,6 +13,7 @@ public class UiManager : MonoBehaviour
     public bool isWin = false;
     public bool isPauseWin = false;
     public bool isGameOver = false;
+    public bool isStageClear = false;
 
     public GameObject quickSlot;
 
@@ -33,6 +34,7 @@ public class UiManager : MonoBehaviour
 
     public GameObject amsal;
     public GameObject player;
+
     Player playerInput;
 
     private void Start()
@@ -79,7 +81,7 @@ public class UiManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!isPauseWin&&!isGameOver&&GameManager.instance.nowpuzzle == false)
+            if (!isPauseWin&&!isGameOver&&GameManager.instance.nowpuzzle == false && !GameManager.instance.isHide)
             {
                 Time.timeScale = 0;
                 pauseWin.gameObject.SetActive(true);

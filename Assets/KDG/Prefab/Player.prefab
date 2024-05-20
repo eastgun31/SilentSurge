@@ -84,7 +84,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
+  - {fileID: 2100000, guid: 09c61580e8717f04da5ac0ad4bd36964, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1104,7 +1104,7 @@ Transform:
   m_GameObject: {fileID: 3665446304205544863}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.819, z: 0.698}
+  m_LocalPosition: {x: 0, y: 0.819, z: 0.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1129,7 +1129,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.52, y: 1, z: 0.73}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3940464628217119112
 Rigidbody:
@@ -1368,6 +1368,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canhear: 0
+  floor: Floor
+  room: InRoom
 --- !u!1 &4402467284340533774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1850,7 +1852,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 2ae0ae06f51ca1942866b3804bad4478, type: 2}
   map: {fileID: 0}
   throwpower: 1
-  throwpower2: 4
   heartCanUse: 1
 --- !u!114 &6435209353130638713
 MonoBehaviour:

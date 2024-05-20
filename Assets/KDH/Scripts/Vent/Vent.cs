@@ -19,26 +19,62 @@ public class Vent : MonoBehaviour
     {
         v1Cooltime = new WaitForSeconds(15f);
         v2Cooltime = new WaitForSeconds(15f);
+        if(GameManager.instance.scenenum == 5)
+        {
+            ventActivate = true;
+            v1activate = true;
+            v2activate = false;
+        }
+    }
+
+    private void Update()
+    {
+        Stage3Elv();
     }
 
     IEnumerator V1CoolT()
     {
-        yield return v1Cooltime;
-        v1activate= true;
+            yield return v1Cooltime;
+            v1activate = true;
     }
 
     IEnumerator V2CoolT()
     {
-        yield return v2Cooltime;
-        v2activate= true;
+            yield return v2Cooltime;
+            v2activate = true;
     }
 
     public void V1Cool()
     {
-        StartCoroutine(V1CoolT());
+            vent1.SetActive(false);
+            vent1.SetActive(true);
+        if (GameManager.instance.scenenum != 5)
+        {
+            StartCoroutine(V1CoolT());
+        }
     }   
     public void V2Cool()
     {
-        StartCoroutine(V2CoolT());
+            vent2.SetActive(false);
+            vent2.SetActive(true);
+        if (GameManager.instance.scenenum != 5)
+        {
+            StartCoroutine(V2CoolT());
+        }
+    }
+    public void Stage3Elv()
+    {
+        if (GameManager.instance.scenenum == 5)
+        {
+            if (GameManager.instance.puzzleLevel == 2 && !GameManager.instance.clublast)
+                v1activate = true;
+            
+            if (GameManager.instance.clublast == true)
+            {
+                v1activate = false;
+                v2activate = true;
+            }
+                
+        }
     }
 }

@@ -59,7 +59,7 @@ public class HackingPuz : MonoBehaviour
             passwords[2] = "FF";
             passwords[3] = "3D";
         }
-        if(gm.scenenum ==3 || gm.scenenum ==4)
+        if(gm.scenenum ==3)
         {
             ansCode[0].text = "S1";
             ansCode[1].text = "5V";
@@ -70,8 +70,17 @@ public class HackingPuz : MonoBehaviour
             passwords[2] = "Z5";
             passwords[3] = "6C";
         }
-
-        
+        if( gm.scenenum ==4 ) 
+        {
+            ansCode[0].text = "4K";
+            ansCode[1].text = "9H";
+            ansCode[2].text = "S1";
+            ansCode[3].text = "4K";
+            passwords[0] = "4K";
+            passwords[1] = "9H";
+            passwords[2] = "S1";
+            passwords[3] = "4K";
+        }
 
         // 첫 번째 텍스트 필드에 초기값 설정
         inputTexts[currentInputIndex].text = "";
@@ -89,7 +98,7 @@ public class HackingPuz : MonoBehaviour
             {
                 um.isGameOver = true;
                 um.gameover.SetActive(true);
-                CloseHackingPuz();
+                IncorrectClose();
             }
             else
             {
@@ -119,7 +128,7 @@ public class HackingPuz : MonoBehaviour
                     inputTexts[currentInputIndex].text = "";
                 else
                 {   
-                    Invoke("CloseHackingPuz", 2f);
+                    Invoke("CloseHackingPuz", 1f);
                     PuzlvUp();
                 }
             }
@@ -137,17 +146,22 @@ public class HackingPuz : MonoBehaviour
 
     public void PuzlvUp()
     {   
-        gm.nowpuzzle = false;
         um.isWin = true;
-
         gm.puzzleLevel += 1;
         SubtitleCheck();
-        DataManager.instance.SaveData();
     }
     public void CloseHackingPuz()
+    {   
+        um.isWin = false;
+        gm.nowpuzzle = false;
+        
+        DataManager.instance.SaveData();
+        hacking.SetActive(false);
+    }
+    void IncorrectClose()
     {
         um.isWin = false;
-        
+        gm.nowpuzzle = false;
         hacking.SetActive(false);
     }
 
@@ -156,10 +170,10 @@ public class HackingPuz : MonoBehaviour
         switch(SceneManager.GetActiveScene().buildIndex)
         {
             case 1:
-                GuideLineTxt.instance.SetDifferentTxt(8);
+                GuideLineTxt.instance.SetDifferentTxt(4);
                 break;
             case 2:
-                GuideLineTxt.instance.SetDifferentTxt(8);
+                GuideLineTxt.instance.SetDifferentTxt(4);
                 break;
             case 3:
                 doorOpen.Invoke();

@@ -10,6 +10,7 @@ public class Keypad : MonoBehaviour
 
     public GameObject keypad;
 
+
     [SerializeField] private Text answerInput;
     private int maxNum = 4;
 
@@ -19,6 +20,7 @@ public class Keypad : MonoBehaviour
 
     GameManager gm;
     UiManager um;
+    
 
 
     private void OnDisable()
@@ -31,6 +33,22 @@ public class Keypad : MonoBehaviour
         um = UiManager.instance;
         gm = GameManager.instance;
         pw = GameManager.instance.paswawrd;
+    }
+    private void Update()
+    {
+        EscapeKeypad();
+    }
+
+    void EscapeKeypad()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(gm.nowpuzzle == true)
+            {
+                keypad.SetActive(false);
+                gm.nowpuzzle = false;
+            }
+        }
     }
 
     public void Number(int number) 
@@ -45,14 +63,14 @@ public class Keypad : MonoBehaviour
         }
     }
 
-    public void Enter()
+    void Enter()
     {
         if(answerInput.text.Equals(pw, System.StringComparison.OrdinalIgnoreCase)) // 입력값과 정답이 같으면
         {
             answerInput.text = "CORRECT";     // 정답
             um.isWin = true;
-            PuzLevUp();
             SceneCheck();
+            PuzLevUp();
             Invoke("Closed", 1f);
         }
         else
@@ -61,7 +79,7 @@ public class Keypad : MonoBehaviour
             Invoke("ResetAns", 1f);
         }
     }
-    public void BackSpace()
+    void BackSpace()
     {
         if (um.isWin == false)
         {
@@ -70,12 +88,12 @@ public class Keypad : MonoBehaviour
         }
     }
 
-    public void ResetAns()
+    void ResetAns()
     {
         answerInput.text = "";
     }
 
-    public void PuzLevUp()
+    void PuzLevUp()
     {
         gm.nowpuzzle = false;
         gm.puzzleLevel += 1;
@@ -84,13 +102,23 @@ public class Keypad : MonoBehaviour
 
     void SceneCheck()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2)
+        if (gm.scenenum == 1 ||
+            gm.scenenum == 2)
             doorOpen.Invoke();
-        else if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex ==4)
+        else if (gm.scenenum == 3 ||
+            gm.scenenum == 4)
             gm.rescueHostage = true;
+        else if (gm.scenenum == 5)
+        {
+            gm.EnemyActive2();
+            //gm.EnemyActive3();
+            gm.ItemActive();
+            EnemyLevel.enemylv.SetEnemy();
+        }
+            
     }
 
-    public void Closed()
+    void Closed()
     { 
         um.isWin = false;
         um.CloseKeypadFst();

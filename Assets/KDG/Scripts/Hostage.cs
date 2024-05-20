@@ -8,17 +8,13 @@ public class Hostage : MonoBehaviour
 {
     NavMeshAgent nav;
     public Transform target;
+
     Animator anim;
     public UnityEvent hostageDie;
     bool die;
     string walk = "Walk";
-    string _death = "_Death";
     string death = "Death";
-    string alive = "Alive";
     GameManager gm;
-
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -49,17 +45,22 @@ public class Hostage : MonoBehaviour
         if(other.CompareTag("E_Bullet"))
         {
             if(!die)
+            {
+                Destroy(other.gameObject);
                 StartCoroutine(HostageDie());
+            }
+                
             hostageDie.Invoke();
         }
     }
     IEnumerator HostageDie()
     {
         die = true;
-            anim.SetBool(death, true);
-            gm.hostagedie = true;
-            nav.isStopped = true;
-            nav.velocity = Vector3.zero;
+        anim.SetBool(death, true);
+        gm.isGameOver = true;
+        gm.hostagedie = true;
+        nav.isStopped = true;
+        nav.velocity = Vector3.zero;
         
         yield return new WaitForSeconds(1f);
         die = false;
@@ -67,6 +68,7 @@ public class Hostage : MonoBehaviour
 
     public void Realive()
     {
+        gm.isGameOver = false;
         anim.SetBool(death,false);
         gm.hostagedie = false;
         nav.isStopped = false;

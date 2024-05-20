@@ -16,6 +16,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] uiClips;
     public AudioClip[] enemyClips;
 
+    public bool stage1Clear = false;
+    public bool stage2Clear = false;
+
     [SerializeField]
     private bool playingSource = false;
     public bool playingAction = false;
@@ -73,6 +76,11 @@ public class SoundManager : MonoBehaviour
     {
         if(type)
         {
+            if(i == 0)
+                effectPlayer.loop = true;
+            else
+                effectPlayer.loop = false;
+
             effectPlayer.volume = vol;
             effectPlayer.PlayOneShot(effectClips[i]);
         }

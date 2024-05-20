@@ -8,27 +8,35 @@ public class Bullet : MonoBehaviour
     private int type;
     [SerializeField]
     private GameObject explosion;
-    [SerializeField]
-    bool oneparticle = true;
+
+    private string enemy = "Enemy";
+    private string wall = "Wall";
+    private string player = "Player";
+    private string cabinet = "CabinetObj";
 
     private void Start()
     {
-        if(type == 4)
-            Destroy(gameObject, 0.5f);
+        Destroy(gameObject, 5f);
+        if (type == 4)
+            Destroy(gameObject, 1f);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(type == 0 && (other.CompareTag("Wall") || other.CompareTag("Enemy")))
+
+        if(type == 0 && ((other.CompareTag(enemy) || other.CompareTag(wall))))
+        {
             Destroy(gameObject);
-        if(type == 1 && (other.CompareTag("Wall") || other.CompareTag("Player"))&& GameManager.instance.eonecollison)
+        }
+
+        if(type == 1 && (other.CompareTag(wall) || other.CompareTag(player))&& GameManager.instance.eonecollison)
         {
             GameManager.instance.eonecollison = false;
             GameObject explosionprefab =  Instantiate(explosion, gameObject.transform);
             Destroy(explosionprefab,0.5f);
             Destroy(gameObject,1f);
         }
-        if(type == 3 && (other.CompareTag("Wall") || other.CompareTag("Player")))
+        else if(type == 3 && (other.CompareTag(wall) || other.CompareTag(player) || other.CompareTag(cabinet)))
             Destroy (gameObject);
 
     }

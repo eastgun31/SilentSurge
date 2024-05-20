@@ -19,7 +19,6 @@ public class EnemyLevel : MonoBehaviour
     WaitForSeconds downTime;
     WaitForSeconds upTime;
     GameManager gm;
-    private bool lvDowning;
     private bool addcomplete;
     private bool enemyadd;
 
@@ -33,7 +32,6 @@ public class EnemyLevel : MonoBehaviour
         LvStep = ELevel.level1;
         downTime = new WaitForSeconds(1f);
         upTime = new WaitForSeconds(1f);
-        lvDowning = false;
         enemyadd = false;
     }
 
@@ -50,23 +48,6 @@ public class EnemyLevel : MonoBehaviour
         //    gm.playerchasing = 0;
         if (gm.playerchasing != 0 )
             gm.playerchasing -= Time.deltaTime;
-
-        //if (gm.playerchasing)
-        //    StopCoroutine(LvDown());
-        //else if(!gm.playerchasing && !lvDowning && LvStep != ELevel.level1)
-        //    StartCoroutine(LvDown()); 
-
-        //if(LvStep == ELevel.level3 && !addcomplete)
-        //{
-        //    Debug.Log("ÀûÃß°¡");
-        //    addcomplete = true;
-        //    enemyadd= true;
-        //    if(enemyadd)
-        //    {
-        //        enemyadd = false;
-        //        ODaeGi();
-        //    }
-        //}
 
     }
 
@@ -142,9 +123,15 @@ public class EnemyLevel : MonoBehaviour
         {
             lv3enemy.transform.GetChild(i).gameObject.transform.position = lv3enemy.transform.position;
         }
-        for (int i = 0; i < lastenemy.transform.childCount; i++)
+        if(gm.scenenum == 1 || gm.scenenum == 2)
         {
-            lastenemy.transform.GetChild(i).gameObject.transform.position = lastenemy.transform.position;
+            for (int i = 0; i < lastenemy.transform.childCount; i++)
+            {
+                lastenemy.transform.GetChild(i).gameObject.transform.position = lastenemy.transform.position;
+            }
+
+            if (gm.clublast)
+                ODaeGi2();
         }
         enemyadd = false;
         LvStep = ELevel.level1;
@@ -164,35 +151,6 @@ public class EnemyLevel : MonoBehaviour
                 Enemies[i].SetActive(false);
             }
         }
-
-        //if (GameManager.instance.scenenum ==1)
-        //{
-        //    for (int i = 0; i < GameManager.instance.existEnemy.Length; i++)
-        //    {
-        //        if (GameManager.instance.existEnemy[i])
-        //        {
-        //            Enemies[i].SetActive(true);
-        //        }
-        //        else if (!GameManager.instance.existEnemy[i])
-        //        {
-        //            Enemies[i].SetActive(false);
-        //        }
-        //    }
-        //}
-        //else if(GameManager.instance.scenenum ==2)
-        //{
-        //    for (int i = 0; i < GameManager.instance.existEnemy.Length; i++)
-        //    {
-        //        if (GameManager.instance.existEnemy[i])
-        //        {
-        //            Enemies[i].SetActive(true);
-        //        }
-        //        else if (!GameManager.instance.existEnemy[i])
-        //        {
-        //            Enemies[i].SetActive(false);
-        //        }
-        //    }
-        //}
     }
 
     public void ODaeGi()
@@ -207,7 +165,7 @@ public class EnemyLevel : MonoBehaviour
     {
         Debug.Log("111");
         lastenemy.SetActive(true);
-        for (int i = 0; i < lv3enemy.transform.childCount; i++)
+        for (int i = 0; i < lastenemy.transform.childCount; i++)
         {
             lastenemy.transform.GetChild(i).gameObject.SetActive(true);
         }
@@ -215,12 +173,22 @@ public class EnemyLevel : MonoBehaviour
 
     public void LastEvent()
     {
+
         if(gm.scenenum == 3 ||  gm.scenenum == 4)
         {
             if (gm.puzzleLevel == 2)
                 ODaeGi2();
             else
                 return;
+        }
+        else if(gm.scenenum == 5)
+        {
+            if(gm.clublast)
+            {
+                ODaeGi2();
+                SetEnemy();
+            }
+                
         }
     }
 

@@ -7,16 +7,24 @@ using ItemInfo;
 
 public class GameClear : MonoBehaviour
 {
-    public GameObject clear;
-    public GameObject goal;
+    [SerializeField]
+    private GameObject clear;
+    [SerializeField]
+    private GameObject goal;
+    [SerializeField]
+    private GameObject enemyFootSound;
+    [SerializeField]
+    private List<AudioSource> eFootSounds;
     public int value;
     public UnityEvent lastAction;
     public UnityEvent Ending;
     bool activewan;
 
     public List<GameObject> enemys;
-    public List<GameObject> items;
+    public GameObject items;
     CoolTime cool;
+    Casing cas;
+    //GameManager gm;
 
     private void Start()
     {
@@ -26,15 +34,19 @@ public class GameClear : MonoBehaviour
         {
             StartCoroutine(EndingCheck());
         }
+        //gm = GameManager.instance;
+        cas = new Casing();
     }
 
     IEnumerator EndingCheck()
     {
         while (true)
         {
+            yield return cool.cool1sec;
+
             foreach (GameObject enemy in enemys)
             {
-                if (GameManager.instance.last && !enemy.activeSelf)
+                if (cas.gm.last && !enemy.activeSelf)
                 {
                     enemys.Remove(enemy);
                     break;
@@ -45,27 +57,45 @@ public class GameClear : MonoBehaviour
             if(enemys.FirstOrDefault() == null && activewan)
             {
                 goal.SetActive(true);
-                items[0].SetActive(true);
-                items[1].SetActive(true);
-                DataManager.instance.SaveData();
-            }
-                
+                items.SetActive(true);
 
-            yield return cool.cool1sec;
+            }
         }
+    }
+
+    void EnemySoundOff()
+    {
+        cas.sm.enemyPlayer.Stop();
+        enemyFootSound.SetActive(false);
+
+        foreach (AudioSource enemy in eFootSounds)
+            enemy.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player") && value == 1)
         {
-            if (GameManager.instance.scenenum == 1)
-                clear.SetActive(true);
-
-            else if (GameManager.instance.scenenum == 3)
+            if (cas.gm.scenenum == 1 && cas.gm.clublast)
             {
-                if (GameManager.instance.rescueHostage)
+                cas.sm.EffectOff();
+                EnemySoundOff();
+                clear.SetActive(true);
+                cas.gm.isGameOver = true;
+                cas.sm.stage1Clear = true;
+            }
+                
+
+            else if (cas.gm.scenenum == 3)
+            {
+                if (cas.gm.rescueHostage)
+                {
+                    cas.sm.EffectOff();
+                    EnemySoundOff();
                     clear.SetActive(true);
+                    cas.gm.isGameOver = true;
+                    cas.sm.stage2Clear = true;
+                }
                 else
                     return;
             }
@@ -74,22 +104,37 @@ public class GameClear : MonoBehaviour
         {
             activewan = false;
             goal.SetActive(false);
+            cas.gm.clublast = true;
             lastAction.Invoke();
 
-            if (GameManager.instance.scenenum == 3 || GameManager.instance.scenenum == 4)
-                EnemyLevel.enemylv.SetEnemy();
+
+            if (cas.gm.scenenum == 5)
+            {
+                cas.gm.people.SetActive(false);
+            }
+            
         }
         else if(other.CompareTag("Player") && value == 3)
         {
-            if(GameManager.instance.scenenum == 2)
-                Ending.Invoke();
-
-            else if(GameManager.instance.scenenum == 4)
+            if(cas.gm.scenenum == 2 && cas.gm.clublast)
             {
-                if (GameManager.instance.rescueHostage)
+                cas.sm.stage1Clear = true;
+                Ending.Invoke();
+            }
+            else if(cas.gm.scenenum == 4)
+            {
+                if (cas.gm.rescueHostage)
+                {
+                    cas.sm.stage2Clear = true;
                     Ending.Invoke();
+                }
                 else
                     return;
+            }
+            else if(cas.gm.scenenum == 5)
+            {
+                if(cas.gm.clublast)
+                    Ending.Invoke();
             }
         }
     }

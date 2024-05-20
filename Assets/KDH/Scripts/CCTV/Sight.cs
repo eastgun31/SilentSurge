@@ -84,7 +84,7 @@ public class Sight : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(sightType == 1)                           // enemy 일 Eo
+        if(sightType == 1 )                           // enemy 일 Eo
             DrawDetectArea();
     }
 
@@ -137,7 +137,7 @@ public class Sight : MonoBehaviour
                         if (sightType == 2 && GameManager.instance.playerchasing < 50)
                             GameManager.instance.playerchasing += 0.1f;
                         else if (sightType == 1 && GameManager.instance.playerchasing < 50)
-                            GameManager.instance.playerchasing += 10;
+                            GameManager.instance.playerchasing += 5;
 
                         detectTarget = visibleT;                                                                            //  detectTarget 은 플레이어
                     }

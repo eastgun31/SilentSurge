@@ -34,6 +34,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private int enemyType;
     [SerializeField]
+    private bool lastEnemy;
+    [SerializeField]
     private int indexcount;
     [SerializeField]
     private int naviindex;
@@ -54,6 +56,9 @@ public class Enemy : MonoBehaviour
     string Death2 = "Death2";
     string Flash = "Flash";
     string PlayerListen = "PlayerListen";
+    string bullet = "Bullet";
+    string amsal = "AmSal";
+
     ////안쓰는변수
     //public bool m_triggered = false; // 트리거 충돌 여부를 나타냅니다.
     //public event Action<Player> PlayerSpotted; // 플레이어 발견 시 이벤트
@@ -123,7 +128,10 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (state != EnemyState.die && state == EnemyState.findtarget )
+        if(GameManager.instance.isGameOver)
+            return;
+
+        if (state != EnemyState.die && state != EnemyState.sturn && state == EnemyState.findtarget )
         {
             TargetChase();
         }
@@ -199,7 +207,11 @@ public class Enemy : MonoBehaviour
 
             if (naviindex == customDestinations.Length)
                 naviindex = 0;
-            m_enemy.SetDestination(customDestinations[naviindex]);
+
+            if (enemyType == 5)
+                customDestinations[0] = GameManager.instance.lv3PlayerPos;
+            else
+                m_enemy.SetDestination(customDestinations[naviindex]);
         }
 
     }
@@ -299,7 +311,7 @@ public class Enemy : MonoBehaviour
             }
             else if (enemyType == 4)
             {
-                SoundManager.instance.EnemyEffect(2, 0.5f);
+                SoundManager.instance.EnemyEffect(2, 0.7f);
             }
 
             bulletRigid.velocity = bulletPos.forward * bulletSpeed;
@@ -380,7 +392,7 @@ public class Enemy : MonoBehaviour
 
             // GameManager.instance.playerchasing = false;
             state = EnemyState.hear;
-            if(sight.findT && state != EnemyState.die)
+            if(sight.findT && state != EnemyState.die && state != EnemyState.sturn)
                 state = EnemyState.findtarget;
 
         }
@@ -430,7 +442,7 @@ public class Enemy : MonoBehaviour
 
     void EnenyAttackStop()
     {
-        if(enemyType == 1 || enemyType ==2)
+        if(enemyType == 1 || enemyType ==2 || enemyType == 4)
         {
             StopCoroutine(Shoot());
         }
@@ -438,35 +450,34 @@ public class Enemy : MonoBehaviour
         {
             StopCoroutine(CloseAttack());
         }
-        else if(enemyType == 4)
-        {
-            StopCoroutine(UdoShoot(sight.detectTarget.position));
-        }
     }
 
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet") || other.CompareTag("AmSal"))
+        if (state != EnemyState.die && (other.CompareTag(bullet) || other.CompareTag(amsal)))
         {
-            EnenyAttackStop();
             state = EnemyState.die;
-            if(other.CompareTag("Bullet"))
+            EnenyAttackStop();
+            if(other.CompareTag(bullet))
             {
-                Destroy(other.gameObject);
+                Destroy(other.gameObject, 0.5f);
                 enemyAnim.SetBool(Death, true);
             }
-            else if(other.CompareTag("AmSal"))
+            else if(other.CompareTag(amsal))
             {
                 enemyAnim.SetBool(Death2, true);
             }
                 
 
             StartCoroutine(DeactivateWithDelay());
-            if (indexcount != 99 || indexcount != 98)
-            {
+            if (enemyType == 5)
+                return;
+            else if (lastEnemy)
+                return;
+            else
                 GameManager.instance.existEnemy[indexcount] = false;
-            }
+
             //StopAllCoroutines();
            
         }

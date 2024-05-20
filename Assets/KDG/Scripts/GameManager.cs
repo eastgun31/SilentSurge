@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     public bool spacebar = false;
     public bool rescueHostage = false;
     public bool hostagedie = false;
+    public bool peopledie = false;
+    public bool isGameOver = false;
 
     [SerializeField]
     private int enemyQuater;
@@ -41,8 +43,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] Items;
     public bool last = false;
+    public bool clublast = false;
     public bool onecollison = true;
     public bool eonecollison = true;
+    public GameObject people;
+
     public void Awake()
     {
         if (instance != null)
@@ -110,39 +115,40 @@ public class GameManager : MonoBehaviour
             existEnemy[i] = true;
         }
 
-        if (scenenum == 1 || scenenum == 2)
+        if (scenenum == 1 || scenenum == 2 || scenenum == 5)
             last = true;
-
-
+    }
+    public void EnemyActive3()
+    {
+        for (int i = 0; i < enemyQuater; i++)
+        {
+            existEnemy[i] = false;
+        }
     }
 
     void SecenCheck()
     {
-        
         switch (SceneManager.GetActiveScene().buildIndex)
         {
             case 1:
-                Debug.Log("¾À1");
                 SceneVariableReset(1,8, 7, 1, 4, 7, 360);
                 PuzzleDifficulty(70f, 0.009f, 100f, 0.004f, "8324");
                 break;
             case 2:
-                Debug.Log("¾À2");
-                SceneVariableReset(2, 12,11, 2, 6, 7, 130);
+                SceneVariableReset(2, 13,11, 2, 6, 7, 130);
                 PuzzleDifficulty(90f, 0.007f, 30f, 0.005f, "9635");
                 break;
             case 3:
-                Debug.Log("¾À3");
                 SceneVariableReset(3,10,13,1, 5, 7, 360);
                 PuzzleDifficulty(90f, 0.007f, 30f, 0.005f, "5728");
                 break;
             case 4:
-                SceneVariableReset(3, 16, 13, 1, 7, 7, 130);
-                PuzzleDifficulty(90f, 0.007f, 30f, 0.005f, "5728");
-                scenenum = 4;
+                SceneVariableReset(4, 16, 13, 1, 7, 7, 130);
+                PuzzleDifficulty(90f, 0.007f, 30f, 0.005f, "8015");
                 break;
             case 5:
-                scenenum = 5;
+                SceneVariableReset(5, 10, 12, 1, 4, 7, 130);
+                PuzzleDifficulty(90f, 0.007f, 30f, 0.005f, "0523");
                 break;
 
         }

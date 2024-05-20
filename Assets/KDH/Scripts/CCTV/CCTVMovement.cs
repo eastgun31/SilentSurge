@@ -52,21 +52,6 @@ public class CCTVMovement : MonoBehaviour       // CCTV의 속성을 가지고 있으며, 
         c_state = cctv_state.cidle;                                       // CCTV의 초기 상태는 일반상태
     }
 
-    void Update()
-    {
-        //if (c_state == cctv_state.detecting)                          // 적 감지중일 경우
-        //{
-        //    StartCoroutine(DetectCCTVLevel());                     // 경계레벨을 올려주는 코루틴 호출
-        //}
-        //if (csight.findT)
-        //{
-        //    CCTVHomingPlayer();
-        //}
-        //if(!csight.findT) 
-        //{
-        //    CCTVFormatRotate();
-        //}
-    }
 
     void CCTVHomingPlayer()                         // 플레이어가 시야에 들어왔을 때 시야에 저장된 플레이어와의 방향값을 이용해 시야각 유도
     {

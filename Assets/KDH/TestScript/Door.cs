@@ -33,22 +33,26 @@ public class Door : MonoBehaviour      // 문을 열고 닫는 스크립트
                 {
                     transform.localRotation = Quaternion.Euler(0, -openangle, 0);
                     op = DoorState.up;
+                    SoundManager.instance.EffectPlay(5, true, 0.7f);
                 }
                 else if (PlayerPos_1)
                 {
                     transform.localRotation = Quaternion.Euler(0, openangle, 0);
                     op = DoorState.down;
+                    SoundManager.instance.EffectPlay(5, true, 0.7f);
                 }
                 break;
 
             case DoorState.up:
                     transform.localRotation = Quaternion.Euler(0, 180, 0);
                     op = DoorState.not;
+                SoundManager.instance.EffectPlay(6, true, 0.7f);
                 break;
 
             case DoorState.down:
                     transform.localRotation = Quaternion.Euler(0, 180, 0);
                     op = DoorState.not;
+                SoundManager.instance.EffectPlay(6, true, 0.7f);
                 break;
         }
     }

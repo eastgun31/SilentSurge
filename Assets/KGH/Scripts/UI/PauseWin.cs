@@ -8,6 +8,8 @@ public class PauseWin : MonoBehaviour
     public GameObject pauseWin;
 
     public GameObject helpWin;
+    public GameObject page1;
+    public GameObject page2;
 
 
     public void Continue()
@@ -38,5 +40,15 @@ public class PauseWin : MonoBehaviour
     public void GoToMain()
     {
         SceneManager.LoadScene(0);
+    }
+    public void GoToPage1()
+    {
+        page1.SetActive(true);
+        page2.SetActive(false);
+    }
+    public void GoToPage2()
+    {
+        page1.SetActive(false);
+        page2.SetActive(true);
     }
 }
