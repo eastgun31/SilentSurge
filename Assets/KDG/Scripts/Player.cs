@@ -398,7 +398,6 @@ public class Player : MonoBehaviour
         rigid.velocity = Vector3.zero;
         footSound.SetActive(false);
         cas.sm.EffectOff();
-
     }
 
     IEnumerator PlayerDie()
@@ -423,6 +422,15 @@ public class Player : MonoBehaviour
     //    yield return delay;
     //    mat.color = Color.white;
     //}
+
+    public void PlayerRecharge()
+    {
+        if (itemGet[0])
+            cas.gm.itemcount[0] = 6;
+
+        if (itemGet[4])
+            cas.gm.itemcount[4] = 3;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
